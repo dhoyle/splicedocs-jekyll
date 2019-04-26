@@ -101,8 +101,58 @@ recursive-query
 
 A `SELECT` or `VALUES` command that provides the body of a recursive view.
 {: .paramDefnFirst}
+The `FROM` clause of your `recursive-query` should contain a self-reference to the `queryName`.
+{: .noteNote}
 
 </div>
+
+## Recursion Usage Notes
+
+Splice Machine has implemented a recursive iteration limit to limit runaway recursion. The default limit value is `20`. You can modify this value in your configuration by changing the value of this parameter:
+
+```
+splice.execution.recursiveQueryIterationLimit
+```
+{: .Example}
+
+You can also override the system limit in your current database connection using the [`set session_property`](cmdlineref_setsessionproperty.html) command; for example:
+{: .spaceAbove}
+
+```
+splice> set session_property recursivequeryiterationlimit=30;
+```
+{: .Example}
+
+To discover the current value of that property, use the `values current session_property` command:
+{: .spaceAbove}
+
+```
+splice> values current session_property;
+1
+---------------------------------------------------------------------------------
+RECURSIVEQUERYITERATIONLIMIT=30;
+```
+{: .Example}
+
+Finally, to unset the session-level property and revert to the system property, use this command:
+{: .spaceAbove}
+
+```
+set session_property recursivequeryiterationlimit=null;
+```
+{: .Example}
+
+
+## Recursive View Restrictions
+
+In the current release, these restrictions apply to recursive views:
+
+* You cannot nest recursive views: a recursive view (or `with recursive` clause) cannot reference another recursive view (or `with recursive`) clause.
+
+* The `recursive-query` can only contain one recursive reference.
+
+* The recursive reference cannot occur in a subquery.
+
 ## Examples
 
 This section contains examples of using the `CREATE VIEW` statement.
@@ -204,7 +254,7 @@ CREATE RECURSIVE VIEW sysallroles as
     UNION ALL
     SELECT name FROM (VALUES 'PUBLIC') usr (name)
     UNION ALL
-    SELECT roleid AS name FROM sys.sysroles R, sysallroles A WHERE A.name = R.grantee AND R.isdef = 'N’;
+    SELECT roleid AS name FROM sys.sysroles R, sysallroles A WHERE A.name = R.grantee AND R.isdef = 'N';
 ```
 {: .Example}
 
@@ -235,7 +285,7 @@ splice> CREATE VIEW V1 (C1) AS SELECT SIN(C1) FROM T1;
 {: .Example}
 
 The following `SELECT`:
-{: .spaceBefore}
+{: .spaceAbove}
 
 ```
 SELECT * FROM V1;

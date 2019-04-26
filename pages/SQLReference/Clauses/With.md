@@ -43,14 +43,13 @@ WITH <a href="sqlref_queries_query.html">queryName</a>
 </div>
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-WITH RECURSIVE  <a href="sqlref_identifiers_types.html#TableName">tableName</a>
+WITH RECURSIVE  <a href="sqlref_identifiers_types.html#TableName">queryName</a>
    [ ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] * ) ]
    AS
    ( seed-query
      UNION ALL
      recursive-query
-   )
-SELECT * FROM tableName</pre>
+   )</pre>
 </div>
 
 <div class="paramList" markdown="1">
@@ -66,16 +65,10 @@ query
 The subquery.
 {: .paramDefnFirst}
 
-tableName
-{: .paramName}
-
-The name of the table to query recursively.
-{: .paramDefnFirst}
-
 seed-query
 {: .paramName}
 
-A `SELECT` or `VALUES` command that provides the seed of a recursive view.
+A `SELECT` or `VALUES` command that provides the seed row(s) of a recursive view.
 {: .paramDefnFirst}
 
 recursive-query
@@ -83,14 +76,64 @@ recursive-query
 
 A `SELECT` or `VALUES` command that provides the body of a recursive view.
 {: .paramDefnFirst}
+The `FROM` clause of your `recursive-query` should contain a self-reference to the `queryName`.
+{: .noteNote}
 
 </div>
 
+## Recursion Usage Notes
+
+Splice Machine has implemented a recursive iteration limit to limit runaway recursion. The default limit value is `20`. You can modify this value in your configuration by changing the value of this parameter:
+
+```
+splice.execution.recursiveQueryIterationLimit
+```
+{: .Example}
+
+You can also override the system limit in your current database connection using the [`set session_property`](cmdlineref_setsessionproperty.html) command; for example:
+{: .spaceAbove}
+
+```
+splice> set session_property recursivequeryiterationlimit=30;
+```
+{: .Example}
+
+To discover the current value of that property, use the `values current session_property` command:
+{: .spaceAbove}
+
+```
+splice> values current session_property;
+1
+---------------------------------------------------------------------------------
+RECURSIVEQUERYITERATIONLIMIT=30;
+```
+{: .Example}
+
+Finally, to unset the session-level property and revert to the system property, use this command:
+{: .spaceAbove}
+
+```
+set session_property recursivequeryiterationlimit=null;
+```
+{: .Example}
+
 ## Restrictions
 
-You cannot currently use a temporary table in a `WITH` clause. This is
+These are restrictions that will be addressed in a future release of Splice Machine.
+
+For all `with` clauses:
+
+* You cannot currently use a temporary table in a `WITH` clause. This is
 being addressed in a future release of Splice Machine.
-{: .body}
+
+For recursive `with` clauses:
+
+* You cannot nest recursive clauses: a `with recursive` clause (or recursive view) cannot reference another `with recursive` clause (or recursive view).
+
+* The `recursive-query` can only contain one recursive reference.
+
+* The recursive reference cannot occur in a subquery.
+
 
 ## Examples:
 
