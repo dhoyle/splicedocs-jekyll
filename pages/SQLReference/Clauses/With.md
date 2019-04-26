@@ -39,9 +39,20 @@ query.
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 WITH <a href="sqlref_queries_query.html">queryName</a>
-   AS SELECT Query</pre>
-
+   AS SELECT query</pre>
 </div>
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+WITH RECURSIVE  <a href="sqlref_identifiers_types.html#TableName">tableName</a>
+   [ ( <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] * ) ]
+   AS
+   ( seed-query
+     UNION ALL
+     recursive-query
+   )
+SELECT * FROM tableName</pre>
+</div>
+
 <div class="paramList" markdown="1">
 queryName
 {: .paramName}
@@ -49,57 +60,123 @@ queryName
 An identifier that names the subquery clause.
 {: .paramDefnFirst}
 
+query
+{: .paramName}
+
+The subquery.
+{: .paramDefnFirst}
+
+tableName
+{: .paramName}
+
+The name of the table to query recursively.
+{: .paramDefnFirst}
+
+seed-query
+{: .paramName}
+
+A `SELECT` or `VALUES` command that provides the seed of a recursive view.
+{: .paramDefnFirst}
+
+recursive-query
+{: .paramName}
+
+A `SELECT` or `VALUES` command that provides the body of a recursive view.
+{: .paramDefnFirst}
+
 </div>
+
 ## Restrictions
 
 You cannot currently use a temporary table in a `WITH` clause. This is
 being addressed in a future release of Splice Machine.
 {: .body}
 
-## Examples
+## Examples:
+
+This section contains examples of using the `WITH` clause.
+
+### Example 1
 
 If we create the following table:
-{: .body}
 
-<div class="preWrapperWide" markdown="1">
-    CREATE TABLE BANKS (
-           INSTITUTION_ID INTEGER NOT NULL,
-           INSTITUTION_NAME VARCHAR(100),
-           CITY VARCHAR(100),
-           STATE VARCHAR(2),
-           TOTAL_ASSETS DECIMAL(19,2),
-           NET_INCOME DECIMAL(19,2),
-           OFFICES INTEGER,
-           PRIMARY KEY(INSTITUTION_ID)
-    );
+```
+CREATE TABLE BANKS (
+       INSTITUTION_ID INTEGER NOT NULL,
+       INSTITUTION_NAME VARCHAR(100),
+       CITY VARCHAR(100),
+       STATE VARCHAR(2),
+       TOTAL_ASSETS DECIMAL(19,2),
+       NET_INCOME DECIMAL(19,2),
+       OFFICES INTEGER,
+       PRIMARY KEY(INSTITUTION_ID)
+);
+```
 {: .Example}
 
-</div>
 We can then use a common table expression to improve the readability of
 a statement that finds the per-city total assets and income for the
 states with the top net income:
 {: .body}
 
-<div class="preWrapperWide" markdown="1">
-    WITH state_sales AS (
-           SELECT STATE, SUM(NET_INCOME) AS total_sales
-           FROM BANKS
-           GROUP BY STATE
-       ), top_states AS (
-           SELECT STATE
-           FROM state_sales
-           WHERE total_sales > (SELECT SUM(total_sales)/10 FROM state_sales)
-       )
-    SELECT STATE,
-           CITY,
-           SUM(TOTAL_ASSETS) AS assets,
-           SUM(NET_INCOME) AS income
-    FROM BANKS
-    WHERE STATE IN (SELECT STATE FROM top_states)
-    GROUP BY STATE, CITY;
+```
+WITH state_sales AS (
+       SELECT STATE, SUM(NET_INCOME) AS total_sales
+       FROM BANKS
+       GROUP BY STATE
+   ), top_states AS (
+       SELECT STATE
+       FROM state_sales
+       WHERE total_sales > (SELECT SUM(total_sales)/10 FROM state_sales)
+   )
+SELECT STATE,
+       CITY,
+       SUM(TOTAL_ASSETS) AS assets,
+       SUM(NET_INCOME) AS income
+FROM BANKS
+WHERE STATE IN (SELECT STATE FROM top_states)
+GROUP BY STATE, CITY;
+
+```
 {: .Example}
 
-</div>
+## Example 2:
+
+If we create the following table:
+
+```
+CREATE TABLE edge (nodeA INT,  nodeB INT);
+INSERT INTO edge VALUES (1,2), (1,3), (2,4), (2,5), (3,6), (3,7), (5,8), (7,9);
+CREATE TABLE vertex (node INT, name VARCHAR(10));
+INSERT INTO vertex VALUES (1, 'A'), (2, 'B'), (3, 'C'), (4, 'D'), (5, 'E'), (6,'F'), (7, 'G'), (8, 'H'), (9,'I');
+```
+{: .Example}
+
+We can then use a common table expression to find the name and depth of all vertices that are reachable from node 1:
+
+```
+WITH RECURSIVE dt AS (
+    SELECT node, name, 1 AS level FROM vertex WHERE node=1
+    UNION ALL
+    SELECT edge.nodeB AS node, vertex.name, level+1 AS level FROM dt, edge, vertex WHERE dt.node=edge.nodeA AND edge.nodeB = vertex.node AND dt.level < 10)
+SELECT * FROM dt ORDER BY node;
+
+NODE       |NAME      |LEVEL
+-------------------------------------------
+1          |A         |1
+2          |B         |2
+3          |C         |2
+4          |D         |3
+5          |E         |3
+6          |F         |3
+7          |G         |3
+8          |H         |4
+9          |I         |4
+
+9 rows selected
+```
+{: .Example}
+
 ## See Also
 
 * [`SELECT`](sqlref_expressions_select.html) expression

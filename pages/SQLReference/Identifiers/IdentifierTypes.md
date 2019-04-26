@@ -13,7 +13,7 @@ folder: SQLReference/Identifiers
 # Identifier Types
 
 This topic describes the different types of SQLIdentifiers that are used
-in this manual. .
+in this manual.
 
 Complete syntax, including information about case sensitivity and
 special character usage in SQL Identifier types, is found in the
@@ -117,7 +117,7 @@ table:
                         </td>
                     </tr>
                     <tr>
-                        <td class="CodeFont" id="TableName">table-Name</td>
+                        <td class="CodeFont" id="ta">table-Name</td>
                         <td>
                             <p>A <code>table-Name</code> is an <code>SQLIdentifier</code> use to name tables.</p>
                             <p>You can optionally qualify a <code>table-Name</code> with a <code>schemaName</code>. If you do not use a qualifying schema name, the default schema is assumed. Note that system table names are qualified with the <code>SYS.</code> schema prefix.</p>
