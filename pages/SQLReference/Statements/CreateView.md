@@ -256,6 +256,15 @@ CREATE RECURSIVE VIEW sysallroles as
     UNION ALL
     SELECT roleid AS name FROM sys.sysroles R, sysallroles A WHERE A.name = R.grantee AND R.isdef = 'N';
 ```
+
+splice> SELECT * FROM sysallroles;
+NAME
+-------------------------------------
+SPLICE
+PUBLIC                               
+
+2 rows selected
+
 {: .Example}
 
 

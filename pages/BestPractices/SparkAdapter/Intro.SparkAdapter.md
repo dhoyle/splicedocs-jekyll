@@ -27,7 +27,7 @@ The other topics in this chapter provide additional information about the Native
 
 ## Native Spark DataSource Overview  {#about}
 
-The Splice Machine Native Spark DataSource, which is also referred to as the *Spark Adapter*, allows you to directly connect Spark DataFrames and Splice Machine database tables. You can efficiently insert, upsert, select, update, and delete data in your Splice Machine tables directly from Spark in a transactionally consistent manner. With the Spark Adapter, transfers of data between Spark and your database are completed without serialization/deserialization, which generates tremendous performance boosts over traditional *over-the-wire* transfers.
+The Splice Machine Native Spark DataSource, which is also referred to as the *Spark Adapter*, allows you to directly connect Spark DataFrames and Splice Machine database tables. You can efficiently insert, upsert, select, update, and delete data in your Splice Machine tables directly from Spark in a transactionally consistent manner. With the Spark Adapter, transfers of data between Spark and your database are completed without serialization/deserialization, which generates tremendous performance boosts over traditional *over-the-wire* (sequentially over a connection) transfers.
 
 To use the Spark Adapter in your code, you simply instantiate a `SplicemachineContext` object in your Spark code. You can run Spark applications that interface with your Splice Machine database interactively in the Spark shell or Zeppelin notebooks, or you can launch a Spark app by using our Spark Submit script. One use of the Adapter is to ingest data into your Splice Machine database directly from a Spark DataFrame.
 

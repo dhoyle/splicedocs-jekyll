@@ -70,7 +70,14 @@ built into Splice Machine SQL.
                         <td><a href="sqlref_builtinfcns_firstvalue.html"><code>FIRST_VALUE</code></a>
                         </td>
                         <td>Window</td>
-                        <td>Returns the first value within  a partition..</td>
+                        <td>Returns the first value within  a partition.</td>
+                        <td>All types.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="sqlref_builtinfcns_grouping.html"><code>GROUPING</code></a>
+                        </td>
+                        <td>Aggregate</td>
+                        <td>Returns whether (`1`) or not (`0`) a specific column in a GROUP BY clause is aggregated.</td>
                         <td>All types.</td>
                     </tr>
                     <tr>
