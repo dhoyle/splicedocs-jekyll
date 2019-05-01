@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSCOLPERMS` table stores the column permissions that have been
 granted but not revoked.
 
+{% include splice_snippets/systablenote.md %}
+
 All of the permissions for one (`GRANTEE, TABLEID, TYPE, GRANTOR`)
 combination are specified in a single row in the `SYSCOLPERMS` table.
 The keys for the `SYSCOLPERMS` table are:
@@ -106,4 +108,3 @@ FormatableBitSet</em>
 
 </div>
 </section>
-

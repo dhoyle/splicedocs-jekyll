@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSSTATEMENTS` table describes the prepared statements in the
 database.
 
+{% include splice_snippets/systablenote.md %}
+
 The table contains one row per stored prepared statement.
 
 The following table shows the contents of the `SYSSTATEMENTS` system
@@ -108,4 +110,3 @@ table.
 
 </div>
 </section>
-

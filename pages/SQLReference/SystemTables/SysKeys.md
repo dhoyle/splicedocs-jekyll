@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSKEYS` table describes the specific information for primary key
 and unique constraints within the current database.
 
+{% include splice_snippets/systablenote.md %}
+
 Splice Machine generates an index on the table to back up each such
 constraint. The index name is the same as `SYSKEYS.CONGLOMERATEID`.
 
@@ -59,4 +61,3 @@ The following table shows the contents of the `SYSKEYS` system table.
 
 </div>
 </section>
-

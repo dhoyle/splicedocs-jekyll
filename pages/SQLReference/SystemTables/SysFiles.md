@@ -14,6 +14,8 @@ folder: SQLReference/SystemTables
 
 The `SYSFILES` table describes jar files stored in the database.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSFILES` system table.
 
 <table>
@@ -69,4 +71,3 @@ The following table shows the contents of the `SYSFILES` system table.
 
 </div>
 </section>
-

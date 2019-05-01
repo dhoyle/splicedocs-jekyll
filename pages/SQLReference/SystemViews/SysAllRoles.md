@@ -1,36 +1,23 @@
 ---
-title: SYSROLES system table
-summary: System table that stores the roles in the database.
-keywords: roles tables
+title: SYSALLROLES System View
+summary: System view that displays all of the roles granted to the current user.
+keywords: system roles view
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_sysroles.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_sysallroles.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSROLES System Table
+# SYSALLROLES System View
 
-The `SYSROLES` table stores the roles in the database.
+The `SYSALLROLES` view displays all of the roles granted to the current user.
 
-{% include splice_snippets/systablenote.md %}
-
-A row in the `SYSROLES` table represents one of the following:
-
-* A role definition (the result of a &nbsp;[`CREATE ROLE`
-  statement](sqlref_statements_createrole.html))
-* A role grant
-
-The keys for the `SYSROLES` table are:
-
-* Primary key (`GRANTEE, ROLEID, GRANTOR`)
-* Unique key (`UUID`)
-
-The following table shows the contents of the `SYSROLES` system table.
+The following table shows the contents of the `SYSALLROLES` system view.
 
 <table>
-    <caption>SYSROLES system table</caption>
+    <caption>SYSALLROLES system view</caption>
     <col />
     <col />
     <col />
@@ -47,21 +34,21 @@ The following table shows the contents of the `SYSROLES` system table.
     </thead>
     <tbody>
         <tr>
-            <td><code> UUID</code></td>
+            <td><code>UUID</code></td>
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>NO</code></td>
             <td>A unique identifier for this role</td>
         </tr>
         <tr>
-            <td><code> ROLEID</code></td>
+            <td><code>ROLEID</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>NO</code></td>
             <td>The role name, after conversion to case normal form</td>
         </tr>
         <tr>
-            <td><code> GRANTEE</code></td>
+            <td><code>GRANTEE</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>NO</code></td>
@@ -70,7 +57,7 @@ The following table shows the contents of the `SYSROLES` system table.
 		represents a role definition, this is the database owner's user name.</td>
         </tr>
         <tr>
-            <td><code> GRANTOR</code></td>
+            <td><code>GRANTOR</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>NO</code></td>
@@ -96,7 +83,7 @@ The following table shows the contents of the `SYSROLES` system table.
             </td>
         </tr>
         <tr>
-            <td><code> ISDEF</code></td>
+            <td><code>ISDEF</code></td>
             <td><code>CHAR</code></td>
             <td><code>1</code></td>
             <td><code>NO</code></td>
@@ -105,15 +92,15 @@ The following table shows the contents of the `SYSROLES` system table.
         </tr>
     </tbody>
 </table>
+
 ## See Also
 
 * [About System Tables](sqlref_systables_intro.html)
-* [`CURRENT_ROLE`](sqlref_builtinfcns_currentrole.html) function
-* [`CREATE_ROLE`](sqlref_statements_createrole.html) statement
-* [`DROP_ROLE`](sqlref_statements_droprole.html) statement
-* [`GRANT`](sqlref_statements_grant.html) statement
-* [`REVOKE`](sqlref_statements_revoke.html) statement
-* [`SET ROLE`](sqlref_statements_setrole.html) statement
+* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html)
 
 </div>
 </section>
+
+
+
+[1]: https://datasketches.github.io/

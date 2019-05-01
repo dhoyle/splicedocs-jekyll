@@ -14,6 +14,8 @@ folder: SQLReference/SystemTables
 
 The `SYSTRIGGERS` table describes the database's triggers.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSTRIGGERS` system
 table.
 
@@ -191,4 +193,3 @@ trigger are always in the same schema as the trigger.
 
 </div>
 </section>
-

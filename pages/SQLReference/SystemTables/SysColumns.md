@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSCOLUMNS` table describes the columns within all tables in the
 current database.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSCOLUMNS` system table.
 
 <table>

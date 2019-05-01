@@ -547,10 +547,6 @@ Language (*DDL*) and Data Manipulation Language (*DML*) statements from
 * [Inserting Data](#INSERTIN)
 * [Selecting and Displaying Data](#SELETING)
 
-See the *[DML Statements](sqlref_statements_dmlintro.html)* sections in
-our *SQL Reference Manual* for more information.
-{: .spaceAbove}
-
 #### CREATE Statements   {#CREATESta}
 
 SQL uses `CREATE` statements to create objects such as
@@ -608,9 +604,6 @@ SQL uses `CREATE` statements to create objects such as
     6 rows selected
 {: .AppCommand}
 
-See the *[CREATE Statements](sqlref_statements_createstatements.html)*
-section in our *SQL Reference Manual* for more information.
-
 #### DROP Statements   {#DROPSta}
 
 SQL uses `DROP` statements to delete objects such as
@@ -649,9 +642,6 @@ there are any objects defined in the schema.
     --------------------------------------------------------
     MYSCHEMA1    |PLAYERS               |1632      |1 row selected
 {: .AppCommand}
-
-See the *[DROP Statements](sqlref_statements_dropstatements.html)*
-section in our *SQL Reference Manual* for more information.
 
 #### Inserting Data   {#INSERTIN}
 

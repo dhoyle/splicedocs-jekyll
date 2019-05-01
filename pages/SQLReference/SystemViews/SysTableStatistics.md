@@ -1,22 +1,19 @@
 ---
 title: SYSTABLESTATISTICS System View
 summary: System view that describes the statistics collected for a specific table
-keywords: table statistics table view
+keywords: table statistics view
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_systablestats.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_systablestats.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSTABLESTATISTICS System Table View
+# SYSTABLESTATISTICS System View
 
 The `SYSTABLESTATISTICS` system view describes the statistics for tables
 within the current database.
-
-`SYS.SYSTABLESTATISTICS` is a system view.
-{: .noteNote}
 
 The following table shows the contents of the `SYSTABLESTATISTICS`
 system view.

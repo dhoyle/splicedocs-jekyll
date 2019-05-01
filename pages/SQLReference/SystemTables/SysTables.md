@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSTABLES` table describes the tables and views within the current
 database.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSTABLES` system table.
 
 <table>

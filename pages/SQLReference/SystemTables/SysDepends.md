@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSDEPENDS` table stores the dependency relationships between
 persistent objects in the database.
 
+{% include splice_snippets/systablenote.md %}
+
 Persistent objects can be dependents or providers. Dependents are
 objects that depend on other objects. Providers are objects that other
 objects depend on.
@@ -78,4 +80,3 @@ The following table shows the contents of the `SYSDEPENDS` system table.
             </table>
 </div>
 </section>
-

@@ -16,6 +16,8 @@ The `SYSBACKUP` table maintains information about each database backup.
 You can query this table to find the ID of and details about a backup
 that was run at a specific time.
 
+{% include splice_snippets/systablenote.md %}
+
 <table>
                 <caption>SYSBACKUP system table</caption>
                 <col />
@@ -112,4 +114,3 @@ that was run at a specific time.
             </table>
 </div>
 </section>
-

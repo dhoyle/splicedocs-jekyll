@@ -36,13 +36,14 @@ privilege-type
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-   DELETE
- | INSERT
- | MODIFY
- | REFERENCES [( column-identifier {, column-identifier}* )]
- | SELECT [( column-identifier {, column-identifier}* )]
- | TRIGGER
- | UPDATE [( column-identifier {, column-identifier}* )]</pre>
+  ACCESS
+| DELETE
+| INSERT
+| MODIFY
+| REFERENCES [( column-identifier {, column-identifier}* )]
+| SELECT [( column-identifier {, column-identifier}* )]
+| TRIGGER
+| UPDATE [( column-identifier {, column-identifier}* )]</pre>
 
 </div>
 {: .paramDefnFirst}
@@ -341,6 +342,11 @@ privilege..
         <tr>
             <td><code>ALL PRIVILEGES</code></td>
             <td>To revoke all of the privileges to the user or role for the specified table. You can also revoke one or more table privileges by specifying a privilege-list.</td>
+        </tr>
+        <tr>
+            <td><code>ACCESS</code></td>
+            <td><p>To revoke permission to access the specified schema.</p>
+                <p class="noteNote">A schema is not visible to a user without access privileges on that schema.</p></td>
         </tr>
         <tr>
             <td><code>DELETE</code></td>

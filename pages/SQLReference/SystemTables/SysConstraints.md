@@ -16,6 +16,8 @@ The `SYSCONSTRAINTS` table describes the information common to all types
 of constraints within the current database (currently, this includes
 primary key, unique, and check constraints).
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSCONSTRAINTS` system
 table.
 
@@ -107,4 +109,3 @@ for check)</li>
 
 </div>
 </section>
-

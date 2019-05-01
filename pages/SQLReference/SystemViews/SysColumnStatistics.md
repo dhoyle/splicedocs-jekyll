@@ -5,8 +5,8 @@ keywords: column statistics table view
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_syscolumnstats.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_syscolumnstats.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
@@ -14,9 +14,6 @@ folder: SQLReference/SystemTables
 
 The `SYSCOLUMNSTATISTICS` table view describes the statistics for a
 specific table column within the current database.
-
-`SYS.SYSCOLUMNSTATISTICS` is a system view.
-{: .noteNote}
 
 The following table shows the contents of the `SYSCOLUMNSTATISTICS`
 system view.

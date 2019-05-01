@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSPERMS` table describes the `USAGE` permissions for sequence
 generators and user-defined types.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSPERMS` system table.
 
 <table>
@@ -100,4 +102,3 @@ The following table shows the contents of the `SYSPERMS` system table.
             </table>
 </div>
 </section>
-

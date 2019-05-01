@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSTABLEPERMS` table stores the table permissions that have been
 granted but not revoked.
 
+{% include splice_snippets/systablenote.md %}
+
 All of the permissions for one (`GRANTEE, TABLEID, GRANTOR`) combination
 are specified in a single row in the `SYSTABLEPERMS` table. The keys for
 the `SYSTABLEPERMS` table are:
@@ -123,4 +125,3 @@ table.
 
 </div>
 </section>
-

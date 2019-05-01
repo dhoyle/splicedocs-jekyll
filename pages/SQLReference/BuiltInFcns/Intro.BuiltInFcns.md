@@ -16,21 +16,18 @@ This section contains the reference documentation for the SQL Functions
 that are built into Splice Machine, which are grouped into the following
 subsections:
 
-* [Conversion Functions](sqlref_builtinfcns_conversionfcnsintro.html)
-* [Current Session
-  Functions](sqlref_builtinfcns_currentsessionfcnsintro.html)
-* [Date and Time Functions](sqlref_builtinfcns_datetimefcnsintro.html)
-* [Miscellaneous Functions](sqlref_builtinfcns_miscfcnsintro.html)
-* [Numeric Functions](sqlref_builtinfcns_numericfcnsintro.html)
-* [String Functions](sqlref_builtinfcns_stringfcnsintro.html)
-* [Trigonometric Functions](sqlref_builtinfcns_trigfcnsintro.html)
-* [Window and Aggregate
-  Functions](sqlref_builtinfcns_windowfcnsintro.html)
+* [Conversion Functions](#conversion)
+* [Current Session Functions](#session)
+* [Date and Time Functions](#datetime)
+* [Miscellaneous Functions](#misc)
+* [Numeric Functions](#numeric)
+* [String Functions](#string)
+* [Trigonometric Functions](#trig)
+* [Window and Aggregate Functions](#window)
 
-## Conversion Functions
+## Conversion Functions  {#conversion}
 
-These are the built-in [conversion
-functions](sqlref_builtinfcns_conversionfcnsintro.html):
+These are the built-in conversion functions:
 
 <table summary="Summary of built-in conversion functions">
                 <col />
@@ -110,10 +107,10 @@ functions](sqlref_builtinfcns_conversionfcnsintro.html):
                 </td>
                 </tr>
             </table>
-## Current Session Functions
 
-These are the built-in [current session
-functions](sqlref_builtinfcns_currentsessionfcnsintro.html):
+## Current Session Functions  {#session}
+
+These are the built-in current session functions:
 
 <table summary="Summary of Splice Machine SQL Built-in Session Functions.">
                 <col />
@@ -159,10 +156,10 @@ functions](sqlref_builtinfcns_currentsessionfcnsintro.html):
                     <td>Depending on context, returns the authorization identifier of either the user who created the SQL session or the owner of the schema.</td>
                 </tr>
             </table>
-## Date and Time Functions
 
-These are the built-in [date and time
-functions](sqlref_builtinfcns_datetimefcnsintro.html):
+## Date and Time Functions  {#datetime}
+
+These are the built-in date and time functions:
 
 <table summary="Summary of Splice Machine SQL Built-in Date and Time functions">
                 <col />
@@ -336,10 +333,10 @@ functions](sqlref_builtinfcns_datetimefcnsintro.html):
                 </td>
                 </tr>
             </table>
-## Miscellaneous Functions
 
-These are the built-in [miscellaneous
-functions](sqlref_builtinfcns_miscfcnsintro.html):
+## Miscellaneous Functions  {#misc}
+
+These are the built-in miscellaneous functions:
 
 <table summary="Summary of Splice Machine SQL Miscellaneous Functions">
                 <col />
@@ -379,10 +376,10 @@ functions](sqlref_builtinfcns_miscfcnsintro.html):
                     <td>A <em>pseudocolumn</em> that uniquely defines a single row in a database table. </td>
                 </tr>
             </table>
+
 ## Numeric Functions
 
-These are the built-in [numeric
-functions](sqlref_builtinfcns_numericfcnsintro.html):
+These are the built-in numeric functions:
 
 <table summary="Summary of Splice Machine SQL Numeric Functions">
                 <col />
@@ -477,10 +474,10 @@ functions](sqlref_builtinfcns_numericfcnsintro.html):
                     <td>Truncates numeric, date, and timestamp values.</td>
                 </tr>
             </table>
-## String Functions
 
-These are the built-in [string
-functions](sqlref_builtinfcns_stringfcnsintro.html):
+## String Functions  {#string}
+
+These are the built-in string functions:
 
 <table summary="Summary of Splice Machine SQL String Functions">
                 <col />
@@ -578,10 +575,10 @@ functions](sqlref_builtinfcns_stringfcnsintro.html):
                 </td>
                 </tr>
             </table>
-## Trigonometric Functions
 
-These are the built-in [trigonometric
-functions](sqlref_builtinfcns_datetimefcnsintro.html):
+## Trigonometric Functions  {#trig}
+
+These are the built-in trigonometric functions:
 
 <table summary="Summary of  Splice Machine SQL Trigonometric Functions">
                 <col />
@@ -685,10 +682,10 @@ functions](sqlref_builtinfcns_datetimefcnsintro.html):
                 </td>
                 </tr>
             </table>
-## Window and Aggregate Functions
 
-These are the built-in [window and aggregate
-functions](sqlref_builtinfcns_windowfcnsintro.html): 
+## Window and Aggregate Functions  {#window}
+
+These are the built-in window and aggregate functions: 
 
 <table summary="Summary of Splice Machine SQL Window and Aggregate Functions">
                 <col />

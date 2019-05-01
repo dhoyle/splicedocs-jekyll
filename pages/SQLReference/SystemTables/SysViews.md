@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSVIEWS` table describes the view definitions within the current
 database.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSVIEWS` system table.
 
 <table>
@@ -70,4 +72,3 @@ The following table shows the contents of the `SYSVIEWS` system table.
 
 </div>
 </section>
-

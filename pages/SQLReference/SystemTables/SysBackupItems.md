@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSBACKUPITEMS` table maintains information about each item
 (table) backed up during a backup.
 
+{% include splice_snippets/systablenote.md %}
+
 <table>
                 <caption>SYSBACKUPITEMS system table</caption>
                 <col />
@@ -71,4 +73,3 @@ The `SYSBACKUPITEMS` table maintains information about each item
             </table>
 </div>
 </section>
-

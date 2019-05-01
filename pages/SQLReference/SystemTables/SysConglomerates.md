@@ -16,6 +16,8 @@ The `SYSCONGLOMERATES` table describes the conglomerates within the
 current database. A conglomerate is a unit of storage and is either a
 table or an index.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSCONGLOMERATES` system
 table.
 
@@ -104,4 +106,3 @@ table.
 
 </div>
 </section>
-

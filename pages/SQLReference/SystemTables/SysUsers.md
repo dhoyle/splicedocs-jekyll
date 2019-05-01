@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSUSERS` table stores user credentials when `NATIVE`
 authentication is enabled.
 
+{% include splice_snippets/systablenote.md %}
+
 When SQL authorization is enabled (as it is, for instance, when `NATIVE`
 authentication is on) only the database owner can `SELECT` from this
 table, and no one, not even the database owner, can `SELECT` the
@@ -75,4 +77,3 @@ The following table shows the contents of the `SYSUSERS` system table.
 
 </div>
 </section>
-

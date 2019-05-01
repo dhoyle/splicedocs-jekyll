@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSSEQUENCES` table describes the sequence generators in the
 database.
 
+{% include splice_snippets/systablenote.md %}
+
 Users should not directly query the `SYSSEQUENCES` table, because that
 will slow down the performance of sequence generators. Instead, users
 should call the &nbsp;[`SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE` system

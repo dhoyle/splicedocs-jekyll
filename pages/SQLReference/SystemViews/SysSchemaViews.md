@@ -1,26 +1,23 @@
 ---
-title: SYSSCHEMAS system table
-summary: System table that describes the schemas within the current database.
-keywords: schemas table
+title: SYSSCHEMAVIEWS System View
+summary: System view that shows all schemas within the database to which the current user has access.
+keywords: system schema views
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_sysschemas.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_sysschemaviews.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSSCHEMAS System Table
+# SYSSCHEMAVIEWS System View
 
-The `SYSSCHEMAS` table describes the schemas within the current
-database.
+The `SYSSCHEMAVIEWS` view describes the schemas within the current database to which the current user has access.
 
-{% include splice_snippets/systablenote.md %}
-
-The following table shows the contents of the `SYSSCHEMAS` system table.
+The following table shows the contents of the `SYSSCHEMAVIEWS` system view.
 
 <table>
-    <caption>SYSSCHEMAS system table</caption>
+    <caption>SYSSCHEMAVIEWS system view</caption>
     <col />
     <col />
     <col />
@@ -59,9 +56,16 @@ The following table shows the contents of the `SYSSCHEMAS` system table.
         </tr>
     </tbody>
 </table>
+</table>
+
 ## See Also
 
 * [About System Tables](sqlref_systables_intro.html)
+* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html)
 
 </div>
 </section>
+
+
+
+[1]: https://datasketches.github.io/

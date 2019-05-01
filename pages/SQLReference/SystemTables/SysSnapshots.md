@@ -14,6 +14,8 @@ folder: SQLReference/SystemTables
 
 The `SYSSSNAPSHOTS` table describes the metadata for system snapshots.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSSNAPSHOTS` system
 table.
 
@@ -87,4 +89,3 @@ Table snapshots both the data and indexes for the table.
 
 </div>
 </section>
-

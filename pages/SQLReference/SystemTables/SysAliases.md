@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSALIASES` table describes the procedures, functions, and
 user-defined types in the database.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSALIASES` system table.
 
 <table>
@@ -115,4 +117,3 @@ The following table shows the contents of the `SYSALIASES` system table.
 
 </div>
 </section>
-

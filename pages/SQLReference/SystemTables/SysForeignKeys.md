@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSFOREIGNKEYS` table describes the information specific to foreign
 key constraints in the current database.
 
+{% include splice_snippets/systablenote.md %}
+
 Splice Machine generates a backing index for each foreign key
 constraint. The name of this index is the same as
 `SYSFOREIGNKEYS.CONGLOMERATEID`.
@@ -88,4 +90,3 @@ table.
             </table>
 </div>
 </section>
-

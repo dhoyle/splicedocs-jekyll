@@ -15,6 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSCHECKS` table describes the check constraints within the current
 database.
 
+{% include splice_snippets/systablenote.md %}
+
 The following table shows the contents of the `SYSCHECKS` system table.
 
 <table>
@@ -68,4 +70,3 @@ The following table shows the contents of the `SYSCHECKS` system table.
 
 </div>
 </section>
-
