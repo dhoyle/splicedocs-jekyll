@@ -22,6 +22,7 @@ Our release notes are presented in these topics:
 * The [Known Issues and Workarounds](releasenotes_workarounds.html) topic describes each known issue in the current release and its workaround.
 * The [Database-as-Service Product Release Notes](releasenotes_dbaas.html) topic contains release information specific to our Database-as-Service product.
 * The [On-Premise Product Release Notes](releasenotes_onprem.html) topic contains release information specific to our On-Premise product.
+* If you're looking for older release notes, you'll find them in the [Archived Release Notes](releasenotes_archived_intro.html) section, under the *Previous Release Docs* heading.
 
 ## Database Release Notes
 
@@ -43,32 +44,6 @@ Our release notes are presented in these topics:
     <li><a href="releasenotes_2.7.1902.html">Patch Release 2.7.0.1902</a></li>
     <li><a href="releasenotes_2.7.1901.html">Patch Release 2.7.0.1901</a></li>
     <li><a href="releasenotes_2.7.1900.html">Patch Release 2.7.0.1900</a></li>
-    <li><a href="releasenotes_2.7.1852.html">Patch Release 2.7.0.1852</a></li>
-    <li><a href="releasenotes_2.7.1851.html">Patch Release 2.7.0.1851</a></li>
-    <li><a href="releasenotes_2.7.1850.html">Patch Release 2.7.0.1850</a></li>
-    <li><a href="releasenotes_2.7.1849.html">Patch Release 2.7.0.1849</a></li>
-    <li><a href="releasenotes_2.7.1848.html">Patch Release 2.7.0.1848</a></li>
-    <li><a href="releasenotes_2.7.1847.html">Patch Release 2.7.0.1847</a></li>
-    <li><a href="releasenotes_2.7.1846.html">Patch Release 2.7.0.1846</a></li>
-    <li><a href="releasenotes_2.7.1845.html">Patch Release 2.7.0.1845</a></li>
-    <li><a href="releasenotes_2.7.1844.html">Patch Release 2.7.0.1844</a></li>
-    <li><a href="releasenotes_2.7.1843.html">Patch Release 2.7.0.1843</a></li>
-    <li><a href="releasenotes_2.7.1842.html">Patch Release 2.7.0.1842</a></li>
-    <li><a href="releasenotes_2.7.1841.html">Patch Release 2.7.0.1841</a></li>
-    <li><a href="releasenotes_2.7.1840.html">Patch Release 2.7.0.1840</a></li>
-    <li><a href="releasenotes_2.7.1839.html">Patch Release 2.7.0.1839</a></li>
-    <li><a href="releasenotes_2.7.1838.html">Patch Release 2.7.0.1838</a></li>
-    <li><a href="releasenotes_2.7.1835.html">Patch Release 2.7.0.1835</a></li>
-    <li><a href="releasenotes_2.7.1834.html">Patch Release 2.7.0.1834</a></li>
-    <li><a href="releasenotes_2.7.1833.html">Patch Release 2.7.0.1833</a></li>
-    <li><a href="releasenotes_2.7.1832.html">Patch Release 2.7.0.1832</a></li>
-    <li><a href="releasenotes_2.7.1831.html">Patch Release 2.7.0.1831</a></li>
-    <li><a href="releasenotes_2.7.1830.html">Patch Release 2.7.0.1830</a></li>
-    <li><a href="releasenotes_2.7.1829.html">Patch Release 2.7.0.1829</a></li>
-    <li><a href="releasenotes_2.7.1828.html">Patch Release 2.7.0.1828</a></li>
-    <li><a href="releasenotes_2.7.1827.html">Patch Release 2.7.0.1827</a></li>
-    <li><a href="releasenotes_2.7.1826.html">Patch Release 2.7.0.1826</a></li>
-    <li><a href="releasenotes_2.7.1825.html">Patch Release 2.7.0.1825</a></li>
 </ul>
 
 The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
