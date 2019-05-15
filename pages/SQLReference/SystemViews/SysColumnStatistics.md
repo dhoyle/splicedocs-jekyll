@@ -13,9 +13,9 @@ folder: SQLReference/SystemViews
 # SYSCOLUMNSTATISTICS System View
 
 The `SYSCOLUMNSTATISTICS` table view describes the statistics for a
-specific table column within the current database.
+specific table column within the current database. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYSCOLUMNSTATISTICS`
+The following table shows the contents of the `SYSVW.SYSCOLUMNSTATISTICS`
 system view.
 
 <table>
@@ -122,6 +122,16 @@ The `QUANTILES`, `FREQUENCIES`, and `THETA` values are all sketches
 computed using the Yahoo Data Sketches library, which you can read about
 here: [https://datasketches.github.io/][1]{: target="_blank"}
 {: .notePlain}
+
+## Usage Example
+
+Here's an example of using this view:
+
+```
+SELECT * FROM SYSVW.SYSCOLUMNSTATISTICS;
+```
+{: .Example}
+
 
 ## See Also
 

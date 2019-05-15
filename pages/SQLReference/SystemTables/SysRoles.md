@@ -12,14 +12,12 @@ folder: SQLReference/SystemTables
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSROLES System Table
 
-The `SYSROLES` table stores the roles in the database.
-
-{% include splice_snippets/systablenote.md %}
+The `SYSROLES` table stores the roles in the database. It belongs to the `SYS` schema.
 
 A row in the `SYSROLES` table represents one of the following:
 
 * A role definition (the result of a &nbsp;[`CREATE ROLE`
-  statement](sqlref_statements_createrole.html))
+  statement](sqlref_statements_createrole.html)
 * A role grant
 
 The keys for the `SYSROLES` table are:
@@ -27,7 +25,7 @@ The keys for the `SYSROLES` table are:
 * Primary key (`GRANTEE, ROLEID, GRANTOR`)
 * Unique key (`UUID`)
 
-The following table shows the contents of the `SYSROLES` system table.
+The following table shows the contents of the `SYS.SYSROLES` system table.
 
 <table>
     <caption>SYSROLES system table</caption>
@@ -105,6 +103,18 @@ The following table shows the contents of the `SYSROLES` system table.
         </tr>
     </tbody>
 </table>
+
+## Usage Example and Restrictions
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSROLES;
+```
+{: .Example}
+
+{% include splice_snippets/systableaccessnote.md %}
+
 ## See Also
 
 * [About System Tables](sqlref_systables_intro.html)

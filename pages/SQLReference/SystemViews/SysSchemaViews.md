@@ -12,9 +12,9 @@ folder: SQLReference/SystemViews
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSSCHEMAVIEWS System View
 
-The `SYSSCHEMAVIEWS` view describes the schemas within the current database to which the current user has access.
+The `SYSSCHEMAVIEWS` view describes the schemas within the current database to which the current user has access. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYSSCHEMAVIEWS` system view.
+The following table shows the contents of the `SYSVW.SYSSCHEMAVIEWS` system view.
 
 <table>
     <caption>SYSSCHEMAVIEWS system view</caption>
@@ -56,7 +56,16 @@ The following table shows the contents of the `SYSSCHEMAVIEWS` system view.
         </tr>
     </tbody>
 </table>
-</table>
+
+## Usage Example
+
+Here's an example of using this view:
+
+```
+SELECT * FROM SYSVW.SYSSCHEMAVIEWS;
+```
+{: .Example}
+
 
 ## See Also
 

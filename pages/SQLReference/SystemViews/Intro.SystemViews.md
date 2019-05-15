@@ -15,8 +15,8 @@ folder: SQLReference/SystemViews
 This section contains the reference documentation for the Splice Machine
 System Views:
 
-Since the system views belong to the `SYS` schema, you must preface any
-inquiries involving these tables with the `SYS.` prefix.
+Since the system views belong to the `SYSVW` schema, you must preface any
+inquiries involving these tables with the `SYSVW.` prefix.
 
 The following table lists the System Views:
 
@@ -31,19 +31,19 @@ The following table lists the System Views:
     </thead>
     <tbody>
         <tr>
-            <td class="CodeFont"><a href="sqlref_systables_sysallroles.html">SYSALLROLES</a></td>
+            <td class="CodeFont"><a href="sqlref_systables_sysallroles.html">SYSVW.SYSALLROLES</a></td>
             <td>Displays all of the roles that have been granted to the current user.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSCOLUMNSTATISTICS</a></td>
+            <td class="CodeFont"><a href="sqlref_systables_syscolumnstats.html">SYSVW.SYSCOLUMNSTATISTICS</a></td>
             <td>Statistics gathered for each column in each table.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_systables_sysschemaviews.html">SYSSCHEMAVIEWS</a></td>
+            <td class="CodeFont"><a href="sqlref_systables_sysschemaviews.html">SYSVW.SYSSCHEMAVIEWS</a></td>
             <td>Describes the schemas within the current database to which the current user has access.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSTABLESTATISTICS</a></td>
+            <td class="CodeFont"><a href="sqlref_systables_systablestats.html">SYSVW.SYSTABLESTATISTICS</a></td>
             <td>Describes the statistics for each table within the current database.</td>
         </tr>
     </tbody>

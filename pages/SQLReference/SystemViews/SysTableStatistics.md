@@ -13,9 +13,9 @@ folder: SQLReference/SystemViews
 # SYSTABLESTATISTICS System View
 
 The `SYSTABLESTATISTICS` system view describes the statistics for tables
-within the current database.
+within the current database. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYSTABLESTATISTICS`
+The following table shows the contents of the `SYSVW.SYSTABLESTATISTICS`
 system view.
 
 <table>
@@ -152,6 +152,16 @@ system view.
 > <span class="Footnote">1</span>Currently, a *partition* is equivalent
 > to a region. In the future, we may use a more finely-grained
 > definition for partition.
+
+## Usage Example
+
+Here's an example of using this view:
+
+```
+SELECT * FROM SYSVW.SYSTABLESTATISTICS;
+```
+{: .Example}
+
 
 ## See Also
 

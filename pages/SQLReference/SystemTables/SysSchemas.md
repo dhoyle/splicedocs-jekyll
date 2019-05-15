@@ -13,11 +13,9 @@ folder: SQLReference/SystemTables
 # SYSSCHEMAS System Table
 
 The `SYSSCHEMAS` table describes the schemas within the current
-database.
+database. It belongs to the `SYS` schema.
 
-{% include splice_snippets/systablenote.md %}
-
-The following table shows the contents of the `SYSSCHEMAS` system table.
+The following table shows the contents of the `SYS.SYSSCHEMAS` system table.
 
 <table>
     <caption>SYSSCHEMAS system table</caption>
@@ -59,6 +57,18 @@ The following table shows the contents of the `SYSSCHEMAS` system table.
         </tr>
     </tbody>
 </table>
+
+## Usage Example and Restrictions
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSSCHEMAS;
+```
+{: .Example}
+
+{% include splice_snippets/systableaccessnote.md %}
+
 ## See Also
 
 * [About System Tables](sqlref_systables_intro.html)

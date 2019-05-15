@@ -13,48 +13,58 @@ folder: SQLReference/SystemTables
 # SYSKEYS System Table
 
 The `SYSKEYS` table describes the specific information for primary key
-and unique constraints within the current database.
-
-{% include splice_snippets/systablenote.md %}
+and unique constraints within the current database. It belongs to the `SYS` schema.
 
 Splice Machine generates an index on the table to back up each such
 constraint. The index name is the same as `SYSKEYS.CONGLOMERATEID`.
 
-The following table shows the contents of the `SYSKEYS` system table.
+The following table shows the contents of the `SYS.SYSKEYS` system table.
 
 <table>
-                <caption>SYSKEYS system table</caption>
-                <col />
-                <col />
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Column Name</th>
-                        <th>Type</th>
-                        <th>Length</th>
-                        <th>Nullable</th>
-                        <th>Contents</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>CONSTRAINTID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>Unique identifier for constraint</td>
-                    </tr>
-                    <tr>
-                        <td><code>CONGLOMERATEID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>Unique identifier for backing index</td>
-                    </tr>
-                </tbody>
-            </table>
+    <caption>SYSKEYS system table</caption>
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Type</th>
+            <th>Length</th>
+            <th>Nullable</th>
+            <th>Contents</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>CONSTRAINTID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>Unique identifier for constraint</td>
+        </tr>
+        <tr>
+            <td><code>CONGLOMERATEID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>Unique identifier for backing index</td>
+        </tr>
+    </tbody>
+</table>
+
+## Usage Example and Restrictions
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSKEYS;
+```
+{: .Example}
+
+{% include splice_snippets/systableaccessnote.md %}
+
 ## See Also
 
 * [About System Tables](sqlref_systables_intro.html)

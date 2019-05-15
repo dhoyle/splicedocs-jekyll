@@ -12,9 +12,9 @@ folder: SQLReference/SystemViews
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSALLROLES System View
 
-The `SYSALLROLES` view displays all of the roles granted to the current user.
+The `SYSALLROLES` view displays all of the roles granted to the current user. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYSALLROLES` system view.
+The following table shows the contents of the `SYSVW.SYSALLROLES` system view.
 
 <table>
     <caption>SYSALLROLES system view</caption>
@@ -92,6 +92,16 @@ The following table shows the contents of the `SYSALLROLES` system view.
         </tr>
     </tbody>
 </table>
+
+## Usage Example
+
+Here's an example of using this view:
+
+```
+SELECT * FROM SYSVW.SYSALLROLES;
+```
+{: .Example}
+
 
 ## See Also
 
