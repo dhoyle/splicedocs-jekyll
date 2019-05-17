@@ -34,9 +34,11 @@ type exactly matches the documentation for this topic.
 precision
 {: .paramName}
 
-Must be between `1` and `31`. If not specified, the default precision is
+Must be between `1` and `38`. If not specified, the default precision is
 `5`.
 {: .paramDefnFirst}
+
+{% include splice_snippets/numprecisionnote.md %}
 
 scale
 {: .paramName}
@@ -64,7 +66,7 @@ Here are several notes about using the `DECIMAL` data type:
       values cast (1798765 AS decimal(5,2));
       ERROR 22003: The resulting value is outside the range for the data type DECIMAL/NUMERIC(5,2).
   {: .Example xml:space="preserve"}
-  
+
   </div>
 
 * When mixed with other data types in expressions, the resulting data
@@ -93,7 +95,7 @@ Here are several notes about using the `DECIMAL` data type:
 ## Examples
 
 <div class="preWrapper" markdown="1">
-    
+
     VALUES 123.456;
     VALUES 0.001;
 {: .Example xml:space="preserve"}
@@ -101,4 +103,3 @@ Here are several notes about using the `DECIMAL` data type:
 </div>
 </div>
 </section>
-
