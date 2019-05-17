@@ -15,11 +15,8 @@ folder: DeveloperTopics/SpliceTools
 This section contains information about tools that Splice Machine provides to help you work with your database, including:
 
 * [The LogCollector Tool](developers_splicetools_logcollector.html) describes the *Log Collector* tool, which gathers all log entries on your cluster that are related to Splice Machine.
-
-{% comment %}
 * [The DBLook Tool](developers_splicetools_dblook.html) describes the *DBLook* tool, which allows you to examine the DDL for your database.
 * [The HiveToSplice Tool](developers_splicetools_hivetosplice.html) describes the *Hive-to-Splice* tool, which you can use to import Hive tables into your Splice Machine database.
-{% endcomment %}
 
 </div>
 </section>
