@@ -337,6 +337,12 @@ You can specify these join strategies:
             </td>
         </tr>
         <tr>
+        <td><code>CROSS</code></td>
+            <td>
+                <p class="noSpaceAbove">Combines each row from the first table with each row from the second table; this produces the Cartesian product of rows from tables in the join. </p>
+            </td>
+        </tr>
+        <tr>
         <td><code>MERGE</code></td>
             <td>
                 <p class="noSpaceAbove">Read the Right and Left result sets simultaneously in order and join them together as they are read.</p>
