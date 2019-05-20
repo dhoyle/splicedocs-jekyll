@@ -149,8 +149,8 @@ These examples insert records with literal values:
 {: .Example xml:space="preserve"}
 </div>
 
-This example creates a table name OldGuys that has the same columns as
-our Players table, and then loads that table with the data from Players
+This example creates a table name `OldGuys` that has the same columns as
+our `Players` table, and then loads that table with the data from `Players`
 for all players born before 1980:
 {: .body}
 
