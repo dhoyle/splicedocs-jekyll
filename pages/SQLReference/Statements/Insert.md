@@ -90,6 +90,47 @@ statement:
 For more information about queries, see
 [Query](sqlref_queries_query.html).
 
+## Using Bulk Insertion  {#BulkInsert}
+
+For very performant insertion of large datasets, you can use [query optimization hints](developers_tuning_queryoptimization.html#Insert) to specify that you want to use bulk import technology for the insertion.
+
+To understand how bulk import works, please review the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic in our *Best Practices Guide.*
+{: .noteIcon}
+
+You need to combine two hints together for bulk insertion, and can add a third hint in your `INSERT` statement:
+
+* The `bulkImportDirectory` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to specify where to store the temporary HFiles used for the bulk import.
+* The `useSpark=true` hint tells Splice Machine to use the Spark engine for this insert. This is __required__ for bulk HFile inserts.
+* The optional `skipSampling` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to tell the bulk insert to compute the splits automatically or that the splits have been supplied manually.
+
+Here's a simple example:
+
+```
+DROP TABLE IF EXISTS myUserTbl;
+CREATE TABLE myUserTbl AS SELECT
+    user_id,
+    report_date,
+    type,
+    region,
+    country,
+    access,
+    birth_year,
+    gender,
+    product,
+    zipcode,
+    licenseID
+FROM licensedUserInfo
+WITH NO DATA;
+
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
+useSpark=true,
+skipSampling=false
+SELECT * FROM licensedUserInfo;
+```
+{: .Example}
+<br />
+
+
 ## Examples
 
 These examples insert records with literal values:
@@ -129,6 +170,36 @@ for all players born before 1980:
 {: .Example xml:space="preserve"}
 
 </div>
+
+### Bulk Insertion Example
+
+This example includes hints that tell Splice Machine to use bulk insertion, bypassing the standard write pipeline:
+
+```
+DROP TABLE IF EXISTS myUserTbl;
+CREATE TABLE myUserTbl AS SELECT
+    user_id,
+    report_date,
+    type,
+    region,
+    country,
+    access,
+    birth_year,
+    gender,
+    product,
+    zipcode,
+    licenseID
+FROM licensedUserInfo
+WITH NO DATA;
+
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
+useSpark=true,
+skipSampling=false
+SELECT * FROM licensedUserInfo;
+```
+{: .Example}
+
+
 ## Statement dependency system
 
 The `INSERT` statement depends on the table being inserted into, all of

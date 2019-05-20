@@ -134,6 +134,11 @@ described in a section below; here's a summary:
             <td>That you want a query to run (or not run) on Spark</td>
         </tr>
         <tr>
+            <td><a href="#Insert">Insert</a></td>
+            <td class="CodeFont">--splice-properties bulkImportDirectory='/path'</td>
+            <td>That you want to bypass the normal write pipeline to speed up the insertion of a large amount of data by using our bulk import technology.</td>
+        </tr>
+        <tr>
             <td><a href="#Delete">Delete</a></td>
             <td class="CodeFont">--splice-properties bulkDeleteDirectory='/path'</td>
             <td>That you are deleting a large amount of data and want to bypass the normal write pipeline to speed up the deletion.</td>
@@ -411,6 +416,46 @@ Spark. For example:
 {: .Example xml:space="preserve"}
 
 </div>
+
+### Insert Hints  {#Insert}
+You can add a set of hints to an `INSERT` statement that tell the database to use bulk import technology to insert a set of query results into a table.
+
+To understand how bulk import works, please review the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic in our *Best Practices Guide.*
+{: .noteIcon}
+
+You need to combine two hints together for bulk insertion, and can add a third hint in your `INSERT` statement:
+
+* The `bulkImportDirectory` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to specify where to store the temporary HFiles used for the bulk import.
+* The `useSpark=true` hint tells Splice Machine to use the Spark engine for this insert. This is __required__ for bulk HFile inserts.
+* The optional `skipSampling` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to tell the bulk insert to compute the splits automatically or that the splits have been supplied manually.
+
+Here's a simple example:
+
+```
+DROP TABLE IF EXISTS myUserTbl;
+CREATE TABLE myUserTbl AS SELECT
+    user_id,
+    report_date,
+    type,
+    region,
+    country,
+    access,
+    birth_year,
+    gender,
+    product,
+    zipcode,
+    licenseID
+FROM licensedUserInfo
+WITH NO DATA;
+
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
+useSpark=true,
+skipSampling=false
+SELECT * FROM licensedUserInfo;
+```
+{: .Example}
+<br />
+
 ### Delete Hints   {#Delete}
 
 You can use the `bulkDeleteDirectory` hint to specify that you want to
