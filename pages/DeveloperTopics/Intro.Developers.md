@@ -16,8 +16,9 @@ folder: DeveloperTopics
 This chapter describes how to do development work with your Splice
 Machine Database. It contains how-to topics and tutorials, and is divided into these sections:
 
+* [Database Fundamentals](#Fundamentals)
+* [External Data](#ExtData)
 * [Functions and Stored Procedures](#StoredProcs)
-* [Developer Fundamentals](#Fundamentals)
 * [Indexing](#Indexing)
 * [On-Premise-DB Developer Topics](#OnPremOnly)
 * [Splice\*Plus (PL/SQL)](#SplicePlus)
@@ -28,14 +29,7 @@ Machine Database. It contains how-to topics and tutorials, and is divided into t
 You'll find complete documentation for some major features in our [Best Practices Guide](bestpractices_intro.html), including [Ingesting Data](bestpractices_ingest_overview.html), [On-Premise Maintenance](bestpractices_onprem_updating.html), and [Using the Native Spark DataSource](bestpractices_sparkadapter_intro.html).
 {: .noteIcon}
 
-## Functions and Stored Procedures {#StoredProcs}
-This section contains information about creating and using stored procedures and functions with Splice Machine, in these topics:
-
-* [Writing Functions and Stored Procedures](developers_fcnsandprocs_writing.html)
-* [Storing/Updating Functions and Procs](developers_fcnsandprocs_storing.html)
-* [Stored Procedure Examples](developers_fcnsandprocs_examples.html)
-
-## Developer Fundamentals {#Fundamentals}
+## Database Fundamentals {#Fundamentals}
 This section contains topics that contain in-depth information about fundamental aspects of working with Splice Machine:
 
 * [Running Transactions](developers_fundamentals_transactions.html)
@@ -44,8 +38,19 @@ This section contains topics that contain in-depth information about fundamental
 * [Using Foreign Keys](developers_fundamentals_foreignkeys.html)
 * [Using Window Functions](developers_fundamentals_windowfcns.html)
 * [Using Temporary Tables](developers_fundamentals_temptables.html)
-* [Using the Virtual Table Interface](developers_fundamentals_vti.html)
+
+## External Data {#ExtData}
+This section contains information about accessing and working with data stored in external table and files:
+
 * [Using External Tables](developers_fundamentals_externaltables.html)
+* [Using the Virtual Table Interface](developers_fundamentals_vti.html)
+
+## Functions and Stored Procedures {#StoredProcs}
+This section contains information about creating and using stored procedures and functions with Splice Machine, in these topics:
+
+* [Writing Functions and Stored Procedures](developers_fcnsandprocs_writing.html)
+* [Storing/Updating Functions and Procs](developers_fcnsandprocs_storing.html)
+* [Stored Procedure Examples](developers_fcnsandprocs_examples.html)
 
 ## Indexing {#Indexing}
 This section contains topics related to indexing in your database:

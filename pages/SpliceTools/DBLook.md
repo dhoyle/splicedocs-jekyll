@@ -4,9 +4,9 @@ summary:
 keywords:
 toc: false
 product: all
-sidebar: developers_sidebar
-permalink: developers_splicetools_dblook.html
-folder: DeveloperTopics/SpliceTools
+sidebar: home_sidebar
+permalink: splicetools_dblook.html
+folder: SpliceTools
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

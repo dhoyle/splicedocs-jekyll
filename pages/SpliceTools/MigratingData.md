@@ -4,9 +4,9 @@ summary: Using the Splice Machine DB Migration Tools
 keywords: migrating data
 toc: false
 product: all
-sidebar:
-permalink: developers_splicetools_dbmigrate.html
-folder: DeveloperTopics
+sidebar: home_sidebar
+permalink: splicetools_dbmigrate.html
+folder: SpliceTools
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

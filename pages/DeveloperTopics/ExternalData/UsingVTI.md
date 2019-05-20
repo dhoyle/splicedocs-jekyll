@@ -6,7 +6,7 @@ toc: false
 product: all
 sidebar: home_sidebar
 permalink: developers_fundamentals_vti.html
-folder: DeveloperTopics/Fundamentals
+folder: DeveloperTopics/ExternalData
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

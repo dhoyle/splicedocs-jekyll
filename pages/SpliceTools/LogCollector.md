@@ -5,8 +5,8 @@ keywords:
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: developers_splicetools_logcollector.html
-folder: DeveloperTopics/SpliceTools
+permalink: splicetools_logcollector.html
+folder: SpliceTools
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
