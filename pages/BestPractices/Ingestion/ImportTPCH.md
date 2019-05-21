@@ -150,7 +150,7 @@ Machine database:
 
     </div>
 
-    You need to supply your AWS credentials in each URL or in your `core-site.xml` configuration file to read data from S3, as [described here](tutorials_ingest_importinput.html#AWSPath).
+    Unless you've configured anonymous S3 access, you need to supply your AWS credentials in each URL or in your `core-site.xml` configuration file to read data from S3, as [described here](developers_cloudconnect_configures3.html#accessing).
 
 3.  Run a query
     {: .topLevel}
