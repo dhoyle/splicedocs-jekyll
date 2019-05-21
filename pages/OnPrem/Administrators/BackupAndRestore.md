@@ -263,6 +263,7 @@ from a previous backup:
 * Restoring a database **wipes out your database** and replaces it with
   what had been previously backed up.
 * You **cannot use your cluster** while restoring your database.
+* The restore runs asynchronously, which means that you **need to** look at the region server log for a message that the restore is complete, and then reboot your database.
 * You **must reboot your database** after the restore is complete by
   first [Starting Your Database](onprem_admin_startingdb.html).
 
