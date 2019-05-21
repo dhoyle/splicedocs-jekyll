@@ -21,14 +21,19 @@ You must have administrative access to AWS to configure your S3 buckets
 for Splice Machine.
 {: .noteNote}
 
-This topic contains these two sections:
+You can also enable *anonymous* S3 read access on Cloudera, which is convenient for when you want a file to be publicly accessible.
 
-* [Configuring S3 Bucket Access](#configure)
+This topic contains these sections:
+
+* [Configuring Secure S3 Bucket Access](#configure)
+* [Configuring Anonymous S3 Read Access on Cloudera](#configanon)
 * [Accessing S3 Buckets](#accessing)
 
-## Configuring S3 Bucket Access  {#configure}
-
 You can follow these steps to configure access to your S3 bucket(s) for Splice Machine; when you're done, you will have:
+
+## Configuring Secure S3 Bucket Access  {#configure}
+
+You can follow the steps in this section to configure secure access to your S3 bucket(s) for Splice Machine; when you're done, you will have:
 
 * created an IAM policy for an S3 bucket
 * created an IAM user
@@ -181,17 +186,38 @@ You can follow these steps to configure access to your S3 bucket(s) for Splice 
 {: .boldFont}
 </div>
 
+## Configuring Anonymous S3 Read Access on Cloudera  {#configanon}
+
+If you're using the Cloudera platform, you can configure anonymous `read` access to S3 by modifying your `core-site.xml` file. This allows you to store publicly readable files on S3. Follow these steps:
+
+1.  Navigate to <span class="ConsoleLink">cluster->hdfs->configuration</span>.
+
+2.  Add the following property to the <span class="ConsoleLink">Cluster-wide Advanced Configuration Snippet (Safety Valve) for core-site.xml</span>:
+
+    *Name:*
+    : `fs.s3a.aws.credentials.provider`
+    {: .noSpaceAbove}
+
+    *Value:*
+    : `org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider,
+com.amazonaws.auth.EnvironmentVariableCredentialsProvider,
+com.amazonaws.auth.InstanceProfileCredentialsProvider,
+org.apache.hadoop.fs.s3a.AnonymousAWSCredentialsProvider`
+
+    *Description:*
+    : `Allow anonymous S3 read`
+
 ## Accessing S3 Buckets {#accessing}
 
-Once you've established your access keys, you can include them inline; for example:
+Once you've established your S3 access keys, you can include them inline when accessing a secured bucket; for example:
 
 <div class="preWrapperWide" markdown="1">
     call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);
 {: .Example}
 
 </div>
-Alternatively, you can specify the keys once in the `core-site.xml` file
-on your cluster, and then simply specify the `s3a` URL; for example:
+Alternatively, you can specify the S3 keys once in the `core-site.xml` file
+on your cluster, and then simply specify the `s3a` URL, just as you can when accessing a public S3 bucket. For example:
 
 <div class="preWrapperWide" markdown="1">
     call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);
@@ -214,7 +240,6 @@ properties in that file:
 {: .Example}
 
 </div>
-
 
 </div>
 </section>
