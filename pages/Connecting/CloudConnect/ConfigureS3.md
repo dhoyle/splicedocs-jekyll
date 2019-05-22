@@ -188,24 +188,34 @@ You can follow the steps in this section to configure secure access to your S3 b
 
 ## Configuring Anonymous S3 Read Access on Cloudera  {#configanon}
 
-If you're using the Cloudera platform, you can configure anonymous `read` access to S3 by modifying your `core-site.xml` file. This allows you to store publicly readable files on S3. Follow these steps:
+If you're using the Cloudera platform, you can configure anonymous `read` access to S3 by modifying your `core-site.xml` file. This allows you to read and write public S3 files in Splice Machine. Follow these steps:
 
+<div class="opsStepsList" markdown="1">
 1.  Navigate to <span class="ConsoleLink">cluster->hdfs->configuration</span>.
+    {: .topLevel}
 
 2.  Add the following property to the <span class="ConsoleLink">Cluster-wide Advanced Configuration Snippet (Safety Valve) for core-site.xml</span>:
+    {: .topLevel}
 
     *Name:*
     : `fs.s3a.aws.credentials.provider`
     {: .noSpaceAbove}
 
     *Value:*
-    : `org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider,
-com.amazonaws.auth.EnvironmentVariableCredentialsProvider,
-com.amazonaws.auth.InstanceProfileCredentialsProvider,
-org.apache.hadoop.fs.s3a.AnonymousAWSCredentialsProvider`
+    : `org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider,com.amazonaws.auth.EnvironmentVariableCredentialsProvider,org.apache.hadoop.fs.s3a.AnonymousAWSCredentialsProvider`
 
     *Description:*
     : `Allow anonymous S3 read`
+</div>
+
+<div class="noteNote" markdown="1">
+After adding this property, you can also access the public S3 buckets using this HDFS command:
+
+```
+hadoop fs -ls s3a://bucket/path/to/file.csv
+```
+{: .ShellCommand}
+</div>
 
 ## Accessing S3 Buckets {#accessing}
 
