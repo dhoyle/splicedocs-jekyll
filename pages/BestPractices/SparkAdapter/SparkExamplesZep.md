@@ -138,7 +138,6 @@ if (SpliceContext.tableExists("SPLICE.CARSTBL")) {
 ## See Also
 * [Native Spark DataSource Methods](bestpractices_sparkadapter_api.html)
 * [Using Spark Submit](bestpractices_sparkadapter_submit.html)
-* [Walkthrough of using the Native DataSource in Zeppelin](https://www.splicemachine.com/the-splice-machine-native-spark-datasource)
 
 </div>
 </section>

@@ -13,19 +13,15 @@ folder: BestPractices/SparkAdapter
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Overview of the Splice Machine Native Spark DataSource
 
-This topic provides general information about the *Splice Machine Native Spark DataSource* (aka the Splice Machine Spark Adapter), in these subsections:
-* [Native Spark DataSource Overview](#about)
-* [Connecting with the Native Spark DataSource](#connect)
-* [Database Permissions and the Native Spark DataSource](#prereq)
-* [Accessing Database Objects with Internal Access](#access)
+This topic provides general information about the *Splice Machine Native Spark DataSource*, aka the Splice Machine Spark Adapter.
 
 The other topics in this chapter provide additional information about the Native Spark DataSource:
 
 * [Native Spark DataSource API](bestpractices_sparkadapter_api.html) provides reference information for the Native Spark DataSource API methods.
 * [Native Spark DataSource Examples](bestpractices_sparkadapter_submit.html) includes examples that show you how to launch a Spark app with our *Spark Submit* script, and how to use the Native Spark DataSource interactively, with the *Spark Shell*.
-* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html) presents an example of using our Native Spark DataSource in a Zeppelin notebook.
+* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_zeppelin.html) presents an example of using our Native Spark DataSource in a Zeppelin notebook.
 
-## Native Spark DataSource Overview  {#about}
+## Native Spark DataSource Overview
 
 The Splice Machine Native Spark DataSource, which is also referred to as the *Spark Adapter*, allows you to directly connect Spark DataFrames and Splice Machine database tables, bypassing the need to send your data to/from Spark over a JDBC or ODBC connection. You can efficiently insert, upsert, select, update, and delete data in your Splice Machine tables directly from Spark in a transactionally consistent manner. With the Spark Adapter, transfers of data between Spark and your database are completed without serialization/deserialization, which generates tremendous performance boosts over traditional *over-the-wire* (sequentially over a JDBC/ODBC connection) transfers.
 
