@@ -14,48 +14,37 @@ folder: BestPractices/Optimizer
 
 # The Splice Machine Query Optimizer
 
+{% comment %}
 NOTE: Captured this info from Xi Yia's slides for Clearsense (https://docs.google.com/presentation/d/1FiUMR8zG8hWMsPCrVL6Qun45xfJv_euKduHm-wVMsvI/edit?usp=sharing) on May 30, 2019 via DB-8359
+{% endcomment %}
 
-## Overview
-With a perfect optimizer, user does not need to worry about the efficiency of their SQL statement, it is optimizer’s responsibility to convert the SQL into a semantically equivalent and more performant execution plan.
+With a perfect optimizer, you don't need to worry about the efficiency of your SQL statements; the optimizer’s responsibility is to convert your SQL into a semantically equivalent and more performant execution plan. However, there's no such thing as a perfect optimizer, so there are times when we need to apply some manual tuning and rewriting to queries. That's because:
 
-In reality, we need some manual tuning/rewriting because of:
+* The optimizer’s heuristic rewrite functionalities has limitations with regard to what it can do
+* The optimizer can only explore a limited portion of the search space
+* Statistics and cost estimation are not 100% accurate
+* The optimizer must not use excessive time parsing query paths
 
-* Limitations in the optimizer’s heuristic rewrite functionalities
-* Limitations in the search space the optimizer explores
-* Inaccuracy in stats and cost estimation
-* Parsing time concern
+It is organized into these subsections:
 
-## Outline
-
-* Explain and stats
-  * Things to look in the explain
-  * Use stats view to understand the characteristics of the tables
-* Common performance problems
-  * Skewness issue
-  * Choice of access path (covering index, non-covering index, table scan)
-  * Nested loop join performance
-  * Join order - use of derived table to influence the join order
-  * ...
-* Use of hints to guide optimizer
+* [Using Explain](#explain) introduces the tools you can use to determine if/when manual tuning is required for a query.
+* [Using the Statistics Views](#stats) introduces the system views you can query for statistical information about the tables in a query.
+* [Addressing Common Performance Problems](#problems) shows you how to apply those tools to several common performance problems.
+* [Guiding the Optimizer with Hints](#hints) provides information and example of using the optimizer hints that Splice Machine offers.
 
 
-## Explain and Statistics
+## Using Explain  {#explain}
 
-* The order the plan executed is from bottom-up.
-* For a binary join, the left table comes first, then the right table.
-* Key facts to note in the explain:
-  * Scan step: scannedRows vs. outputRows, predicates
-  * Join step: join strategies and join columns
-    * Nested loop join, it is the most general join strategy, but may not be efficient except for a special scenario
-    * Broadcast join: is the right table small enough to fit in memory?
-    * Sortmerge join: is there any skewness on the join columns?
-  * Execution path: spark or control (the threshold for spark execution is 20K scanned rows)
+Learning to use the `explain` plan feature is essential for determining how to boost query performance.
+
+***** BRING IN DISCUSSION OF EXPLAIN FROM ZEPPELIN OR DOCS ************
+
+Here's a sample plan:
 
 ```
-Explain
-select count(*) from tpch100.lineitem
-where l_shipdate <= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))});
+EXPLAIN
+SELECT COUNT(*) FROM tpch100.lineitem
+WHERE l_shipdate <= DATE({fn TIMESTAMPADD(SQL_TSI_DAY, -90, CAST('1998-12-01 00:00:00' as TIMESTAMP))});
 
 Plan
 ----
@@ -70,26 +59,80 @@ Cursor(n=6,rows=1,updateMode=,engine=Spark)
 ```
 {: .Example}
 
-### Using Statistics Views
+Here are several notes about reading a plan
 
-You can query these two system views for statistical information about tables:
-* `sys.systablestatistics`
-* `sys.syscolumnstatistics`
+* The order in which the plan is executed is from the bottom up.
+* For a binary join, the left table comes first, then the right table.
 
-These views reveal key metrics that help you to understand the characteristics of a table. For example:
+And here are some key facts to examine in the explain plan:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Query Execution Phase</th>
+            <th>Key Fact</th>
+            <th>Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowSpan="3" colSpan="3"><em>Scan step</em></td>
+        </tr>
+        <tr>
+            <td><code>scannedRows</code> vs. <code>outputRows</code></td>
+            <td>XXX</td>
+        </tr>
+        <tr>
+            <td><code>predicates</code></td>
+            <td>XXX</td>
+        </tr>
+        <tr>
+            <td rowSpan="3" colSpan="3"><em>Join step</em></td>
+        </tr>
+        <tr>
+            <td>Nested loop join</td>
+            <td>This is the most general join strategy, but may only be efficient for a special scenario.</td>
+        </tr>
+        <tr>
+            <td>Broadcast join</td>
+            <td>Is the right table small enough to fit in memory?</td>
+        </tr>
+        <tr>
+            <td>Sortmerge join</td>
+            <td>Is there any skewness on the join columns?</td>
+        </tr>
+        <tr>
+            <td><em>Execution Path</em></td>
+            <td>Spark or Control?</td>
+            <td>The threshold for Spark execution is 20K scanned rows.</td>
+        </tr>
+    </tbody>
+</table>
+
+## Using the Statistics Views  {#stats}
+
+You can query these two system views for key metrics about tables that will help you to understand the characteristics of the tables in your queries.
+
+The `SYS.SYSTABLESTATISTICS` table contains row count and total size information for each table:
 
   ```
-  splice> select total_row_count, total_size, stats_type, sample_fraction from sys.systablestatistics where schemaname='TPCH100' and tablename='LINEITEM';
+  splice> SELECT total_row_count, total_size, stats_type, sample_fraction FROM SYS.SYSTABLESTATISTICS WHERE schemaname='TPCH100' AND tablename='LINEITEM';
   TOTAL_ROW_COUNT       |TOTAL_SIZE          |STATS_TYPE |SAMPLE_FRACTION
   -----------------------------------------------------------------------
   600037902             |52803335376         |2          |0.0
 
   1 row selected
+  ```
+  {: .Example}
 
+The `SYS.SYSCOLUMNSTATISTICS` table contains statistical information about each column in each table:
 
-  select columnname, cardinality, null_count, min_value, max_value
-  from sys.syscolumnstatistics
-  where schemaname='TPCH100' and tablename='LINEITEM' and columnname='L_SHIPDATE';
+  ```
+  SELECT columnname, cardinality, null_count, min_value, max_value
+  FROM SYS.SYSCOLUMNSTATISTICS
+  WHERE schemaname='TPCH100' AND tablename='LINEITEM' AND columnname='L_SHIPDATE';
   ;
   COLUMNNAME     |CARDINALITY         |NULL_COUNT  |MIN_VALUE   |MAX_VALUE
   ---------------------------------------------------------------------------
@@ -100,6 +143,8 @@ These views reveal key metrics that help you to understand the characteristics o
   ```
   {: .Example}
 
+## Addressing Common Performance Problems  {#problems}
+
 ### Skewness Issue
 * In the presence of skewness, a few tasks have to do significantly more work than other tasks, and defeat the purpose of parallelism, and it could also lead to OOM.
 * Skewness could exists in the base table on certain columns, it could also happen after certain joins
@@ -109,21 +154,19 @@ These views reveal key metrics that help you to understand the characteristics o
 
   ```
   select count(*) from --SPLICE-PROPERTIES joinOrder=FIXED
-   orders --splice-properties index=null
-   , lineitem --splice-properties joinStrategy=sortmerge , index=null
+  xiayi.lineitem_with_skew --splice-properties index=null
+  , tpch100.orders --splice-properties joinStrategy=sortmerge, index=null
    where o_orderkey = l_orderkey;
 
   Plan
-  ----------------------------------------------------------------------------------------------------
-  Cursor(n=8,rows=1,updateMode=,engine=Spark)
-
-    ->  ScrollInsensitive(n=7,totalCost=12864539.978,outputRows=1,outputHeapSize=0 B,partitions=1)
-      ->  ProjectRestrict(n=6,totalCost=340616.507,outputRows=1,outputHeapSize=0 B,partitions=1)
-        ->  GroupBy(n=5,totalCost=340616.507,outputRows=1,outputHeapSize=0 B,partitions=1)
-          ->  ProjectRestrict(n=4,totalCost=1743694.924,outputRows=621157000,outputHeapSize=9.501 GB,partitions=6)
-            ->  MergeSortJoin(n=3,totalCost=1743694.924,outputRows=621157000,outputHeapSize=9.501 GB,partitions=6,preds=[(O_ORDERKEY[4:1] = L_ORDERKEY[4:2])])
-              ->  TableScan[LINEITEM(21184)](n=2,totalCost=1128075.256,scannedRows=600037902,outputRows=600037902,outputHeapSize=9.501 GB,partitions=6)
-              ->  TableScan[ORDERS(21200)](n=1,totalCost=300004,scannedRows=150000000,outputRows=150000000,outputHeapSize=1.552 GB,partitions=6)
+  ------------------------------------------------------------------------------------------------------Cursor(n=8,rows=1,updateMode=,engine=Spark)
+    ->  ScrollInsensitive(n=7,totalCost=13280613.55,outputRows=1,outputHeapSize=0 B,partitions=1)
+      ->  ProjectRestrict(n=6,totalCost=324646.049,outputRows=1,outputHeapSize=0 B,partitions=1)
+        ->  GroupBy(n=5,totalCost=324646.049,outputRows=1,outputHeapSize=0 B,partitions=1)
+          ->  ProjectRestrict(n=4,totalCost=1429666.424,outputRows=642585370,outputHeapSize=4.844 GB,partitions=8)
+            ->  MergeSortJoin(n=3,totalCost=1429666.424,outputRows=642585370,outputHeapSize=4.844 GB,partitions=8,preds=[(O_ORDERKEY[4:2] = L_ORDERKEY[4:1])])
+              ->  TableScan[ORDERS(21584)](n=2,totalCost=300004,scannedRows=150000000,outputRows=150000000,outputHeapSize=4.844 GB,partitions=8)
+              ->  TableScan[LINEITEM_WITH_SKEW(21952)](n=1,totalCost=1167501.713,scannedRows=621009422,outputRows=621009422,outputHeapSize=3.181 GB,partitions=8)
 
   8 rows selected
   ```
@@ -137,12 +180,12 @@ These views reveal key metrics that help you to understand the characteristics o
   select count(*), min(CC), max(CC), avg(CC)
   from
   (select l_orderkey, count(*) as CC
-     from lineitem
-     group by 1) dt;
+   from xiayi.lineitem_with_skew
+   group by 1) dt;
 
   1                   |2                   |3                   |4
-  -----------------------------------------------------------------
-  150000000           |1                   |7                   |4
+  -----------------------------------------------------------------------
+  150000000           |1                   |20971526            |4
 
   1 row selected
   ```
@@ -152,8 +195,8 @@ These views reveal key metrics that help you to understand the characteristics o
 * Some solutions to avoid/alleviate skewness
   * Broadcast join: if one table is small enough to broadcast to all executors, we can void shuffling the large table on skewed join columns.
   * Split the skewed table into one portion with only the skewed value and one with non-skewed value only, join with the other table separately, finally union-all the result.
-  * Salt the skewed value with random number to even the skewness ( https://medium.com/hotels-com-technology/skew-join-optimization-in-hive-b66a1f4cc6ba)
-  * Push aggregation done below the join
+  * Salt the skewed value with random number to even the skewness (SPLICE-2357)
+  * Push aggregation done below the join (SPLICE-1522)
   * Delay the skewed join, sometimes other joins can reduce the skewness or simply reduce the total rows.
 
 ### Skewness Example
@@ -275,6 +318,8 @@ Cursor(n=3,rows=1,updateMode=READ_ONLY (1),engine=control)
   * The use of non-covering index incurs the extra cost to lookup the values of column not covered by the index in the base table for each qualified row, so it may or may not be a better choice than the scan of  base table.
 
 #### Example of Covering Index vs. Non-covering Index
+
+```
 create index idx_t1 on t1 (b1, c1);
  /* covering index */
 splice> explain select b1, c1 from t1 where b1=3;
@@ -463,7 +508,7 @@ Cursor(n=9,rows=16,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example}
 
-## Use of Hints to Guide Optimizer
+## Guiding the Optimizer with Hints  {#hints}
 
 
 </div>
