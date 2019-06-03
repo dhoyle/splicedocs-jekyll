@@ -1103,7 +1103,7 @@ The following is a listing of the `my-config.xml` configuration file that is ins
                </excludeSchemas>
             </processSchemas>
             <!-- Provide the ability to map a source schema name to a target schema name.  If no source schema -->
-            <!-- is listed in this map, it will use the postgres schema-->
+            <!-- is listed in this map, it will use the source schema name -->
             <schemaNameMapping>
                <schema source="public" target="publicmine" />
             </schemaNameMapping>
