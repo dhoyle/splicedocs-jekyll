@@ -18,14 +18,14 @@ folder: BestPractices/Optimizer
 NOTE: Captured this info from Xi Yia's slides for Clearsense (https://docs.google.com/presentation/d/1FiUMR8zG8hWMsPCrVL6Qun45xfJv_euKduHm-wVMsvI/edit?usp=sharing) on May 30, 2019 via DB-8359
 {% endcomment %}
 
-With a perfect optimizer, you don't need to worry about the efficiency of your SQL statements; the optimizer’s responsibility is to convert your SQL into a semantically equivalent and more performant execution plan. However, there's no such thing as a perfect optimizer, so there are times when we need to apply some manual tuning and rewriting to queries. That's because:
+With a perfect optimizer, you don't need to worry about the efficiency of your SQL statements; the optimizer’s responsibility is to convert your SQL into a semantically equivalent and more performant execution plan. The Splice Machine optimizer does a great job; however, there's no such thing as a perfect optimizer, which means that there are times when you'll need to apply some manual tuning and rewriting to queries. That's because:
 
-* The optimizer’s heuristic rewrite functionalities has limitations with regard to what it can do
-* The optimizer can only explore a limited portion of the search space
-* Statistics and cost estimation are not 100% accurate
-* The optimizer must not use excessive time parsing query paths
+* The optimizer’s heuristic rewrite functionalities has limitations with regard to what it can do.
+* The optimizer can only explore a limited portion of the search space.
+* Statistics and cost estimation are not 100% accurate.
+* The optimizer must not use excessive time parsing query paths.
 
-It is organized into these subsections:
+This topic contains the following subsections:
 
 * [Using Explain](#explain) introduces the tools you can use to determine if/when manual tuning is required for a query.
 * [Using the Statistics Views](#stats) introduces the system views you can query for statistical information about the tables in a query.
@@ -59,12 +59,14 @@ Cursor(n=6,rows=1,updateMode=,engine=Spark)
 ```
 {: .Example}
 
-Here are several notes about reading a plan
+### Reading an Explain Plan
+
+A few things you should be aware of when reviewing a plan:
 
 * The order in which the plan is executed is from the bottom up.
 * For a binary join, the left table comes first, then the right table.
 
-And here are some key facts to examine in the explain plan:
+And here are some key aspects of plans that you likely want to examine:
 
 <table>
     <col />
@@ -111,9 +113,12 @@ And here are some key facts to examine in the explain plan:
     </tbody>
 </table>
 
+
 ## Using the Statistics Views  {#stats}
 
-You can query these two system views for key metrics about tables that will help you to understand the characteristics of the tables in your queries.
+In addition to looking at the query execution plan, you can query two system views for key metrics about tables; these metrics will help you to understand the characteristics of the tables in your queries.
+
+### Table Statistics View
 
 The `SYS.SYSTABLESTATISTICS` table contains row count and total size information for each table:
 
@@ -126,6 +131,8 @@ The `SYS.SYSTABLESTATISTICS` table contains row count and total size information
   1 row selected
   ```
   {: .Example}
+
+### Column Statistics View
 
 The `SYS.SYSCOLUMNSTATISTICS` table contains statistical information about each column in each table:
 
@@ -143,9 +150,18 @@ The `SYS.SYSCOLUMNSTATISTICS` table contains statistical information about each 
   ```
   {: .Example}
 
+
 ## Addressing Common Performance Problems  {#problems}
 
-### Skewness Issue
+This section shows you how to work with several common query execution performance problems:
+
+* The [Skewness Issue](#skewness)
+* [Choosing the Access Path](#accesspath)
+* [Nested Loop Join Performance](#nestedloop)
+* [Influencing Join Order](#joinorder)
+
+### The Skewness Issue  {#skewness}
+
 * In the presence of skewness, a few tasks have to do significantly more work than other tasks, and defeat the purpose of parallelism, and it could also lead to OOM.
 * Skewness could exists in the base table on certain columns, it could also happen after certain joins
 * Skewness usually causes trouble in the sortmerge join steps or grouped aggregate operations
@@ -279,7 +295,7 @@ FROM dt where exists (select 1 from CC_GE_CPM_CENTRICITYCPM.DOC_DRAIN dd where d
       select * from dt where exists (select 1 from CC_GE_CPM_CENTRICITYCPM.DOC_INVASIVE di where dt.FLU_FLUIDID = di.INV_FLUIDID and di.INV_HANDLE=dt.TREE_HANDLE);</pre>
 </div>
 
-### Choice of Access Path
+### Choosing the Access Path  {#accesspath}
 
 The choice of access path: covering index, non-covering index, or table scan
 * Full table scan
@@ -349,7 +365,7 @@ Only when the ratio of the number of rows accessed using base table scan over th
 </div>
 
 
-### Nested Loop Join Performance
+### Nested Loop Join Performance  {#nestedloop}
 
 * Nestedloop join works for all kinds of join conditions (equality or non-equality).
 * When equality join condition is present, nestedloop join’s performance usually is not as good as the other 3 join strategies (broadcast, sortmerge and merge join)
@@ -470,6 +486,9 @@ Cursor(n=19,rows=3,updateMode=,engine=Spark)
               	->  TableScan[HISTORY(2234640)](n=1,totalCost=245795.978,scannedRows=154586150,outputRows=41314052,outputHeapSize=2.27 GB,partitions=1,preds=[(HIST_TYPE[0:3] = 2001)])
 ```
 {: .Example}
+
+## Influencing Join Order  {#joinorder}
+xxxx
 
 ### Join Order - Use of Derived Table to Influence the Join Order
 
