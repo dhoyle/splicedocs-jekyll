@@ -96,11 +96,17 @@ When using the *On-Premise* version of Splice Machine with Spark with Cloudera, 
     ```
     {: .Example}
 
-3. Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make these two changes in your Yarn configuration, `ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml`:
+3. Due to how Yarn manages memory, you need to modify your YARN configuration when bulk-importing large datasets. Make this change in your Yarn configuration, `ResourceManager Advanced Configuration Snippet (Safety Valve) for yarn-site.xml`:
+
+    ```
+    yarn.nodemanager.vmem-check-enabled=false
+    ```
+    {: .Example}
+<br />
+   You may also need to __temporarily__ make this additional configuration update as a workaround for memory allocation issues. Note that this update __is not recommended for production usage__, as it affects all YARN jobs and could cause your cluster to become unstable:
 
     ```
     yarn.nodemanager.pmem-check-enabled=false
-    yarn.nodemanager.vmem-check-enabled=false
     ```
     {: .Example}
 
