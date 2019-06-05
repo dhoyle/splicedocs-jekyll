@@ -43,7 +43,7 @@ val SpliceContext = new SplicemachineContext(spliceJDBC)
 val ds = SpliceContext.df("select * from splice.test")
 ```
 {: .Example}
-
+<br />
 
 And here's a similar example from a Zeppelin notebook:
 
@@ -56,6 +56,7 @@ val JDBC_URL = "jdbc:splice://:1527/splicedb;user=<yourname>;password=<yourpswd>
 val splicemachineContext = new SplicemachineContext(JDBC_URL)
 ```
 {: .Example}
+<br />
 
 ### Using the Context to Populate a Table
 
@@ -73,6 +74,7 @@ val carsDF = Seq(
 ).toDF("NUMBER", "MAKE", "MODEL")
 ```
 {: .Example}
+<br />
 
 Then we'll create a table in our Splice Machine database:
 
@@ -83,6 +85,7 @@ create table mySchema.carsTbl ( number int primary key,
                                 model varchar(20) );
 ```
 {: .Example}
+<br />
 
 Now we can insert the contents of our DataFrame directly into the table:
 
@@ -91,6 +94,7 @@ Now we can insert the contents of our DataFrame directly into the table:
 splicemachineContext.insert( carsDF, "mySchema.carsTbl");
 ```
 {: .Example}
+<br />
 
 Though this simple example contains little data, you can operate on a DataFrame of any size in exactly the same way.
 
@@ -121,6 +125,7 @@ val options = Map(
 spliceContext  = new SplicemachineContext( options )
 ```
 {: .Example}
+<br />
 
 The `SpliceJDBCOptions` properties that you can currently specify in the JDBC connect URL are:
 {: .spaceAbove}
@@ -151,20 +156,30 @@ The `SpliceJDBCOptions` properties that you can currently specify in the JDBC co
 
 ## Database Permissions and the Native Spark DataSource {#prereq}
 
-You must make sure that each user who is going to use the Splice Machine Native Spark DataSource has `execute` permission on the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` system procedure.
+To use the Splice Native Spark DataSource, a user must have `execute` permission on the following four system procedures:
 
-   `SYSCS_UTIL.SYSCS_HDFS_OPERATION` is a Splice Machine system procedure that is used internally to efficiently perform direct HDFS operations. This procedure *is not documented* because it is intended only for use by the Splice Machine code itself; however, the Native Spark DataSource uses it, so any user of the Adapter must have permission to execute the `SYSCS_UTIL.SYSCS_HDFS_OPERATION` procedure.
-   {: .noteIcon}
+* `SYSCS_HBASE_OPERATION`
+* `SYSCS_GET_SPLICE_TOKEN`
+* `SYSCS_CANCEL_SPLICE_TOKEN`
+* `SYSCS_HDFS_OPERATION`
 
-   Here's an example of granting `execute` permission for two users:
+These procedures are all Splice Machine system procedures that are used internally to efficiently perform direct HBASE and HDFS operations. They *are not documented* because they are intended only for use by the Splice Machine code itself; however, the Native Spark DataSource uses these procedures, so any user of the Adapter must have permission to execute them.
+{: .noteIcon}
 
-````
-splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to someuser;
+Here's an example of granting `execute` permission to these procedures to a user named `myUserName`:
+
+```
+splice> grant execute on procedure SYSCS_UTIL.SYSCS_HBASE_OPERATION to myUserName;
 0 rows inserted/updated/deleted
-splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to anotheruser;
+splice> grant execute on procedure SYSCS_UTIL.SYSCS_HDFS_OPERATION to myUserName;
 0 rows inserted/updated/deleted
-````
+splice> grant execute on procedure SYSCS_UTIL.SYSCS_GET_SPLICE_TOKEN to myUserName;
+0 rows inserted/updated/deleted
+splice> grant execute on procedure SYSCS_UTIL.SYSCS_CANCEL_SPLICE_TOKEN to myUserName;
+0 rows inserted/updated/deleted
+```
 {: .Example}
+<br />
 
 ## Using the Native Spark DataSource with Kerberos
 
