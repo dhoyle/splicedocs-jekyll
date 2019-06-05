@@ -1,5 +1,5 @@
 ---
-title: Using Hints to Optimize Queries
+title: Using Hints to Improve Performance
 summary: Using Hints to Optimize Queries
 keywords: query optimization
 toc: false
@@ -12,7 +12,7 @@ folder: BestPractices/Optimizer
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Using Hints to Optimize Queries
+# Using Hints to Improve Performance
 
 
 
