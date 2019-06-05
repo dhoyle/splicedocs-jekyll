@@ -159,9 +159,9 @@ The `SpliceJDBCOptions` properties that you can currently specify in the JDBC co
 To use the Splice Native Spark DataSource, a user must have `execute` permission on the following four system procedures:
 
 * `SYSCS_HBASE_OPERATION`
+* `SYSCS_HDFS_OPERATION`
 * `SYSCS_GET_SPLICE_TOKEN`
 * `SYSCS_CANCEL_SPLICE_TOKEN`
-* `SYSCS_HDFS_OPERATION`
 
 These procedures are all Splice Machine system procedures that are used internally to efficiently perform direct HBASE and HDFS operations. They *are not documented* because they are intended only for use by the Splice Machine code itself; however, the Native Spark DataSource uses these procedures, so any user of the Adapter must have permission to execute them.
 {: .noteIcon}
