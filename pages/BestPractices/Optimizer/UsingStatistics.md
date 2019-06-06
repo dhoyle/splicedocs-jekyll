@@ -46,7 +46,6 @@ table in the schema. For example:
 splice> CALL SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS( 'SPLICEBBALL', false );
 ```
 {: .Example }
-<br />
 
 During statistical collection:
 {: .spaceAbove}
@@ -113,7 +112,6 @@ TOTAL_ROW_COUNT       |TOTAL_SIZE          |STATS_TYPE |SAMPLE_FRACTION
 1 row selected
 ```
 {: .Example}
-<br />
 
 ### Column Statistics View  {#columnStats}
 
@@ -131,7 +129,6 @@ L_SHIPDATE     |2291                |0           |1992-01-02  |1998-12-01
 1 row selected
 ```
 {: .Example}
-<br />
 
 
 ## Dropping Statistics   {#Dropping}
@@ -145,7 +142,6 @@ procedure to drop statistics for an entire schema. For example:
 splice> CALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS('SPLICEBBALL');
 ```
 {: .Example }
-<br />
 
 ## Enabling and Disabling Statistics on Specific Columns   {#Enabling}
 
@@ -168,7 +164,6 @@ procedure. For example:
 CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');
 ```
 {: .Example }
-<br />
 
 #### Disabling Statistics Collection on a Column
 
@@ -182,7 +177,6 @@ procedure:
 splice> CALL SYSCS_UTIL.DISABLE_COLUMN_STATISTICS('SPLICEBBALL', 'Players', 'Birthdate');
 ```
 {: .Example }
-<br />
 
 Once you've enabled or disabled statistics collection for one or more
 table columns, you should update the query optimizer by [collecting

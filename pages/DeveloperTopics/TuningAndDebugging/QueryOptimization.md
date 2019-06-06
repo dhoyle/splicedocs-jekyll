@@ -454,7 +454,6 @@ skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
 {: .Example}
-<br />
 
 ### Delete Hints   {#Delete}
 

@@ -120,7 +120,6 @@ The final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the 
 Cursor(n=5,rows=360,updateMode=, engine=control)
 ```
 {: .Example}
-<br />
 
 This line shows you which *engine* Splice Machine plans to use for the query.
 
@@ -162,7 +161,7 @@ Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
 3 rows selected
 ```
 {: .Example }
-<br />
+
 
 This example show a plan for a `TableScan` operation that does have
 qualifiers:
@@ -211,7 +210,7 @@ Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
 3 rows selected
 ```
 {: .Example }
-<br />
+
 
 This example shows a plan for an `IndexScan` operation that contains
 predicates:
@@ -261,7 +260,7 @@ Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
 4 rows selected
 ```
 {: .Example }
-<br />
+
 
 This example shows a plan for a `Restriction` operation:
 
@@ -367,7 +366,7 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
         ->  TableScan[SYSSCHEMAS(32)](n=1,totalCost=7.516,outputRows=20,outputHeapSize=1023.984 KB,partitions=1)
 ```
 {: .Example }
-<br />
+
 
 ### Union Example   {#Union}
 
@@ -434,7 +433,7 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
 6 rows selected)
 ```
 {: .Example }
-<br />
+
 
 This example shows a plan for a scalar aggregate operation:
 

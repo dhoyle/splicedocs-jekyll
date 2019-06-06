@@ -117,8 +117,8 @@ Example:
 ```
 manager.create_experiment( 'myFirstExperiment')
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 #### create_new_run  {#createnewrun}
 
@@ -142,8 +142,8 @@ Example:
 ```
 manager.create_new_run( 'myNewRun')
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 #### reset_run  {#resetrun}
 
@@ -159,8 +159,8 @@ Example:
 ```
 manager.reset_run( )
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 #### set_active_experiment  {#setactiveexperiment}
@@ -185,8 +185,8 @@ Example:
 ```
 manager.set_active_experiment( 'myFirstExperiment')
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 #### set_active_run  {#setactiverun}
@@ -211,8 +211,8 @@ Example:
 ```
 manager.set_active_run( 'myNewRun')
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 ### Logging Methods  {#logmethods}
 
@@ -254,8 +254,8 @@ Example:
 ```
 manager.log_artifact( '/tmp/myRunData' )
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 #### log_artifacts  {#logartifacts}
@@ -286,8 +286,8 @@ Example:
 ```
 manager.log_artifacts( '/tmp/myRunInfo' )
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 #### log_metric  {#logmetric}
 
@@ -319,8 +319,8 @@ Example:
     #log how long the model took
 manager.log_metric('time', time_taken)
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 #### log_model  {#logmodel}
 
@@ -351,8 +351,8 @@ Example:
     #save model to MLflow for deployment
 manager.log_model( model, 'mlflow.sklearn' )
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 #### log_param  {#logparam}
 
@@ -384,8 +384,8 @@ Example:
 manager.log_param('classifier', 'neural network')
 manager.log_param('maxIter', '100')
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 #### log_spark_model  {#logsparkmodel}
 
@@ -412,8 +412,8 @@ model.save('s3a://myModels/myFirstModel')
     #save model to MLflow for deployment
 manager.log_spark_model(model)
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 ### Tagging Methods  {#tagmethods}

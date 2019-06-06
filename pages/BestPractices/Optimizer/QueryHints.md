@@ -134,7 +134,6 @@ hint is at the end of statement:
 SELECT * FROM my_table --splice-properties index=my_index;
 ```
 {: .Example }
-<br />
 
 If your command is broken into multiple lines, you still must add the
 hints at the end of the line, and you can add hints at the ends of
@@ -146,7 +145,6 @@ SELECT * FROM my_table_1 --splice-properties index=my_index
 WHERE my_table_1.id = my_table_2.parent_id;
 ```
 {: .Example }
-<br />
 
 
 In the above query, the first command line ends with the first index
@@ -168,7 +166,6 @@ splice> SELECT * FROM my_table --splice-properties index=my_index
 > ;
 ```
 {: .Example }
-<br />
 
 To tell the query interface to not use an index for an operation,
 specify the null index. For example:
@@ -178,7 +175,6 @@ splice> SELECT * FROM my_table --splice-properties index=null
 > ;
 ```
 {: .Example }
-<br />
 
 And to tell the query interface to use specific indexes on specific
 tables for an operation, you can add multiple hints. For example:
@@ -189,7 +185,6 @@ splice> SELECT * FROM my_table_1   --splice-properties index=my_index
 > WHERE my_table_1.id = my_table_2.parent_id;
 ```
 {: .Example }
-<br />
 
 ### Important Note About Placement of Index Hints
 
@@ -207,7 +202,6 @@ SELECT * FROM   member_info m,
 WHERE...
 ```
 {: .Example }
-<br />
 
 But the following hint will generate an error because `ie_rewards` is
 not an index on the points table.
@@ -220,7 +214,6 @@ SELECT * FROM
 WHERE...
 ```
 {: .Example }
-<br />
 
 ## JoinOrder Hints   {#JoinOrder}
 
@@ -256,7 +249,6 @@ SELECT * FROM      --SPLICE-PROPERTIES joinOrder=fixed
    WHERE e.id = t.parent_id;
 ```
 {: .Example }
-<br />
 
 And this uses a `joinOrder` hint along with two `joinStrategy` hints:
 
@@ -271,7 +263,6 @@ SELECT *
   WHERE adid LIKE '%us_gse%'
 ```
 {: .Example }
-<br />
 
 You can specify these join strategies:
 
@@ -354,7 +345,6 @@ splice> SELECT COUNT(*) FROM my_table --splice-properties useSpark=true
 > ;
 ```
 {: .Example }
-<br />
 
 You can also specify that you want the query to run on HBase and not on
 Spark. For example:
@@ -365,7 +355,6 @@ splice> SELECT COUNT(*) FROM your_table --splice-properties useSpark=false
 > ;
 ```
 {: .Example }
-<br />
 
 
 ## Insert Hints  {#Insert}
@@ -404,8 +393,8 @@ useSpark=true,
 skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 ## Delete Hints   {#Delete}
 
@@ -431,7 +420,6 @@ splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFile
 ```
 {: .Example }
 
-<br />
 
 We recommend performing a major compaction on your database after
 deleting a large amount of data; you should also be aware of our new

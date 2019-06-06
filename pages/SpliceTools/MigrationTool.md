@@ -172,8 +172,8 @@ The XML configuration file that controls how your database migration operates is
 	</configs>
 </migration>
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 The remainder of this section contains subsections for each of the major elements, including an example, and a summary table:
 
@@ -225,8 +225,8 @@ Here's an example of a `connections` section:
    </connection>
 </connections>
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 Here's a summary of each element in the `connections` section:
 <table>
@@ -350,8 +350,8 @@ Here's an example of the `debugOptions` section:
    <printListOfTablesRecordCount>false</printListOfTablesRecordCount>
 </debugOptions>
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 These are the options you can specify in the `<debugOptions>` subsection of the `<configs>` section:
 
@@ -421,8 +421,8 @@ Here's an example of the `schemas` section of a configuration file:
    </inclusionsExclusions>
 </schemas>
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 These are the options you can specify in the `<schemas>` subsection of the `<configs>` section:
 
@@ -556,8 +556,8 @@ Here's an example of the `createDDLOptions` section of a configuration file:
       <dropFKeyFileFormat>{SCHEMA}-drop-fkeys.sql</dropFKeyFileFormat>
 </createDDLOptions>
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 These are the options you can specify in the `<createDDLOptions>` subsection of the `<configs>` section:
@@ -813,8 +813,8 @@ Here's an example of an `exportDataOptions` section:
 
 ```
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 These are the options you can specify in the `<exportDataOptions>` subsection of the `<configs>` section:
 
@@ -853,8 +853,8 @@ Here's an example of an `exportObjectOptions` section:
 
 ```
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 These are the options you can specify in the `<exportObjectOptions>` subsection of the `<configs>` section:
 
@@ -894,8 +894,8 @@ Here's an example of an `spliceImport` section:
 
 ```
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 These are the options you can specify in the `<spliceImport>` subsection of the `<configs>` section:
 
@@ -934,8 +934,8 @@ Here's an example of an `sqoopOptions` section:
 
 ```
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 These are the options you can specify in the `<sqoopOptions>` subsection of the `<configs>` section:
@@ -976,8 +976,8 @@ Here's an example of an `dataTypeMapping` section:
 
 ```
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 These are the options you can specify in the `<dataTypeMapping>` subsection of the `<configs>` section:

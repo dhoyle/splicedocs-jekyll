@@ -102,7 +102,7 @@ When using the *On-Premise* version of Splice Machine with Spark with Cloudera, 
     yarn.nodemanager.vmem-check-enabled=false
     ```
     {: .Example}
-<br />
+
    You may also need to __temporarily__ make this additional configuration update as a workaround for memory allocation issues. Note that this update __is not recommended for production usage__, as it affects all YARN jobs and could cause your cluster to become unstable:
 
     ```

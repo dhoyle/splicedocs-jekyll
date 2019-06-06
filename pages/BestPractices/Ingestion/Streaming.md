@@ -185,7 +185,6 @@ And here are the *helper* functions:
 }
 ```
 {: .Example}
-<br />
 
 ### 4. Create App to Consume the Stream and Insert Data into Your Table  {#createapp}
 

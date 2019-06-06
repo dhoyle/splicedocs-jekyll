@@ -159,8 +159,8 @@ To use Bulk HFile import with automatic splitting, follow these steps:
                 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
             );
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 2.  __Create the index in your Splice Machine database:__
 
     ```
@@ -171,8 +171,8 @@ To use Bulk HFile import with automatic splitting, follow these steps:
                 L_DISCOUNT
             );
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 3.  __Create a directory on HDFS for the temporary HFiles. For example:__
 
     ```
@@ -260,8 +260,8 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
                 PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)
             );
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 2.  __Create the index in your Splice Machine database:__
 
     ```
@@ -272,8 +272,8 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
                 L_DISCOUNT
             );
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 3.  __Find primary key values that can horizontally split the table into roughly equal sized partitions.__
 
     For this example, we provide 3 keys in a file named `lineitemKey.csv`, which will be specified as the value of the `fileName` parameter. Note that each of our three keys includes a second column that is `null`:__
@@ -294,15 +294,15 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	3000000 -> 4500000
 	4500000 -> (last possible key value)
 	```
-    {: .Example}
-<br />
+    {: .Example }
+
 4.  __Specify the column names in the CSV file in the `columnList` parameter; in our example, the primary key columns are:__
 
 	```
 	L_ORDERKEY,L_LINENUMBER
 	```
-    {: .Example}
-<br />
+    {: .Example }
+
 5.  __Invoke  the `SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split the table file:__
 
 	```
@@ -325,15 +325,15 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	1994-01-01|||
 	1996-01-01|||
 	```
-    {: .Example}
-<br />
+    {: .Example }
+
 7.  __Specify the column names in that CSV file in the `columnList` parameter; in our example, the index columns are:__
 
 	```
 	L_SHIPDATE,L_PARTKEY,L_EXTENDEDPRICE,L_DISCOUNT
 	```
-    {: .Example}
-<br />
+    {: .Example }
+
 8.  __Invoke SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX to pre-split your index file:__
 
 	```
@@ -344,16 +344,16 @@ To use Bulk HFile import by manually specifying key values, follow the steps bel
 	        '|', null, null,
 	        null, null, -1, '/BAD', true, null);
 	```
-    {: .Example}
-<br />
+    {: .Example }
+
 9.  __Call SYSCS_UTIL.GET_REGIONS to verify that the table and index are split as expected:__
 
 	```
     CALL SYSCS_UTIL.GET_REGIONS( 'TPCH','LINEITEM', L_SHIPDATE_IDX,
             null, null, '|',null,null,null,null);
 	```
-    {: .Example}
-<br />
+    {: .Example }
+
 10. __Import the file into your database:__
 
     ```
@@ -484,8 +484,8 @@ useSpark=true,
 skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
-{: .Example}
-<br />
+{: .Example }
+
 ## For Additional Information
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:

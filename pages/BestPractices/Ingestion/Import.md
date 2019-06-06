@@ -127,8 +127,8 @@ Here's a very basic example of importing a flat file into a table in your Splice
              PRIMARY KEY (a1)
     )
      ```
-     {: .Example}
-<br />
+     {: .Example }
+
 2.  __Access a simple file named `ttest.csv` from an S3 bucket on AWS. That file contains this data:__
 
     ```
@@ -138,8 +138,8 @@ Here's a very basic example of importing a flat file into a table in your Splice
     3|6
     4|8
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 3.  __Use `IMPORT_DATA` to import that data into the `testImport` table:__
 
     ```
@@ -185,8 +185,8 @@ Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *
     5|55
     6|66
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 2.  __Use `MERGE_DATA` to import that data into the `testImport` table:__
 
     ```
@@ -201,8 +201,8 @@ Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *
 
     1 row selected
     ```
-    {: .Example}
-<br />
+    {: .Example }
+
 3.  __Use a `SELECT` statement to verify that all went well:__
 
     ```

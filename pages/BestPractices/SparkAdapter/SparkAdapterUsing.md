@@ -42,8 +42,8 @@ val spliceJDBC = "jdbc:splice://SPLICESERVERHOST:1527/splicedb;user=<yourUserId>
 val SpliceContext = new SplicemachineContext(spliceJDBC)
 val ds = SpliceContext.df("select * from splice.test")
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 And here's a similar example from a Zeppelin notebook:
 
@@ -55,8 +55,8 @@ import com.splicemachine.derby.utils._
 val JDBC_URL = "jdbc:splice://:1527/splicedb;user=<yourname>;password=<yourpswd>"
 val splicemachineContext = new SplicemachineContext(JDBC_URL)
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 ### Using the Context to Populate a Table
 
@@ -73,8 +73,8 @@ val carsDF = Seq(
    (4, "Chevy", "Volt")
 ).toDF("NUMBER", "MAKE", "MODEL")
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 Then we'll create a table in our Splice Machine database:
 
@@ -84,8 +84,8 @@ create table mySchema.carsTbl ( number int primary key,
                                 make  varchar(20),
                                 model varchar(20) );
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 Now we can insert the contents of our DataFrame directly into the table:
 
@@ -93,8 +93,8 @@ Now we can insert the contents of our DataFrame directly into the table:
 %spark
 splicemachineContext.insert( carsDF, "mySchema.carsTbl");
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 Though this simple example contains little data, you can operate on a DataFrame of any size in exactly the same way.
 
@@ -124,8 +124,8 @@ val options = Map(
 
 spliceContext  = new SplicemachineContext( options )
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 The `SpliceJDBCOptions` properties that you can currently specify in the JDBC connect URL are:
 {: .spaceAbove}
@@ -178,8 +178,8 @@ splice> grant execute on procedure SYSCS_UTIL.SYSCS_GET_SPLICE_TOKEN to myUserNa
 splice> grant execute on procedure SYSCS_UTIL.SYSCS_CANCEL_SPLICE_TOKEN to myUserName;
 0 rows inserted/updated/deleted
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 ## Using the Native Spark DataSource with Kerberos
 

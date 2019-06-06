@@ -127,8 +127,8 @@ useSpark=true,
 skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
-{: .Example}
-<br />
+{: .Example }
+
 
 
 ## Examples

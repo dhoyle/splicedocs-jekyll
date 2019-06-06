@@ -227,10 +227,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 02
 ```
 -- QUERY 02
@@ -281,10 +279,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 03
 ```
 -- QUERY 03
@@ -314,9 +310,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-<br />
 ### TPCH Query 04
 ```
 -- QUERY 04
@@ -344,9 +339,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-<br />
 ### TPCH Query 05
 ```
 -- QUERY 05
@@ -377,9 +371,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-<br />
 ### TPCH Query 06
 ```
 -- QUERY 06
@@ -395,10 +388,8 @@ where
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 07
 ```
 -- QUERY 07
@@ -444,9 +435,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-<br />
 ### TPCH Query 08
 ```
 -- QUERY 08
@@ -490,9 +480,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-<br />
 ### TPCH Query 09
 ```
 -- QUERY 09
@@ -531,9 +520,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-<br />
 ### TPCH Query 10
 ```
 -- QUERY 10
@@ -572,10 +560,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 11
 ```
 -- QUERY 11
@@ -609,10 +595,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 12
 ```
 -- QUERY 12
@@ -647,10 +631,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 13
 ```
 -- QUERY 13
@@ -677,10 +659,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 14
 ```
 -- QUERY 14
@@ -700,11 +680,8 @@ where
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-
-<br />
 ### TPCH Query 15
 ```
 -- QUERY 15
@@ -744,10 +721,8 @@ drop view revenue0
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 16
 ```
 -- QUERY 16
@@ -784,11 +759,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-
-<br />
 ### TPCH Query 17
 ```
 -- QUERY 17
@@ -812,11 +784,8 @@ where
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-
-<br />
 ### TPCH Query 18
 ```
 -- QUERY 18
@@ -856,11 +825,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-
-<br />
 ### TPCH Query 19
 ```
 -- QUERY 19
@@ -902,11 +868,8 @@ where
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-
-<br />
 ### TPCH Query 20
 ```
 -- QUERY 20
@@ -950,10 +913,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 21
 ```
 -- QUERY 21
@@ -1000,10 +961,8 @@ order by
 -- END OF QUERY
 ;
 ```
-{: .Example}
+{: .Example }
 
-
-<br />
 ### TPCH Query 22
 ```
 -- QUERY 22
