@@ -39,7 +39,7 @@ An integer value that specifies the number of characters that you want to extrac
 
 This function takes as arguments a string from which you want to extract a substring, starting with the first (leftmost) character in the string, and an integer that specifies the number of characters that you want to extract.
 
-If there are less characters in the `string` than are specified in `n`, the entire `string` is returned (no padding is applied to the result).
+If there are fewer characters in the `string` than are specified in `n`, the entire `string` is returned (no padding is applied to the result).
 
 ## Examples
 
