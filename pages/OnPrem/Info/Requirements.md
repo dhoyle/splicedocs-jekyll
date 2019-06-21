@@ -119,7 +119,7 @@ for Splice Machine __Release {{site.build_version}}__ on your platform:
 
 <table summary="Splice Machine Hadoop ecosystem requirements">
     <col />
-    <col />
+    <col width="135px" />
     <col />
     <col />
     <col />
@@ -184,7 +184,7 @@ for Splice Machine __Release {{site.build_alt_version}}__ on your platform:
 
 <table summary="Splice Machine Hadoop ecosystem requirements">
     <col />
-    <col />
+    <col width="135px" />
     <col />
     <col />
     <col />
@@ -199,7 +199,7 @@ for Splice Machine __Release {{site.build_alt_version}}__ on your platform:
     </thead>
     <tbody>
         <tr>
-            <td>{{splvar_requirements_CDH-Versions}}
+            <td>{{splvar_alt_requirements_CDH-Versions}}
             </td>
             <td>
                 <p class="noSpaceAbove">{{splvar_alt_requirements_CDH-OS}}
