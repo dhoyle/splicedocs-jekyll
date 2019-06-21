@@ -28,8 +28,8 @@ Machine running on a cluster or on a standalone computer, in these sections:
 <div markdown="1">
 ## Cluster Node Requirements {#ClusterReq}
 
-The following table summarizes the minimum requirements for the nodes in
-your cluster:
+The following table summarizes the minimum hardware requirements for the nodes in
+your cluster for Splice Machine __Release {{site.version_display}}__:
 
 <table summary="Splice Machine cluster node hardware requirements">
     <col />
@@ -68,9 +68,10 @@ your cluster:
         </tr>
     </tbody>
 </table>
+
 ### Amazon Web Services (AWS) Requirements {#AWSReq}
 
-If you're running on AWS, your cluster must meet these minimum
+If you're running Splice Machine __Release {{site.version_display}}__ on AWS, your cluster must meet these minimum
 requirements:
 
 <table summary="Splice Machine cluster node hardware requirements">
@@ -114,10 +115,9 @@ requirements:
 ### Hadoop Ecosystem Requirements {#HadoopReq}
 
 The following table summarizes the required Hadoop ecosystem components
-for your platform:
+for Splice Machine __Release {{site.build_version}}__ on your platform:
 
 <table summary="Splice Machine Hadoop ecosystem requirements">
-    <col />
     <col />
     <col />
     <col />
@@ -178,9 +178,75 @@ for your platform:
     </tbody>
 </table>
 
+{% if site.build_alt_version != "" %}
+The following table summarizes the required Hadoop ecosystem components
+for Splice Machine __Release {{site.build_alt_version}}__ on your platform:
+
+<table summary="Splice Machine Hadoop ecosystem requirements">
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Hadoop platform</th>
+            <th>Linux</th>
+            <th>Hadoop</th>
+            <th>HBase</th>
+            <th>ZooKeeper</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{splvar_requirements_CDH-Versions}}
+            </td>
+            <td>
+                <p class="noSpaceAbove">{{splvar_alt_requirements_CDH-OS}}
+                </p>
+            </td>
+            <td>{{splvar_alt_requirements_CDH-Hadoop}}
+            </td>
+            <td>{{splvar_alt_requirements_CDH-HBase}}
+            </td>
+            <td>{{splvar_alt_requirements_CDH-ZooKeeper}}
+            </td>
+        </tr>
+        <tr>
+            <td>{{splvar_alt_requirements_HDP-Versions}}
+            </td>
+            <td>
+                <p class="noSpaceAbove">{{splvar_alt_requirements_HDP-OS}}
+                </p>
+            </td>
+            <td>{{splvar_alt_requirements_HDP-Hadoop}}
+            </td>
+            <td>{{splvar_alt_requirements_HDP-HBase}}
+            </td>
+            <td>{{splvar_alt_requirements_HDP-ZooKeeper}}
+            </td>
+        </tr>
+        <tr>
+            <td>{{splvar_alt_requirements_MapR-Versions}}
+            </td>
+            <td>
+                <p class="noSpaceAbove">{{splvar_alt_requirements_MapR-OS}}
+                </p>
+            </td>
+            <td>{{splvar_alt_requirements_MapR-Hadoop}}
+            </td>
+            <td>{{splvar_alt_requirements_MapR-HBase}}
+            </td>
+            <td>{{splvar_alt_requirements_MapR-ZooKeeper}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
 ## Linux Configuration Requirements {#LinuxReq}
 The following table summarizes Linux configuration requirements for
-running Splice Machine on your cluster:
+running Splice Machine __Release {{site.version_display}}__ on your cluster:
 
 <table summary="Summary of Linux configuration requirements">
     <col />
@@ -241,13 +307,11 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
         <tr>
             <td>Additional required software on CentOS or RHEL</td>
             <td>
-                <div class="preWrapperWide">
-                    <p class="noSpaceAbove">If you're running on CENTOS or RHEL, you also need to have this software available on each node:</p>
-                    <ul>
-                        <li class="CodeFont" value="1">ftp</li>
-                        <li class="CodeFont" value="2">EPEL <span class="bodyFont">repository</span></li>
-                    </ul>
-                </div>
+                <p class="noSpaceAbove">If you're running on CENTOS or RHEL, you also need to have this software available on each node:</p>
+                <ul>
+                    <li class="CodeFont" value="1">ftp</li>
+                    <li class="CodeFont" value="2">EPEL <span class="bodyFont">repository</span></li>
+                </ul>
             </td>
         </tr>
         <tr>
@@ -272,7 +336,7 @@ sed -i '/requiretty/ s/^/#/' /etc/sudoers</pre>
 
 ## Standalone Version Prerequisites   {#Standalo}
 
-You can use the standalone version of Splice Machine on MacOS and Linux
+You can use the standalone version of Splice Machine __Release {{site.version_display}}__ on MacOS and Linux
 computers that meet these basic requirements:
 
 <table summary="Standalone version requirements for running Splice Machine">
@@ -321,7 +385,7 @@ computers that meet these basic requirements:
 
 ## Java JDK Requirements {#JavaReq}
 
-Splice Machine supports the following versions of the Java JDK:
+Splice Machine for Splice Machine version __Release {{site.version_display}}__ supports the following versions of the Java JDK:
 
 * Oracle JDK 1.8, update 60 or higher
 
