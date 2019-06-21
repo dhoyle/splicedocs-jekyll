@@ -6,7 +6,7 @@ toc: false
 product: all
 sidebar: home_sidebar
 permalink: releasenotes_archived_intro.html
-folder: ReleaseNotes
+folder: ReleaseNotesArchive
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
