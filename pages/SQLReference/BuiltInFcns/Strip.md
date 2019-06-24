@@ -14,9 +14,10 @@ folder: SQLReference/BuiltInFcns
 
 The `STRIP` function takes a character expression and returns that
 expression with leading and/or trailing pad characters removed. Optional
-parameters indicate whether leading, or trailing, or both leading and
-trailing pad characters should be removed, and specify the pad character
-that is to be removed.
+parameters indicate:
+
+* whether leading, or trailing, or both leading and trailing pad characters should be removed
+* which pad character to remove
 
 ## Syntax
 
