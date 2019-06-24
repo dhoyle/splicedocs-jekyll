@@ -27,6 +27,7 @@ Our release notes are presented in these topics:
 ## Database Release Notes
 
 <ul>
+    <li><a href="releasenotes_2.7.1920.html">Patch Release 2.7.0.1920</a></li>
     <li><a href="releasenotes_2.7.1919.html">Patch Release 2.7.0.1919</a></li>
     <li><a href="releasenotes_2.7.1918.html">Patch Release 2.7.0.1918</a></li>
     <li><a href="releasenotes_2.7.1917.html">Patch Release 2.7.0.1917</a></li>
