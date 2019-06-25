@@ -36,7 +36,7 @@ The character expression to be stripped
 stripType
 {: .paramName}
 
-Whether to strip from the left end, the right end, or both ends of the `stripSource` string. You can use the full or short identifiers:
+Whether to strip from the left end, the right end, or both ends of the `stripSource` string. Specify this value unquoted, as shown in the examples below. You can use the full or short identifiers:
 {: .paramDefnFirst}
 
 <table>
@@ -58,13 +58,13 @@ Whether to strip from the left end, the right end, or both ends of the `stripSou
     </tbody>
 </table>
 
-If this value is not specified, the default value of `BOTH` is used.
+If you don't specify a *stripType* value, the default value of `BOTH` is used.
 {: .paramDefn}
 
 stripCharacter
 {: .paramName}
 
-A character expression that specifies which character to strip from the
+A character expression, enclosed in single quotes, that specifies which character to strip from the
 source. If this is specified, it must evaluate to either `NULL` or to a
 character string whose length is exactly one. If left unspecified, it
 defaults to the space character (`' '`).
