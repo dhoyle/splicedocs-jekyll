@@ -88,6 +88,25 @@ Each row includes the action being performed (a Scan, Join, grouping, etc.) foll
 
 We will see that the `scannedRows` and `outputRows` are key numbers to monitor as we tune query performance.
 
+### DDL Statements
+
+SQL Data Definition Language (DDL) statements have no known cost, and
+thus do not require optimization. Because of this, the `explain` command
+does not work with DDL statements; attempting to `explain` a DDL
+statement such as `CREATE TABLE` will generate a syntax error.
+
+You **cannot** use `explain` with any of the following SQL statements:
+
+* `ALTER`
+* `CREATE ...`` <span class="bodyFont">(any statement that starts with
+  `CREATE`)</span>
+* `DROP ...` <span class="bodyFont">(any statement that starts with
+  `DROP`)</span>
+* `GRANT`
+* `RENAME ...` <span class="bodyFont">(any statement that starts with
+  `RENAME`)</span>
+* `REVOKE`
+* `TRUNCATE TABLE`
 
 ### Joins
 

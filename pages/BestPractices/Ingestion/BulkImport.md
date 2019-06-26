@@ -479,9 +479,7 @@ CREATE TABLE myUserTbl AS SELECT
 FROM licensedUserInfo
 WITH NO DATA;
 
-INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
-useSpark=true,
-skipSampling=false
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
 {: .Example }

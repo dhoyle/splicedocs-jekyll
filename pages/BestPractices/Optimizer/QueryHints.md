@@ -19,13 +19,8 @@ Splice Machine offers a number of *hints* that you can supply in a query. These 
 The remainder of this topic contains these sections:
 
 * [Types of Hints](#hinttypes)
-* [Including Hints in Your Queries](#inclhints)
-* [Index Hints](#Index)
-* [JoinOrder Hints](#JoinOrder)
-* [JoinStrategy Hints](#JoinStrategy)
-* [Spark Hints](#Spark)
-* [Insert Hints](#Insert)
-* [Delete Hints](#Delete)
+* [How to Specify Hints in Your Queries](#inclhints)
+* [Using Hints](#usingHints)
 
 ## Types of Hints  {#hinttypes}
 
@@ -83,19 +78,7 @@ The following table summarizes the available types of hints:
     </tbody>
 </table>
 
-## Including Hints in Your Queries  {#inclhints}
-
-Hints __MUST ALWAYS__ be at the end of a line, which means that you must always
-terminate hints with a newline character.
-
-You cannot add the semicolon that terminates the command immediately
-after a hint; the semicolon must go on the next line, as shown in the
-examples in this topic.
-
-Many of the examples in this section show usage of hints on the
-`splice>` command line. Follow the same rules when using hints
-programmatically.
-{: .noteIcon}
+## How to Specify Hints in Your Queries  {#inclhints}
 
 Hints can be used in two locations: after a table identifier or after a
 `FROM` clause. Some hint types can be use after a table identifier, and
@@ -111,7 +94,6 @@ some can be used after a `FROM` clause:
 <td class="CodeFont">
 <p>index</p>
 <p>joinStrategy</p>
-<p>pin</p>
 <p>useSpark</p>
 <p>bulkDeleteDirectory</p>
 </td>
@@ -127,17 +109,17 @@ some can be used after a `FROM` clause:
 </tbody>
 </table>
 
-This example shows proper placement of the hint and semicolon when the
-hint is at the end of statement:
+### Hint at the End of a Line
+
+Hints __MUST ALWAYS__ be at the end of a line, followed by a newline character; if the hint ends your command, you need to add the terminating `;` on the next line. For example:
 
 ```
-SELECT * FROM my_table --splice-properties index=my_index;
+splice> SELECT * FROM my_table --splice-properties index=my_index
+> ;
 ```
 {: .Example }
 
-If your command is broken into multiple lines, you still must add the
-hints at the end of the line, and you can add hints at the ends of
-multiple lines; for example:
+You can apply hints to multiple tables or `FROM` clauses in a command. Put each hint at the end of a line, as shown here:
 
 ```
 SELECT * FROM my_table_1 --splice-properties index=my_index
@@ -146,14 +128,30 @@ WHERE my_table_1.id = my_table_2.parent_id;
 ```
 {: .Example }
 
+You *can* apply multiple hints to table or `FROM` clause; when doing so, add the comma-separated hints at the end of a line, as shown here:
 
-In the above query, the first command line ends with the first index
-hint, because hints must always be the last thing on a command line.
-That's why the comma separating the table specifications appears at the
-beginning of the next line.
-{: .noteNote}
+```
+splice> INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false
+>SELECT * FROM licensedUserInfo;
+```
+{: .Example }
 
-## Index Hints   {#Index}
+Many of the examples in this section show usage of hints on the `splice>` command line. Follow the same rules when using hints programmatically.
+{: .noteIcon}
+
+## Using Hints  {#usingHints}
+
+This section provides specific information about how to use the different hint types:
+
+* [Index Hints](#Index)
+* [JoinOrder Hints](#JoinOrder)
+* [JoinStrategy Hints](#JoinStrategy)
+* [Spark Hints](#Spark)
+* [Insert Hints](#Insert)
+* [Delete Hints](#Delete)
+
+
+### Index Hints   {#Index}
 
 Use *index hints* to tell the query interface how to use certain indexes
 for an operation.
@@ -186,7 +184,7 @@ splice> SELECT * FROM my_table_1   --splice-properties index=my_index
 ```
 {: .Example }
 
-### Important Note About Placement of Index Hints
+#### Important Note About Placement of Index Hints
 
 Each `index` hint in a query **MUST** be specified alongside the table
 containing the index, or an error will occur.
@@ -215,7 +213,7 @@ WHERE...
 ```
 {: .Example }
 
-## JoinOrder Hints   {#JoinOrder}
+### JoinOrder Hints   {#JoinOrder}
 
 Use `JoinOrder` hints to tell the query interface in which order to join
 two tables. You can specify these values for a `JoinOrder` hint:
@@ -231,13 +229,30 @@ two tables. You can specify these values for a `JoinOrder` hint:
 
 Here are examples:
 
-| Hint | Example |
-|----------
-| `joinOrder=FIXED` | `splice> SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed>  mytable1 e, mytable2 t> WHERE e.id = t.parent_id;` |
-| `joinOrder=UNFIXED` | `splice> SELECT * from --SPLICE-PROPERTIES joinOrder=unfixed> mytable1 e, mytable2 t WHERE e.id = t.parent_id;` |
-{: summary="Examples of joinOrder hints"}
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Hint</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">joinOrder=FIXED</td>
+            <td class="Example"><code>splice&gt; SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />&gt;  mytable1 e, mytable2 t WHERE e.id = t.parent_id;</code></td>
+        </tr>
+        <tr>
+            <td class="CodeFont">joinOrder=UNFIXED</td>
+            <td class="Example"><code>splice&gt; SELECT * from --SPLICE-PROPERTIES joinOrder=unfixed<br />
+              &gt; mytable1 e, mytable2 t WHERE e.id = t.parent_id;</code></td>
+        </tr>
+    </tbody>
+</table>
 
-## JoinStrategy Hints   {#JoinStrategy}
+
+### JoinStrategy Hints   {#JoinStrategy}
 
 You can use a `JoinStrategy` hint in conjunction with a `joinOrder` hint
 to tell the query interface how to process a join. For example, this
@@ -326,19 +341,15 @@ You can read more about pinning tables in the
 [`PIN TABLE`](sqlref_statements_pintable.html) statement topic.
 {: .indentLevel1}
 -->
-## Spark Hints   {#Spark}
+### Spark Hints   {#Spark}
 
 You can use the `useSpark` hint to specify to the optimizer that you
 want a query to run on (or not on) Spark. The Splice Machine query
 optimizer automatically determines whether to run a query through our
 Spark engine or our HBase engine, based on the type of query; you can
-override this by using a hint:
-{: .indentLevel1}
+override this by using a hint.
 
-The Splice Machine optimizer uses its estimated cost for a query to
-decide whether to use spark. If your statistics are out of date, the
-optimizer may end up choosing the wrong engine for the query.
-{: .noteNote}
+Here is an example:
 
 ```
 splice> SELECT COUNT(*) FROM my_table --splice-properties useSpark=true
@@ -348,7 +359,6 @@ splice> SELECT COUNT(*) FROM my_table --splice-properties useSpark=true
 
 You can also specify that you want the query to run on HBase and not on
 Spark. For example:
-{: .indentLevel1}
 
 ```
 splice> SELECT COUNT(*) FROM your_table --splice-properties useSpark=false
@@ -356,8 +366,13 @@ splice> SELECT COUNT(*) FROM your_table --splice-properties useSpark=false
 ```
 {: .Example }
 
+The Splice Machine optimizer uses its estimated cost for a query to
+decide whether to use Spark. If your statistics are out of date, the
+optimizer may end up choosing the wrong engine for the query.
+{: .noteNote}
 
-## Insert Hints  {#Insert}
+
+### Insert Hints  {#Insert}
 You can add a set of hints to an `INSERT` statement that tell the database to use bulk import technology to insert a set of query results into a table.
 
 To understand how bulk import works, please review the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic in our *Best Practices Guide.*
@@ -388,15 +403,13 @@ CREATE TABLE myUserTbl AS SELECT
 FROM licensedUserInfo
 WITH NO DATA;
 
-INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
-useSpark=true,
-skipSampling=false
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
 {: .Example }
 
 
-## Delete Hints   {#Delete}
+### Delete Hints   {#Delete}
 
 You can use the `bulkDeleteDirectory` hint to specify that you want to
 use our bulk delete feature to optimize the deletion of a large amount
