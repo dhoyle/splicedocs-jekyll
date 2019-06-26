@@ -1,19 +1,18 @@
 ---
-title: Introduction to Performance Tuning in Splice Machine
-summary: Introduction to topics related to maintaining your Splice Machine database.
-keywords: query tuning, optimization, performance, statistics, tuning queries
+title: Introduction to Monitoring and Debugging in Splice Machine
+summary: Introduction to topics related to monitoring and debugging your Splice Machine queries.
+keywords: query tuning, monitoring, performance, statistics, tuning queries
 toc: false
 product: all
 sidebar: home_sidebar
 permalink: developers_tuning_intro.html
-folder: DeveloperTopics/TuningAndDebugging
+folder: DeveloperTopics/MonitorAndDebug
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Tuning and Debugging Query Performance
+# Monitoring and Debugging Query Performance
 
-This section contains the following topics to help you optimize your
-Splice Machine database queries:
+This section contains the following topics to help you learn about monitoring and debugging your Splice Machine database queries:
 
 <table summary="Table of descriptions of and links to the sections in this section.">
     <col />
@@ -25,21 +24,6 @@ Splice Machine database queries:
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><a href="developers_tuning_queryoptimization.html">Optimizing Queries</a>
-            </td>
-            <td>Gets you started with optimizing your queries for Splice Machine.</td>
-        </tr>
-        <tr>
-            <td><a href="developers_tuning_usingstats.html">Using Statistics</a>
-            </td>
-            <td>Using our statistics gathering facility to help optimize queries.</td>
-        </tr>
-        <tr>
-            <td><a href="developers_tuning_explainplan.html">Explain Plan</a>
-            </td>
-            <td>The Explain Plan feature, which allows you to examine the execution plan for a query without executing the query.</td>
-        </tr>
         <tr>
             <td><a href="developers_tuning_logging.html">Logging</a>
             </td>
@@ -55,8 +39,16 @@ Splice Machine database queries:
             <td>How to use the Splice Machine snapshot feature to
             create a restorable snapshot of a table or schema</td>
         </tr>
+        <tr>
+            <td><a href="developers_tuning_sparkui.html">Using the Spark Web UI</a></td>
+            <td>Shows you how to access the Spark UI on your cluster.</td>
+        </tr>
     </tbody>
 </table>
+
+
+This section of the documentation previously contained information about using [statistics](bestpractices_optimizer_intro.html), [explain plans](bestpractices_optimizer_explain.html), and [optimizer hints](bestpractices_optimizer_hints.html) to examine and improve the performance of your queries. An enhanced version of that information is now found in the [*Best Practices - Optimization*](bestpractices_optimizer_intro.html) section of this documentation.
+
 {% include splice_snippets/githublink.html %}
 </div>
 </section>

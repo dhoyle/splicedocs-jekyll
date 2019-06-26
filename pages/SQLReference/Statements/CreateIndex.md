@@ -164,14 +164,14 @@ When you specify `AUTO` sampling for index creation, Splice Machine samples the 
 
 If you know how your data should be split into regions, you can specify those region split keys in a CSV file, as shown below, in [Example 3: Bulk HFile Index creation with Logical Split Keys](#exbulklogical). Alternatively, if you're an expert user, you can specify the split keys for the physical HBase table, as shown below, in [Example 4: Bulk HFile Index creation with Physical Split Keys](#exbulkphysical).
 
-You can define logical *or* physical split keys for the index whether or not you're using Bulk HFile loading to create the index. Our [Indexing Large Tables](tutorials_indexing_largeindex.html) tutorial page provides detailed information about using automatic sampling or providing your own region split keys.
+You can define logical *or* physical split keys for the index whether or not you're using Bulk HFile loading to create the index. The [Indexing Tables](bestpractices_optimizer_indexes.html) topic in the *Best Practices - Optimizer* section of this documentation page provides detailed information about using automatic sampling and providing your own region split keys.
 {: .noteIcon}
 
 ### Using Bulk HFiles to Create an Index  {#BulkIndex}
 
 Bulk HFile indexing improves performance when indexing very large datasets. The table you're indexing is temporarily converted into HFiles to take advantage of HBase bulk loading; once the indexing operation is complete, the temporary HFiles are automatically deleted.
 
-To learn more about bulk HFile index creation, see [Indexing Large Tables](tutorials_indexing_largeindex.html) tutorial page.
+To learn more about bulk HFile index creation, see the [Indexing Tables](bestpractices_optimizer_indexes.html) topic in the *Best Practices - Optimizer* section of this documentation.
 
 Bulk HFile index creation is related to using Bulk HFiles to import data, which is described in our [Importing Data: Bulk HFile Import](bestpractices_ingest_bulkimport.html) best practices page.
 
@@ -377,7 +377,7 @@ Now, if we force the index to be used in the above case, you'll see an error:
 * [`INSERT`](sqlref_statements_insert.html) statement
 * [`SELECT`](sqlref_expressions_select.html) statement
 * [`UPDATE`](sqlref_statements_update.html) statement
-* [Indexing Large Tables](tutorials_indexing_largeindex.html)
+* [Indexing Large Tables](bestpractices_optimizer_indexes.html)
 * [Importing Data: Bulk HFile Import](bestpractices_ingest_bulkimport.html)
 
 </div>

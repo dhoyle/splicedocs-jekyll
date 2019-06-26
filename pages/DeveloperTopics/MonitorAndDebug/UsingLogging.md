@@ -6,7 +6,7 @@ toc: false
 product: all
 sidebar: home_sidebar
 permalink: developers_tuning_logging.html
-folder: DeveloperTopics/TuningAndDebugging
+folder: DeveloperTopics/MonitorAndDebug
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

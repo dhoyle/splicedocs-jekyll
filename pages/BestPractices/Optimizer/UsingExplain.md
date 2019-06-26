@@ -88,7 +88,7 @@ Each row includes the action being performed (a Scan, Join, grouping, etc.) foll
 
 We will see that the `scannedRows` and `outputRows` are key numbers to monitor as we tune query performance.
 
-### DDL Statements
+### Explaining DDL Statements
 
 SQL Data Definition Language (DDL) statements have no known cost, and
 thus do not require optimization. Because of this, the `explain` command
@@ -98,17 +98,14 @@ statement such as `CREATE TABLE` will generate a syntax error.
 You **cannot** use `explain` with any of the following SQL statements:
 
 * `ALTER`
-* `CREATE ...`` <span class="bodyFont">(any statement that starts with
-  `CREATE`)</span>
-* `DROP ...` <span class="bodyFont">(any statement that starts with
-  `DROP`)</span>
+* `CREATE ...` (any statement that starts with `CREATE`)
+* `DROP ...`   (any statement that starts with `DROP`)
 * `GRANT`
-* `RENAME ...` <span class="bodyFont">(any statement that starts with
-  `RENAME`)</span>
+* `RENAME ...` (any statement that starts with `RENAME`)
 * `REVOKE`
 * `TRUNCATE TABLE`
 
-### Joins
+### Reviewing Join Plans
 
 Here are a few key notes about reviewing joins in a plan:
 
@@ -133,6 +130,7 @@ Here are a few key notes about reviewing joins in a plan:
 
 
 ### Which Execution Path (Which Engine)?
+
 The final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:
 
 ```
@@ -351,11 +349,11 @@ Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
 * The plan labels the operation using the *join type* followed by
   `Join`; the possible values are:
 
-  * {: .CodeFont value="1"} BroadcastJoin
-  * {: .CodeFont value="2"} MergeJoin
-  * {: .CodeFont value="3"} MergeSortJoin
-  * {: .CodeFont value="4"} NestedLoopJoin
-  * {: .CodeFont value="5"} OuterJoin
+  * `BroadcastJoin`
+  * `MergeJoin`
+  * `MergeSortJoin`
+  * `NestedLoopJoin`
+  * `OuterJoin`
   {: .SecondLevel}
 
 * The plan may include a `preds` field, which lists the join predicates.

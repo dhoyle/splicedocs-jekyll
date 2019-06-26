@@ -6,7 +6,7 @@ toc: false
 product: all
 sidebar: home_sidebar
 permalink: developers_tuning_snapshots.html
-folder: DeveloperTopics/TuningAndDebugging
+folder: DeveloperTopics/MonitorAndDebug
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
@@ -44,4 +44,3 @@ You use these system procedures and tables to work with snapshots:
 
 </div>
 </section>
-

@@ -21,6 +21,10 @@ With a perfect optimizer, you don't need to worry about the efficiency of your S
 * Statistics and cost estimation are not 100% accurate.
 * The optimizer must not use excessive time parsing query paths.
 
+
+XXXXXXXXXXXXXXXXXXXx
+
+
 This other topics in this chapter show you how to use Splice Machine features to analyze and tune query performance:
 
 * [*Using Explain Plan to Tune Queries*](bestpractices_optimizer_explain.html) shows you how to use the `explain` feature to understand the execution plan for your queries.

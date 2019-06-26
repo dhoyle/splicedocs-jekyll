@@ -205,8 +205,8 @@ Our [Developer Topics and Tutorials](developers_intro.html) and [Best Practices]
             <td>Describes how to create, modify, and store functions and stored procedures.</td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="developers_tuning_intro.html">Tuning and Debugging</a></td>
-            <td>Helps you to optimize and debug your database queries.</td>
+            <td class="ItalicFont"><a href="bestpractices_optimizer_intro.html">Best Practices - Optimizer</a></td>
+            <td>Helps you to optimize your database queries.</td>
         </tr>
         <tr>
             <td class="ItalicFont"><a href="developers_cloudconnect_intro.html">Accessing Data in the Cloud</a></td>

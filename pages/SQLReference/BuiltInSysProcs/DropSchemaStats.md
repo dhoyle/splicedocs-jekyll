@@ -62,7 +62,7 @@ This procedure does not produce a result.
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html)
+* [Using Statistics](bestpractices_optimizer_statistics.html)
 
 </div>
 </section>

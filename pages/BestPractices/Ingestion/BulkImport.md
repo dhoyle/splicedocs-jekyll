@@ -453,7 +453,7 @@ The [Data Ingestion Parameter Values](bestpractices_ingest_params.html) topic in
 
 There's one more way to use bulk HFiles for ingesting data into your Splice Machine tables: you can add a set of hints to an `INSERT` statement that tell the database to use bulk import technology to insert a set of query results into a table.
 
-Splice Machine allows you to specify [optimization hints](developers_tuning_queryoptimization.html){: target="_blank"}; one of these *hints*, `bulkImportDirectory`, can be used to perform bulk loading with the SQL `INSERT` statement.
+Splice Machine allows you to specify [optimization hints](bestpractices_optimizer_hints.html) one of these *hints*, `bulkImportDirectory`, can be used to perform bulk loading with the SQL `INSERT` statement.
 
 You do this by adding these hints to the `INSERT`:
 * The `bulkImportDirectory` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to specify where to store the temporary HFiles used for the bulk import.
