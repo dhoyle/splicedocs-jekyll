@@ -14,7 +14,7 @@ folder: BestPractices/Optimizer
 
 # Using Hints to Improve Performance
 
-Splice Machine offers a number of *hints* that you can supply in a query. These hints provide the optimizer with guidance that help it create the best execution plan for a query. There are different type of hints you can supply, each of which is described in a section in this topic.
+Splice Machine offers a number of *hints* that you can add to a query. These hints provide the optimizer with guidance that help it create the best execution plan for a query. There are different type of hints you can supply, each of which is described in a section in this topic.
 
 The remainder of this topic contains these sections:
 
@@ -24,7 +24,7 @@ The remainder of this topic contains these sections:
 
 ## Types of Hints  {#hinttypes}
 
-The following table summarizes the available types of hints:
+The following table summarizes the hint types available in Splice Machine:
 
 <table>
     <col width="120px"/>
@@ -119,7 +119,7 @@ splice> SELECT * FROM my_table --splice-properties index=my_index
 ```
 {: .Example }
 
-You can apply hints to multiple tables or `FROM` clauses in a command. Put each hint at the end of a line, as shown here:
+You can apply hints to multiple tables or `FROM` clauses in a command. Put each hint at the end of the line containing the table name or `FROM`, as shown here:
 
 ```
 SELECT * FROM my_table_1 --splice-properties index=my_index
@@ -128,7 +128,7 @@ WHERE my_table_1.id = my_table_2.parent_id;
 ```
 {: .Example }
 
-You *can* apply multiple hints to table or `FROM` clause; when doing so, add the comma-separated hints at the end of a line, as shown here:
+You *can* apply multiple hints to a table or `FROM` clause; when doing so, add the comma-separated hints at the end of a line, as shown here:
 
 ```
 splice> INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false

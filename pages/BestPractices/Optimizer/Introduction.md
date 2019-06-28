@@ -14,16 +14,16 @@ folder: BestPractices/Optimizer
 
 # The Splice Machine Query Optimizer
 
-With a perfect optimizer, you don't need to worry about the efficiency of your SQL statements; the optimizer’s responsibility is to convert your SQL into a semantically equivalent and more performant execution plan. The Splice Machine optimizer does a great job; however, there's no such thing as a perfect optimizer, which means that there are times when you'll need to apply some manual tuning and rewriting to queries. That's because:
+Improving query performance is a critical issue for most database users. Almost all database systems include a *query optimizer* that analyzes queries and determines efficient execution mechanisms. A query optimizer generates one or more query plans for each query, each of which may be a mechanism used to run a query. The most efficient query plan is selected and used to run the query. The Splice Machine optimizer does a great job of converting your SQL into a semantically equivalent and more performant execution plan, and in most cases, takes care of this for you.
+
+However, any query optimizer has to deal with limitations, including:
 
 * The optimizer’s heuristic rewrite functionalities has limitations with regard to what it can do.
 * The optimizer can only explore a limited portion of the search space.
 * Statistics and cost estimation are not 100% accurate.
 * The optimizer must not use excessive time parsing query paths.
 
-
-XXXXXXXXXXXXXXXXXXXx
-
+Because of optimizer limitations, there are times when you may want to apply some manual tuning and rewriting to your queries for maximum performance. This chapter presents the features available in Splice Machine for analyzing and tuning your queries, in these topics:
 
 This other topics in this chapter show you how to use Splice Machine features to analyze and tune query performance:
 
