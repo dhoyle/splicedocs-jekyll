@@ -16,7 +16,7 @@ The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was 
 
 * The table to which you are restoring must already exist in the database.
 * The source and destination tables must have the same DDL, including the same primary keys and unique constraints.
-* The source and destinatoin tables must have the same indexes.
+* The source and destination tables must have the same indexes.
 
 
 {% include splice_snippets/enterpriseonly_note.md %}
