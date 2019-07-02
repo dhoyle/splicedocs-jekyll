@@ -18,7 +18,6 @@ If you have a query that is not performing as expected, you can run the `explain
 
 To generate an explain plan, simply put `explain` in front of a query. You'll note that you need to read the plan from the bottom up: the first step is at the bottom. For example:
 
-
 ```
 EXPLAIN
 SELECT COUNT(*) FROM tpch100.lineitem
