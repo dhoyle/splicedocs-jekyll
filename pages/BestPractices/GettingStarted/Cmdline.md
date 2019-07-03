@@ -18,6 +18,9 @@ is an easy way to interact with your Splice Machine database. This topic
 introduces <span class="AppCommand">splice&gt;</span> and some of the
 more common commands you'll use.
 
+In addition to the commands described her, you can run arbitrary SQL from the `splice>` command line. Simply enter the SQL directly on the command line, add a semicolon at the end, and press the Enter/Return key.
+{: .noteIcon}
+
 Our [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each available command.
 
 This topic show you the basics of working with the <span
@@ -27,8 +30,7 @@ sections:
 * [Starting splice&gt;](#Starting)
 * [Basic Syntax Rules](#Basic)
 * [Connecting to a Database](#Connecti)
-* [Displaying Database Objects](#Viewing4)
-* [Basic DDL and DML Statements](#Basic2)
+* [Command Summaries](#commands)
 
 ## Starting splice&gt;   {#Starting}
 
@@ -45,7 +47,7 @@ interpreter, follow these steps:
     ```
     {: .ShellCommand}
 
-3.  Start splice&gt;
+3.  Start `splice>`
 
     ```
     ./sqlshell.sh    #Use the correct path for your Splice Machine installation
@@ -55,49 +57,53 @@ interpreter, follow these steps:
 4.  The command line interpreter starts:
 
     ```
-    Running Splice Machine SQL ShellFor help: "Splice> help;"SPLICE** = current connectionsplice>
-    ```
-    {: .AppCommand}
+     ========= rlwrap detected and enabled.  Use up and down arrow keys to scroll through command line history. ========
 
-    `SPLICE` is the name of the default connection, which becomes the
-    current connection when you start the interpreter.
+    Running Splice Machine SQL shell
+    For help: "splice> help;"
+
+    SPLICE* - 	jdbc:splice://localhost:1527/splicedb
+    * = current connection
+    ```
+    {: .Example}
+
+    As you can see in the above message, you can enter the `help;` command to see a list of commands, and the default connection, `SPLICE`, is the current connection when you start the interpreter. Note that `rlwrap` is an optional command line wrapper that adds history and editing to your `splice>` experience.
 
 </div>
 
 ## Basic Syntax Rules   {#Basic}
 
-When using the command line (the <span
-class="AppCommand">splice&gt;</span> prompt), you must end each SQL
+When using the command line (the `splice>` prompt), you must end each SQL
 statement with a semicolon (`;`). For example:
 
 ```
 splice> select * from myTable;
 ```
-{: .AppCommand}
+{: .Example}
 
 You can extend SQL statements across multiple lines, as long as you end
 the last line with a semicolon. Note that the `splice>` command line
 interface prompts you with a fresh <span class="AppCommand">&gt;</span>
-at the beginning of each line. For example:
+at the beginning of each line when you don't end a line with a semicolon. For example:
 
 ```
-splice> select * from myTable> where i > 1;
+splice> select * from myTable
+> where i > 1;
 ```
-{: .AppCommand}
+{: .Example}
 
-The *[Command Line Syntax](cmdlineref_using_cli.html)* topic contains a complete syntax reference for <span
-class="AppCommand">splice&gt;</span>.
+The *[Command Line Syntax](cmdlineref_using_cli.html)* topic in our *Command Line Reference* contains a complete syntax reference for `splice>`.
 
 ## Connecting to a Database   {#Connecti}
 
-When you start splice&gt;, you are automatically connected to your
+When you start `splice>`, you are automatically connected to your
 default database. You can connect to other databases with the
 [`connect`](cmdlineref_connect.html) command:
 
 ```
 connect 'jdbc:splice://srv55:1527/splicedb;user=YourUserId;password=YourPassword' AS DEMO;
 ```
-{: .AppCommand}
+{: .Example}
 
 ### Anatomy of a Connection String
 
@@ -149,494 +155,375 @@ The [Command Line Syntax](cmdlineref_using_cli.html) describes the full set of c
     </tbody>
 </table>
 
-### Working with Connections
-
-You can connect to multiple database in Splice Machine, though you can only work with the *current connection* database. Here are commands you can use to work with database connections:
-
-
-#### View currently available connections:
-
-```
-splice> show connections;
-DEMO     - jdbc:splice://srv55:1527/splicedb
-SPLICE*  - jdbc:splice://localhost:1527/splicedb
-* = current connection
-```
-{: .Example}
-
-#### Open a new connection:
-
-```
-splice> SET CONNECTION DEMO;
-splice> show connections;
-DEMO*    - jdbc:splice://srv55:1527/splicedb
-SPLICE   - jdbc:splice://localhost:1527/splicedb
-* = current connection
-```
-{: .Example}
-
-#### Close a connection:
-You can use the &nbsp;[`disconnect`](cmdlineref_disconnect.html) command to
-close a connection:
-
-```
-splice> Disconnect DEMO;
-splice> show Connections;
-SPLICE  - jdbc:splice://localhost:1527/splicedb
-No current connection
-```
-{: .Example}
-
-#### Make a named connection the current connection:
-
-```
-splice> connect myDatabase;
-splice> show connections;
-SPLICE*  - jdbc:splice://localhost:1527/myDatabase
-* = current connection
-```
-{: .Example}
-
-#### Disconnect from all connections:
-
-```
-splice> disconnect all;
-splice> show connections;
-No connections available
-```
-{: .Example}
-
-## Working with Schemas
-
-Here are commands you can use to work with the schemas in your database:
-
-#### Display schemas:
-
-```
-splice> show schemas;
-TABLE_SCHEM
-------------------------------
-NULLID
-SPLICE
-SQLJ
-SYS
-SYSCAT
-SYSCS_DIAG
-SYSCS_UTIL
-SYSFUN
-SYSIBM
-SYSPROC
-SYSSTAT
-11 rows selected
-```
-{: .Example}
-
-
-#### Display the current schema:
-
-```
-```
-{: .Example}
-
-#### Set the current schema:
-
-```
-splice> values(current schema);
-1
-------------------------------
-SPLICE
-1 row selected
-```
-{: .Example}
-
-
-#### Change the current schema:
-
-```
-splice> set schema mySchema;
-0 rows inserted/updated/deleted
-splice> values(current schema);
-1
-------------------------------
-MYSCHEMA
-```
-{: .Example}
-
-
-## Working with Tables
-
-Here are commands you can use to work with the schemas in your database:
-
-
-#### Display all available tables in all schemas:
-
-```
-splice> SHOW TABLES;
-TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
---------------------------------------------------------
-SYS          |SYSALIASES            |256       |
-SYS          |SYSBACKUP             |992       |
-SYS          |SYSBACKUPITEMS        |1104      |
-SYS          |SYSCHECKS             |336       |
-SYS          |SYSCOLPERMS           |608       |
-SYS          |SYSCOLUMNS            |80        |
-SYS          |SYSCOLUMNSTATS        |1264      |
-SYS          |SYSCONGLOMERATES      |48        |
-SYS          |SYSCONSTRAINTS        |304       |
-SYS          |SYSDEPENDS            |368       |
-SYS          |SYSFILES              |288       |
-SYS          |SYSFOREIGNKEYS        |272       |
-SYS          |SYSKEYS               |240       |
-SYS          |SYSPERMS              |912       |
-SYS          |SYSPHYSICALSTATS      |1280      |
-SYS          |SYSPRIMARYKEYS        |320       |
-SYS          |SYSROLES              |816       |
-SYS          |SYSROUTINEPERMS       |656       |
-SYS          |SYSSCHEMAPERMS        |1328      |
-SYS          |SYSSCHEMAS            |32        |
-SYS          |SYSSEQUENCES          |864       |
-SYS          |SYSSTATEMENTS         |384       |
-SYS          |SYSTABLEPERMS         |592       |
-SYS          |SYSTABLES             |64        |
-SYS          |SYSTABLESTATS         |1296      |
-SYS          |SYSTRIGGERS           |576       |
-SYS          |SYSUSERS              |928       |
-SYS          |SYSVIEWS              |352       |
-SYSIBM       |SYSDUMMY1             |1312      |
-SPLICE       |CUSTOMERS             |1568      |
-SPLICE       |T_DETAIL              |1552      |
-SPLICE       |T_HEADER              |1536      |
-
-34 rows selected
-{: .AppCommand xml:space="preserve"}
-
-```
-{: .Example}
-
-
-#### Display tables in a specific schema:
-
-```
-splice> show tables in SPLICE;
-TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
---------------------------------------------------------
-SPLICE       |CUSTOMERS             |1568      |
-SPLICE       |T_DETAIL              |1552      |
-SPLICE       |T_HEADER              |1536      |
-
-3 rows selected
-```
-{: .Example}
-
-
-#### Describe the structure of a table:
-
-```
-splice> describe T_DETAIL;
-COLUMN_NAME                 |TYPE_NAME|DEC |NUM |COLUM |COLUMN_DEF|CHAR_OCTE |IS_NULL
---------------------------------------------------------------------------------------------------
-TRANSACTION_HEADER_KEY      |BIGINT   |0   |10  |19    |NULL      |NULL      |NO
-TRANSACTION_DETAIL_KEY      |BIGINT   |0   |10  |19    |NULL      |NULL      |NO
-CUSTOMER_MASTER_ID          |BIGINT   |0   |10  |19    |NULL      |NULL      |YES
-TRANSACTION_DT              |DATE     |0   |10  |10    |NULL      |NULL      |NO
-ORIGINAL_SKU_CATEGORY_ID    |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
-
-5 rows selected
-```
-{: .Example}
-
-
-## Displaying Indexes
-
-Here are commands you can use to display indexes.
-
-
-#### Display all of the indexes in a schema:
-
-```
-splice> show indexes in SPLICE;
-TABLE_NAME    |INDEX_NAME    |COLUMN_NAME         |ORDINAL&|NON_UNIQUE|TYPE |ASC&|CONGLOM_NO
----------------------------------------------------------------------------------------------
-T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&|1       |true      |BTREE|A   |1585
-T_DETAIL      |TDIDX1        |TRANSACTION_DT      |2       |true      |BTREE|A   |1585
-T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A   |1585
-T_HEADER      |THIDX2        |CUSTOMER_MASTER_ID  |1       |true      |BTREE|A   |1601
-T_HEADER      |THIDX2        |TRANSACTION_DT      |2       |true      |BTREE|A   |1601
-
-5 rows selected
-{: .AppCommand xml:space="preserve"}
-```
-{: .Example}
-
-
-#### Display the indexes defined for a specific table:
-
-```
-splice> show indexes FROM T_DETAIL;
-TABLE_NAME    |INDEX_NAME    |COLUMN_NAME         |ORDINAL&|NON_UNIQUE|TYPE |ASC&|CONGLOM_NO
----------------------------------------------------------------------------------------------
-T_DETAIL      |TDIDX1        |ORIGINAL_SKU_CATEGO&|1       |true      |BTREE|A   |1585
-T_DETAIL      |TDIDX1        |TRANSACTION_DT      |2       |true      |BTREE|A   |1585
-T_DETAIL      |TDIDX1        |CUSTOMER_MASTER_ID  |3       |true      |BTREE|A   |1585
-
-3 rows selected
-
-```
-{: .Example}
-
-## Displaying Views   {#Views}
-
-Here are commands for displaying views.
-
-
-#### Display all views in the database:
-
-```
-splice> show views;
-TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
------------------------------------------------------------
-SYS            |SYSCOLUMNSTATISTICS   |NULL      |
-SYS            |SYSTABLESTATISTICS    |NULL      |
-
-2 rows selected
-```
-{: .Example}
-
-
-#### Display the views in a schema:
-
-```
-splice> show views in SPLICE;
-TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
------------------------------------------------------------
-SPLICE         |V1                    |NULL      |
-----------------------------------------------------------
-
-1 row selected
-```
-{: .Example}
-
-
-## Displaying Stored Procedures and Functions   {#Stored}
-
-You can use these commands to display the procedures and functions that are defined in your database.
-
-
-#### Display the functions defined in a schema:
-
-```
-splice> show functions in SPLICE;
-FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
--------------------------------------------------------------------------
-SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
-1 row selected
-```
-{: .Example}
-
-#### Display the stored function in a schema:
-
-```
-splice> show procedures in SQLJ;
-PROCEDURE_SCHEM     |PROCEDURE_NAME    |REMARKS
-----------------------------------------------------------
-SQLJ                |INSTALL_JAR       |com.splicemachine.db.catalog.SystemProcedures.INSTALL_JAR
-SQLJ                |REMOVE_JAR        |com.splicemachine.db.catalog.SystemProcedures.REMOVE_JAR
-SQLJ                |REPLACE_JAR       |com.splicemachine.db.catalog.SystemProcedures.REPLACE_JAR
-
-3 rows selected
-```
-{: .Example}
-
-
-## Basic DDL and DML Statements   {#Basic2}
-
-This section introduces the basics of running SQL Data Definition
-Language (*DDL*) and Data Manipulation Language (*DML*) statements from
-<span class="AppCommand">splice&gt;</span>.
-
-### CREATE Statements   {#CREATESta}
-
-SQL uses `CREATE` statements to create objects such as
-[tables](sqlref_statements_createtable.html). Here are some examples:
-
-#### Creating schemas:
-
-```
-splice> create schema myschema1;
-0 rows inserted/updated/deleted
-splice> create schema myschema2;
-0 rows inserted/updated/deleted
-splice> show schemas;
-TABLE_SCHEM
-------------------------------
-MYSCHEMA1
-MYSCHEMA2
-NULLID
-SPLICE
-SQLJ
-SYS
-SYSCAT
-SYSCS_DIAG
-SYSCS_UTIL
-SYSFUN
-SYSIBM
-SYSPROC
-SYSSTAT
-
-13 rows selected
-```
-{: .Example}
-
-
-#### Creating Tables:
-
-```
-splice> SET SCHEMA MySchema1;
-0 rows inserted/updated/deleted
-splice> CREATE TABLE myTable ( myNum int, myName VARCHAR(64) );
-0 rows inserted/updated/deleted
-splice> CREATE TABLE Players(
-    ID           SMALLINT NOT NULL PRIMARY KEY,
-    Team         VARCHAR(64) NOT NULL,
-    Name         VARCHAR(64) NOT NULL,
-    Position     CHAR(2),
-    DisplayName  VARCHAR(24),
-    BirthDate    DATE
-    );
-0 rows inserted/updated/deleted
-splice> SHOW TABLES IN MySchema1;
-TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
---------------------------------------------------------
-MYSCHEMA1    |MYTABLE               |1616      |
-MYSCHEMA1    |PLAYERS               |1632      |
-2 rows selected
-```
-{: .Example}
-
-#### Creating Functions
-```
-splice>CREATE FUNCTION SIN (DATA DOUBLE)
-   RETURNS DOUBLE
-   EXTERNAL NAME 'java.lang.Math.sin'
-   LANGUAGE JAVA PARAMETER STYLE JAVA;
-0 rows inserted/updated/deleted
-```
-{: .Example}
-
-#### Creating Views
-
-```
-splice> CREATE VIEW PlayerAges (Player, Team, Age)
-   AS SELECT DisplayName, Team,
-      INT( (Now - Birthdate) / 365.25) AS Age
-      FROM Players;
-0 rows inserted/updated/deleted
-```
-{: .Example}
-
-
-### DROP Statements
-
-SQL uses `DROP` statements to delete objects such as
-[tables](sqlref_statements_droptable.html). For example:
-
-
-#### Dropping a schema:
-
-```
-splice> DROP schema MySchema2 restrict;
-0 rows inserted/updated/deleted
-```
-{: .Example}
-
-
-#### Dropping a table:
-
-```
-splice> DROP TABLE myTable;
-0 rows inserted/updated/deleted
-```
-{: .Example}
-
-See the *[DROP Statements](sqlref_statements_dropstatements.html)*
-section in our *SQL Reference Manual* for more information.
-
-## Inserting Data
-
-Once you've created a table, you can use
-[`INSERT`](sqlref_statements_insert.html) statements to insert records
-into that table; for example:
-
-```
-splice> INSERT INTO Players
-   VALUES( 99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991');
-1 row inserted/updated/deleted
-
-splice> INSERT INTO Players
-   VALUES (99, 'Giants', 'Joe Bojangles', 'C', 'Little Joey', '07/11/1991'),
-          (73, 'Giants', 'Lester Johns', 'P', 'Big John', '06/09/1984'),
-          (27, 'Cards', 'Earl Hastings', 'OF', 'Speedy Earl', '04/22/1982');
-3 rows inserted/updated/deleted
-```
-{: .Example}
-
-## Selecting Data
-
-You can use [`SELECT`](sqlref_expressions_select.html) statements to select specific
-records or portions of records. This section contains several simple
-examples of selecting data.
-
-
-#### Select a single column from all records in a table:
-
-```
-splice> select NAME from Players;
-NAME
-----------------------------------------------------------------
-Earl Hastings
-Lester Johns
-Joe Bojangles
-
-3 rows selected
-```
-{: .Example}
-
-
-#### Select all columns from all records in a table:
-
-```
-splice> select * from Players;
-ID    |TEAM   |NAME           |POS&|DISPLAYNAME    |BIRTHDATE
----------------------------------------------------------------
-27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22
-73    |Giants |Lester Johns   |P   |Big John       |1984-06-09
-99    |Giants |Joe Bojangles  |C   |Little Joey    |1991-07-11
-
-3 rows selected
-```
-{: .Example}
-
-
-#### Use a where clause to select certain records:
-
-```
-splice> select * from Players WHERE Team='Cards';
-ID    |TEAM   |NAME           |POS&|DISPLAYNAME    |BIRTHDATE
----------------------------------------------------------------
-27    |Cards  |Earl Hastings  |OF  |Speedy Earl    |1982-04-22
-1 row selected
-```
-{: .Example}
-
-
-#### Count the records in a table:
-
-```
-splice> select count(*) from Players;
------------------------
-31 rows selected
-```
-{: .Example}
+## Commands Summary  {#commands}
+
+The remainder of this topic summarizes the commands that are available to use in the `splice>` command line interpreter.
+
+In addition to the commands described in this topic, you can run arbitrary SQL from the `splice>` command line. Simply enter the SQL directly on the command line, followed by a semicolon.
+{: .noteIcon}
+
+Each of the following sections contains a table of commands available for a specific command category:
+
+* [Connecting to Databases](#cmd_connect)
+* [Displaying Database Information](#cmd_display)
+* [Miscellaneous Commands](#cmd_misc)
+* [Running Commands and Statements](#cmd_statements)
+* [Statistics and Query Plans](#cmd_statistics)
+* [Transactions](#cmd_transactions)
+
+The command name in each table entry is a link to the reference page for that command.
+
+### Connecting to Databases  {#cmd_connect}
+
+The table below summarizes the commands available to work with database connections:
+
+<table summary="Database Connection Commands">
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_connect.html">Connect</a>
+            </td>
+            <td>Connect to a database via its URL.</td>
+            <td><span class="Example">splice&gt; connect 'jdbc:splice://xyz:1527/splicedb';</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_disconnect.html">Disconnect</a>
+            </td>
+            <td>Disconnects from a database.</td>
+            <td><span class="Example">splice&gt; disconnect SPLICE;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_setconnection.html">Set Connection</a>
+            </td>
+            <td>Allows you to specify which connection is the current connection</td>
+            <td><span class="Example">splice&gt; set connection sample1;</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+### Displaying Database Information  {#cmd_display}
+
+The table below summarizes the commands available to display database information:
+
+<table summary="Commands to Display Database Information">
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showconnections.html">Show Connections</a>
+            </td>
+            <td>Displays information about active connections and database objects.</td>
+            <td><span class="Example">splice&gt; show connections;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showcreatetable.html">Show Create Table</a>
+            </td>
+            <td>command displays the DDL used with the `create table` statement to create a specified table..</td>
+            <td><span class="Example">splice&gt; show create table players;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showfunctions.html">Show Functions</a>
+            </td>
+            <td>Displays information about functions defined in the database or in a schema.</td>
+            <td><span class="Example">splice&gt; show functions in splice;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showindexes.html">Show Indexes</a>
+            </td>
+            <td>Displays information about the indexes defined on a table, a database, or a schema.</td>
+            <td><span class="Example">splice&gt; show indexes from mytable;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showprimarykeys.html">Show Primary Keys</a>
+            </td>
+            <td>Displays information about the primary keys in a table.</td>
+            <td><span class="Example">splice&gt; show primarykeys from mySchema.myTable;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showprocedures.html">Show Procedures</a>
+            </td>
+            <td>Displays information about active connections and database objects.</td>
+            <td><span class="Example">splice&gt; show procedures in syscs_util;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showroles.html">Show Roles</a>
+            </td>
+            <td>Displays information about all of the roles defined in the database.</td>
+            <td><span class="Example">splice&gt; show roles;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showschemas.html">Show Schemas</a>
+            </td>
+            <td>Displays information about the schemas in the current connection.</td>
+            <td><span class="Example">splice&gt; show schemas;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showsynonyms.html">Show Synonyms</a>
+            </td>
+            <td>Displays information about the synonyms that have been created in a database or schema.</td>
+            <td><span class="Example">splice&gt; show synonyms;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showtables.html">Show Tables</a>
+            </td>
+            <td>Displays information about all of the tables in a database or schema.</td>
+            <td><span class="Example">splice&gt; show tables in SPLICE;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showviews.html">Show Views</a>
+            </td>
+            <td>Displays information about all of the active views in a schema.</td>
+            <td><span class="Example">splice&gt; show views in SPLICE;</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+### Miscellaneous Commands  {#cmd_misc}
+
+The table below summarizes the miscellaneous commands:
+
+<table summary="Miscellaneous Commands">
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_elapsedtime.html">Elapsedtime</a>
+            </td>
+            <td>Enables or disables display of elapsed time for command execution.</td>
+            <td><span class="Example">splice&gt; elapsedtime on;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_exit.html">Exit</a>
+            </td>
+            <td>Causes the command line interface to exit.</td>
+            <td><span class="Example">splice&gt; exit;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_help.html">Help</a>
+            </td>
+            <td>Displays a list of the available commands.</td>
+            <td><span class="Example">splice&gt; help;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_maximumdisplaywidth.html">MaximumDisplayWidth</a>
+            </td>
+            <td>Sets the maximum displayed width for each column of results displayed by the command line interpreter.</td>
+            <td><span class="Example">splice&gt; maximumdisplaywidth 30;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_setsessionproperty.html">Set Session_Property</a>
+            </td>
+            <td>Allows you to specify default hint values for certain query hints</td>
+            <td><span class="Example">splice&gt; set session_property useSpark=true;</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+### Running Commands and Statements  {#cmd_statements}
+
+The table below summarizes the commands available to run prepared statements and SQL script files:
+
+<table summary="Commands for Running Queries and Statements">
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_execute.html">Execute</a>
+            </td>
+            <td>Executes an SQL prepared statement or SQL command string.</td>
+            <td><span class="Example">splice&gt; execute 'insert into myTable(id, val)
+values(?,?)' ;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_export.html">Export</a>
+            </td>
+            <td>Exports query results to CSV files.</td>
+            <td><span class="Example">splice&gt; EXPORT('/my/export/dir', null, null, null, null, null)
+SELECT a,b,sqrt(c) FROM join t2 on t1.a=t2.a;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_exportbinary.html">Export_Binary</a>
+            </td>
+            <td>Exports query results to binary files.</td>
+            <td><span class="Example">splice&gt; EXPORT_BINARY('/my/export/dir', true, 'parquet')
+SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_run.html">Run</a>
+            </td>
+            <td>Runs commands from a file.</td>
+            <td><span class="Example">splice&gt; run myCmdFile;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_prepare.html">Prepare</a>
+            </td>
+            <td>Creates a prepared statement for use by other commands.</td>
+            <td><span class="Example">splice&gt; prepare seeMenu as 'SELECT * FROM menu';</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_remove.html">Remove</a>
+            </td>
+            <td>Removes a previously prepared statement.</td>
+            <td><span class="Example">splice&gt; remove seeMenu;</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+### Statistics and Query Plans  {#cmd_statistics}
+
+The table below summarizes the commands available for working with database statistics and analyzing query execution plans:
+
+<table summary="Statistics and Query Performance Commands">
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_analyze.html">Analyze</a>
+            </td>
+            <td>Collects statistics for a table or schema.</td>
+            <td><span class="Example">splice&gt; analyze table myTable;<br />splice&gt; analyze schema myschema;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_explainplan.html">Explain</a>
+            </td>
+            <td>Displays the execution plan for an SQL statement.</td>
+            <td><span class="Example">splice&gt; explain select count(*) from si;</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+### Transactions  {#cmd_transactions}
+
+The table below summarizes the commands available for working with database transactions:
+
+<table summary="Transaction Commands">
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Description</th>
+            <th>Usage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_autocommit.html">Autocommit</a>
+            </td>
+            <td>Turns the connection's auto-commit mode on or off.</td>
+            <td><span class="Example">splice&gt; autocommit off;</span>
+            </td>
+        </tr>
+       <tr>
+            <td class="CodeFont"><a href="cmdlineref_commit.html">Commit</a>
+            </td>
+            <td>Commits the currently active transaction and initiates a new transaction.</td>
+            <td><span class="Example">splice&gt; commit;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_releasesavepoint.html">Release Savepoint</a>
+            </td>
+            <td>Releases a savepoint.</td>
+            <td><span class="Example">splice&gt; release savepoint gSavePt1;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_rollback.html">Rollback</a>
+            </td>
+            <td>Rolls back the currently active transaction and initiates a new transaction.</td>
+            <td><span class="Example">splice&gt; rollback;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_rollbacktosavepoint.html">Rollback to Savepoint</a>
+            </td>
+            <td>Rolls the current transaction back to the specified savepoint.</td>
+            <td><span class="Example">splice&gt; rollback to savepoint gSavePt1;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_savepoint.html">Savepoint</a>
+            </td>
+            <td>Creates a savepoint within the current transaction.</td>
+            <td><span class="Example">splice&gt; savepoint gSavePt1;</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 </div>
 </section>
