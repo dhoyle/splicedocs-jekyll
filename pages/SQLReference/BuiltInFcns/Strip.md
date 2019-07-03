@@ -142,10 +142,8 @@ aabbcc
 * [`LCASE`](sqlref_builtinfcns_lcase.html) function
 * [`LENGTH`](sqlref_builtinfcns_length.html) function
 * [`LOCATE`](sqlref_builtinfcns_locate.html) function
-* [`LSTRIP`](sqlref_builtinfcns_lstrip.html) function
 * [`REGEX_LIKE`](sqlref_builtinfcns_regexplike.html) operator
 * [`REPLACE`](sqlref_builtinfcns_replace.html) function
-* [`RSTRIP`](sqlref_builtinfcns_rstrip.html) function
 * [`SUBSTR`](sqlref_builtinfcns_substr.html) function
 * [`UCASE`](sqlref_builtinfcns_ucase.html) function
 
