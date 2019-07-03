@@ -18,6 +18,9 @@ backup directory.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
+This procedure only works with internal, Splice Machine tables in your database. You can back up an external table using the Hadoop `DistCp` tool.
+{: .noteIcon}
+
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -67,6 +70,7 @@ type
 Specifies the type of table backup that you want performed. Currently, the only valid value is `full`.
 {: .paramDefnFirst}
 </div>
+
 ## Results
 
 This procedure does not return a result.
