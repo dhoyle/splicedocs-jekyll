@@ -13,24 +13,9 @@ folder: SQLReference/BuiltInSysProcs
 # SYSCS_UTIL.SYSCS_BACKUP_SCHEMA
 
 The `SYSCS_UTIL.SYSCS_BACKUP_SCHEMA` system procedure performs an
-immediate full {% comment %}or incremental{% endcomment %} backup of the tables and indexes belonging to a schema in your database to a specified backup directory.
+immediate full backup of the tables and indexes belonging to a schema in your database to a specified backup directory.
 
 {% include splice_snippets/enterpriseonly_note.md %}
-
-{% comment %}
-+++ REMOVE THIS COMMENT WHEN INCREMENTAL BECOMES AVAILABLE +++
-Splice Machine supports both full and incremental backups: 
-
-* A *full backup* backs up all of the files/blocks that constitute your
-  schema.
-* An *incremental backup* only stores database files/blocks that have
-  changed since a previous backup.
-
-The first time that you run an incremental backup, a full backup is
-performed. Subsequent runs of the backup will only copy information that
-has changed since the previous backup.
-{: .noteNote}
-{% endcomment %}
 
 ## Syntax
 
@@ -73,17 +58,6 @@ type
 
 Specifies the type of schema backup that you want performed. Currently, the only valid value is `full`.
 {: .paramDefnFirst}
-{% comment %}
-This must be one ofthe following values: `full` or `incremental`; any other value
-produces an error and the backup is not run.
-{: .paramDefnFirst}
-
-Note that if you specify `incremental`, Splice Machine checks the &nbsp;
-[`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) table to determine if
-there already is a backup for the table; if not, Splice Machine will
-perform a full backup, and subsequent backups will be incremental.
-{: .paramDefn}
-{% endcomment %}
 
 </div>
 ## Results
@@ -100,16 +74,6 @@ This procedure does not return a result.
 Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance.
 
 You can revert to using `distcp`, which uses a MapReduce job that can run into resource issues. For more information, see the [Understanding and Troubleshooting Backups](bestpractices_onprem_backups.html) topic.
-
-## HBase Configuration Options for Incremental Backup {#UsageConfig}
-
-If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:
-
-<div class="preWrapperWide" markdown="1">
-    hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
-    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileCleaner
-{: .AppCommand}
-</div>
 
 ## Execute Privileges
 
@@ -152,6 +116,7 @@ FULL backup to /backup
 
 1 row selected
 ```
+{: .Example}
 
 ### Examining the Backup  {#exexamine}
 
@@ -164,6 +129,7 @@ BACKUP_ID      |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS     |
 125953         |2018-10-26 00:12:33.896  |2018-10-26 00:42:53.546  |SUCCESS    |SCHEMA    |false|-1                  |3
 
 ```
+{: .Example}
 
 You can use the ID of your backup job to examine the `sys.sysbackupitems` and verify that the base table and two indexes have been backed up:
 
@@ -177,6 +143,7 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 
 3 rows selected
 ```
+{: .Example}
 
 ### Restoring the Backup  {#exrestore}
 You can restore the schema to another schema on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
@@ -186,6 +153,7 @@ This command first validates the backed-up schema, and then restores it to a dif
 splice> CALL SYSCS_UTIL.SYSCS_RESTORE_SCHEMA('NEWTPCH1', 'TPCH1', '/backup', 125953, true);
 Statement executed.
 ```
+{: .Example}
 
 See the reference page for the [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](sqlref_sysprocs_restoreschema.html) system procedure for more information about restoring a backed-up schema.
 
