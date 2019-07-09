@@ -31,7 +31,7 @@ This topic gives a brief introduction to Splice Machine's capabilities in the fo
 The other topics in this chapter provide the information you need to get started with using Splice Machine:
 
 * [Getting Started: Using the Command Line Interpreter](gettingstarted_cmdline.html)
-* [Getting Started: Importing Data and Running Queries](gettingstarted_ingesting.html)
+* [Getting Started: Loading Data and Running Queries](gettingstarted_loadandrun.html)
 * [Getting Started: Optimizing Your Queries](gettingstarted_optimizing.html)
 
 ### Hybrid Transactional and Analytical Processing  {#hybrid}

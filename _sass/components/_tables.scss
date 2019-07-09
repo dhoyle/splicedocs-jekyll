@@ -20,7 +20,8 @@
 }
 
 table,
-table.noBorder
+table.noBorder,
+table.oddEven
 {
 	table-layout: auto;
 	border: $border-table;
@@ -101,6 +102,16 @@ table.noBorder
 		height: auto;
 		margin: 0;
 	}
+}
+
+table.oddEven tr:nth-child(even) {
+	border: 1px solid $border-table;
+	background-color: $table-evenrow-bgcolor;
+}
+
+table.oddEven tr:nth-child(odd) {
+	border: 1px solid $border-table;
+	background-color: $table-oddrow-bgcolor;
 }
 
 table.noBorder {

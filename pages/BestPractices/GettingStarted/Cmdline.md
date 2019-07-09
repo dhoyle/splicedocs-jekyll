@@ -18,9 +18,6 @@ is an easy way to interact with your Splice Machine database. This topic
 introduces <span class="AppCommand">splice&gt;</span> and some of the
 more common commands you'll use.
 
-In addition to the commands described her, you can run arbitrary SQL from the `splice>` command line. Simply enter the SQL directly on the command line, add a semicolon at the end, and press the Enter/Return key.
-{: .noteIcon}
-
 Our [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each available command.
 
 This topic show you the basics of working with the <span
@@ -31,6 +28,10 @@ sections:
 * [Basic Syntax Rules](#Basic)
 * [Connecting to a Database](#Connecti)
 * [Command Summaries](#commands)
+
+
+You can run arbitrary SQL from the <span class="AppCommand">splice&gt;</span> command line along with the commands documented in this topic. Simply enter the SQL directly on the command line, add a semicolon at the end, and press the Enter/Return key.
+{: .noteIcon}
 
 ## Starting splice&gt;   {#Starting}
 
@@ -47,7 +48,7 @@ interpreter, follow these steps:
     ```
     {: .ShellCommand}
 
-3.  Start `splice>`
+3.  Start <span class="AppCommand">splice&gt;</span>
 
     ```
     ./sqlshell.sh    #Use the correct path for your Splice Machine installation
@@ -67,13 +68,13 @@ interpreter, follow these steps:
     ```
     {: .Example}
 
-    As you can see in the above message, you can enter the `help;` command to see a list of commands, and the default connection, `SPLICE`, is the current connection when you start the interpreter. Note that `rlwrap` is an optional command line wrapper that adds history and editing to your `splice>` experience.
+    As you can see in the above message, you can enter the `help` command to see a list of commands, and the default connection, `SPLICE`, is the current connection when you start the interpreter. Note that `rlwrap` is an optional command line wrapper that adds history and editing to your <span class="AppCommand">splice&gt;</span> experience.
 
 </div>
 
 ## Basic Syntax Rules   {#Basic}
 
-When using the command line (the `splice>` prompt), you must end each SQL
+When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL
 statement with a semicolon (`;`). For example:
 
 ```
@@ -81,10 +82,7 @@ splice> select * from myTable;
 ```
 {: .Example}
 
-You can extend SQL statements across multiple lines, as long as you end
-the last line with a semicolon. Note that the `splice>` command line
-interface prompts you with a fresh <span class="AppCommand">&gt;</span>
-at the beginning of each line when you don't end a line with a semicolon. For example:
+You can extend commands and SQL statements across multiple lines: if you press Enter/Return on a line doesn't end with a semicolon, <span class="AppCommand">splice&gt;</span> will automatically display a <span class="AppCommand">&gt;</span> on the new line to prompt you for more input.  For example:
 
 ```
 splice> select * from myTable
@@ -92,12 +90,12 @@ splice> select * from myTable
 ```
 {: .Example}
 
-The *[Command Line Syntax](cmdlineref_using_cli.html)* topic in our *Command Line Reference* contains a complete syntax reference for `splice>`.
+The *[Command Line Syntax](cmdlineref_using_cli.html)* topic in our *Command Line Reference* contains a complete syntax reference for <span class="AppCommand">splice&gt;</span>.
 
 ## Connecting to a Database   {#Connecti}
 
-When you start `splice>`, you are automatically connected to your
-default database. You can connect to other databases with the
+When you start <span class="AppCommand">splice&gt;</span>, you are automatically connected to your
+default database. You can connect to other databases with the &nbsp;&nbsp;
 [`connect`](cmdlineref_connect.html) command:
 
 ```
@@ -157,12 +155,7 @@ The [Command Line Syntax](cmdlineref_using_cli.html) describes the full set of c
 
 ## Commands Summary  {#commands}
 
-The remainder of this topic summarizes the commands that are available to use in the `splice>` command line interpreter.
-
-In addition to the commands described in this topic, you can run arbitrary SQL from the `splice>` command line. Simply enter the SQL directly on the command line, followed by a semicolon.
-{: .noteIcon}
-
-Each of the following sections contains a table of commands available for a specific command category:
+The remainder of this topic summarizes the commands that are available to use in the <span class="AppCommand">splice&gt;</span> command line interpreter. Each of the following sections contains a table summarizing the commands available for a specific command category:
 
 * [Connecting to Databases](#cmd_connect)
 * [Displaying Database Information](#cmd_display)
@@ -171,13 +164,14 @@ Each of the following sections contains a table of commands available for a spec
 * [Statistics and Query Plans](#cmd_statistics)
 * [Transactions](#cmd_transactions)
 
-The command name in each table entry is a link to the reference page for that command.
+The command name in each table entry links to the *Command Line Reference* page for that command.
+{: .noteNote}
 
 ### Connecting to Databases  {#cmd_connect}
 
 The table below summarizes the commands available to work with database connections:
 
-<table summary="Database Connection Commands">
+<table class="oddEven" summary="Database Connection Commands">
     <col />
     <col />
     <col />
@@ -200,13 +194,13 @@ The table below summarizes the commands available to work with database connecti
             <td class="CodeFont"><a href="cmdlineref_disconnect.html">Disconnect</a>
             </td>
             <td>Disconnects from a database.</td>
-            <td><span class="Example">splice&gt; disconnect SPLICE;</span>
+            <td><span class="Example">splice&gt; disconnect sample1;</span>
             </td>
         </tr>
         <tr>
             <td class="CodeFont"><a href="cmdlineref_setconnection.html">Set Connection</a>
             </td>
-            <td>Allows you to specify which connection is the current connection</td>
+            <td>Allows you to specify which connection is the current connection.</td>
             <td><span class="Example">splice&gt; set connection sample1;</span>
             </td>
         </tr>
@@ -218,7 +212,7 @@ The table below summarizes the commands available to work with database connecti
 
 The table below summarizes the commands available to display database information:
 
-<table summary="Commands to Display Database Information">
+<table class="oddEven" summary="Commands to Display Database Information">
     <col />
     <col />
     <col />
@@ -240,7 +234,7 @@ The table below summarizes the commands available to display database informatio
         <tr>
             <td class="CodeFont"><a href="cmdlineref_showcreatetable.html">Show Create Table</a>
             </td>
-            <td>command displays the DDL used with the `create table` statement to create a specified table..</td>
+            <td>Displays the DDL used with the <code>create table</code> statement to create a specified table.</td>
             <td><span class="Example">splice&gt; show create table players;</span>
             </td>
         </tr>
@@ -314,7 +308,7 @@ The table below summarizes the commands available to display database informatio
 
 The table below summarizes the miscellaneous commands:
 
-<table summary="Miscellaneous Commands">
+<table class="oddEven" summary="Miscellaneous Commands">
     <col />
     <col />
     <col />
@@ -357,7 +351,7 @@ The table below summarizes the miscellaneous commands:
         <tr>
             <td class="CodeFont"><a href="cmdlineref_setsessionproperty.html">Set Session_Property</a>
             </td>
-            <td>Allows you to specify default hint values for certain query hints</td>
+            <td>Allows you to specify default hint values for certain query hints.</td>
             <td><span class="Example">splice&gt; set session_property useSpark=true;</span>
             </td>
         </tr>
@@ -369,7 +363,7 @@ The table below summarizes the miscellaneous commands:
 
 The table below summarizes the commands available to run prepared statements and SQL script files:
 
-<table summary="Commands for Running Queries and Statements">
+<table class="oddEven" summary="Commands for Running Queries and Statements">
     <col />
     <col />
     <col />
@@ -434,7 +428,7 @@ SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;</span>
 
 The table below summarizes the commands available for working with database statistics and analyzing query execution plans:
 
-<table summary="Statistics and Query Performance Commands">
+<table class="oddEven" summary="Statistics and Query Performance Commands">
     <col />
     <col />
     <col />
@@ -468,7 +462,7 @@ The table below summarizes the commands available for working with database stat
 
 The table below summarizes the commands available for working with database transactions:
 
-<table summary="Transaction Commands">
+<table class="oddEven" summary="Transaction Commands">
     <col />
     <col />
     <col />

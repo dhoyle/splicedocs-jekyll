@@ -1,40 +1,48 @@
 ---
-title: Ingesting Data and Running Queries
-summary: Ingesting Data and Running Queries
+title: Getting Started with Loading Data and Running Queries
+summary: Loading Data and Running Queries
 keywords:
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: gettingstarted_ingesting.html
+permalink: gettingstarted_loadandrun.html
 folder: GettingStarted
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Ingesting Data and Running Queries
+# Getting Started with Loading Data and Running Queries
 
 This topic helps you to get started with importing data into your Splice Machine database and then querying that data, in these sections:
 
-* Creating and Populating an Example Table
-* Running database queries from a Zeppelin notebook*
+* Creating and populating an example table
+* Running database queries from the command line
 * Using `Explain Plan` to explore the execution plan for a query
 
-Once you've learned about importing, we strongly suggest visiting these *Best Practices* chapters, which  XXXX
+Once you've learned about importing, we strongly suggest visiting these other sections in our documentation:
 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 * [Best Practices - Data Ingestion](bestpractices_ingest_overview.html) chapter, which describes and compares the different methods available for importing data in Splice Machine, including highly performant methods for ingesting extremely large datasets.
 * [Best Practices - XXXXXXXXXXXXXXXXXXx]
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-## 1. Create and Populate our Example Table
+
+## 1. Create and and populating an example table
 First we'll create a table named `import_example` in a new schema named `ADMIN`, then we'll populate the `import_example` table with some simple data. For additional information about importing this data, see the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Beginning Developers* course.
 
-Click the  <img class="inline" src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" alt="Run Zep Paragraph Icon"> *Run* button in the  the next paragraph to create and populate the table:
 
+```
+CREATE TABLE import_example (i int, v varchar(20), t timestamp);
+```
+{: .Example}
 
-%splicemachine
+XXXXXXXX Now Import XXXXXXXXXXXXXX
+```
+call SYSCS_UTIL.IMPORT_DATA('SPLICE','import_example',null,'s3a://splice-examples/import/example1.csv',null,null,null,null,null,0,null,null,null);
+```
+{: .Example}
 
-CREATE TABLE admin.import_example (i int, v varchar(20), t timestamp);
-
-call SYSCS_UTIL.IMPORT_DATA('ADMIN','import_example',null,'s3a://splice-examples/import/example1.csv',null,null,null,null,null,0,null,null,null);
+Note that we specified `SPLICE` as the schema name for our new table. `SPLICE` is the default schema when you start up.
 
 ## Running a Simple SQL Statement
 
@@ -43,10 +51,19 @@ Splice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` stateme
 This query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  <img class="inline" src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" alt="Run Zep Paragraph Icon"> *Run* button in the  the next paragraph.
 
 
-%splicemachine
+```
+select * from import_example
+where i = 100;
+```
+{: .Example}
 
-select * from admin.import_example
-where i = 100
+Note that you can modify the capitalization of terms as you like; this is exactly equivalent to the above `select` statement:
+```
+SELECT * FROM IMPORT_EXAMPLE
+WHERE i = 100;
+```
+{: .Example}
+
 
 ## Exploring Query Execution Plans
 
@@ -54,10 +71,21 @@ If you have a query that is not performing as expected, you can run the `explain
 
 All you need to do is put `EXPLAIN` in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the  <img class="inline" src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" alt="Run Zep Paragraph Icon"> *Run* button in the next paragraph.
 
-%splicemachine
 
-explain select * from admin.import_example a, admin.import_example b
-where a.i = 100
+```
+explain select * from import_example a, import_example b
+where a.i = 100;
+
+Plan
+--------------------------------------------------------------------------------------------------------------------------------------
+Cursor(n=5,rows=360,updateMode=READ_ONLY (1),engine=control)
+  ->  ScrollInsensitive(n=4,totalCost=1744.96,outputRows=360,outputHeapSize=2.109 KB,partitions=1)
+    ->  NestedLoopJoin(n=3,totalCost=1657.16,outputRows=360,outputHeapSize=2.109 KB,partitions=1)
+      ->  TableScan[IMPORT_EXAMPLE(1584)](n=2,totalCost=4.04,scannedRows=20,outputRows=20,outputHeapSize=2.109 KB,partitions=1)
+      ->  TableScan[IMPORT_EXAMPLE(1584)](n=1,totalCost=4.04,scannedRows=20,outputRows=18,outputHeapSize=54 B,partitions=1,preds=[(A.I[0:1] = 100)])
+
+5 rows selected
+```
 
 ### Some Explain Plan Details
 
@@ -65,7 +93,7 @@ To see the execution flow of a query, look at the generated plan from the *botto
 
 Each row includes the action being performed (a Scan, Join, grouping, etc.) followed by:
 
-<table class="splicezepNoBorder">
+<table class="noBorder">
     <col />
     <col />
     <tbody>
