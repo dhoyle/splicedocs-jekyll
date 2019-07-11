@@ -60,7 +60,8 @@ Cursor(n=8,rows=1,updateMode=,engine=Spark)
 {: .Example}
 
 And here's a screenshot from the Spark Web UI:
-<img src="images/OptimizerSkew1.png" class="indentedMedium" />
+
+<img src="images/OptimizerSkew1.png" class="indentedTightSpacing" />
 
 
 ### Detecting Skewness with Alternative SQL
@@ -112,10 +113,11 @@ We'll show you these solutions, which you can apply to avoid or alleviate skewne
 * [1. Hinting with Broadcast Join](#broadcastHint)
 * [2. Splitting the Skewed Table](#splittable)
 * [3. Rewriting with Non-Skewed Join Columns](#rewrite)
+{% comment %}
 * [4. Salting the Skewed Value](#saltskew)
 * [5. Pushing Aggregation Down](#pushaggr)
 * [6. Delaying the Skewed Join](#delayjoin)
-
+{% endcomment %}
 
 #### Skewness Solution 1: Hinting with Broadcast Join  {#broadcastHint}
 
@@ -169,6 +171,7 @@ FROM
   ON df.flu_fluidid =  dd.drn_fluidid
   WHERE (df.flu_fluidid <> /*the skewed value*/ OR df.flu_fluidid is null)
 ```
+{: .Example}
 
 #### Skewness Solution 3: Rewriting with Non-Skewed Join Columns
 
@@ -203,6 +206,7 @@ We applied these rewrites:
   dt.flu_fluidid = dc.cat_fluidid AND dc.cat_handle = dt.tree_handle
   ```
 
+{% comment %}
 #### Skewness Solution 4: Salting the Skewed Value  {#saltskew}
 Salt the skewed value with random number to even the skewness (SPLICE-2357)
 
@@ -211,7 +215,7 @@ Push aggregation done below the join (SPLICE-1522)
 
 #### Skewness Solution 6: Delaying the Skewed Join  {#delayjoin}
 Delay the skewed join, sometimes other joins can reduce the skewness or simply reduce the total rows.
-
+{% endcomment %}
 
 ## Issue 2: Choosing the Access Path  {#accesspath}
 
@@ -229,33 +233,28 @@ How a query is written determines the choice of access path, which may be one of
     <tbody>
         <tr>
             <td class="ItalicFont">Full Table Scan</td>
-            <td>This displays as a `TableScan` operation in the explain plan output.</td>
+            <td>This displays as a <code>TableScan</code> operation in the explain plan output.</td>
         </tr>
         <tr>
             <td class="ItalicFont">Primary Key Access</td>
             <td><p>When a query has a predicate on leading Primary Key columns, the optimizer can derive the start or stop key to restrict the scan, which avoids looping over all rows in the table.</p>
-                <p>This displays as a `TableScan` operation, but will have a smaller number of rows scanned than the total number of rows in the table.</p>
+                <p>This displays as a <code>TableScan</code> operation, but will have a smaller number of rows scanned than the total number of rows in the table.</p>
             </td>
         </tr>
         <tr>
             <td class="ItalicFont">Covering Index Access</td>
-            <td><p>If all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a *covering index* for this query.</p>
+            <td><p>If all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a <em>covering index</em> for this query.</p>
                 <p>When the number of rows accessed is the same, scanning a covering index is usually more favorable than scanning the base table, as index usually has smaller row size.</p>
             </td>
         </tr>
         <tr>
             <td class="ItalicFont">Non-Covering Index Access</td>
-            <td><p>If not all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a *non-covering index*.</p>
+            <td><p>If not all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a <em>non-covering index</em>.</p>
                 <p>The use of non-covering index incurs the extra cost of looking up the values of column not covered by the index in the base table for each qualified row; this means that it may or may not be a better choice than scanning the base table.</p>
             </td>
         </tr>
     </tbody>
 </table>
-
-* Full table scan, which displays as a `TableScan` operation in the explain plan.
-* Primary key access, which also displays as a `TableScan` operation, but will have a smaller number of rows scanned than the total number of rows in the table.
-* Covering index access
-* Non-covering index access
 
 
 The choice of access path: covering index, non-covering index, or table scan

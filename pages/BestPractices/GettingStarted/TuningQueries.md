@@ -1,17 +1,17 @@
 ---
-title: Getting Started with Query Optimization
-summary: Getting Started with Query Optimization
+title: Getting Started with Query Tuning
+summary: Getting Started with Query Tuning
 keywords:
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: gettingstarted_optimizing.html
+permalink: gettingstarted_tuning.html
 folder: GettingStarted
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Getting Started with Query Optimization
+# Getting Started with Tuning Your Queries
 
 This topic helps you to get started with
 

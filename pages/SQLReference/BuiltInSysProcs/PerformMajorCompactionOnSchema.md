@@ -21,7 +21,7 @@ A *major compaction* actually reads every block of data from the every store fil
 
 Splice Machine recommends running a major compaction on a schema after you've imported an entire database.
 
-For more information about compactions, see [Using Compaction and Vacuuming](developers_fundamentals_compaction.html).
+For more information about compactions, see [Best Practices: Using Compaction ](developers_bestpractices_compacting.html).
 
 ## Syntax
 

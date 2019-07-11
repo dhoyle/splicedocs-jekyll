@@ -26,11 +26,6 @@ Machine developers:
     </thead>
     <tbody>
         <tr>
-            <td><a href="developers_fundamentals_compaction.html">Compaction and Vacuuming</a>
-            </td>
-            <td>Describes how compaction and vacuuming are used to improve database performance.</td>
-        </tr>
-        <tr>
             <td><a href="developers_fundamentals_transactions.html">Running Transactions</a>
             </td>
             <td>Introduces you to the basics of running transactions with Splice Machine.</td>

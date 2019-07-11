@@ -14,14 +14,23 @@ folder: BestPractices/Optimizer
 
 # Using Indexes to Tune Queries
 
-Splice Machine implements indexes as tables, which means that creating a regular index is similar to creating a new table. This means that parallelization, which is essential for performance with big tables, is only possible when the index uses a sufficient number of regions. You can increase parallelism by optimizing how the index is split into regions.
+Splice Machine tables have primary keys either implicitly or explicitly defined; data is stored in the order of these keys. Splice Machine can use *secondary indexes* to improve the performance of data manipulation statements. In addition, `UNIQUE` indexes provide a form of data integrity checking.
+
+The primary key is not optimal for all queries.
+{: .noteNote}
+
+Splice Machine implements indexes as tables, so creating a regular index is similar to creating a new table. This means that parallelization, which is essential for performance with big tables, is only possible when the index uses a sufficient number of regions. You can increase parallelism by optimizing how the index is split into regions.
 
 Note that the standard form of the `CREATE INDEX` statement generates performant indexes for most tables: Splice Machine traverses the table and copies the specified column values to the index. For very large tables, this process can require a lot of time, and can generate an index that is split into uneven regions, which slows performance.
+
+## Creating Performant Indexes for Very Large Tables
 
 The remainder of this topic describes using the optional `SPLITKEYS` clause of our `CREATE INDEX` statement to efficiently create highly performant indexes for very large tables; this clause allows you to specify how to split the index into regions when it is generated, in these sections:
 
 * [Specifying Split Keys for Index Creation](#splitkeys)
 * [Using Bulk HFile Loading and Split Keys](#bulkload)
+
+For more information about bulk HFile loading, please see our [Best Practices: Ingestion](bestpractices_ingest_intro.html) chapter.
 
 ## Specifying Split Keys for Index Creation  {#splitkeys}
 
@@ -312,12 +321,6 @@ Here is a step-by-step example of specifying your own split keys in a file  and 
     ```
     {: .Example}
 </div>
-
-## See Also
-
-*  [`CREATE INDEX`](sqlref_statements_createindex.html)
-*  [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
-*  [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
 
 </div>
 </section>
