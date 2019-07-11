@@ -163,6 +163,12 @@ the driver:
     * Use the *Connection Properties* tab to configure SSL and network options.
       ![Advanced Connection Properties](images/ODBCAdvConfig1.png){: .nestedTightSpacing}
 
+    ##### Including the Catalog Name
+
+    The _Include catalog name in table metadata_ option is available to address an issue with certain applications that expect a catalog entry in the table metadata. When selected, our driver returns the catalog name in the table metadata and, by default, sets the `catalog usage` attribute to `0` to tell applications that they shouldn’t use the catalog name in a Splice Machine database query.
+
+    If you’re seeing query failures that include a prepended `splicedb.` in front of the `<schema>.<table>` name, the app you’re using is ignoring the `catalog usage` attribute. You can enable our ODBC driver’s _Include catalog name in table metadata_ option, and the driver will strip the catalog name out before sending the query to Splice Machine.
+
     ##### Configuring SSL
     To configure SSL for your ODBC connections, click the drop-down arrow in the *Use SSL:* setting and change the setting from `none` to one of the following settings:
     {: .indentLevel1}
@@ -190,18 +196,15 @@ the driver:
                       <p class="notePlain">You can find more information about PEM files by <a href="https://www.google.com/search?q=pem+formatted+file&rlz=1C1HIJB_enUS701US702&oq=pem+formatted+file&aqs=chrome..69i57j0l5.3839j0j4&sourceid=chrome&ie=UTF-8" target="_blank">searching the web for <em>pem formatted file</em></a>.</p>
                   <p>Select the <em>Always trust server certificate</em> checkbox to specify that the driver can skip verification of the host certificate by the client; if you do not select this option, then the client attempts to verify the host certificate chain.</p>
                       <p class="noteNote">You should select the <em>Always trust server certificate</em> option if you are using a self-signed certificate.</p>
+                  <p>Here's an example of configuring Peer Authentication and trusting the certificate:</p>
+                  <img class="nestedTightSpacing" src="images/ODBCConfigureTLS.png" alt="Configurating SSL for the Splice Machine data source on Windows" />
               </td>
            </tr>
        </tbody>
     </table>
 
-    Here's an example of configuring Peer Authentication and trusting the certificate:
-
-    ![Configuring the SSL for the Splice Machine ODBC data source on
-    Windows](images/ODBCConfigureTLS.png){: .nestedTightSpacing}
-
-    If you have Splice Machine running, you can click the *Test...* button at the bottom of the Configuration dialog to verify that all is well.
-    {: .indentLevel1}
+  If you have Splice Machine running, you can click the *Test...* button at the bottom of the Configuration dialog to verify that all is well.
+  {: .indentLevel1}
 {: .boldFont}
 
 </div>
