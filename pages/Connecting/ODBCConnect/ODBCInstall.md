@@ -165,9 +165,10 @@ the driver:
 
     ##### Including the Catalog Name
 
-    The _Include catalog name in table metadata_ option is available to address an issue with certain applications that expect a catalog entry in the table metadata. When selected, our driver returns the catalog name in the table metadata and, by default, sets the `catalog usage` attribute to `0` to tell applications that they shouldn’t use the catalog name in a Splice Machine database query.
+    The _Include catalog name in table metadata_ option is available to address an issue with certain applications that expect a catalog entry in the table metadata. When this option is selected, our driver returns the catalog name in the table metadata but sets the `catalog usage` attribute to `0` to tell applications that they shouldn’t use the catalog name in a Splice Machine database query. The Splice Machine database considers it an error when a query uses a fully qualified table name containing the catalog (e.g. `splicedb.SPLICE.TABLENAME`), so you can use this driver feature to also strip any `splicedb` catalog names out of the query.
 
-    If you’re seeing query failures that include a prepended `splicedb.` in front of the `<schema>.<table>` name, the app you’re using is ignoring the `catalog usage` attribute. You can enable our ODBC driver’s _Include catalog name in table metadata_ option, and the driver will strip the catalog name out before sending the query to Splice Machine.
+    If you see an application that warns of illegal or missing catalog names, or shows an empty catalog, try selecting this option.
+
 
     ##### Configuring SSL
     To configure SSL for your ODBC connections, click the drop-down arrow in the *Use SSL:* setting and change the setting from `none` to one of the following settings:
