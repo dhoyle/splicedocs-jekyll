@@ -1,5 +1,5 @@
 ---
-title: Splice Machine Query Optimizer
+title: Best Practices - Splice Machine Query Optimizer
 summary: Overview of the Splice Machine Query Optimizer
 keywords: query optimization
 toc: false

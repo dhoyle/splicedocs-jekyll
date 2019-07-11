@@ -15,62 +15,209 @@ folder: GettingStarted
 
 This topic helps you to get started with importing data into your Splice Machine database and then querying that data, in these sections:
 
-* Creating and populating an example table
-* Running database queries from the command line
-* Using `Explain Plan` to explore the execution plan for a query
+* [1. Create and populate an example table](#loaddata)
+* [2. Run database queries from the command line](#runqueries)
+* [3. Import data with custom formatting](#customimport)
+* [4. Exploring query execution plans](#exploreplans)
 
-Once you've learned about importing, we strongly suggest visiting these other sections in our documentation:
+Once you've gotten started with importing data here, we strongly suggest visiting these other sections in our documentation:
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-* [Best Practices - Data Ingestion](bestpractices_ingest_overview.html) chapter, which describes and compares the different methods available for importing data in Splice Machine, including highly performant methods for ingesting extremely large datasets.
-* [Best Practices - XXXXXXXXXXXXXXXXXXx]
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+* The [Best Practices - Data Ingestion](bestpractices_ingest_overview.html) chapter describes and compares the different methods available for importing data in Splice Machine, including highly performant methods for ingesting extremely large datasets.
+* The [Best Practices - Splice Machine Optimizer](bestpractices_ingest_optimizer.html) chapter provides detailed instructions about using query execution plans, statistics, hints, and other techniques to boost performance of your queries.
+* Our [Developer's Guide](developers_intro.html) contains a number of topics to help you take advantage of available features.
 
+## 1. Create and Populate an Example Table  {#loaddata}
 
-## 1. Create and and populating an example table
-First we'll create a table named `import_example` in a new schema named `ADMIN`, then we'll populate the `import_example` table with some simple data. For additional information about importing this data, see the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Beginning Developers* course.
+Our first step is to create a table that we can import data into and then query that data. Follow these steps:
 
+<div class="opsStepsList" markdown="1">
+
+1.  Create an example table named `import_example`:
+
+    ```
+    CREATE TABLE import_example (i int, v varchar(20), t timestamp);
+    ```
+    {: .Example}
+
+2.  Import data into the new table:
+
+    We suggest starting with some very simple data, so you can used to the process. For expediency, we provide public access to a CSV file in a public bucket that you can load into the table:
+
+    ```
+    call SYSCS_UTIL.IMPORT_DATA('SPLICE','import_example',null,'s3a://splice-examples/import/example1.csv',null,null,null,null,null,0,null,null,null);
+    ```
+    {: .Example}
+
+    Of course, you can create a table with whatever fields you choose and load data into that; just make sure you update the parameters in the [`IMPORT_DATA`](sqlref_sysprocs_importdata.html) to align with how your source file is formatted.
+
+    Note that we specified `SPLICE` as the schema name for our new table. `SPLICE` is the default schema when you start up.
+</div>
+
+## 2. Run Database Queries from the Command Line  {#runqueries}
+
+Splice Machine supports ANSI SQL. Our first example query uses an SQL `SELECT` statement to select all records in the `import_example` table that have `100` as the value of column `i`.
+
+Now use the <span class="AppCommand">splice&gt;</span> command line interperter to run the query:
 
 ```
-CREATE TABLE import_example (i int, v varchar(20), t timestamp);
+splice> select * from import_example
+> where i = 100;
 ```
 {: .Example}
 
-XXXXXXXX Now Import XXXXXXXXXXXXXX
+Note that you can modify the capitalization of terms as you like; the following query is exactly equivalent to the above `select` statement:
 ```
-call SYSCS_UTIL.IMPORT_DATA('SPLICE','import_example',null,'s3a://splice-examples/import/example1.csv',null,null,null,null,null,0,null,null,null);
-```
-{: .Example}
-
-Note that we specified `SPLICE` as the schema name for our new table. `SPLICE` is the default schema when you start up.
-
-## Running a Simple SQL Statement
-
-Splice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` statement to select records from the table we created in the previous paragraph.
-
-This query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  <img class="inline" src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" alt="Run Zep Paragraph Icon"> *Run* button in the  the next paragraph.
-
-
-```
-select * from import_example
-where i = 100;
-```
-{: .Example}
-
-Note that you can modify the capitalization of terms as you like; this is exactly equivalent to the above `select` statement:
-```
-SELECT * FROM IMPORT_EXAMPLE
-WHERE i = 100;
+splice> SELECT * FROM IMPORT_EXAMPLE
+> WHERE i = 100;
 ```
 {: .Example}
 
 
-## Exploring Query Execution Plans
+## Import Data with Custom Formatting  {#customimport}
+
+Splice Machine offers a number of highly performant methods for importing data into your database; these are described, along with examples, in our [Best Practices - Ingesting Data](bestpractices_ingesting_intro.html).
+
+In this topic, we're using the standard `IMPORT_DATA` method with CSV files. When you import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Syntax for the `IMPORT_DATA` command looks like this:
+
+```
+call SYSCS_UTIL.IMPORT_DATA (
+	schemaName,
+	tableName,
+	insertColumnList | null,
+	fileOrDirectoryName,
+	columnDelimiter | null,
+	characterDelimiter | null,
+	timestampFormat | null,
+	dateFormat | null,
+	timeFormat | null,
+	badRecordsAllowed,
+	badRecordDirectory | null,
+	oneLineRecords | null,
+	charset | null
+);
+```
+{: .Example}
+
+You have probably also noticed that we used default values by specifying `null` for all of the parameters that have defaults; here's what those defaults mean:
+
+<table>
+    <col />
+    <col />
+    <caption class="tblCaption">Import Data Parameter Default Values</caption>
+    <thead>
+        <tr>
+            <th>Parameter</th>
+            <th>NULL Value Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>insertColumnList</code></td>
+            <td>Our column list exactly matches the columns and ordering of columns in the table, so there's not need to specify a list.</td>
+        </tr>
+        <tr>
+            <td><code>columnDelimiter</code></td>
+            <td>Our data uses the default comma character (<code>,</code>) to delimit columns.</td>
+        </tr>
+        <tr>
+            <td><code>stringDelimiter</code></td>
+            <td>None of our data fields contain the comma character, so we don't need a string delimiter character.</td>
+        </tr>
+        <tr>
+            <td><code>timestampFormat</code></td>
+            <td>Our data matches the default timestamp format, which is <code>yyyy-MM-dd HH:mm:ss</code></td>
+        </tr>
+        <tr>
+            <td><code>dateFormat</code></td>
+            <td>Our data doesn't contain any date columns, so there's no need to specify a format.</td>
+        </tr>
+        <tr>
+            <td><code>timeFormat</code></td>
+            <td>Our data doesn't contain any time columns, so there's no need to specify a format.</td>
+        </tr>
+        <tr>
+            <td><code>badRecordDirectory</code></td>
+            <td>We left this <code>null</code>, which is allowable, but not considered a good practice. Splice Machine advises specifying a bad record directory so that you can diagnose any record import problems.</td>
+        </tr>
+        <tr>
+            <td><code>oneLineRecords</code></td>
+            <td>We were able to leave this as <code>null</code> because our records each fit on one line. If your data contains any newline characters, you must specify <code>false</code> for this parameter, and you must include delimiters around the data.</td>
+        </tr>
+        <tr>
+            <td><code>charset</code></td>
+            <td>This parameter is currently ignored; Splice Machine assumes that your data uses utf-8 encoding.</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p class="noteNote">You can find full details about these parameters, including the default value for each, in the &nbsp; <a href="sqlref_sysprocs_importdata.html"><code>SYSCS_UTIL.IMPORT_DATA</code></a> reference page.</p>
+
+Here's a brief checklist to help you prepare your data files for trouble-free ingestion with `IMPORT_DATA`:
+
+<table>
+    <col />
+    <col />
+    <caption class="tblCaption">Import Data Checklist</caption>
+    <thead>
+        <tr>
+            <th>Data File Detail</th>
+            <th>Specific Requirements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Field delimited?</td>
+            <td>The fields in each row <strong>must</strong> have delimiters between them</td>
+        </tr>
+        <tr>
+            <td>Rows terminated?</td>
+            <td>Each row <strong>must</strong> be terminated with a newline character</td>
+        </tr>
+        <tr>
+            <td>Header row included?</td>
+            <td>Header rows are not allowed; if your data contains one, you <strong>must</strong> remove it.</td>
+        </tr>
+        <tr>
+            <td><code>Date</code>, <code>time</code>, <code>timestamp</code> data types</td>
+            <td> If you are using <code>date</code>, <code>time</code>, and/or <code>timestamp</code> data types in the target table, you need to know how that data is represented in the flat file; your file <strong>must</strong> use a consistent representation, and you must specify that format when using the import command.</td>
+        </tr>
+        <tr>
+            <td><code>Char</code> and <code>Varchar</code> data</td>
+            <td><p>If any of your <code>char</code> or <code>varchar</code> data contains your delimiter character, you <strong>need to use</strong> a special character delimiter.</p>
+                <p>If any of your <code>char</code> or <code>varchar</code> data contains newline characters, you <strong>need to use</strong> the <code>oneLineRecords</code> parameter.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<p class="noteIcon">Importing a large file can take a few minutes, so it's a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data.</p>
+
+
+### Custom Input Data Formats Example
+
+Now let's create a second table, again loading data into it from a example CSV file that Splice Machine has made publicly accessible. This file requires a few non-default parameter values:
+
+* We specify that we only want to load two columns: `v,t`.
+* This file uses the `|` character as a column delimiter because some of its values include the default (`,`) delimiter.
+* This file includes commas and newlines in some input strings, so we need to enclose string data in single quotes; this is specified as `''''` in the parameter values.
+* Timestamps in this file include microseconds, so we specify the `yyyy-MM-dd HH:mm:ss.SSSSSS` format.
+* Some input records include newlines, so we specify that `oneLineRecords=false`.
+
+Here's the call:
+
+```
+call SYSCS_UTIL.IMPORT_DATA('DEV1','import_example2','v,t','s3a://splice-examples/import/example2.csv','|','''','yyyy-MM-dd HH:mm:ss.SSSSSS',null,null,0,null,false,null)
+```
+{: .Example}
+
+
+## Exploring Query Execution Plans  {#exploreplans}
 
 If you have a query that is not performing as expected, you can run the `explain` command to display the execution plan for the query.
 
-All you need to do is put `EXPLAIN` in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the  <img class="inline" src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" alt="Run Zep Paragraph Icon"> *Run* button in the next paragraph.
-
+All you need to do is put `EXPLAIN` in front of the query and run that. This generates the plan, but does not actually run the query. For example:
 
 ```
 explain select * from import_example a, import_example b
@@ -86,6 +233,8 @@ Cursor(n=5,rows=360,updateMode=READ_ONLY (1),engine=control)
 
 5 rows selected
 ```
+
+Query execution plans are one tool that Splice Machine offers to help you boost performance; for additional information about interpreting plans and other optimization techniques, see [Best Practices - Splice Machine Optimizer](bestpractices_optimizer_intro.html) topic.
 
 ### Some Explain Plan Details
 
@@ -147,6 +296,7 @@ This line shows you which *engine* is used for the query. The engine parameter i
 </ul>
 </div>
 
-We'll cover more about the engines, and the Spark engine in particular, later in this class.
+For more information about using query execution plans to optimize your queries, see our [Best Practices - Using Explain Plan to Tune Queries](bestpractices_optimizer_explain.html) topic.
+
 </div>
 </section>

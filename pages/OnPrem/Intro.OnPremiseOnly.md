@@ -55,9 +55,10 @@ sales team to start using Splice Machine:
 
 ## Using our Documentation
 
-Please visit our [Documentation Summary](notes_usingdocs.html) page for
+Please visit our [Getting Started with Splice Machine Documentation](gettingstarted_usingdocs.html) topic for
 a quick introduction to navigating and using the components of our
 documentation system.
+
 
 ### Version Information
 

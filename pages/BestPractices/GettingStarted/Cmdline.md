@@ -72,6 +72,50 @@ interpreter, follow these steps:
 
 </div>
 
+### Run a Simple Command
+
+To "get your feet wet" with the command line interpeter, run a `SHOW TABLES` command at the `splice>` prompt. This displays all tables defined in the `SYS` schema:
+
+```
+splice> SHOW TABLES in SYS;
+TABLE_SCHEM         |TABLE_NAME                           |CONGLOM_ID|REMARKS
+------------------------------------------------------------------------------
+SYS                 |SYSALIASES                           |256       |
+SYS                 |SYSBACKUP                            |896       |
+SYS                 |SYSBACKUPITEMS                       |880       |
+SYS                 |SYSCHECKS                            |288       |
+SYS                 |SYSCOLPERMS                          |736       |
+SYS                 |SYSCOLUMNS                           |80        |
+SYS                 |SYSCOLUMNSTATS                       |1184      |
+SYS                 |SYSCONGLOMERATES                     |64        |
+SYS                 |SYSCONSTRAINTS                       |352       |
+SYS                 |SYSDEPENDS                           |384       |
+SYS                 |SYSFILES                             |336       |
+SYS                 |SYSFOREIGNKEYS                       |320       |
+SYS                 |SYSKEYS                              |240       |
+SYS                 |SYSPERMS                             |912       |
+SYS                 |SYSPHYSICALSTATS                     |1248      |
+SYS                 |SYSPRIMARYKEYS                       |368       |
+SYS                 |SYSROLES                             |768       |
+SYS                 |SYSROUTINEPERMS                      |752       |
+SYS                 |SYSSCHEMAPERMS                       |1280      |
+SYS                 |SYSSCHEMAS                           |32        |
+SYS                 |SYSSEQUENCES                         |864       |
+SYS                 |SYSSNAPSHOTS                         |1296      |
+SYS                 |SYSSOURCECODE                        |1328      |
+SYS                 |SYSSTATEMENTS                        |272       |
+SYS                 |SYSTABLEPERMS                        |640       |
+SYS                 |SYSTABLES                            |48        |
+SYS                 |SYSTABLESTATS                        |1312      |
+SYS                 |SYSTOKENS                            |1424      |
+SYS                 |SYSTRIGGERS                          |624       |
+SYS                 |SYSUSERS                             |848       |
+SYS                 |SYSVIEWS                             |304       |
+
+31 rows selected
+```
+{: .Example}
+
 ## Basic Syntax Rules   {#Basic}
 
 When using the command line (the <span class="AppCommand">splice&gt;</span> prompt), you must end each SQL

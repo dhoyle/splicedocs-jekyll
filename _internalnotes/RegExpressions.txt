@@ -1,7 +1,15 @@
 Regex to convert a numbered list of links to headings into the headings:
 
-Replace this:
-([0-9]\.) \[(.*?)\]\((.*?)\)\.
+        Replace this:
+        ([0-9]\.) \[(.*?)\]\((.*?)\)\.
 
-with this:
-### $2  {$3}\n
+        with this:
+        ### $2  {$3}\n
+
+
+Regex to convert markdown URL to HTML URL:
+
+        Search for:
+           \[(.*?)\]\((.*?)\)
+        replace with:
+           <a href="$2">$1</a>

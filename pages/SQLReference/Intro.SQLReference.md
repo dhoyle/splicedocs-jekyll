@@ -100,7 +100,7 @@ sections:
     </tbody>
 </table>
 For a summary of all Splice Machine documentation, see the
-[Documentation Summary](notes_usingdocs.html) topic.
+[Getting Started with Splice Machine Documentation](gettingstarted_usingdocs.html) topic.
 
 ## Acknowledgment
 
