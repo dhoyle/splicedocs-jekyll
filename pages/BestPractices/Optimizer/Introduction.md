@@ -29,7 +29,9 @@ Because of optimizer limitations, there are times when you may want to apply som
 * [*Using Statistics to Tune Queries*](bestpractices_optimizer_statistics.html) introduces the statistics views that you can use to see key metrics about the tables in your queries.
 * [*Using Indexes to Improve Performance*](bestpractices_optimizer_indexes.html) shows you the importance of defining appropriate indexes on your tables to boost performance.
 * [*Using Hints to Optimize Queries*](bestpractices_optimizer_hints.html) introduces the various `--splice-properties` hints that you can provide to the optimizer to make certain queries run faster.
+{% comment %}
 * [*Advanced Query Optimization Techniques*](bestpractices_optimizer_advanced.html) provides guidance for addressing specific and common performance issues.
+{% endcomment %}
 * [*Compacting and Vacuuming Your Database Files*](bestpractices_optimizer_compacting.html) describes how compacting and vacuuming your database files can help with database performance.
 
 

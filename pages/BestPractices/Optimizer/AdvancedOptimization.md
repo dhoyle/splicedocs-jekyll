@@ -23,25 +23,33 @@ This topic shows you how to work with improving query performance related to sev
 
 ## Issue 1: Skewness  {#skewness}
 
-When the data in a table is skewed, the optimizer is limited in what sort of transformations it can use to improve query optimization. Some observations about skewness:
+Skewness is the uneven distribution of data in a table. When the data in a table is skewed, the optimizer is limited in what sort of transformations it can use to improve query optimization. Here are some observations about skewness:
 
 * In the presence of skewness, a few tasks have to do significantly more work than other tasks; this can dilute parallelism and can ultimately lead to running out of memory.
 * Skewness might exist in the base table on certain columns.
 * Skewness can also happen after certain joins are performed.
-* Skewness usually causes trouble in: 1) sortmerge join steps, 2) grouped aggregate operations
+* Skewness usually causes trouble in sortmerge join steps and grouped aggregate operations.
 
-### Detecting Skewness in the Spark UI
-If the query is running in Spark, we can detect skewness by looking at the tasks in the Spark Web UI. For example, given this query:
+### Detecting Skewness
+
+This section shows you how you can detect skewness in two ways:
+
+* By looking at the Spark Web UI.
+* By running a query with alternative SQL to highlight the skewness.
+
+#### Detecting Skewness in the Spark Web UI
+
+When a query is running in Spark, you can detect skewness by looking at the tasks in the Spark Web UI. For example, here's a sample query:
 
 ```
 SELECT COUNT(*) FROM --SPLICE-PROPERTIES JOINORDER=FIXED
-xiayi.lineitem_with_skew --SPLICE-PROPERTIES INDEX=null
+testtbl.lineitem_with_skew --SPLICE-PROPERTIES INDEX=null
 , tpch100.orders --SPLICE-PROPERTIES JOINSTRATEGY=sortmerge, index=null
  WHERE o_orderkey = l_orderkey;
 ```
 {: .Example}
 
-Here's the query execution plan:
+You can see the skewness in the execution plan for the query:
 
 ```
 Plan
@@ -59,12 +67,15 @@ Cursor(n=8,rows=1,updateMode=,engine=Spark)
 ```
 {: .Example}
 
-And here's a screenshot from the Spark Web UI:
+
+You can see the skewness in the execution plan **** HOW ???  ****
+
+And here's a screenshot from the Spark Web UI for this query; you can see the skewness in the circled areas: **** HOW ??? ****
 
 <img src="images/OptimizerSkew1.png" class="indentedTightSpacing" />
 
 
-### Detecting Skewness with Alternative SQL
+#### Detecting Skewness with Alternative SQL
 
 The following example query shows how to use SQL to check skewness on `join` or `group by` columns:
 
@@ -72,7 +83,7 @@ The following example query shows how to use SQL to check skewness on `join` or 
 SELECT COUNT(*), MIN(CC), max(CC), avg(CC)
 FROM
 (SELECT l_orderkey, COUNT(*) AS CC
- FROM xiayi.lineitem_with_skew
+ FROM testtbl.lineitem_with_skew
  GROUP BY 1) dt;
 
 1                   |2                   |3                   |4
