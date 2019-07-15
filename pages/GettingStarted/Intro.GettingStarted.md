@@ -1,29 +1,31 @@
 ---
-title: Splice Machine Overview
-summary: Brief overview of Splice Machine
+title: Getting Started with Splice Machine
+summary: Getting Started
 keywords:
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: gettingstarted_prodoverview.html
+permalink: gettingstarted_intro.html
 folder: GettingStarted
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-
-# Overview of Splice Machine
+{% assign site.guide_heading = "Getting Started" %}
+# Getting Started with Splice Machine
 
 Splice Machine is a scale-out SQL RDBMS, Data Warehouse, and Machine Learning Platform in one, seamlessly integrating analytics and AI into your mission-critical applications.
 
-This topic gives a brief introduction to Splice Machine's capabilities in the following sections:
+Splice Machine offers a self-paced training and certification program in addition to our documentation. This program is meant for users and implementers of the Splice Machine platform, and covers administration, design, development and machine learning.  To learn more about the program, visit the <a href="https://www.splicemachine.com/get-started/splice-machine-accelerate/" target="_blank">Splice Machine Accelerate</a> page of our company web site.
+{: .noteIcon}
 
-* [Hybrid Transactional and Analytical Processing](#hybrid)
-* [ANSI SQL Coverage](#ansi)
-* [Architecture Overview](#architecture)
-* [Technology Stack Overview](#techstack)
-* [Internal Storage Using HBase](#internalstorage)
+The other topics in this chapter provide the information you need to get started with using Splice Machine:
 
-## Hybrid Transactional and Analytical Processing  {#hybrid}
+* [Getting Started: Using the Command Line Interpreter](gettingstarted_cmdline.html)
+* [Getting Started: Loading Data and Running Queries](gettingstarted_loadandrun.html)
+* [Getting Started: Tuning Your Queries](gettingstarted_tuning.html)
+* [Getting Started: Using Splice Machine Documentation](gettingstarted_docs.html)
+
+### Hybrid Transactional and Analytical Processing  {#hybrid}
 
 Splice Machine has a unique *Dual Engine* architecture that it uses to provide outstanding performance for concurrent transactional (OLTP) and analytical (OLAP) workloads. The SQL parser and cost-based optimizer analyze an incoming query and then determine the best execution plan based on query type, data sizes, available indexes and more. Based on that analysis, Splice Machine either:
 
@@ -32,7 +34,7 @@ Splice Machine has a unique *Dual Engine* architecture that it uses to provide o
 
 Our Dual Engine architecture gives you the best of multiple worlds in a hybrid database: the performance, scale-out, and resilience of HBase, the in-memory analytics performance of Spark, and the performance of a cost-based optimizer.
 
-## ANSI SQL Coverage  {#ansi}
+### ANSI SQL Coverage  {#ansi}
 
 Unlike other Big Data systems, Splice Machine supports full [ANSI SQL-2003](https://doc.splicemachine.com/sqlref_sqlsummary.html); here's a quick summary of our coverage:
 
@@ -121,17 +123,17 @@ Unlike other Big Data systems, Splice Machine supports full [ANSI SQL-2003](http
     </tbody>
 </table>
 
-## Architecture Overview  {#architecture}
+### Architecture Overview  {#architecture}
 
 The following diagram is a high-level representation of the architecture of Splice Machine:
 
 <img class="indentedTightSpacing" src="images/spliceArch1.png" alt="Overview diagram of the Splice Machine architecture">
 
-## Technology Stack Overview  {#techstack}
+### Technology Stack Overview  {#techstack}
 
 Splice Machine is built on open-sourced, proven, distributed database technology, including HBase/Hadoop and Spark.
 
-### HBase/Hadoop  {#internalstorage}
+#### HBase/Hadoop  {#internalstorage}
 
 The persistent, durable storage of operational data in Splice Machine resides in the Apache HBase key-value store. HBase:
 
@@ -142,7 +144,7 @@ The persistent, durable storage of operational data in Splice Machine resides in
 
 HBase uses the Hadoop Distributed File System (HDFS) for reliable and replicated storage. HBase/HDFS provides auto-sharding and failover technology for scaling database tables across multiple servers. It is the only technology proven to scale to dozens of petabytes on commodity servers.
 
-### Spark In-Memory Computation Engine
+#### Spark In-Memory Computation Engine
 
 Splice Machine uses Spark for analytical processing.
 
@@ -154,7 +156,7 @@ The main abstraction Spark provides is a resilient distributed dataset (RDD), wh
 
 Spark is optimized to work on DataFrames, which are the main structure used by Spark. A DataFrame is a distributed collection of data (an RDD) organized into named columns, with a schema that specifies data types, that is designed to support efficiently operating on scalable, massive datasets.
 
-#### Spark RDD Operations
+##### Spark RDD Operations
 
 RDDs support two types of operations:
 
@@ -163,15 +165,15 @@ RDDs support two types of operations:
 
 All transformations in Spark are lazy, in that they do not compute their results right away. Instead, they just remember the transformations applied to some base dataset such as a file. The transformations are only computed when an action requires a result to be returned to the driver program. This design enables Spark to run more efficiently. For example, we can realize that a dataset created through `map` will be used in a `reduce` and return only the result of the `reduce` to the driver, rather than the larger mapped dataset.
 
-#### Spark Acceleration
+##### Spark Acceleration
 
 Splice Machine accelerates generation of Spark RDDs by reading HBase HFiles in HDFS and augmenting that with any changes in Memstore that have not been flushed to HFiles. Splice Machine then uses the RDDs and Spark operators to distribute processing across Spark Workers.
 
-### Resource Isolation
+#### Resource Isolation
 
 Splice Machine isolates the resources allocated to HBase and Spark from each other, so each can progress independent of the workload of the other. Combined with the MVCC locking mechanism, this ensures that the performance level of transactional workloads can remain high, even if large reports or analytic processes are running.
 
-## Internal Storage Using HBase
+### Internal Storage Using HBase
 
 Splice Machine uses HBase to internally store data. HBase is modeled after Google Big Table, which is a large, distributed associative map stored as a Log-Structured Merge Tree. In HBase:
 
@@ -189,7 +191,7 @@ The following diagram shows how HBase operates in Splice Machine:
 <img class="splice" class="indentedTightSpacing" src="https://s3.amazonaws.com/splice-examples/images/tutorials/hbases_storage_architecture2.png" alt="Diagram depicting Splice Machine use of HBase">
 
 
-### Region Servers and Regions
+#### Region Servers and Regions
 
 HBase auto-shards the data in a table across *Region Servers*:
 
@@ -198,7 +200,7 @@ HBase auto-shards the data in a table across *Region Servers*:
 
 When a region server fails to respond, HBase makes its regions accessible on other region servers. HBase is resilient to both region server failures and failure of Hadoop Data Nodes.
 
-### HBase Data Storage
+#### HBase Data Storage
 
 HBase writes data to an in-memory store, called *memstore*. Once this memstore reaches a certain size, it is flushed to disk into a *store file*; everything is also written immediately to a log file for durability.
 
