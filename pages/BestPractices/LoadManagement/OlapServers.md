@@ -18,14 +18,29 @@ Splice Machine supports the use of multiple OLAP (analytical query processing) s
 Multiple OLAP servers are also referred to as *multiple swim lanes;* they allow you to specify how different queries are prioritized into lanes. You can take advantage of this feature to:
 
 * Isolate certain workloads (*resource isolation*) so that they don't interfere with other workloads.
-* Reserve cluster capacity for specific queries so that those queries will be blocked by other long-running queries.
+* Reserve cluster capacity for specific queries so that those queries will not  be blocked by other long-running queries.
 * Track the resources consumed by each server/role.
 * Manage resource capacity for specific kinds of queries.
 
 
-## A Brief Overview of YARN Queues
+## A Brief Overview of YARN Schedulers and Queues
 
-YARN includes a queue-based *capacity scheduler*. YARN Queues are organized hierarchically, with the topmost queue as the root/parent of the queues for your cluster. Each queue is configured with two values:
+The YARN *ResourceManager* keeps track of the resources on your cluster, assigning them to applications that need them. The Resource Manager uses a policy-driven scheduler when sharing resources; YARN provides a choice of queue-based schedulers and configurable policies:
+
+* The _FIFO scheduler_ is a simple first-in, first-out scheduler that runs jobs in the order of submission.
+* The _Fair scheduler_ is a policy that enables the allocation of resources to applications in a way that all applications get, on average, an equal share of the cluster resources over a given period.
+* The _Capacity scheduler_ allows you to share cluster resources in a simple, predictable fashion by using job queues whose resource allocation you can preconfigure.
+
+
+### About the Fair Scheduler
+
+The YARN Fair Scheduler enables the allocation of resources to applications in a way that all applications gety, on average, an equal share of the cluster resources over a given time period:
+
+* If one app is running on the cluster, it can request all resources for its execution. When other apps are submitted, the free resources are distributed such that each app gets a fairly equal share of cluster resources.
+* Fair scheduling ensures that every queue gets a minimum share of the cluster resources, and excess resources are distributed equally among the running apps.
+
+### About the Capacity Scheduler
+The YARN Capacity Scheduler uses hierarchically organized queues, with the topmost queue as the root/parent of the queues for your cluster. Each queue is configured with two values:
 
 * The *minimum capacity* value specifies the smallest amount of resources a single user should get access to upon request.
 * The maximum capacity is defined by the *user limit factor* and limits the maximum amount of resources a single user can consume.
@@ -36,12 +51,11 @@ The minimum capacity percentage of the child queues at any single level in the h
 
 Your cluster administrator can configure your YARN queues to accommodate your organization's typical workflows.
 
-### Splice Machine Queues
+## Splice Machine Queues
 
-You can define Splice Machine queues and map those queues to YARN queues. This allows you to create *swim lanes* that are intended for different kinds of database operations, or for queries that are run by different kinds of users.
+You can define Splice Machine queues and map those queues to YARN queues. This allows you to create *swim lanes* that are intended for different kinds of database operations, or for queries that are run by different kinds of users. You can use Splice Machine queues with both _Fair Scheduler_ and _Capacity Scheduler_ queues.
 
 Splice Machine queues are role-based: the roles assigned to a user define which queue(s) will used for that user's queries.
-
 
 ## Configuring Multiple Olap Servers and Queues
 
