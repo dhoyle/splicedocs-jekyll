@@ -1,0 +1,36 @@
+{% assign kbinfo = site.data.tstips.entries %}
+{% assign categorytopmargin = '36px' %}
+
+{% for entry in kbinfo %}
+    {% for category in entry.categories %}
+        <h2 style="margin-top: {{ categorytopmargin }}; padding:0;">{{ category.category }} Issues</h2>
+        {% assign categorytopmargin = '60px' %}
+        {{ category.description | markdownify }}
+        <div style="margin-left: 20px;">
+        {% assign issuetopmargin = '0px' %}
+        {% for issue in category.issues %}
+            <h3 style="margin-top: {{ issuetopmargin }}; padding:0;">{{ issue.title }}</h3>
+            {% assign issuetopmargin = '30px' %}
+            {{ issue.description | markdownify }}
+            <table class="oddEven" style="margin-top: 5px">
+                <col  />
+                <col  />
+                <tbody>
+                    <tr>
+                        <td><strong>Conditions</strong></td>
+                        <td>{{ issue.conditions | markdownify }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Discussion</strong></td>
+                        <td>{{ issue.discussion | markdownify }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comments</strong></td>
+                        <td>{{ issue.comments | markdownify }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+        </div>
+    {% endfor %}
+{% endfor %}
