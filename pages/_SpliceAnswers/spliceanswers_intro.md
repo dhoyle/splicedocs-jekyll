@@ -17,8 +17,9 @@ folder: SpliceAnswers
 This section of the documentation contains a number of inter-linked questions and answers addressing specific situations, advice, and troubleshooting information for Splice Machine users, in the following categories:
 
 * [Optimizing Queries](#optimizing)
+* [Configuring Your Cluster](#clusterconfig)
 
-## Optimizing Queries
+## Optimizing Queries  {#optimizing}
 
 * [How do I know if my query is running?](spliceanswers_q1.html)
 * [When will my query finish?](spliceanswers_q2.html)
@@ -29,6 +30,18 @@ This section of the documentation contains a number of inter-linked questions an
 * [How do I access the Spark UI?](spliceanswers_q7.html)
 * [How do I access the Splice Management UI?](spliceanswers_q8.html)
 * [What does the Spark UI show me?](spliceanswers_q9.html)
+
+## Configuring Your Cluster  {#clusterconfig}
+
+* [What is the correct size for our Node Manager?](spliceanswers_q10.html)
+* [What is the best setting for the client `hfile.block.cache.size` property?](spliceanswers_q11.html)
+
+## Configuring Your Database  {#databaseconfig}
+
+* [How many write threads should I have?](spliceanswers_q12.html)
+* [How do I use Spark Shuffle?](spliceanswers_q13.html)
+* [How can I flush memstore for a specific table?](spliceanswers_q14.html)
+* [How do I reclaim disk space occupied by deleted items?](spliceanswers_q15.html)
 
 </div>
 </section>
