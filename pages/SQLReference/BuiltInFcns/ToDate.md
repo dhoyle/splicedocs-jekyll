@@ -3,6 +3,7 @@ title: TO_DATE built-in SQL function
 summary: Built-in SQL function that formats a date string and returns a DATE value
 keywords: convert string to date, todate, date format
 toc: false
+compatible_version: 2.8
 product: all
 sidebar: home_sidebar
 permalink: sqlref_builtinfcns_todate.html
@@ -12,8 +13,8 @@ folder: SQLReference/BuiltInFcns
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # TO_DATE
 
-The `TO_DATE` function formats a date string according to a formatting
-specification, and returns a &nbsp;[`DATE`](sqlref_builtinfcns_date.html)
+The <code>TO_DATE</code> function formats a date string according to a formatting
+specification, and returns a &nbsp;[<code>DATE</code>](sqlref_builtinfcns_date.html)
 values do not store time components.
 
 ## Syntax
@@ -34,7 +35,7 @@ the format string.
 formatStr
 {: .paramName}
 
-A string that specifies the format you want applied to the `dateStr`.
+A string that specifies the format you want applied to the <code>dateStr</code>.
 See the [Date and Time Formats](#Date) section below for more
 information about format specification.
 {: .paramDefnFirst}
@@ -42,16 +43,16 @@ information about format specification.
 </div>
 ## Results
 
-The result is always a &nbsp;[`DATE`](sqlref_builtinfcns_date.html) value.
+The result is always a &nbsp;[<code>DATE</code>](sqlref_builtinfcns_date.html) value.
 
 ## Date and Time Formats   {#Date}
 
 Splice Machine supports date and time format specifications based on the
-Java [SimpleDateFormat][1]{: target="_blank"} class.
+Java [DateTimeFormatter](https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html){: target="_blank"} class.
 
 Date and time value formats are used for both parsing input values and
 for formatting output values. For example, the format specification
-`yyyy-MM-dd HH:mm:ssZ` parses or formats values like `2014-03-02
+<code>yyyy-MM-dd HH:mm:ssZ</code> parses or formats values like `2014-03-02
 11:47:44-0800`.
 
 The remainder of this topic describes format specifications in these
@@ -69,179 +70,220 @@ sections:
 You can specify formatting or parsing patterns for date-time values
 using the pattern letters shown in the following table. Note that
 pattern letters are typically repeated in a format specification. For
-example, `YYYY` or `YY`. Refer to the next section for specific
+example, <code>YYYY</code> or <code>YY</code>. Refer to the next section for specific
 information about multiple pattern letters in the different
 [presentation types](#Presenta).
 
 <table summary="Formatting and parsing patterns for date-time values">
-                <col />
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Pattern Letter</th>
-                        <th>Meaning</th>
-                        <th>Presentation Type</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>G</code></td>
-                        <td>Era designator</td>
-                        <td><em>Text</em></td>
-                        <td><code>BC</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>y</code></td>
-                        <td>Year</td>
-                        <td><em>Year</em></td>
-                        <td><code>2015 <span class="bodyFont">-or-</span> 15</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>Y</code></td>
-                        <td>Week year</td>
-                        <td><em>Year</em></td>
-                        <td><code>2011 <span class="bodyFont">-or-</span> 11</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>M</code></td>
-                        <td>Month in year</td>
-                        <td><em>Month</em></td>
-                        <td><code>July <span class="bodyFont">-or-</span> Jul <span class="bodyFont">-or-</span> 07</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>w</code></td>
-                        <td>Week in year</td>
-                        <td><em>Number</em></td>
-                        <td><code>27</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>W</code></td>
-                        <td>Week in month</td>
-                        <td><em>Number</em></td>
-                        <td><code>3</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>D</code></td>
-                        <td>Day in year</td>
-                        <td><em>Number</em></td>
-                        <td class="CodeFont">
-                            <p>212</p>
-                            <p>A common usage error is to mistakenly specify <code>DD</code> for the day field:</p>
-                            <ul>
-                                <li>use <code>dd</code> to specify day of month</li>
-                                <li>use <code>DD</code> to specify the day of the year</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>d</code></td>
-                        <td>Day in month</td>
-                        <td><em>Number</em></td>
-                        <td class="CodeFont">
-                            <p>13</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>F</code></td>
-                        <td>Day of week in month</td>
-                        <td><em>Number</em></td>
-                        <td><code>2</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>E</code></td>
-                        <td>Day name in week</td>
-                        <td><em>Text</em></td>
-                        <td><code>Tuesday <span class="bodyFont">-or-</span> Tue</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>u</code></td>
-                        <td>Day number of week<br />(<code>1</code>=Monday, <code>7</code>=Sunday)</td>
-                        <td><em>Number</em></td>
-                        <td><code>4</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>a</code></td>
-                        <td>AM / PM marker</td>
-                        <td><em>Text</em></td>
-                        <td><code>PM</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>H</code></td>
-                        <td>Hour in day <br />(<code>0 - 23</code>)</td>
-                        <td><em>Number</em></td>
-                        <td><code>23</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>k</code></td>
-                        <td>Hour in day<br /><code>(1 - 24)</code></td>
-                        <td><em>Number</em></td>
-                        <td><code>24</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>K</code></td>
-                        <td>Hour in AM/PM<br />(<code>0 - 11</code>)</td>
-                        <td><em>Number</em></td>
-                        <td><code>11</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>h</code></td>
-                        <td>Hour in AM/PM<br />(<code>1 - 12</code>)</td>
-                        <td><em>Number</em></td>
-                        <td><code>12</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>m</code></td>
-                        <td>Minute in hour</td>
-                        <td><em>Number</em></td>
-                        <td><code>33</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>s</code></td>
-                        <td>Second in minute</td>
-                        <td><em>Number</em></td>
-                        <td><code>55</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>S</code></td>
-                        <td>Millisecond</td>
-                        <td><em>Number</em></td>
-                        <td><code>959</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>z</code></td>
-                        <td>Time zone</td>
-                        <td><em>General time zone</em></td>
-                        <td><code>Pacific Standard Time <span class="bodyFont">-or-</span> PST <span class="bodyFont">-or-</span> GMT-08:00</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>Z</code></td>
-                        <td>Time zone</td>
-                        <td><em>RFC 822 time zone</em></td>
-                        <td><code>-0800</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>X</code></td>
-                        <td>Time zone</td>
-                        <td><em>ISO 8601 time zone</em></td>
-                        <td><code>-08 <span class="bodyFont">-or-</span> -0800 <span class="bodyFont">-or-</span> -08:00</code></td>
-                    </tr>
-                    <tr>
-                        <td><code>'</code></td>
-                        <td>Escape char for text</td>
-                        <td><em>Delimiter</em></td>
-                        <td><code> </code></td>
-                    </tr>
-                    <tr>
-                        <td><code>''</code></td>
-                        <td>Single quote</td>
-                        <td><em>Literal</em></td>
-                        <td><code>'</code></td>
-                    </tr>
-                </tbody>
-            </table>
+    <col width="15%" />
+    <col width="30%" />
+    <col width="20%" />
+    <col width="35%" />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Pattern Letter</th>
+            <th>Meaning</th>
+            <th>Presentation Type</th>
+            <th>Example(s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>G</code></td>
+            <td>Era</td>
+            <td><em>Text</em></td>
+            <td><code>AD; Anno Domini; A</code></td>
+        </tr>
+        <tr>
+            <td><code>u</code></td>
+            <td>Year</td>
+            <td><em>Year</em></td>
+            <td><code>2017; 17</code></td>
+        </tr>
+        <tr>
+            <td><code>y</code></td>
+            <td>Year-of-era</td>
+            <td><em>Year</em></td>
+            <td><code>2017; 17</code></td>
+        </tr>
+        <tr>
+            <td><code>D</code></td>
+            <td>Day-of-year</td>
+            <td><em>Number</em></td>
+            <td><code>189; 303</code></td>
+        </tr>
+        <tr>
+            <td><code>M/L</code></td>
+            <td>Month-of-year</td>
+            <td><em>Number/text</em></td>
+            <td><code>6; 06; Jun; June</code></td>
+        </tr>
+        <tr>
+            <td><code>d</code></td>
+            <td>Day-of-month</td>
+            <td><em>Number</em></td>
+            <td><code>12</code></td>
+        </tr>
+        <tr>
+            <td><code>Y</code></td>
+            <td>Week-based-year</td>
+            <td><em>year</em></td>
+            <td><code>2017; 17</code></td>
+        </tr>
+        <tr>
+            <td><code>w</code></td>
+            <td>Week-of-week-based-year</td>
+            <td><em>Number</em></td>
+            <td><code>14; 51</code></td>
+        </tr>
+        <tr>
+            <td><code>W</code></td>
+            <td>Week-of-month</td>
+            <td><em>Number</em></td>
+            <td><code>7</code></td>
+        </tr>
+        <tr>
+            <td><code>E</code></td>
+            <td>Day-of-week</td>
+            <td><em>Text</em></td>
+            <td><code>Mon; Monday; M</code></td>
+        </tr>
+        <tr>
+            <td><code>e/c</code></td>
+            <td>Localized day-of-week</td>
+            <td><em>Number/text</em></td>
+            <td><code>1; 01; Mon; Monday; M</code></td>
+        </tr>
+        <tr>
+            <td><code>F</code></td>
+            <td>Week-of-month</td>
+            <td><em>Number</em></td>
+            <td><code>2</code></td>
+        </tr>
+        <tr>
+            <td><code>a</code></td>
+            <td>Am-Pm-of-Day</td>
+            <td><em>Text</em></td>
+            <td><code>PM</code></td>
+        </tr>
+        <tr>
+            <td><code>h</code></td>
+            <td>Clock-hour-of-am-pm (1-12)</td>
+            <td><em>Number</em></td>
+            <td><code>7; 12</code></td>
+        </tr>
+        <tr>
+            <td><code>K</code></td>
+            <td>Hour-of-am-pm (0-11)</td>
+            <td><em>Number</em></td>
+            <td><code>0; 11</code></td>
+        </tr>
+        <tr>
+            <td><code>k</code></td>
+            <td>Clock-hour-of-am-pm (1-24)</td>
+            <td><em>Number</em></td>
+            <td><code>1; 13</code></td>
+        </tr>
+        <tr>
+            <td><code>H</code></td>
+            <td>Hour-of-day (0-23)</td>
+            <td><em>Number</em></td>
+            <td><code>0; 11; 17</code></td>
+        </tr>
+        <tr>
+            <td><code>m</code></td>
+            <td>Minute-of-hour</td>
+            <td><em>Number</em></td>
+            <td><code>27</code></td>
+        </tr>
+        <tr>
+            <td><code>s</code></td>
+            <td>Second-of-minute</td>
+            <td><em>Number</em></td>
+            <td><code>48</code></td>
+        </tr>
+        <tr>
+            <td><code>S</code></td>
+            <td>Fraction-of-second</td>
+            <td><em>Fraction</em></td>
+            <td><code>978</code></td>
+        </tr>
+        <tr>
+            <td><code>A</code></td>
+            <td>Milli-of-day</td>
+            <td><em>Number</em></td>
+            <td><code>1234</code></td>
+        </tr>
+        <tr>
+            <td><code>n</code></td>
+            <td>Nano-of-second</td>
+            <td><em>Number</em></td>
+            <td><code>784651231</code></td>
+        </tr>
+        <tr>
+            <td><code>N</code></td>
+            <td>Nano-of-day</td>
+            <td><em>Number</em></td>
+            <td><code>1122000000</code></td>
+        </tr>
+        <tr>
+            <td><code>V</code></td>
+            <td>Time-zone ID</td>
+            <td><em>Zone-id</em></td>
+            <td><code>America/San_Francisco; Z; -08:30</code></td>
+        </tr>
+        <tr>
+            <td><code>z</code></td>
+            <td>Time-zone name</td>
+            <td><em>Zone-name</em></td>
+            <td><code>Pacific Standard Time; PST</code></td>
+        </tr>
+        <tr>
+            <td><code>O</code></td>
+            <td>Localized zone-offset</td>
+            <td><em>Offset-0</em></td>
+            <td><code>GMT+7; GMT+07:00; UTC-07:00;</code></td>
+        </tr>
+        <tr>
+            <td><code>X</code></td>
+            <td>Zone-offset 'Z' for zero</td>
+            <td><em>Offset-X</em></td>
+            <td><code>Z; -07; -0730; -07:30; -073015; -07:30:15;</code></td>
+        </tr>
+        <tr>
+            <td><code>x</code></td>
+            <td>Zone-offset</td>
+            <td><em>Offset-x</em></td>
+            <td><code>+0000; -07; -0730; -07:30; -073015; -07:30:15;</code></td>
+        </tr>
+        <tr>
+            <td><code>Z</code></td>
+            <td>Zone-offset</td>
+            <td><em>Offset-Z</em></td>
+            <td><code>+0000; -0800; -08:00;</code></td>
+        </tr>
+        <tr>
+            <td><code>p</code></td>
+            <td>Pad next</td>
+            <td><em>Pad modifier</em></td>
+            <td><code>1</code></td>
+        </tr>        <tr>
+            <td><code>'</code></td>
+            <td>Escape for text</td>
+            <td><em>Delimiter</em></td>
+            <td><code>&nbsp;</code></td>
+        </tr>
+        <tr>
+            <td><code>''</code></td>
+            <td>Single quote</td>
+            <td><em>Literal</em></td>
+            <td><code>'</code></td>
+        </tr>
+    </tbody>
+</table>
+
 ### Presentation Types   {#Presenta}
 
 How a presentation type is interpreted for certain pattern letters
@@ -250,181 +292,178 @@ as noted in the following table, other factors can influence how the
 pattern is interpreted.
 
 <table summary="Presentation types for date-time values">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Presentation Type</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><em>Text</em></td>
-                        <td>
-                            <p>For formatting, if the number of pattern letters is 4 or more, the full form is used. Otherwise, a short or abbreviated form is used, if available. </p>
-                            <p>For parsing, both forms are accepted, independent of the number of pattern letters.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Number</em></td>
-                        <td>
-                            <p>For formatting, the number of pattern letters is the minimum number of digits, and shorter numbers are zero-padded to this amount.</p>
-                            <p>For parsing, the number of pattern letters is ignored unless it's needed to separate two adjacent fields.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Year<br />(for Gregorian calendar)</em></td>
-                        <td>
-                            <p>For formatting, if the number of pattern letters is 2, the year is truncated to 2 digits; otherwise it is interpreted as a number.</p>
-                            <p>For parsing, if the number of pattern letters is more than 2, the year is interpreted literally, regardless of the number of digits; e.g.:</p>
-                            <ul>
-                                <li> if you use the pattern <code>MM/dd/yyyy</code>, the value <code>01/11/12</code> parses to <code>January 11, 12 A.D.</code></li>
-                                <li> if you use the pattern <code>MM/dd/yy</code>, the value <code>01/11/12</code> parses to <code>January 11, 2012.</code></li>
-                            </ul>
-                            <p>If the number of pattern letters is one or two,  (<code>y</code> or <code>yy</code>), the abbreviated year is interpreted as relative to a century; this is done by adjusting dates to be within 80 years before and 20 years after the current date.  </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Year<br />(other calendar systems)</em></td>
-                        <td>
-                            <p>Calendar-system specific forms are applied. </p>
-                            <p>For both formatting and parsing, if the number of pattern letters is 4 or more, a calendar specific long form is used. Otherwise, a calendar specific short or abbreviated form is used.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Month</em></td>
-                        <td>If the number of pattern letters is 3 or more, the month is interpreted as text; otherwise, it is interpreted as a number.</td>
-                    </tr>
-                    <tr>
-                        <td><em>General time zone</em></td>
-                        <td>
-                            <p>Time zones are interpreted as text if they have names. </p>
-                            <p>For time zones representing a GMT offset value, the following syntax is used:</p>
-                            <div class="indented">
-                                <p><code>GMT Sign Hours : Minutes</code></p>
-                            </div>
-                            <p>where:</p>
-                            <div class="indented">
-                                <p><code>Sign</code> is <code>+</code> or <code>-</code></p>
-                                <p><code>Hours</code> is either <code>Digit</code> or <code>Digit Digit</code>, between <code>0</code> and <code>23</code>. </p>
-                                <p><code>Minutes</code> is <code>Digit Digit</code> and must be between <code>00</code> and <code>59</code>. </p>
-                            </div>
-                            <p>For parsing, RFC 822 time zones are also accepted.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>RFC 822 time zone</em></td>
-                        <td>
-                            <p>For formatting, use the RFC 822 4-digit time zone format is used:</p>
-                            <div class="indented">
-                                <p><code>Sign TwoDigitHours Minutes</code></p>
-                            </div>
-                            <p><code>TwoDigitHours</code> must be between <code>00</code> and <code>23</code>.</p>
-                            <p>For parsing General time zones are also accepted.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>ISO 8601 time zone</em></td>
-                        <td>
-                            <p>The number of pattern letters designates the format for both formatting and parsing as follows:</p>
-                            <div class="preWrapper"><pre xml:space="preserve">  Sign TwoDigitHours Z
-| Sign TwoDigitHours Minutes Z
-| Sign TwoDigitHours : Minutes Z</pre>
-                            </div>
-                            <p>For formatting:</p>
-                            <ul>
-                                <li> if the offset value from GMT is 0, <code>Z</code> value is produced</li>
-                                <li>if the number of pattern letters is 1, any fraction of an hour is ignored</li>
-                            </ul>
-                            <p>For parsing, Z is parsed as the UTC time zone designator. Note that General time zones <em>are not accepted</em>.</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Delimiter</em></td>
-                        <td>Use the single quote to escape characters in text strings.</td>
-                    </tr>
-                    <tr>
-                        <td><em>Literal</em></td>
-                        <td>
-                            <p>You can include literals in your format specification by enclosing the character(s) in single quotes. </p>
-                            <p>Note that you must escape single quotes to include them as literals, e.g. use <code>''T''</code> to include the literal string <code>'T'</code>.</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
+        <tr>
+            <th>Presentation Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><em>Text</em></td>
+            <td><p>The text style is determined based on the number of pattern letters used;</p>
+                <ul>
+                    <li>Less than 4 pattern letters will use the short form.</li>
+                    <li>Exactly 4 pattern letters will use the full form.</li>
+                    <li>Exactly 5 pattern letters will use the narrow form. Pattern letters <code>L</code>, <code>c</code>, and <code>q</code> specify the stand-alone form of the text styles.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Number</em></td>
+            <td><p>If the count of letters is one, then the value is output using the minimum number of digits and without padding. Otherwise, the count of digits is used as the width of the output field, with the value zero-padded as necessary.</p>
+                <p>The following pattern letters have constraints on the count of letters:</p>
+                <ul>
+                    <li>Only one letter of <code>c</code> and <code>F</code> can be specified.</li>
+                    <li>Up to two letters of <code>d</code>, <code>H</code>, <code>h</code>, <code>K</code>, <code>k</code>, <code>m</code>, and <code>s</code> can be specified.</li>
+                    <li>Up to three letters of <code>D</code> can be specified.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Number/Text</em></td>
+            <td>If the count of pattern letters is 3 or greater, use the Text rules above. Otherwise use the Number rules above.</td>
+        </tr>
+        <tr>
+            <td><em>Fraction</em></td>
+            <td>Outputs the nano-of-second field as a fraction-of-second. The nano-of-second value has nine digits, thus the count of pattern letters is from 1 to 9. If it is less than 9, then the nano-of-second value is truncated, with only the most significant digits being output.</td>
+        </tr>
+        <tr>
+            <td><em>Year</em></td>
+            <td><p>The count of letters determines the minimum field width below which padding is used.</p>
+                <ul>
+                    <li>If the count of letters is two, then a reduced two digit form is used. For printing, this outputs the rightmost two digits. For parsing, this will parse using the base value of <code>2000</code> to <code>2099</code> inclusive.</li>
+                    <li>If the count of letters is less than four (but not two), then the sign is only output for negative years as per <code>SignStyle.NORMAL</code>. Otherwise, the sign is output if the pad width is exceeded, as per <code>SignStyle.EXCEEDS_PAD</code>.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>ZoneId</em></td>
+            <td>This outputs the time-zone ID, such as <code>Europe/Paris</code>. If the count of letters is two, then the time-zone ID is output. Any other count of letters throws <code>IllegalArgumentException</code>.</td>
+        </tr>
+        <tr>
+            <td><em>Zone names</em></td>
+            <td>This outputs the display name of the time-zone ID. If the count of letters is one, two or three, then the short name is output. If the count of letters is four, then the full name is output. Five or more letters throws <code>IllegalArgumentException</code>.</td>
+        </tr>
+        <tr>
+            <td><em>Offset X and x</em></td>
+            <td><p>This formats the offset based on the number of pattern letters:</p>
+                <ul>
+                    <li>One letter outputs just the hour, such as <code>+01</code>, unless the minute is non-zero in which case the minute is also output, such as <code>+0130</code>.</li>
+                    <li>Two letters outputs the hour and minute, without a colon, such as <code>+0130</code>.</li>
+                    <li>Three letters outputs the hour and minute, with a colon, such as <code>+01:30</code>.</li>
+                    <li>Four letters outputs the hour and minute and optional second, without a colon, such as <code>+013015</code>.</li>
+                    <li>Five letters outputs the hour and minute and optional second, with a colon, such as <code>+01:30:15</code>.</li>
+                    <li>Six or more letters throws <code>IllegalArgumentException</code>.</li>
+                    <li>Pattern letter <code>X</code> (upper case) will output <code>Z</code> when the offset to be output would be zero, whereas pattern letter <code>x</code> (lower case) will output <code>+00</code>, <code>+0000</code>, or <code>+00:00</code>.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Offset O</em></td>
+            <td><p>This formats the localized offset based on the number of pattern letters.</p>
+                <ul>
+                    <li>One letter outputs the short form of the localized offset, which is localized offset text, such as <code>GMT</code>, with hour without leading zero, optional 2-digit minute and second if non-zero, and colon, for example <code>GMT+8</code>.</li>
+                    <li>Four letters outputs the full form, which is localized offset text, such as <code>GMT</code>, with 2-digit hour and minute field, optional second field if non-zero, and colon, for example <code>GMT+08:00</code>.</li>
+                    <li>Any other count of letters throws <code>IllegalArgumentException</code>.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Offset Z</em></td>
+            <td><p>This formats the offset based on the number of pattern letters.</p>
+                <ul>
+                    <li>One, two or three letters outputs the hour and minute, without a colon, such as <code>+0130</code>. The output will be <code>+0000</code> when the offset is zero.</li>
+                    <li>Four letters outputs the full form of localized offset, equivalent to four letters of Offset-O. The output will be the corresponding localized offset text if the offset is zero.</li>
+                    <li>Five letters outputs the hour, minute, with optional second if non-zero, with colon. It outputs <code>Z</code> if the offset is zero.</li>
+                    <li>Six or more letters throws <code>IllegalArgumentException</code>.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><em>Optional section</em></td>
+            <td>The optional section markers work exactly like calling <code>DateTimeFormatterBuilder.optionalStart()</code> and <code>DateTimeFormatterBuilder.optionalEnd()</code>.</td>
+        </tr>
+        <tr>
+            <td><em>Pad modifier</em></td>
+            <td>
+                <p>Modifies the pattern that immediately follows to be padded with spaces. The pad width is determined by the number of pattern letters. This is the same as calling <code>DateTimeFormatterBuilder.padNext(int)</code>.</p>
+                <p>For example, <code>ppH</code> outputs the hour-of-day padded on the left with spaces to a width of 2.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <p>Any unrecognized letter is an error.</p>
+                <p>Any non-letter character, other than <code>&#91;</code>, <code>&#93;</code>, <code>&#123;</code>, <code>&#125;</code>, <code>#</code> and the single quote will be output directly. Despite this, it is recommended to use single quotes around all characters that you want to output directly to ensure that future changes do not break your application.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 ### Formatting Examples   {#Presenta}
 
 The following table contains a number of examples of date time formats:
 
 <table summary="Examples of date and time patterns">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Date and Time Pattern</th>
-                        <th>Result</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>"yyyy.MM.dd G 'at' HH:mm:ss z"</code></td>
-                        <td><span class="Example">2001.07.04 AD at 12:08:56 PDT</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"EEE, MMM d, ''yy"</code></td>
-                        <td><span class="Example">Wed, Jul 4, '01</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"h:mm a"</code></td>
-                        <td><span class="Example">12:08 PM</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"hh 'o''clock' a, zzzz"</code></td>
-                        <td><span class="Example">12 o'clock PM, Pacific Daylight Time</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"K:mm a, z"</code></td>
-                        <td><span class="Example">0:08 PM, PDT</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"yyyyy.MMMMM.dd GGG hh:mm aaa"</code></td>
-                        <td><span class="Example">02001.July.04 AD 12:08 PM</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"EEE, d MMM yyyy HH:mm:ss Z"</code></td>
-                        <td><span class="Example">Wed, 4 Jul 2001 12:08:56 -0700</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"yyMMddHHmmssZ"</code></td>
-                        <td><span class="Example">010704120856-0700</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</code></td>
-                        <td><span class="Example">2001-07-04T12:08:56.235-0700</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSXXX"</code></td>
-                        <td><span class="Example">2001-07-04T12:08:56.235-07:00</span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>"YYYY-'W'ww-u"</code></td>
-                        <td><span class="Example">2001-W27-3</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-## Examples of Using `TO_DATE`
+        <col />
+        <col />
+        <thead>
+            <tr>
+                <th>Date and Time Pattern</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>"yyyy.MM.dd G 'at' HH:mm:ss z"</code></td>
+                <td><span class="Example">2001.07.04 AD at 12:08:56 PDT</span></td>
+            </tr>
+            <tr>
+                <td><code>"EEE, MMM d, ''yy"</code></td>
+                <td><span class="Example">Wed, Jul 4, '01</span></td>
+            </tr>
+            <tr>
+                <td><code>"h:mm a"</code></td>
+                <td><span class="Example">12:08 PM</span></td>
+            </tr>
+            <tr>
+                <td><code>"hh 'o''clock' a, zzzz"</code></td>
+                <td><span class="Example">12 o'clock PM, Pacific Daylight Time</span></td>
+            </tr>
+            <tr>
+                <td><code>"K:mm a, z"</code></td>
+                <td><span class="Example">0:08 PM, PDT</span></td>
+            </tr>
+            <tr>
+                <td><code>"yyyyy.MMMMM.dd GGG hh:mm aaa"</code></td>
+                <td><span class="Example">02001.July.04 AD 12:08 PM</span></td>
+            </tr>
+            <tr>
+                <td><code>"EEE, d MMM yyyy HH:mm:ss Z"</code></td>
+                <td><span class="Example">Wed, 4 Jul 2001 12:08:56 -0700</span></td>
+            </tr>
+            <tr>
+                <td><code>"yyMMddHHmmssZ"</code></td>
+                <td><span class="Example">010704120856-0700</span></td>
+            </tr>
+            <tr>
+                <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSZ"</code></td>
+                <td><span class="Example">2001-07-04T12:08:56.235-0700</span></td>
+            </tr>
+            <tr>
+                <td><code>"yyyy-MM-dd'T'HH:mm:ss.SSSXXX"</code></td>
+                <td><span class="Example">2001-07-04T12:08:56.235-07:00</span></td>
+            </tr>
+            <tr>
+                <td><code>"YYYY-'W'ww-u"</code></td>
+                <td><span class="Example">2001-W27-3</span></td>
+            </tr>
+        </tbody>
+    </table>
+## Examples of Using <code>TO_DATE</code>
 
 Here are several simple examples:
 
@@ -467,10 +506,10 @@ Here are several simple examples:
 
 </div>
 And here is an example that shows two interesting aspects of using
-`TO_DATE`. In this example, the input includes the literal `T`), which
+<code>TO_DATE</code>. In this example, the input includes the literal  ), which
 means that the format pattern must delimit that letter with single
 quotes. Since we're delimiting the entire pattern in single quotes, we
-then have to escape those marks and specify `''T''` in our parsing
+then have to escape those marks and specify <code>''T''</code> in our parsing
 pattern.
 
 And because this example specifies a time zone (Z) in the parsing
@@ -499,28 +538,24 @@ the input string:
 </div>
 ## See Also
 
-* [`CURRENT_DATE`](sqlref_builtinfcns_currentdate.html) function
-* [`DATE`](sqlref_builtinfcns_date.html) data type
-* [`DATE`](sqlref_builtinfcns_date.html) function
-* [`DAY`](sqlref_builtinfcns_day.html) function
-* [`EXTRACT`](sqlref_builtinfcns_extract.html) function
-* [`LASTDAY`](sqlref_builtinfcns_day.html) function
-* [`MONTH`](sqlref_builtinfcns_month.html) function
-* [`MONTH_BETWEEN`](sqlref_builtinfcns_monthbetween.html) function
-* [`MONTHNAME`](sqlref_builtinfcns_monthname.html) function
-* [`NEXTDAY`](sqlref_builtinfcns_day.html) function
-* [`NOW`](sqlref_builtinfcns_now.html) function
-* [`QUARTER`](sqlref_builtinfcns_quarter.html) function
-* [`TIME`](sqlref_builtinfcns_time.html) data type
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
-* [`TO_CHAR`](sqlref_builtinfcns_char.html) function
-* [`WEEK`](sqlref_builtinfcns_week.html) function
+* [<code>CURRENT_DATE</code>](sqlref_builtinfcns_currentdate.html) function
+* [<code>DATE</code>](sqlref_builtinfcns_date.html) data type
+* [<code>DATE</code>](sqlref_builtinfcns_date.html) function
+* [<code>DAY</code>](sqlref_builtinfcns_day.html) function
+* [<code>EXTRACT</code>](sqlref_builtinfcns_extract.html) function
+* [<code>LASTDAY</code>](sqlref_builtinfcns_day.html) function
+* [<code>MONTH</code>](sqlref_builtinfcns_month.html) function
+* [<code>MONTH_BETWEEN</code>](sqlref_builtinfcns_monthbetween.html) function
+* [<code>MONTHNAME</code>](sqlref_builtinfcns_monthname.html) function
+* [<code>NEXTDAY</code>](sqlref_builtinfcns_day.html) function
+* [<code>NOW</code>](sqlref_builtinfcns_now.html) function
+* [<code>QUARTER</code>](sqlref_builtinfcns_quarter.html) function
+* [<code>TIME</code>](sqlref_builtinfcns_time.html) data type
+* [<code>TIMESTAMP</code>](sqlref_builtinfcns_timestamp.html) function
+* [<code>TO_CHAR</code>](sqlref_builtinfcns_char.html) function
+* [<code>WEEK</code>](sqlref_builtinfcns_week.html) function
 * *[Working with Dates](developers_fundamentals_dates.html)* in the
   *Developer's Guide*
 
 </div>
 </section>
-
-
-
-[1]: http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html#rfc822timezone
