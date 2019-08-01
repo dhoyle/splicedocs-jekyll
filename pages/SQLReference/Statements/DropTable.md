@@ -24,7 +24,7 @@ DROP TABLE [IF EXISTS] <a href="sqlref_identifiers_types.html#TableName">table-
 table-Name
 {: .paramName}
 
-The name of the schema that you want to drop from your database.
+The name of the table that you want to drop from your database.
 {: .paramDefnFirst}
 
 </div>

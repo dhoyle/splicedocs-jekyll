@@ -21,12 +21,11 @@ Splice Machine recommends collecting statistics after initial loading of data in
 
 This topic describes:
 
-* [Collecting statistics](#Collecti) for a schema or table in your
-  database
-* [Viewing collected statistics](#Viewing)
-* [Dropping statistics](#Dropping) for a schema
-* [Enabling and disabling collection of statistics](#Enabling) on specific
-  columns in tables in your database
+* [Collecting Statistics](#collecting)
+* [Viewing Collected Statistics](#viewing)
+* [When to Collect Statistics](#when)
+* [Enabling and Disabling Statistics on Specific Columns](#enabling)
+* [Dropping Statistics](#Dropping)
 
 ## About Database Statistics
 
@@ -35,7 +34,7 @@ Statistics are inexact; in fact, some statistics like table cardinality are esti
 The statistics for your database are not automatically refreshed when the data in your database changes, which means that when you query a statistical table or view, the results you see may not exactly match the data in the actual tables.
 {: .noteImportant}
 
-## Collecting Statistics   {#Collecti}
+## Collecting Statistics   {#collecting}
 
 Splice Machine offers two variations of the [`ANALYZE`](cmdlineref_analyze.html) statistics collection command, which you can use from the `splice>` command line interpreter:
 
@@ -65,7 +64,7 @@ You can use the `ESTIMATE STATISTICS` form of this command to reduce analysis ti
 The `ANALYZE TABLE` command also collects statistics for any indexes associated with the table.
 
 
-## Analyzing a Schema
+### Analyzing a Schema
 
 The `ANALYZE SCHEMA` command collects statistics for every table (and every index defined on those tables) in the specified schema; for example:
 
@@ -76,7 +75,7 @@ splice> ANALYZE SCHEMA mySchema;
 
 The output of `ANALYZE SCHEMA` is effectively the cumulative output that you would see from running `ANALYZE TABLE` on each table in the schema, as shown in the next section.
 
-## Analyze Output
+### Output of the ANALYZE Command
 
 Here's some sample output from `ANALYZE` commands:
 
@@ -175,7 +174,7 @@ The following table summarizes the information displayed by `ANALYZE`:
 </table>
 
 
-## Viewing Statistics  {#Viewing}
+## Viewing Collected Statistics  {#viewing}
 
 After statistics have been collected, you can query two system views for key metrics about the tables in your database. This information can provide you with insights into how to best structure certain queries:
 
@@ -251,7 +250,7 @@ L_SHIPDATE     |2291                |0           |1992-01-02  |1998-12-01
 {: .Example}
 
 
-## When Should You Collect Statistics?
+## When Should You Collect Statistics?  {#when}
 
 We advise that you collect statistics after you have:
 
@@ -268,7 +267,7 @@ Once collection of statistics has completed, the Splice Machine query
 optimizer will automatically begin using the updated statistics to
 optimize query execution plans.
 
-## Enabling and Disabling Statistics on Specific Columns   {#Enabling}
+## Enabling and Disabling Statistics on Specific Columns   {#enabling}
 
 You can selectively enable or disable statistics collection on specific columns in a table. You can only collect statistics on columns containing data that can be ordered. This includes all numeric types, Boolean values, some `CHAR` and `BIT` data types, and date and timestamp values.
 
@@ -325,6 +324,14 @@ procedure; for example:
 CALL SYSCS_UTIL.ENABLE_COLUMN_STATISTICS('mySchema', 'Players', 'Birthdate');
 ```
 {: .Example }
+
+## Dropping Statistics  {#dropping}
+
+You can use Splice Machine built-in system procedures drop statistics for a schema or table:
+
+* The [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html) procedure drops statistics for a schema, including all tables in the schema.
+* The [`SYSCS_UTIL.DROP_TABLE_STATISTICS`](sqlref_sysprocs_droptablestats.html) procedure drops statistics for a table.
+
 
 </div>
 </section>

@@ -14,7 +14,13 @@ folder: BestPractices/Optimizer
 
 # Using Explain Plan to Tune Queries
 
-If you have a query that is not performing as expected, you can run the `explain` command to display the execution plan for the query. You can then examine the plan to determine where it looks like too much time is being spent in the query's execution flow
+If you have a query that is not performing as expected, you can run the `explain` command to display the Explain plan (also referred to as *execution plan*) for the query. You can then examine the plan to determine where it looks like too much time is being spent in the query's execution flow.  This topic shows you how to generate and examine and interpret explain plans, in these sections:
+
+* [Generating an Explain Plan](#generating)
+* [Examining an Explain Plan](#examining)
+* [Explain Plan Examples](#examples)
+
+## Generating an Explain Plan  {#generating}
 
 To generate an explain plan, simply put `explain` in front of a query. You'll note that you need to read the plan from the bottom up: the first step is at the bottom. For example:
 
@@ -40,7 +46,7 @@ When you use `explain` in front of a query, the query itself does not run.
 {: .noteNote}
 
 
-## Examining an Explain Plan
+## Examining an Explain Plan  {#examining}
 
 To see the execution flow of a query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above.
 
@@ -148,7 +154,7 @@ This line shows you which *engine* Splice Machine plans to use for the query.
 </div>
 
 
-## Explain Plan Examples
+## Explain Plan Examples  {#examples}
 
 The remainder of this topic contains the following examples of using the `explain` command to display the execution plan for a statement:
 
@@ -195,7 +201,7 @@ Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example}
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels this operation as `TableScan[`*tableId*(*conglomerateId*)`]`:
 
@@ -245,7 +251,7 @@ Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels this operation as
   `IndexScan[`*indexId(conglomerateId)*`]`:
@@ -294,7 +300,7 @@ Cursor(n=4,rows=10,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels both projection and restriction operations as
   `ProjectRestrict`. which can contain both *projections* and
@@ -318,7 +324,7 @@ Cursor(n=4,rows=18,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels the operation as `IndexLookup`; you may see this
   labeled as an `IndexToBaseRow` operation elsewhere.
@@ -343,7 +349,7 @@ Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels the operation using the *join type* followed by
   `Join`; the possible values are:
@@ -403,7 +409,7 @@ Cursor(n=5,rows=40,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The right side of the `Union` is listed first, followed by the left
   side of the union,
@@ -426,7 +432,7 @@ Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels this operation as `OrderBy`.
 
@@ -469,7 +475,7 @@ Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * The plan labels both grouped and scaled aggregate operations as
   `GroupBy`.
@@ -494,7 +500,7 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
 ```
 {: .Example }
 
-#### Nodes
+#### Notes About This Plan
 
 * Subqueries are listed as a second query tree, whose starting
   indentation level is the same as the `ProjectRestrict` operation that
