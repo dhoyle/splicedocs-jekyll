@@ -240,11 +240,11 @@ properties in that file:
 
 <div class="preWrapperWide" markdown="1">
     <property>
-       <name>fs.s3a.awsAccessKeyId</name>
+       <name>fs.s3a.access.key</name>
        <value>access key</value>
     </property>
     <property>
-       <name>fs.s3a.awsSecretAccessKey</name>
+       <name>fs.s3a.secret.key</name>
        <value>secret key</value>
     </property>
 {: .Example}
