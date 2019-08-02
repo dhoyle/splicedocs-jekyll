@@ -1,0 +1,95 @@
+
+Convert the spliceanswers/* page YAML into:
+    - question === title field
+    - category = category field
+    - permalink = permalink field
+
+Parse the markdown:
+    - question_intro
+    - applies
+    - answer_heading
+    - answer
+    - links_to
+    - links_from
+
+
+https://stackoverflow.com/questions/8217742/one-to-many-mysql
+
+markdown content into a csv file
+   or into an sql script
+
+   Each page builds a csv record:
+    -
+
+=========================================================
+
+
+
+
+TABLE_SCHEM         |TABLE_NAME                                        |CONGLOM_ID|REMARKS
+-------------------------------------------------------------------------------------------------------
+SPLICEANSWERS       |CATEGORIES                                        |1616      |
+SPLICEANSWERS       |LINKS                                             |1648      |
+SPLICEANSWERS       |LINKTYPES                                         |1664      |
+SPLICEANSWERS       |QUESTIONS                                         |1632      |
+
+4 rows selected
+splice> show create table questions;
+DDL
+---
+CREATE TABLE "SPLICEANSWERS"."QUESTIONS" (
+"ID" INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)
+,"QUESTION" VARCHAR(512) NOT NULL
+,"ANSWER" VARCHAR(4096) NOT NULL
+,"APPLIES" VARCHAR(512) NOT NULL
+,"CATEGORYID" INTEGER NOT NULL
+,"INTERNALONLY" BOOLEAN
+, CONSTRAINT SQL190801140331960 PRIMARY KEY(ID)) ;
+
+1 row selected
+
+
+splice> show create table categories;
+DDL
+---
+CREATE TABLE "SPLICEANSWERS"."CATEGORIES" (
+"ID" INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)
+,"NAME" VARCHAR(128) NOT NULL
+,"PARENT" INTEGER
+, CONSTRAINT SQL190801140116120 PRIMARY KEY(ID)) ;
+
+1 row selected
+
+
+splice> show create table links;
+DDL
+---
+CREATE TABLE "SPLICEANSWERS"."LINKS" (
+"QUESTIONID" INTEGER NOT NULL
+,"RELATEDID" INTEGER NOT NULL
+,"TYPEID" INTEGER DEFAULT 0
+, CONSTRAINT SQL190801141224120 PRIMARY KEY(QUESTIONID)) ;
+
+1 row selected
+
+
+splice> show create table linktypes;
+DDL
+---
+CREATE TABLE "SPLICEANSWERS"."LINKTYPES" (
+"ID" INTEGER NOT NULL
+,"TYPENAME" VARCHAR(32)
+, CONSTRAINT SQL190801141354750 PRIMARY KEY(ID)) ;
+
+1 row selected
+
+
+splice> select * from linktypes;
+ID         |TYPENAME
+--------------------------------------------
+0          |To
+1          |From
+2          |Both
+
+3 rows selected
+splice>
