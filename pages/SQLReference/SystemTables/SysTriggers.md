@@ -12,183 +12,194 @@ folder: SQLReference/SystemTables
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSTRIGGERS System Table
 
-The `SYSTRIGGERS` table describes the database's triggers.
+The `SYSTRIGGERS` table describes the database's triggers. It belongs to the `SYS` schema.
 
-The following table shows the contents of the `SYSTRIGGERS` system
+The following table shows the contents of the `SYS.SYSTRIGGERS` system
 table.
 
 <table>
-                <caption>SYSTRIGGERS system table</caption>
-                <col />
-                <col />
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Column Name</th>
-                        <th>Type</th>
-                        <th>Length</th>
-                        <th>Nullable</th>
-                        <th>Contents</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>TRIGGERID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>Unique identifier for the trigger</td>
-                    </tr>
-                    <tr>
-                        <td><code>TRIGGERNAME</code></td>
-                        <td><code>VARCHAR</code></td>
-                        <td><code>128</code></td>
-                        <td><code>NO</code></td>
-                        <td>Name of the trigger</td>
-                    </tr>
-                    <tr>
-                        <td><code>SCHEMAID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>ID of the trigger's schema (join with <code>SYSSCHEMAS.SCHEMAID</code>)</td>
-                    </tr>
-                    <tr>
-                        <td><code>CREATIONTIMESTAMP</code></td>
-                        <td><code>TIMESTAMP</code></td>
-                        <td><code>29</code></td>
-                        <td><code>NO</code></td>
-                        <td>Time the trigger was created</td>
-                    </tr>
-                    <tr>
-                        <td><code>EVENT</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>1</code></td>
-                        <td><code>NO</code></td>
-                        <td>
-                            <p class="noSpaceAbove">Possible values are:</p>
-                            <ul>
-                                <li><code>'U'</code> for update</li>
-                                <li><code>'D'</code> for delete</li>
-                                <li><code>'I</code>' for insert</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>FIRINGTIME</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>1</code></td>
-                        <td><code>NO</code></td>
-                        <td>
-                            <p class="noSpaceAbove">Possible values are:</p>
-                            <ul>
-                                <li><code>'B'</code> for before</li>
-                                <li><code>'A'</code> for after</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>TYPE</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>1</code></td>
-                        <td><code>NO</code></td>
-                        <td>
-                            <p class="noSpaceAbove">Possible values are:</p>
-                            <ul>
-                                <li><code>'R'</code> for row</li>
-                                <li><code>'S'</code> for statement</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>STATE</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>1</code></td>
-                        <td><code>NO</code></td>
-                        <td>
-                            <p class="noSpaceAbove">Possible values are:</p>
-                            <ul>
-                                <li><code>'E'</code> for enabled</li>
-                                <li><code>'D'</code> for disabled</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><code>TABLEID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>ID of the table on which the trigger is defined</td>
-                    </tr>
-                    <tr>
-                        <td><code>WHENSTMTID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>YES</code></td>
-                        <td>Used only if there is a <code>WHEN</code> clause (not yet supported)</td>
-                    </tr>
-                    <tr>
-                        <td><code>ACTIONSTMTID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>YES</code></td>
-                        <td>ID of the stored prepared statement for the triggered-SQL-statement (join with <code>SYSSTATEMENTS.STMTID</code>)</td>
-                    </tr>
-                    <tr>
-                        <td><code>REFERENCEDCOLUMNS</code></td>
-                        <td class="CodeFont"><em>org.apache.Splice Machine<br /> .catalog.ReferencedColumns</em>
-                            <p>This class is not part of the public API.</p>
-                        </td>
-                        <td><code>-1</code></td>
-                        <td><code>YES</code></td>
-                        <td>Descriptor of the columns to be updated, if this trigger is an update trigger (that is, if the <code>EVENT</code> column contains <code>'U'</code>)</td>
-                    </tr>
-                    <tr>
-                        <td><code>TRIGGERDEFINITION</code></td>
-                        <td><code>LONG VARCHAR</code></td>
-                        <td><code>2,147,483,647</code></td>
-                        <td><code>YES</code></td>
-                        <td>Text of the action SQL statement</td>
-                    </tr>
-                    <tr>
-                        <td><code>REFERENCINGOLD</code></td>
-                        <td><code>BOOLEAN</code></td>
-                        <td><code>1</code></td>
-                        <td><code>YES</code></td>
-                        <td>Whether or not the <code>OLDREFERENCINGNAME</code>, if non-null, refers
-					to the <code>OLD</code> row or table</td>
-                    </tr>
-                    <tr>
-                        <td><code>REFERENCINGNEW </code></td>
-                        <td><code>BOOLEAN</code></td>
-                        <td><code>1</code></td>
-                        <td><code>YES</code></td>
-                        <td>Whether or not the <code>NEWREFERENCINGNAME</code>, if non-null, refers
-					to the <code>NEW</code> row or table</td>
-                    </tr>
-                    <tr>
-                        <td><code>OLDREFERENCINGNAME</code></td>
-                        <td><code>VARCHAR</code></td>
-                        <td><code>128</code></td>
-                        <td><code>YES</code></td>
-                        <td>Pseudoname as set using the <code>REFERENCING OLD AS</code> clause</td>
-                    </tr>
-                    <tr>
-                        <td><code>NEWREFERENCINGNAME</code></td>
-                        <td><code>VARCHAR</code></td>
-                        <td><code>128</code></td>
-                        <td><code>YES</code></td>
-                        <td>Pseudoname as set using the <code>REFERENCING NEW AS</code> clause </td>
-                    </tr>
-                </tbody>
-            </table>
+    <caption>SYSTRIGGERS system table</caption>
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Type</th>
+            <th>Length</th>
+            <th>Nullable</th>
+            <th>Contents</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>TRIGGERID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>Unique identifier for the trigger</td>
+        </tr>
+        <tr>
+            <td><code>TRIGGERNAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>Name of the trigger</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMAID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>ID of the trigger's schema (join with <code>SYSSCHEMAS.SCHEMAID</code>)</td>
+        </tr>
+        <tr>
+            <td><code>CREATIONTIMESTAMP</code></td>
+            <td><code>TIMESTAMP</code></td>
+            <td><code>29</code></td>
+            <td><code>NO</code></td>
+            <td>Time the trigger was created</td>
+        </tr>
+        <tr>
+            <td><code>EVENT</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>
+                <p class="noSpaceAbove">Possible values are:</p>
+                <ul>
+                    <li><code>'U'</code> for update</li>
+                    <li><code>'D'</code> for delete</li>
+                    <li><code>'I</code>' for insert</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>FIRINGTIME</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>
+                <p class="noSpaceAbove">Possible values are:</p>
+                <ul>
+                    <li><code>'B'</code> for before</li>
+                    <li><code>'A'</code> for after</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>TYPE</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>
+                <p class="noSpaceAbove">Possible values are:</p>
+                <ul>
+                    <li><code>'R'</code> for row</li>
+                    <li><code>'S'</code> for statement</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>STATE</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>
+                <p class="noSpaceAbove">Possible values are:</p>
+                <ul>
+                    <li><code>'E'</code> for enabled</li>
+                    <li><code>'D'</code> for disabled</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><code>TABLEID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>ID of the table on which the trigger is defined</td>
+        </tr>
+        <tr>
+            <td><code>WHENSTMTID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>YES</code></td>
+            <td>Used only if there is a <code>WHEN</code> clause (not yet supported)</td>
+        </tr>
+        <tr>
+            <td><code>ACTIONSTMTID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>YES</code></td>
+            <td>ID of the stored prepared statement for the triggered-SQL-statement (join with <code>SYSSTATEMENTS.STMTID</code>)</td>
+        </tr>
+        <tr>
+            <td><code>REFERENCEDCOLUMNS</code></td>
+            <td class="CodeFont"><em>org.apache.Splice Machine<br /> .catalog.ReferencedColumns</em>
+                <p>This class is not part of the public API.</p>
+            </td>
+            <td><code>-1</code></td>
+            <td><code>YES</code></td>
+            <td>Descriptor of the columns to be updated, if this trigger is an update trigger (that is, if the <code>EVENT</code> column contains <code>'U'</code>)</td>
+        </tr>
+        <tr>
+            <td><code>TRIGGERDEFINITION</code></td>
+            <td><code>LONG VARCHAR</code></td>
+            <td><code>2,147,483,647</code></td>
+            <td><code>YES</code></td>
+            <td>Text of the action SQL statement</td>
+        </tr>
+        <tr>
+            <td><code>REFERENCINGOLD</code></td>
+            <td><code>BOOLEAN</code></td>
+            <td><code>1</code></td>
+            <td><code>YES</code></td>
+            <td>Whether or not the <code>OLDREFERENCINGNAME</code>, if non-null, refers
+		to the <code>OLD</code> row or table</td>
+        </tr>
+        <tr>
+            <td><code>REFERENCINGNEW </code></td>
+            <td><code>BOOLEAN</code></td>
+            <td><code>1</code></td>
+            <td><code>YES</code></td>
+            <td>Whether or not the <code>NEWREFERENCINGNAME</code>, if non-null, refers
+		to the <code>NEW</code> row or table</td>
+        </tr>
+        <tr>
+            <td><code>OLDREFERENCINGNAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>YES</code></td>
+            <td>Pseudoname as set using the <code>REFERENCING OLD AS</code> clause</td>
+        </tr>
+        <tr>
+            <td><code>NEWREFERENCINGNAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>YES</code></td>
+            <td>Pseudoname as set using the <code>REFERENCING NEW AS</code> clause </td>
+        </tr>
+    </tbody>
+</table>
 Any SQL text that is part of a triggered-SQL-statement is compiled and
 stored in the `SYSSTATEMENTS` table. `ACTIONSTMTID` and `WHENSTMTID` are
 foreign keys that reference `SYSSTATEMENTS.STMTID`. The statements for a
 trigger are always in the same schema as the trigger.
 
+## Usage Example and Restrictions
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSTRIGGERS;
+```
+{: .Example}
+
+{% include splice_snippets/systableaccessnote.md %}
+
+
 </div>
 </section>
-

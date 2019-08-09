@@ -13,7 +13,7 @@ folder: SQLReference/SystemTables
 # SYSDEPENDS System Table
 
 The `SYSDEPENDS` table stores the dependency relationships between
-persistent objects in the database.
+persistent objects in the database. It belongs to the `SYS` schema.
 
 Persistent objects can be dependents or providers. Dependents are
 objects that depend on other objects. Providers are objects that other
@@ -22,60 +22,71 @@ objects depend on.
 * Dependents are views, constraints, or triggers.
 * Providers are tables, conglomerates, constraints, or privileges.
 
-The following table shows the contents of the `SYSDEPENDS` system table.
+The following table shows the contents of the `SYS.SYSDEPENDS` system table.
 
 <table>
-                <caption>SYSDEPENDS system table</caption>
-                <col />
-                <col />
-                <col />
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Column Name</th>
-                        <th>Type</th>
-                        <th>Length</th>
-                        <th>Nullable</th>
-                        <th>Contents</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><code>DEPENDENTID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>A unique identifier for the dependent</td>
-                    </tr>
-                    <tr>
-                        <td><code>DEPENDENTFINDER</code></td>
-                        <td><em>com.splicemachine.db.catalog.TypeDescriptor</em> <p>This class is not part of the public API.</p></td>
-                        <td><code>-1</code></td>
-                        <td><code>NO</code></td>
-                        <td>A system type that describes the view, constraint, or trigger that is the dependent</td>
-                    </tr>
-                    <tr>
-                        <td><code>PROVIDERID</code></td>
-                        <td><code>CHAR</code></td>
-                        <td><code>36</code></td>
-                        <td><code>NO</code></td>
-                        <td>A unique identifier for the provider</td>
-                    </tr>
-                    <tr>
-                        <td><code>PROVIDERFINDER</code></td>
-                        <td>
-                            <p><em>com.splicemachine.db.catalog.TypeDescriptor</em>
-                            </p>
-                            <p>This class is
-						not part of the public API.</p>
-                        </td>
-                        <td><code>-1</code></td>
-                        <td><code>NO</code></td>
-                        <td>A system type that describes the table, conglomerate, constraint, and privilege that is the provider</td>
-                    </tr>
-                </tbody>
-            </table>
+    <caption>SYSDEPENDS system table</caption>
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Column Name</th>
+            <th>Type</th>
+            <th>Length</th>
+            <th>Nullable</th>
+            <th>Contents</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>DEPENDENTID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>A unique identifier for the dependent</td>
+        </tr>
+        <tr>
+            <td><code>DEPENDENTFINDER</code></td>
+            <td><em>com.splicemachine.db.catalog.TypeDescriptor</em> <p>This class is not part of the public API.</p></td>
+            <td><code>-1</code></td>
+            <td><code>NO</code></td>
+            <td>A system type that describes the view, constraint, or trigger that is the dependent</td>
+        </tr>
+        <tr>
+            <td><code>PROVIDERID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>A unique identifier for the provider</td>
+        </tr>
+        <tr>
+            <td><code>PROVIDERFINDER</code></td>
+            <td>
+                <p><em>com.splicemachine.db.catalog.TypeDescriptor</em>
+                </p>
+                <p>This class is
+			not part of the public API.</p>
+            </td>
+            <td><code>-1</code></td>
+            <td><code>NO</code></td>
+            <td>A system type that describes the table, conglomerate, constraint, and privilege that is the provider</td>
+        </tr>
+    </tbody>
+</table>
+
+## Usage Example and Restrictions
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSDEPENDS;
+```
+{: .Example}
+
+{% include splice_snippets/systableaccessnote.md %}
+
 </div>
 </section>
-

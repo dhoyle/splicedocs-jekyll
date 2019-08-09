@@ -1,33 +1,25 @@
 ---
-title: SYSTABLEPERMS system table
-summary: System table that stores the table permissions that have granted but not revoked.
-keywords: Table permissions table
+title: SYSSCHEMAPERMSVIEW System View
+summary: System view that describes schema permissions.
+keywords: schema, permissions
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_systableperms.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_sysschemapermsview.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSTABLEPERMS System Table
+# SYSSCHEMAPERMSVIEW System View
 
-The `SYSTABLEPERMS` table stores the table permissions that have been
-granted but not revoked. It belongs to the `SYS` schema.
+The `SYSSCHEMAPERMSVIEW` table view describes the schema permissions that have been granted but not revoked within the current database. It belongs to the `SYSVW` schema.
 
-All of the permissions for one (`GRANTEE, TABLEID, GRANTOR`) combination
-are specified in a single row in the `SYSTABLEPERMS` table. The keys for
-the `SYSTABLEPERMS` table are:
+The following table shows the contents of the `SYSVW.SYSSCHEMAPERMSVIEW`
+system view.
 
-* Primary key (`GRANTEE, TABLEID, GRANTOR`)
-* Unique key (`TABLEPERMSID`)
-* Foreign key (`TABLEID `references `SYS.SYSTABLES`)
-
-The following table shows the contents of the `SYS.SYSTABLEPERMS` system
-table.
 
 <table>
-    <caption>SYSTABLEPERMS system table</caption>
+    <caption>SYSSCHEMAPERMS system table</caption>
     <col />
     <col />
     <col />
@@ -44,15 +36,15 @@ table.
     </thead>
     <tbody>
         <tr>
-            <td><code> TABLEPERMSID</code></td>
+            <td><code>SCHEMAPERMSID</code></td>
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>NO</code></td>
             <td>Used by the dependency manager to track the dependency
-		of a view, trigger, or constraint on the table level permissions</td>
+		of a view, trigger, or constraint on the schema level permissions</td>
         </tr>
         <tr>
-            <td><code>  GRANTEE</code></td>
+            <td><code>GRANTEE</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>NO</code></td>
@@ -67,11 +59,11 @@ table.
             <td>The authorization ID of the user who granted the privilege. Privileges can be granted only by the object owner</td>
         </tr>
         <tr>
-            <td><code>TABLEID</code></td>
+            <td><code>SCHEMAID</code></td>
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>NO</code></td>
-            <td>The unique identifier for the table on which the permissions have been granted</td>
+            <td>The unique identifier for the schema on which the permissions have been granted</td>
         </tr>
         <tr>
             <td><code>SELECTPRIV</code></td>
@@ -109,27 +101,31 @@ table.
             <td>Specifies if the <code>REFERENCE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
         </tr>
         <tr>
-            <td><code>TRIGGERPRIV</code></td>
+            <td><code>MODIFYPRIV</code></td>
             <td><code>CHAR</code></td>
             <td><code>1</code></td>
             <td><code>NO</code></td>
-            <td>Specifies if the <code>TRIGGER</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+            <td>Specifies if the <code>MODIFY</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code>ACCESSPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>ACCESSPRIV</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
         </tr>
     </tbody>
 </table>
 
-## Usage Example and Restrictions
 
-Here's an example of using this table:
+## Usage Example
+
+Here's an example of using this view:
 
 ```
-SELECT * FROM SYS.SYSTABLEPERMS;
+SELECT * FROM SYSVW.SYSSCHEMAPERMSVIEW;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
-
-The [`SYSTABLEPERMSSVIEW` system view](sqlref_sysviews_systablepermsview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>

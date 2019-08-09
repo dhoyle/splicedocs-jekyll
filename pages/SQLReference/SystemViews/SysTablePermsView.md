@@ -1,33 +1,33 @@
 ---
-title: SYSTABLEPERMS system table
+title: SYSTABLEPERMSVIEW System View
 summary: System table that stores the table permissions that have granted but not revoked.
-keywords: Table permissions table
+keywords: tables, permissions
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_systableperms.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_systablepermsview.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSTABLEPERMS System Table
+# SYSTABLEPERMSVIEW System View
 
-The `SYSTABLEPERMS` table stores the table permissions that have been
-granted but not revoked. It belongs to the `SYS` schema.
+The `SYSTABLEPERMSVIEW` table view describes the table permissions that have been granted but not revoked within the current database. It belongs to the `SYSVW` schema.
 
 All of the permissions for one (`GRANTEE, TABLEID, GRANTOR`) combination
-are specified in a single row in the `SYSTABLEPERMS` table. The keys for
-the `SYSTABLEPERMS` table are:
+are specified in a single row in the `SYSTABLEPERMSVIEW` view. The keys for
+the `SYSTABLEPERMSVIEW` view are:
 
 * Primary key (`GRANTEE, TABLEID, GRANTOR`)
 * Unique key (`TABLEPERMSID`)
 * Foreign key (`TABLEID `references `SYS.SYSTABLES`)
 
-The following table shows the contents of the `SYS.SYSTABLEPERMS` system
-table.
+
+The following table shows the contents of the `SYSVW.SYSTABLEPERMSVIEW`
+system view.
 
 <table>
-    <caption>SYSTABLEPERMS system table</caption>
+    <caption>SYSTABLEPERMSVIEW system view</caption>
     <col />
     <col />
     <col />
@@ -118,18 +118,14 @@ table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Example
 
-Here's an example of using this table:
+Here's an example of using this view:
 
 ```
-SELECT * FROM SYS.SYSTABLEPERMS;
+SELECT * FROM SYSVW.SYSTABLEPERMSVIEW;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
-
-The [`SYSTABLEPERMSSVIEW` system view](sqlref_sysviews_systablepermsview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>

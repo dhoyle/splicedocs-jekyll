@@ -38,7 +38,7 @@ Use the `GROUPING` function to specify that a column used by the `GROUP BY` clau
 
 ### Usage Restrictions
 
-You can only use the `GROUPING` function in a [SelectExpression](sqlref_expressions_select.html) or [`HAVING`](sqlref_clauses_having.html) clause.
+You can only use the `GROUPING` function in a [SelectExpression](sqlref_expressions_select.html) or [`HAVING`](sqlref_clauses_having.html) clause when `GROUP BY` is specified.
 
 The `GROUPING` function cannot appear in `WHERE`, `ON`, or `GROUP BY` clauses, nor as a parameter for aggregate or window functions.
 

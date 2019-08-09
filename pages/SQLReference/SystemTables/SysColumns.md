@@ -13,9 +13,9 @@ folder: SQLReference/SystemTables
 # SYSCOLUMNS System Table
 
 The `SYSCOLUMNS` table describes the columns within all tables in the
-current database.
+current database. It belongs to the `SYS` schema.
 
-The following table shows the contents of the `SYSCOLUMNS` system table.
+The following table shows the contents of the `SYS.SYSCOLUMNS` system table.
 
 <table>
     <caption>SYSCOLUMNS system table</caption>
@@ -133,9 +133,17 @@ The following table shows the contents of the `SYSCOLUMNS` system table.
         </tr>
     </tbody>
 </table>
-## See Also
 
-* [About System Tables](sqlref_systables_intro.html)
+## Usage Example and Restrictions
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSCOLUMNS;
+```
+{: .Example}
+
+{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

@@ -1,33 +1,32 @@
 ---
-title: SYSCOLPERMS system table
-summary: System table that stores the column permissions that have been granted but not revoked.
-keywords: column permissions table
+title: SYSCOLPERMSVIEW System View
+summary: System view that describes column permissions.
+keywords: columns, permissions
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_syscolperms.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_syscolpermsview.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSCOLPERMS System Table
+# SYSCOLPERMSVIEW System View
 
-The `SYSCOLPERMS` table stores the column permissions that have been
-granted but not revoked. It belongs to the `SYS` schema.
+The `SYSCOLPERMSVIEW` table view describes the column permissions that have been granted but not revoked within the current database. It belongs to the `SYSVW` schema.
 
 All of the permissions for one (`GRANTEE, TABLEID, TYPE, GRANTOR`)
-combination are specified in a single row in the `SYSCOLPERMS` table.
-The keys for the `SYSCOLPERMS` table are:
+combination are specified in a single row in the `SYSCOLPERMSVIEW` view.
+The keys for the `SYSCOLPERMSVIEW` view are:
 
 * Primary key (`GRANTEE, TABLEID, TYPE, GRANTOR`)
 * Unique key (`COLPERMSID`)
 * Foreign key (`TABLEID` references `SYS.SYSTABLES`)
 
-The following table shows the contents of the `SYS.SYSCOLPERMS` system
-table.
+The following table shows the contents of the `SYSVW.SYSCOLPERMSVIEW`
+system view.
 
 <table>
-    <caption>SYSCOLPERMS system table</caption>
+    <caption>SYSCOLPERMSVIEW system view</caption>
     <col />
     <col />
     <col />
@@ -101,18 +100,18 @@ FormatableBitSet</em>
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Example
 
-Here's an example of using this table:
+Here's an example of using this view:
 
 ```
-SELECT * FROM SYS.SYSCOLPERMS;
+SELECT * FROM SYSVW.SYSCOLPERMSVIEW;
 ```
 {: .Example}
 
 {% include splice_snippets/systableaccessnote.md %}
 
-The [`SYSCOLPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html) is a view on this table that can be accessed without those permissions.
+The [`SYSPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>

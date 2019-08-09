@@ -5,20 +5,17 @@ keywords: column statistics table view
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_syscolumnstats.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_syscolumnstats.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCOLUMNSTATISTICS System View
 
 The `SYSCOLUMNSTATISTICS` table view describes the statistics for a
-specific table column within the current database.
+specific table column within the current database. It belongs to the `SYSVW` schema.
 
-`SYS.SYSCOLUMNSTATISTICS` is a system view.
-{: .noteNote}
-
-The following table shows the contents of the `SYSCOLUMNSTATISTICS`
+The following table shows the contents of the `SYSVW.SYSCOLUMNSTATISTICS`
 system view.
 
 <table>
@@ -126,10 +123,14 @@ computed using the Yahoo Data Sketches library, which you can read about
 here: [https://datasketches.github.io/][1]{: target="_blank"}
 {: .notePlain}
 
-## See Also
+## Usage Example
 
-* [About System Tables](sqlref_systables_intro.html)
-* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html)
+Here's an example of using this view:
+
+```
+SELECT * FROM SYSVW.SYSCOLUMNSTATISTICS;
+```
+{: .Example}
 
 </div>
 </section>

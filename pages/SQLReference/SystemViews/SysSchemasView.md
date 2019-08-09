@@ -1,24 +1,23 @@
 ---
-title: SYSSCHEMAS system table
-summary: System table that describes the schemas within the current database.
-keywords: schemas table
+title: SYSSCHEMASVIEW System View
+summary: System view that shows all schemas within the database to which the current user has access.
+keywords: system schema views
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_sysschemas.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_sysschemasview.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSSCHEMAS System Table
+# SYSSCHEMASVIEW System View
 
-The `SYSSCHEMAS` table describes the schemas within the current
-database. It belongs to the `SYS` schema.
+The `SYSSCHEMASVIEW` view describes the schemas within the current database to which the current user has access. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYS.SYSSCHEMAS` system table.
+The following table shows the contents of the `SYSVW.SYSSCHEMASVIEW` system view.
 
 <table>
-    <caption>SYSSCHEMAS system table</caption>
+    <caption>SYSSCHEMAVIEWS system view</caption>
     <col />
     <col />
     <col />
@@ -58,18 +57,19 @@ The following table shows the contents of the `SYS.SYSSCHEMAS` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Example
 
-Here's an example of using this table:
+Here's an example of using this view:
 
 ```
-SELECT * FROM SYS.SYSSCHEMAS;
+SELECT * FROM SYSVW.SYSSCHEMASVIEW;
 ```
 {: .Example}
 
-{% include splice_snippets/systableaccessnote.md %}
-
-The [`SYSSCHEMASVIEW` system view](sqlref_sysviews_sysschemasview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>
+
+
+
+[1]: https://datasketches.github.io/

@@ -34,8 +34,7 @@ SQL Data Types, in the following subsections:
 
 ## Character String Data Types   {#Characte}
 
-These are the [character string data
-types](sqlref_datatypes_charstringtypes.html):
+These are the character string data types:
 
 <table summary="Links to and descriptions of the available character string data types">
                 <col />
@@ -70,8 +69,7 @@ types](sqlref_datatypes_charstringtypes.html):
             </table>
 ## Date and Time Data Types   {#Date}
 
-These are the [date and time data
-types](sqlref_datatypes_datetimetypes.html):
+These are the date and time data types:
 
 <table summary="Links to and descriptions of the available date and time data types">
                 <col />
@@ -105,7 +103,7 @@ types](sqlref_datatypes_datetimetypes.html):
             </table>
 ## Large Object Binary (LOB) Data Types   {#Large}
 
-These are the [LOB data types](sqlref_datatypes_lobtypes.html):
+These are the LOB data types:
 
 <table summary="Links to and descriptions of the available LOB data types">
                 <col />
@@ -136,7 +134,7 @@ These are the [LOB data types](sqlref_datatypes_lobtypes.html):
             </table>
 ## Numeric Data Types   {#Numeric}
 
-These are the [numeric data types](sqlref_datatypes_numerictypes.html):
+These are the numeric data types:
 
 <table summary="Links to and descriptions of the available numeric data types">
                 <col />
@@ -229,7 +227,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
             </table>
 ## Other Data Types   {#Other}
 
-These are the [other data types](sqlref_datatypes_othertypes.html):
+These are the other data types:
 
 <table summary="Links to and descriptions of primitive data types">
                 <col />

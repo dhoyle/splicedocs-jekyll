@@ -1,38 +1,31 @@
 ---
-title: SYSPERMS system table
-summary: System table that describes the usage permissions for sequence generators and user-defined types.
-keywords: permissions table
+title: SYSROUTINEPERMSVIEW System View
+summary: System view that stores the permissions that have been granted to routines
+keywords: routines, permissions
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_sysperms.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_sysroutinepermsview.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSPERMS System Table
+# SYSROUTINEPERMSVIEW System View
 
-The `SYSPERMS` table describes the `USAGE` permissions for sequence
-generators and user-defined types. It belongs to the `SYS` schema.
+The `SYSROUTINEPERMSVIEW` view stores the permissions that have been
+granted to routines. It belongs to the `SYS` schema.
 
-The following table shows the contents of the `SYS.SYSPERMS` system table.
+Each routine `EXECUTE` permission is specified in a row in the
+`SYSROUTINEPERMSVIEW` view. The keys for the `SYSROUTINEPERMSVIEW` view are:
+
+* Primary key (`GRANTEE, ALIASID, GRANTOR`)
+* Unique key (`ROUTINEPERMSID`)
+* Foreign key (`ALIASID` references `SYS.SYSALIASES`)
+
+The following table shows the contents of the `SYS.SYSROUTINEPERMSVIEW` system
+view.
 
 <table>
-    <caption>SYSPERMS system table</caption>
-    <col />
-    <col />
-    <col />
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Column Name</th>
-            <th>Type</th>
-            <th>Length</th>
-            <th>Nullable</th>
-            <th>Contents</th>
-        </tr>
-    </thead>
     <tbody>
         <tr>
             <td><code>UUID</code></td>
@@ -99,16 +92,14 @@ The following table shows the contents of the `SYS.SYSPERMS` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Example
 
-Here's an example of using this table:
+Here's an example of using this view:
 
 ```
-SELECT * FROM SYS.SYSPERMS;
+SELECT * FROM SYSVW.SYSROUTINEPERMSVIEW;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

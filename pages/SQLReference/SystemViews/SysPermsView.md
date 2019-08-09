@@ -1,24 +1,24 @@
 ---
-title: SYSPERMS system table
-summary: System table that describes the usage permissions for sequence generators and user-defined types.
-keywords: permissions table
+title: SYSPERMSVIEW System View
+summary: System view that describes the usage permissions for sequence generators and user-defined types
+keywords: system view, sequences
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_systables_sysperms.html
-folder: SQLReference/SystemTables
+permalink: sqlref_sysviews_syspermsview.html
+folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSPERMS System Table
+# SYSPERMSVIEW System View
 
-The `SYSPERMS` table describes the `USAGE` permissions for sequence
-generators and user-defined types. It belongs to the `SYS` schema.
+The `SYSPERMSVIEW` table view describes the System table that describes the usage permissions for sequence generators and user-defined types. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYS.SYSPERMS` system table.
+The following table shows the contents of the `SYSVW.SYSPERMSVIEW`
+system view.
 
 <table>
-    <caption>SYSPERMS system table</caption>
+    <caption>SYSPERMSVIEW system view</caption>
     <col />
     <col />
     <col />
@@ -99,16 +99,14 @@ The following table shows the contents of the `SYS.SYSPERMS` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Example
 
-Here's an example of using this table:
+Here's an example of using this view:
 
 ```
-SELECT * FROM SYS.SYSPERMS;
+SELECT * FROM SYSVW.SYSPERMSVIEW;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

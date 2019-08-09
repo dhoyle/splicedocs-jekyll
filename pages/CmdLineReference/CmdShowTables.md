@@ -13,7 +13,7 @@ folder: CmdLineReference
 # Show Tables
 
 The <span class="AppCommand">show tables</span> command displays all of
-the tables in the current or specified schema.
+the tables in the current or specified schema, as long as the current user has `ACCESS` privileges for the schema.
 
 <div class="paramList" markdown="1">
 schemaName
