@@ -225,6 +225,9 @@ information about multiple pattern letters in the different
     </tbody>
 </table>
 
+The format characters `x`, `X`, and `Z` all allow the matching of any possible timezone offest, and all cause the same behavior.
+{: .noteNote}
+
 ### Pattern Types   {#Presenta}
 
 How a presentation type is interpreted for certain pattern letters
