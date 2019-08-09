@@ -95,6 +95,8 @@ SELECT * FROM SYS.SYSROUTINEPERMS;
 
 {% include splice_snippets/systableaccessnote.md %}
 
+The [`SYSROUTINEPERMSVIEW` system view](sqlref_sysviews_sysroutinepermsview.html) is a view on this table that can be accessed without those permissions.
+
 
 </div>
 </section>

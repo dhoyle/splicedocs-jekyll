@@ -163,11 +163,5 @@ SELECT * FROM SYSVW.SYSTABLESTATISTICS;
 {: .Example}
 
 
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
-* [`SYSCOLUMNSTATISTICS`](sqlref_systables_syscolumnstats.html) system
-  view
-
 </div>
 </section>

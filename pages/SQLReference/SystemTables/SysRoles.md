@@ -115,15 +115,6 @@ SELECT * FROM SYS.SYSROLES;
 
 {% include splice_snippets/systableaccessnote.md %}
 
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
-* [`CURRENT_ROLE`](sqlref_builtinfcns_currentrole.html) function
-* [`CREATE_ROLE`](sqlref_statements_createrole.html) statement
-* [`DROP_ROLE`](sqlref_statements_droprole.html) statement
-* [`GRANT`](sqlref_statements_grant.html) statement
-* [`REVOKE`](sqlref_statements_revoke.html) statement
-* [`SET ROLE`](sqlref_statements_setrole.html) statement
 
 </div>
 </section>

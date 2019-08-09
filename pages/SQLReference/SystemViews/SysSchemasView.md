@@ -1,20 +1,20 @@
 ---
-title: SYSSCHEMAVIEWS System View
+title: SYSSCHEMASVIEW System View
 summary: System view that shows all schemas within the database to which the current user has access.
 keywords: system schema views
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: sqlref_sysviews_sysschemaviews.html
+permalink: sqlref_sysviews_sysschemasview.html
 folder: SQLReference/SystemViews
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SYSSCHEMAVIEWS System View
+# SYSSCHEMASVIEW System View
 
-The `SYSSCHEMAVIEWS` view describes the schemas within the current database to which the current user has access. It belongs to the `SYSVW` schema.
+The `SYSSCHEMASVIEW` view describes the schemas within the current database to which the current user has access. It belongs to the `SYSVW` schema.
 
-The following table shows the contents of the `SYSVW.SYSSCHEMAVIEWS` system view.
+The following table shows the contents of the `SYSVW.SYSSCHEMASVIEW` system view.
 
 <table>
     <caption>SYSSCHEMAVIEWS system view</caption>
@@ -62,15 +62,10 @@ The following table shows the contents of the `SYSVW.SYSSCHEMAVIEWS` system view
 Here's an example of using this view:
 
 ```
-SELECT * FROM SYSVW.SYSSCHEMAVIEWS;
+SELECT * FROM SYSVW.SYSSCHEMASVIEW;
 ```
 {: .Example}
 
-
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
-* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html)
 
 </div>
 </section>

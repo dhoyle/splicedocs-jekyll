@@ -129,9 +129,7 @@ SELECT * FROM SYS.SYSTABLEPERMS;
 
 {% include splice_snippets/systableaccessnote.md %}
 
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
+The [`SYSTABLEPERMSSVIEW` system view](sqlref_sysviews_systablepermsview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>

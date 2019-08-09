@@ -69,9 +69,7 @@ SELECT * FROM SYS.SYSSCHEMAS;
 
 {% include splice_snippets/systableaccessnote.md %}
 
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
+The [`SYSSCHEMASVIEW` system view](sqlref_sysviews_sysschemasview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>

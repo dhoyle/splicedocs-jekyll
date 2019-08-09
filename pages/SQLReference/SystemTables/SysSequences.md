@@ -133,9 +133,5 @@ SELECT * FROM SYS.SYSSEQUENCES;
 
 {% include splice_snippets/systableaccessnote.md %}
 
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
-
 </div>
 </section>

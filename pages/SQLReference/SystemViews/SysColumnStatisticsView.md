@@ -132,12 +132,6 @@ SELECT * FROM SYSVW.SYSCOLUMNSTATISTICS;
 ```
 {: .Example}
 
-
-## See Also
-
-* [About System Tables](sqlref_systables_intro.html)
-* [`SYSTABLESTATISTICS`](sqlref_systables_systablestats.html)
-
 </div>
 </section>
 
