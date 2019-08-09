@@ -110,5 +110,7 @@ SELECT * FROM SYS.SYSPERMS;
 
 {% include splice_snippets/systableaccessnote.md %}
 
+The [`SYSPERMSVIEW` system view](sqlref_sysviews_syspermsview.html) is a view on this table that can be accessed without those permissions.
+
 </div>
 </section>
