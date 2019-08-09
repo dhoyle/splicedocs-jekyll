@@ -17,8 +17,9 @@ The `SYSSCHEMAPERMSVIEW` table view describes the schema permissions that have b
 The following table shows the contents of the `SYSVW.SYSSCHEMAPERMSVIEW`
 system view.
 
+
 <table>
-    <caption>SYSSCHEMAPERMSVIEW system view</caption>
+    <caption>SYSSCHEMAPERMS system table</caption>
     <col />
     <col />
     <col />
@@ -35,14 +36,87 @@ system view.
     </thead>
     <tbody>
         <tr>
-            <td><code></code></td>
-            <td><code></code></td>
-            <td><code></code></td>
-            <td><code></code></td>
-            <td>.</td>
+            <td><code>SCHEMAPERMSID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>Used by the dependency manager to track the dependency
+		of a view, trigger, or constraint on the schema level permissions</td>
+        </tr>
+        <tr>
+            <td><code>GRANTEE</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>The authorization ID of the user or role to which the
+		privilege is granted</td>
+        </tr>
+        <tr>
+            <td><code>GRANTOR</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>The authorization ID of the user who granted the privilege. Privileges can be granted only by the object owner</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMAID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>The unique identifier for the schema on which the permissions have been granted</td>
+        </tr>
+        <tr>
+            <td><code>SELECTPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>SELECT</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)</li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code>DELETEPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>DELETE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code>INSERTPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>INSERT</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code> UPDATEPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>UPDATE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code>REFERENCESPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>REFERENCE</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code>MODIFYPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>MODIFY</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
+        </tr>
+        <tr>
+            <td><code>ACCESSPRIV</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>1</code></td>
+            <td><code>NO</code></td>
+            <td>Specifies if the <code>ACCESSPRIV</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
         </tr>
     </tbody>
 </table>
+
 
 ## Usage Example
 
