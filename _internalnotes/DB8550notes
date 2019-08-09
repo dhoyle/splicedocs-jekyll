@@ -1,0 +1,51 @@
+Hi , here are my comments:
+
+
+"If the count of letters is less than four (but not two), then the sign is only output for negative years as per SignStyle.NORMAL. Otherwise, the sign is output if the pad width is exceeded, as per SignStyle.EXCEEDS_PAD."  SignStyle.NORMAL and SignStyle.EXCEEDS_PAD are internal details in Java that the user of Splice doesn't really have any control over or really need to know, so these points can be omitted.
+
+Nano-of-second ('n') and Nano-of-day ('N') are not supported, so can be removed.
+
+The name of the "Presentation Types" section is maybe only applicable when format strings are used to display output, but splice only uses them to parse input.  So a better section name may be something like "Pattern Types".
+
+Since we aren't dealing with output formats, any place where it says something like "the value is output" should say something like "the value is parsed" or "values are accepted".  For example, "If the count of letters is one, then the value is output using the minimum number of digits and without padding."  .. could be changed to something like: "If the count of letters is one, then the the minimum number of digits that can represent a valid value are accepted".  Any sections on printing, for example: "For printing, this outputs the rightmost two digits." can be eliminated.
+
+Change the section on Fraction from this: "Outputs the nano-of-second field as a fraction-of-second. The nano-of-second value has nine digits, thus the count of pattern letters is from 1 to 9. If it is less than 9, then the nano-of-second value is truncated, with only the most significant digits being output."  to something like this:  "Specifying any number of fractional seconds ('S') will accept between 1 and 6 fractional seconds digits."
+
+All parts that say "throws IllegalArgumentException" should say something like "results in a syntax error".
+
+The table section Offset X and x should be eliminated.  It deals with output.  I'm not sure how to translate this into parsing rules.  Internally the presence of Z or X gets translated into a pattern that accepts almost any zone offset, so the user shouldn't have to worry about using the correct number of X's or Z's.
+
+For the "Offset O" section, there's actually a bug in this part which I filed a JIRA for.  So I couldn't verify this section.
+
+Format characters x, X and Z should cause the same behavior and all allow matching of any possible timezone offset, so maybe have a table section saying something to this effect.  Though I need to do a little re-work through DB-8573 to get 'x' to have the same behavior as X and Z.   Currently it's just passed straight through to the Java DateTimeFormatter.
+
+In the "Formatting Examples" section, the last example with format string "YYYY-'W'ww-u" should use format string "YYYY-'W'ww-e" instead.
+
+In the "Examples of Using TO_DATE" section, all of the examples given now return syntax errors.  The first, second and third examples return an error because if you specify week year (YYYY), you also have to specify 'w' (Week-of-week-based-year).  So they should be removed or replaced with other examples.  It may be better to put comments on the examples that use uppercase Y or uppercase D indicating they are not the common cases, and that yyyy-MM-dd, or variations of that, which only have M capitalized, are the typical common formats.  There has been some confusion at customer sites.  It seems some were using YYYY-MM-DD and not realizing all of their dates were mapping to January dates (because DD means day of year, 1 - 365).  Now this combination of format characters is disallowed.  The 4th through 6th examples are illegal because 2015 is not a month.  For some reason the old Joda DateTime formatter didn't mind such illegal combinations and did its best to interpret what you gave it, even if it didn't make sense (sometimes erroring out is a good thing, because maybe your data is getting interpreted incorrectly).
+
+Change: "In this example, the input includes the literal )" to: "In this example, the input includes the literal T".
+
+This sentence isn't quite right: "And because this example specifies a time zone (Z) in the parsing pattern but not in the input string, the timezone information is not preserved. In this case, that means that the parsed date is actually a day earlier than intended:".  The example given may produce a different date depending on the time zone setting of the computer you are running on.  When you specify a zone offset ('Z') or a time zone ('z'), we interpret the timestamp in the zone given, for example -0700 is currently pacific time. ... then the timestamp is adjusted to the time zone setting of the operating system.  For example, my laptop is set to pacific time, so if I specify a timestamp in the eastern time zone, it will be adjusted back by three hours to the corresponding timestamp in my timezone:
+
+splice> VALUES TO_TIMESTAMP('2013-06-18T01:03:30.000EDT','yyyy-MM-dd''T''HH:mm:ss.SSSz');
+2013-06-17 22:03:30.0
+
+Maybe we could convey something like that to the user here so they understand how it works.  In the case of the TO_DATE function, it does the same thing.  We build the zoned timestamp, adjust it to the timezone of the system splice is running on, and then extract the date from that timestamp:
+
+VALUES TO_DATE('2013-06-18T01:03:30.000EDT','yyyy-MM-dd''T''HH:mm:ss.SSSz');
+2013-06-17
+
+... same with TO_TIME:
+
+VALUES TO_TIME('2013-06-18T01:03:30.000EDT','yyyy-MM-dd''T''HH:mm:ss.SSSz');
+22:03:30
+
+So, all 3 functions, TO_DATE, TO_TIMESTAMP and TO_TIME behave similarly in that the format string indicates what type of DateTime you are building first, if HH:mm:ss, time only, if yyyy-MM-dd, date only,  if a full timestamp format, then a timestamp, and then whichever function you are using of these three determines what you translate the final answer into:  DATE, TIMESTAMP or TIME.You can translate a timestamp into a date or a time.
+
+But you can't do something like translate a date into a time or a timestamp:
+
+VALUES TO_TIME('2013-06-18','yyyy-MM-dd');
+ERROR 22007: The syntax of the string representation of a datetime value is incorrect.
+
+VALUES TO_TIMESTAMP('2013-06-18','yyyy-MM-dd');
+ERROR 22007: The syntax of the string representation of a datetime value is incorrect.
