@@ -79,8 +79,6 @@ This section of the documentation previously contained information about using s
 ## Streaming Data {#Streaming}
 This section contains topics that show you how to stream data into and out of Splice Machine:
 
-* [Streaming MQTT Data](tutorials_ingest_mqttSpark.html)
-* [Integrating Apache Storm with Splice Machine](tutorials_ingest_storm.html)
 * [Configuring a Kafka Feed](tutorials_ingest_kafkafeed.html)
 * [Creating a Kafka Producer](tutorials_ingest_kafkaproducer.html)
 
