@@ -1,0 +1,148 @@
+
+CONTENT TO ADD ON DOCS PAGES  (and will need review/qa)
+
+    1. On every system table page when the table has a corresponding view:
+            "Access to system tables is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access. However, there is a corresponding system view, [SYSVW.xxx](sqlref_sysviews_xxx.html), that has universal access for this table. If you don't have access to this table, you can use the view instead. Note that performance is better when using a table instead of its corresponding view.
+
+            You can determine if you have access to this table by running the following command:
+
+                DESCRIBE XXX
+
+            If you the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead."
+
+
+    2. On every system table page when there is no corresponding view:
+            "Access to system tables is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access. You can determine if you have access to this table by running the following command:
+
+                DESCRIBE XXX
+
+            If you the table description, you have access; if you see a message that the table doesn't exist, you need your administrator to grant you access."
+
+
+
+    3. On every system view page:
+            "This is a view on the system table, [SYS.XXX](sqlref_systables_xxx.html); Access to that table is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access. This view allows you to access those parts of the table to which you have been granted access. Note that performance is better when using a table instead of its corresponding view.
+
+            You can determine if you have access to this table by running the following command:
+
+                DESCRIBE XXX
+
+            If you the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead."
+
+
+
+    4. On topic pages that tell a user to do something that involves using a system table when there is a corresponding system view:
+        - Replace mentions of the system table with its corresponding view
+        - Add this text just after that content:
+            "You can use the [SYSVW.xxx](sqlref_sysviews_xxx.html) as shown to access the information you need. If you have security clearance to access the [SYS.XXX](sqlref_systables_xxx.html), "
+
+            You can determine if you have access to this table by running the following command:
+
+                DESCRIBE XXX
+
+
+
+            If you see a message that the table doesn't exist, you don't have access to the table; use the view instead."
+
+
+
+    5. On topic pages that tell a user to do something that involves using a system table (e.g. Alter Table page) when there is NOT a corresponding system view; add this text:
+
+            "Access to system tables is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access. If you don't have access to the system table, you'll see a message informing you that the table doesn't exist. Request a permissions change from your administrator if you believe you need access."
+
+
+
+
+DOCS TOPICS THAT MENTION System Tables:
+---------------------------------------
+(Note that I won't be able to simply change all of these on my own; I'll need new examples or help with many of them)
+
+bestpractices_optimizer_explain.html
+    ~15 variations of "EXPLAIN SELECT xxx FROM SYS.SYSTABLES;"
+
+bestpractices_optimizer_statistics.html
+    - examples using SYS.SYSCOLUMNSTATISTICS
+
+tutorials_connect_jython.html
+tutorials_connectjdbc_python.html
+tutorials_connect_python.html
+    - examples using "select * from sys.systables"
+
+developers_fcnsandprocs_storing.html
+    - we tell people to use "select * from sys.sysfiles"
+
+developers_fcnsandprocs_writing.html
+    - examples using sys.systables
+
+developers_tuning_snapshots.html
+    - "Information about stored snapshots, including their names, is found in
+      the SYS.SYSSNAPSHOTS system table"
+
+developers_spliceplus_using.html
+    - "PL/SQL procedures that you create with Splice\*Plus are stored in the SYS.SYSSOURCECODE table in your database."
+
+onprem_admin_backingup.html
+    - We tell people to use SYS.SYSBACKUP and SYS.SYSBACKUPITEMS
+
+tutorials_security_usingnative.html
+    - we talk about the sys.sysusers table
+
+sqlref_sysprocs_backupdb.html
+sqlref_sysprocs_backuptable.html
+sqlref_sysprocs_backupschema.html
+sqlref_sysprocs_deletebackup.html
+sqlref_sysprocs_restoredb.html
+sqlref_sysprocs_restoreschema.html
+sqlref_sysprocs_restoretable.html
+sqlref_sysprocs_restoredbtimestamp.html
+sqlref_sysprocs_restoredbtransaction.html
+sqlref_sysprocs_validatebackup.html
+sqlref_sysprocs_validatetablebackup.html
+    - references the sys.sysbackup and (in some cases) sys.sysbackupitems tables
+
+sqlref_sysprocs_getrunningops.html
+    - Example uses sys.systables
+
+sqlref_sysprocs_getsessioninfo.html
+    - Example uses sys.systables
+
+sqlref_clauses_from.html
+    - example uses "SELECT TABLENAME, ISINDEX
+    FROM SYS.SYSTABLES T, SYS.SYSCONGLOMERATES C..."
+
+sqlref_errcodes_class42.html
+    - describes using SYS.SYSTABLES
+
+sqlref_errcodes_classxk.html
+    - messages says username not found in sys.sysusers
+
+sqlref_errcodes_classx0.html
+    - describes using SYS.SYSSEQUENCES
+
+sqlref_expressions_select.html
+    - Example uses sys.systables, sys.syscolumns, sys.sysconstraints, and sys.syschecks
+
+sqlref_identifiers_types.html
+    - mentions sys.sysroles
+
+sqlref_statements_altertable.html
+    - talks about using sys.sysconstraints and sys.systables to find constraint info
+
+sqlref_statements_createprocedure.html
+    - shows using sys.sysaliases table in creating a python proc
+
+sqlref_statements_createview.html
+    - shows using sys.sysroles
+
+sqlref_statements_generatedcolspec.html
+    - describes using sys.syscolumns to discover required info
+
+sqlref_statements_setrole.html
+    - describes using sys.sysroles
+
+all system table and system view topics in the SQL Reference
+
+cmdlineref_showprocedures.html
+cmdlineref_showtables.html
+cmdlineref_using_getstarted.html
+    - display a list of system tables
