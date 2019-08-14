@@ -38,7 +38,7 @@ information about multiple pattern letters in the different
         <tr>
             <th>Pattern Letter</th>
             <th>Meaning</th>
-            <th>Presentation Type</th>
+            <th>Pattern Type</th>
             <th>Example(s)</th>
         </tr>
     </thead>
@@ -230,7 +230,7 @@ The format characters `x`, `X`, and `Z` all allow the matching of any possible t
 
 ### Pattern Types   {#Presenta}
 
-How a presentation type is interpreted for certain pattern letters
+How a pattern type is interpreted for certain pattern letters
 depends on the number of repeated letters in the pattern. In some cases,
 as noted in the following table, other factors can influence how the
 pattern is interpreted.
@@ -240,7 +240,7 @@ pattern is interpreted.
     <col width="75%" />
     <thead>
         <tr>
-            <th>Presentation Type</th>
+            <th>Pattern Type</th>
             <th>Description</th>
         </tr>
     </thead>
@@ -343,7 +343,7 @@ The following table contains a number of examples of date time formats:
         <thead>
             <tr>
                 <th>Date and Time Pattern</th>
-                <th>Result</th>
+                <th>Example</th>
             </tr>
         </thead>
         <tbody>

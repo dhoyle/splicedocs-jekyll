@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInFcns
 
 The `TO_TIMESTAMP` function parses a datetime string according to a formatting
 specification, and returns a &nbsp;[`TIMESTAMP`](sqlref_datatypes_timestamp.html)
-value. Note that the input string can represent a timestamp, date, or time; however, the input string _must_ match the formatting specification string.
+value. Note that the input string must represent a timestamp and _must_ match the formatting specification string.
 
 ## Syntax
 
