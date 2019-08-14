@@ -115,6 +115,27 @@ system view.
             <td><code>NO</code></td>
             <td>Specifies if the <code>TRIGGER</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
         </tr>
+        <tr>
+            <td><code>SCHEMANAME</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>Unique identifier for the schema</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMAID</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>Table name</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMANAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>Schema name</td>
+        </tr>
     </tbody>
 </table>
 

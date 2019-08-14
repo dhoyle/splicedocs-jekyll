@@ -97,7 +97,27 @@ FormatableBitSet</em>
             <td><code>NO</code></td>
             <td>A list of columns to which the privilege applies</td>
         </tr>
-    </tbody>
+        <tr>
+            <td><code>TABLENAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>The name of the table.</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMAID</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>NO</code></td>
+            <td>The unique identifier for the schema on which the permissions have been granted</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMANAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>Schema name</td>
+        </tr>
 </table>
 
 ## Usage Example
@@ -111,7 +131,6 @@ SELECT * FROM SYSVW.SYSCOLPERMSVIEW;
 
 {% include splice_snippets/systableaccessnote.md %}
 
-The [`SYSPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>

@@ -96,6 +96,20 @@ system view.
                 <p> If the <code>GRANTEE</code> is not the owner of the sequence generator or user-defined type, this value is  <code>'N'</code>.</p>
             </td>
         </tr>
+        <tr>
+            <td><code>OBJECTNAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>The name of the object</td>
+        </tr>
+        <tr>
+            <td><code>SCHEMANAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>Schema name</td>
+        </tr>
     </tbody>
 </table>
 

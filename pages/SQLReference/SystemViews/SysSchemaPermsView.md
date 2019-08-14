@@ -114,6 +114,13 @@ system view.
             <td><code>NO</code></td>
             <td>Specifies if the <code>ACCESSPRIV</code> permission is granted. The valid values are: <ul><li><code>'y'</code> (non-grantable privilege)<br /></li><li><code>'Y'</code> (grantable privilege)<br /></li><li><code>'N'</code> (no privilege)</li></ul></td>
         </tr>
+        <tr>
+            <td><code>SCHEMANAME</code></td>
+            <td><code>VARCHAR</code></td>
+            <td><code>128</code></td>
+            <td><code>NO</code></td>
+            <td>Schema name</td>
+        </tr>
     </tbody>
 </table>
 
