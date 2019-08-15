@@ -45,6 +45,36 @@ notebook, modify its content, and create new notebooks. Our next topic,
 [A Simple Tutorial](dbaas_zep_simple.html), uses the our <span
 class="CalloutFont">Simple Example</span> tutorial.
 
+## Adding Your Credentials
+
+You use the Splice Machine interpreter (`%splicemachine`) in Zeppelin notebooks to interact with your Splice Machine database; this interpreter uses a JDBC connection to the database, and making that connection requires you to supply user credentials. Here's how you can create the credentials to use with the Splice Machine interpreter in your Zeppelin notebooks:
+
+<div class="opsStepsList" markdown="1">
+1.  Log in to Zeppelin, using the <span class="ConsoleLink">Notebook</span> button, as described above.
+
+2.  Click the <span class="ConsoleLink">Zeppelin</span> dropdrop in the upper right corner of the window, and select <span class="ConsoleLink">Credential</span>:
+
+    <img class="indentedSmall" src="images/CloudZepDropdown.png" alt="image of the Zeppelin drop-down" />
+
+    The <span class="ConsoleLink">Zeppelin Credentials Management</span> page displays:
+
+    <img class="indented" src="images/CloudZepCredentials.png" alt="image of the Zeppelin credentials management page" />
+
+3.  Click the <span class="ConsoleLink">Add</span> button to add your credentials:
+
+    <img class="indented" src="images/CloudZepAddCredential.png" alt="image of the Zeppelin add credentials page" />
+
+    * Enter `jdbc.splicemachine` as the <span class="ConsoleLink">Entity</span>.
+    * Use the same <span class="ConsoleLink">Username</span> and <span class="ConsoleLink">password</span> that you use to log into your database.
+
+4.  Click the <span class="ConsoleLink">Save</span> button to add your credentials.
+</div>
+
+Now, when you specify the `%splicemachine` interpreter for a Zeppelin paragraph, your credentials will be used to connect to your Splice Machine database.
+
+Remember to explicitly specify the `%splicemachine` interpreter in paragraphs, even if `%splicemachine` is the default interpreter for the notebook you're working on.
+{: .noteImportant}
+
 ### First Notebook Run: Save Interpreter Bindings
 
 The first time that you run any Zeppelin notebook, you need to bind any
