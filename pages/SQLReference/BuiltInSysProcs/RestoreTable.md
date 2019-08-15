@@ -14,11 +14,13 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the &nbsp;&nbsp; [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. The table and its indexes are created anew in your database.
 
+{% include splice_snippets/enterpriseonly_note.md %}
+
+Note that if the backup from which you are restoring was created with version 2.7.0.1924 (August 5, 2019) or later of Splice Machine, statistics for the table are also restored. This means that you don't need to use `analyze` to generate fresh statistics for the table immediately after restoring it.
+
 The table to which you are restoring must not already exist in the database; if it does, `RESTORE_TABLE` will not proceed.
 {: .noteNote}
 
-
-{% include splice_snippets/enterpriseonly_note.md %}
 
 ## Syntax
 

@@ -17,6 +17,8 @@ The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that wa
 The schema to which you are restoring must not already exist in the database; if it does, `RESTORE_SCHEMA` will not proceed.
 {: .noteNote}
 
+Note that if the backup from which you are restoring was created with version 2.7.0.1924 (August 5, 2019) or later of Splice Machine, statistics for the schema are also restored. This means that you don't need to use `analyze` to generate fresh statistics for the schema immediately after restoring it.
+
 {% include splice_snippets/enterpriseonly_note.md %}
 
 ## Syntax

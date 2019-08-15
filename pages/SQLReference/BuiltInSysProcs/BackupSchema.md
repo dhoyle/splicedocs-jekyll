@@ -17,6 +17,8 @@ immediate full backup of the tables and indexes belonging to a schema in your da
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
+Note that, as of Splice Machine release 2.7.0.1924, statistics are also backed up for the schema.
+
 This procedure only works with internal, Splice Machine tables in your database. You can back up an external table using the Hadoop `DistCp` tool.
 {: .noteIcon}
 
