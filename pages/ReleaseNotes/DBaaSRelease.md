@@ -16,16 +16,16 @@ folder: ReleaseNotes
 This topic includes any release notes that are specific to the Splice Machine *Database-as-Service* product, in these sections:
 
 * [Current Release Notes](#release-notes)
-* [Major Updates in Previous Releases](#prev-release)
 * [Features Not Yet Available](#features-not-yet-available)
 * [Current Limitations](#current-limitations)
 * [Important Notes](#important-notes)
+* [Major Updates in Previous Releases](#prev-release)
 
 ## Current Release Notes  {#release-notes}
 
 The current AWS and Azure versions of our Splice Machine Database-as-a-Service product are running _release  {{splvar_dbaas_AWSDBVersion}}_ of the Splice Machine database.
 
-These are the major updates in the current version, which was released on {{splvar_dbaas_releaseDate}}:
+These are the major updates in the current version, which was released on {{splvar_cloud_CloudReleaseDate}}:
 
 <table>
     <col width="145px"/>
