@@ -38,7 +38,7 @@ These are the major updates in the current version, which was released on {{splv
     </thead>
     <tbody>
         <tr>
-            <td rowspan="3"><em>New Feature</em></td>
+            <td rowspan="3"><em>New Features</em></td>
             <td>Added the ability to make another user a Primary user.</td>
         </tr>
         <tr>
@@ -90,7 +90,7 @@ The following table summarizes the major updates in the previous release of the 
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2"><em>New Feature</em></td>
+            <td rowspan="2"><em>New Features</em></td>
             <td>Dedicated HDFS is now available.</td>
         </tr>
         <tr>
