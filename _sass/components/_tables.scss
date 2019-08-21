@@ -314,3 +314,20 @@ caption.tblCaption {
 	color: $caption-color;
 	font-weight: $caption-bold;
 }
+
+
+table td.PageLinkNext {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align: right;
+}
+
+table td.PageLinkPrev {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align: left;
+}
