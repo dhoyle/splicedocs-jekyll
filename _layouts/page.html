@@ -45,18 +45,23 @@ layout: default
 
   {{content}}
 
+<!--
     <div class="PageNavigation">
         {% assign sidebar = site.data.sidebars[page.sidebar].entries %}
         {% assign navlinks = "" | split: ',' %}
         {% assign nonelink = 'none,none' %}
         {% assign folderlink = 'folder,index.html,Docs Home'  %}
+        {% assign prevLink = nil %}
         {% for entry in sidebar %}
             {% for folder in entry.folders %}
+                {% assign prevLink = folder.url %}
                 {% assign folderlink = "folder," | append: folder.url | remove: '/' | append: ',' | append: folder.title %}
                 {% assign navlinks = navlinks | push: folderlink %}
                 {% for folderitem in folder.folderitems %}
-                    {% assign newlink  = folderitem.url | remove: '/' | append: ',' | append: folderitem.title %}
-                    {% assign navlinks = navlinks | push: newlink %}
+                    {% if folderitem.url != prevlink %}
+                        {% assign newlink  = folderitem.url | remove: '/' | append: ',' | append: folderitem.title %}
+                        {% assign navlinks = navlinks | push: newlink %}
+                    {% endif %}
                     {% for subfolders in folderitem.subfolders %}
                         {% assign navlinks = navlinks | push: nonelink %}
                         {% for subfolderitem in subfolders.subfolderitems %}
@@ -77,25 +82,29 @@ layout: default
         {% assign nextUrl = 'none' %}
         {% assign nextTitle = 'none' %}
         {% assign found = false %}
+        {% assign prevNavItem = 'none' %}
         {% for link in navlinks %}
             {% assign navitem = link | split: ',' %}
-            {% if navitem[0] == 'folder' %}
-                {% assign folderUrl = navitem[1] %}
-                {% assign folderTitle = navitem[2] %}
-            {% else %}
-                {% if found %}
-                    {% assign nextUrl = navitem[0] %}
-                    {% assign nextTitle = navitem[1] %}
-                    {% assign prevUrl = prev %}
-                    {% break %}
-                {% elsif page.permalink == navitem[0] %}
-                    {% assign found = true %}
-                    {% assign prevUrl = prev %}
-                    {% assign prevTitle = prevname %}
-                    {% assign nextUrl = 'none' %}
+            {% if navitem != prevNavItem %}
+                {% assign prevNavItem = navitem %}
+                {% if navitem[0] == 'folder' %}
+                    {% assign folderUrl = navitem[1] %}
+                    {% assign folderTitle = navitem[2] %}
                 {% else %}
-                    {% assign prev = navitem[0] %}
-                    {% assign prevname = navitem[1] %}
+                    {% if found %}
+                        {% assign nextUrl = navitem[0] %}
+                        {% assign nextTitle = navitem[1] %}
+                        {% assign prevUrl = prev %}
+                        {% break %}
+                    {% elsif page.permalink == navitem[0] %}
+                        {% assign found = true %}
+                        {% assign prevUrl = prev %}
+                        {% assign prevTitle = prevname %}
+                        {% assign nextUrl = 'none' %}
+                    {% else %}
+                        {% assign prev = navitem[0] %}
+                        {% assign prevname = navitem[1] %}
+                    {% endif %}
                 {% endif %}
             {% endif %}
         {% endfor %}
@@ -108,6 +117,7 @@ layout: default
             <table class="noBorder" width="90%"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevUrl}}">&laquo;&nbsp;{{prevTitle}}</a></td><td class="PageLinkNext"><a href="{{folderUrl}}">{{folderTitle}}&nbsp;&uarr;</a></td></tr></tbody></table>
         {% endif %}
     </div>
+-->
 
     <div class="tags">
         {% if page.tags[0] %}
