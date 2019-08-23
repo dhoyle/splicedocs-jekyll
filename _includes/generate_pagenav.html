@@ -1,8 +1,10 @@
 {% capture yamloutput %}
 <pre>
+pagenextprev_nav: Splice Next and Prev Page Navigation
+pagenavs:
 {% assign id = 0 %}
 {% for entry in site.data.sidebars["home_sidebar"].entries %}
-    {% for folder in entry.folders %}
+    {% for folder in entry.folders %}{% if folder.url %}
 - id: {{ id }}
   type: folder
   title: {{ folder.title }}
@@ -10,14 +12,14 @@
   uplink: index.html
         {% assign folder_uplink = folder.url | remove: '/' %}
         {% assign id = id | plus: 1 %}
-        {% for folderitem in folder.folderitems %}
+        {% for folderitem in folder.folderitems %}{% if folderitem.url %}
 - id: {{ id }}
   type: item
   title: {{ folderitem.title }}
   url: {{ folderitem.url | remove: '/' }}
   uplink: {{ folder_uplink }}
             {% assign id = id | plus: 1 %}
-            {% for subfolder in folderitem.subfolders %}
+            {% for subfolder in folderitem.subfolders %}{% if subfolder.url %}
 - id: {{ id }}
   type: subfolder
   title: {{ subfolder.title }}
@@ -25,17 +27,17 @@
   uplink: {{ folder_uplink }}
                 {% assign subfolder_uplink = subfolder.url | remove: '/' %}
                 {% assign id = id | plus: 1 %}
-                {% for subfolderitem in subfolder %}
+                {% for subfolderitem in subfolder.subfolderitems %}{% if subfolderitem.url %}
 - id: {{ id }}
   type: subitem
   title: {{ subfolderitem.title }}
   url: {{ subfolderitem.url | remove: '/' }}
   uplink: {{ subfolder_uplink }}
                     {% assign id = id | plus: 1 %}
-                {% endfor %}
-            {% endfor %}
-        {% endfor %}
-    {% endfor %}
+                {% endif %}{% endfor %}
+            {% endif %}{% endfor %}
+        {% endif %}{% endfor %}
+    {% endif %}{% endfor %}
 {% endfor %}
 </pre>
 {% endcapture %}

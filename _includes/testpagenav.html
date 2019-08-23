@@ -1,102 +1,21 @@
-{% assign tbl = "" | split: ',' %}
-{% assign id = 0 %}
-{% assign folder_uplink = "index.html" %}
-{% assign subfolder_uplink = "index.html" %}
-{% assign home_uplink = "index.html"}
-{% assign sidebar = site.data.sidebars['home_sidebar'].entries %}
-{% for entry in sidebar %}
-    {% for folder in entry.folders %}
-        {% assign type = "folder" %}
-        {% assign uplink = home_uplink %}
-        {% assign folder_uplink = folder.url %}
-        {% assign title = folder.title %}
-        {% assign url = folder.url %}
-        {% assign tblEntry = id | append: ',' | type | append: ',' | append: title | append: ',' | url | uplink %}
-{{tblEntry}}
-        {% assign tbl = tbl | push: tblEntry %}
-        {% assign id = id | plus: 1 %}
-        {% for folderitem in folder.folderitems %}
-            {% assign type = "item" %}
-            {% assign uplink = folder_uplink %}
-            {% assign title = folderitem.title %}
-            {% assign url   = folderitem.url %}
-            {% assign tblEntry = id | append: ',' | type | append: ',' | append: title | append: ',' | url | uplink %}
-{{tblEntry}}
-            {% assign tbl = tbl | push: tblEntry %}
-            {% assign id = id | plus: 1 %}
-            {% for subfolder in folderitem.subfolders %}
-                {% assign type = "subfolder" %}
-                {% assign uplink = folder_uplink %}
-                {% assign subfolder_uplink = subfolder.url %}
-                {% assign title = subfolder.title %}
-                {% assign url = subfolder.url %}
-                {% assign tblEntry = id | append: ',' | type | append: ',' | append: title | append: ',' | url | uplink %}
-{{tblEntry}}
-                {% assign tbl = tbl | push: tblEntry %}
-                {% assign id = id | plus: 1 %}
-                {% for subfolderitem in subfolder %}
-                    {% assign type = "subitem" %}
-                    {% assign uplink = subfolder_uplink %}
-                    {% assign title = subfolderitem.title %}
-                    {% assign url   = subfolderitem.url %}
-                    {% assign tblEntry = id | append: ',' | type | append: ',' | append: title | append: ',' | url | uplink %}
-{{tblEntry}}
-                    {% assign tbl = tbl | push: tblEntry %}
-                    {% assign id = id | plus: 1 %}
-                {% endfor %}
-            {% endfor %}
-        {% endfor %}
-    {% endfor %}
+<table>
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Uplink</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for pagenav in site.data.pagenextprev_nav.pagenavs %}
+<tr><td>{{pagenav.id}}</td><td>{{pagenav.type}}</td><td>{{pagenav.title}}</td><td>{{pagenav.url}}</td><td>{{pagenav.uplink}}</td></tr>
 {% endfor %}
-{% comment %}
-                    id     = entry[0]
-                    type   = entry[1]
-                    title  = entry[2]
-                    url    = entry[3]
-                    uplink = entry[4]
-{% endcomment %}
-{% assign tbl_entry = 0 %}
-{% assign entry = tbl_entry | split: ',' %}
-{% if entry[0] == (tbl | size) | minus: 1 %}
-    {% assign nextentry = nil %}
-{% else %}
-    {% assign nextitem  = tbl[entry[0] | plus:  1] %}
-    {% assign nextentry = nextitem | split: ',' %}
-{% endif %}
-{% if entry[0] == 0 %}
-    {% assign preventry = nil %}
-{% else %}
-    {% assign previtem  = tbl[entry[0] | minus:  1] %}
-    {% assign preventry = previtem | split: ',' %}
-{% endif %}
-{% if (entry[1] == "folder") or (entry[1] == "subfolder") %}
-    {% if nextentry == nil %}
-        {% assign nextlink = entry[4] %}
-    {% else %}
-        {% assign nextlink = nextentry[3] %}
-    {% endif %}
-    {% if preventry == nil %}
-        {% assign prevlink = entry[4] %}
-    {% else %}
-        {% assign prevlink = preventry[3] %}
-    {% endif %}
-{% else %}
-    {% if nextentry == nil %}
-        {% assign nextlink = entry[4] %}
-    {% else %}
-        {% if (entry[1]==nextentry[1]) %}
-            {% assign nextlink = nextentry[3] %}
-        {% else %}
-            {% assign nextlink = entry[4] %}
-        {% endif %}
-    {% endif %}
-    {% if preventry == nil %}
-        {% assign prevlink = entry[4] %}
-    {% else %}
-        {% if entry[1]==preventry[1] %}
-            {% assign prevlink = preventry[3] %}
-        {% else %}
-            {% assign prevlink = entry[4] %}
-        {% endif %}
-    {% endif %}
-{% endif %}
+    </tbody>
+</table>
