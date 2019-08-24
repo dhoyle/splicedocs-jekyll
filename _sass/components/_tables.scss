@@ -21,7 +21,8 @@
 
 table,
 table.noBorder,
-table.oddEven
+table.oddEven,
+table.pageNav
 {
 	table-layout: auto;
 	border: $border-table;
@@ -114,10 +115,16 @@ table.oddEven tr:nth-child(odd) {
 	background-color: $table-oddrow-bgcolor;
 }
 
-table.noBorder {
+table.noBorder,
+table.pageNav  {
     border: none;
     td { border: none;}
     th { border: none;}
+}
+
+table.pageNav {
+	margin: 0 auto 0 auto;
+	width: 96%;
 }
 
 table td.AppFont {

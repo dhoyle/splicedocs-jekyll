@@ -1,56 +1,57 @@
-{% assign pagenavs = site.data.pagenextprev_nav.pagenavs %}
-{% assign navId = pagenavs | size %}
-{% assign lim = navId | minus: 1 %}
-{% for pagenav in pagenavs %}
-    {% if pagenav.url == "sqlref_builtinfcns_addmonths.html" %}  {%comment%} if page.permalink == pagenav.url {%endcomment%}
-        {% assign navId  = pagenav.id %}
-        {% break %}
-    {% endif %}
-{% endfor %}
-<p>GOT navId = {{navId}}, Lim = {{lim}}</p>
-{% if (navId <= lim) %}
-<p>Into the IF</p>
-    {% assign pagenav = pagenavs[navId] %}
-<p>pagenav= {{pagenav}}</p>
-    {% assign nextId = navId | plus: 1 %}
-    {% assign prevId = navId | minus: 1 %}
-<p>nextId= {{nextId}}, prevId = {{prevId}}</p>
-    {% for uplinknav in pagenavs %}
-        {% if uplinknav.url == pagenav.url %}
-            {% assign uplinkId  = pagenav.id %}
+{% comment %}
+   -----------------------------------------------------------------------}
+    {% assign pagenavs = site.data.pagenextprev_nav.pagenavs %}
+    {% assign navId = pagenavs | size %}
+    {% assign navlim = navId | minus: 1 %}
+    {% for pagenav in pagenavs %}
+        {% if pagenav.url == "sqlref_builtinfcns_addmonths.html" %}  {%comment%} if page.permalink == pagenav.url {%endcomment%}
+            {% assign navId  = pagenav.id %}
             {% break %}
         {% endif %}
     {% endfor %}
-<p>uplink= {{uplinkNav}} <<---START HERE
-    {% if prevId <= 0 %}
-        {% assign prevUrl    = pagenavs[uplinkId].url %}
-        {% assign prevTitle  = pagenavs[uplinkId].title %}
-        {% assign prevUplink = true %}
+    {% if (navId <= navlim) %}
+        {% assign pagenav = pagenavs[navId] %}
+        {% assign nextId = navId | plus: 1 %}
+        {% assign prevId = navId | minus: 1 %}
+        {% for uplinknav in pagenavs %}
+            {% if uplinknav.url == pagenav.url %}
+                {% assign uplinkId  = pagenav.id %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% if prevId <= 0 %}
+            {% assign prevUrl    = pagenavs[uplinkId].url %}
+            {% assign prevTitle  = pagenavs[uplinkId].title %}
+            {% assign prevUplink = true %}
+        {% else %}
+            {% assign prevnav    = pagenavs[prevId] %}
+            {% assign prevUrl    = prevnav.url %}
+            {% assign prevTitle  = prevnav.title %}
+            {% assign prevUplink = false %}
+        {% endif %}
+        {% if nextId >= navlim %}
+            {% assign nextUrl    = pagenavs[uplinkId].url %}
+            {% assign nextTitle  = pagenavs[uplinkId].title %}
+            {% assign nextUplink = true %}
+        {% else %}
+            {% assign nextnav    = pagenavs[nextId] %}
+            {% assign nextUrl    = nextnav.url %}
+            {% assign nextTitle  = nextnav.title %}
+            {% assign nextUplink = false %}
+        {% endif %}
+        {% if prevUplink == true %}
+            {% assign prevChar = '&uarr;' %}
+        {% else %}
+            {% assign prevChar = '&laquo;' %}
+        {% endif %}
+        {% if nextUplink == true %}
+            {% assign nextChar = '&uarr;' %}
+        {% else %}
+            {% assign nextChar = '&raquo;' %}
+        {% endif %}
+    <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevUrl}}">{{prevChar}}&nbsp;{{prevTitle}}</a></td><td class="PageLinkNext"><a href="{{nextUrl}}">{{nextTitle}}&nbsp;{{nextChar}}</a></td></tr></tbody></table>
     {% else %}
-        {% assign prevnav    = pagenavs[prevId] %}
-<p>PrevNav= {{prevnav}}</p>
-        {% assign prevUrl    = prevnav.url %}
-        {% assign prevTitle  = prevnav.title %}
-        {% assign prevUplink = false %}
+        <p class="important">Page Navigation Error; please notify docs@splicemachine.com</p>
     {% endif %}
-    {% if nextId >= lim %}
-        {% assign nextUrl    = pagenavs[uplinkId].url %}
-        {% assign nextTitle  = pagenavs[uplinkId].title %}
-        {% assign nextUplink = true %}
-    {% else %}
-        {% assign nextnav    = pagenavs[nextId] %}
-<p>NextNav= {{nextnav}}</p>
-        {% assign nextUrl    = nextnav.url %}
-        {% assign nextTitle  = nextnav.title %}
-        {% assign nextUplink = false %}
-    {% endif %}
-{% if (prevUplink == false) and (nextUplink == false) %}
-        <table class="noBorder" width="90%"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevUrl}}">&laquo;&nbsp;{{prevTitle}}</a></td><td class="PageLinkNext"><a href="{{nextUrl}}">{{nextTitle}}&nbsp;&raquo;</a></td></tr></tbody></table>
-    {% elsif prevUplink == true %}
-        <table class="noBorder" width="90%"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{folderUrl}}">&uarr;&nbsp;{{folderTitle}}</a></td><td class="PageLinkNext"><a href="{{nextUrl}}">{{nextTitle}}&nbsp;&raquo;</a></td></tr></tbody></table>
-    {% else %}
-        <table class="noBorder" width="90%"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevUrl}}">&laquo;&nbsp;{{prevTitle}}</a></td><td class="PageLinkNext"><a href="{{folderUrl}}">{{folderTitle}}&nbsp;&uarr;</a></td></tr></tbody></table>
-    {% endif %}
-{% else %}
-    <p class="important">Page Navigation Error; please notify docs@splicemachine.com</p>
-{% endif %}
+
+{% endcomment %}
