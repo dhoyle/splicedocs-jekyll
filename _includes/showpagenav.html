@@ -5,22 +5,24 @@
     <col />
     <col />
     <thead>
-    <td>Id</td>>
-    <td>Type</td>>
-    <td>Title</td>>
-    <td>Permalink</td>>
-    <td>Uplink Url</td>>
+    <tr>
+        <td>Id</td>
+        <td>Type</td>
+        <td>Title</td>
+        <td>Permalink</td>
+        <td>Uplink Url</td>
+    </tr>
     </thead>
     <tbody>
 {% assign pagenavs = site.data.pagenextprev_nav.pagenavs %}
 {% for nav in pagenavs %}
-<tr>
-    <td>{{nav.id}}</td>
-    <td>{{nav.type}}</td>
-    <td>{{nav.title}}</td>
-    <td>{{nav.url}}</td>
-    <td>{{nav.uplink}}</td>
-</tr>
+    <tr>
+        <td>{{nav.id}}</td>
+        <td>{{nav.type}}</td>
+        <td>{{nav.title}}</td>
+        <td>{{nav.url}}</td>
+        <td>{{nav.uplink}}</td>
+    </tr>
 {% endfor %}
     </tbody
 </table>

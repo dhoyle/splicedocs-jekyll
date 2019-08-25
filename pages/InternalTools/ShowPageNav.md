@@ -1,10 +1,10 @@
 ---
-title: TEST Page Navigation YAML file
+title: Display the Page Navigation YAML file
 summary:
 keywords:
 toc: false
 product: all
 sidebar:
-permalink: Show_PageNavYaml.html
+permalink: Show_PageNav_Yaml.html
 ---
 {% include showpagenav.html %}
