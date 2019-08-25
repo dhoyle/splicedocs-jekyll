@@ -5,6 +5,6 @@ keywords:
 toc: false
 product: all
 sidebar:
-permalink: Test_PageNav_Yaml.html
+permalink: Show_PageNavYaml.html
 ---
-{% include testpagenav.html %}
+{% include showpagenav.html %}
