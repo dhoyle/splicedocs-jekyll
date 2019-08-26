@@ -27,7 +27,6 @@
                         {% assign uplinkId = id %}
                     {% endif %}
                     {% assign nextSubitemType = 'subitemFirst' %}
-                    {% assign id = id | plus: 1 %}
                     {% for subfolderitem in subfolder.subfolderitems %}
                         {% if subfolderitem.url %}
                             {% assign tblEntry =
@@ -49,8 +48,6 @@
         {% endfor %}
     {% endfor %}
 {% endfor %}
-
-
 {% capture yamlout %}
 <pre>
 pagenextprev_nav: Splice Next and Prev Page Navigation
@@ -58,19 +55,30 @@ pagenavs:
 {% for tblItem in navTable %}
     {% assign navInfo = tblItem | split: ',' %}
     {% assign navId = navInfo[0] %}
-    {% if navId > 0 %}
-        {% assign prevId = navId | minus: 1 %}
-    {% else %}
+    {% assign prevId = navId | minus: 1 %}
+    {% if prevId < 0 %}
         {% assign prevId = 0 %}
     {% endif %}
-    {% assign nextId = navId | plus: 1 %}
+    {% assign nextId   = navId | plus: 1 %}
+    {% assign prevUplinkId = nil %}
+    {% assign nextUplinkId = nil %}
+    {% assign uplinkId = navInfo[6] %}
+    {% if navInfo[1] == 'itemFirst' or navInfo[1] == 'subitemFirst' %}
+        {% assign prevUplinkId = uplinkId %}
+    {% else %}
+        {% assign nextNavInfo = navTable[nextId] | split: ',' %}
+        {% if nextNavInfo[1] == 'itemFirst' or nextNavInfo[1] == 'subitemFirst' %}
+            {% assign nextUplinkId = uplinkId %}
+        {% endif %}
+    {% endif %}
 - id:     {{ navId }}
   type:   {{ navInfo[1] }}
-  title:  {{ navInfo[2] }}
+  title:  "{{ navInfo[2] }}"
   url:    {{ navInfo[3] }}
   nextId: {{ nextId }}
   prevId: {{ prevId }}
-  uplink: {{ navInfo[6] }}
+  prevUplinkId: {{ prevUplinkId }}
+  nextUplinkId: {{ nextUplinkId }}
 {% endfor %}
 </pre>
 {% endcapture %}
