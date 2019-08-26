@@ -1,51 +1,77 @@
-{% capture yamloutput %}
+{% assign id = 0 %}
+{% assign navTable = "" | split: ',' %}
+{% for entry in site.data.sidebars["home_sidebar"].entries %}
+    {% for folder in entry.folders %}
+        {% assign nextItemType = 'itemFirst' %}
+        {% if folder.url %}
+            {% assign uplinkId = id %}
+        {% else %}
+            {% assign uplinkId = 0 %}
+        {% endif %}
+        {% for folderitem in folder.folderitems %}
+            {% if folderitem.url %}
+                {% assign tblEntry =
+                     id | append: ','
+                        | append: nextItemType | append: ','
+                        | append: folderitem.title | append: ','
+                        | append: folderitem.url | remove: '/' | append: ','
+                        | append: 0 | append: ','
+                        | append: 0 | append: ','
+                        | append: uplinkId
+                %}
+                {% assign navTable = navTable | push: tblEntry %}
+                {% assign nextItemType = 'item' %}
+                {% assign id = id | plus: 1 %}
+                {% for subfolder in folderitem.subfolders %}
+                    {% if subfolder.url %}
+                        {% assign uplinkId = id %}
+                    {% endif %}
+                    {% assign nextSubitemType = 'subitemFirst' %}
+                    {% assign id = id | plus: 1 %}
+                    {% for subfolderitem in subfolder.subfolderitems %}
+                        {% if subfolderitem.url %}
+                            {% assign tblEntry =
+                                 id | append: ','
+                                    | append: nextSubitemType | append: ','
+                                    | append: subfolderitem.title | append: ','
+                                    | append: subfolderitem.url | remove: '/' | append: ','
+                                    | append: 0 | append: ','
+                                    | append: 0 | append: ','
+                                    | append: uplinkId
+                            %}
+                            {% assign navTable = navTable | push: tblEntry %}
+                            {% assign nextSubitemType = 'subitem' %}
+                            {% assign id = id | plus: 1 %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+
+
+{% capture yamlout %}
 <pre>
 pagenextprev_nav: Splice Next and Prev Page Navigation
 pagenavs:
-{% assign id = 0 %}
-{% for entry in site.data.sidebars["home_sidebar"].entries %}
-    {% for folder in entry.folders %}{% if folder.url %}
-- id: {{ id }}
-  type: folder
-  title: {{ folder.title }}
-  url: {{ folder.url | remove: '/' }}
-  uplink: index.html
-        {% assign folder_uplink = folder.url | remove: '/' %}
-        {% assign id = id | plus: 1 %}
-        {% for folderitem in folder.folderitems %}{% if folderitem.url %}
-- id: {{ id }}
-  type: item
-  title: {{ folderitem.title }}
-  url: {{ folderitem.url | remove: '/' }}
-  uplink: {{ folder_uplink }}
-            {% assign id = id | plus: 1 %}
-            {% for subfolder in folderitem.subfolders %}{% if subfolder.url %}
-- id: {{ id }}
-  type: subfolder
-  title: {{ subfolder.title }}
-  url: {{ subfolder.url | remove: '/' }}
-  uplink: {{ folder_uplink }}
-                {% assign subfolder_uplink = subfolder.url | remove: '/' %}
-                {% assign id = id | plus: 1 %}
-                {% for subfolderitem in subfolder.subfolderitems %}{% if subfolderitem.url %}
-- id: {{ id }}
-  type: subitem
-  title: {{ subfolderitem.title }}
-  url: {{ subfolderitem.url | remove: '/' }}
-  uplink: {{ subfolder_uplink }}
-                    {% assign id = id | plus: 1 %}
-                {% endif %}{% endfor %}
-            {% endif %}{% endfor %}
-        {% endif %}{% endfor %}
-    {% endif %}{% endfor %}
+{% for tblItem in navTable %}
+    {% assign navInfo = tblItem | split: ',' %}
+    {% assign navId = navInfo[0] %}
+    {% if navId > 0 %}
+        {% assign prevId = navId | minus: 1 %}
+    {% else %}
+        {% assign prevId = 0 %}
+    {% endif %}
+    {% assign nextId = navId | plus: 1 %}
+- id:     {{ navId }}
+  type:   {{ navInfo[1] }}
+  title:  {{ navInfo[2] }}
+  url:    {{ navInfo[3] }}
+  nextId: {{ nextId }}
+  prevId: {{ prevId }}
+  uplink: {{ navInfo[6] }}
 {% endfor %}
 </pre>
 {% endcapture %}
-{{ yamloutput }}
-{% comment %}
-                    id     = entry[0]
-                    type   = entry[1]
-                    title  = entry[2]
-                    url    = entry[3]
-                    uplink = entry[4]
-{% endcomment %}
+{{ yamlout }}
