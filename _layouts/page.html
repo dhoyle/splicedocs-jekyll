@@ -80,10 +80,7 @@ layout: default
         {% break %}
     {% endif %}
 {% endfor %}
-{% comment %}
-        <p>For nextLink={{nextLink}}, NEXTPAGE={{nextPage}}</p>
-        <p>For prevLink={{prevLink}}, PREVPAGE={{prevPage}}</p>
-{% endcomment %}
+{% capture navdiv %}
 {% if prevPage.url == thepage.url %}
     {% if nextPage.url == thepage.url %}
             <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev">&nbsp;</td><td class="PageLinkNext">&nbsp;</td></tr></tbody></table>
@@ -95,6 +92,8 @@ layout: default
 {% else %}
             <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevPage.url}}">{{prevChar}}&nbsp;{{prevPage.title}}</a></td><td class="PageLinkNext"><a href="{{nextPage.url}}">{{nextPage.title}}&nbsp;{{nextChar}}</a></td></tr></tbody></table>
 {% endif %}
+{% endcapture %}
+{{ navdiv }}
     </div>
 
     <div class="tags">

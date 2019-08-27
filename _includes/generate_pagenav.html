@@ -1,5 +1,6 @@
 
 {% assign navTable = "" | split: ',' %}
+{% assign id = 0 %}
 {% for entry in site.data.sidebars["home_sidebar"].entries %}
     {% for folder in entry.folders %}
         {% assign nextItemType = 'itemFirst' %}
@@ -52,25 +53,36 @@
 <pre>
 pagenextprev_nav: Splice Next and Prev Page Navigation
 pagenavs:
-{% for tblItem in navTable %}
-    {% assign navInfo = tblItem | split: ',' %}
-    {% assign navId = navInfo[0] %}
-    {% assign prevId = navId | minus: 1 %}
-    {% if prevId < 0 %}
-        {% assign prevId = 0 %}
-    {% endif %}
-    {% assign nextId   = navId | plus: 1 %}
-    {% assign prevUplinkId = nil %}
-    {% assign nextUplinkId = nil %}
-    {% assign uplinkId = navInfo[6] %}
-    {% if navInfo[1] == 'itemFirst' or navInfo[1] == 'subitemFirst' %}
-        {% assign prevUplinkId = uplinkId %}
-    {% else %}
-        {% assign nextNavInfo = navTable[nextId] | split: ',' %}
-        {% if nextNavInfo[1] == 'itemFirst' or nextNavInfo[1] == 'subitemFirst' %}
-            {% assign nextUplinkId = uplinkId %}
-        {% endif %}
-    {% endif %}
+{%- assign cnt = 0 -%}
+{%- assign lastNavId = navTable | size | minus: 1 -%}
+{%- assign lastFolderOrSubfolderId = 0 -%}
+{%- for tblItem in navTable -%}
+    {%- assign navInfo = tblItem | split: ',' -%}
+    {%- assign itemType = navInfo[1] -%}
+    {%- assign navId = navInfo[0] -%}
+    {%- assign prevId = navId | minus: 1 -%}
+    {%- if prevId < 0 -%}
+        {%- assign prevId = 0 -%}
+    {%- endif -%}
+    {%- assign nextId       = navId | plus: 1 -%}
+    {%- assign prevUplinkId = nil -%}
+    {%- assign nextUplinkId = nil -%}
+    {%- assign uplinkId     = navInfo[6] -%}
+    {%- assign nextNavInfo  = navTable[nextId] | split: ',' -%}
+    {%- assign nextNavType  = nextNavInfo[1] -%}
+    {%- if itemType == 'item' and nextItemType == 'subitemFirst' -%}
+        {%- assign prevUplinkId = uplinkId -%}
+        {%- assign nextUplinkId = nil -%}
+    {%- elsif itemType == 'itemFirst'  or itemType == 'subitemFirst' -%}
+        {%- assign prevUplink = uplinkId -%}
+        {% assign lastFolderOrSubfolderId = navId %}
+    {%- elsif nextNavType == 'itemFirst' or nextNavType == 'subitemFirst' -%}
+        {%- assign nextUplinkId = uplinkId -%}
+    {%- endif -%}
+    {%- if nextId > lastNavId -%}
+        {%- assign nextUplinkId = lastFolderOrSubfolderId -%}
+    {%- endif -%}
+<br />
 - id:     {{ navId }}
   type:   {{ navInfo[1] }}
   title:  "{{ navInfo[2] }}"
@@ -79,68 +91,7 @@ pagenavs:
   prevId: {{ prevId }}
   prevUplinkId: {{ prevUplinkId }}
   nextUplinkId: {{ nextUplinkId }}
-{% endfor %}
+{%- endfor -%}
 </pre>
-{% endcapture %}
+{%- endcapture -%}
 {{ yamlout }}
-
-{% comment %}
-
-{% capture debug %}
-{% assign id = 0 %}
-{% assign navTable = "" | split: ',' %}
-{% for entry in site.data.sidebars["home_sidebar"].entries %}
-   {% for folder in entry.folders %}
-<h5>Folder: {{folder.title}}, {{folder.url}}</h5>
-        {% assign nextItemType = 'itemFirst' %}
-        {% if folder.url %}
-            {% assign uplinkId = id %}
-        {% else %}
-            {% assign uplinkId = 0 %}
-        {% endif %}
-        {% for folderitem in folder.folderitems %}
-<p>Folder Item: {{folderitem.title}}, {{folderitem.url}}</p>
-            {% if folderitem.url %}
-                {% assign tblEntry =
-                     id | append: ','
-                        | append: nextItemType | append: ','
-                        | append: folderitem.title | append: ','
-                        | append: folderitem.url | remove: '/' | append: ','
-                        | append: 0 | append: ','
-                        | append: 0 | append: ','
-                        | append: uplinkId
-                %}
-                {% assign navTable = navTable | push: tblEntry %}
-                {% assign nextItemType = 'item' %}
-                {% assign id = id | plus: 1 %}
-            {% endif %}
-            {% for subfolder in folderitem.subfolders %}
-<h5>SubFolder: {{subfolder.title}}, {{subfolder.url}}</h5>
-                {% if subfolder.url %}
-                    {% assign uplinkId = id %}
-                {% endif %}
-                {% assign nextSubitemType = 'subitemFirst' %}
-                {% for subfolderitem in subfolder.subfolderitems %}
-<p>Subfolder Item: {{subfolderitem.title}}, {{subfolderitem.url}}</p>
-                    {% if subfolderitem.url %}
-                        {% assign tblEntry =
-                             id | append: ','
-                                | append: nextSubitemType | append: ','
-                                | append: subfolderitem.title | append: ','
-                                | append: subfolderitem.url | remove: '/' | append: ','
-                                | append: 0 | append: ','
-                                | append: 0 | append: ','
-                                | append: uplinkId
-                        %}
-                        {% assign navTable = navTable | push: tblEntry %}
-                        {% assign nextSubitemType = 'subitem' %}
-                        {% assign id = id | plus: 1 %}
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
-        {% endfor %}
-    {% endfor %}
-{% endfor %}
-{% endcapture %}
-{{debug}}
-{% endcomment %}
