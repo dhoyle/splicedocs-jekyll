@@ -124,7 +124,7 @@ table.pageNav  {
 
 table.pageNav {
 	margin: 0 auto 0 auto;
-	width: 96%;
+	width: 100%;
 }
 
 table td.AppFont {
@@ -228,6 +228,26 @@ table td.MenuName {
 						$bgColor: $table-appFont-color)
 }
 
+table td.PageLinkNext {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align:    right;
+	margin-right:  0;
+	padding-right: 0;
+}
+
+table td.PageLinkPrev {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align:   left;
+	margin-left:  0;
+	padding-left: 0;
+}
+
 table td.PlainFont {
 	@include cellStyle( $fontWeight: normal )
 }
@@ -320,21 +340,4 @@ caption.tblCaption {
 	font-size: $caption-size;
 	color: $caption-color;
 	font-weight: $caption-bold;
-}
-
-
-table td.PageLinkNext {
-	@include cellStyle ($fontColor:  $pagelink-color,
-					    $fontSize:   $pagelink-size,
-						$fontStyle:  $pagelink-style,
-						$fontWeight: $pagelink-weight);
-	text-align: right;
-}
-
-table td.PageLinkPrev {
-	@include cellStyle ($fontColor:  $pagelink-color,
-					    $fontSize:   $pagelink-size,
-						$fontStyle:  $pagelink-style,
-						$fontWeight: $pagelink-weight);
-	text-align: left;
 }

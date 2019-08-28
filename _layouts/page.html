@@ -43,9 +43,7 @@ layout: default
 
     {% endif %}
 
-  {{content}}
-
-    <div class="PageNavigation">
+    <div class="PageNavigationTop">
 {% assign pagenavs = site.data.pagenextprev_nav.pagenavs %}
 {% assign thepage  = nil %}
 {% for nav in pagenavs %}
@@ -80,19 +78,25 @@ layout: default
         {% break %}
     {% endif %}
 {% endfor %}
-{% capture navdiv %}
-{% if prevPage.url == thepage.url %}
-    {% if nextPage.url == thepage.url %}
+{%- capture navdiv -%}
+{%- if prevPage.url == thepage.url -%}
+    {%- if nextPage.url == thepage.url -%}
             <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev">&nbsp;</td><td class="PageLinkNext">&nbsp;</td></tr></tbody></table>
-    {% else %}
+    {%- else -%}
             <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev">&nbsp;</td><td class="PageLinkNext"><a href="{{nextPage.url}}">{{nextPage.title}}&nbsp;{{nextChar}}</a></td></tr></tbody></table>
-    {% endif %}
-{% elsif nextPage.url == thepage.url %}
+    {%- endif -%}
+{%- elsif nextPage.url == thepage.url -%}
             <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevPage.url}}">{{prevChar}}&nbsp;{{prevPage.title}}</a></td><td class="PageLinkNext">&nbsp;</td></tr></tbody></table>
-{% else %}
+{%- else -%}
             <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevPage.url}}">{{prevChar}}&nbsp;{{prevPage.title}}</a></td><td class="PageLinkNext"><a href="{{nextPage.url}}">{{nextPage.title}}&nbsp;{{nextChar}}</a></td></tr></tbody></table>
-{% endif %}
-{% endcapture %}
+{%- endif -%}
+{%- endcapture -%}
+{{ navdiv }}
+    </div>
+
+  {{content}}
+
+    <div class="PageNavigationBottom">
 {{ navdiv }}
     </div>
 
