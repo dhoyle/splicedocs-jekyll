@@ -65,7 +65,22 @@ The following table shows the contents of the `SYS.SYSVIEWS` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSVIEWS;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -73,8 +88,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSVIEWS;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

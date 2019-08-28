@@ -112,6 +112,18 @@ system view.
         </tr>
     </tbody>
 </table>
+## Usage Note
+
+This is a view on the system table, [`SYS.SYSPERMS`](sqlref_systables_sysperms.html); Access to that table is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access. This view allows you to access those parts of the table to which you have been granted access. Note that performance is better when using a table instead of its corresponding view.
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSPERMS;
+```
+{: .Example}
+
+If you see the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead.
 
 ## Usage Example
 

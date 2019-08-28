@@ -89,16 +89,12 @@ The following table shows the contents of the `SYS.SYSALIASES` system table.
         </tr>
         <tr>
             <td><code>ALIASINFO</code></td>
-            <td><em>org.apache.Splice Machine.
-				catalog.AliasInfo</em>
-                <br />
-                <br />
-                <p>This class is not part of the public API.</p>
-            </td>
+            <td><code>org.apache.Splice Machine.<br />catalog.AliasInfo</code></td>
             <td><code>-1</code></td>
             <td><code>YES</code></td>
-            <td>A Java interface that encapsulates the additional information
-			that is specific to an alias</td>
+            <td><p>A Java interface that encapsulates the additional information that is specific to an alias.</p>
+                <p>This class is not part of the public API.</p>
+            </td>
         </tr>
         <tr>
             <td><code>SPECIFICNAME</code></td>
@@ -110,7 +106,23 @@ The following table shows the contents of the `SYS.SYSALIASES` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSALIASES;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -118,8 +130,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSALIASES;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

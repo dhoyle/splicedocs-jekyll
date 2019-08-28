@@ -50,7 +50,7 @@ The following table shows the contents of the `SYS.SYSDEPENDS` system table.
         </tr>
         <tr>
             <td><code>DEPENDENTFINDER</code></td>
-            <td><em>com.splicemachine.db.catalog.TypeDescriptor</em> <p>This class is not part of the public API.</p></td>
+            <td><code>com.splicemachine.db.<br />catalog.TypeDescriptor</code></td>
             <td><code>-1</code></td>
             <td><code>NO</code></td>
             <td>A system type that describes the view, constraint, or trigger that is the dependent</td>
@@ -64,20 +64,31 @@ The following table shows the contents of the `SYS.SYSDEPENDS` system table.
         </tr>
         <tr>
             <td><code>PROVIDERFINDER</code></td>
-            <td>
-                <p><em>com.splicemachine.db.catalog.TypeDescriptor</em>
-                </p>
-                <p>This class is
-			not part of the public API.</p>
-            </td>
+            <td><code>com.splicemachine.db.<br />catalog.TypeDescriptor</code></td>
             <td><code>-1</code></td>
             <td><code>NO</code></td>
-            <td>A system type that describes the table, conglomerate, constraint, and privilege that is the provider</td>
+            <td><p>A system type that describes the table, conglomerate, constraint, and privilege that is the provider</p>
+                <p>This class isnot part of the public API.</p></td>
         </tr>
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSDEPENDS;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -85,8 +96,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSDEPENDS;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

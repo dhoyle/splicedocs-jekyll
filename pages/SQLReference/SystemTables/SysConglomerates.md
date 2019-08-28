@@ -50,7 +50,7 @@ table.
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>NO</code></td>
-            <td>Identifier for table (join with SYSTABLES.TABLEID)</td>
+            <td>Identifier for table (join with <code>SYSTABLES.TABLEID</code>)</td>
         </tr>
         <tr>
             <td><code>CONGLOMERATENUMBER</code></td>
@@ -76,20 +76,18 @@ table.
         </tr>
         <tr>
             <td><code>DESCRIPTOR</code></td>
-            <td><em>org.apache.splicemachine.catalog.IndexDescriptor</em>
-                <p>This class is not part of the public API.</p>
-            </td>
+            <td><code>org.apache.splicemachine.<br />catalog.IndexDescriptor</code></td>
             <td><code>-1</code></td>
             <td><code>YES</code></td>
-            <td>System type describing the index</td>
+            <td><p>System type describing the index</p>
+                <p>This class is not part of the public API.</p></td>
         </tr>
         <tr>
             <td><code>ISCONSTRAINT</code></td>
             <td><code>BOOLEAN</code></td>
             <td><code>1</code></td>
             <td><code>YES</code></td>
-            <td>Whether or not the conglomerate is a system-generated index
-		enforcing a constraint</td>
+            <td>Whether or not the conglomerate is a system-generated index enforcing a constraint</td>
         </tr>
         <tr>
             <td><code>CONGLOMERATEID</code></td>
@@ -101,7 +99,22 @@ table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSCONGLOMERATEINSCHEMAS` system view](sqlref_sysviews_sysconglomerateinschemas.html), that allows you to access those parts of the table to which you _have_ been granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+If you don't have access to this system table, you can use the view instead. Note that performance is better when using a table instead of its corresponding view. You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSCONGLOMERATES;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you don't have access to the table; use the [`SYSVW.SYSCONGLOMERATEINSCHEMAS` system view](sqlref_sysviews_sysconglomerateinschemas.html) instead.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -110,7 +123,6 @@ SELECT * FROM SYS.SYSCONGLOMERATES;
 ```
 {: .Example}
 
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

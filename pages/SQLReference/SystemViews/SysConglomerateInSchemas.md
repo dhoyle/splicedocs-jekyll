@@ -12,7 +12,10 @@ folder: SQLReference/SystemViews
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCONGLOMERATEINSCHEMAS System View
 
-The `SYSCONGLOMERATEINSCHEMAS` view displays all of the roles granted to the current user. It belongs to the `SYSVW` schema.
+The `SYSCONGLOMERATEINSCHEMAS` view displays all of the conglomerates within the current database. It belongs to the `SYSVW` schema.
+
+A conglomerate is a unit of storage and is either a
+table or an index.
 
 The following table shows the contents of the `SYSVW.SYSCONGLOMERATEINSCHEMAS` system view.
 
@@ -71,6 +74,18 @@ The following table shows the contents of the `SYSVW.SYSCONGLOMERATEINSCHEMAS` s
         </tr>
     </tbody>
 </table>
+## Usage Note
+
+This is a view on the system table, [`SYS.SYSCONGLOMERATES`](sqlref_systables_sysconglomerates.html); Access to that table is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access. This view allows you to access those parts of the table to which you have been granted access. Note that performance is better when using a table instead of its corresponding view.
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSCONGLOMERATES;
+```
+{: .Example}
+
+If you see the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead.
 
 ## Usage Example
 

@@ -104,7 +104,23 @@ The following table shows the contents of the `SYS.SYSROLES` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+
+## Usage Restrictions
+
+Access to system tables is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSALLROLES` system view](sqlref_sysviews_sysallroles.html), that allows you to access those parts of the table to which you _have_ been granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+If you don't have access to this system table, you can use the view instead. Note that performance is better when using a table instead of its corresponding view. You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSROLES;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you don't have access to the table; use the [`SYSVW.SYSALLROLES` system view](sqlref_sysviews_sysallroles.html) instead.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -112,8 +128,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSROLES;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 
 </div>

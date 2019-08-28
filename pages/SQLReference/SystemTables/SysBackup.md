@@ -88,21 +88,14 @@ The following table shows the contents of the `SYS.SYSBACKUP` system table.
             <td><code>BOOLEAN</code></td>
             <td><code>1</code></td>
             <td><code>NO</code></td>
-            <td>
-                <p><code>YES</code> for incremental backups, <code>NO</code> for full backups</p>
-                <p><strong>NOTE:</strong> Incremental backups are not yet available.</p>
-            </td>
+            <td><code>YES</code> for incremental backups, <code>NO</code> for full backups</td>
         </tr>
         <tr>
             <td><code>INCREMENTAL_PARENT_BACKUP_ID</code></td>
             <td><code>BIGINT</code></td>
             <td><code>19</code></td>
             <td><code>YES</code></td>
-            <td>
-                <p class="noSpaceAbove">For an incremental backup, this is the  <code>BACKUP_ID</code> of the previous backup on which this incremental backup is based.</p>
-                <p>For full backups, this is <code>-1</code>.</p>
-                <p><strong>NOTE:</strong> Incremental backups are not yet available.</p>
-            </td>
+            <td>For an incremental backup, this is the  <code>BACKUP_ID</code> of the previous backup on which this incremental backup is based. For full backups, this is <code>-1</code>.</td>
         </tr>
         <tr>
             <td><code>BACKUP_ITEM</code></td>
@@ -114,7 +107,22 @@ The following table shows the contents of the `SYS.SYSBACKUP` system table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSBACKUP;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -122,8 +130,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSBACKUP;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

@@ -20,6 +20,7 @@ To use this tool, you need to:
 2. Modify variables in the script file (`get-ddl.sh`) as required to match your environment.
 3. Run the script with your desired options.
 
+<!--
 ## Download and Install
 To install the *DBLook* tool, follow these steps:
 1. Download the XXXXXXX file from XXXXXXX.
@@ -28,6 +29,7 @@ To install the *DBLook* tool, follow these steps:
    xxx
    ```
    {: .ShellCommand}
+-->
 
 ## Modify the Script Variables
 You may need to modify some variables in the `get-ddl.sh` script file, including these:

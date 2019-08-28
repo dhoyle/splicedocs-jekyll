@@ -15,10 +15,8 @@ folder: SQLReference/SystemTables
 The `SYSSEQUENCES` table describes the sequence generators in the
 database. It belongs to the `SYS` schema.
 
-Users should not directly query the `SYSSEQUENCES` table, because that
-will slow down the performance of sequence generators. Instead, users
-should call the &nbsp;[`SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE` system
-function](sqlref_sysprocs_peekatseq.html)
+Splice Machine advises you to call the &nbsp;[`SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE` system
+function](sqlref_sysprocs_peekatseq.html) instead of querying this table. Directly querying the `SYSSEQUENCES` tables slows  the performance of sequence generators.
 {: .noteNote}
 
 The following table shows the contents of the `SYS.SYSSEQUENCES` system
@@ -64,8 +62,7 @@ table.
         </tr>
         <tr>
             <td><code>SEQUENCEDATATYPE</code></td>
-            <td class="CodeFont"><em>com.splicemachine.db.catalog.TypeDescriptor</em>
-            </td>
+            <td class="CodeFont">com.splicemachine.db.<br />catalog.TypeDescriptor</td>
             <td><code>-1</code></td>
             <td><code>NO</code></td>
             <td>System type that describes the precision, length, scale, nullability, type name, and storage type of the data</td>
@@ -122,7 +119,22 @@ table.
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSSEQUENCES;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -130,8 +142,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSSEQUENCES;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 </div>
 </section>

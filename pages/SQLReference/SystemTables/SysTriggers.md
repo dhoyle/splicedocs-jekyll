@@ -138,12 +138,11 @@ table.
         </tr>
         <tr>
             <td><code>REFERENCEDCOLUMNS</code></td>
-            <td class="CodeFont"><em>org.apache.Splice Machine<br /> .catalog.ReferencedColumns</em>
-                <p>This class is not part of the public API.</p>
-            </td>
+            <td class="CodeFont">org.apache.Splice Machine.<br />catalog.ReferencedColumns</td>
             <td><code>-1</code></td>
             <td><code>YES</code></td>
-            <td>Descriptor of the columns to be updated, if this trigger is an update trigger (that is, if the <code>EVENT</code> column contains <code>'U'</code>)</td>
+            <td><p>Descriptor of the columns to be updated, if this trigger is an update trigger (that is, if the <code>EVENT</code> column contains <code>'U'</code>)</p>
+                <p>This class is not part of the public API.</p></td>
         </tr>
         <tr>
             <td><code>TRIGGERDEFINITION</code></td>
@@ -189,7 +188,22 @@ stored in the `SYSSTATEMENTS` table. `ACTIONSTMTID` and `WHENSTMTID` are
 foreign keys that reference `SYSSTATEMENTS.STMTID`. The statements for a
 trigger are always in the same schema as the trigger.
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSTRIGGERS;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -197,8 +211,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSTRIGGERS;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
 
 
 </div>

@@ -87,21 +87,31 @@ If the privilege is grantable, the valid values are:
         </tr>
         <tr>
             <td><code>COLUMNS</code></td>
-            <td><em>org.apache.Splice Machine.
-iapi.services.io.
-FormatableBitSet</em>
-                <br />
-                <br />
-                <p>This class is not part of the public API.</p>
-            </td>
+            <td><code>org.apache.Splice Machine.iapi.<br />services.io.FormatableBitSet</code></td>
             <td><code>-1</code></td>
             <td><code>NO</code></td>
-            <td>A list of columns to which the privilege applies</td>
+            <td><p>A list of columns to which the privilege applies</p>
+                <p>This class is not part of the public API.</p></td>
         </tr>
     </tbody>
 </table>
 
-## Usage Example and Restrictions
+## Usage Restrictions
+
+Access to system tables is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSCOLPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html), that allows you to access those parts of the table to which you _have_ been granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+If you don't have access to this system table, you can use the view instead. Note that performance is better when using a table instead of its corresponding view. You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYS.SYSCOLPERMS;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you don't have access to the table; use the [`SYSVW.SYSCOLPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html) instead.
+
+## Usage Example
 
 Here's an example of using this table:
 
@@ -109,10 +119,6 @@ Here's an example of using this table:
 SELECT * FROM SYS.SYSCOLPERMS;
 ```
 {: .Example}
-
-{% include splice_snippets/systableaccessnote.md %}
-
-The [`SYSCOLPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html) is a view on this table that can be accessed without those permissions.
 
 </div>
 </section>
