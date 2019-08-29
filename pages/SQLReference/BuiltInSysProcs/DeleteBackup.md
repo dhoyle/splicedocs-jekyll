@@ -63,6 +63,8 @@ And then delete that job:
     Statement executed.
 {: .Example xml:space="preserve"}
 
+{% include splice_snippets/tblaccess1.md %}
+
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)

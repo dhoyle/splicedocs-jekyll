@@ -150,6 +150,8 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 ```
 {: .Example}
 
+{% include splice_snippets/tblaccess1.md %}
+
 ### Restoring the Backup  {#exrestore}
 You can restore the schema to another schema on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
 

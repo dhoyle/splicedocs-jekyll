@@ -75,6 +75,8 @@ there already is a backup for the system; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.
 {: .paramDefn}
 
+{% include splice_snippets/tblaccess1.md %}
+
 </div>
 ## Results
 

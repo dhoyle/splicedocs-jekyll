@@ -18,6 +18,8 @@ don't need to modify your configuration if you wish to use it. Native
 authentication uses the `sys.sysusers` table in the `splice` schema for
 configuring user names and passwords.
 
+{% include splice_snippets/tblaccess1.md %}
+
 The default native authentication property settings are:
 {: .noSpaceAbove}
 

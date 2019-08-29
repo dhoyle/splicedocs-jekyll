@@ -159,6 +159,8 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 ```
 {: .Example}
 
+{% include splice_snippets/tblaccess1.md %}
+
 ### Validating the Backup  {#exvalidate}
 Before restoring the table, you can validate the backup:
 ```
