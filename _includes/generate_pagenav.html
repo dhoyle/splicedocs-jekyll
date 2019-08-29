@@ -24,15 +24,11 @@
                 {% assign id = id | plus: 1 %}
             {% endif %}
             {% for subfolder in folderitem.subfolders %}
-                {% if subfolder.url %}
-                    {% assign uplinkId = id %}
-                {% endif %}
-                {% assign nextSubitemType = 'subitemFirst' %}
                 {% for subfolderitem in subfolder.subfolderitems %}
                     {% if subfolderitem.url %}
                         {% assign tblEntry =
                              id | append: ','
-                                | append: nextSubitemType | append: ','
+                                | append: 'item' | append: ','
                                 | append: subfolderitem.title | append: ','
                                 | append: subfolderitem.url | remove: '/' | append: ','
                                 | append: 0 | append: ','
@@ -40,7 +36,6 @@
                                 | append: uplinkId
                         %}
                         {% assign navTable = navTable | push: tblEntry %}
-                        {% assign nextSubitemType = 'subitem' %}
                         {% assign id = id | plus: 1 %}
                     {% endif %}
                 {% endfor %}
@@ -54,32 +49,31 @@ pagenextprev_nav: Splice Next and Prev Page Navigation
 pagenavs:
 {%- assign cnt = 0 -%}
 {%- assign lastNavId = navTable | size | minus: 1 -%}
-{%- assign lastFolderOrSubfolderId = 0 -%}
+{%- assign lastFolderId = 0 -%}
 {%- for tblItem in navTable -%}
     {%- assign navInfo = tblItem | split: ',' -%}
-    {%- assign itemType = navInfo[1] -%}
-    {%- assign navId = navInfo[0] -%}
-    {%- assign prevId = navId | minus: 1 -%}
-    {%- if prevId < 0 -%}
-        {%- assign prevId = 0 -%}
-    {%- endif -%}
-    {%- assign nextId       = navId | plus: 1 -%}
+    {%- assign navType = navInfo[1] -%}
+    {%- assign navId   = navInfo[0] -%}
+    {%- assign prevId  = navId | minus: 1 | at_least: 0 -%}
+    {%- assign nextId  = navId | plus: 1 -%}
     {%- assign prevUplinkId = nil -%}
     {%- assign nextUplinkId = nil -%}
     {%- assign uplinkId     = navInfo[6] -%}
     {%- assign nextNavInfo  = navTable[nextId] | split: ',' -%}
     {%- assign nextNavType  = nextNavInfo[1] -%}
-    {%- if itemType == 'item' and nextItemType == 'subitemFirst' -%}
-        {%- assign prevUplinkId = uplinkId -%}
+    {%- if navType == 'itemFirst' -%}
+        {%- assign lastFolderId = navId -%}
+        {%- assign prevUplinkId = 0 -%}          {%-comment-%}First in folder prev is Home{%-endcomment-%}
+    {%- endif -%}
+    {%- if nextNavType == 'itemFirst' -%}
+        {%- assign nextUplinkId = uplinkId -%}   {%-comment-%}Last in folder next is first in folder{%-endcomment-%}
+    {%- endif -%}
+                         {%-comment-%}Special cases: very first and last items{%-endcomment-%}
+    {%- if navId == '0' %}
         {%- assign nextUplinkId = nil -%}
-    {%- elsif itemType == 'itemFirst'  or itemType == 'subitemFirst' -%}
-        {%- assign prevUplink = uplinkId -%}
-        {% assign lastFolderOrSubfolderId = navId %}
-    {%- elsif nextNavType == 'itemFirst' -%}
-        {%- assign nextUplinkId = uplinkId -%}
     {%- endif -%}
     {%- if nextId > lastNavId -%}
-        {%- assign nextUplinkId = lastFolderOrSubfolderId -%}
+        {%- assign nextUplinkId = lastFolderId -%}
     {%- endif -%}
 <br />
 - id:     {{ navId }}
