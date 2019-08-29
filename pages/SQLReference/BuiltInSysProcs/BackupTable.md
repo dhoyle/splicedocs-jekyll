@@ -18,10 +18,7 @@ backup directory.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
-Note that, as of Splice Machine release 2.7.0.1924, statistics are also backed up for the table.
-
 This procedure only works with internal, Splice Machine tables in your database. You can back up an external table using the Hadoop `DistCp` tool.
-{: .noteIcon}
 
 ## Syntax
 
@@ -86,6 +83,9 @@ You can revert to using `distcp`, which uses a MapReduce job that can run into r
 ## Backup and Restore Compatibility
 
 {% include splice_snippets/backupcompatibility.md %}
+
+### Backing Up and Restoring Statistics
+{% include splice_snippets/backupstats1924.md %}
 
 ## Execute Privileges
 

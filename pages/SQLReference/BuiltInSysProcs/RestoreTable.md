@@ -16,11 +16,7 @@ The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was 
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
-Note that if the backup from which you are restoring was created with version 2.7.0.1924 (August 5, 2019) or later of Splice Machine, statistics for the table are also restored. This means that you don't need to use `analyze` to generate fresh statistics for the table immediately after restoring it.
-
 The table to which you are restoring must not already exist in the database; if it does, `RESTORE_TABLE` will not proceed.
-{: .noteNote}
-
 
 ## Syntax
 
@@ -105,6 +101,14 @@ This procedure does not return a result.
 ## Backup and Restore Compatibility
 
 {% include splice_snippets/backupcompatibility.md %}
+
+### Backing Up and Restoring Statistics
+{% include splice_snippets/backupstats1924.md %}
+
+
+### Backing Up and Restoring Statistics
+{% include splice_snippets/backupstats1924.md %}
+
 
 ## Execute Privileges
 
