@@ -356,6 +356,27 @@ data type for the following kinds of arithmetical expressions:
         </tr>
     </tbody>
 </table>
+
+### Rounding of Numeric Expressions
+
+When the result of a numeric expression needs to be stored into a column that does not have enough significant figures to hold all of the result's digits, Splice Machine rounds the result value. For example, note that the result below is rounded up due to the precision of the table column `a`:
+
+```
+splice> CREATE TABLE t1 (a DECIMAL(10,2));
+0 rows inserted/updated/deleted
+splice> INSERT INTO t1 VALUES (0.555);
+1 row inserted/updated/deleted
+splice> SELECT a FROM t1;
+A
+------------
+0.56
+
+1 row selected
+```
+{: .Example}
+
+
+
 ## See Also
 
 * [Data Type Compatability](sqlref_datatypes_compatability.html)
