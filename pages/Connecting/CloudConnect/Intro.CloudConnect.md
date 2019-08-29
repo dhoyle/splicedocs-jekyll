@@ -16,6 +16,7 @@ This section provides tutorials to help you configure connections to data that y
 
 * [Configuring S3 Buckets for Splice Machine Access](developers_cloudconnect_configures3.html)
 * [Uploading Data to an S3 Bucket](developers_cloudconnect_uploadtos3.html)
+* [Using Azure Storage with Splice Machine](developers_cloudconnect_configureazure.html)
 
 </div>
 </section>
