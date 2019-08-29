@@ -1,6 +1,6 @@
 ---
 title: SYSCOLUMNSVIEW System View
-summary: System table that describes the tables and views within the current database.
+summary: System table that describes the columns of tables in the current database.
 keywords: tables, permissions
 toc: false
 product: all
@@ -12,7 +12,7 @@ folder: SQLReference/SystemViews
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCOLUMNSVIEW System View
 
-The `SYSCOLUMNSVIEW` table view describes the tables and views within the current
+The `SYSCOLUMNSVIEW` table view describes the columns of tables within the current
 database. It belongs to the `SYSVW` schema.
 
 The following table shows the contents of the `SYSVW.SYSCOLUMNSVIEW`

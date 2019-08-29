@@ -46,8 +46,7 @@ The following table shows the contents of the `SYS.SYSALIASES` system table.
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>NO</code></td>
-            <td>Alias (in the case of a user-defined type, the name of the
-			user-defined type)</td>
+            <td>Alias (in the case of a user-defined type, the name of the user-defined type)</td>
         </tr>
         <tr>
             <td><code>SCHEMAID</code></td>

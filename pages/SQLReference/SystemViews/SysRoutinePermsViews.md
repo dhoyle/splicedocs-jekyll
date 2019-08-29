@@ -16,11 +16,7 @@ The `SYSROUTINEPERMSVIEW` view stores the permissions that have been
 granted to routines. It belongs to the `SYS` schema.
 
 Each routine `EXECUTE` permission is specified in a row in the
-`SYSROUTINEPERMSVIEW` view. The keys for the `SYSROUTINEPERMSVIEW` view are:
-
-* Primary key (`GRANTEE, ALIASID, GRANTOR`)
-* Unique key (`ROUTINEPERMSID`)
-* Foreign key (`ALIASID` references `SYS.SYSALIASES`)
+`SYSROUTINEPERMSVIEW` view.
 
 The following table shows the contents of the `SYS.SYSROUTINEPERMSVIEW` system
 view.
@@ -53,21 +49,21 @@ view.
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>NO</code></td>
-            <td>TBD</td>
+            <td>The routine's alias ID that is pointing to the alias Id field in the SYS.ALIASES system table.</td>
         </tr>
         <tr>
             <td><code>GRANTOPTION</code></td>
             <td><code>CHAR</code></td>
             <td><code>1</code></td>
             <td><code>NO</code></td>
-            <td>TBD</td>
+            <td>Specifies if the <code>GRANTEE</code> is the owner of the routine. Valid values are <code>'Y'</code> and <code>'N'</code>.</td>
         </tr>
         <tr>
             <td><code>ALIAS</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>NO</code></td>
-            <td>TBD</td>
+            <td>Alias (in the case of a user-defined type, the name of the user-defined type)</td>
         </tr>
         <tr>
             <td><code>SCHEMANAME</code></td>

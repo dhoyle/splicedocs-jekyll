@@ -16,12 +16,7 @@ The `SYSTABLEPERMS` table stores the table permissions that have been
 granted but not revoked. It belongs to the `SYS` schema.
 
 All of the permissions for one (`GRANTEE, TABLEID, GRANTOR`) combination
-are specified in a single row in the `SYSTABLEPERMS` table. The keys for
-the `SYSTABLEPERMS` table are:
-
-* Primary key (`GRANTEE, TABLEID, GRANTOR`)
-* Unique key (`TABLEPERMSID`)
-* Foreign key (`TABLEID `references `SYS.SYSTABLES`)
+are specified in a single row in the `SYSTABLEPERMS` table. 
 
 The following table shows the contents of the `SYS.SYSTABLEPERMS` system
 table.

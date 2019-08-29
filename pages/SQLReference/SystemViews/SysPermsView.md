@@ -12,7 +12,7 @@ folder: SQLReference/SystemViews
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSPERMSVIEW System View
 
-The `SYSPERMSVIEW` table view describes the System table that describes the usage permissions for sequence generators and user-defined types. It belongs to the `SYSVW` schema.
+The `SYSPERMSVIEW` table view describes the usage permissions for sequence generators and user-defined types. It belongs to the `SYSVW` schema.
 
 The following table shows the contents of the `SYSVW.SYSPERMSVIEW`
 system view.

@@ -16,11 +16,6 @@ The `SYSCOLPERMSVIEW` table view describes the column permissions that have been
 
 All of the permissions for one (`GRANTEE, TABLEID, TYPE, GRANTOR`)
 combination are specified in a single row in the `SYSCOLPERMSVIEW` view.
-The keys for the `SYSCOLPERMSVIEW` view are:
-
-* Primary key (`GRANTEE, TABLEID, TYPE, GRANTOR`)
-* Unique key (`COLPERMSID`)
-* Foreign key (`TABLEID` references `SYS.SYSTABLES`)
 
 The following table shows the contents of the `SYSVW.SYSCOLPERMSVIEW`
 system view.
