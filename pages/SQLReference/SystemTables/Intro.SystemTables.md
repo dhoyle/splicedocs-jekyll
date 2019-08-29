@@ -22,7 +22,6 @@ As of release 2.8 of Splice Machine, `ACCESS` privileges are not granted by defa
 You can use the Java `java.sql.DatabaseMetaData` class to learn more about these tables.
 {: .noteNote}
 
-<div markdown="1">
 ## Database Backups Tables  {#backups}
 The following table lists the System Tables with backups information:
 

@@ -135,7 +135,7 @@ splice> DESCRIBE SYS.SYSSCHEMAPERMS;
 ```
 {: .Example}
 
-If you see the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead.
+If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the view instead.
 
 
 ## Usage Example

@@ -60,7 +60,7 @@ The following table shows the contents of the `SYS.SYSSCHEMAS` system table.
 
 ## Usage Restrictions
 
-Access to system tables is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSSCHEMASVIEW` system view](sqlref_sysviews_sysschemasview.html), that allows you to access those parts of the table to which you _have_ been granted access.
+Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSSCHEMASVIEW` system view](sqlref_sysviews_sysschemasview.html), that allows you to access those parts of the table to which you _have_ been granted access.
 
 {% include splice_snippets/systableaccessnote.md %}
 
@@ -71,7 +71,7 @@ splice> DESCRIBE SYS.SYSSCHEMAS;
 ```
 {: .Example}
 
-If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you don't have access to the table; use the [`SYSVW.SYSSCHEMASVIEW` system view](sqlref_sysviews_sysschemasview.html) instead.
+If you see the table description, you have access; if, instead, you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the [`SYSVW.SYSSCHEMASVIEW` system view](sqlref_sysviews_sysschemasview.html) instead.
 
 ## Usage Example
 

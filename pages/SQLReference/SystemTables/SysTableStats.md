@@ -15,7 +15,7 @@ folder: SQLReference/SystemTables
 The `SYSTABLESTATS` system table describes the statistics for tables
 within the current database. It belongs to the `SYS` schema.
 
-The following table shows the contents of the `SYSVW.SYSTABLESTATS`
+The following table shows the contents of the `SYS.SYSTABLESTATS`
 system table.
 
 <table>
@@ -47,7 +47,7 @@ system table.
             <td><code>VARCHAR</code></td>
             <td><code>32672</code></td>
             <td><code>NO</code></td>
-            <td>Partition ID for the table</td>
+            <td>For non-merged statistics (<code>STATSTYPE=0 or 2</code>), this is the region ID represented by the current statistics row. For merged statistics (<code>STATSTYPE=1 or 3</code>), this is always a constant string.</td>
         </tr>
         <tr>
             <td><code>LAST_UPDATED</code></td>
@@ -139,8 +139,8 @@ system table.
             <td>
                 <p>The sampling percentage, expressed as <code>0.0</code> to <code>1.0</code>, </p>
             <ul>
-                <li>If <code>statsType=0</code> (full statistics), this value is not used, and is shown as <code>0</code>.</li>
-                <li>If <code>statsType=1</code>, this value is the percentage or rows to be sampled. A value of <code>0</code> means no rows, and a value of <code>1</code> means all rows (full statistics).</li>
+                <li>If <code>statsType=0 or 2</code> (full statistics), this value is not used, and is shown as <code>0</code>.</li>
+                <li>If <code>statsType=1 or 3</code>, this value is the percentage or rows to be sampled. A value of <code>0</code> means no rows, and a value of <code>1</code> means all rows (full statistics).</li>
             </ul>
 
             </td>
@@ -150,7 +150,7 @@ system table.
 
 ## Usage Restrictions
 
-Access to system tables is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSTABLESTATISTICS` system view](sqlref_sysviews_systablestats.html), that allows you to access those parts of the table to which you _have_ been granted access.
+Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSTABLESTATISTICS` system view](sqlref_sysviews_systablestats.html), that allows you to access those parts of the table to which you _have_ been granted access.
 
 {% include splice_snippets/systableaccessnote.md %}
 
@@ -161,7 +161,7 @@ splice> DESCRIBE SYS.SYSCONGLOMERATES;
 ```
 {: .Example}
 
-If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you don't have access to the table; use the [`SYSVW.SYSTABLESTATISTICS` system view](sqlref_sysviews_systablestats.html) instead.
+If you see the table description, you have access; if, instead, you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the [`SYSVW.SYSTABLESTATISTICS` system view](sqlref_sysviews_systablestats.html) instead.
 
 ## Usage Example
 

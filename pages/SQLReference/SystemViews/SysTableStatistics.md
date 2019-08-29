@@ -141,8 +141,8 @@ system view.
             <td>
                 <p>The sampling percentage, expressed as <code>0.0</code> to <code>1.0</code>, </p>
             <ul>
-                <li>If <code>statsType=0</code> (full statistics), this value is not used, and is shown as <code>0</code>.</li>
-                <li>If <code>statsType=1</code>, this value is the percentage or rows to be sampled. A value of <code>0</code> means no rows, and a value of <code>1</code> means all rows (full statistics).</li>
+                <li>If <code>statsType=0 or 2</code> (full statistics), this value is not used, and is shown as <code>0</code>.</li>
+                <li>If <code>statsType=1 or 3</code>, this value is the percentage or rows to be sampled. A value of <code>0</code> means no rows, and a value of <code>1</code> means all rows (full statistics).</li>
             </ul>
 
             </td>
@@ -164,7 +164,7 @@ splice> DESCRIBE SYS.SYSTABLESTATS;
 ```
 {: .Example}
 
-If you see the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead.
+If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the view instead.
 
 ## Usage Example
 

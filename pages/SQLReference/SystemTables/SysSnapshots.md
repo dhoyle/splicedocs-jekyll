@@ -84,7 +84,7 @@ table.
 
 ## Usage Restrictions
 
-Access to system tables is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
+Access to the `SYS` schema is restricted, for security purpose, to users for whom you Database Administrator has explicitly granted access.
 
 {% include splice_snippets/systableaccessnote.md %}
 
@@ -95,7 +95,7 @@ splice> DESCRIBE SYS.SYSSNAPSHOTS;
 ```
 {: .Example}
 
-If you see the table description, you have access; if, instead, you see a message that the table doesn't exist, you need your administrator to grant you access.
+If you see the table description, you have access; if, instead, you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you need your administrator to grant you access.
 
 ## Usage Example
 

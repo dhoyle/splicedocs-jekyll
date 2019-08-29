@@ -49,7 +49,7 @@ view.
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>NO</code></td>
-            <td>The routine's alias ID that is pointing to the alias Id field in the SYS.ALIASES system table.</td>
+            <td>The routine's alias ID, which points to the alias ID field in the <code>SYS.ALIASES</code> system table.</td>
         </tr>
         <tr>
             <td><code>GRANTOPTION</code></td>
@@ -85,7 +85,7 @@ splice> DESCRIBE SYS.SYSROUTINEPERMS;
 ```
 {: .Example}
 
-If you see the table description, you have access. If you see a message that the table doesn't exist, you don't have access to the table; use the view instead.
+If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the view instead.
 
 ## Usage Example
 

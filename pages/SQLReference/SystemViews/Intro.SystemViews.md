@@ -13,7 +13,21 @@ folder: SQLReference/SystemViews
 # System Views
 
 This section contains the reference documentation for the Splice Machine
-System Views:
+System Views.
+
+<div class="noteIcon" markdown="1">
+System views return a subset of the rows in their corresponding system tables: the rows in a view are limited to the schemas that are visible to the current user. This means that which rows are in a system view varies from user to user.
+
+These schemas are visible to the current user:
+
+* Schemas owned by the current user
+* Schemas to which the current user belongs
+* Schemas to which user groups in which the current user is a member belongs
+* Schemas to which roles granted directly or indirectly to the current user have acess
+
+The database administrator has access to all schemas, and thus all rows in the system tables.
+
+</div>
 
 Since the system views belong to the `SYSVW` schema, you must preface any
 inquiries involving these views with the `SYSVW.` prefix.
@@ -39,17 +53,11 @@ The following table lists the System Views:
             <td>Describes the column permissions that have been granted but not revoked in the current database.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysviews_syscolpermviews.html">SYSVW.SYSCOLPERMSVIEW</a>
-            </td>
-            <td>Column permissions that have been granted but not revoked.</td>
-        </tr>
-        <tr>
             <td class="CodeFont"><a href="sqlref_sysviews_syscolumnstats.html">SYSVW.SYSCOLUMNSTATISTICS</a></td>
             <td>Statistics gathered for each column in each table.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysviews_syscolumns.html">SYSVW.SYSCOLUMNSVIEW</a>
-            </td>
+            <td class="CodeFont"><a href="sqlref_sysviews_syscolumns.html">SYSVW.SYSCOLUMNSVIEW</a></td>
             <td>Describes the columns within all tables in the current database.</td>
         </tr>
         <tr>
@@ -72,7 +80,7 @@ The following table lists the System Views:
             database.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysviews_sysschemaviews.html">SYSVW.SYSSCHEMAVIEWS</a></td>
+            <td class="CodeFont"><a href="sqlref_sysviews_sysschemasview.html">SYSVW.SYSSCHEMASVIEWS</a></td>
             <td>Describes the schemas within the current database to which the current user has access.</td>
         </tr>
         <tr>
