@@ -21,7 +21,8 @@
 
 table,
 table.noBorder,
-table.oddEven
+table.oddEven,
+table.pageNav
 {
 	table-layout: auto;
 	border: $border-table;
@@ -114,10 +115,16 @@ table.oddEven tr:nth-child(odd) {
 	background-color: $table-oddrow-bgcolor;
 }
 
-table.noBorder {
+table.noBorder,
+table.pageNav  {
     border: none;
     td { border: none;}
     th { border: none;}
+}
+
+table.pageNav {
+	margin: 0 auto 0 auto;
+	width: 100%;
 }
 
 table td.AppFont {
@@ -219,6 +226,26 @@ table td.ItalicFont {
 table td.MenuName {
 	@include cellStyle ($fontStyle: italic,
 						$bgColor: $table-appFont-color)
+}
+
+table td.PageLinkNext {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align:    right;
+	margin-right:  0;
+	padding-right: 0;
+}
+
+table td.PageLinkPrev {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align:   left;
+	margin-left:  0;
+	padding-left: 0;
 }
 
 table td.PlainFont {
