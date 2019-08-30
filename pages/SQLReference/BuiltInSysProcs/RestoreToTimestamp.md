@@ -75,6 +75,9 @@ backupId
 The ID of the backup job from which you want to restore your database. To find the *backupId*, you can query the [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) system table, as described in the [*Backing Up and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefnFirst}
 
+The `SYS.SYSBACKUP` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 validate
 {: .paramName}
 

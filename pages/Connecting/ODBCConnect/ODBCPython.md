@@ -66,7 +66,7 @@ This section walks you through compiling and running the
         import pyodbc
         cnxn = pyodbc.connect("DSN=SpliceODBC64")
         cursor = cnxn.cursor()
-        cursor.execute("select * from SYS.SYSTABLES")
+        cursor.execute("select * from SYSVW.SYSTABLESVIEW")
         row = cursor.fetchone()
         print('row:',row)
     {: .Example}
@@ -93,7 +93,7 @@ This section walks you through compiling and running the
         cursor = cnxn.cursor()
 
         #Build a select statement
-        cursor.execute("select * from SYS.SYSTABLES")
+        cursor.execute("select * from SYSVW.SYSTABLESVIEW")
 
         #Fetch one record from the select
         row = cursor.fetchone()
@@ -110,7 +110,7 @@ This section walks you through compiling and running the
                 print('table name:', row.TABLENAME)
 
         #The following is an example of using the fetchall option, instead of retrieving one record at time
-        cursor.execute("select * from SYS.SYSSCHEMAS")
+        cursor.execute("select * from SYSVW.SYSSCHEMASVIEW")
         rows = cursor.fetchall()
         for row in rows:
                 print(row.SCHEMAID, row.SCHEMANAME)

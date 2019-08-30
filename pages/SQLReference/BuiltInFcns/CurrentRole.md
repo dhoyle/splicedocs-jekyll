@@ -59,7 +59,6 @@ splice> values current_role;
 * [`GRANT`](sqlref_statements_grant.html) statement
 * [`REVOKE`](sqlref_statements_revoke.html) statement
 * [`SET ROLE`](sqlref_statements_setrole.html) statement
-* [`SYSROLES`](sqlref_systables_sysroles.html) system table
 
 </div>
 </section>

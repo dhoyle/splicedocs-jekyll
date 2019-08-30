@@ -195,7 +195,7 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>42818</code></td>
-                        <td>Comparisons between '<span class="VarName">&lt;type&gt;</span>' and '<span class="VarName">&lt;type&gt;</span>' are not supported. Types must be comparable. String types must also have matching collation. If collation does not match, a possible solution is to cast operands to force them to the default collation (e.g. SELECT tablename FROM sys.systables WHERE CAST(tablename AS VARCHAR(128)) = 'T1')</td>
+                        <td>Comparisons between '<span class="VarName">&lt;type&gt;</span>' and '<span class="VarName">&lt;type&gt;</span>' are not supported. Types must be comparable. String types must also have matching collation. If collation does not match, a possible solution is to cast operands to force them to the default collation (e.g. SELECT name FROM myTable WHERE CAST(name AS VARCHAR(128)) = 'T1')</td>
                     </tr>
                     <tr>
                         <td><code>42820</code></td>

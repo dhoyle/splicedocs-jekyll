@@ -106,10 +106,6 @@ This procedure does not return a result.
 {% include splice_snippets/backupstats1924.md %}
 
 
-### Backing Up and Restoring Statistics
-{% include splice_snippets/backupstats1924.md %}
-
-
 ## Execute Privileges
 
 If authentication and SQL authorization are both enabled, only the

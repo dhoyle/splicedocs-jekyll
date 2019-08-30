@@ -437,25 +437,22 @@ that can replace the privileges that are being revoked.
 
 The following limitations apply to the REVOKE statement:
 
-<div class="paramList" markdown="1">
-Table-level privileges
-{: .paramName}
+### Table-level Privileges
 
 All of the table-level privilege types for a specified grantee and table
-ID are stored in one row in the `SYSTABLEPERMS` system table. For
+ID are stored in one row in the `SYSVW.SYSTABLEPERMSVIEW` system table. For
 example, when `user2` is granted the `SELECT` and `DELETE` privileges on
-table `user1.t1`, a row is added to the `SYSTABLEPERMS` table. The
+table `user1.t1`, a row is added to the `SYSVW.SYSTABLEPERMSVIEW` view. The
 `GRANTEE` field contains `user2` and the `TABLEID` contains `user1.t1`.
 The `SELECTPRIV` and `DELETEPRIV` fields are set to Y. The remaining
 privilege type fields are set to N.
-{: .paramDefnFirst}
 
 When a grantee creates an object that relies on one of the privilege
 types, Splice Machine engine tracks the dependency of the object on the
-specific row in the `SYSTABLEPERMS` table. For example, `user2` creates
+specific row in the `SYSVW.SYSTABLEPERMSVIEW` view. For example, `user2` creates
 the view `v1` by using the statement `SELECT * FROM user1.t1`, the
 dependency manager tracks the dependency of view `v1` on the row in
-`SYSTABLEPERMS` for `GRANTEE`(`user2`), `TABLEID`(`user1.t1`).
+`SYSVW.SYSTABLEPERMSVIEW` for `GRANTEE`(`user2`), `TABLEID`(`user1.t1`).
 
 The dependency manager knows only that the view is dependent on a
 privilege type in that specific row, but does not track exactly which
@@ -465,29 +462,40 @@ When a `REVOKE` statement for a table-level privilege is issued for a
 grantee and table ID, all of the objects that are dependent on the
 grantee and table ID are dropped. For example, if `user1` revokes the
 `DELETE` privilege on table `t1` from `user2`, the row in
-`SYSTABLEPERMS` for `GRANTEE`(`user2`), `TABLEID`(`user1.t1`) is
+`SYSVW.SYSTABLEPERMSVIEW` for `GRANTEE`(`user2`), `TABLEID`(`user1.t1`) is
 modified by the `REVOKE` statement. The dependency manager sends a
 revoke invalidation message to the view `user2.v1` and the view is
 dropped even though the view is not dependent on the `DELETE` privilege
 for `GRANTEE`(`user2`), `TABLEID`(`user1.t1`).
 
-Column-level privileges
-{: .paramName}
+<div class="noteIcon" markdown="1">
+You can use the [SYSVW.SYSTABLEPERMSVIEW](sqlref_sysviews_systablepermsview.html) and [SYSVW.SYSCOLPERMSVIEW](sqlref_sysviews_syscolpermsview.html) system views as shown to access the information you need.
+
+If you have security clearance to access the [SYS.SYSTABLEPERMS](sqlref_systables_systableperms.html) and [SYS.SYSCOLPERMS](sqlref_systables_syscolperms.html) tables, you'll get better performance from them; however, access to the `SYS` schema is restricted to Database Administrators and those to whom the Database Administrator has explicitly granted access.
+
+You can determine if you have access to the tables by running the following command:
+
+    DESCRIBE SYS.SYSTABLEPERMS;
+
+If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the view instead.
+</div>
+
+
+### Column-level Privileges
 
 Only one type of privilege for a specified grantee and table ID are
-stored in one row in the `SYSCOLPERMS` system table. For example, when
+stored in one row in the `SYSVW.SYSCOLPERMSVIEW` system view. For example, when
 `user2` is granted the `SELECT` privilege on table `user1.t1` for
-columns c12 and c13, a row is added to the `SYSCOLPERMS`. The `GRANTEE`
+columns c12 and c13, a row is added to the `SYSVW.SYSCOLPERMSVIEW`. The `GRANTEE`
 field contains `user2`, the `TABLEID` contains `user1.t1`, the `TYPE`
 field contains `S`, and the `COLUMNS` field contains `c12, c13`.
-{: .paramDefnFirst}
 
 When a grantee creates an object that relies on the privilege type and
 the subset of columns in a table ID, Splice Machine engine tracks the
-dependency of the object on the specific row in the `SYSCOLPERMS` table.
+dependency of the object on the specific row in the `SYSVW.SYSCOLPERMSVIEW` view.
 For example, `user2` creates the view `v1` by using the statement
 `SELECT c11 FROM user1.t1`, the dependency manager tracks the dependency
-of view `v1` on the row in `SYSCOLPERMS` for `GRANTEE`(`user2`),
+of view `v1` on the row in `SYSVW.SYSCOLPERMSVIEW` for `GRANTEE`(`user2`),
 `TABLEID`(`user1.t1`), `TYPE`(s). The dependency manager knows that the
 view is dependent on the `SELECT` privilege type, but does not track
 exactly which columns the view is dependent on.
@@ -496,15 +504,14 @@ When a `REVOKE` statement for a column-level privilege is issued for a
 grantee, table ID, and type, all of the objects that are dependent on
 the grantee, table ID, and type are dropped. For example, if `user1`
 revokes the `SELECT` privilege on column `c12` on table `user1.t1` from
-`user2`, the row in `SYSCOLPERMS` for `GRANTEE`(`user2`), `TABLEID`(`
+`user2`, the row in `SYSVW.SYSCOLPERMSVIEW` for `GRANTEE`(`user2`), `TABLEID`(`
 ser1.t1`), `TYPE`(s) is modified by the `REVOKE` statement. The
 dependency manager sends a revoke invalidation message to the view
 `user2.v1` and the view is dropped even though the view is not dependent
 on the column `c12` for `GRANTEE`(`user2`), `TABLEID`(`user1.t1`),
 `TYPE`(s).
 
-Roles
-{: .paramName}
+### Roles
 
 Splice Machine tracks any dependencies on the definer's current role for
 views and constraints, constraints, and triggers. If privileges were
@@ -512,16 +519,13 @@ obtainable only via the current role when the object in question was
 defined, that object depends on the current role. The object will be
 dropped if the role is revoked from the defining user or from `PUBLIC`,
 as the case may be.
-{: .paramDefnFirst}
 
 Also, if a contained role of the current role in such cases is revoked,
 dependent objects will be dropped. Note that dropping may be too
 pessimistic. This is because Splice Machine does not currently make an
 attempt to recheck if the necessary privileges are still available in
 such cases.
-{: .paramDefn}
 
-</div>
 ## Revoke Examples
 
 ### Revoking User Privileges

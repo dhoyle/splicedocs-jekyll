@@ -1,7 +1,7 @@
 ﻿---
 title: SYSCS_UTIL.SYSCS_CHECK_TABLE built-in system procedure
 summary: Built-in system procedure that Built-in system function that ensures that all of a table's indexes are consistent with the base table, and throws an exception if the table and indexes are not consistent.
-keywords: 
+keywords:
 toc: false
 product: all
 sidebar: home_sidebar
@@ -36,9 +36,9 @@ folder: SQLReference/BuiltInSysProcs
         <div class="preWrapper"><pre class="Example">VALUES SYSCS_UTIL.SYSCS_CHECK_TABLE('SALES', 'ORDERS');</pre>
         </div>
         <p>Check all tables:</p>
-        <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT schemaname, tablename, 
-  SYSCS_UTIL.SYSCS_CHECK_TABLE(schemaname, tablename)  
-  FROM sys.sysschemas s, sys.systables t 
+        <div class="preWrapper"><pre class="Example" xml:space="preserve">SELECT schemaname, tablename,
+  SYSCS_UTIL.SYSCS_CHECK_TABLE(schemaname, tablename)
+  FROM sysvw.sysschemasview s, sysvw.systablesview t 
   WHERE s.schemaid = t.schemaid;</pre>
         </div>
     </div>

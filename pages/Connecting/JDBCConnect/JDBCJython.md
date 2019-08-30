@@ -58,7 +58,7 @@ This section walks you through compiling and running the
         jcc    = Class.forName(driver).newInstance()
         conn   = DriverManager.getConnection(url, props)
         stmt   = conn.createStatement()
-        rs     = stmt.executeQuery("select * from sys.systables")
+        rs     = stmt.executeQuery("select * from sysvw.systablesview")
 
         rowCount = 0
         while (rs.next() and rowCount < 10) :

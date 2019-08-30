@@ -184,7 +184,7 @@ After statistics have been collected, you can query two system views for key met
 You can see the columns available in these views using the `DESCRIBE` command, e.g.
 
 ```
-splice> describe sys.systablestatistics;
+splice> describe sysvw.systablestatistics;
 COLUMN_NAME          |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 --------------------------------------------------------------------------------------------------
 SCHEMANAME           |VARCHAR  |NULL|NULL|32672 |NULL      |65344     |YES
@@ -207,7 +207,7 @@ Here's an example of summarizing some interesting statistics for a table:
 
 ```
 splice> SELECT total_row_count, total_size, stats_type, sample_fraction
-> FROM SYS.SYSTABLESTATISTICS
+> FROM SYSVW.SYSTABLESTATISTICSVIEW
 > WHERE schemaname='TPCH100' AND tablename='LINEITEM';
 TOTAL_ROW_COUNT       |TOTAL_SIZE          |STATS_TYPE |SAMPLE_FRACTION
 -----------------------------------------------------------------------
@@ -218,10 +218,10 @@ TOTAL_ROW_COUNT       |TOTAL_SIZE          |STATS_TYPE |SAMPLE_FRACTION
 {: .Example}
 
 
-Here's a similar example using the `SYS.SYSCOLUMNSTATISTICS` view:
+Here's a similar example using the `SYSVW.SYSCOLUMNSTATISTICS` view:
 
 ```
-splice> describe sys.syscolumnstatistics;
+splice> describe sysvw.syscolumnstatistics;
 COLUMN_NAME          |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 --------------------------------------------------------------------------------------------------
 SCHEMANAME           |VARCHAR  |NULL|NULL|32672 |NULL      |65344     |YES
@@ -239,7 +239,7 @@ THETA                |VARCHAR  |NULL|NULL|32672 |NULL      |65344     |YES
 11 rows selected
 
 splice> SELECT columnname, cardinality, null_count, min_value, max_value
-> FROM SYS.SYSCOLUMNSTATISTICS
+> FROM SYSVW.SYSCOLUMNSTATISTICS
 > WHERE schemaname='TPCH100' AND tablename='LINEITEM' AND columnname='L_SHIPDATE';
 COLUMNNAME     |CARDINALITY         |NULL_COUNT  |MIN_VALUE   |MAX_VALUE
 ---------------------------------------------------------------------------

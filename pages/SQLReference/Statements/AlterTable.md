@@ -74,6 +74,9 @@ An [SQLIdentifier](sqlref_identifiers_intro.html) specifying the name of the con
 If the constraint is unnamed, you can specify the generated `CONSTRAINTNAME` ID that is stored in the &nbsp;&nbsp;[`SYS.SYSCONSTRAINTS` table](sqlref_systables_sysconstraints.html) as a delimited value. You can find the constraint ID by joining `SYS.SYSCONSTRAINTS` with &nbsp;&nbsp;[`SYS.SYSTABLES`](sqlref_systables_systables.html).
 {: .paramDefn}
 
+The `SYS.SYSTABLES` and `SYS.SYSCONSTRAINTS` tables are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 column-alteration
 {: .paramName #ColumnAlteration}
 
@@ -226,6 +229,9 @@ You may not drop the last (only) column in a table.
 
 ### Dropping constraints
 `ALTER TABLE DROP CONSTRAINT` allows you to drop a constraint from a table. You can specify the constraint by its name, or if the constraint is unnamed, you can specify the generated `CONSTRAINTNAME` ID that is stored in the &nbsp;&nbsp;[`SYS.SYSCONSTRAINTS` table](sqlref_systables_sysconstraints.html) as a delimited value. You can find the constraint ID by joining `SYS.SYSCONSTRAINTS` with &nbsp;&nbsp;[`SYS.SYSTABLES`](sqlref_systables_systables.html).
+
+The `SYS.SYSTABLES` and `SYS.SYSCONSTRAINTS` tables are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
 
 [Example 8: Dropping a Foreign Key Constraint](#example8) at the end of this topic shows dropping an unnamed foreign key constraint.
 
@@ -533,7 +539,7 @@ This example shows an attempt to add a foreign key into a table that already con
 
 
 ### Example 9: Dropping a Foreign Key Constraint {#example9}
-This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint, and then after dropping the constraint. Since the constraint is unnamed, we can specify its ID, which you can find by joining [`SYS.SYSCONSTRAINTS`](sqlref_systables_sysconstraints.html) with [`SYS.SYSTABLES`](sqlref_systables_systables.html). In this example, an earlier error message shows us the ID, so we don't need to look it up:
+This example shows an attempt to add a foreign key into a table that already contains data that does not conform to the new constraint, and then after dropping the constraint. Since the constraint is unnamed, we can specify its ID; in this example, an earlier error message shows us the ID, so we don't need to look it up:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">

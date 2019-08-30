@@ -45,7 +45,7 @@ You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html)
         {'user': "yourUserId", 'password': "yourPassword", 'ssl': "basic"},
         "/Users/admin/Downloads/db-client-2.6.1.1736.jar")
         >>> curs = conn.cursor()
-        >>> curs.execute('select count(1) from sys.systables')
+        >>> curs.execute('select count(1) from sysvw.systablesview')
         >>> n = curs.fetchall()
         >>> n
         [(<jpype._jclass.java.lang.Long object at 0x11fd61ad0>,)]

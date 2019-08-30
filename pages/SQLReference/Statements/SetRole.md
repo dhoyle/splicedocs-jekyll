@@ -72,8 +72,9 @@ following:
 * The privileges identified by the current set of roles, if any
 
 You can find the available role names in the
-[`SYS.SYSROLES`](sqlref_systables_sysroles.html) system table.
-{: .noteNote}
+[`SYSVW.SYSALLROLES`](sqlref_sysviews_sysallroles.html) system view. If you have access to the `SYS` schema, you can query the [SYS.SYSROLES](sqlref_systables_sysroles.html) system table instead; system tables are more performant than their corresponding views, but are only accessible by your Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 
 ## SQL Example
 
@@ -113,7 +114,6 @@ This example also adds the `reader_role` role to the current user's role setting
 * [`SET ROLE`](#) statement
 * [`SELECT`](sqlref_expressions_select.html) expression
 * [`SELECT`](sqlref_expressions_select.html) statement
-* [`SYSROLES`](sqlref_systables_sysroles.html) system table
 * [`UPDATE`](sqlref_statements_update.html) statement
 * [`WHERE`](sqlref_clauses_where.html) clause
 

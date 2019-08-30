@@ -430,7 +430,7 @@ Before you issue a `GRANT` statement, check that the
 mode.
 
 You can grant privileges on an object if you are the owner of the object
-or the database owner. 
+or the database owner.
 
 ## Examples {#Examples}
 
@@ -657,7 +657,6 @@ To grant the `SELECT` privilege on table `t` to the role
 * [`SET ROLE`](sqlref_statements_setrole.html) statement
 * [`SELECT`](sqlref_expressions_select.html) expression
 * [`SELECT`](sqlref_expressions_select.html) statement
-* [`SYSROLES`](sqlref_systables_sysroles.html) system table
 * [`UPDATE`](sqlref_statements_update.html) statement
 * [`WHERE`](sqlref_clauses_where.html) clause
 

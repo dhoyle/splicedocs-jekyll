@@ -91,7 +91,7 @@ This procedure writes a report to an output file; if no inconsistencies are foun
 #### Example 1: No Inconsistencies  Found
 In this example, no inconsistencies are found in the specified table:
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.CHECK_TABLE('SPLICE', 'YourTable', null, 2, '/Users/MyName/tmp/checksystables.out');
+    splice> CALL SYSCS_UTIL.CHECK_TABLE('SPLICE', 'YourTable', null, 2, '/Users/MyName/tmp/checktables.out');
     RESULT
     -----------------------------------------
     No inconsistencies were found.

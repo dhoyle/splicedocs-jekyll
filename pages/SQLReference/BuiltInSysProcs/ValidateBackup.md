@@ -104,8 +104,6 @@ This section contains an example showing a successful validation and a validatio
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
-* [`SYSBACKUP`](sqlref_systables_sysbackup.html)
-* [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
 
 </div>
 </section>
