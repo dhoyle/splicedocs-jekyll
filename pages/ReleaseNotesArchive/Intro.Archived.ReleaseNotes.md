@@ -17,6 +17,7 @@ folder: ReleaseNotesArchive
 This section contains release notes for previous versions of Splice Machine.
 
 * [Version 2.7 Release Notes](releasenotes_archived_2.7all.html)
+* [Version 2.5 Release Notes](releasenotes_archived_2.5all.html)
 
 
 </div>
