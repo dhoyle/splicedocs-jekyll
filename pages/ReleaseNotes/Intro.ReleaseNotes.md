@@ -27,33 +27,11 @@ Our release notes are presented in these topics:
 ## Database Release Notes
 
 <ul>
-    <li><a href="releasenotes_2.7.1926.html">Patch Release 2.7.0.1926</a></li>
-    <li><a href="releasenotes_2.7.1925.html">Patch Release 2.7.0.1925</a></li>
-    <li><a href="releasenotes_2.7.1924.html">Patch Release 2.7.0.1924</a></li>
-    <li><a href="releasenotes_2.7.1923.html">Patch Release 2.7.0.1923</a></li>
-    <li><a href="releasenotes_2.7.1922.html">Patch Release 2.7.0.1922</a></li>
-    <li><a href="releasenotes_2.7.1921.html">Patch Release 2.7.0.1921</a></li>
-    <li><a href="releasenotes_2.7.1920.html">Patch Release 2.7.0.1920</a></li>
-    <li><a href="releasenotes_2.7.1919.html">Patch Release 2.7.0.1919</a></li>
-    <li><a href="releasenotes_2.7.1918.html">Patch Release 2.7.0.1918</a></li>
-    <li><a href="releasenotes_2.7.1917.html">Patch Release 2.7.0.1917</a></li>
-    <li><a href="releasenotes_2.7.1916.html">Patch Release 2.7.0.1916</a></li>
-    <li><a href="releasenotes_2.7.1915.html">Patch Release 2.7.0.1915</a></li>
-    <li><a href="releasenotes_2.7.1914.html">Patch Release 2.7.0.1914</a></li>
-    <li><a href="releasenotes_2.7.1913.html">Patch Release 2.7.0.1913</a></li>
-    <li><a href="releasenotes_2.7.1912.html">Patch Release 2.7.0.1912</a></li>
-    <li><a href="releasenotes_2.7.1911.html">Patch Release 2.7.0.1911</a></li>
-    <li><a href="releasenotes_2.7.1910.html">Patch Release 2.7.0.1910</a></li>
-    <li><a href="releasenotes_2.7.1909.html">Patch Release 2.7.0.1909</a></li>
-    <li><a href="releasenotes_2.7.1908.html">Patch Release 2.7.0.1908</a></li>
-    <li><a href="releasenotes_2.7.1907.html">Patch Release 2.7.0.1907</a></li>
-    <li><a href="releasenotes_2.7.1906.html">Patch Release 2.7.0.1906</a></li>
-    <li><a href="releasenotes_2.7.1905.html">Patch Release 2.7.0.1905</a></li>
-    <li><a href="releasenotes_2.7.1904.html">Patch Release 2.7.0.1904</a></li>
-    <li><a href="releasenotes_2.7.1903.html">Patch Release 2.7.0.1903</a></li>
-    <li><a href="releasenotes_2.7.1902.html">Patch Release 2.7.0.1902</a></li>
-    <li><a href="releasenotes_2.7.1901.html">Patch Release 2.7.0.1901</a></li>
-    <li><a href="releasenotes_2.7.1900.html">Patch Release 2.7.0.1900</a></li>
+    <li><a href="releasenotes_2.8.1928.html">Patch Release 2.8.0.1928</a></li>
+    <li><a href="releasenotes_2.8.1927.html">Patch Release 2.8.0.1927</a></li>
+    <li><a href="releasenotes_2.8.1926.html">Patch Release 2.8.0.1926</a></li>
+    <li><a href="releasenotes_2.8.1925.html">Patch Release 2.8.0.1925</a></li>
+    <li><a href="releasenotes_2.8.1924.html">Patch Release 2.8.0.1924</a></li>
 </ul>
 
 The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
