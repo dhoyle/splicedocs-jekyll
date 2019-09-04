@@ -28,9 +28,9 @@ Our release notes are presented in these topics:
 ## Major Updates in Release {{site.build_version}}  {#major}
 
 <table>
-    <col />
-    <col />
-    <col />
+    <col width="15%" />
+    <col width="25%" />
+    <col width="60%" />
     <thead>
         <tr>
             <th>Category</th>
@@ -40,7 +40,7 @@ Our release notes are presented in these topics:
     </thead>
     <tbody>
         <tr>
-            <td class="BoldFont" rowspan="3"><strong>New Feature</td>
+            <td class="BoldFont" rowspan="3">New Feature</td>
             <td>Multiple OLAP Servers</td>
             <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
                 <p>Multiple OLAP servers are sometimes referred to as *multiple swim lanes;* they allow you to specify how different queries are prioritized into different execution lanes.</p>
