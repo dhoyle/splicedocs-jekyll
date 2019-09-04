@@ -18,8 +18,16 @@ Splice Machine.
 
 Jar files are not versioned: the `GENERATIONID` is always zero. You can
 view the metadata for the Jar files in the Splice data dictionary by
-executing this query: `select * from sys.sysfiles;`
-{: .noteNote}
+executing this query:
+
+```
+SELECT * FROM SYS.SYSFILES;
+```
+{: .Example}
+
+The `SYS.SYSFILES` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 
 ## Adding a Jar File
 

@@ -105,7 +105,7 @@ Follow the steps below to write a Splice Machine database function in Java.
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        SELECT add(1,2) FROM SYS.SYSTABLES;
+        SELECT add(1,2) FROM myTable;
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -204,7 +204,7 @@ Follow the steps below to write a stored procedure in Java.
         	 throws SQLException
            {
         	Connection conn = DriverManager.getConnection("jdbc:default:connection");
-        	PreparedStatement pstmt = conn.prepareStatement("select * from sys.systables");
+        	PreparedStatement pstmt = conn.prepareStatement("select * from myTable");
         	rs[0] = pstmt.executeQuery();
         	conn.close();
            }
@@ -350,9 +350,9 @@ When creating a Python stored procedure, include your Python script directly in 
         READS SQL DATA
         AS 'def run(lim, res):
            c = conn.cursor()
-                    # select alias and javaclassname columns from sys.sysaliases tables
-                    # return them as a ResultSet
-           stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
+                # select tableID and tableName columns from sys.systablesview system view
+                # return them as a ResultSet
+           stmt = "select alias, javaclassname from sys.systablesview {limit ?}"
            c.executemany(stmt,[lim])
            d = c.description
            result = c.fetchall()

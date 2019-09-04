@@ -100,7 +100,6 @@ table:
                         <td>
                             <p>A <code>schemaName</code> is used when qualifying the names of dictionary objects such as tables and indexes.</p>
                             <p>The default user schema is named <code>SPLICE</code> if you do not specify a user name at connection time, <code>SPLICE</code> is assumed as the schema for any unqualified dictionary objects that you reference.</p>
-                            <p>Note that you must always qualify references to system tables with the <code>SYS.</code> prefix, e.g. <code>SYS.SYSROLES</code>.</p>
                         </td>
                     </tr>
                     <tr>

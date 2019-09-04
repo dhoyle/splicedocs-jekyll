@@ -42,5 +42,8 @@ You use these system procedures and tables to work with snapshots:
   the &nbsp;[`SYS.SYSSNAPSHOTS`](sqlref_systables_syssnapshots.html) system
   table.
 
+  The `SYS.SYSSNAPSHOTS` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+  {: .noteIcon}
+
 </div>
 </section>

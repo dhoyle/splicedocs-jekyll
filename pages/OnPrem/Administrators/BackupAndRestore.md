@@ -78,13 +78,6 @@ Splice Machine uses *backup IDs* to identify a specific full or
 incremental *backup* that is stored on a file system, and *backup job
 IDs* to identify each scheduled *backup job*.
 
-<div class="noteIcon" markdown="1">
-Access to the system tables that store backup information (actually, to the entire `SYS` schema) is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access.
-
-If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
- `SELECT` privileges from your administrator.
-</div>
-
 Information about backups and backup jobs is stored in these system tables:
 
 <table summary="Table of Splice Machine system backup tables.">
@@ -109,6 +102,13 @@ Information about backups and backup jobs is stored in these system tables:
         </tr>
     </tbody>
 </table>
+
+<div class="noteIcon" markdown="1">
+Access to the system tables that store backup information (actually, to the entire `SYS` schema) is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
 
 ### Temporary Tables and Backups
 
@@ -337,10 +337,6 @@ file in the directory to which a backup is written when it runs.
 
 <div class="noteIcon" markdown="1">
 The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
-
-If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
- `SELECT` privileges from your administrator.
-</div>
 
 If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
  `SELECT` privileges from your administrator.

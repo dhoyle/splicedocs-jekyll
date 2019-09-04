@@ -206,6 +206,9 @@ the block.
 
 All PL/SQL procedures that you create with Splice\*Plus are stored in the SYS.SYSSOURCECODE table in your database.
 
+The `SYS.SYSSOURCECODE` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 You can specify that your code should *not* be stored in your database with the `--debug DISABLE_PERSISTENCE` command line option.
 
 </div>

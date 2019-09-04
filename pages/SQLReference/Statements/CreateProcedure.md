@@ -254,9 +254,9 @@ Creating stored procedures in Python is currently a __Beta Release__ feature; it
         READS SQL DATA
         AS 'def run(lim, res):
            c = conn.cursor()
-                    # select alias and javaclassname columns from sys.sysaliases tables
+                    # select alias and javaclassname columns from sys.systablesview view
                     # return them as a ResultSet
-           stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
+           stmt = "select tableId, tableName from sys.systablesview {limit ?}"
            c.executemany(stmt,[lim])
            d = c.description
            result = c.fetchall()

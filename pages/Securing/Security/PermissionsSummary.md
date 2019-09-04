@@ -56,7 +56,9 @@ The following table summarizes which permissions apply to and can be granted or 
             <td class="CodeFont">Select</td>
             <td>Yes</td>
             <td>No</td>
-            <td>Yes, except for <code>sys.sysusers</code></td>
+            <td><p>Yes, except for <code>sys.sysusers</code></p>
+                <p>The `SYS.SYSBACKUP` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.</p>
+            </td>
             <td>No</td>
             <td colspan="2">Same as Regular User</td>
         </tr>

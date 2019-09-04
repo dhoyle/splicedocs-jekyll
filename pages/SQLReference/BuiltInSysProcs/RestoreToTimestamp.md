@@ -160,6 +160,9 @@ restoration to the specified timestamp (`2015-11-30 19:30:00`).
 Once the restoration is complete, reboot your database by the [Starting
 Your Database.](onprem_admin_startingdb.html)
 
+The `SYS.SYSBACKUP` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 ### Example 2: Validation Failure
 Here's a similar restore attempt that terminates after finding inconsistencies in the backup during validation:
 

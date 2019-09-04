@@ -72,8 +72,16 @@ following:
 * The privileges identified by the current set of roles, if any
 
 You can find the available role names in the
-[`SYSVW.SYSALLROLES`](sqlref_sysviews_sysallroles.html) system view. If you have access to the `SYS` schema, you can query the [SYS.SYSROLES](sqlref_systables_sysroles.html) system table instead; system tables are more performant than their corresponding views, but are only accessible by your Database Administrator or if your Database Administrator has explicitly granted access to you.
-{: .noteIcon}
+[`SYSVW.SYSALLROLES`](sqlref_sysviews_sysallroles.html) system view.
+
+You can use the [SYSVW.SYSALLROLES](sqlref_sysviews_sysallroles.html) as shown to access the information you need. If you have security clearance to access the [SYS.SYSROLES](sqlref_systables_sysroles.html) table, you'll get better performance from the table; however, access to the `SYS` schema is restricted to Database Administrators and those to whom the Database Administrator has explicitly granted access.
+
+You can determine if you have access to this table by running the following command:
+
+    DESCRIBE SYS.SYSROLES;
+
+If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS.SYSROLES`,"_&nbsp; you don't have access to the table; use the view instead.
+
 
 
 ## SQL Example
