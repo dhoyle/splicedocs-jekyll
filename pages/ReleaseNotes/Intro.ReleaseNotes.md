@@ -28,7 +28,7 @@ Our release notes are presented in these topics:
 ## Major Updates in Release {{site.build_version}}  {#major}
 
 <table>
-    <col width="15%" />
+    <col width="20%" />
     <col width="25%" />
     <col width="60%" />
     <thead>
@@ -43,12 +43,12 @@ Our release notes are presented in these topics:
             <td class="BoldFont" rowspan="3">New Feature</td>
             <td>Multiple OLAP Servers</td>
             <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
-                <p>Multiple OLAP servers are sometimes referred to as *multiple swim lanes;* they allow you to specify how different queries are prioritized into different execution lanes.</p>
+                <p>Multiple OLAP servers are sometimes referred to as <em>multiple swim lanes;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p>
             </td>
         </tr>
         <tr>
             <td>Schema Access Restrictions</td>
-            <td><p>Database Administrators now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. This means that access to the <a href="sqlref_systables_intro.html">Splice Machine system tables</a> is limited, by default, to administrative users.</p>
+            <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. This means that access to the <a href="sqlref_systables_intro.html">Splice Machine system tables</a> is limited, by default, to administrative users.</p>
                 <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
                 <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>.</p>
             </td>
@@ -61,25 +61,25 @@ Our release notes are presented in these topics:
             <td class="BoldFont" rowspan="4">New Built-in Function</td>
             <td><code>STRIP</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_strip.html"><code>STRIP</code></a> has been added.</p>
-                <p>This work originated with this JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
             </td>
         </tr>
         <tr>
             <td><code>RIGHT</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_right.html"><code>RIGHT</code></a> has been added.</p>
-                <p>This work originated with this JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2344" target="_blank">SPLICE-2344</a>.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2344" target="_blank">SPLICE-2344</a>.</p>
             </td>
         </tr>
         <tr>
             <td><code>LEFT</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_left.html"><code>LEFT</code></a> has been added.</p>
-                <p>This work originated with this JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2343" target="_blank">SPLICE-2343</a>.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2343" target="_blank">SPLICE-2343</a>.</p>
             </td>
         </tr>
         <tr>
             <td><code>CHR</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
-                <p>For more information, see this JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
             </td>
         </tr>
         <tr>
@@ -95,18 +95,18 @@ Our release notes are presented in these topics:
         </tr>
         <tr>
             <td>Decimal Precision Increase</td>
-            <td>Maximum precision for the <a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code> data type has been increased from <code>31</code> to <code>38</code>.</td>
+            <td>Maximum precision for the <a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> data type has been increased from <code>31</code> to <code>38</code>.</td>
         </tr>
         <tr>
             <td class="BoldFont" rowspan="3">Performance Enhancement</td>
             <td>Native Spark Aggregation</td>
             <td><p>This update improves the performance of queries that perform aggregation after a join or series of joins that are CPU bound; for example: cross join cases or join queries with join keys that have high rows-per-value. This is achieved by using the latest Spark Dataset methods to perform the aggregation, which allows Spark to use WholeStageCodeGen to combine multiple physical operators into a single Java function.</p>
-                <p>This work originated with this JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2302" target="_blank">SPLICE-2302</a>.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2302" target="_blank">SPLICE-2302</a>.</p>
             </td>
         </tr>
         <tr>
             <td>Cross Join</td>
-            <td>The implementation of <em>Cross Join</em> has been enhanced to improve performance.</td>
+            <td>The implementation of <code>Cross Join</code> has been enhanced to improve performance.</td>
         </tr>
         <tr>
             <td>Property Caching</td>
@@ -125,7 +125,7 @@ Our release notes are presented in these topics:
     <li><a href="releasenotes_2.8.1924.html">Patch Release 2.8.0.1924</a></li>
 </ul>
 
-The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+The product is available to build from open source (see [https://github.com/splicemachine/spliceengine](https://github.com/splicemachine/spliceengine)), as well as prebuilt packages for use on a cluster or cloud.
 
 </div>
 </section>
