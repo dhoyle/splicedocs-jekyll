@@ -54,7 +54,6 @@ The following table summarizes these parameters. Each parameter name links to it
         <tr>
             <td class="CodeFont"><a href="#fileOrDirectoryName">fileOrDirectoryName</a></td>
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-            <p class="notePlain">The <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code> procedure only works with single files; <strong>you cannot specify a directory name</strong> when calling <code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code>.</p>
             <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
             MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
             <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
@@ -202,13 +201,8 @@ BUT, the following column list will generate an error:
 
 ### `fileOrDirectoryName` {#fileOrDirectoryName}
 
-The `fileOrDirectoryName` (or `fileName`) parameter is a string that specifies the location of the data that you're importing. This parameter is slightly different for different procedures:
-
-* For the `SYSCS_UTIL.IMPORT_DATA` procedure, this is either a single
-file or a directory. If this is a single file, that file is imported; if
+The `fileOrDirectoryName` (or `fileName`) parameter is a string that specifies the location of the data that you're importing. If this is a single file, that file is imported; if
 this is a directory, all of the files in that directory are imported.
-
-* For the `SYSCS_UTIL.MERGE_DATA_FROM_FILE` and `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure, this can only be a single file (directories are not allowed).
 
 <div class="noteNote" markdown="1">
 On a cluster, the files to be imported **MUST be on S3, HDFS (or
