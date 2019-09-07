@@ -481,7 +481,7 @@ guidelines; however, S3 access differs in every deployment. For more
 information, see these sites:
 
 * <a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a>
-* <a href="https://wiki.apache.org/hadoop/AmazonS3" target="_blank">https://wiki.apache.org/hadoop/AmazonS3</a>
+* <a href="https://cwiki.apache.org/confluence/display/HADOOP2/AmazonS3" target="_blank">https://cwiki.apache.org/confluence/display/HADOOP2/AmazonS3</a>
 
 </div>
 * [Enabling backups on CDH](#Enabling)
