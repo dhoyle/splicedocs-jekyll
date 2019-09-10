@@ -217,9 +217,9 @@ This example uses a simple recursive view to generate the Fibonacci sequence:
 
 ```
 CREATE RECURSIVE VIEW fib_up_to_100 (a,b) AS
-    SELECT a, b from (values (0, 1)) as dt(a,b)
+    SELECT a, b from (values (0, 1)) AS dt(a,b)
     UNION ALL
-    SELECT b, a + b as b FROM fib_up_to_100 WHERE b <= 100;
+    SELECT b, a + b AS b FROM fib_up_to_100 WHERE b <= 100;
 
 0 rows inserted/updated/deleted
 
@@ -244,29 +244,60 @@ A          |B
 ```
 {: .Example}
 
+
 ### Example 3
 
-This example uses a recursive view to get all of the roles directly or indirectly granted to a user:
+This example records the nodes and edges of a tree. Here's an example tree:
 
 ```
-CREATE RECURSIVE VIEW sysallroles as
-    SELECT name FROM (VALUES CURRENT_USER) usr (name)
-    UNION ALL
-    SELECT name FROM (VALUES 'PUBLIC') usr (name)
-    UNION ALL
-    SELECT roleid AS name FROM sys.sysroles R, sysallroles A WHERE A.name = R.grantee AND R.isdef = 'N';
+              1.A
+              |
+     |-----------------|
+     2.B               3.C
+     |                 |
+|--------|       |-----------|
+4.D      5.E     6.F         7.G
+         |                   |
+         8.H                 9.I
 ```
-
-splice> SELECT * FROM sysallroles;
-NAME
--------------------------------------
-SPLICE
-PUBLIC                               
-
-2 rows selected
-
 {: .Example}
 
+We use two tables to record the nodes and edges:
+
+```
+CREATE TABLE edge (nodeA INT,  nodeB INT);
+INSERT INTO edge VALUES (1,2), (1,3), (2,4), (2,5), (3,6), (3,7), (5,8), (7,9);
+CREATE TABLE vertex (node INT, name VARCHAR(10));
+INSERT INTO vertex VALUES (1, 'A'), (2, 'B'), (3, 'C'), (4, 'D'),
+                          (5, 'E'), (6,'F'), (7, 'G'), (8, 'H'), (9,'I');
+```
+{: .Example}
+
+And this query returns all the vertices reachable from node 1  and their depths:
+
+```
+WITH RECURSIVE dt AS (
+    SELECT node, name, 1 AS level FROM vertex WHERE node=1
+    UNION ALL
+    SELECT edge.nodeB AS node, vertex.name, level+1 AS level FROM dt, edge, vertex
+            WHERE dt.node=edge.nodeA AND edge.nodeB = vertex.node AND dt.level < 10)
+SELECT * FROM dt ORDER BY node;
+
+NODE       |NAME      |LEVEL
+-------------------------------------------
+1          |A         |1
+2          |B         |2
+3          |C         |2
+4          |D         |3
+5          |E         |3
+6          |F         |3
+7          |G         |3
+8          |H         |4
+9          |I         |4
+
+9 rows selected
+```
+{: .Example}
 
 ## Statement Dependency System
 
