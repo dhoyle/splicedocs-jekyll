@@ -88,7 +88,7 @@ Here's a simple example that illustrates these qualities:
     2           Two
     3           Three
     4           Four
-    
+
     4 rows selected
     splice> SELECT * FROM myTbl --splice-properties pin=true
     > ;
@@ -128,9 +128,8 @@ To delete just the pinned version of a table, use the
 * [`CREATE EXTERNAL TABLE`](sqlref_statements_createexternaltable.html) statement
 * [`CREATE TABLE`](sqlref_statements_createtable.html) statement
 * [`UNPIN TABLE`](sqlref_statements_unpintable.html) statement
-* [Query Optimizations](developers_tuning_queryoptimization.html) in the
+* [Using Hints to Improve Performance](bestpractices_optimizer_hints.html) in the
   *Splice Machine Developer's Guide*
 
 </div>
 </section>
-

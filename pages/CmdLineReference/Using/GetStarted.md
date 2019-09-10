@@ -360,50 +360,7 @@ schema`](sqlref_statements_setschema.html) statement:
 #### Displaying Tables   {#Viewing3}
 
 The &nbsp;[`show tables`](cmdlineref_showtables.html) command displays a list
-of all tables in all of the schemas in your database:
-
-<div class="preWrapperWide" markdown="1">
-    splice> SHOW TABLES;
-    TABLE_SCHEM  |TABLE_NAME            |CONGLOM_ID|REMARKS
-    --------------------------------------------------------
-    SYS          |SYSALIASES            |256       |
-    SYS          |SYSBACKUP             |992       |
-    SYS          |SYSBACKUPITEMS        |1104      |
-    SYS          |SYSCHECKS             |336       |
-    SYS          |SYSCOLPERMS           |608       |
-    SYS          |SYSCOLUMNS            |80        |
-    SYS          |SYSCOLUMNSTATS        |1264      |
-    SYS          |SYSCONGLOMERATES      |48        |
-    SYS          |SYSCONSTRAINTS        |304       |
-    SYS          |SYSDEPENDS            |368       |
-    SYS          |SYSFILES              |288       |
-    SYS          |SYSFOREIGNKEYS        |272       |
-    SYS          |SYSKEYS               |240       |
-    SYS          |SYSPERMS              |912       |
-    SYS          |SYSPHYSICALSTATS      |1280      |
-    SYS          |SYSPRIMARYKEYS        |320       |
-    SYS          |SYSROLES              |816       |
-    SYS          |SYSROUTINEPERMS       |656       |
-    SYS          |SYSSCHEMAPERMS        |1328      |
-    SYS          |SYSSCHEMAS            |32        |
-    SYS          |SYSSEQUENCES          |864       |
-    SYS          |SYSSTATEMENTS         |384       |
-    SYS          |SYSTABLEPERMS         |592       |
-    SYS          |SYSTABLES             |64        |
-    SYS          |SYSTABLESTATS         |1296      |
-    SYS          |SYSTRIGGERS           |576       |
-    SYS          |SYSUSERS              |928       |
-    SYS          |SYSVIEWS              |352       |
-    SYSIBM       |SYSDUMMY1             |1312      |
-    SPLICE       |CUSTOMERS             |1568      |
-    SPLICE       |T_DETAIL              |1552      |
-    SPLICE       |T_HEADER              |1536      |
-
-    34 rows selected
-{: .AppCommand xml:space="preserve"}
-
-</div>
-To display the tables in a specific schema (named `SPLICE`):
+of all tables in all of the schemas in your database, or all of the tables in a  specific schema; for example:
 
 <div class="preWrapperWide" markdown="1">
     splice> show tables in SPLICE;
@@ -477,19 +434,23 @@ views`](cmdlineref_showviews.html) command to display all of the indexes
 in your database or in a schema:
 
 <div class="preWrapperWide" markdown="1">
-    splice> show views;
-    TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
-    -----------------------------------------------------------
-    SYS            |SYSCOLUMNSTATISTICS   |NULL      |
-    SYS            |SYSTABLESTATISTICS    |NULL      |
+splice> SHOW VIEWS;
+TABLE_SCHEM         |TABLE_NAME                       |CONGLOM_ID|REMARKS
+-----------------------------------------------------------------------------
+SYSVW               |SYSALLROLES                      |NULL      |
+SYSVW               |SYSCOLPERMSVIEW                  |NULL      |
+SYSVW               |SYSCOLUMNSTATISTICS              |NULL      |
+SYSVW               |SYSCOLUMNSVIEW                   |NULL      |
+SYSVW               |SYSCONGLOMERATEINSCHEMAS         |NULL      |
+SYSVW               |SYSPERMSVIEW                     |NULL      |
+SYSVW               |SYSROUTINEPERMSVIEW              |NULL      |
+SYSVW               |SYSSCHEMAPERMSVIEW               |NULL      |
+SYSVW               |SYSSCHEMASVIEW                   |NULL      |
+SYSVW               |SYSTABLEPERMSVIEW                |NULL      |
+SYSVW               |SYSTABLESTATISTICS               |NULL      |
+SYSVW               |SYSTABLESVIEW                    |NULL      |
 
-    2 rows selected
-    splice> show views in sys;TABLE_SCHEM    |TABLE_NAME            |CONGLOM_ID|REMARKS
-    -----------------------------------------------------------
-    SYS            |SYSCOLUMNSTATISTICS   |NULL      |
-    SYS            |SYSTABLESTATISTICS    |NULL      |
-
-    2 rows selected
+12 rows selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -546,10 +507,6 @@ Language (*DDL*) and Data Manipulation Language (*DML*) statements from
   Interface](#DROPSta)
 * [Inserting Data](#INSERTIN)
 * [Selecting and Displaying Data](#SELETING)
-
-See the *[DML Statements](sqlref_statements_dmlintro.html)* sections in
-our *SQL Reference Manual* for more information.
-{: .spaceAbove}
 
 #### CREATE Statements   {#CREATESta}
 
@@ -608,9 +565,6 @@ SQL uses `CREATE` statements to create objects such as
     6 rows selected
 {: .AppCommand}
 
-See the *[CREATE Statements](sqlref_statements_createstatements.html)*
-section in our *SQL Reference Manual* for more information.
-
 #### DROP Statements   {#DROPSta}
 
 SQL uses `DROP` statements to delete objects such as
@@ -649,9 +603,6 @@ there are any objects defined in the schema.
     --------------------------------------------------------
     MYSCHEMA1    |PLAYERS               |1632      |1 row selected
 {: .AppCommand}
-
-See the *[DROP Statements](sqlref_statements_dropstatements.html)*
-section in our *SQL Reference Manual* for more information.
 
 #### Inserting Data   {#INSERTIN}
 

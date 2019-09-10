@@ -42,7 +42,7 @@ statement such as `CREATE TABLE` will generate a syntax error.
 
 For more information about using the explain command, including a number
 of annotated examples, see [Explain
-Plan](developers_tuning_explainplan.html).
+Plan](developers_optimizer_explain.html).
 
 ## Examples
 
@@ -51,9 +51,8 @@ Plan](developers_tuning_explainplan.html).
 {: .AppCommand xml:space="preserve"}
 
 </div>
-The [Explain Plan](developers_tuning_explainplan.html) topic contains a
+The [Explain Plan](bestpractices_optimizer_explain.html) topic contains a
 number of examples that are described in detail.
 
 </div>
 </section>
-

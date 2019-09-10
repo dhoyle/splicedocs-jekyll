@@ -12,28 +12,12 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_RESTORE_TABLE
 
-The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the &nbsp;&nbsp; [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. Note that:
-
-* The table to which you are restoring must already exist in the database.
-* The source and destination tables must have the same DDL, including the same primary keys and unique constraints.
-* The source and destinatoin tables must have the same indexes.
-
+The `SYSCS_UTIL.SYSCS_RESTORE_TABLE` system procedure restores a table that was previously backed up with the &nbsp;&nbsp; [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html) procedure. You can restore the table to another table on the same cluster, or on a different cluster. The table and its indexes are created anew in your database.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
-{% comment %}
-+++ REMOVE THIS COMMENT WHEN INCREMENTAL BECOMES AVAILABLE +++
-You can restore your table from a previous full or incremental table
-backup.
+The table to which you are restoring must not already exist in the database; if it does, `RESTORE_TABLE` will not proceed.
 
-When you restore from a backup, Splice Machine automatically determines
-and runs whatever sequence of restores may be required to accomplish the
-restoration of your table; this means that when you select an
-incremental backup from which to restore, Splice Machine will detect
-that it needs to first restore from the previous full table backup and then
-apply any incremental restorations.
-{: .noteIcon}
-{% endcomment %}
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
@@ -54,16 +38,12 @@ destSchema
 
 The name of the schema to which you want the table restored.
 {: .paramDefnFirst}
-This schema must already exist in your database.
-{: .noteNote}
 
 destTable
 {: .paramName}
 
 The name of the restored table.
 {: .paramDefnFirst}
-This table must already exist in your database, and must have the same DDL as the `sourceTable`.
-{: .noteNote}
 
 sourceSchema
 {: .paramName}
@@ -122,9 +102,9 @@ This procedure does not return a result.
 
 {% include splice_snippets/backupcompatibility.md %}
 
+### Backing Up and Restoring Statistics
+{% include splice_snippets/backupstats1924.md %}
 
-## Usage
-The source and destination tables must have the same DDL, including the same primary keys and unique constraints. They must also have the same indexes.
 
 ## Execute Privileges
 
@@ -152,6 +132,7 @@ FULL backup to /backup
 
 1 row selected
 ```
+{: .Example}
 
 See the reference page for the [`SYSCS_UTIL.SYSCSBACKUP_TABLE`](sqlref_sysprocs_backuptable.html) system procedure for more information about backing up a table.
 
@@ -166,6 +147,7 @@ BACKUP_ID      |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS     |
 587516417      |2018-09-25 00:12:33.896  |2018-09-25 00:42:53.546  |SUCCESS    |TABLE     |false|-1                  |3
 
 ```
+{: .Example}
 
 You can use the ID of your backup job to examine the `sys.sysbackupitems` and verify that the base table and two indexes have been backed up:
 
@@ -179,6 +161,14 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 
 3 rows selected
 ```
+{: .Example}
+
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
 
 ### Validating the Backup  {#exvalidate}
 Before restoring the table, you can validate the backup:
@@ -190,6 +180,7 @@ No corruptions found for backup.
 
 1 row selected
 ```
+{: .Example}
 
 See the reference page for the [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html) system procedure for more information about backup validation.
 
@@ -201,6 +192,7 @@ This command restores the backed-up table to table named `LINEITEM` in the `SPLI
 splice> CALL SYSCS_UTIL.SYSCS_RESTORE_TABLE('SPLICE', 'LINEITEM', 'TPCH100', 'LINEITEM', '/backup', 587516417, false);
 Statement executed.
 ```
+{: .Example}
 
 ## See Also
 

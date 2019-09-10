@@ -13,25 +13,12 @@ folder: SQLReference/BuiltInSysProcs
 # SYSCS_UTIL.SYSCS_BACKUP_TABLE
 
 The `SYSCS_UTIL.SYSCS_BACKUP_TABLE` system procedure performs an
-immediate full {% comment %}or incremental{% endcomment %} backup of a table in your database to a specified
+immediate full backup of a table in your database to a specified
 backup directory.
 
 {% include splice_snippets/enterpriseonly_note.md %}
 
-{% comment %}
-+++ REMOVE THIS COMMENT WHEN INCREMENTAL BECOMES AVAILABLE +++
-Splice Machine supports both full and incremental backups: 
-
-* A *full backup* backs up all of the files/blocks that constitute your
-  schema.
-* An *incremental backup* only stores database files/blocks that have
-  changed since a previous backup.
-
-The first time that you run an incremental backup, a full backup is
-performed. Subsequent runs of the backup will only copy information that
-has changed since the previous backup.
-{: .noteNote}
-{% endcomment %}
+This procedure only works with internal, Splice Machine tables in your database. You can back up an external table using the Hadoop `DistCp` tool.
 
 ## Syntax
 
@@ -81,18 +68,8 @@ type
 
 Specifies the type of table backup that you want performed. Currently, the only valid value is `full`.
 {: .paramDefnFirst}
-{% comment %}
-This must be one ofthe following values: `full` or `incremental`; any other value
-produces an error and the backup is not run.
-{: .paramDefnFirst}
-
-Note that if you specify `incremental`, Splice Machine checks the &nbsp;
-[`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) table to determine if
-there already is a backup for the table; if not, Splice Machine will
-perform a full backup, and subsequent backups will be incremental.
-{: .paramDefn}
-{% endcomment %}
 </div>
+
 ## Results
 
 This procedure does not return a result.
@@ -107,16 +84,8 @@ You can revert to using `distcp`, which uses a MapReduce job that can run into r
 
 {% include splice_snippets/backupcompatibility.md %}
 
-
-## HBase Configuration Options for Incremental Backup {#UsageConfig}
-
-If you're performing incremental backups, you _must_ add the following options to your `hbase-site.xml` configuration file:
-
-<div class="preWrapperWide" markdown="1">
-    hbase.master.hfilecleaner.plugins = com.splicemachine.hbase.SpliceHFileCleaner,
-    org.apache.hadoop.hbase.master.cleaner.TimeToLiveHFileCleaner
-{: .AppCommand}
-</div>
+### Backing Up and Restoring Statistics
+{% include splice_snippets/backupstats1924.md %}
 
 ## Execute Privileges
 
@@ -161,6 +130,7 @@ FULL backup to /backup
 
 1 row selected
 ```
+{: .Example}
 
 ### Examining the Backup  {#exexamine}
 
@@ -173,6 +143,7 @@ BACKUP_ID      |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS     |
 587516417      |2018-09-25 00:12:33.896  |2018-09-25 00:42:53.546  |SUCCESS    |TABLE     |false|-1                  |3
 
 ```
+{: .Example}
 
 You can use the ID of your backup job to examine the `sys.sysbackupitems` and verify that the base table and two indexes have been backed up:
 
@@ -186,6 +157,15 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 
 3 rows selected
 ```
+{: .Example}
+
+
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
 
 ### Validating the Backup  {#exvalidate}
 Before restoring the table, you can validate the backup:
@@ -197,6 +177,7 @@ No corruptions found for backup.
 
 1 row selected
 ```
+{: .Example}
 
 See the reference page for the [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html) system procedure for more information about backup validation.
 
@@ -208,6 +189,7 @@ This command restores the backed-up table to table named `LINEITEM` in the `SPLI
 splice> CALL SYSCS_UTIL.SYSCS_RESTORE_TABLE('SPLICE', 'LINEITEM', 'TPCH100', 'LINEITEM', '/backup', 587516417, false);
 Statement executed.
 ```
+{: .Example}
 
 See the reference page for the [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](sqlref_sysprocs_restoretable.html) system procedure for more information about restoring a backed-up table.
 

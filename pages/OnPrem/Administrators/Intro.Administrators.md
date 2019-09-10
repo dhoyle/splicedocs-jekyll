@@ -63,7 +63,7 @@ software, in the topics shown in the following table.
 
 {% include splice_snippets/githublink.html %}
 For a summary of all Splice Machine documentation, see the
-[Documentation Summary](notes_usingdocs.html) topic.
+[Getting Started with Splice Machine Documentation](gettingstarted_usingdocs.html) topic.
 
 </div>
 </section>

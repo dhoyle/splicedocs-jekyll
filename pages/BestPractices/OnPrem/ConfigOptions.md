@@ -35,19 +35,28 @@ The following table provides summary information about (some of) the configurati
         </tr>
         <tr>
             <td class="CodeFont">splice.authentication.native.algorithm</td>
-            <td>SHA-512</td>
+            <td class="CodeFont">SHA-512</td>
             <td>This is documented in our <a href="tutorials_security_authentication.html">Configuring Authentication</a> topic.</td>
         </tr>
         <tr>
             <td class="CodeFont">splice.client.write.maxDependentWrites</td>
             <td class="CodeFont">60000</td>
-            <td>A form of write throttling that controls the maximum number of concurrent dependent writes from a single process. Dependent writes are writes to a table with indexes and generate more independent writes (writes to the indexes themselves). They are segregated so we can guarantee progress by reserving some IPC threads for independent writes.
+            <td><p>A form of write throttling that controls the maximum number of concurrent dependent writes from a <em>single process</em>. Dependent writes are writes to a table with indexes and generate more independent writes (writes to the indexes themselves). They are segregated so we can guarantee progress by reserving some IPC threads for independent writes.</p>
+                <p class="noteIcon">If your application is experiencing unexpected timeouts, see the <a href="#timeout"><em>Adjusting for Timeouts</em></a> section below.</p>
             </td>
         </tr>
         <tr>
             <td class="CodeFont">splice.client.write.maxIndependentWrites</td>
             <td class="CodeFont">60000</td>
-            <td>A form of write throttling that controls the maximum number of concurrent independent writes from a single process.
+            <td><p>A form of write throttling that controls the maximum number of concurrent independent writes from a <em>single process</em>.</p>
+                <p class="noteIcon">If your application is experiencing unexpected timeouts, see the <a href="#timeout"><em>Adjusting for Timeouts</em></a> section below.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">splice.client.writer.maxThreads</td>
+            <td class="CodeFont">200</td>
+            <td><p>The total number of threads for the writer in the process, which determines the maximum number of concurrent writes from a process.</p>
+                <p class="noteIcon">If your application is experiencing unexpected timeouts, see the <a href="#timeout"><em>Adjusting for Timeouts</em></a> section below.</p>
             </td>
         </tr>
         <tr>
@@ -98,6 +107,29 @@ The following table provides summary information about (some of) the configurati
         </tr>
     </tbody>
 </table>
+
+## Adjusting for Application Timeouts  {#timeout}
+
+If your application is experiencing unexpected timeouts, it may be due to the queue getting too large, which means that you need to reduce throughput by adjusting these property values:
+
+* `splice.client.write.maxIndependentWrites`
+* `splice.client.write.maxDependentWrites`
+* `splice.client.writer.maxThreads` values
+
+These values apply _per process_.
+
+Here are some guidelines:
+
+* The `splice.client.write.maxIndependentWrites` and `splice.client.write.maxDependentWrites` maximum concurrent write values must be within the capacity of the nodes in your cluster.
+* You should set the value of the `splice.client.writer.maxThreads` property as follows:
+
+  ```
+  num-nodes * num-executors-per-node * (max-independent-write-threads + max-dependent-write-threads)
+  ```
+  {: .Plain}
+
+Make sure that the values you select for these properties are commensurate with your read-side throughput.
+
 
 </div>
 </section>

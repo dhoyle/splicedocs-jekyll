@@ -76,7 +76,7 @@ an error.
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html)
+* [Using Statistics](bestpractices_optimizer_statistics.html)
 
 </div>
 </section>

@@ -3,47 +3,85 @@
                 ---------------------------------------------------------------------
 {% endcomment %}
 
-{% assign splvar_basic_InternalReleaseVersion = '2.8.0' %}
+{% assign splvar_basic_InternalReleaseVersion = '3.0.0' %}
 {% assign splvar_basic_SpliceOpenSourceGit = 'https://github.com/splicemachine/spliceengine' %}
 
-{% assign splvar_dbaas_AWSDBVersion   = '2.7.0.1849' %}
-{% assign splvar_dbaas_AzureDBVersion = '2.7.0.1849' %}
-
+{% assign splvar_dbaas_AWSDBVersion   = '2.7.0.1915' %}
+{% assign splvar_dbaas_AzureDBVersion = '2.7.0.1915' %}
 
 {% comment %}   ---------------------------------------------------------------------
                 ------------------------ PLATFORM VARIABLES -------------------------
                 ---------------------------------------------------------------------
 {% endcomment %}
 
-{% if site.build_version == "2.8" %}
-    {% assign splvar_requirements_CDH-Versions = 'CDH 5.16.1, CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
-{% elsif site.build_version == "2.7" %}
-    {% assign splvar_requirements_CDH-Versions = 'CDH 5.16.1, CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
+{% if site.build_version == 3.0 %}
 {% else %}
-    {% assign splvar_requirements_CDH-Versions = 'CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
 {% endif %}
-{% assign splvar_requirements_CDH-Hadoop = '2.6.0' %}
-{% assign splvar_requirements_CDH-HBase = '1.2.0' %}
-{% assign splvar_requirements_CDH-OS = 'CentOS/RHEL 6' %}
-{% assign splvar_requirements_CDH-ZooKeeper = '3.4.5' %}
 
-{% if site.build_version == "2.8" %}
-    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1' %}
-{% elsif site.build_version == "2.7" %}
-    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1' %}
+
+{% if site.build_version == "3.0" %}
+    {% assign splvar_requirements_CDH-Versions = 'CDH 5.16.1, CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
+    {% assign splvar_requirements_CDH-Hadoop = '2.6.0' %}
+    {% assign splvar_requirements_CDH-HBase = '1.2.0' %}
+    {% assign splvar_requirements_CDH-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_requirements_CDH-ZooKeeper = '3.4.5' %}
+
+    {% assign splvar_requirements_HDP-Versions  = 'HDP2.6.5, 2.6.4, 2.6.3, 2.5.5' %}
+    {% assign splvar_requirements_HDP-Hadoop = '2.7.1' %}
+    {% assign splvar_requirements_HDP-HBase = '2.0' %}
+    {% assign splvar_requirements_HDP-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_requirements_HDP-ZooKeeper = '3.4.5' %}
+
+    {% assign splvar_requirements_MapR-Versions = 'MapR Not Yet Available' %}
+    {% assign splvar_requirements_MapR-Hadoop = 'N/A' %}
+    {% assign splvar_requirements_MapR-HBase = 'N/A' %}
+    {% assign splvar_requirements_MapR-OS = 'N/A' %}
+    {% assign splvar_requirements_MapR-ZooKeeper = 'N/A' %}
 {% else %}
-    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1, HDP 2.5.5' %}
-{% endif %}
-{% assign splvar_requirements_HDP-Hadoop = '2.7.1' %}
-{% assign splvar_requirements_HDP-HBase = '1.1.2' %}
-{% assign splvar_requirements_HDP-OS = 'CentOS/RHEL 6' %}
-{% assign splvar_requirements_HDP-ZooKeeper = '3.4.5' %}
+    {% assign splvar_requirements_CDH-Versions = 'CDH 5.16.1, CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
+    {% assign splvar_requirements_CDH-Hadoop = '2.6.0' %}
+    {% assign splvar_requirements_CDH-HBase = '1.2.0' %}
+    {% assign splvar_requirements_CDH-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_requirements_CDH-ZooKeeper = '3.4.5' %}
+    {% if site.build_version == 2.5 %}
+        {% assign splvar_requirements_CDH-Versions = 'CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
+    {% endif %}
 
-{% assign splvar_requirements_MapR-Versions = 'MapR 5.2.0' %}
-{% assign splvar_requirements_MapR-Hadoop = '2.7.0' %}
-{% assign splvar_requirements_MapR-HBase = '1.1.1' %}
-{% assign splvar_requirements_MapR-OS = 'CentOS/RHEL 6' %}
-{% assign splvar_requirements_MapR-ZooKeeper = '3.4.5' %}
+    {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1' %}
+    {% assign splvar_requirements_HDP-Hadoop = '2.7.1' %}
+    {% assign splvar_requirements_HDP-HBase = '1.1.2' %}
+    {% assign splvar_requirements_HDP-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_requirements_HDP-ZooKeeper = '3.4.5' %}
+    {% if site.build_version == 2.5 %}
+        {% assign splvar_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1, HDP 2.5.5' %}
+    {% endif %}
+
+    {% assign splvar_requirements_MapR-Versions = 'MapR 5.2.0' %}
+    {% assign splvar_requirements_MapR-Hadoop = '2.7.0' %}
+    {% assign splvar_requirements_MapR-HBase = '1.1.1' %}
+    {% assign splvar_requirements_MapR-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_requirements_MapR-ZooKeeper = '3.4.5' %}
+{% endif %}
+
+{% if site.build_alt_version == "2.8" %}
+    {% assign splvar_alt_requirements_CDH-Hadoop = '2.6.0' %}
+    {% assign splvar_alt_requirements_CDH-HBase = '1.2.0' %}
+    {% assign splvar_alt_requirements_CDH-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_alt_requirements_CDH-ZooKeeper = '3.4.5' %}
+    {% assign splvar_alt_requirements_CDH-Versions = 'CDH 5.16.1, CDH 5.14.2, CDH 5.14.0, CDH 5.13.3, CDH 5.13.2, CDH 5.12.0' %}
+
+    {% assign splvar_alt_requirements_HDP-Hadoop = '2.7.1' %}
+    {% assign splvar_alt_requirements_HDP-HBase = '1.1.2' %}
+    {% assign splvar_alt_requirements_HDP-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_alt_requirements_HDP-ZooKeeper = '3.4.5' %}
+    {% assign splvar_alt_requirements_HDP-Versions  = 'HDP 2.6.4, HDP 2.6.3, HDP 2.6.1' %}
+
+    {% assign splvar_alt_requirements_MapR-Versions = 'MapR 5.2.0' %}
+    {% assign splvar_alt_requirements_MapR-Hadoop = '2.7.0' %}
+    {% assign splvar_alt_requirements_MapR-HBase = '1.1.1' %}
+    {% assign splvar_alt_requirements_MapR-OS = 'CentOS/RHEL 6' %}
+    {% assign splvar_alt_requirements_MapR-ZooKeeper = '3.4.5' %}
+{% endif %}
 
 
 {% comment %}   ---------------------------------------------------------------------
@@ -51,6 +89,7 @@
                 ---------------------------------------------------------------------
 {% endcomment %}
 
+{% assign splvar_limit_SQLStatement = '131072' %}
 {% assign splvar_limit_MaxColumnsInTable = '131072' %}
 {% assign splvar_limit_MaxColumnsInView = '5000' %}
 {% assign splvar_limit_MaxIndexesOnTable = '32767' %}
@@ -93,13 +132,13 @@
                 ---------------------------------------------------------------------
 {% endcomment %}
 
-{% assign splvar_cloud_CloudDocReleaseDate = 'April, 2018'  %}
+{% assign splvar_cloud_CloudDocReleaseDate = 'August 20, 2019'  %}
 {% assign splvar_cloud_CloudProductName = 'Splice Machine Database-as-Service' %}
 {% assign splvar_cloud_Copyright = '© 2019, Splice Machine, Inc.' %}
 {% assign splvar_cloud_CloudPreviousVersion = '0.5' %}
 {% assign splvar_cloud_CloudReleaseVersion = '1.0' %}
 {% assign splvar_cloud_ContactUsLink = 'https://www.splicemachine.com/company/contact-us/' %}
-{% assign splvar_cloud_CloudReleaseDate = 'April, 2018' %}
+{% assign splvar_cloud_CloudReleaseDate = 'August 20, 2019' %}
 
 
 

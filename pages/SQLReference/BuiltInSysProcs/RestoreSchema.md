@@ -12,23 +12,12 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_RESTORE_SCHEMA
 
-The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html) procedure. You can restore the schema to another schema on the same cluster, or on a different cluster. Note that the schema to which you are restoring __must already exist__ in the database.
+The `SYSCS_UTIL.SYSCS_RESTORE_SCHEMA` system procedure restores a schema that was previously backed up with the [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html) procedure. You can restore the schema to another schema on the same cluster, or on a different cluster. The schema and all of its tables and other objects are created anew in your database.
+
+The schema to which you are restoring must not already exist in the database; if it does, `RESTORE_SCHEMA` will not proceed.
+{: .noteNote}
 
 {% include splice_snippets/enterpriseonly_note.md %}
-
-{% comment %}
-+++ REMOVE THIS COMMENT WHEN INCREMENTAL BECOMES AVAILABLE +++
-You can restore your schema from a previous full or incremental table
-backup.
-
-When you restore from a backup, Splice Machine automatically determines
-and runs whatever sequence of restores may be required to accomplish the
-restoration of your schema; this means that when you select an
-incremental backup from which to restore, Splice Machine will detect
-that it needs to first restore from the previous full schema backup and then
-apply any incremental restorations.
-{: .noteIcon}
-{% endcomment %}
 
 ## Syntax
 
@@ -48,8 +37,6 @@ destSchema
 
 The name of the schema to which you want the table restored.
 {: .paramDefnFirst}
-This schema must already exist in your database.
-{: .noteNote}
 
 sourceSchema
 {: .paramName}
@@ -98,6 +85,10 @@ A Boolean value that specifies whether to validate the schema backup before rest
 
 {% include splice_snippets/backupcompatibility.md %}
 
+### Backing Up and Restoring Statistics
+{% include splice_snippets/backupstats1924.md %}
+
+
 ## Results
 
 This procedure does not return a result.
@@ -127,6 +118,8 @@ FULL backup to /backup
 
 1 row selected
 ```
+{: .Example}
+
 See the reference page for the [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html) system procedure for more information about backing up a schema.
 
 ### Examining the Backup  {#exexamine}
@@ -140,6 +133,7 @@ BACKUP_ID      |BEGIN_TIMESTAMP          |END_TIMESTAMP            |STATUS     |
 125953         |2018-10-26 00:12:33.896  |2018-10-26 00:42:53.546  |SUCCESS    |SCHEMA    |false|-1                  |3
 
 ```
+{: .Example}
 
 You can use the ID of your backup job to examine the `sys.sysbackupitems` and verify that the base table and two indexes have been backed up:
 
@@ -153,15 +147,24 @@ BACKUP_ID   |ITEM             |BEGIN_TIMESTAMP           |END_TIMESTAMP
 
 3 rows selected
 ```
+{: .Example}
+
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
 
 ### Restoring the Backup  {#exrestore}
 You can restore the schema to another schema on the same cluster, or on a different cluster. You can optionally specify that you want the backup validated before it is restored; the validation process checks for inconsistencies and missing files.
 
-This command first validates the backed-up schema, and then restores it to a different (pre-existing) schema named `NEWTPCH1`:
+This command first validates the backed-up schema, and then restores it to a different schema named `NEWTPCH1`:
 ```
 splice> CALL SYSCS_UTIL.SYSCS_RESTORE_SCHEMA('NEWTPCH1', 'TPCH1', '/backup', 125953, true);
 Statement executed.
 ```
+{: .Example}
 
 
 ## See Also

@@ -67,7 +67,7 @@ generating HFiles for the deletion and then bypasses the Splice Machine
 write pipeline and HBase write path when deleting the data.
 
 You simply add a
-[`splice-properties`](developers_tuning_queryoptimization.html) hint
+[`splice-properties`](bestpractices_optimizer_hints.html) hint
 that specifies where to generate the HFiles. If you're specifying an S3
 bucket on AWS, please review our [Configuring an S3 Bucket for Splice
 Machine Access](developers_cloudconnect_configures3.html) tutorial before

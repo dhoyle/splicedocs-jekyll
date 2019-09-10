@@ -27,7 +27,7 @@ This procedure is one of several built-in system procedures provided by Splice M
                    schemaName,
                    tableName,
                    insertColumnList | null,
-                   fileName,
+                   fileOrDirectoryName,
                    columnDelimiter | null,
                    characterDelimiter | null,
                    timestampFormat | null,
@@ -77,12 +77,16 @@ The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FRO
             <td class="CodeFont">'ID, TEAM'</td>
         </tr>
         <tr>
-            <td class="CodeFont">fileName</td>
-            <td><p>The file is imported; you can import compressed or uncompressed files.</p>
-                <p>On a cluster, the file to be imported <code>MUST be on S3, HDFS (or
-                MapR-FS)</code>. If you're using our Database Service product, the file can only be imported from S3.</p>
+            <td class="CodeFont">fileOrDirectoryName</td>
+            <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
+            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
+            MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
             </td>
-            <td class="CodeFont">/data/mydata/mytable.csv</td>
+            <td class="CodeFont">
+                <p>/data/mydata/mytable.csv</p>
+                <p>'s3a://splice-benchmark-data/flat/TPCH/100/region'</p>
+            </td>
         </tr>
         </tr>
             <td class="CodeFont">columnDelimiter</td>
@@ -143,9 +147,6 @@ The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FRO
     </tbody>
 </table>
 
-The `SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure only imports single files; it does not process directories.
-{: .noteNote}
-
 ## Results
 
 `SYSCS_UTIL.MERGE_DATA_FROM_FILE` displays a summary of the import
@@ -170,8 +171,7 @@ The `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` imports new records into your databa
 
 ## Record Import Failure Reasons
 
-When merging data from a file, the input file you generate must
-contain:
+When merging data from a file, the input file you generate must contain:
 
 * the columns to be changed
 * all `NON_NULL` columns
@@ -204,7 +204,7 @@ for example:
 
 ## Examples   {#Examples}
 
-This section presents a couple simple examples.
+This section presents a few simple examples.
 
 The [Importing Flat Files](bestpractices_ingest_import.html) topic contains a more extensive set of examples.
 

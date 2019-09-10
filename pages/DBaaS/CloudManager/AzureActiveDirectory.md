@@ -61,8 +61,13 @@ Follow these steps to create an Azure App Registration:
 
 12. Scroll down in the center pane. Select these checkboxes in the _Advanced Settings_ section:
 
+<<<<<<< HEAD
     * _Access Tokens__
     * _ID Tokens__
+=======
+    * _Access Tokens_
+    * _ID Tokens_
+>>>>>>> DocsTest3.0
 
 13. Save your settings.
 </div>

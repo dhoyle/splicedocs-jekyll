@@ -16,7 +16,7 @@ The `SYSCS_UTIL.DROP_SCHEMA_STATISTICS`  system procedure drops
 statistics for a specific schema in your database.
 
 This procedure drops statistics for every table in the schema. It also
-drops statistics for the index associated with every table in the
+drops statistics for the indexes associated with every table in the
 schema. For example, if you have :
 
 * a schema named `mySchema`
@@ -59,10 +59,11 @@ This procedure does not produce a result.
 
 * [Data Assignments and
   Comparisons](sqlref_datatypes_compatability.html)
+* [`SYSCS_UTIL.DROP_TABLE_STATISTICS`](sqlref_sysprocs_droptablestats.html)
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.COLLECT_SCHEMA_STATISTICS`](sqlref_sysprocs_collectschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html)
+* [Using Statistics](bestpractices_optimizer_statistics.html)
 
 </div>
 </section>

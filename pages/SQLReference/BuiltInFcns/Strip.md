@@ -14,9 +14,10 @@ folder: SQLReference/BuiltInFcns
 
 The `STRIP` function takes a character expression and returns that
 expression with leading and/or trailing pad characters removed. Optional
-parameters indicate whether leading, or trailing, or both leading and
-trailing pad characters should be removed, and specify the pad character
-that is to be removed.
+parameters indicate:
+
+* whether leading, or trailing, or both leading and trailing pad characters should be removed
+* which pad character to remove
 
 ## Syntax
 
@@ -35,7 +36,7 @@ The character expression to be stripped
 stripType
 {: .paramName}
 
-Whether to strip from the left end, the right end, or both ends of the `stripSource` string. You can use the full or short identifiers:
+Whether to strip from the left end, the right end, or both ends of the `stripSource` string. Specify this value unquoted, as shown in the examples below. You can use the full or short identifiers:
 {: .paramDefnFirst}
 
 <table>
@@ -57,13 +58,13 @@ Whether to strip from the left end, the right end, or both ends of the `stripSou
     </tbody>
 </table>
 
-If this value is not specified, the default value of `BOTH` is used.
+If you don't specify a *stripType* value, the default value of `BOTH` is used.
 {: .paramDefn}
 
 stripCharacter
 {: .paramName}
 
-A character expression that specifies which character to strip from the
+A character expression, enclosed in single quotes, that specifies which character to strip from the
 source. If this is specified, it must evaluate to either `NULL` or to a
 character string whose length is exactly one. If left unspecified, it
 defaults to the space character (`' '`).
@@ -141,10 +142,8 @@ aabbcc
 * [`LCASE`](sqlref_builtinfcns_lcase.html) function
 * [`LENGTH`](sqlref_builtinfcns_length.html) function
 * [`LOCATE`](sqlref_builtinfcns_locate.html) function
-* [`LSTRIP`](sqlref_builtinfcns_lstrip.html) function
 * [`REGEX_LIKE`](sqlref_builtinfcns_regexplike.html) operator
 * [`REPLACE`](sqlref_builtinfcns_replace.html) function
-* [`RSTRIP`](sqlref_builtinfcns_rstrip.html) function
 * [`SUBSTR`](sqlref_builtinfcns_substr.html) function
 * [`UCASE`](sqlref_builtinfcns_ucase.html) function
 

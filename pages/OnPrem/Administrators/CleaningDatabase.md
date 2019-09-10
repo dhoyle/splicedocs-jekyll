@@ -229,10 +229,6 @@ This is a destructive process and should only be used by an administrator!
     issuing these commands:
     {: .indentLevel1}
 
-    Run the <span class="ShellCommand">zookeeper-client</span> command.
-    At the prompt, run the following commands:
-    {: .indentLevel1}
-
     <div class="preWrapperWide" markdown="1">
 
         sudo -su hdfs hadoop fs -rm -r /apps/hbase

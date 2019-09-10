@@ -251,7 +251,7 @@ database properties:
             <td class="CodeFont"><a href="sqlref_sysprocs_peekatseq.html">SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE function</a>
             </td>
             <td>
-                <p>Allows users to observe the instantaneous current value of a sequence generator without having to query the <a href="sqlref_systables_syssequences.html"><code>SYSSEQUENCES</code> system table</a>. </p>
+                <p>Allows users to observe the instantaneous current value of a sequence generator. </p>
             </td>
         </tr>
         <tr>

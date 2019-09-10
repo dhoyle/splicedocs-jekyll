@@ -98,8 +98,8 @@ After you've upgraded your database, you can use the Migration Assistant a secon
 1. Verify that the Splice Machine region servers are running after the upgrade. You can easily verify this by issuing the following commands at the splice&gt; command prompt:
 
    <div class="PreWrapper"><pre class="Example">
-   splice&gt; select * from SYS.SYSTABLES;
-   splice&gt; select * from SYS.SYSTABLES --splice-properties useSpark=true;</pre>
+   splice&gt; select * from SYSVW.SYSTABLESVIEW;
+   splice&gt; select * from SYSVW.SYSTABLESVIEW --splice-properties useSpark=true;</pre>
    </div>
 
 2. Edit the `prop.cfg` file with your desired configuration settings. Make sure that you change the the `operation` property set to `restore`.

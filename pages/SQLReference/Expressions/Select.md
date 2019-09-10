@@ -236,14 +236,10 @@ This example shows using correlation names for the tables:
 
 <div class="preWrapperWide" markdown="1">
 
-    splice> SELECT CONSTRAINTNAME, COLUMNNAME
-      FROM SYS.SYSTABLES t, SYS.SYSCOLUMNS col,
-      SYS.SYSCONSTRAINTS cons, SYS.SYSCHECKS checks
-      WHERE t.TABLENAME = 'FLIGHTS'
-        AND t.TABLEID = col.REFERENCEID
-        AND t.TABLEID = cons.TABLEID
-        AND cons.CONSTRAINTID = checks.CONSTRAINTID
-      ORDER BY CONSTRAINTNAME;
+    splice> SELECT DisplayName, Team, Salary
+      FROM Players p, Salaries s
+      WHERE p.Position = '1B'
+        AND p.Id   = s.Id
 {: .Example}
 
 This example shows using the `DISTINCT` clause:

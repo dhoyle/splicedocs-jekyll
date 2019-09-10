@@ -43,7 +43,62 @@ layout: default
 
     {% endif %}
 
+    <div class="PageNavigationTop">
+{% assign pagenavs = site.data.pagenextprev_nav.pagenavs %}
+{% assign thepage  = nil %}
+{% for nav in pagenavs %}
+    {% if nav.url == page.permalink %}
+        {% assign thepage = nav %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% if thepage.nextUplinkId %}
+    {% assign nextLink = thepage.nextUplinkId %}
+    {% assign nextChar = '&uarr;' %}
+{% else %}
+    {% assign nextLink = thepage.nextId %}
+    {% assign nextChar = '&raquo;' %}
+{% endif %}
+{% if thepage.prevUplinkId %}
+    {% assign prevLink = thepage.prevUplinkId %}
+    {% assign prevChar = '&uarr;' %}
+{% else %}
+    {% assign prevLink = thepage.prevId %}
+    {% assign prevChar = '&laquo;' %}
+{% endif %}
+{% for nav in pagenavs %}
+    {% if nav.id == nextLink %}
+        {% assign nextPage = nav %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{% for nav in pagenavs %}
+    {% if nav.id == prevLink %}
+        {% assign prevPage = nav %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+{%- capture navdiv -%}
+{%- if prevPage.url == thepage.url -%}
+    {%- if nextPage.url == thepage.url -%}
+            <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev">&nbsp;</td><td class="PageLinkNext">&nbsp;</td></tr></tbody></table>
+    {%- else -%}
+            <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev">&nbsp;</td><td class="PageLinkNext"><a href="{{nextPage.url}}">{{nextPage.title}}&nbsp;{{nextChar}}</a></td></tr></tbody></table>
+    {%- endif -%}
+{%- elsif nextPage.url == thepage.url -%}
+            <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevPage.url}}">{{prevChar}}&nbsp;{{prevPage.title}}</a></td><td class="PageLinkNext">&nbsp;</td></tr></tbody></table>
+{%- else -%}
+            <table class="pageNav"><col width="50%" /><col width="50%" /><tbody><tr><td class="PageLinkPrev"><a href="{{prevPage.url}}">{{prevChar}}&nbsp;{{prevPage.title}}</a></td><td class="PageLinkNext"><a href="{{nextPage.url}}">{{nextPage.title}}&nbsp;{{nextChar}}</a></td></tr></tbody></table>
+{%- endif -%}
+{%- endcapture -%}
+{{ navdiv }}
+    </div>
+
   {{content}}
+
+    <div class="PageNavigationBottom">
+{{ navdiv }}
+    </div>
 
     <div class="tags">
         {% if page.tags[0] %}

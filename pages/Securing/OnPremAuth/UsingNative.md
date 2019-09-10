@@ -15,8 +15,14 @@ folder: Securing/OnPremAuth
 
 Native authentication is the default mechanism for Splice Machine; you
 don't need to modify your configuration if you wish to use it. Native
-authentication uses the `sys.sysusers` table in the `splice` schema for
-configuring user names and passwords.
+authentication uses the `SYS.SYSUSERS` table for configuring user names and passwords.
+
+<div class="noteIcon" markdown="1">
+Access to the system tables that store backup information (actually, to the entire `SYS` schema) is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
 
 The default native authentication property settings are:
 {: .noSpaceAbove}

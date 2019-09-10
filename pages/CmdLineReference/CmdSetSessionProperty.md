@@ -12,7 +12,7 @@ folder: CmdLineReference
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SET SESSION_PROPERTY
 
-The `SET SESSION_PROPERTY` command sets or unsets specific session-level property values. Session-level properties assign an initial value to certain Splice Machine [query hints](developers_tuning_queryoptimization.html#queryhints), which allows you to supply the hint by default in all queries.
+The `SET SESSION_PROPERTY` command sets or unsets specific session-level property values. Session-level properties assign an initial value to certain Splice Machine [query hints](bestpractices_optimizer_hints.html), which allows you to supply the hint by default in all queries.
 
 This command should __only be used by advanced users__. Query hints are very powerful, and applying them by default can lead to unforeseen and unfortunate consequences.
 {: .noteIcon}
@@ -115,7 +115,7 @@ splice> values current session_property;
 </div>
 
 ## See Also
-* [Query Optimization](developers_tuning_queryoptimization.html#queryhints)
+* [Using Hints to Improve Performance](bestpractices_optimizer_hints.html)
 
 </div>
 </section>

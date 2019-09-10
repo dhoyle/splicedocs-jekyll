@@ -49,7 +49,8 @@ schema-privilege
 {: .paramName}
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-  DELETE
+  ACCESS
+| DELETE
 | INSERT
 | MODIFY
 | REFERENCES [( column-identifier {, column-identifier}* )]
@@ -60,7 +61,7 @@ schema-privilege
 </div>
 {: .paramDefnFirst}
 
-See the [Privilege Types](#PrivilegeTypes) section below for more
+See the [Privilege Types](#Privileges) section below for more
 information.
 {: .paramDefn}
 
@@ -119,7 +120,7 @@ table-privilege
 {: .FcnSyntax xml:space="preserve"}
 </div>
 
-See the [Privilege Types](#PrivilegeTypes) section below for more
+See the [Privilege Types](#Privileges) section below for more
 information.
 {: .paramDefn}
 
@@ -371,6 +372,11 @@ privilege.
             </td>
         </tr>
         <tr>
+            <td><code>ACCESS</code></td>
+            <td><p>Schema-level privilege that grants permission to access the specified schema.</p>
+                <p class="noteNote">A schema is not visible to a user without access privileges on that schema.</p></td>
+        </tr>
+        <tr>
             <td><code>DELETE</code></td>
             <td>To grant permission to delete rows from the specified table.</td>
         </tr>
@@ -386,7 +392,7 @@ privilege.
         </tr>
         <tr>
             <td><code>REFERENCES</code></td>
-            <td>To grant permission to create a foreign key reference to the specified table. If a column list is  specified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
+            <td>To grant permission to create a foreign key reference to the specified schema or table. If a column list is  specified with the <code>REFERENCES</code> privilege, the permission is valid on only the foreign key reference to the specified columns.</td>
         </tr>
         <tr>
             <td><code>SELECT</code></td>
@@ -407,6 +413,7 @@ privilege.
 
 The following types of privileges can be granted:
 
+* Access a schema.
 * Delete data from a specific table.
 * Insert data into a specific table.
 * Create a foreign key reference to the named table or to a subset of
@@ -423,9 +430,7 @@ Before you issue a `GRANT` statement, check that the
 mode.
 
 You can grant privileges on an object if you are the owner of the object
-or the database owner. See documentation for the
-[`CREATE`](sqlref_statements_createstatements.html) statements for more
-information.
+or the database owner.
 
 ## Examples {#Examples}
 
@@ -652,7 +657,6 @@ To grant the `SELECT` privilege on table `t` to the role
 * [`SET ROLE`](sqlref_statements_setrole.html) statement
 * [`SELECT`](sqlref_expressions_select.html) expression
 * [`SELECT`](sqlref_expressions_select.html) statement
-* [`SYSROLES`](sqlref_systables_sysroles.html) system table
 * [`UPDATE`](sqlref_statements_update.html) statement
 * [`WHERE`](sqlref_clauses_where.html) clause
 

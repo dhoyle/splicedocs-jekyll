@@ -13,9 +13,9 @@ folder: SQLReference/SystemTables
 # SYSCOLUMNS System Table
 
 The `SYSCOLUMNS` table describes the columns within all tables in the
-current database.
+current database. It belongs to the `SYS` schema.
 
-The following table shows the contents of the `SYSCOLUMNS` system table.
+The following table shows the contents of the `SYS.SYSCOLUMNS` system table.
 
 <table>
     <caption>SYSCOLUMNS system table</caption>
@@ -58,26 +58,19 @@ The following table shows the contents of the `SYSCOLUMNS` system table.
         </tr>
         <tr>
             <td><code>COLUMNDATATYPE</code></td>
-            <td><em>com.splicemachine.db.catalog.TypeDescriptor</em>
-                <p>This class is not part of the public API.</p>
-            </td>
+            <td><code>com.splicemachine.db.<br />catalog.TypeDescriptor</code></td>
             <td><code>-1</code></td>
             <td><code>NO</code></td>
-            <td>System type that describes precision, length, scale, nullability,
-			type name, and storage type of data. For a user-defined type, this column can
-			hold a <em>TypeDescriptor</em> that refers to the appropriate type alias in
-		<code>SYS.SYSALIASES</code>.</td>
+            <td><p>System type that describes precision, length, scale, nullability, type name, and storage type of data. For a user-defined type, this column can hold a <em>TypeDescriptor</em> that refers to the appropriate type alias in <code>SYS.SYSALIASES</code>.</p>
+                <p>This class is not part of the public API.</p></td>
         </tr>
         <tr>
             <td><code>COLUMNDEFAULT</code></td>
-            <td><em>java.io.Serializable</em>
+            <td><code>java.io.Serializable</code>
             </td>
             <td><code>-1</code></td>
             <td><code>YES</code></td>
-            <td>For tables, describes default value of the column. The
-			<em>toString()</em> method on the object stored in the table returns the text of
-			the default value as specified in the <code>CREATE TABLE</code> or <code>ALTER TABLE</code>
-		statement.</td>
+            <td>For tables, describes default value of the column. The <code>toString()</code> method on the object stored in the table returns the text of the default value as specified in the <code>CREATE TABLE</code> or <code>ALTER TABLE</code> statement.</td>
         </tr>
         <tr>
             <td><code>COLUMNDEFAULTID</code></td>
@@ -133,9 +126,32 @@ The following table shows the contents of the `SYSCOLUMNS` system table.
         </tr>
     </tbody>
 </table>
-## See Also
 
-* [About System Tables](sqlref_systables_intro.html)
+## Usage Restrictions
+
+Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSCOLUMNS` system view](sqlref_sysviews_syscolumnsview.html), that allows you to access those parts of the table to which you _have_ been granted access.
+
+{% include splice_snippets/systableaccessnote.md %}
+
+If you don't have access to this system table, you can use the view instead. Note that performance is better when using a table instead of its corresponding view. You can determine if you have access to this table by running the following command:
+
+```
+splice> DESCRIBE SYSVW.SYSCOLUMNS;
+```
+{: .Example}
+
+If you see the table description, you have access; if, instead, you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the [`SYSVW.SYSCOLUMNSVIEW` system view](sqlref_sysviews_syscolumnsview.html) instead.
+
+
+## Usage Example
+
+Here's an example of using this table:
+
+```
+SELECT * FROM SYS.SYSCOLUMNS;
+```
+{: .Example}
+
 
 </div>
 </section>

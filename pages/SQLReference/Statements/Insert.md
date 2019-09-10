@@ -92,7 +92,7 @@ For more information about queries, see
 
 ## Using Bulk Insertion  {#BulkInsert}
 
-For very performant insertion of large datasets, you can use [query optimization hints](developers_tuning_queryoptimization.html#Insert) to specify that you want to use bulk import technology for the insertion.
+For very performant insertion of large datasets, you can use [query optimization hints](bestpractices_optimizer_hints.html#Insert) to specify that you want to use bulk import technology for the insertion.
 
 To understand how bulk import works, please review the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic in our *Best Practices Guide.*
 {: .noteIcon}
@@ -122,9 +122,7 @@ CREATE TABLE myUserTbl AS SELECT
 FROM licensedUserInfo
 WITH NO DATA;
 
-INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp',
-useSpark=true,
-skipSampling=false
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false
 SELECT * FROM licensedUserInfo;
 ```
 {: .Example }

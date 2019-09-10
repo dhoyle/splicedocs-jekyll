@@ -13,7 +13,7 @@ folder: CmdLineReference
 # Show Tables
 
 The <span class="AppCommand">show tables</span> command displays all of
-the tables in the current or specified schema.
+the tables in the current or specified schema, as long as the current user has `ACCESS` privileges for the schema.
 
 <div class="paramList" markdown="1">
 schemaName
@@ -66,41 +66,6 @@ The `show tables` command results contains the following columns:
 ### Examples
 
 <div class="preWrapperWide" markdown="1">
-    splice> show tables;
-    TABLE_SCHEM  |TABLE_NAME         |CONGLOM_ID|REMARKS
-    ------------------------------------------------------
-    SYS          |SYSALIASES         |352       |
-    SYS          |SYSBACKUP          |1040      |
-    SYS          |SYSBACKUPITEMS     |1136      |
-    SYS          |SYSCHECKS          |368       |
-    SYS          |SYSCOLPERMS        |704       |
-    SYS          |SYSCOLUMNS         |64        |
-    SYS          |SYSCOLUMNSTATS     |1216      |
-    SYS          |SYSCONGLOMERATES   |80        |
-    SYS          |SYSCONSTRAINTS     |320       |
-    SYS          |SYSDEPENDS         |240       |
-    SYS          |SYSFILES           |256       |
-    SYS          |SYSFOREIGNKEYS     |288       |
-    SYS          |SYSKEYS            |272       |
-    SYS          |SYSPERMS           |784       |
-    SYS          |SYSPHYSICALSTATS   |1232      |
-    SYS          |SYSPRIMARYKEYS     |384       |
-    SYS          |SYSROLES           |736       |
-    SYS          |SYSROUTINEPERMS    |720       |
-    SYS          |SYSSCHEMAPERMS     |1392      |
-    SYS          |SYSSCHEMAS         |32        |
-    SYS          |SYSSEQUENCES       |752       |
-    SYS          |SYSSTATEMENTS      |304       |
-    SYS          |SYSTABLEPERMS      |688       |
-    SYS          |SYSTABLES          |48        |
-    SYS          |SYSTABLESTATS      |1248      |
-    SYS          |SYSTRIGGERS        |656       |
-    SYS          |SYSUSERS           |816       |
-    SYS          |SYSVIEWS           |336       |
-    SYSIBM       |SYSDUMMY1          |1344      |
-    SPLICE       |MYTABLE            |1536      |
-
-    32 rows selected
 
     splice>show tables in SPLICE;
     TABLE_SCHEM  |TABLE_NAME         |CONGLOM_ID|REMARKS

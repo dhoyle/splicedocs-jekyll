@@ -15,12 +15,21 @@ folder: SQLReference
 This topic specifies limitations for various values in Splice Machine
 SQL:
 
+{% comment %}
+* [SQL Statement Maximum Length](#SqlStatement)
+{% endcomment %}
 * [Database Value Limitations](#Database)
 * [Date, Time, and TimeStamp Limitations](#DATE)
 * [Identifier Length Limitations](#Identifier)
 * [Numeric Limitations](#Numeric)
 * [String Limitations](#String)
 * [XML Limitations](#XML)
+
+{%comment %}
+## SQL Statement Maximum Length  {#SQLStatement}
+
+The maximum length of an SQL statement is {{splvar_limit_SQLStatement}} bytes
+{% endcomment %}
 
 ## Database Value Limitations   {#Database}
 

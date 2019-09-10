@@ -60,7 +60,6 @@ connection tutorials:
         <tr>
             <td><em>Password</em></td>
             <td>Substitute your own password.</td>
-</td>
         </tr>
         <tr>
             <td><em>Database name</em></td>

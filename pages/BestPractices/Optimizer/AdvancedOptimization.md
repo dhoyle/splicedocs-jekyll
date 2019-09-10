@@ -23,25 +23,33 @@ This topic shows you how to work with improving query performance related to sev
 
 ## Issue 1: Skewness  {#skewness}
 
-When the data in a table is skewed, the optimizer is limited in what sort of transformations it can use to improve query optimization. Some observations about skewness:
+Skewness is the uneven distribution of data in a table. When the data in a table is skewed, the optimizer is limited in what sort of transformations it can use to improve query optimization. Here are some observations about skewness:
 
 * In the presence of skewness, a few tasks have to do significantly more work than other tasks; this can dilute parallelism and can ultimately lead to running out of memory.
 * Skewness might exist in the base table on certain columns.
 * Skewness can also happen after certain joins are performed.
-* Skewness usually causes trouble in: 1) sortmerge join steps, 2) grouped aggregate operations
+* Skewness usually causes trouble in sortmerge join steps and grouped aggregate operations.
 
-### Detecting Skewness in the Spark UI
-If the query is running in Spark, we can detect skewness by looking at the tasks in the Spark Web UI. For example, given this query:
+### Detecting Skewness
+
+This section shows you how you can detect skewness in two ways:
+
+* By looking at the Spark Web UI.
+* By running a query with alternative SQL to highlight the skewness.
+
+#### Detecting Skewness in the Spark Web UI
+
+When a query is running in Spark, you can detect skewness by looking at the tasks in the Spark Web UI. For example, here's a sample query:
 
 ```
 SELECT COUNT(*) FROM --SPLICE-PROPERTIES JOINORDER=FIXED
-xiayi.lineitem_with_skew --SPLICE-PROPERTIES INDEX=null
+testtbl.lineitem_with_skew --SPLICE-PROPERTIES INDEX=null
 , tpch100.orders --SPLICE-PROPERTIES JOINSTRATEGY=sortmerge, index=null
  WHERE o_orderkey = l_orderkey;
 ```
 {: .Example}
 
-Here's the query execution plan:
+You can see the skewness in the execution plan for the query:
 
 ```
 Plan
@@ -59,11 +67,15 @@ Cursor(n=8,rows=1,updateMode=,engine=Spark)
 ```
 {: .Example}
 
-And here's a screenshot from the Spark Web UI:
-<img src="images/OptimizerSkew1.png" class="indentedMedium" />
+
+You can see the skewness in the execution plan **** HOW ???  ****
+
+And here's a screenshot from the Spark Web UI for this query; you can see the skewness in the circled areas: **** HOW ??? ****
+
+<img src="images/OptimizerSkew1.png" class="indentedTightSpacing" />
 
 
-### Detecting Skewness with Alternative SQL
+#### Detecting Skewness with Alternative SQL
 
 The following example query shows how to use SQL to check skewness on `join` or `group by` columns:
 
@@ -71,7 +83,7 @@ The following example query shows how to use SQL to check skewness on `join` or 
 SELECT COUNT(*), MIN(CC), max(CC), avg(CC)
 FROM
 (SELECT l_orderkey, COUNT(*) AS CC
- FROM xiayi.lineitem_with_skew
+ FROM testtbl.lineitem_with_skew
  GROUP BY 1) dt;
 
 1                   |2                   |3                   |4
@@ -112,10 +124,11 @@ We'll show you these solutions, which you can apply to avoid or alleviate skewne
 * [1. Hinting with Broadcast Join](#broadcastHint)
 * [2. Splitting the Skewed Table](#splittable)
 * [3. Rewriting with Non-Skewed Join Columns](#rewrite)
+{% comment %}
 * [4. Salting the Skewed Value](#saltskew)
 * [5. Pushing Aggregation Down](#pushaggr)
 * [6. Delaying the Skewed Join](#delayjoin)
-
+{% endcomment %}
 
 #### Skewness Solution 1: Hinting with Broadcast Join  {#broadcastHint}
 
@@ -169,6 +182,7 @@ FROM
   ON df.flu_fluidid =  dd.drn_fluidid
   WHERE (df.flu_fluidid <> /*the skewed value*/ OR df.flu_fluidid is null)
 ```
+{: .Example}
 
 #### Skewness Solution 3: Rewriting with Non-Skewed Join Columns
 
@@ -203,6 +217,7 @@ We applied these rewrites:
   dt.flu_fluidid = dc.cat_fluidid AND dc.cat_handle = dt.tree_handle
   ```
 
+{% comment %}
 #### Skewness Solution 4: Salting the Skewed Value  {#saltskew}
 Salt the skewed value with random number to even the skewness (SPLICE-2357)
 
@@ -211,7 +226,7 @@ Push aggregation done below the join (SPLICE-1522)
 
 #### Skewness Solution 6: Delaying the Skewed Join  {#delayjoin}
 Delay the skewed join, sometimes other joins can reduce the skewness or simply reduce the total rows.
-
+{% endcomment %}
 
 ## Issue 2: Choosing the Access Path  {#accesspath}
 
@@ -229,33 +244,28 @@ How a query is written determines the choice of access path, which may be one of
     <tbody>
         <tr>
             <td class="ItalicFont">Full Table Scan</td>
-            <td>This displays as a `TableScan` operation in the explain plan output.</td>
+            <td>This displays as a <code>TableScan</code> operation in the explain plan output.</td>
         </tr>
         <tr>
             <td class="ItalicFont">Primary Key Access</td>
             <td><p>When a query has a predicate on leading Primary Key columns, the optimizer can derive the start or stop key to restrict the scan, which avoids looping over all rows in the table.</p>
-                <p>This displays as a `TableScan` operation, but will have a smaller number of rows scanned than the total number of rows in the table.</p>
+                <p>This displays as a <code>TableScan</code> operation, but will have a smaller number of rows scanned than the total number of rows in the table.</p>
             </td>
         </tr>
         <tr>
             <td class="ItalicFont">Covering Index Access</td>
-            <td><p>If all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a *covering index* for this query.</p>
+            <td><p>If all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a <em>covering index</em> for this query.</p>
                 <p>When the number of rows accessed is the same, scanning a covering index is usually more favorable than scanning the base table, as index usually has smaller row size.</p>
             </td>
         </tr>
         <tr>
             <td class="ItalicFont">Non-Covering Index Access</td>
-            <td><p>If not all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a *non-covering index*.</p>
+            <td><p>If not all of the fields referenced in the query that belong to a particular table are covered by an index defined on that table, that index is called a <em>non-covering index</em>.</p>
                 <p>The use of non-covering index incurs the extra cost of looking up the values of column not covered by the index in the base table for each qualified row; this means that it may or may not be a better choice than scanning the base table.</p>
             </td>
         </tr>
     </tbody>
 </table>
-
-* Full table scan, which displays as a `TableScan` operation in the explain plan.
-* Primary key access, which also displays as a `TableScan` operation, but will have a smaller number of rows scanned than the total number of rows in the table.
-* Covering index access
-* Non-covering index access
 
 
 The choice of access path: covering index, non-covering index, or table scan

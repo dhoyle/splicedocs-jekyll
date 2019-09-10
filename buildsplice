@@ -1,41 +1,44 @@
 #!/bin/sh
 
-isprev=
+echo ""
+echo "------------------------------------------------------------------------"
+echo "---                                                                  ---"
+echo "---   IF YOU'VE CHANGED THE SIDEBAR, BEFORE RUNNING THIS YOU MUST:   ---"
+echo "---      1. Start the web locally                                    ---"
+echo "---      2. Capture the output of Generate_PageNav_Yaml.html page    ---"
+echo "---      3. Paste that output into data/pagenextprev_nav.yml         ---"
+echo "---                                                                  ---"
+echo "------------------------------------------------------------------------"
+echo ""
+
 PS3="Select which Docs Version to build: "
 COLUMNS=12
-OPTIONS=( 'DocsDev 2.8'
+OPTIONS=( 'DocsDev 3.0'
+          'DocsTest 3.0'
           'DocsTest 2.8'
-          'Doc 2.8'
-          'DocsDev 2.7'
           'DocsTest 2.7'
+          'Doc 3.0'
+          'Doc 2.8'
           'Doc 2.7'
-          'DocsDev 2.5'
-          'DocsTest 2.5'
           'Doc 2.5' )
 select opt in "${OPTIONS[@]}"; do
     case $opt in
-        'DocsDev 2.8')
+        'DocsDev 3.0')
             version='docsdev'
-            branch='2.8'
+            branch='3.0'
+            smap='sitemapgen'
+            break;
+            ;;
+        'DocsTest 3.0')
+            version='docstest'
+            branch='3.0'
             smap='sitemapgen'
             break;
             ;;
         'DocsTest 2.8')
             version='docstest'
             branch='2.8'
-            smap='sitemapgen'
-            break;
-            ;;
-        'Doc 2.8')
-            version='doc'
-            branch='2.8'
-            smap='sitemapgen.2.8'
-            break;
-            ;;
-        'DocsDev 2.7')
-            version='docsdev'
-            branch='2.7'
-            smap='sitemapgen.2.7'
+            smap='sitemapgen2.8'
             break;
             ;;
         'DocsTest 2.7')
@@ -44,22 +47,22 @@ select opt in "${OPTIONS[@]}"; do
             smap='sitemapgen.2.7'
             break;
             ;;
-        'Doc 2.7')
+        'Doc 3.0')
             version='doc'
-            branch='2.7'
+            branch='3.0'
             smap='sitemapgen'
             break;
             ;;
-        'DocsDev 2.5')
-            version='docsdev'
-            branch='2.5'
-            smap='sitemapgen.2.5'
+        'Doc 2.8')
+            version='doc'
+            branch='2.8'
+            smap='sitemapgen2.8'
             break;
             ;;
-        'DocsTest 2.5')
-            version='docstest'
-            branch='2.5'
-            smap='sitemapgen.2.5'
+        'Doc 2.7')
+            version='doc'
+            branch='2.7'
+            smap='sitemapgen2.7'
             break;
             ;;
         'Doc 2.5')

@@ -195,11 +195,21 @@ you used delimited identifiers when creating those database objects.
 Splice Machine keeps track of the last increment value for a column in a
 cache. It also stores the value of what the next increment value will be
 for the column on disk in the `AUTOINCREMENTVALUE` column of the
-`SYS.SYSCOLUMNS` system table. Rolling back a transaction does not undo
+`SYS.SYSCOLUMNSVIEW` system view. Rolling back a transaction does not undo
 this value, and thus rolled-back transactions can leave "gaps" in the
 values automatically inserted into an identity column. Splice Machine
-behaves this way to avoid locking a row in `SYS.SYSCOLUMNS` for the
+behaves this way to avoid locking a row in `SYS.SYSCOLUMNS` table for the
 duration of a transaction and keeping concurrency high.
+
+<div class="noteIcon">
+You can use the [SYSVW.SYSCOLUMNSVIEW](sqlref_sysviews_syscolumnsview.html) as shown to access the information you need. If you have security clearance to access the [SYS.SYSCOLUMNS](sqlref_systables_syscolumns.html) table, you'll get better performance from the table; however, access to the `SYS` schema is restricted to Database Administrators and those to whom the Database Administrator has explicitly granted access.
+
+You can determine if you have access to this table by running the following command:
+
+    DESCRIBE SYS.SYSCOLUMNS;
+
+If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the view instead.
+</div>
 
 When an insert happens within a triggered-SQL-statement, the value
 inserted by the triggered-SQL-statement into the identity column is
