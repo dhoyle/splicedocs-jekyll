@@ -156,7 +156,7 @@ This line shows you which *engine* Splice Machine plans to use for the query.
 
 ## Explain Plan Examples  {#examples}
 
-The remainder of this topic contains the following examples of using the `explain` command to display the execution plan for a statement:
+The remainder of this topic contains the following examples of using the `explain` command to display the execution plan for a statement. We use two TPCH data tables for these examples:
 
 * [TableScan Examples](#TableSca)
 * [IndexScan Examples](#IndexSca)
@@ -168,34 +168,67 @@ The remainder of this topic contains the following examples of using the `explai
 * [Aggregation Operation Examples](#Aggregat)
 * [Subquery Example](#Subquery)
 
+### Creating the Example Tables
+
+We use these tables for the EXPLAIN plan examples in this section:
+
+```
+CREATE TABLE tpch1.orders (
+    o_orderkey BIGINT NOT NULL PRIMARY KEY,
+    o_custkey INTEGER,
+    o_orderstatus VARCHAR(1),
+    o_totalprice DECIMAL(15,2),
+    o_orderdate DATE,
+    o_orderpriority VARCHAR(15),
+    o_clerk VARCHAR(15),
+    o_shippriority INTEGER ,
+    o_comment VARCHAR(79)
+);
+
+CREATE INDEX o_cust_idx ON tpch1.orders( o_custkey, o_orderkey);
+
+CREATE TABLE tpch1.customer (
+    c_custkey INTEGER NOT NULL PRIMARY KEY,
+    c_name VARCHAR(25),
+    c_address VARCHAR(40),
+    c_nationkey INTEGER,
+    c_phone VARCHAR(15),
+    c_acctbal DECIMAL(15,2),
+    c_mktsegment VARCHAR(10),
+    c_comment VARCHAR(117)
+);
+```
+{: .Example}
+
+
 ### TableScan Examples   {#TableSca}
 
 This example show a plan for a `TableScan` operation that has no qualifiers, known as a *raw scan*:
 
 ```
-splice> EXPLAIN SELECT * FROM SYS.SYSTABLES;
+splice> EXPLAIN SELECT * FROM tpch1.orders;
 Plan
--------------------------------------------------------------------------------
-Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=2,totalCost=8.594,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
-    ->  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
+--------------------------------------------------------------------------------
+Cursor(n=3,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=2,totalCost=19472.843,outputRows=1500000,outputHeapSize=143.051 MB,partitions=1)
+    ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=143.051 MB,partitions=1)
 
 3 rows selected
 ```
-{: .Example }
+{: .Example}
 
 
 This example show a plan for a `TableScan` operation that does have
 qualifiers:
 
 ```
-splice> EXPLAIN SELECT * FROM SYS.SYSTABLES --SPLICE-PROPERTIES INDEX=NULL
-> WHERE tablename='SYSTABLES';
+EXPLAIN SELECT * FROM tpch1.orders --SPLICE-PROPERTIES INDEX=NULL
+where o_custkey=1;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=2,totalCost=8.54,outputRows=18,outputHeapSize=2.988 KB,partitions=1)
-    ->  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=18,outputHeapSize=2.988 KB,partitions=1,preds=[(TABLENAME[0:2] = SYSTABLES)])
+Cursor(n=3,rows=15,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=2,totalCost=3008.164,outputRows=15,outputHeapSize=1.465 KB,partitions=1)
+    ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=15,outputHeapSize=1.465 KB,partitions=1,preds=[(O_CUSTKEY[0:2] = 1)])
 
 3 rows selected
 ```
@@ -221,35 +254,37 @@ This example show a plan for an `IndexScan` operation that has no
 predicates:
 
 ```
-splice> EXPLAIN SELECT tablename FROM SYS.SYSTABLES; --covering index
-
+EXPLAIN SELECT o_custkey, o_orderkey FROM tpch1.orders; --covering index
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=3,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=2,totalCost=8.31,outputRows=20,outputHeapSize=560 B,partitions=1)
-    ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=560 B,partitions=1,baseTable=SYSTABLES(32))
+Cursor(n=5,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=4,totalCost=17163.52,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1)
+    ->  ProjectRestrict(n=3,totalCost=1834,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1)
+      ->  ProjectRestrict(n=2,totalCost=1834,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1)
+        ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=1834,scannedRows=1500000,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1,baseTable=ORDERS(2256))
 
-3 rows selected
+5 rows selected
 ```
-{: .Example }
+{: .Example}
 
 
 This example shows a plan for an `IndexScan` operation that contains
 predicates:
 
 ```
-splice> EXPLAIN SELECT tablename FROM SYS.SYSTABLES --SPLICE-PROPERTIES index=SYSTABLES_INDEX1
-> WHERE tablename = 'SYSTABLES';
-
+EXPLAIN SELECT o_custkey, o_orderkey FROM tpch1.orders --splice-properties index=o_cust_idx
+where o_custkey=1;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=2,totalCost=8.272,outputRows=18,outputHeapSize=432 B,partitions=1)
-    ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.049,outputRows=18,outputHeapSize=432 B,partitions=1,baseTable=SYSTABLES(48),preds=[(TABLENAME[0:1] = SYSTABLES)])
+Cursor(n=5,rows=15,updateMode=READ_ONLY (1),engine=control)
+  ->  ScrollInsensitive(n=4,totalCost=8.171,outputRows=15,outputHeapSize=333 B,partitions=1)
+    ->  ProjectRestrict(n=3,totalCost=4.018,outputRows=15,outputHeapSize=333 B,partitions=1)
+      ->  ProjectRestrict(n=2,totalCost=4.018,outputRows=15,outputHeapSize=333 B,partitions=1)
+        ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=4.018,scannedRows=15,outputRows=15,outputHeapSize=333 B,partitions=1,baseTable=ORDERS(2256),preds=[(O_CUSTKEY[0:1] = 1)])
 
-3 rows selected
+5 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -270,35 +305,34 @@ Cursor(n=3,rows=18,updateMode=READ_ONLY (1),engine=control)
 This example show a plan for a `Projection` operation:
 
 ```
-splice> EXPLAIN SELECT tablename || 'hello' FROM SYS.SYSTABLES;
-
+EXPLAIN SELECT SUBSTR(o_comment, 1, 10) FROM tpch1.orders;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=3,totalCost=8.302,outputRows=20,outputHeapSize=480 B,partitions=1)
-    ->  ProjectRestrict(n=2,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
-      ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=4,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=3,totalCost=18170.76,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
+    ->  ProjectRestrict(n=2,totalCost=3004,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
+      ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
 
 4 rows selected
 ```
-{: .Example }
+{: .Example}
 
 
 This example shows a plan for a `Restriction` operation:
 
 ```
-splice> EXPLAIN SELECT tablename FROM SYS.SYSTABLES WHERE tablename LIKE '%SYS%';
-
+EXPLAIN SELECT o_custkey, o_orderkey FROM tpch1.orders WHERE CAST(o_custkey AS char(10)) LIKE '3%';
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=10,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=3,totalCost=8.178,outputRows=10,outputHeapSize=240 B,partitions=1)
-    ->  ProjectRestrict(n=2,totalCost=4.054,outputRows=10,outputHeapSize=240 B,partitions=1,preds=[like(TABLENAME[0:1], %SYS%)])
-      ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=240 B,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=5,rows=750000,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=4,totalCost=9534.093,outputRows=750000,outputHeapSize=15.895 MB,partitions=1)
+    ->  ProjectRestrict(n=3,totalCost=1867.333,outputRows=750000,outputHeapSize=15.895 MB,partitions=1)
+      ->  ProjectRestrict(n=2,totalCost=1867.333,outputRows=750000,outputHeapSize=15.895 MB,partitions=1,preds=[like(O_CUSTKEY[0:1], 3%) ])
+        ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=1834,scannedRows=1500000,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1,baseTable=ORDERS(2256))
 
-4 rows selected
+5 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -312,17 +346,18 @@ Cursor(n=4,rows=10,updateMode=READ_ONLY (1),engine=control)
 This example shows a plan for an `IndexLookup` operation:
 
 ```
-splice> EXPLAIN SELECT * FROM SYS.SYSTABLES --SPLICE-PROPERTIES INDEX=SYSTABLES_INDEX1
-> WHERE tablename = 'SYSTABLES';
-
+EXPLAIN SELECT * FROM tpch1.orders --SPLICE-PROPERTIES INDEX=o_cust_idx
+WHERE o_custkey=1;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=18,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=3,totalCost=177.265,outputRows=18,outputHeapSize=921.586 KB,partitions=1)
-    ->  IndexLookup(n=2,totalCost=78.715,outputRows=18,outputHeapSize=921.586 KB,partitions=1)
-      ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=6.715,outputRows=18,outputHeapSize=921.586 KB,partitions=1,baseTable=SYSTABLES(48),preds=[(TABLENAME[1:2] = SYSTABLES)])
+Cursor(n=4,rows=15,updateMode=READ_ONLY (1),engine=control)
+  ->  ScrollInsensitive(n=3,totalCost=68.182,outputRows=15,outputHeapSize=1.465 KB,partitions=1)
+    ->  IndexLookup(n=2,totalCost=64.018,outputRows=15,outputHeapSize=1.465 KB,partitions=1)
+      ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=4.018,scannedRows=15,outputRows=15,outputHeapSize=1.465 KB,partitions=1,baseTable=ORDERS(2256),preds=[(O_CUSTKEY[1:2] = 1)])
+
+4 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -335,19 +370,19 @@ Cursor(n=4,rows=18,updateMode=READ_ONLY (1),engine=control)
 This example shows a plan for a `Join` operation:
 
 ```
-splice> EXPLAIN SELECT * FROM SYS.SYSTABLES t, SYS.SYSSCHEMAS s WHERE t.schemaid =s.schemaid;
-
+EXPLAIN SELECT * FROM tpch1.orders O, tpch1.customer C WHERE O.o_custkey = C.c_custkey;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=4,totalCost=21.728,outputRows=20,outputHeapSize=6.641 KB,partitions=1)
-    ->  BroadcastJoin(n=3,totalCost=12.648,outputRows=20,outputHeapSize=6.641 KB,partitions=1,preds=[(T.SCHEMAID[4:4] = S.SCHEMAID[4:8])])
-      ->  TableScan[SYSSCHEMAS(32)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=6.641 KB,partitions=1)
-      ->  TableScan[SYSTABLES(48)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
+Cursor(n=6,rows=2369593,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=5,totalCost=113207.492,outputRows=2369593,outputHeapSize=488.804 MB,partitions=1)
+    ->  ProjectRestrict(n=4,totalCost=59891.557,outputRows=2369593,outputHeapSize=488.804 MB,partitions=1)
+      ->  MergeSortJoin(n=3,totalCost=59891.557,outputRows=2369593,outputHeapSize=488.804 MB,partitions=1,preds=[(O.O_CUSTKEY[4:10] = C.C_CUSTKEY[4:1])])
+        ->  TableScan[ORDERS(2256)](n=2,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=488.804 MB,partitions=1)
+        ->  TableScan[CUSTOMER(2272)](n=1,totalCost=383.5,scannedRows=150000,outputRows=150000,outputHeapSize=21.887 MB,partitions=1)
 
-5 rows selected
+6 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -372,22 +407,23 @@ Cursor(n=5,rows=20,updateMode=READ_ONLY (1),engine=control)
 
 An *outer join* does not display it as a separate strategy in the plan;
 instead, it is treated a *postfix* for the strategy that's used. For
-example, if you are using a Broadcast join, and it's a left outer join,
-then you'll see `BroadcastLeftOuterJoin`. Here's an example:
+example, if you are using a MergeSort join, and it's a left outer join,
+then you'll see `MergeSortLeftOuterJoin`. Here's an example:
 
 ```
-EXPLAIN SELECT s.schemaname,t.tablename FROM SYS.SYSSCHEMAS s LEFT OUTER JOIN SYS.SYSTABLES t
-> ON s.schemaid = t.schemaid;
+EXPLAIN SELECT * FROM tpch1.orders O LEFT JOIN tpch1.customer C ON O.o_custkey = C.c_custkey;
+
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=5,totalCost=348.691,outputRows=20,outputHeapSize=2 MB,partitions=1)
-    ->  ProjectRestrict(n=4,totalCost=130.579,outputRows=20,outputHeapSize=2 MB,partitions=1)
-      ->  BroadcastLeftOuterJoin(n=3,totalCost=130.579,outputRows=20,outputHeapSize=2 MB,partitions=1,preds=[(S.SCHEMAID[4:1] = T.SCHEMAID[4:4])])
-        ->  IndexScan[SYSTABLES_INDEX1(145)](n=2,totalCost=7.017,outputRows=20,outputHeapSize=2 MB,partitions=1,baseTable=SYSTABLES(48))
-        ->  TableScan[SYSSCHEMAS(32)](n=1,totalCost=7.516,outputRows=20,outputHeapSize=1023.984 KB,partitions=1)
+Cursor(n=5,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=4,totalCost=92772.017,outputRows=1500000,outputHeapSize=164.938 MB,partitions=1)
+    ->  MergeSortLeftOuterJoin(n=3,totalCost=59021.964,outputRows=1500000,outputHeapSize=164.938 MB,partitions=1,preds=[(O.O_CUSTKEY[4:2] = C.C_CUSTKEY[4:10])])
+      ->  TableScan[CUSTOMER(2272)](n=2,totalCost=383.5,scannedRows=150000,outputRows=150000,outputHeapSize=164.938 MB,partitions=1)
+      ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=143.051 MB,partitions=1)
+
+5 rows selected
 ```
-{: .Example }
+{: .Example}
 
 
 ### Union Example   {#Union}
@@ -395,19 +431,21 @@ Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
 This example shows a plan for a `Union` operation:
 
 ```
-splice> EXPLAIN SELECT tablename FROM SYS.SYSTABLES t UNION ALL SELECT schemaname FROM sys.sysschemas;
-
+EXPLAIN SELECT *
+    FROM tpch1.orders WHERE o_orderkey=1
+    UNION ALL
+    SELECT * FROM tpch1.orders WHERE o_orderkey=100;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=40,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=4,totalCost=16.668,outputRows=40,outputHeapSize=1.094 KB,partitions=1)
-    ->  Union(n=3,totalCost=12.356,outputRows=40,outputHeapSize=1.094 KB,partitions=1)
-      ->  IndexScan[SYSSCHEMAS_INDEX1(209)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=1.094 KB,partitions=1,baseTable=SYSSCHEMAS(32))
-      ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=5,rows=2,updateMode=READ_ONLY (1),engine=control)
+  ->  ScrollInsensitive(n=4,totalCost=16.044,outputRows=2,outputHeapSize=100 B,partitions=1)
+    ->  Union(n=3,totalCost=12.024,outputRows=2,outputHeapSize=100 B,partitions=1)
+      ->  TableScan[ORDERS(2256)](n=2,totalCost=4.002,scannedRows=1,outputRows=1,outputHeapSize=100 B,partitions=1,preds=[(O_ORDERKEY[3:1] = 100)])
+      ->  TableScan[ORDERS(2256)](n=1,totalCost=4.002,scannedRows=1,outputRows=1,outputHeapSize=100 B,partitions=1,preds=[(O_ORDERKEY[0:1] = 1)])
 
 5 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -419,18 +457,17 @@ Cursor(n=5,rows=40,updateMode=READ_ONLY (1),engine=control)
 This example shows a plan for an order by operation:
 
 ```
-splice> EXPLAIN SELECT tablename FROM SYS.SYSTABLES ORDER BY tablename DESC;
-
+EXPLAIN SELECT o_custkey FROM tpch1.orders ORDER BY o_custkey desc;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=3,totalCost=16.604,outputRows=20,outputHeapSize=480 B,partitions=1)
-    ->  OrderBy(n=2,totalCost=12.356,outputRows=20,outputHeapSize=480 B,partitions=1)
-      ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=4,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=3,totalCost=34001.52,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
+    ->  OrderBy(n=2,totalCost=18834.76,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
+      ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=1834,scannedRows=1500000,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1,baseTable=ORDERS(2256))
 
 4 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -441,39 +478,37 @@ Cursor(n=4,rows=20,updateMode=READ_ONLY (1),engine=control)
 This example show a plan for a grouped aggregate operation:
 
 ```
-splice> EXPLAIN SELECT tablename, COUNT(*) FROM SYS.SYSTABLES GROUP BY tablename;
-
+EXPLAIN SELECT o_custkey, count(*) FROM tpch1.orders GROUP BY o_custkey;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=5,totalCost=12.568,outputRows=20,outputHeapSize=480 B,partitions=16)
-    ->  ProjectRestrict(n=4,totalCost=8.32,outputRows=20,outputHeapSize=480 B,partitions=16)
-      ->  GroupBy(n=3,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
-        ->  ProjectRestrict(n=2,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
-          ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=6,rows=94953,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=5,totalCost=2910.182,outputRows=94953,outputHeapSize=1.006 MB,partitions=1)
+    ->  ProjectRestrict(n=4,totalCost=1950.096,outputRows=94953,outputHeapSize=1.006 MB,partitions=1)
+      ->  GroupBy(n=3,totalCost=1950.096,outputRows=94953,outputHeapSize=1.006 MB,partitions=1)
+        ->  ProjectRestrict(n=2,totalCost=1834,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
+          ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=1834,scannedRows=1500000,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1,baseTable=ORDERS(2256))
 
-6 rows selected)
+6 rows selected
 ```
-{: .Example }
+{: .Example}
 
 
 This example shows a plan for a scalar aggregate operation:
 
 ```
-splice> EXPLAIN SELECT COUNT(*) FROM SYS.SYSTABLES;
-
+EXPLAIN SELECT COUNT(*) FROM tpch1.orders;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=5,totalCost=8.797,outputRows=1,outputHeapSize=0 B,partitions=1)
-    ->  ProjectRestrict(n=4,totalCost=4.257,outputRows=1,outputHeapSize=0 B,partitions=1)
-      ->  GroupBy(n=3,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
-        ->  ProjectRestrict(n=2,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1)
-          ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=3.32 KB,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=5,totalCost=16838.001,outputRows=1,outputHeapSize=0 B,partitions=1)
+    ->  ProjectRestrict(n=4,totalCost=1834.001,outputRows=1,outputHeapSize=0 B,partitions=1)
+      ->  GroupBy(n=3,totalCost=1834.001,outputRows=1,outputHeapSize=0 B,partitions=1)
+        ->  ProjectRestrict(n=2,totalCost=1834,outputRows=1500000,outputHeapSize=0 B,partitions=1)
+          ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=1834,scannedRows=1500000,outputRows=1500000,outputHeapSize=0 B,partitions=1,baseTable=ORDERS(2256))
 
 6 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
@@ -485,25 +520,27 @@ Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=control)
 This example shows a plan for a `SubQuery` operation:
 
 ```
-splice> EXPLAIN SELECT tablename, (SELECT tablename FROM SYS.SYSTABLES t2 WHERE t2.tablename = t.tablename)FROM SYS.SYSTABLES t;
-
+EXPLAIN SELECT * FROM tpch1.orders WHERE o_orderdate = (SELECT MAX(o_orderdate) FROM tpch1.orders);
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=20,updateMode=READ_ONLY (1),engine=control)
-  ->  ScrollInsensitive(n=5,totalCost=8.302,outputRows=20,outputHeapSize=480 B,partitions=1)
-    ->  ProjectRestrict(n=4,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1)
-      ->  Subquery(n=3,totalCost=12.55,outputRows=20,outputHeapSize=480 B,partitions=1,correlated=true,expression=true,invariant=true)
-        ->  IndexScan[SYSTABLES_INDEX1(145)](n=2,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48),preds=[(T2.TABLENAME[0:1] = T.TABLENAME[4:1])])
-      ->  IndexScan[SYSTABLES_INDEX1(145)](n=1,totalCost=4.054,outputRows=20,outputHeapSize=480 B,partitions=1,baseTable=SYSTABLES(48))
+Cursor(n=9,rows=657,updateMode=READ_ONLY (1),engine=Spark)
+  ->  ScrollInsensitive(n=8,totalCost=3015.215,outputRows=657,outputHeapSize=64.19 KB,partitions=1)
+    ->  ProjectRestrict(n=7,totalCost=3004,outputRows=657,outputHeapSize=64.19 KB,partitions=1)
+      ->  TableScan[ORDERS(2256)](n=6,totalCost=3004,scannedRows=1500000,outputRows=657,outputHeapSize=64.19 KB,partitions=1,preds=[(O_ORDERDATE[5:5] = subq=4)])
+        ->  Subquery(n=5,totalCost=12938856.093,outputRows=1,outputHeapSize=0 B,partitions=1,correlated=false,expression=true,invariant=true)
+          ->  ProjectRestrict(n=4,totalCost=12923689.333,outputRows=1,outputHeapSize=0 B,partitions=1)
+            ->  GroupBy(n=3,totalCost=12923689.333,outputRows=1,outputHeapSize=0 B,partitions=1)
+              ->  ProjectRestrict(n=2,totalCost=12923689.32,outputRows=985500000,outputHeapSize=10.198 GB,partitions=1)
+                ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=10.198 GB,partitions=1)
 
-6 rows selected
+9 rows selected
 ```
-{: .Example }
+{: .Example}
 
 #### Notes About This Plan
 
 * Subqueries are listed as a second query tree, whose starting
-  indentation level is the same as the `ProjectRestrict` operation that
+  indentation level is the same as the `ProjectRestrict` or `TableScan` operation that
   *owns* the subquery.
 * Includes a *correlated* field, which specifies whether or not the
   query is treated as correlated or uncorrelated.
