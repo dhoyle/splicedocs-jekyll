@@ -56,8 +56,9 @@ The following table summarizes which permissions apply to and can be granted or 
             <td class="CodeFont">Select</td>
             <td>Yes</td>
             <td>No</td>
-            <td><p>Yes, except for <code>sys.sysusers</code></p>
-                <p>The `SYS.SYSBACKUP` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.</p>
+            <td>
+                <p>Yes if schema restriction feature is disabled, except for <code>SYS.SYSUSERS</code>. The <code>SYS.SYSUSERS</code> table is part of the <code>SYS</code> schema, to which access is restricted for security purposes. You can only access tables in the <code>SYS</code> schema if you are a Database Administrator.</p>
+                <p>No if schema restriction feature is enabled. You can only access tables in the system schemas if you are a Database Administrator or if your Database Administrator has explicitly granted <code>ACCESS</code> and <code>SELECT</code> privileges to you.</p>
             </td>
             <td>No</td>
             <td colspan="2">Same as Regular User</td>
@@ -119,24 +120,40 @@ The following table summarizes which permissions apply to and can be granted or 
     </thead>
     <tbody>
         <tr>
-            <td class="CodeFont">Update/Delete/Insert</td>
+            <td class="CodeFont">Access</td>
             <td>Yes</td>
             <td>No</td>
             <td colspan="2">Yes, if granted the corresponding privilege.</td>
+            <td colspan="2">Same as regular user</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">Update/Delete/Insert</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td colspan="2">
+                <p>If the schema restriction feature is disabled, then Yes if granted the corresponding privilege.</p>
+                <p>If the schema restriction feature is enabled, then Yes if granted both corresponding privilege and the <code>ACCESS</code> privilege on the <code>SPLICE</code> schema.</p>
+            </td>
             <td colspan="2">Same as regular user</td>
         </tr>
         <tr>
             <td class="CodeFont">Select</td>
             <td>Yes</td>
             <td>No</td>
-            <td colspan="2">Yes, if granted the corresponding privilege.</td>
+            <td colspan="2">
+                <p>If the schema restriction feature is disabled, then Yes if granted the corresponding privilege.</p>
+                <p>If the schema restriction feature is enabled, then Yes if granted both corresponding privilege and the <code>ACCESS</code> privilege on the <code>SPLICE</code> schema.</p>
+            </td>
             <td colspan="2">Same as regular user</td>
         </tr>
         <tr>
             <td class="CodeFont">Create/Drop/Alter table ...</td>
             <td>Yes</td>
             <td>No</td>
-            <td colspan="2">Yes, if granted the corresponding privilege.</td>
+            <td colspan="2">
+                <p>If the schema restriction feature is disabled, then Yes if granted the MODIFY privilege.</p>
+                <p>If the schema restriction feature is enabled, then Yes if granted both the MODIFY privilege and the <code>ACCESS</code> privilege on the <code>SPLICE</code> schema.</p>
+            </td>
             <td colspan="2">Same as regular user</td>
         </tr>
         <tr>
@@ -174,25 +191,50 @@ The following table summarizes which permissions apply to and can be granted or 
     </thead>
     <tbody>
         <tr>
-            <td class="CodeFont">Update/Delete/Insert</td>
+            <td class="CodeFont">Access</td>
             <td>Yes</td>
             <td>No</td>
             <td colspan="2">Yes, if schema owner, or if granted the corresponding privilege.</td>
-            <td colspan="2">Yes, if granted the corresponding privilege</td>
+            <td colspan="2">Yes, if granted the <code>ACCESS</code> privilege</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">Update/Delete/Insert</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td colspan="2">
+                <p>Yes, if schema owner, or if granted the corresponding privilege.</p>
+                <p>NOTE: if the schema restriction feature is enabled, also need to be granted the <code>ACCESS</code> privilege on the schema.</p>
+            </td>
+            <td colspan="2">
+                <p>Yes, if granted the corresponding privilege.</p>
+                <p>NOTE: if the schema restriction feature is enabled, also need to be granted the <code>ACCESS</code> privilege on the schema.</p>
+            </td>
         </tr>
         <tr>
             <td class="CodeFont">Select</td>
             <td>Yes</td>
             <td>No</td>
-            <td colspan="2">Yes, if schema owner, or if granted the corresponding privilege.</td>
-            <td colspan="2">Yes, if granted the corresponding privilege</td>
+            <td colspan="2">
+                <p>Yes, if schema owner, or if granted the corresponding privilege.</p>
+                <p>NOTE: if the schema restriction feature is enabled, also need to be granted the <code>ACCESS</code> privilege on the schema.</p>
+            </td>
+            <td colspan="2">
+                <p>Yes, if granted the corresponding privilege.</p>
+                <p>NOTE: if the schema restriction feature is enabled, also need to be granted the <code>ACCESS</code> privilege on the schema.</p>
+            </td>
         </tr>
         <tr>
             <td class="CodeFont">Create/Drop/Alter table ...</td>
             <td>Yes</td>
             <td>No</td>
-            <td colspan="2">Yes, if schema owner, or if granted the corresponding privilege.</td>
-            <td colspan="2">Yes, if granted the corresponding privilege</td>
+            <td colspan="2">
+                <p>Yes,  if schema owner, or if granted the MODIFY privilege.</p>
+                <p>NOTE: if the schema restriction feature is enabled, also need to be granted the <code>ACCESS</code> privilege on the schema.</p>
+            </td>
+            <td colspan="2">
+                <p>Yes, if granted the MODIFY privilege.</p>
+                <p>NOTE: if the schema restriction feature is enabled, also need to be granted the <code>ACCESS</code> privilege on the schema.</p>
+            </td>
         </tr>
         <tr>
             <td class="CodeFont">Create/Drop schema</td>
