@@ -16,7 +16,7 @@ This section contains the reference documentation for the Splice Machine System 
 
 Since the system tables belong to the `SYS` schema, you must preface any inquiries involving these tables with the `SYS.` prefix.
 
-As of release 2.8 of Splice Machine, `ACCESS` privileges are not granted by defautl to objects belonging to the `SYS` schema. Your DBA must explicitly grant you access to system tables.
+As of release 2.8 of Splice Machine, `ACCESS` privileges are not granted by default to objects belonging to the `SYS` schema. Your DBA must explicitly grant you access to system tables.
 {: .noteIcon}
 
 You can use the Java `java.sql.DatabaseMetaData` class to learn more about these tables.
