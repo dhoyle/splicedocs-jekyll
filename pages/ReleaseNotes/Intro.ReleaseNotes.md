@@ -48,9 +48,10 @@ Our release notes are presented in these topics:
         </tr>
         <tr>
             <td>Schema Access Restrictions</td>
-            <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. This means that access to the <a href="sqlref_systables_intro.html">Splice Machine system tables</a> is limited, by default, to administrative users.</p>
+            <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the [Schema Restriction](tutorials_security_schemarestrict.html) topic.</p>
+                <p>This means that access to the <a href="sqlref_systables_intro.html">Splice Machine system tables</a> is limited, by default, to administrative users.</p>
                 <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
-                <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>.</p>
+                <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
             </td>
         </tr>
         <tr>
