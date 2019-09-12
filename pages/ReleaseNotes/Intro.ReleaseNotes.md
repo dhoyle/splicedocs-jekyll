@@ -41,15 +41,14 @@ Our release notes are presented in these topics:
     <tbody>
         <tr>
             <td class="BoldFont" rowspan="3">New Feature</td>
-            <td>Multiple OLAP Servers</td>
+            <td>Application Server Queues</td>
             <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
-                <p>Multiple OLAP servers are sometimes referred to as <em>multiple swim lanes;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p>
+                <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p>
             </td>
         </tr>
         <tr>
             <td>Schema Access Restrictions</td>
             <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the [Schema Restriction](tutorials_security_schemarestrict.html) topic.</p>
-                <p>This means that access to the <a href="sqlref_systables_intro.html">Splice Machine system tables</a> is limited, by default, to administrative users.</p>
                 <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
                 <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
             </td>
@@ -107,7 +106,7 @@ Our release notes are presented in these topics:
         </tr>
         <tr>
             <td>Cross Join</td>
-            <td>The implementation of <code>Cross Join</code> has been enhanced to improve performance.</td>
+            <td>The implementation of <code>Nested Loop Inner Join</code> has been enhanced to use Spark's DataFrame Cross Join implementation, resulting in performance improvement for applicable queries.</td>
         </tr>
         <tr>
             <td>Property Caching</td>
