@@ -74,7 +74,7 @@ interpreter, follow these steps:
 
 ### Run a Simple Command
 
-To "get your feet wet" with the command line interpeter, run a `SHOW VIEWS` command at the `splice>` prompt. This displays all of the system views defined in the `SYSVW` schema:
+To get started with the command line interpeter, run a `SHOW VIEWS` command at the `splice>` prompt. This displays all of the system views defined in the `SYSVW` schema:
 
 ```
 splice> SHOW VIEWS in SYSVW;

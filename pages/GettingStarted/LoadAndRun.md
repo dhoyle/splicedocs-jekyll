@@ -233,6 +233,7 @@ Cursor(n=5,rows=360,updateMode=READ_ONLY (1),engine=control)
 
 5 rows selected
 ```
+{: .Example}
 
 Query execution plans are one tool that Splice Machine offers to help you boost performance; for additional information about interpreting plans and other optimization techniques, see [Best Practices - Splice Machine Optimizer](bestpractices_optimizer_intro.html) topic.
 

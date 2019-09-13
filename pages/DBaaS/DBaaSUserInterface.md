@@ -18,7 +18,7 @@ into your database, query and manipulate your database, and create
 visual representations of your query results, as described here:
 
 <table>
-    <col />
+    <col width="20%" />
     <col />
     <thead>
         <tr>

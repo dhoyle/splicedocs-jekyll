@@ -23,7 +23,7 @@ these sections:
   the top-level sections in the Splice Machine documentation
   suite.
 
-## Splice Machine Layout   {#Navigation}
+## Documentation Layout   {#Navigation}
 
 Here's an image of the top portion of our documentation screen, which is
 called the *topbar*:
