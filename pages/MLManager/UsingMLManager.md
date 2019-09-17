@@ -94,7 +94,7 @@ This section walks you through creating and running an experiment with ML Manage
 * [The First Run](#runFirst)
 * [Trying a Different Model](#trydifferentmodel)
 
-The Splice ML Manager, along with mlFlow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the mlFlow user interface.
+The Splice ML Manager, along with MLflow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the MLflow user interface.
 
 ### Preparing Your Experiment  {#prepareExperiment}
 In this section, we'll prepare our first experiment, in these steps:

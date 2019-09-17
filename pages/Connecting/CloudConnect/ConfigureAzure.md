@@ -122,11 +122,15 @@ hadoop fs -Ddfs.adls.oauth2.access.token.provider.type=ClientCredential \
    -Ddfs.adls.oauth2.client.id=<clientID> \
    -Ddfs.adls.oauth2.credential="<clientSecret>" \
    -Ddfs.adls.oauth2.refresh.url=https://login.microsoftonline.com/<tenantID>/oauth2/token \
-   -Dfs.azure.account.key.mywasb.blob.core.windows.net="<accessKey>" \
+   -Dfs.azure.account.key.<STORAGE_ACCOUNT>.blob.core.windows.net="<accessKey>" \
    -cp adl://myadls1.azuredatalakestore.net/myData/* wasbs://myData@mywasb.blob.core.windows.net/
+CHANGE TO:    -cp adl://myadls1.azuredatalakestore.net/myData/* wasbs://myData@<STORAGE_ACCOUNT>.blob.core.windows.net/
 
 hadoop fs -Dfs.azure.account.key.mywasb.blob.core.windows.net="<accessKey>" \
    -ls wasbs://myData@mywasb.blob.core.windows.net/
+CHANGE TO: hadoop fs -Dfs.azure.account.key.<STORAGE_ACCOUNT>.blob.core.windows.net="<accessKey>" \
+   -ls wasbs://myData@<STORAGE_ACCOUNT>.blob.core.windows.net/
+
 ```
 {: .Example}
 
@@ -195,7 +199,7 @@ You can currently use ADLS2 with:
 
 * Hadoop 3.2+
 * Cloudera 6.1+
-* HortonWorks 3.1.x+
+* Hortonworks 3.1.x+
 
 The remainder of this section you how to configure ADLS2 storage for Splice Machine Access, in these subsections:
 

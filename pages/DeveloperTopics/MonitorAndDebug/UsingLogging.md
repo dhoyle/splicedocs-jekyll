@@ -23,8 +23,7 @@ database. This topic contains these sections:
 
 ## Using Logging  {#Using}
 
-Splice Machine uses the open source [Apache log4j Logging API][1]{:
-target="_blank"}, which allows you to associate a logger object with any
+Splice Machine uses the open source <a href="http://logging.apache.org/log4j/1.2/manual.html" target="_blank">Apache log4j Logging API</a>, which allows you to associate a logger object with any
 java class, among other features. Loggers can be set to capture
 different levels of information.
 
@@ -47,37 +46,8 @@ The remainder of this section shows you how to:
 
 ### Masking Sensitive Information  {#Filtering}
 
-You can configure _log4j_ to prevent sensitive information such as passwords and credit card information from being logged in log messages. To do so, you:
+{% include splice_snippets/logobfuscation.md %}
 
-* Use the `com.splicemachine.utils.logging.MaskPatternLayout` log4j layout pattern.
-* Specify a regular expression in `MaskPattern` that matches the part of log messages you want matched.
-*
-When logging with this layout, log4j will replace any text that matches the filter with this text:
-
-```
-_MASKED SENSITIVE INFO_
-```
-{: .Example}
-
-For example:
-```
-log4j.appender.spliceDerby.layout=com.splicemachine.utils.logging.MaskPatternLayoutlog4j.appender.spliceDerby.layout.ConversionPattern=%d{ISO8601} Thread[%t] %m%nlog4j.appender.spliceDerby.layout.MaskPattern=insert (?:.*) ([0-9]+),([0-9]+)
-```
-{: .Example}
-
-Given that layout, the following statement:
-
-```
-splice> INSERT INTO a VALUES myName, myPassword
-```
-{: .Example}
-
-will be logged as:
-
-```
-INSERT INTO a VALUES MASKED SENSITIVE INFO, MASKED SENSITIVE INFO
-```
-{: .Example}
 
 ### Manually Disabling Logging   {#Manually}
 
@@ -275,7 +245,3 @@ interacting with the Splice Machine logs:
 
 </div>
 </section>
-
-
-
-[1]: http://logging.apache.org/log4j/1.2/manual.html

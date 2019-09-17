@@ -856,7 +856,7 @@ online. Here are a few you might find valuable:
 
 
 [1]: https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/
-[2]: blogs.oracle.com/oraclemagazine/a-window-into-the-world-of-analytic-functions
+[2]: https://blogs.oracle.com/oraclemagazine/a-window-into-the-world-of-analytic-functions
 [3]: http://www.postgresql.org/docs/9.1/static/tutorial-window.html
 [4]: https://wiki.postgresql.org/wiki/SQL2008_windowing_queries
 [5]: http://en.wikipedia.org/wiki/Select_(SQL)

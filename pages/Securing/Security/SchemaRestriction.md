@@ -89,7 +89,7 @@ To modify the setting, change the value of the `splice.metadataRestrictionEnable
 You must restart HBase after changing this setting!
 {: .noteImportant}
 
-If you are changing this setting with Cloudera Manager, you need to make the same change in both of these configuration sections:
+If you are changing this setting with Cloudera Manager, you need to make the same change in <span class="important">both</span> of these configuration sections:
 
 * `HBase Service Advanced Configuration Snippet (Safety Valve) for hbase-site.xml`
 * `HBase Client Advanced Configuration Snippet (Safety Valve) for hbase-site.xml`

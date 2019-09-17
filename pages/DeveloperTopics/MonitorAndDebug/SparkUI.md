@@ -15,7 +15,7 @@ folder: DeveloperTopics/MonitorAndDebug
 This topic shows you how to access the Spark UI on your cluster, in these sections:
 
 * [Accessing the Spark UI on Cloudera](#cloudera)
-* [Accessing the Spark UI on HortonWorks Ambari](#ambari)
+* [Accessing the Spark UI on Hortonworks Ambari](#ambari)
 * [Accessing the Spark UI on MapR](#mapr)
 
 ## Accessing the Spark UI on Cloudera  {#cloudera}
@@ -44,7 +44,7 @@ Follow these steps to access the Spark UI from Cloudera Manager:
    <img src="images/sparkui4.png" class="indentedFull" />
 </div>
 
-## Accessing the Spark UI on HortonWorks Ambari  {#ambari}
+## Accessing the Spark UI on Hortonworks Ambari  {#ambari}
 
 Follow these steps to access the Spark UI from Ambari:
 

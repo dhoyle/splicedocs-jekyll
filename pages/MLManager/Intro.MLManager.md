@@ -51,12 +51,12 @@ A run is the execution of some data science code; each run can record different 
     <tr>
         <td class="ItalicFont">Metrics</td>
         <td>Map string values such as <code>F1</code> to double-precision numbers such as <code>0.85</code>.</td>
-        <td>Model output metrics, such as: *F1 score, AUC, Precision, Recall, R^2*.</td>
+        <td>Model output metrics, such as: <em>F1 score, AUC, Precision, Recall, R^2</em>.</td>
     </tr>
     <tr>
         <td class="ItalicFont">Parameters</td>
         <td>Map strings such as <code>classifier</code> to strings such as <code>DecisionTree</code>. </td>
-        <td>Model parameters, such as Num Trees, Preprocessing Steps, Regularization.</td>
+        <td>Model parameters, such as <em>Num Trees, Preprocessing Steps, Regularization</em>.</td>
     </tr>
     <tr>
         <td class="ItalicFont">Models</td>

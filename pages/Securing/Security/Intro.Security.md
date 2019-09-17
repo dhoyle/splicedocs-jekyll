@@ -15,11 +15,13 @@ folder: Securing/Security
 
 This section includes the following topics related to securing your Splice Machine database and connections, including securing your JDBC connections and authorizing permissions for users and roles in your database:
 
-* [Securing Connections with SSL/TLS](tutorials_security_ssltls.html)
-* [Accessing Splice Machine from Windows on a Kerberized Cluster](tutorials_security_kerberoswin.html)
 * [Authorizing Users and Roles](tutorials_security_authorization.html)
+* [Securing Connections with SSL/TLS](tutorials_security_ssltls.html)
+* [Schema Restriction](tutorials_security_schemarestrict.html)
 * [Summary of Permissions for Users and Roles](tutorials_security_permissions.html)
 * [Using Apache Ranger with Splice Machine](tutorials_security_usingranger.html)
+* [Accessing Splice Machine from Windows on a Kerberized Cluster](tutorials_security_kerberoswin.html)
+* [Securing Log Information](tutorials_security_loginfo.html)
 
 </div>
 </section>
