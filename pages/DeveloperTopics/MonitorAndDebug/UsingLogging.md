@@ -54,7 +54,10 @@ You can configure _log4j_ to prevent sensitive information such as passwords and
 *
 When logging with this layout, log4j will replace any text that matches the filter with this text:
 
-    _MASKED SENSITIVE INFO_
+```
+_MASKED SENSITIVE INFO_
+```
+{: .Example}
 
 For example:
 ```

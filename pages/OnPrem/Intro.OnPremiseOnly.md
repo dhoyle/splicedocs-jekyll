@@ -71,6 +71,10 @@ If you're using an earlier version, you'll find the documentation here:
     <col />
     <tbody>
         <tr>
+            <td>Version 2.7</td>
+            <td><a href="https://doc.splicemachine.com/2.7/index.html">Release 2.7 Documentation</a> (April 2018)</td>
+        </tr>
+        <tr>
             <td>Version 2.5</td>
             <td><a href="https://doc.splicemachine.com/2.5/index.html">Release 2.5 Documentation</a> (Feb 2017)</td>
         </tr>

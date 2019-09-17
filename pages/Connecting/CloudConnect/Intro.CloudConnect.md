@@ -1,5 +1,5 @@
 ---
-title: Accessing Data in the Cloude
+title: Accessing Data in the Cloud
 summary: Topics about accessing data in the Cloud from Splice Machine
 keywords: cloud, aws, azure
 toc: false

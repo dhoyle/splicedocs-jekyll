@@ -27,6 +27,7 @@ This section shows you how to access data that you have stored in the Cloud from
 
 * [Configuring S3 Buckets for Splice Machine Access](developers_cloudconnect_configures3.html)
 * [Uploading Data to an S3 Bucket](developers_cloudconnect_uploadtos3.html)
+* [Using Azure WASB, ADLS, and ADLS2 with Splice Machine](developers_cloudconnect_configureazure.html)
 
 ## Connecting Splice Machine with Business Intelligence Tools {#BITools}
 This section shows you how to connect specific Business Intelligence tools to your Splice Machine database, including:
@@ -39,12 +40,14 @@ This section shows you how to connect specific Business Intelligence tools to yo
 ## Connecting to Splice Machine with JDBC {#JDBC}
 This section introduces our JDBC driver and shows you how to connect to Splice Machine via JDBC with various programming languages, including:
 
-* [JDBC Access to Splice Machine with Kerberos](developers_connectjdbc_kerberos.html)
 * [Connecting with Java and JDBC](tutorials_connect_java.html)
 * [Connecting with JRuby and JDBC](tutorials_connect_jruby.html)
 * [Connecting with Jython and JDBC](tutorials_connect_jython.html)
+* [Connecting with Python and JDBC](tutorials_connectjdbc_python.html)
+* [Connecting with R and JDBC](tutorials_connectjdbc_r.html)
 * [Connecting with Scala and JDBC](tutorials_connect_scala.html)
 * [Connecting with AngularJS/NodeJS and JDBC](tutorials_connect_angular.html)
+* [JDBC Access to Splice Machine with Kerberos](developers_connectjdbc_kerberos.html)
 
 ## Connecting to Splice Machine with ODBC {#ODBC}
 This section introduces our ODBC driver and shows you how to connect to Splice Machine via ODBC with various programming languages, including:

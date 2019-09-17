@@ -19,8 +19,8 @@ This section introduces our ODBC Driver and shows you how to connect to Splice M
 * [Default Connection Parameters](#DefaultParams)
 * [Installing the Splice Machine ODBC Driver](tutorials_connect_odbcinstall.html)
 * [Configuring Kerberos for Windows](tutorials_security_kerberoswin.html)
-* [Connecting With C via ODBC](tutorials_connect_odbcc.html)
 * [Connecting With Python via ODBC](tutorials_connect_python.html)
+* [Connecting With C via ODBC](tutorials_connect_odbcc.html)
 
 ## The Splice Machine ODBC Driver   {#ODBCDriver}
 

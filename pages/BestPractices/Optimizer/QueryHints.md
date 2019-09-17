@@ -39,9 +39,19 @@ The following table summarizes the hint types available in Splice Machine:
     </thead>
     <tbody>
         <tr>
+            <td><a href="#Delete">Delete</a></td>
+            <td class="CodeFont">--splice-properties bulkDeleteDirectory='/path'</td>
+            <td>That you are deleting a large amount of data and want to bypass the normal write pipeline to speed up the deletion.</td>
+        </tr>
+        <tr>
             <td><a href="#Index">Index</a></td>
             <td class="CodeFont">--splice-properties index=my_index</td>
             <td>Which index to use or not use</td>
+        </tr>
+        <tr>
+            <td><a href="#Insert">Insert</a></td>
+            <td class="CodeFont">--splice-properties bulkImportDirectory='/path'</td>
+            <td>That you want to bypass the normal write pipeline to speed up the insertion of a large amount of data by using our bulk import technology.</td>
         </tr>
         <tr>
             <td><a href="#JoinOrder">Join Order</a></td>
@@ -64,16 +74,6 @@ The following table summarizes the hint types available in Splice Machine:
             <td><a href="#Spark">Spark</a></td>
             <td class="CodeFont">--splice-properties useSpark=true</td>
             <td>That you want a query to run (or not run) on Spark</td>
-        </tr>
-        <tr>
-            <td><a href="#Insert">Insert</a></td>
-            <td class="CodeFont">--splice-properties bulkImportDirectory='/path'</td>
-            <td>That you want to bypass the normal write pipeline to speed up the insertion of a large amount of data by using our bulk import technology.</td>
-        </tr>
-        <tr>
-            <td><a href="#Delete">Delete</a></td>
-            <td class="CodeFont">--splice-properties bulkDeleteDirectory='/path'</td>
-            <td>That you are deleting a large amount of data and want to bypass the normal write pipeline to speed up the deletion.</td>
         </tr>
     </tbody>
 </table>
@@ -143,12 +143,46 @@ Many of the examples in this section show usage of hints on the `splice>` comma
 
 This section provides specific information about how to use the different hint types:
 
+* [Delete Hints](#Delete)
 * [Index Hints](#Index)
+* [Insert Hints](#Insert)
 * [JoinOrder Hints](#JoinOrder)
 * [JoinStrategy Hints](#JoinStrategy)
 * [Spark Hints](#Spark)
-* [Insert Hints](#Insert)
-* [Delete Hints](#Delete)
+
+### Delete Hints   {#Delete}
+
+You can use the `bulkDeleteDirectory` hint to specify that you want to
+use our bulk delete feature to optimize the deletion of a large amount
+of data. Similar to our [bulk import
+feature](bestpractices_ingest_bulkimport.html), bulk delete generates HFiles,
+which allows us to bypass the Splice Machine write pipeline and HBase
+write path when performing the deletion. This can significantly speed up
+the deletion process.
+{: .indentLevel1}
+
+You need to specify the directory to which you want the temporary HFiles
+written; you must have write permissions on this directory to use this
+feature. If you're specifying an S3 bucket on AWS, please review our
+[Configuring an S3 Bucket for Splice Machine
+Access](developers_cloudconnect_configures3.html) tutorial before proceeding.
+{: .indentLevel1}
+
+```
+splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'
+> ;
+```
+{: .Example }
+
+
+We recommend performing a major compaction on your database after
+deleting a large amount of data; you should also be aware of our new
+[`SYSCS_UTIL.SET_PURGE_DELETED_ROWS`](sqlref_sysprocs_purgedeletedrows.html)
+system procedure, which you can call before a compaction to specify that
+you want the data physically (not just logically) deleted during
+compaction.
+{: .noteNote}
+
 
 
 ### Index Hints   {#Index}
@@ -212,6 +246,43 @@ SELECT * FROM
 WHERE...
 ```
 {: .Example }
+
+### Insert Hints  {#Insert}
+You can add a set of hints to an `INSERT` statement that tell the database to use bulk import technology to insert a set of query results into a table.
+
+To understand how bulk import works, please review the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic in our *Best Practices Guide.*
+{: .noteIcon}
+
+You need to combine two hints together for bulk insertion, and can add a third hint in your `INSERT` statement:
+
+* The `bulkImportDirectory` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to specify where to store the temporary HFiles used for the bulk import.
+* The `useSpark=true` hint tells Splice Machine to use the Spark engine for this insert. This is __required__ for bulk HFile inserts.
+* The optional `skipSampling` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to tell the bulk insert to compute the splits automatically or that the splits have been supplied manually.
+
+Here's a simple example:
+
+```
+DROP TABLE IF EXISTS myUserTbl;
+CREATE TABLE myUserTbl AS SELECT
+    user_id,
+    report_date,
+    type,
+    region,
+    country,
+    access,
+    birth_year,
+    gender,
+    product,
+    zipcode,
+    licenseID
+FROM licensedUserInfo
+WITH NO DATA;
+
+INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false
+SELECT * FROM licensedUserInfo;
+```
+{: .Example }
+
 
 ### JoinOrder Hints   {#JoinOrder}
 
@@ -369,77 +440,6 @@ splice> SELECT COUNT(*) FROM your_table --splice-properties useSpark=false
 The Splice Machine optimizer uses its estimated cost for a query to
 decide whether to use Spark. If your statistics are out of date, the
 optimizer may end up choosing the wrong engine for the query.
-{: .noteNote}
-
-
-### Insert Hints  {#Insert}
-You can add a set of hints to an `INSERT` statement that tell the database to use bulk import technology to insert a set of query results into a table.
-
-To understand how bulk import works, please review the [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic in our *Best Practices Guide.*
-{: .noteIcon}
-
-You need to combine two hints together for bulk insertion, and can add a third hint in your `INSERT` statement:
-
-* The `bulkImportDirectory` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to specify where to store the temporary HFiles used for the bulk import.
-* The `useSpark=true` hint tells Splice Machine to use the Spark engine for this insert. This is __required__ for bulk HFile inserts.
-* The optional `skipSampling` hint is used just as it is with the `BULK_HFILE_IMPORT` procedure: to tell the bulk insert to compute the splits automatically or that the splits have been supplied manually.
-
-Here's a simple example:
-
-```
-DROP TABLE IF EXISTS myUserTbl;
-CREATE TABLE myUserTbl AS SELECT
-    user_id,
-    report_date,
-    type,
-    region,
-    country,
-    access,
-    birth_year,
-    gender,
-    product,
-    zipcode,
-    licenseID
-FROM licensedUserInfo
-WITH NO DATA;
-
-INSERT INTO myUserTbl --splice-properties bulkImportDirectory='/tmp', useSpark=true, skipSampling=false
-SELECT * FROM licensedUserInfo;
-```
-{: .Example }
-
-
-### Delete Hints   {#Delete}
-
-You can use the `bulkDeleteDirectory` hint to specify that you want to
-use our bulk delete feature to optimize the deletion of a large amount
-of data. Similar to our [bulk import
-feature](bestpractices_ingest_bulkimport.html), bulk delete generates HFiles,
-which allows us to bypass the Splice Machine write pipeline and HBase
-write path when performing the deletion. This can significantly speed up
-the deletion process.
-{: .indentLevel1}
-
-You need to specify the directory to which you want the temporary HFiles
-written; you must have write permissions on this directory to use this
-feature. If you're specifying an S3 bucket on AWS, please review our
-[Configuring an S3 Bucket for Splice Machine
-Access](developers_cloudconnect_configures3.html) tutorial before proceeding.
-{: .indentLevel1}
-
-```
-splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'
-> ;
-```
-{: .Example }
-
-
-We recommend performing a major compaction on your database after
-deleting a large amount of data; you should also be aware of our new
-[`SYSCS_UTIL.SET_PURGE_DELETED_ROWS`](sqlref_sysprocs_purgedeletedrows.html)
-system procedure, which you can call before a compaction to specify that
-you want the data physically (not just logically) deleted during
-compaction.
 {: .noteNote}
 
 

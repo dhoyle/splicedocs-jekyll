@@ -8,7 +8,6 @@ sidebar: home_sidebar
 permalink: releasenotes_onprem.html
 folder: ReleaseNotes
 ---
-{% include splicevars.html %}
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Release Notes for the Splice Machine On-Premise Product
@@ -19,7 +18,7 @@ This topic includes release notes that are specific to the Splice Machine *On-Pr
 * [Enterprise-only Features](#enterprise-only-features)
 * [Running the Standalone Version](#running-the-standalone-version)
 
-Most of the information about changes in the Splice Machine database that underlies this product are found in the individual release note pages for each major and patch release of the database.
+Most of the information about changes in Splice Machine relate to our database, which is part of both our on-premise and cloud-based products. Most of the release information of note is found in the [database release notes](releasenotes_intro.html).
 
 ## After Updating
 
@@ -33,6 +32,7 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
 
 ## Supported Platforms {#supported-platforms}
 The supported platforms for release {{site.build_version}} are:
+{% include splicevars.html %}
 
 * {{splvar_requirements_CDH-Versions}}
 * {{splvar_requirements_HDP-Versions}}

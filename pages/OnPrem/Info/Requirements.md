@@ -64,7 +64,7 @@ your cluster for Splice Machine __Release {{site.version_display}}__:
         </tr>
         <tr>
             <td class="BoldFont">Software Tools and System Settings</td>
-            <td>The <span class="ItalicFont">[Linux Configuration](#LinuxConf)</span> section below summarizes the software tools and system settings required for your cluster machines.</td>
+            <td>The <span class="ItalicFont"><a href="#LinuxReq">Linux Configuration</a></span> section below summarizes the software tools and system settings required for your cluster machines.</td>
         </tr>
     </tbody>
 </table>
@@ -134,32 +134,24 @@ for Splice Machine __Release {{site.build_version}}__ on your platform:
     </thead>
     <tbody>
         <tr>
-            <td>{{splvar_requirements_CDH-Versions}}
-            </td>
+            <td>{{splvar_requirements_CDH-Versions}}</td>
             <td>
                 <p class="noSpaceAbove">{{splvar_requirements_CDH-OS}}
                 </p>
             </td>
-            <td>{{splvar_requirements_CDH-Hadoop}}
-            </td>
-            <td>{{splvar_requirements_CDH-HBase}}
-            </td>
-            <td>{{splvar_requirements_CDH-ZooKeeper}}
-            </td>
+            <td>{{splvar_requirements_CDH-Hadoop}}</td>
+            <td>{{splvar_requirements_CDH-HBase}}</td>
+            <td>{{splvar_requirements_CDH-ZooKeeper}}</td>
         </tr>
         <tr>
-            <td>{{splvar_requirements_HDP-Versions}}
-            </td>
+            <td>{{splvar_requirements_HDP-Versions}}</td>
             <td>
                 <p class="noSpaceAbove">{{splvar_requirements_HDP-OS}}
                 </p>
             </td>
-            <td>{{splvar_requirements_HDP-Hadoop}}
-            </td>
-            <td>{{splvar_requirements_HDP-HBase}}
-            </td>
-            <td>{{splvar_requirements_HDP-ZooKeeper}}
-            </td>
+            <td>{{splvar_requirements_HDP-Hadoop}}</td>
+            <td>{{splvar_requirements_HDP-HBase}}</td>
+            <td>{{splvar_requirements_HDP-ZooKeeper}}</td>
         </tr>
         <tr>
             <td>{{splvar_requirements_MapR-Versions}}
@@ -168,12 +160,9 @@ for Splice Machine __Release {{site.build_version}}__ on your platform:
                 <p class="noSpaceAbove">{{splvar_requirements_MapR-OS}}
                 </p>
             </td>
-            <td>{{splvar_requirements_MapR-Hadoop}}
-            </td>
-            <td>{{splvar_requirements_MapR-HBase}}
-            </td>
-            <td>{{splvar_requirements_MapR-ZooKeeper}}
-            </td>
+            <td>{{splvar_requirements_MapR-Hadoop}}</td>
+            <td>{{splvar_requirements_MapR-HBase}}</td>
+            <td>{{splvar_requirements_MapR-ZooKeeper}}</td>
         </tr>
     </tbody>
 </table>

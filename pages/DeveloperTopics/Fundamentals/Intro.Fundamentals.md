@@ -40,6 +40,12 @@ Machine developers:
             </td>
             <td>Describes our implementation of foreign keys and how our implementation ensures referential integrity.</td>
         </tr>
+developers_fundamentals_sparklibs.html
+        <tr>
+            <td><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a>
+            </td>
+            <td>Describes how to use Spark Libraries with Splice Machine.</td>
+        </tr>
         <tr>
             <td><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a>
             </td>

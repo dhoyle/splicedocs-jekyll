@@ -27,13 +27,18 @@ This section walks you through creating a sample function named
 `word_limiter` that limits the number of words in a string; for example,
 given this sentence:
 
-> <span class="AppCommand">Today is a wonderful day and I am looking
-> forward to going to the beach.</span>
+```
+Today is a wonderful day and I am looking forward to going to the beach.
+```
+{: .AppCommand}
 
 If you tell `word_limiter` to return the first five words in the
 sentence, the returned string would be:
 
-> <span class="AppCommand">Today is a wonderful day</span>
+```
+Today is a wonderful day
+```
+{: .AppCommand}
 
 Follow these steps to define and use the `word_limiter` function:
 

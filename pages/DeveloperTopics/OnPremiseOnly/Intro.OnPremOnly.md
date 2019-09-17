@@ -25,29 +25,29 @@ This section contains the following fundamental developer topics that are only r
     </thead>
     <tbody>
         <tr>
-            <td><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a>
-            </td>
-            <td>How to use Splice Machine with HCatalog.</td>
-        </tr>
-        <tr>
             <td><a href="developers_fundamentals_haproxy.html">Using HAProxy with Splice Machine</a>
             </td>
             <td>How to configure HAproxy for use with Splice Machine.</td>
         </tr>
         <tr>
-            <td><a href="developers_fundamentals_mapreduce.html">Using MapReduce</a>
+            <td><a href="developers_fundamentals_hcatalog.html">Using HCatalog</a>
             </td>
-            <td>The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.</td>
+            <td>How to use Splice Machine with HCatalog.</td>
         </tr>
         <tr>
-            <td><a href="developers_fundamentals_hbase.html">Working with HBase</a>
+            <td><a href="developers_fundamentals_mapreduce.html">Using the MapReduce API</a>
             </td>
-            <td>Working in HBase with Splice Machine.</td>
+            <td>The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.</td>
         </tr>
         <tr>
             <td><a href="developers_fundamentals_zeppelin.html">Using Zeppelin</a>
             </td>
             <td>Using Apache Zeppelin with your on-premise database.</td>
+        </tr>
+        <tr>
+            <td><a href="developers_fundamentals_hbase.html">Working with HBase</a>
+            </td>
+            <td>Working in HBase with Splice Machine.</td>
         </tr>
     </tbody>
 </table>

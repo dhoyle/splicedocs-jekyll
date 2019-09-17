@@ -25,9 +25,8 @@ This section contains the following topics to help you learn about monitoring an
     </thead>
     <tbody>
         <tr>
-            <td><a href="developers_tuning_logging.html">Logging</a>
-            </td>
-            <td>The Splice Machine logging facility.</td>
+            <td><a href="developers_tuning_sparkui.html">Using the Spark Web UI</a></td>
+            <td>Shows you how to access the Spark UI on your cluster.</td>
         </tr>
         <tr>
             <td><a href="developers_tuning_debugging.html">Debugging</a>
@@ -35,13 +34,14 @@ This section contains the following topics to help you learn about monitoring an
             <td>Describes the parameter values to use when using debugger software with Splice Machine.</td>
         </tr>
         <tr>
+            <td><a href="developers_tuning_logging.html">Logging</a>
+            </td>
+            <td>The Splice Machine logging facility.</td>
+        </tr>
+        <tr>
             <td><a href="developers_tuning_snapshots.html">Using Snapshots</a></td>
             <td>How to use the Splice Machine snapshot feature to
             create a restorable snapshot of a table or schema</td>
-        </tr>
-        <tr>
-            <td><a href="developers_tuning_sparkui.html">Using the Spark Web UI</a></td>
-            <td>Shows you how to access the Spark UI on your cluster.</td>
         </tr>
     </tbody>
 </table>
