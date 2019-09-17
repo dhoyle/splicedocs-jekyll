@@ -19,9 +19,9 @@ Machine Database. It contains how-to topics and tutorials, and is divided into t
 * [Database Fundamentals](#Fundamentals)
 * [External Data](#ExtData)
 * [Functions and Stored Procedures](#StoredProcs)
+* [Monitoring and Debugging](#Monitor)
 * [On-Premise-DB Developer Topics](#OnPremOnly)
 * [Splice\*Plus (PL/SQL)](#SplicePlus)
-* [Monitoring and Debugging](#Monitor)
 * [Streaming Data](#Streaming)
 * [Using the Database Console](#Console)
 
@@ -51,6 +51,17 @@ This section contains information about creating and using stored procedures and
 * [Storing/Updating Functions and Procs](developers_fcnsandprocs_storing.html)
 * [Stored Procedure Examples](developers_fcnsandprocs_examples.html)
 
+## Monitoring and Debugging {#Monitor}
+This section contains information about monitoring and debugging your queries:
+
+* [Logging](developers_tuning_logging.html)
+* [Debugging](developers_tuning_debugging.html)
+* [Using Snapshots](developers_tuning_snapshots.html)
+* [Using the Spark Web User Interface](developers_tuning_sparkui.html)
+
+This section of the documentation previously contained information about using statistics, explain plans, and optimizer hints to examine and improve the performance of your queries. An enhanced version of that information is now found in the [*Best Practices - Optimization*](bestpractices_optimizer_intro.html) section of this documentation.
+{: .noteNote}
+
 ## On-Premise-DB Developer Topics {#OnPremOnly}
 This section contains fundamental developer topics that apply only to the Splice Machine On-Premise Database product:
 
@@ -64,17 +75,6 @@ This section contains fundamental developer topics that apply only to the Splice
 * [Introduction](developers_spliceplus_intro.html)
 * [Using Splice*Plus](developers_spliceplus_using.html)
 * [The Splice*Plus Language](developers_spliceplus_lang.html)
-
-## Monitoring and Debugging {#Monitor}
-This section contains information about monitoring and debugging your queries:
-
-* [Logging](developers_tuning_logging.html)
-* [Debugging](developers_tuning_debugging.html)
-* [Using Snapshots](developers_tuning_snapshots.html)
-* [Using the Spark Web User Interface](developers_tuning_sparkui.html)
-
-This section of the documentation previously contained information about using statistics, explain plans, and optimizer hints to examine and improve the performance of your queries. An enhanced version of that information is now found in the [*Best Practices - Optimization*](bestpractices_optimizer_intro.html) section of this documentation.
-{: .noteNote}
 
 ## Streaming Data {#Streaming}
 This section contains topics that show you how to stream data into and out of Splice Machine:
