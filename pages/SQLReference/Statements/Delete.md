@@ -70,8 +70,7 @@ You simply add a
 [`splice-properties`](bestpractices_optimizer_hints.html) hint
 that specifies where to generate the HFiles. If you're specifying an S3
 bucket on AWS, please review our [Configuring an S3 Bucket for Splice
-Machine Access](developers_cloudconnect_configures3.html) tutorial before
-proceeding.
+Machine Access](developers_cloudconnect_configures3.html) topic; if you're specifying Azure Storage, please see our [Using Azure Storage](developers_cloudconnect_configureaszure.html) topic.
 
 <div class="preWrapperWide" markdown="1">
     splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'

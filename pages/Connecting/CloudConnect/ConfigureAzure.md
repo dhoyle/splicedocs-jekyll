@@ -50,7 +50,7 @@ This section shows you how to configure WASB and ADLS storage for Splice Machine
     For example:
 
     ```
-    name: myadls1
+    name: myDataLake
     resource group: myResourceGroup
     ```
     {: .Example}
@@ -94,7 +94,7 @@ This section shows you how to configure WASB and ADLS storage for Splice Machine
        -Ddfs.adls.oauth2.client.id=<clientID> \
        -Ddfs.adls.oauth2.credential="<clientSecret>" \
        -Ddfs.adls.oauth2.refresh.url=https://login.microsoftonline.com/<tenantID>/oauth2/token \
-       -ls adl://myadls1.azuredatalakestore.net/myData
+       -ls adl://<datalakeName>.azuredatalakestore.net/<containerName>
     ```
     {: .Example}
 
@@ -104,10 +104,10 @@ This section shows you how to configure WASB and ADLS storage for Splice Machine
     Follow the instructions on this page: <a href="https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account" target="_blank">https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account</a>.
 
     ```
-    Resource group: myResourceGroup
-    Storage account name: mywasb
+    Resource group: <resourceGroup>
+    Storage account name: <storageAccount>
     Get access key: <accessKey>
-    Create container: myData
+    Create container: <containerName>
     ```
     {: .Example}
 </div>
@@ -122,14 +122,14 @@ hadoop fs -Ddfs.adls.oauth2.access.token.provider.type=ClientCredential \
    -Ddfs.adls.oauth2.client.id=<clientID> \
    -Ddfs.adls.oauth2.credential="<clientSecret>" \
    -Ddfs.adls.oauth2.refresh.url=https://login.microsoftonline.com/<tenantID>/oauth2/token \
-   -Dfs.azure.account.key.<STORAGE_ACCOUNT>.blob.core.windows.net="<accessKey>" \
-   -cp adl://myadls1.azuredatalakestore.net/myData/* wasbs://myData@mywasb.blob.core.windows.net/
-CHANGE TO:    -cp adl://myadls1.azuredatalakestore.net/myData/* wasbs://myData@<STORAGE_ACCOUNT>.blob.core.windows.net/
+   -Dfs.azure.account.key.<storageAccount>.blob.core.windows.net="<accessKey>" \
+   -cp adl://<datalakeName>.azuredatalakestore.net/<containerName>/* wasbs://<containerName>@<storageAccount>.blob.core.windows.net/
+CHANGE TO:    -cp adl://<datalakeName>.azuredatalakestore.net/<containerName>/* wasbs://<containerName>@<storageAccount>.blob.core.windows.net/
 
-hadoop fs -Dfs.azure.account.key.mywasb.blob.core.windows.net="<accessKey>" \
-   -ls wasbs://myData@mywasb.blob.core.windows.net/
-CHANGE TO: hadoop fs -Dfs.azure.account.key.<STORAGE_ACCOUNT>.blob.core.windows.net="<accessKey>" \
-   -ls wasbs://myData@<STORAGE_ACCOUNT>.blob.core.windows.net/
+hadoop fs -Dfs.azure.account.key.<storageAccount>.blob.core.windows.net="<accessKey>" \
+   -ls wasbs://<containerName>@<storageAccount>.blob.core.windows.net/
+CHANGE TO: hadoop fs -Dfs.azure.account.key.<storageAccount>.blob.core.windows.net="<accessKey>" \
+   -ls wasbs://<containerName>@<storageAccount>.blob.core.windows.net/
 
 ```
 {: .Example}
@@ -172,7 +172,7 @@ Add the following values:
             <td class="CodeFont">https://login.microsoftonline.com/&lt;tenantID&gt;/oauth2/token</td>
         </tr>
         <tr>
-            <td class="CodeFont">fs.azure.account.key.mywasb.blob.core.windows.net</td>
+            <td class="CodeFont">fs.azure.account.key.&lt;storageAccount&gt;.blob.core.windows.net</td>
             <td class="CodeFont">&lt;accessKey&gt;</td>
         </tr>
     </tbody>
@@ -181,12 +181,12 @@ Add the following values:
 Then, you can import data with statements like the following:
 
 ```
-splice> call SYSCS_UTIL.IMPORT_DATA('mySchema', 'myTable1', null, 'wasbs://myData@mywasb.blob.core.windows.net/myTbl.tbl', '|', null, null, null, null, 0, '/BAD', true, null);
+splice> call SYSCS_UTIL.IMPORT_DATA('mySchema', 'myTable1', null, 'wasbs://<containerName>@<storageAccount>.blob.core.windows.net/myTbl.tbl', '|', null, null, null, null, 0, '/BAD', true, null);
 ```
 {: .Example}
 
 ```
-splice> call SYSCS_UTIL.IMPORT_DATA('mySchema', 'myTable2', null, 'adl://myadls1.azuredatalakestore.net/myData/myTbl.tbl', '|', null, null, null, null, 0, '/BAD', true, null);
+splice> call SYSCS_UTIL.IMPORT_DATA('mySchema', 'myTable2', null, 'adl://<datalakeName>.azuredatalakestore.net/<containerName>/myTbl.tbl', '|', null, null, null, null, 0, '/BAD', true, null);
 ```
 {: .Example}
 
@@ -289,7 +289,7 @@ Add this value:
 You can then import data with a statement like the following:
 
 ```
-splice> call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMER', null, 'abfs://myData@myadls2.dfs.core.windows.net/myTable.tbl', '|', null, null, null, null, 0, '/BAD', true, null);
+splice> call SYSCS_UTIL.IMPORT_DATA('SPLICE', 'CUSTOMER', null, 'abfs://<containerName>@myadls2.dfs.core.windows.net/myTable.tbl', '|', null, null, null, null, 0, '/BAD', true, null);
 ```
 {: .Example}
 

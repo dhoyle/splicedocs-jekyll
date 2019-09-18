@@ -83,8 +83,8 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">fileName</td>
             <td><p>The name of the file in which you have specified the split keys.</p>
-                <p>On a cluster, this file <code>MUST be on S3, HDFS (or
-            MapR-FS)</code>. If you're using our *Database Service* product, this file must be on S3.</p>
+                <p>On a cluster, this file <strong>MUST be on S3, HDFS (or
+            MapR-FS)</strong>. If you're using our *Database Service* product, this file must be on Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">/data/mydata/mytable.csv</td>
         </tr>
@@ -128,7 +128,7 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, it must be on S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on Azure Storage, S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, it must be on Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>

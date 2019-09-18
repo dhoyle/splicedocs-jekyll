@@ -311,16 +311,13 @@ results, all without writing any code. We've provided a number of useful
 Zeppelin tutorials, including one that walks you through setting up a
 schema, creating tables, loading data, and then running queries.
 
-Note that your data must be in an AWS S3 bucket before you can import it
+Note that your data must be in Azure storage or an AWS S3 bucket before you can import it
 into your Splice Machine database:
 
-* If you don't yet know how to create an S3 bucket or upload data to a
-  bucket, please check our [Uploading Data to an S3
-  Bucket](developers_cloudconnect_uploadtos3.html) tutorial.
-* You may need to configure IAM permissions to allow Splice Machine to
-  access your bucket; see our [Configuring an S3 Bucket for Splice
-  Machine Access](developers_cloudconnect_configures3.html) tutorial.
-* Once you've got your data in a bucket, you can follow our [Ingestion Best Practices](bestpractices_ingest_overview.html) topic to load that data into
+* For information about uploading data to S3, please check our [Uploading Data to an S3
+  Bucket](developers_cloudconnect_uploadtos3.html) tutorial. You may need to configure your Amazon IAM permissions to allow Splice Machine to access your bucket; see our [Configuring an S3 Bucket for Splice Machine Access](developers_cloudconnect_configures3.html) tutorial.
+* To configure Azure Storage for use with Splice Machine, see our [Using Azure Storage](developers_cloudconnect_configureazure.html) tutorial.
+* Once you've got your data uploaded, you can follow our [Ingestion Best Practices](bestpractices_ingest_overview.html) topic to load that data into
   Splice Machine.
 
 </div>

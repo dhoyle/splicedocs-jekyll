@@ -54,9 +54,9 @@ The following table summarizes these parameters. Each parameter name links to it
         <tr>
             <td class="CodeFont"><a href="#fileOrDirectoryName">fileOrDirectoryName</a></td>
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
-            MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
-            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> topic for information about accessing data on S3.</p>
+            <p>On a cluster, the files to be imported <strong>MUST be in Azure Storage, S3, HDFS (or
+            MapR-FS)</strong>. If you're using our Database Service product, you can import files from S3 or Azure Storage.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> or <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> topics for information.</p>
             </td>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>
@@ -117,7 +117,7 @@ The following table summarizes these parameters. Each parameter name links to it
         <tr>
             <td class="CodeFont"><a href="#badRecordDirectory">badRecordDirectory</a></td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be in Azure Storage, S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
@@ -205,9 +205,9 @@ The `fileOrDirectoryName` (or `fileName`) parameter is a string that specifies t
 this is a directory, all of the files in that directory are imported.
 
 <div class="noteNote" markdown="1">
-On a cluster, the files to be imported **MUST be on S3, HDFS (or
+On a cluster, the files to be imported **MUST be on Azure Storage, S3, HDFS (or
 MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
-our Database Service product, files can only be imported from S3. The files must also be readable by the `hbase` user.
+our Database Service product, files can only be imported from Azure Storage or S3. The files must also be readable by the `hbase` user.
 </div>
 
 **Example:** <span class="Example">`data/mydata/mytable.csv`</span>
