@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_FLUSH_TABLE
 
-The `SYSCS_UTIL.SYSCS_FLUSH_TABLE` system procedure performs a major flush on a table.
+The `SYSCS_UTIL.SYSCS_FLUSH_TABLE` system procedure flushes a table.
 
 ## Syntax
 
