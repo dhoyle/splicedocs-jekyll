@@ -76,6 +76,18 @@ splice.olap_server.queue.spliceQueue2=YarnQueue2
 ```
 {: .Example}
 
+You can also specify a dedicated queue to use for compaction jobs by setting the following property value to `true` (the default value is `false`):
+```
+splice.olap.server.isolated.compaction=true
+```
+{: .Example}
+
+You can also configure the name of the dedicated compaction queue with the following property:
+```
+splice.olap.server.isolated.compaction.queue_name=myCompactionQueue
+```
+{: .Example}
+
 ### About the Default Queue
 
 YARN defines a `default` queue, which handles jobs that are not assigned to a specific queue.
@@ -89,6 +101,67 @@ splice.olap_server.queue.default=someYarnQueue
 
 If you don't map a Splice Machine queue to a YARN queue, that Splice Machine queue will be mapped to the YARN `default` queue.
 {: .noteIcon}
+
+### OLAP Queue Properties Summary
+
+The following table summarizes the property values you can use to configure your OLAP servers.
+
+<table>
+    <col width="65%"/>
+    <col />
+    <thead>
+        <tr>
+            <th>Property</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><p><span class="CodeFont">splice.olap_server.isolated.roles</span></p>
+                <p>Example:</p>
+                <pre class="Example">splice.olap_server.isolated.roles=ROLE1=spliceQueue1,ROLE2=spliceQueue2,ROLE3=spliceQueue1</pre>
+            </td>
+            <td><p>A string value that specifies which Splice Machine queue to use for each role. You can specify multiple role/queue pairs, as shown in the example.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p><span class="CodeFont">splice.olap_server.queue.</span><span class="HighlightedCode">&lt;queueName&gt;</span></p>
+                <p>Example:</p>
+                <pre class="Example">splice.olap_server.queue.spliceQueue1=YarnQueue1</pre>
+            </td>
+            <td><p>A string value that maps the Splice Machine queue name to a YARN queue name.</p>
+                <p><em>Default value:</em> the default YARN queue.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p><span class="CodeFont">splice.olap_server.queue.default</span></p>
+                <p>Example:</p>
+                <pre class="Example">splice.olap_server.queue.default=myDefaultYarnQueue</pre>
+            </td>
+            <td><p>A string value that specifies the name of the YARN queue to use for jobs that are not assigned to a specific queue.</p>
+                <p><em>Default value:</em> the default YARN queue.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p><span class="CodeFont">splice.olap_server.isolated.compaction</span></p>
+                <p>Example:</p>
+                <pre class="Example">splice.olap_server.isolated.compaction=true</pre>
+            </td>
+            <td><p>A Boolean value that specifies whether a dedicated compaction queue should be used.</p>
+                <p><em>Default value:</em> <code>false</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><p><span class="CodeFont">splice.olap_server.isolated.compaction.queue_name</span></p>
+                <p>Example:</p>
+                <pre class="Example">splice.olap_server.isolated.compaction.queue_name=myCompactionQueue</pre>
+            </td>
+            <td><p>A string value that names the dedicated compaction queue.</p>
+                <p><em>Default value:</em> <code>compaction</code>.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 
 ## Setting the OLAP Queue Session Property
