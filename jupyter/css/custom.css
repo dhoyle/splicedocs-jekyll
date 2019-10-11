@@ -1,94 +1,5 @@
 
-rendered_html.body {
-	margin: 0;
-	color: #4a4f54;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1.1em;
-	line-height: 1.4;
-	-webkit-font-smoothing: antialiased;
-}
-
-
-div.noteIcon {
-	background-color: #F6F6F8;
-	background-repeat: no-repeat;
-	background-image: url("https://doc.splicemachine.com/zeppelin/images/zepNoteIcon.png");
-	color: #4a4f54;
-	margin: 20px 60px 20px 60px;
-	padding: 5px 10px 5px 48px;
-	font-weight: normal;
-	z-index: -1;
-	border: 2px solid #d6dbe0;
-	border-radius: 12px;
-	max-width: 75%;
-	min-height: 48px;
-}
-div.noteIcon:before {
-	content: "";
-	color: #F39939;
-	font-weight: 600;
-}
-
-div.noteImportant,
-div.noteQuestion,
-div.noteHint {
-	background-color: #FFFFFF;
-	color: #4a4f54;
-	margin: 20px 60px 20px 60px;
-	padding: 5px 10px 5px 48px;
-	font-weight: normal;
-	z-index: -1;
-	border: none;
-	max-width: 75%;
-}
-
-div.noteImportant:before {
-	content: "Important: ";
-	color: red;
-	font-weight: bold;
-	margin-left: -90px;
-}
-
-div.noteImportant {
-	margin-left: 120px;
-}
-
-div.noteQuestion:before {
-	content: "Question: ";
-	font-weight: bold;
-	color: #174e89;
-}
-
-
-div.noteHint:before {
-	content: "Hint: ";
-	font-weight: bold;
-	color: #174e89;
-}
-
-
-div.noteNote,
-div.notePlain {
-	background-color: #F6F6F8;
-	background-repeat: no-repeat;
-	background-image: none;
-	color: #4a4f54;
-	margin: 20px 20px 20px 32px;
-	padding: 5px 10px 5px 10px;
-	font-weight: normal;
-	z-index: -1;
-	border: 2px solid #d6dbe0;
-	border-radius: 12px;
-	max-width: 75%;
-	min-height: 0;
-}
-div.noteNote:before {
-	content: "NOTE: ";
-	color: #F39939;
-	font-weight: 600;
-}
-
-h1, h2, h3, h4, h5
+.rendered_html h1, .rendered_html h2, .rendered_html h3, .rendered_html h4, .rendered_html h5
 {
 	line-height: 105%;
 	font-weight: 600;
@@ -98,7 +9,7 @@ h1, h2, h3, h4, h5
 }
 
 
-h1
+.rendered_html h1
 {
 	font-size: 1.7em;
 	margin-top: 0px;
@@ -107,21 +18,21 @@ h1
 	color: #f7a800;
 }
 
-h2
+.rendered_html h2
 {
 	font-size: 1.5em;
 	margin-top: 50px;
 	color: #3390db;
 }
 
-h3
+.rendered_html h3
 {
 	font-size: 1.3em;
 	margin-top: 40px;
 	color: #f7a800;
 }
 
-h4
+.rendered_html h4
 {
 	font-size: 1.2em;
 	font-style: italic;
@@ -129,7 +40,7 @@ h4
 	color: #174e89;
 }
 
-h5
+.rendered_html h5
 {
 	font-size: 1.2em;
 	font-weight: bold;
@@ -137,7 +48,7 @@ h5
 	color: #606060;
 }
 
-blockquote
+.rendered_html blockquote
 {
 	margin-left: 40px;
 	font-family: inherit;
@@ -146,44 +57,49 @@ blockquote
 	color: inherit;
 }
 
-img.splice {
+.rendered_html img.splice {
 	margin: 20px 0 20px 100px;
 }
 
-img.fitwidth {
+.rendered_html img.fitwidth {
 	margin: 20px 20px 20px 20px;
 	max-width: 90%;
 }
 
-img.fithalfwidth {
+.rendered_html img.fithalfwidth {
 	margin: 20px 20px 20px 20px;
 	max-width: 50%;
 }
 
-img.fit3qtrwidth {
+.rendered_html img.fit3qtrwidth {
 	margin: 20px 20px 20px 20px;
 	max-width: 75%;
 
 }
 
-img.inline {
+.rendered_html img.inline {
 	margin: 0;
 	display: inline;
 	width: 20px;
 }
 
-img.small {
+.rendered_html img.small {
 	margin: 20px 0 20px 100px;
 	width: 300px;
 }
 
-img.tiny {
+.rendered_html img.tiny {
 	margin: 20px 0 20px 100px;
 	max-width: 200px;
 	max-height: 50px;
 }
 
-p.noteIcon {
+.rendered_html p { font-size:1.1.em;
+	color: #4a4f54;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.rendered_html p.noteIcon {
 	background-color: #F6F6F8;
 	background-repeat: no-repeat;
 	background-image: url("https://doc.splicemachine.com/zeppelin/images/zepNoteIcon.png");
@@ -198,15 +114,15 @@ p.noteIcon {
 	min-height: 48px;
 }
 
-p.noteIcon:before {
+.rendered_html p.noteIcon:before {
 	content: "";
 	color: #F39939;
 	font-weight: 600;
 }
 
-p.noteImportant,
-p.noteQuestion,
-p.noteHint {
+.rendered_html p.noteImportant,
+.rendered_html p.noteQuestion,
+.rendered_html p.noteHint {
 	background-color: #FFFFFF;
 	color: #4a4f54;
 	margin: 20px 60px 20px 60px;
@@ -217,32 +133,32 @@ p.noteHint {
 	max-width: 75%;
 }
 
-p.noteImportant:before {
+.rendered_html p.noteImportant:before {
 	content: "Important: ";
 	color: red;
 	font-weight: bold;
 	margin-left: -90px;
 }
 
-p.noteImportant {
+.rendered_html p.noteImportant {
 	margin-left: 120px;
 }
 
 
-p.noteQuestion:before {
+.rendered_html p.noteQuestion:before {
 	content: "Question: ";
 	font-weight: bold;
 	color: #174e89;
 }
 
-p.noteHint:before {
+.rendered_html p.noteHint:before {
 	content: "Hint: ";
 	font-weight: bold;
 	color: #174e89;
 }
 
-p.noteNote,
-p.notePlain {
+.rendered_html p.noteNote,
+.rendered_html p.notePlain {
 	background-color: #F6F6F8;
 	background-repeat: no-repeat;
 	background-image: none;
@@ -257,25 +173,38 @@ p.notePlain {
 	min-height: 0;
 }
 
-p.noteNote:before {
+.rendered_html p.noteNote:before {
 	content: "NOTE: ";
 	color: #F39939;
 	font-weight: 600;
 }
 
-span.ConsoleLink {
+.rendered_html span.ConsoleLink {
 	font-weight: 600;
 	color: #3ba3d8;
 	text-transform: none;
 }
 
-span.ConsoleLink a:link {
+.rendered_html span.ConsoleLink a:link {
 	color: #3390db;
 }
 
-table.splicezep,
-table.splicezepNoBorder,
-table.splicezepOddEven
+.rendered_html table {
+    text-align: left;
+	margin-left:24px;
+	padding-left:0;
+	font-family: 'Open Sans', sans-serif;
+	color: #4a4f54;
+}
+
+.rendered_html th, .rendered_html td {
+	text-align:left;
+	font-size: 1.1em;
+}
+
+.rendered_html table.splicezep,
+.rendered_html table.splicezepNoBorder,
+.rendered_html table.splicezepOddEven
 {
 	table-layout: auto;
 	min-width: 25%;
@@ -296,39 +225,38 @@ table, table.tr, table.th,  table.td {
 	font-size: inherit;
 }
 
-table.splicezepOddEven {
+.rendered_html table.splicezepOddEven {
 	border: 1px solid #F39939;
 }
 
-table.splicezepNoBorder
+.rendered_html table.splicezepNoBorder
 {
 	border: none;
 }
 
-table.splicezep tr {
+.rendered_html table.splicezep tr {
 
 }
 
-table.splicezepNoBorder tr {
+.rendered_html table.splicezepNoBorder tr {
 	border: none;
 	background-color: transparent;
 }
 
-table.splicezepOddEven tr:nth-child(even) {
+.rendered_html table.splicezepOddEven tr:nth-child(even) {
 	border: 1px solid #F39939;
 	background-color: #fefefe;
 }
 
-table.splicezepOddEven tr:nth-child(odd) {
+.rendered_html table.splicezepOddEven tr:nth-child(odd) {
 	border: 1px solid #F39939;
 	background-color: #F6F6F8;
 }
 
-table.splicezep td,
-table.splicezep td.CodeFont,
-table.splicezep td.BoldFont,
-table.splicezep td.ItalicFont {
- {
+.rendered_html table.splicezep td,
+.rendered_html table.splicezep td.CodeFont,
+.rendered_html table.splicezep td.BoldFont,
+.rendered_html table.splicezep td.ItalicFont {
 	border: 1px solid #8d9090;
 	padding: 8px;
 	text-align: left;
@@ -337,10 +265,10 @@ table.splicezep td.ItalicFont {
 	overflow: auto;
 }
 
-table.splicezepOddEven td,
-table.splicezepOddEven td.CodeFont,
-table.splicezepOddEven td.BoldFont,
-table.splicezepOddEven td.ItalicFont {
+.rendered_html table.splicezepOddEven td,
+.rendered_html table.splicezepOddEven td.CodeFont,
+.rendered_html table.splicezepOddEven td.BoldFont,
+.rendered_html table.splicezepOddEven td.ItalicFont {
 	border: 1px solid #F39939;
 	padding: 12px 8px 12px 8px;
 	text-align: left;
@@ -349,10 +277,10 @@ table.splicezepOddEven td.ItalicFont {
 	overflow: auto;
 }
 
-table.splicezepNoBorder td,
-table.splicezepNoBorder td.CodeFont,
-table.splicezepNoBorder td.BoldFont,
-table.splicezepNoBorder td.ItalicFont {
+.rendered_html table.splicezepNoBorder td,
+.rendered_html table.splicezepNoBorder td.CodeFont,
+.rendered_html table.splicezepNoBorder td.BoldFont,
+.rendered_html table.splicezepNoBorder td.ItalicFont {
 	border: none;
 	padding: 8px;
 	text-align: left;
@@ -361,48 +289,48 @@ table.splicezepNoBorder td.ItalicFont {
 	overflow: auto;
 }
 
-table.splicezep td.CodeFont,
-table.splicezepNoBorder td.CodeFont,
-table.splicezepOddEven td.CodeFont
+.rendered_html table.splicezep td.CodeFont,
+.rendered_html table.splicezepNoBorder td.CodeFont,
+.rendered_html table.splicezepOddEven td.CodeFont
 {
 	font-family: "Courier";
 }
 
-table.splicezep td.ItalicFont,
-table.splicezepNoBorder td.ItalicFont,
-table.splicezepOddEven td.ItalicFont
+.rendered_html table.splicezep td.ItalicFont,
+.rendered_html table.splicezepNoBorder td.ItalicFont,
+.rendered_html table.splicezepOddEven td.ItalicFont
 
 {
 	font-style: italic;
 }
 
-table.splicezep td.BoldFont,
-table.splicezepNoBorder td.BoldFont,
-table.splicezepOddEven td.BoldFont
+.rendered_html table.splicezep td.BoldFont,
+.rendered_html table.splicezepNoBorder td.BoldFont,
+.rendered_html table.splicezepOddEven td.BoldFont
 {
 	font-weight: bold;
 }
 
-table.splicezep td p:first-child,
-table.splicezepNoBorder td p:first-child,
-table.splicezepOddEven td p:first-child
+.rendered_html table.splicezep td p:first-child,
+.rendered_html table.splicezepNoBorder td p:first-child,
+.rendered_html table.splicezepOddEven td p:first-child
 {
 	margin-top: 0;
 }
 
-table.splicezep td > ul > li:first-of-type,
-table.splicezep td > ol > li:first-of-type,
-table.splicezepNoBorder td > ul > li:first-of-type,
-table.splicezepNoBorder td > ol > li:first-of-type,
-table.splicezepOddEven td > ul > li:first-of-type,
-table.splicezepOddEven td > ol > li:first-of-type
+.rendered_html table.splicezep td > ul > li:first-of-type,
+.rendered_html table.splicezep td > ol > li:first-of-type,
+.rendered_html table.splicezepNoBorder td > ul > li:first-of-type,
+.rendered_html table.splicezepNoBorder td > ol > li:first-of-type,
+.rendered_html table.splicezepOddEven td > ul > li:first-of-type,
+.rendered_html table.splicezepOddEven td > ol > li:first-of-type
 {
 	margin-top: 0;
 }
 
-table.splicezep th,
-table.splicezepNoBorder th,
-table.splicezepOddEven th {
+.rendered_html table.splicezep th,
+.rendered_html table.splicezepNoBorder th,
+.rendered_html table.splicezepOddEven th {
 	border: 1px solid #8d9090;
 	padding: 8px;
 	text-align: left;
@@ -414,18 +342,18 @@ table.splicezepOddEven th {
 	background-color: #dcdcdc;
 }
 
-table.splicezepOddEven th {
+.rendered_html table.splicezepOddEven th {
 	border: 1px solid #F39939;
 }
 
-table.splicezepNoBorder th {
+.rendered_html table.splicezepNoBorder th {
 	border: none;
 	background-color: transparent;
 }
 
-table.splicezep img,
-table.splicezepNoBorder img,
-table.splizezepOddEven img
+.rendered_html table.splicezep img,
+.rendered_html table.splicezepNoBorder img,
+.rendered_html table.splizezepOddEven img
 {
 	border: none;
 	width: auto;
@@ -433,7 +361,15 @@ table.splizezepOddEven img
 	margin: 0;
 }
 
-ul.italic,
-ol.italic {
+.rendered_html ul, 
+.rendered_html ol {
+    color: #4a4f54;
+    font-family: 'Open Sans', sans-serif;
+    font-size: inherit;
+}
+
+
+.rendered_html ul.italic,
+.rendered_html ol.italic {
 	font-style: italic;
 }
