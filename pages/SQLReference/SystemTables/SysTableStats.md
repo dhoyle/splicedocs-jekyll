@@ -150,7 +150,7 @@ system table.
 
 ## Usage Restrictions
 
-Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSTABLESTATISTICS` system view](sqlref_sysviews_systablestats.html), that allows you to access those parts of the table to which you _have_ been granted access.
+Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding&nbsp;&nbsp; [`SYSVW.SYSTABLESTATISTICS` system view](sqlref_sysviews_systablestats.html), that allows you to access those parts of the table to which you _have_ been granted access.
 
 {% include splice_snippets/systableaccessnote.md %}
 

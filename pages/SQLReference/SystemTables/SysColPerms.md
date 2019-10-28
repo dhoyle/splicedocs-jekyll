@@ -98,7 +98,7 @@ If the privilege is grantable, the valid values are:
 
 ## Usage Restrictions
 
-Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding [`SYSVW.SYSCOLPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html), that allows you to access those parts of the table to which you _have_ been granted access.
+Access to the `SYS` schema is restricted, for security purposes, to users for whom you Database Administrator has explicitly granted access. However, there is a corresponding&nbsp;&nbsp; [`SYSVW.SYSCOLPERMSVIEW` system view](sqlref_sysviews_syscolpermsview.html), that allows you to access those parts of the table to which you _have_ been granted access.
 
 {% include splice_snippets/systableaccessnote.md %}
 
