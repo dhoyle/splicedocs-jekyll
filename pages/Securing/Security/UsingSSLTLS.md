@@ -150,8 +150,11 @@ After you've generated your certificates, it's time to:
 
 ### Import Server Certificate to Client Keystore   {#importserver}
 
-You need to copy (`scp`) the server certificate to the client, and then
-use a *keytool* command like this to import the certificate:
+You need to copy (`scp`) the server certificate to the client.
+
+<p class="noteIcon">In this context, <em>client</em> refers to the host from which the JDBC connections originate.
+
+After the copy, use a *keytool* command like this to import the certificate:
 
 <div class="preWrap" markdown="1">
     % keytool -import -alias favoriteServerCertificate \
@@ -182,8 +185,7 @@ use a *keytool* command like this to import the certificate:
 </div>
 ### Import Client Certificates to Server Keystore   {#importclient}
 
-Next, copy (`scp`) the client certificate to the region server and use
-*keytool* to import the certificate:
+Next, copy (`scp`) the client certificate to the region server. Again: in this context, <em>client</em> refers to the host from which the JDBC connections originate. Then use *keytool* to import the certificate:
 
 <div class="preWrap" markdown="1">
 {% comment %}
