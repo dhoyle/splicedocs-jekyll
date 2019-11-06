@@ -144,8 +144,7 @@ Collecting statistics on a schema can take some time.
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
-* [Using Statistics](bestpractices_optimizer_statistics.html) in the
-  *Developer's Guide*
+* [Using Statistics](bestpractices_optimizer_statistics.html)
 
 </div>
 </section>

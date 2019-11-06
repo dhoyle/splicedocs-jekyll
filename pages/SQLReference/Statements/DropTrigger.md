@@ -44,8 +44,7 @@ dropping the table.
 
 ## See Also
 
-* [Database Triggers](developers_fundamentals_triggers.html) in the
-  *Developer's Guide*
+* [Database Triggers](developers_fundamentals_triggers.html)
 * [`CREATE TRIGGER`](sqlref_statements_createtrigger.html) statement
 
 </div>

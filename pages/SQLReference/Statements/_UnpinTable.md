@@ -66,8 +66,7 @@ The name of the pinned table that you want to unpin.
 * [`CREATE EXTERNAL TABLE`](sqlref_statements_createexternaltable.html) statement
 * [`CREATE TABLE`](sqlref_statements_createtable.html) statement
 * [`PIN TABLE`](sqlref_statements_pintable.html) statement
-* [Using Hints to Improve Performance](bestpractices_optimizer_hints.html) in the
-  *Splice Machine Developer's Guide*
+* [Using Hints to Improve Performance](bestpractices_optimizer_hints.html)
 
 </div>
 </section>

@@ -128,8 +128,7 @@ To delete just the pinned version of a table, use the
 * [`CREATE EXTERNAL TABLE`](sqlref_statements_createexternaltable.html) statement
 * [`CREATE TABLE`](sqlref_statements_createtable.html) statement
 * [`UNPIN TABLE`](sqlref_statements_unpintable.html) statement
-* [Using Hints to Improve Performance](bestpractices_optimizer_hints.html) in the
-  *Splice Machine Developer's Guide*
+* [Using Hints to Improve Performance](bestpractices_optimizer_hints.html)
 
 </div>
 </section>

@@ -274,8 +274,7 @@ This section presents examples of creating triggers:
 </div>
 ## See Also
 
-* [Database Triggers](developers_fundamentals_triggers.html) in the
-  *Developer's Guide*
+* [Database Triggers](developers_fundamentals_triggers.html)
 * [`DROP TRIGGER`](sqlref_statements_droptrigger.html) statement
 * [`WHERE`](sqlref_clauses_where.html) clause
 

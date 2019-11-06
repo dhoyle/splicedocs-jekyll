@@ -394,10 +394,8 @@ from the target table.
 * [`CREATE TABLE`](sqlref_statements_createtable.html) statement
 * [`INSERT`](sqlref_statements_insert.html) statement
 * [`DELETE`](sqlref_statements_delete.html) statement
-* [Foreign Keys](developers_fundamentals_foreignkeys.html) in the
-  *Developer's Guide*.
-* [Triggers](developers_fundamentals_triggers.html) in the *Developer's
-  Guide*.
+* [Foreign Keys](developers_fundamentals_foreignkeys.html)
+* [Triggers](developers_fundamentals_triggers.html)
 * [`UPDATE`](sqlref_statements_update.html) statement
 
 </div>

@@ -579,10 +579,8 @@ This example shows an attempt to add a foreign key into a table that already con
 
 * [`CONSTRAINT`](sqlref_clauses_constraint.html) clause
 * [`CREATE TABLE`](sqlref_statements_createtable.html) statement
-* [Foreign Keys](developers_fundamentals_foreignkeys.html) in the
-  *Developer's Guide*.
-* [Triggers](developers_fundamentals_triggers.html) in the *Developer's
-  Guide*.
+* [Foreign Keys](developers_fundamentals_foreignkeys.html)
+* [Triggers](developers_fundamentals_triggers.html)
 
 </div>
 </section>
