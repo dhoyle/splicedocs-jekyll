@@ -1,26 +1,26 @@
 ---
-title: Show Synonyms command
-summary: Displays information about the synonyms that have been created in a database or schema.
-keywords: synonym, show commands
+title: Show Aliases command
+summary: Displays information about the aliases that have been created in a database or schema.
+keywords: alias, show commands
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: cmdlineref_showsynonyms.html
+permalink: cmdlineref_showaliases.html
 folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Show Synonyms
+# Show Aliases
 
-The <span class="AppCommand">show synonyms</span> command displays all
-of the synonyms that have been created with the
-[`CREATE SYNONYM`](sqlref_statements_createsynonym.html) statement in
+The <span class="AppCommand">show aliases</span> command displays all
+of the aliases that have been created with the
+[`CREATE ALIAS`](sqlref_statements_createalias.html) statement in
 the database or specified schema.
 
 ### Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SHOW SYNONYMS [ IN schemaName ]
+    SHOW ALIASES [ IN schemaName ]
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -28,16 +28,16 @@ the database or specified schema.
 schemaName
 {: .paramName}
 
-If you supply a schema name, only the synonyms in that schema are
-displayed; otherwise, all synonyms in the database are displayed.
+If you supply a schema name, only the aliases in that schema are
+displayed; otherwise, all aliases in the database are displayed.
 {: .paramDefnFirst}
 
 </div>
 ### Results
 
-The `show synonyms` command results contains the following columns:
+The `show aliases` command results contains the following columns:
 
-<table summary="List of columns in the output of the show synonyms command.">
+<table summary="List of columns in the output of the show aliases command.">
     <col />
     <col />
     <thead>
@@ -49,7 +49,7 @@ The `show synonyms` command results contains the following columns:
     <tbody>
         <tr>
             <td><code>TABLE_SCHEMA</code></td>
-            <td>The name of the synonym's schema</td>
+            <td>The name of the alias's schema</td>
         </tr>
         <tr>
             <td><code>TABLE_NAME</code></td>
@@ -69,7 +69,7 @@ The `show synonyms` command results contains the following columns:
 ### Examples
 
 <div class="preWrapperWide" markdown="1">
-    splice> show synonyms;
+    splice> show aliases;
     TABLE_SCHEM  |TABLE_NAME         |CONGLOM_ID|REMARKS
     ---------------------------------------------------------------
     SPLICE       |HITTING            |NULL      |
@@ -79,13 +79,13 @@ The `show synonyms` command results contains the following columns:
 
 </div>
 
-See Also
+## See Also
 
 * [`CREATE ALIAS`](sqlref_statements_createalias.html) statement
 * [`CREATE SYNONYM`](sqlref_statements_createsynonym.html) statement
 * [`DROP ALIAS`](sqlref_statements_dropalias.html) statement
 * [`DROP SYNONYM`](sqlref_statements_dropsynonym.html) statement
-* [`SHOW ALIASES`](cmdlineref_showsynonyms.html) command
+* [`SHOW SYNONYMS`](cmdlineref_showsynonyms.html) command
 
 </div>
 </section>
