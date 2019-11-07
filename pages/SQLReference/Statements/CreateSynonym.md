@@ -1,6 +1,6 @@
 ---
 title: CREATE SYNONYM statement
-summary:  Creates a synonym, which can provide an alternate namefor a table or a view.
+summary:  Creates a synonym/alias, which can provide an alternate namefor a table or a view.
 keywords: creating a synonym
 toc: false
 product: all
@@ -15,7 +15,7 @@ folder: SQLReference/Statements
 The `CREATE SYNONYM` statement allows you to create an alternate name
 for a table or a view.
 
-<p class="noteIcon"><code>CREATE SYNONYM</code> and <code>CREATE ALIAS</code> provide the same functionality.</p>
+<p class="noteIcon">Aliases and synonyms are exactly the same and can be used interchangeably, which means that you can use <code>CREATE SYNONYM</code> and <code><a href="sqlref_statements_createalias.html">CREATE ALIAS</a></code> and interchangeably.</p>
 
 ## Syntax
 
@@ -29,8 +29,7 @@ synonymName
 {: .paramName}
 
 An [SQLIdentifier](sqlref_identifiers_intro.html), which can optionally
-include a schema name. This is the new name you want to create for the
-view or table.
+include a schema name. This is the new, alternative name you want to create for the view or table.
 {: .paramDefnFirst}
 
 viewName
@@ -52,19 +51,16 @@ table for which you are creating a synonym.
 
 Here are a few important notes about using synonyms:
 
-* Synonyms share the same name space as tables or views. You cannot
-  create a synonym with the same name as a table that already exists in
+* Synonyms/Aliases share the same name space as tables or views. You cannot
+  create a synonym/alias with the same name as a table that already exists in
   the same schema. Similarly, you cannot create a table or view with a
-  name that matches a synonym that is already present.
-* You can create a synonym for a table or view that does not yet exist;
-  however, you can only use the synonym if the table or view is present
+  name that matches a synonym/alias that is already present.
+* You can create a synonym/alias for a table or view that does not yet exist;
+  however, you can only use the synonym/alias if the table or view is present
   in your database.
-* You can create synonyms for other synonyms (nested synonyms); however,
-  an error will occur if you attempt to create a synonym that results in
-  a circular reference.
-* You cannot create synonyms in system schemas. Any schema that starts
-  with `SYS` is a system schema.
-* You cannot define a synonym for a temporary table.
+* You can create synonyms/aliases for other synonyms/aliases (nested synonyms); however, an error will occur if you attempt to create one that results in  a circular reference.
+* You cannot create synonyms/aliases in system schemas. Any schema that starts  with `SYS` is a system schema.
+* You cannot define a synonym/alias for a temporary table.
 
 ## Example
 

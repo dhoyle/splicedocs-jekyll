@@ -13,9 +13,9 @@ folder: CmdLineReference
 # Show Synonyms
 
 The <span class="AppCommand">show synonyms</span> command displays all
-of the synonyms that have been created with the
-[`CREATE SYNONYM`](sqlref_statements_createsynonym.html) statement in
-the database or specified schema.
+of the aliases that have been created in the database or specified schema with the [`CREATE ALIAS`](sqlref_statements_createalias.html) or [`CREATE SYNONYM`](sqlref_statements_createsynonym.html) statements.
+
+<p class="noteIcon">Aliases and synonyms are exactly the same and can be used interchangeably.</p>
 
 ### Syntax
 
@@ -28,8 +28,8 @@ the database or specified schema.
 schemaName
 {: .paramName}
 
-If you supply a schema name, only the synonyms in that schema are
-displayed; otherwise, all synonyms in the database are displayed.
+If you supply a schema name, only the synonyms/aliases in that schema are
+displayed; otherwise, all synonyms/aliases in the database are displayed.
 {: .paramDefnFirst}
 
 </div>
@@ -49,7 +49,7 @@ The `show synonyms` command results contains the following columns:
     <tbody>
         <tr>
             <td><code>TABLE_SCHEMA</code></td>
-            <td>The name of the synonym's schema</td>
+            <td>The name of the alias/synonym's schema</td>
         </tr>
         <tr>
             <td><code>TABLE_NAME</code></td>

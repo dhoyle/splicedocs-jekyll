@@ -33,7 +33,7 @@ is an index organized table and you change its primary key.
 </div>
 ## Usage
 
-You can use a `ROWID` value to refer to a row in a table in the &nbsp; 
+You can use a `ROWID` value to refer to a row in a table in the &nbsp;
 [`WHERE`](sqlref_clauses_where.html) clauses of a query. These values
 have several valuable uses:
 
@@ -72,8 +72,7 @@ You can also use `ROWID` in JDBC queries; for example:
 </div>
 ## Examples
 
-This statement selects the unique row address and salary of all records
-in the employees database in the engineering department:
+This statement selects the unique row address and display name of all outfielders in the `Players` table who play for the Giants:
 
 <div class="preWrapper" markdown="1">
     splice> SELECT ROWID, DisplayName, Position

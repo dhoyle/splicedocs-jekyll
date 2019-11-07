@@ -1,6 +1,6 @@
 ---
 title: CREATE ALIAS statement
-summary:  Creates an alias, which can provide an alternate name for a table or a view.
+summary:  Creates an alias/synonym, which can provide an alternate name for a table or a view.
 keywords: creating an alias
 toc: false
 product: all
@@ -15,7 +15,7 @@ folder: SQLReference/Statements
 The `CREATE ALIAS` statement allows you to create an alternate name
 for a table or a view.
 
-<p class="noteIcon"><code>CREATE ALIAS</code> and <code>CREATE SYNONYM</code> provide the same functionality.</p>
+<p class="noteIcon">Aliases and synonyms are exactly the same and can be used interchangeably, which means that you can use <code>CREATE ALIAS</code> and <code><a href="sqlref_statements_createsynonym.html">CREATE SYNONYM</a></code> interchangeably.</p>
 
 ## Syntax
 
@@ -29,7 +29,7 @@ aliasName
 {: .paramName}
 
 An [SQLIdentifier](sqlref_identifiers_intro.html), which can optionally
-include a schema name. This is the new name you want to create for the
+include a schema name. This is the new, alternative name you want to create for the
 view or table.
 {: .paramDefnFirst}
 
@@ -52,19 +52,16 @@ table for which you are creating an alias.
 
 Here are a few important notes about using aliases:
 
-* Aliases share the same name space as tables or views. You cannot
-  create an alias with the same name as a table that already exists in
+* Aliases/Synonyms share the same name space as tables or views. You cannot
+  create an alias/synonym with the same name as a table that already exists in
   the same schema. Similarly, you cannot create a table or view with a
-  name that matches an alias that is already present.
-* You can create an alias for a table or view that does not yet exist;
-  however, you can only use the alias if the table or view is present
+  name that matches an alias/synonym that is already present.
+* You can create an alias/synonyn for a table or view that does not yet exist;
+  however, you can only use the alias/synonym if the table or view is present
   in your database.
-* You can create aliases for other aliases (nested aliases); however,
-  an error will occur if you attempt to create an alias that results in
-  a circular reference.
-* You cannot create aliases in system schemas. Any schema that starts
-  with `SYS` is a system schema.
-* You cannot define an alias for a temporary table.
+* You can create aliases/synonyms for other aliases/synonyms (nested aliases); however, an error will occur if you attempt to create one that results in a circular reference.
+* You cannot create aliases/synonyms in system schemas. Any schema that starts with `SYS` is a system schema.
+* You cannot define an alias/synonym for a temporary table.
 
 ## Example
 

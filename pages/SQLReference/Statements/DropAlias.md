@@ -1,6 +1,6 @@
 ---
 title: DROP ALIAS statement
-summary: Drops an alias from a database.
+summary: Drops a synonym/alias from a database.
 keywords: dropping an alias
 toc: false
 product: all
@@ -12,10 +12,10 @@ folder: SQLReference/Statements
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # DROP ALIAS
 
-The `DROP ALIAS` statement drops an alias that was previously defined
+The `DROP ALIAS` statement drops an alias/synonym that was previously defined
 for a table or view.
 
-<p class="noteIcon"><code>DROP ALIAS</code> and <code>DROP ALIAS</code> provide the same functionality.</p>
+<p class="noteIcon">Aliases and synonyms are exactly the same and can be used interchangeably, which means that you can use either <code>DROP SYNONYM</code> or <code>DROP ALIAS</code> to drop a synonym/alias that was defined with either&nbsp;&nbsp;<code><a href="sqlref_statements_createsynonym.html">CREATE SYNONYM</a></code> or <code><a href="sqlref_statements_createalias.html">CREATE ALIAS</a></code>.</p>
 
 ## Syntax
 
@@ -27,18 +27,24 @@ DROP ALIAS <a href="sqlref_identifiers_types.html#AliasName">aliasName</a></pre>
 aliasName
 {: .paramName}
 
-The name of the alias that you want to drop from your database.
+The name of the alias/synonym that you want to drop from your database.
 {: .paramDefnFirst}
 
 </div>
 ## Example
 
-<div class="preWrapper" markdown="1">
-    splice> DROP ALIAS Hitting;
-    0 rows inserted/updated/deleted
-{: .Example xml:space="preserve"}
+```
+splice> CREATE ALIAS Hitting FOR Batting;
+0 rows inserted/updated/deleted
+splice> CREATE SYNONYM Goofs for Errors;
+0 rows inserted/updated/deleted
+splice> DROP ALIAS Hitting;
+0 rows inserted/updated/deleted
+splice> DROP ALIAS Goofs;
+0 rows inserted/updated/deleted
+```
+{: .Example }
 
-</div>
 ## See Also
 
 
