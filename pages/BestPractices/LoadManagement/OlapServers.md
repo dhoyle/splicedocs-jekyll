@@ -15,7 +15,7 @@ folder: BestPractices/LoadManagement
 
 Splice Machine supports the use of multiple OLAP (analytical query processing) servers, each of which has its own YARN queue. The Splice Machine queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run the query.
 
-Multiple OLAP servers are also referred to as *multiple swim lanes;* they allow you to specify how different queries are prioritized into lanes. You can take advantage of this feature to:
+Multiple OLAP servers are sometimes referred to as *multiple swim lanes;* they allow you to specify how different queries are prioritized into lanes. You can take advantage of this feature to:
 
 * Isolate certain workloads (*resource isolation*) so that they don't interfere with other workloads.
 * Reserve cluster capacity for specific queries so that those queries will not  be blocked by other long-running queries.
@@ -55,7 +55,9 @@ Your cluster administrator can configure your YARN queues to accommodate your or
 
 You can define Splice Machine queues and map those queues to YARN queues. This allows you to create *swim lanes* that are intended for different kinds of database operations, or for queries that are run by different kinds of users. You can use Splice Machine queues with both _Fair Scheduler_ and _Capacity Scheduler_ queues.
 
-Splice Machine queues are role-based: the roles assigned to a user define which queue(s) will used for that user's queries.
+Splice Machine queues are role-based: the roles assigned to a user define which queue(s) will used for that user's queries. Here's a simple illustration:
+
+<img src="images/OlapServerQueues1.png" class="indentedTightSpacing" alt="Splice Machine Role-Based OLAP Queues">
 
 ## Configuring Multiple Olap Servers and Queues
 

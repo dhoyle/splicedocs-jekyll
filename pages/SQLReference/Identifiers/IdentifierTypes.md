@@ -26,7 +26,7 @@ Manual, all of which are `SQLIdentifiers`. Some can be qualified with
 schema, table, or correlation names, as described in the following
 table.
 
-<p class="noteNote">Note that, in version 2.8 or later of Splice Machine, <code>simple-column-Names</code> and <code>correlation-names</code> can include, but not begin with, the *special characters* <code>@</code>, <code>#</code>, and <code>$</code>.</p>
+<p class="noteNote">Note that, in version 2.8 or later of Splice Machine, <code>simple-column-Names</code> and <code>correlation-names</code> can include, but not begin with, the <em>special characters</em> <code>@</code>, <code>#</code>, and <code>$</code>.</p>
 
 <table summary="Splice Machine SQL Identifier types">
     <col />

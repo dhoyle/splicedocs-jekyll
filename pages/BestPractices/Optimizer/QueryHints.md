@@ -75,38 +75,48 @@ The following table summarizes the hint types available in Splice Machine:
             <td class="CodeFont">--splice-properties useSpark=true</td>
             <td>That you want a query to run (or not run) on Spark</td>
         </tr>
+        <tr>
+            <td><a href="#SubQueryFlatten">Subquery Flatten</a></td>
+            <td class="CodeFont">--splice-properties doNotFlatten=true</td>
+            <td>Tells the optimizer to flatten (<code>=false</code>) or not flatten (<code>=true</code>) a subquery that could be flattened.</td>
+        </tr>
     </tbody>
 </table>
 
 ## How to Specify Hints in Your Queries  {#inclhints}
 
-Hints can be used in two locations: after a table identifier or after a
-`FROM` clause. Some hint types can be use after a table identifier, and
-some can be used after a `FROM` clause:
+Specific hint types can be used in specific locations: after a table identifier, after a subquery, or after a
+`FROM` clause, as shown in the following table:
 
 <table>
-<thead>
-<tr><th>Hint after a:</th><th>Hint types</th><th>Example</th></tr>
-</thead>
-<tbody>
-<tr>
-<td>Table identifier</td>
-<td class="CodeFont">
-<p>index</p>
-<p>joinStrategy</p>
-<p>useSpark</p>
-<p>bulkDeleteDirectory</p>
-</td>
-<td><code><span class="Example">SELECT * FROM<br />    member_info m, rewards r,<br />   points p --SPLICE-PROPERTIES index=ie_point WHERE...</span></code></td>
-</tr>
-<tr>
-<td>A <code>FROM</code> clause</td>
-<td class="CodeFont">
-<p>joinOrder</p>
-</td>
-<td><code><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />   mytable1 e, mytable2 t<br />   WHERE e.id = t.parent_id;</span></code></td>
-</tr>
-</tbody>
+    <thead>
+        <tr><th>Hint after a:</th><th>Hint types</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Table identifier</td>
+            <td class="CodeFont">
+                <p>index</p>
+                <p>joinStrategy</p>
+                <p>useSpark</p>
+                <p>bulkDeleteDirectory</p>
+            </td>
+            <td><code><span class="Example">SELECT * FROM<br />    member_info m, rewards r,<br />   points p --SPLICE-PROPERTIES index=ie_point WHERE...</span></code></td>
+        </tr>
+        <tr>
+            <td>A <code>FROM</code> clause</td>
+            <td class="CodeFont">
+                <p>joinOrder</p>
+            </td>
+            <td><code><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />   mytable1 e, mytable2 t<br />   WHERE e.id = t.parent_id;</span></code></td>
+        </tr>
+        <tr>
+            <td>A subquery</td>
+            <td class="CodeFont">
+                <p>doNotFlatten</p>
+            </td>
+        </tr>
+    </tbody>
 </table>
 
 ### Hint at the End of a Line
@@ -149,6 +159,8 @@ This section provides specific information about how to use the different hint t
 * [JoinOrder Hints](#JoinOrder)
 * [JoinStrategy Hints](#JoinStrategy)
 * [Spark Hints](#Spark)
+* [Subquery Flatten Hints](#SubQueryFlatten)
+
 
 ### Delete Hints   {#Delete}
 
@@ -440,6 +452,11 @@ The Splice Machine optimizer uses its estimated cost for a query to
 decide whether to use Spark. If your statistics are out of date, the
 optimizer may end up choosing the wrong engine for the query.
 {: .noteNote}
+
+### Subquery Flatten Hints  {#SubQueryFlatten}
+
+You can use the `doNotFlatten=true` hint to specify that the optimizer should not flatten a subquery. This hint can be set to either `true` or `false`;  the default value of `false` is assumed if this hint is not present immediately following the subquery to which you want it applied.
+
 
 
 </div>
