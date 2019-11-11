@@ -115,6 +115,7 @@ Specific hint types can be used in specific locations: after a table identifier
             <td class="CodeFont">
                 <p>doNotFlatten</p>
             </td>
+            <td><code><span class="Example">SELECT * FROM t1 WHERE b1=1<br />  AND c1 = (SELECT MAX(c2) FROM t2 WHERE a1=a2 AND b1=b2) --splice-properties doNotFlatten=false<br />   ;</span></code></td>
         </tr>
     </tbody>
 </table>
@@ -455,9 +456,82 @@ optimizer may end up choosing the wrong engine for the query.
 
 ### Subquery Flatten Hints  {#SubQueryFlatten}
 
-You can use the `doNotFlatten=true` hint to specify that the optimizer should not flatten a subquery. This hint can be set to either `true` or `false`;  the default value of `false` is assumed if this hint is not present immediately following the subquery to which you want it applied.
 
+The Splice Machine optimizer uses a rule-based approach to optimizing subqueries. In some cases, the optimizer decides to flatten a subquery that could run faster without flattening. The `doNotFlatten` hint allows you to tell the optimizer to not consider flattening a specific subquery.
 
+This is a Boolean hint with possible values `true` and `false`, which you include at the end of a line immediately after the subquery that you do not want flattened. For example, here we tell the optimizer to not flatten the `(SELECT MAX...)` subquery:
+
+```
+SELECT * FROM t1 WHERE b1=1
+  AND c1 = (SELECT max(c2) FROM t2 WHERE a1=a2 AND b1=b2) --splice-properties doNotFlatten=true
+;
+```
+{: .Example}
+
+<p class="noteNote">The default value, <code>doNotFlatten=false</code>, is assumed when this hint is not present.</p>
+
+#### When to Use This Hint
+
+In certain cases, non-flattened subqueries perform better than flatten subqueries, because the correlating condition can be leveraged. Here's an example that will help you to understand when to consider using the `doNotFlatten` hint.
+
+```
+splice> CREATE TABLE t1 (a1 INT, b1 INT, c1 INT, PRIMARY KEY (a1));
+splice> CREATE TABLE t2 (a2 INT, b2 INT, c2 INT, PRIMARY KEY (a2));
+splice> INSERT INTO t1 VALUES (1,1,1), (2,2,2), (3,3,3), (4,4,4), (5,5,5);
+splice> INSERT INTO t2 SELECT * FROM t1;
+splice> ANALYZE TABLE t1;
+splice> ANALYZE TABLE t2;
+```
+{: .Example}
+
+Let's examine the execution plan with `doNotFlatten=true`:
+
+```
+splice> EXPLAIN SELECT * FROM t1 WHERE b1=1
+  AND c1 = (SELECT MAX(c2) FROM t2 WHERE a1=a2 AND b1=b2) --splice-properties doNotFlatten=true
+;
+
+Plan
+------------------------------------------------------------------------------------------------------------------
+Cursor(n=10,rows=1,updateMode=READ_ONLY (1),engine=control)
+  ->  ScrollInsensitive(n=9,totalCost=8.016,outputRows=1,outputHeapSize=12 B,partitions=1)
+    ->  ProjectRestrict(n=8,totalCost=4.006,outputRows=1,outputHeapSize=12 B,partitions=1,preds=[(C1[1:3] = subq=6)])
+      ->  Subquery(n=7,totalCost=12.006,outputRows=1,outputHeapSize=0 B,partitions=1,correlated=true,expression=true,invariant=true)
+        ->  ProjectRestrict(n=6,totalCost=8.002,outputRows=1,outputHeapSize=0 B,partitions=1)
+          ->  GroupBy(n=5,totalCost=8.002,outputRows=1,outputHeapSize=0 B,partitions=1)
+            ->  ProjectRestrict(n=4,totalCost=4.001,outputRows=1,outputHeapSize=5 B,partitions=1)
+              ->  TableScan[T2(1600)](n=3,totalCost=4.001,scannedRows=1,outputRows=1,outputHeapSize=5 B,partitions=1,preds=[(B1[1:2] = B2[2:2]),(A1[1:1] = A2[2:1])])
+      ->  ProjectRestrict(n=2,totalCost=4.006,outputRows=1,outputHeapSize=12 B,partitions=1)
+        ->  TableScan[T1(1584)](n=1,totalCost=4.006,scannedRows=5,outputRows=1,outputHeapSize=12 B,partitions=1,preds=[(B1[0:2] = 1)])
+
+10 rows selected
+```
+{: .Example}
+
+You can see that a `Subquery` node is in the plan, so we know that the subquery is not being flattened.
+
+If you set `doNotFlatten=false` or simply leave the hint out, you get the following plan, which has a higher cost:
+
+```
+splice> EXPLAIN SELECT * FROM t1 WHERE b1=1
+  AND c1 = (SELECT MAX(c2) FROM t2 WHERE a1=a2 AND b1=b2) --splice-properties doNotFlatten=false
+;
+
+Plan
+------------------------------------------------------------------------------------------------------------------
+Cursor(n=9,rows=1,updateMode=READ_ONLY (1),engine=control)
+  ->  ScrollInsensitive(n=8,totalCost=18.518,outputRows=1,outputHeapSize=19 B,partitions=1)
+    ->  ProjectRestrict(n=7,totalCost=12.022,outputRows=1,outputHeapSize=19 B,partitions=1)
+      ->  BroadcastJoin(n=6,totalCost=12.022,outputRows=1,outputHeapSize=19 B,partitions=1,preds=[(A1[8:1] = AggFlatSub-0-1.A2[8:5]),(C1[8:3] = AggFlatSub-0-1.SQLCol1[8:4])])
+        ->  ProjectRestrict(n=5,totalCost=8.011,outputRows=1,outputHeapSize=12 B,partitions=1)
+          ->  GroupBy(n=4,totalCost=8.011,outputRows=1,outputHeapSize=12 B,partitions=1)
+            ->  ProjectRestrict(n=3,totalCost=4.006,outputRows=1,outputHeapSize=12 B,partitions=1)
+              ->  TableScan[T2(1600)](n=2,totalCost=4.006,scannedRows=5,outputRows=1,outputHeapSize=12 B,partitions=1,preds=[(AggFlatSub-0-1.B2[2:2] = 1)])
+        ->  TableScan[T1(1584)](n=1,totalCost=4.006,scannedRows=5,outputRows=1,outputHeapSize=12 B,partitions=1,preds=[(B1[0:2] = 1)])
+
+9 rows selected
+```
+{: .Example}
 
 </div>
 </section>

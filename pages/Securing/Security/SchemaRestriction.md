@@ -16,6 +16,7 @@ folder: Securing/Security
 This topic provides an overview of the _schema restriction_ feature, which became available in Splice Machine version 2.8, in these sections:
 
 * [What Is the Schema Restriction Feature?](#about)
+* [Upgrading to Splice Machine with Schema Restriction](#upgrading)
 * [Enabling and Disabling the Schema Restriction Feature](#enable)
 
 ## What Is the Schema Restriction Feature?  {#about}
@@ -51,6 +52,15 @@ splice> DESCRIBE SYS.SYSTABLES;
 If you see the table description, you have access. If you see a message stating that _"No schema exists with the name `SYS`,"_&nbsp; you don't have access to the table; use the view instead.
 
 If you believe that you need access to a table in a restricted schema, contact your Database Administrator.
+
+## Upgrading to Splice Machine with Schema Restriction  {#upgrading}
+
+If you've been using a version of Splice Machine earlier than release 2.8 and are upgrading, there are some very important things you need to know about schema restriction:
+
+* Schema restriction is ON by default. The [next section](#enable) describes how to disable this feature if you don't want the security that it provides.
+* For non-administrative users of your database to have any access to your schema(s), you must explicitly &nbsp;&nbsp[`GRANT ACCESS`](sqlref_statements_grant.html#SchemaSyntax) to those users on the schema(s).
+* You can grant access to all users by granting access to the `PUBLIC` user.
+*  
 
 ## Enabling and Disabling the Schema Restriction Feature  {#enable}
 
