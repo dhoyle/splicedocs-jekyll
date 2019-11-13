@@ -38,6 +38,8 @@ With this feature enabled, access to the `SYS` schema is restricted, by default,
 
 Please see the [tutorials_security_permissions.html](Summary of Permissions for Users and Roles) topic for an updated summary of which permissions are available to and can be granted or revoked by the `Splice` user, regular users, and roles, with and without schema restriction enabled.
 
+<p class="noteNote">The Splice Machine schema restrictions are compatible with <em>Apache Ranger</em>. </p>
+
 ### Determining If You Have Access
 
 If you want to access the information in a table that is part of a restricted schema such as the `SYS` schema, you can instead use the corresponding system view. For example, instead of accessing the `SYS.SYSTABLES` system table, use the `SYSVW.SYSTABLESVIEW` system view.  Note that access to the view is slightly less performant than accessing the table, so if you have permission to access the system table, you might want to use it.
@@ -60,7 +62,17 @@ If you've been using a version of Splice Machine earlier than release 2.8 and ar
 * Schema restriction is ON by default. The [next section](#enable) describes how to disable this feature if you don't want the security that it provides.
 * For non-administrative users of your database to have any access to your schema(s), you must explicitly &nbsp;&nbsp[`GRANT ACCESS`](sqlref_statements_grant.html#SchemaSyntax) to those users on the schema(s).
 * You can grant access to all users by granting access to the `PUBLIC` user.
-*  
+
+### Upgrading Custom Views on System Tables
+
+With schema restriction on, access to the Splice Machine [system tables](sqlref_systables_intro.html) is restricted to only DBAs or those to whom a DBA has granted access. Others can use the [system views](sqlref_sysviews_intro.html) that correspond to those tables.
+
+If you are upgrading and you have defined your own custom views that reference system tables, you can choose from among these actions:
+
+* Leave your custom views unchanged, which makes that only administrative users can access them.
+* Rewrite your views to reference system views instead of system tables.
+* Rewrite your views to omit restricted information.
+* Alter the permissions on the restricted tables so that the views can be used by non-administrative users.
 
 ## Enabling and Disabling the Schema Restriction Feature  {#enable}
 
