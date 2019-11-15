@@ -305,7 +305,7 @@ public class Main {
 
 You can download, build, and run this example program as follows:
 
-1.  __Click this link to download the example tarball:__ [./examples/SparkAppSubmit.tar.gz](./examples/SparkAppSubmit.tar.gz)
+1.  __Click this link to download the example tarball:__ [`./examples/SparkAppSubmit.tar.gz`](./examples/SparkAppSubmit.tar.gz)
 2.  __Build the program with this command:__
 
     ```

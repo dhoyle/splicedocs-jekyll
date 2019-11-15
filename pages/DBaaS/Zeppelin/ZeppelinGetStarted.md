@@ -20,7 +20,7 @@ This topic helps you to get started with using Zeppelin with your Splice Machine
 * [The Zeppelin Drop-Down Menu](#Dropdown)
 * [Monitoring Job Status](#Job)
 * [Creating Notebooks](#create)
-* 
+*
 {% include splice_snippets/dbaasonlytopic.md %}
 
 
@@ -51,11 +51,7 @@ notebook, modify its content, and create new notebooks. Our next topic,
 [A Simple Tutorial](dbaas_zep_simple.html), uses the our <span
 class="CalloutFont">Simple Example</span> tutorial.
 
-<<<<<<< HEAD
-## Adding Your Credentials
-=======
 ## Adding Your Credentials  {#credentials}
->>>>>>> DocsTest3.0
 
 You use the Splice Machine interpreter (`%splicemachine`) in Zeppelin notebooks to interact with your Splice Machine database; this interpreter uses a JDBC connection to the database, and making that connection requires you to supply user credentials. Here's how you can create the credentials to use with the Splice Machine interpreter in your Zeppelin notebooks:
 

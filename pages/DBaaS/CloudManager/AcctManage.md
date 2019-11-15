@@ -21,8 +21,6 @@ and Account drop-down in your Dashboard, which include:
 * [Managing Users](#Inviting)
 * [Reviewing and Updating Your Company Information](#Updating3)
 
-{% include splice_snippets/dbaasonlytopic.md %}
-
 ## Logging Out of Your Account   {#Logging}
 
 To log out of your Cloud Manager account, click the Account Drop-down

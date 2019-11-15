@@ -20,7 +20,7 @@ This section contains the following tips for troubleshooting ingestion of  data 
 * [Bulk Import: Out of Direct Memory (Cloudera)](#directmem)
 * [Bulk Import: Network Timeout](#networktimeout)
 
-There are currently no troubleshooting issues to address if you're using the *Splice Machine Database-as-Service* product.
+These tips only apply to the on-premise version of Splice Machine; there are currently no troubleshooting issues to address if you're using the *Splice Machine Database-as-Service* product.
 {: .noteIcon}
 
 ## Using Bulk Import on a KMS-Enabled Cluster {#BulkImportKMS}

@@ -37,7 +37,7 @@ This section presents a sample Spark application that uses Kafka to both produce
 3. [Create a Kafka producer](#createproducer) to stream data.
 4. [Create a Spark app](#createapp) that uses Kafka to consume the stream and uses the Splice Machine Native Spark DataSource to insert the data into your database table.
 
-All of the files required to build and run this program are available here: [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz)
+All of the files required to build and run this program are available here: [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz)
 {: .noteNote}
 
 ### 1. Create a Table for the Data in Your Splice Machine Database  {#createtable}
@@ -62,10 +62,11 @@ Create your Kafka topic with a command like this:
 ```
 bin/kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 2 --topic weather
 ```
+{: .ShellCommand}
 
 ### 3. Create a Kafka Producer to Stream Data  {#createproducer}
 
-This section presents our sample code to produce a stream of weather data. The fully commented version of this code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
+This section presents our sample code to produce a stream of weather data. The fully commented version of this code is available in  [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz).
 
 
 Here's the main code for our Kafka producer:
@@ -197,7 +198,7 @@ The `main` body of this app uses Kafka to consume entries in the stream into a S
 * maps stream entries into a Spark DataFrame
 * uses the `insert` function of the Splice Machine Native Spark DataSource to insert the data, in real-time, into the table.
 
-This code is available in  [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz).
+This code is available in  [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz).
 {: .noteNote}
 
 Here are the package and class import statements for the program:
@@ -352,7 +353,7 @@ To put it all together, you need to start streaming data, consume that data and 
 
 ### 1. Run the Kafka Producer to Stream Data {#runproducer}
 
-There are actually two shell scripts involved in streaming data into our app; both are included in the [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz) tarball:
+There are actually two shell scripts involved in streaming data into our app; both are included in the [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz) tarball:
 
 * The `runKafkaProducer.sh` script produces a number of events for a specific Kafka stream.
 * The `streamToKafka.sh` script invokes the `runKafkaProducer.sh` script a number of times, passing parameters that specify which Kafka stream to use and how many events to produce.
@@ -360,7 +361,7 @@ There are actually two shell scripts involved in streaming data into our app; bo
 <span class="spliceCheckbox">&#x261B;</span>You run `streamToKafka` to actually start streaming data that your app will produce.
 
 #### The `runKafkaProducer` Script
-Here's the version of the `runKafkaProducer.sh` script that is packaged into the [./examples/SparkStreamingSubmit.tar.gz](./examples/SparkStreamingSubmit.tar.gz) tarball:
+Here's the version of the `runKafkaProducer.sh` script that is packaged into the&nbsp;&nbsp;[`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz) tarball:
 
 <div class="PreWrapper"><pre class="ShellCommand">
 #!/usr/bin/env bash

@@ -15,7 +15,7 @@ folder: BestPractices/Database
 
 In this topic, we'll walk you through using our highly performant `BULK_IMPORT_HFILE` procedure to import flat files into your Splice Machine database. Bulk importing splits a data file into temporary HFiles (store files) before it is imported into your database by directly loading the generated StoreFiles into your Region Servers. Ideally, the temporary HFiles are of approximately equal size, which spreads your data evenly across the Region Servers.
 
-We recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our [basic import procedures](bestpractices_ingest_import.html), `IMPORT_DATA` or `MERGE_DATA_FROM_FILE` instead, because they perform constraint checking during ingestion.
+We recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our [basic import procedures](bestpractices_ingest_import.html) instead; these procedures, `IMPORT_DATA` and `MERGE_DATA_FROM_FILE`,  perform constraint checking during ingestion.
 {: .noteNote}
 
 The remainder of this topic contains these sections:
@@ -229,7 +229,7 @@ You can use the `SPLIT_TABLE_OR_INDEX` in two ways:
 
 In both cases, `SPLIT_TABLE_OR_INDEX` associates the split key information with the table so that `BULK_IMPORT_HFILE` can use it during ingestion. If you pre-split your table, we also recommend that you pre-split your index; otherwise, your index table could eventually become a performance bottleneck. If your index includes your primary key, this is simple: you can use the same split key values for both.
 
-When you call `BULK_IMPORT_HFILE` with `skipSampling=true`, it assumes that you have previously called `SPLIT_TABLE_OR_INDEX` to pre-split the table; if you call it without first pre-splitting the table, `BULK_IMPORT_HFILE` will store the entire file in one region; such a table will suffer from very poor performance until you perform a major compaction.
+When you call `BULK_IMPORT_HFILE` with `skipSampling=true`, it assumes that you have previously called `SPLIT_TABLE_OR_INDEX` to pre-split the table. If you call it without first pre-splitting the table, `BULK_IMPORT_HFILE` will store the entire file in one region; such a table will suffer from very poor performance until you perform a major compaction.
 {: .noteImportant}
 
 
@@ -488,9 +488,9 @@ SELECT * FROM licensedUserInfo;
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 
-* [SYSCS_UTIL.BULK_IMPORT_HFILE](sqlref_sysprocs_importhfile.html)
-* [SYSCS_UTIL.COMPUTE_SPLIT_KEY](sqlref_sysprocs_computesplitkey.html)
-* [SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX](sqlref_sysprocs_splittable.html)
+* [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
+* [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html)
+* [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)
 
 
 </div>

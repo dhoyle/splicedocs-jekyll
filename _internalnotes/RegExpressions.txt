@@ -13,3 +13,12 @@ Regex to convert markdown URL to HTML URL:
            \[(.*?)\]\((.*?)\)
         replace with:
            <a href="$2">$1</a>
+
+
+Regex to convert HTML URL to Markdown URL:
+
+        Search for:
+           <a href="(.*?)>(.*?)</a>
+        replace with:
+           [$2]($1)
+<a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a>

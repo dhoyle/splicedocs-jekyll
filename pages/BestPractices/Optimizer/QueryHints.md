@@ -101,21 +101,21 @@ Specific hint types can be used in specific locations: after a table identifier
                 <p>useSpark</p>
                 <p>bulkDeleteDirectory</p>
             </td>
-            <td><code><span class="Example">SELECT * FROM<br />    member_info m, rewards r,<br />   points p --SPLICE-PROPERTIES index=ie_point WHERE...</span></code></td>
+            <td><pre class="Example">SELECT * FROM<br />    member_info m, rewards r,<br />   points p --SPLICE-PROPERTIES index=ie_point WHERE...</pre></td>
         </tr>
         <tr>
             <td>A <code>FROM</code> clause</td>
             <td class="CodeFont">
                 <p>joinOrder</p>
             </td>
-            <td><code><span class="Example">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />   mytable1 e, mytable2 t<br />   WHERE e.id = t.parent_id;</span></code></td>
+            <td class="CodeFont">SELECT * FROM --SPLICE-PROPERTIES joinOrder=fixed<br />   mytable1 e, mytable2 t<br />   WHERE e.id = t.parent_id;</td>
         </tr>
         <tr>
             <td>A subquery</td>
             <td class="CodeFont">
                 <p>doNotFlatten</p>
             </td>
-            <td><code><span class="Example">SELECT * FROM t1 WHERE b1=1<br />  AND c1 = (SELECT MAX(c2) FROM t2 WHERE a1=a2 AND b1=b2) --splice-properties doNotFlatten=false<br />   ;</span></code></td>
+            <td class="CodeFont">SELECT * FROM t1 WHERE b1=1<br />  AND c1 = (SELECT MAX(c2) FROM t2 WHERE a1=a2 AND b1=b2) --splice-properties doNotFlatten=false<br />   ;</td>
         </tr>
     </tbody>
 </table>
@@ -187,12 +187,7 @@ splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFile
 {: .Example }
 
 
-We recommend performing a major compaction on your database after
-deleting a large amount of data; you should also be aware of our new
-[`SYSCS_UTIL.SET_PURGE_DELETED_ROWS`](sqlref_sysprocs_purgedeletedrows.html)
-system procedure, which you can call before a compaction to specify that
-you want the data physically (not just logically) deleted during
-compaction.
+We recommend performing a major compaction on your database after deleting a large amount of data; you should also be aware of the  &nbsp;&nbsp;[`SYSCS_UTIL.SET_PURGE_DELETED_ROWS`](sqlref_sysprocs_purgedeletedrows.html) system procedure, which you can call  before a compaction to specify that you want the data physically (not just logically) deleted during compaction.
 {: .noteNote}
 
 

@@ -15,8 +15,6 @@ folder: DBaaS/CloudManager
 This topic describes the Splice Machine Events Manager, which allows you
 to examine notification messages sent to your cluster.
 
-{% include splice_snippets/dbaasonlytopic.md %}
-
 Here's a screenshot of a partially populated <span
 class="ConsoleLink">Events Manager screen:</span>
 

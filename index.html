@@ -12,6 +12,7 @@ folder: /
 <div class="TopicContent" data-swiftype-index="true">
     <h1>Welcome to Splice&#160;Machine!</h1>
     <p>Welcome to Splice Machine, the  database platform for adaptive applications that manage operational processes. This site contains documentation to help you use our products. Visit our company web site to <a href="{{splvar_location_OnPremStartLink}}" target="_blank">learn more about how our platform works</a>.</p>
+
     <div class="newAndNoteWorthy">
         <h2 class="heading2">New and Noteworthy!</h2>
         <p>This release includes several new features of significant note:</p>
@@ -19,10 +20,13 @@ folder: /
             <h3>Application Server Queues</h3>
             <p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues allow you to specify how different queries are prioritized into different execution lanes; they are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
             <h3>Schema Access Restrictions</h3>
-            <p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the <a href="tutorials_security_schemarestrict.html">Schema Restriction</a> topic.</p>
-            <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users, though each user will only be able to access the values within each view to which s/he has been granted access.</p>
-            <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
+            <p>Access to the <code>SYS</code> schema (including system tables) is now, by default, restricted to only Database Administrators, who have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, which includes the new <code>ACCESS</code> permission type, see the <a href="tutorials_security_schemarestrict.html">Schema Restriction</a> topic.</p>
+            <p>Since access to system tables is now restricted, views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users, though each user will only be able to access the values within each view to which s/he has been granted access.</p>
+            <p class="noteNote">If you are upgrading from a previous version of Splice Machine, it is especially important that you review the information in the <a href="tutorials_security_schemarestrict.html#upgrading"><em>Upgrading to Splice Machine with Schema Restriction</em></a> section.</p>
+            <h3>Log Filtering</h3>
+            <p>You can now <a href="developers_tuning_logging.html#Filtering">filter sensitive information out of log entries</a> by specifying matching patterns (with regular expressions).</p>
         </div>
+        <p>See our <a href="releasenotes_intro.html">Release Notes</a> for a list of all new features, enhancements, and bug fixes.</p>
     </div>
 
     <h2 class="heading2">Documentation Versions</h2>

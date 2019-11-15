@@ -60,7 +60,7 @@ val splicemachineContext = new SplicemachineContext(JDBC_URL)
 
 ### Using the Context to Populate a Table
 
-Here's a simple example that illustrates how to populate a Splice Machine table from a Spark DataFrame. This example uses Zepplin.
+Here's a simple example that illustrates how to populate a Splice Machine table from a Spark DataFrame. This example uses Zeppelin.
 
 First we'll create a DataFrame with a little data in it:
 

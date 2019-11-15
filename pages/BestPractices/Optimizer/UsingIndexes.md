@@ -65,9 +65,11 @@ You can optionally specify the sampling rate, as shown in the above example. If 
 
 #### How Auto Sampling Works
 The Splice Machine auto sampling algorithm calculates the number of regions required for the index with this formula:
+
 ```
 num_regions = index_size / sampling_rate/max_region_size/2
 ```
+{: .Plain}
 
 The value of `max_region_size` is defined in the `hbase.hregion.max.filesize` property value.
 {: .spaceAbove}
@@ -95,11 +97,13 @@ This is a step-by-step example of using `CREATE INDEX` with logical keys:
          ```
          num_regions = index_column_size + PK_column_size) / total_column_size
          ```
+         {: .Plain}
 
       2. Run an SQL query to calculate some statistics and generate a histogram for leading index columns. For example, assuming the first column is `index_col1`, we can use this statement:
          ```
          splice> SELECT index_col1, COUNT(*) FROM TABLE GROUP BY index_col1 ORDER BY 1;
          ```
+         {: .Example}
 
       3. Given the estimated number of regions and the histogram, you can find keys that can split the index into roughly equal sized regions.
 
@@ -147,11 +151,13 @@ This is a variation of the same step-by-step example that uses physical keys ins
          ```
          num_regions = index_column_size + PK_column_size) / total_column_size
          ```
+         {: .Plain}
 
       2. Run an SQL query to calculate some statistics and generate a histogram for leading index columns. For example, assuming the first column is `index_col1`, we can use this statement:
          ```
          splice> SELECT index_col1, COUNT(*) FROM TABLE GROUP BY index_col1 ORDER BY 1;
          ```
+         {: .Example}
 
       3. Given the estimated number of regions and the histogram, you can find keys that can split the index into roughly equal sized regions.
 
@@ -250,11 +256,13 @@ Here is a step-by-step example of specifying your own split keys in a file  and 
          ```
          num_regions = index_column_size + PK_column_size) / total_column_size
          ```
+         {: .Plain}
 
       2. Run an SQL query to calculate some statistics and generate a histogram for leading index columns. For example, assuming the first column is `index_col1`, we can use this statement:
          ```
          splice> SELECT index_col1, COUNT(*) FROM TABLE GROUP BY index_col1 ORDER BY 1;
          ```
+         {: .Example}
 
       3. Given the estimated number of regions and the histogram, you can find keys that can split the index into roughly equal sized regions.
 

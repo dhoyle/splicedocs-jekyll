@@ -303,8 +303,8 @@ The [Data Ingestion Parameter Values](bestpractices_ingest_params.html) topic in
 
 Our SQL Reference Manual includes reference pages for each of these system procedures, which include full information about the parameters, additional examples, and discussion of handling special cases and input errors:
 
-* [SYSCS_UTIL.IMPORT_DATA](sqlref_sysprocs_importdata.html)
-* [SYSCS_UTIL.MERGE_DATA_FROM_FILE](sqlref_sysprocs_mergedata.html)
+* [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
+* [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 
 
 </div>

@@ -1,6 +1,12 @@
+GET REVIEWED:
+
+    onprem_info_requirements.html
+    onprem_info_editions.html
+    onprem_install_links.html
+
 BUILD:
 
-    UPDATE SwiftType search 
+    UPDATE SwiftType search
     verify robots.txt
     UPDATE .htaccess:
         Redirect 301 /developers_tuning_explainplan_examples.html https://doc.splicemachine.com/bestpractices_optimizer_explain.html
