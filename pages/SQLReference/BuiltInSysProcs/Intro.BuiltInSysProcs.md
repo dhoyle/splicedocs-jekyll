@@ -209,13 +209,14 @@ database:
         <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_validatebackup.html">SYSCS_UTIL.VALIDATE_BACKUP</a></td>
             <td>Validates a database backup by checking for inconsistencies; it reports on missing files and bad checksum values.</td>
-        <tr>
+        </tr>
         <tr>
             <td class="CodeFont"><a href="sqlref_sysprocs_validatetablebackup.html">SYSCS_UTIL.VALIDATE_TABLE_BACKUP</a></td>
             <td>Validates a table backup by checking for inconsistencies; it reports on missing files and bad checksum values.</td>
-        <tr>
+        </tr>
     </tbody>
 </table>
+
 ## Database Properties Procedures and Functions   {#DatabaseProps}
 
 These are the system procedures and functions for working with your

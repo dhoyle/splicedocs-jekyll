@@ -118,6 +118,7 @@ Our release notes are presented in these topics:
 ## Database Patch Release Notes  {#releasenotes}
 
 <ul>
+    <li><a href="releasenotes_2.8.1936.html">Patch Release 2.8.0.1936</a></li>
     <li><a href="releasenotes_2.8.1935.html">Patch Release 2.8.0.1935</a></li>
     <li><a href="releasenotes_2.8.1934.html">Patch Release 2.8.0.1934</a></li>
     <li><a href="releasenotes_2.8.1933.html">Patch Release 2.8.0.1933</a></li>
