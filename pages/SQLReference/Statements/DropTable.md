@@ -4,7 +4,7 @@ summary: Drops a table from a database.
 keywords: dropping a table
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_droptable.html
 folder: SQLReference/Statements
 ---
@@ -24,7 +24,7 @@ DROP TABLE [IF EXISTS] <a href="sqlref_identifiers_types.html#TableName">table-
 table-Name
 {: .paramName}
 
-The name of the schema that you want to drop from your database.
+The name of the table that you want to drop from your database.
 {: .paramDefnFirst}
 
 </div>

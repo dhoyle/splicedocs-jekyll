@@ -4,7 +4,7 @@ summary: Built-in SQL function that computes population standard deviation.
 keywords: population, standard deviation, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_stddevpop.html
 folder: SQLReference/BuiltInFcns
 ---

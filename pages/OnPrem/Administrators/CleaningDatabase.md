@@ -4,7 +4,7 @@ title: Cleaning Your Database
 keywords: cleaning database, flatten
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_cleaningdb.html
 folder: OnPrem/Administrators
 ---
@@ -227,10 +227,6 @@ This is a destructive process and should only be used by an administrator!
     You need to SSH into a node that is running the HDFS Client and
     re-create the directory structure that Splice Machine expects by
     issuing these commands:
-    {: .indentLevel1}
-
-    Run the <span class="ShellCommand">zookeeper-client</span> command.
-    At the prompt, run the following commands:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">

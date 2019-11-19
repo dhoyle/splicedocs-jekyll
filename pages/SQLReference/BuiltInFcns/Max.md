@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window function that evaluates the maximum of
 keywords: maximum window function, maximum aggregate function, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_max.html
 folder: SQLReference/BuiltInFcns
 ---

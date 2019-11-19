@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSLA Errors
 keywords: XSLA errors, error XSLA
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsla.html
 folder: SQLReference/ErrorCodes
 ---

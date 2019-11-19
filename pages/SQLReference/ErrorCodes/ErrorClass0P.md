@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 0P Errors
 keywords: 0P errors, error 0p
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class0p.html
 folder: SQLReference/ErrorCodes
 ---

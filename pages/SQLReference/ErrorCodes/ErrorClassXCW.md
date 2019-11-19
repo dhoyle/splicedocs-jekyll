@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XCW Errors
 keywords: XCW errors, error XCW
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxcw.html
 folder: SQLReference/ErrorCodes
 ---

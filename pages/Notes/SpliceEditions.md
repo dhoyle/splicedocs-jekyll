@@ -3,7 +3,7 @@ title: Splice Machine Editions
 summary: Splice Machine editions
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar: home_sidebar
 permalink: notes_editions.html
 folder: Notes
 ---
@@ -302,4 +302,4 @@ Splice Machine:
 
 
 
-[1]: http://www.splicemachine.com/company/contact-us/
+[1]: https://www.splicemachine.com/company/contact-us/

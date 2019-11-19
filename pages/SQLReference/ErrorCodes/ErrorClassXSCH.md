@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSCH Errors
 keywords: XSCH errors, error XSCH
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsch.html
 folder: SQLReference/ErrorCodes
 ---

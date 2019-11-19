@@ -4,7 +4,7 @@ summary: An overview of the different kinds of joins available in Splice Machine
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_joinops_about.html
 folder: SQLReference/JoinOps
 ---

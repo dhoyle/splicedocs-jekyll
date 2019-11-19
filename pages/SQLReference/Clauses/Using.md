@@ -4,7 +4,7 @@ summary: A clause that specifies which columns to test for equality when two tab
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_using.html
 folder: SQLReference/Clauses
 ---

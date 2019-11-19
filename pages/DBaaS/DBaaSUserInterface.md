@@ -2,7 +2,7 @@
 title: Splice Machine User Interface Overview
 summary: An overview of the Splice Machine Cloud Managed Database Service.
 keywords: dbaas, Service, user interface, cloud manager, account manager, events manager, ui for service
-sidebar:  dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: all
 permalink: dbaas_uioverview.html
@@ -18,7 +18,7 @@ into your database, query and manipulate your database, and create
 visual representations of your query results, as described here:
 
 <table>
-    <col />
+    <col width="20%" />
     <col />
     <thead>
         <tr>

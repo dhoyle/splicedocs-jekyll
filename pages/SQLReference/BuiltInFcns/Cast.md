@@ -4,7 +4,7 @@ summary: Built-in SQL function that converts values (expressions) from one data 
 keywords: casting types, type conversion
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_cast.html
 folder: SQLReference/BuiltInFcns
 ---
@@ -59,10 +59,12 @@ types that are listed in the first row of the table.
                 <col />
                 <col />
                 <col />
+                <col />
                 <thead>
                     <tr>
                         <th>TYPES</th>
                         <th style="vertical-align:bottom;">B<br />O<br />O<br />L<br />E<br />A<br />N</th>
+                        <th style="vertical-align:bottom;">T<br />I<br />N<br />Y<br />I<br />N<br />T</th>
                         <th style="vertical-align:bottom;">S<br />M<br />A<br />L<br />L<br />I<br />N<br />T</th>
                         <th style="vertical-align:bottom;">I<br />N<br />T<br />E<br />G<br />E<br />R</th>
                         <th style="vertical-align:bottom;">B<br />I<br />G<br />I<br />N<br />T</th>
@@ -91,6 +93,7 @@ types that are listed in the first row of the table.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -101,8 +104,29 @@ types that are listed in the first row of the table.
                         <td>-</td>
                     </tr>
                     <tr>
+                        <td>TINYINT</td>
+                        <td>-</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>Y</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
                         <td>SMALLINT</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -149,6 +173,7 @@ types that are listed in the first row of the table.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -160,6 +185,7 @@ types that are listed in the first row of the table.
                     <tr>
                         <td>DECIMAL</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -186,6 +212,7 @@ types that are listed in the first row of the table.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -198,6 +225,7 @@ types that are listed in the first row of the table.
                     <tr>
                         <td>DOUBLE</td>
                         <td>-</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -224,6 +252,7 @@ types that are listed in the first row of the table.
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
+                        <td>Y</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -235,6 +264,7 @@ types that are listed in the first row of the table.
                     </tr>
                     <tr>
                         <td>CHAR</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -254,6 +284,7 @@ types that are listed in the first row of the table.
                     </tr>
                     <tr>
                         <td>VARCHAR</td>
+                        <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -281,6 +312,7 @@ types that are listed in the first row of the table.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>Y</td>
@@ -293,6 +325,7 @@ types that are listed in the first row of the table.
                     <tr>
                         <td>CLOB</td>
                         <td>Y</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -323,6 +356,7 @@ types that are listed in the first row of the table.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>-</td>
                         <td>-</td>
@@ -330,6 +364,7 @@ types that are listed in the first row of the table.
                     </tr>
                     <tr>
                         <td>DATE</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -357,6 +392,7 @@ types that are listed in the first row of the table.
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
+                        <td>-</td>
                         <td>Y</td>
                         <td>Y</td>
                         <td>-</td>
@@ -368,6 +404,7 @@ types that are listed in the first row of the table.
                     </tr>
                     <tr>
                         <td>TIMESTAMP</td>
+                        <td>-</td>
                         <td>-</td>
                         <td>-</td>
                         <td>-</td>
@@ -414,7 +451,7 @@ Splice Machine ANSI SQL data types are categorized as follows:
                     <tr>
                         <td><em>numeric</em></td>
                         <td>
-                            <p>Exact numeric: <code>SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC</code></p>
+                            <p>Exact numeric: <code>TINYINT, SMALLINT, INTEGER, BIGINT, DECIMAL, NUMERIC</code></p>
                             <p>Approximate numeric: <code>FLOAT, REAL, DOUBLE PRECISION</code></p>
                         </td>
                     </tr>
@@ -506,35 +543,86 @@ silently truncated.
 If a `TIMESTAMP` is converted to a `TIME`, the `DATE` component is
 silently truncated.
 
+### Implicit Conversions and Joins
+Splice Machine performs implicit type conversion when performing joins to allow joining of mismatched column types. Specifically, when joining a `CHAR` or `VARCHAR` column on a column of the following types, an attempt is made to convert the string value into that column's type:
+
+* `BOOLEAN`
+* `DATE`
+* `TIME`
+* `TIMESTAMP`
+
+If any row in a query that involves implicit type conversion contains a column value cannot be converted to the desired type, the `join` fails, and the following error is thrown:
+
+```
+   ERROR 22007: The syntax of the string representation of a datetime value is incorrect
+```
+
+
 ## Examples
+
+Here are a few explicit type conversions:
 
 <div class="preWrapper" markdown="1">
     splice> SELECT CAST (TotalBases AS BIGINT)
       FROM Batting;
-    
+
        -- convert timestamps to text
     splice> INSERT INTO mytable (text_column)
       VALUES (CAST (CURRENT_TIMESTAMP AS VARCHAR(100)));
-    
+
        -- you must cast NULL as a data type to use it
     splice> SELECT airline
       FROM Airlines
       UNION ALL
       VALUES (CAST (NULL AS CHAR(2)));
-    
+
        -- cast a double as a decimal
     splice> SELECT CAST (FLYING_TIME AS DECIMAL(5,2))
       FROM FLIGHTS;
-    
+
        -- cast a SMALLINT to a BIGINT
     splice> VALUES CAST (CAST (12 as SMALLINT) as BIGINT);
 {: .Example xml:space="preserve"}
 
 </div>
+
+
+Here's an example of implicit conversion failures during attempted joins:
+
+<div class="preWrapper" markdown="1">
+    CREATE TABLE s1 (a1 INT, b1 VARCHAR(16));
+    CREATE TABLE s2 (a2 INT, b2 DATE);
+    CREATE TABLE s3 (a3 INT, b3 BOOLEAN);
+
+    INSERT INTO s2 VALUES (2,'2018-11-11');
+    INSERT INTO s3 VALUES (3,true);
+
+    INSERT INTO s1 VALUES(1,'2018-11-11');
+    SELECT a1 FROM s1 JOIN s2 ON  b1 = b2;
+    A1
+    -----------
+    1
+
+    INSERT INTO s1 VALUES(2,'foo');
+    SELECT a1 FROM s1 JOIN s2 ON  b1 = b2;
+    ERROR 22007: The syntax of the string representation of a datetime value is incorrect.
+
+    DELETE FROM s1;
+    INSERT INTO s1 VALUES (1,'1');
+    SELECT a1 FROM s1 JOIN s3 ON  b1 = b3;
+    A1
+    -----------
+    1
+
+    INSERT INTO s1 VALUES (2,'foo');
+    SELECT a1 FROM s1 JOIN s3 ON  b1 = b3;
+    ERROR 22018: Invalid character string format for type BOOLEAN.
+{: .Example xml:space="preserve"}
+</div>
+
 ## See Also
 
 * [About Data Types](sqlref_datatypes_numerictypes.html)
 
 </div>
 </section>
-

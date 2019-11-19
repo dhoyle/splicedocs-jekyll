@@ -4,7 +4,7 @@ summary: Built-in system procedure that deletes all backups that were created mo
 keywords: Delete old backups, delete_old_backups
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_deleteoldbackups.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -65,13 +65,10 @@ more than 30 days ago.
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

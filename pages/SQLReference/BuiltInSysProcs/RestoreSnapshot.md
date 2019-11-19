@@ -4,7 +4,7 @@ summary: Built-in system procedure that restores a table or schema from a previo
 keywords: snapshot, restore_snapshot, restore from snapshot, restore table, restore schema
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_restoresnapshot.html
 folder: SQLReference/BuiltInSysProcs
 ---

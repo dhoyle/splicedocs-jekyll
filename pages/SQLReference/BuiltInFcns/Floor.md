@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns  the largest integer less than or eq
 keywords: rounding down
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_floor.html
 folder: SQLReference/BuiltInFcns
 ---

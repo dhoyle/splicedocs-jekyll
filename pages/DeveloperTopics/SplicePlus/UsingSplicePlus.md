@@ -4,7 +4,7 @@ toc: false
 keywords:
 product: all
 summary:
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_spliceplus_using.html
 folder: DeveloperTopics/SplicePlus
 ---
@@ -26,7 +26,7 @@ class="AppCommand">splice&gt;</span> prompt to run SQL commands.
 If you are already familiar with PL/SQL from using it with Oracle or
 another database, Splice Machine PL/SQL is almost exactly the same. The
 [Splice\*Plus language](developers_spliceplus_lang.html) topic provides a quick review of the
-supported language structures, and the [Migrating to Splice\*Plus](developers_spliceplus_migrating.html) topic describes any important differences between Splice*Plus and Oracle's PL/SQL implementations.
+supported language structures.
 {: .noteImportant}
 
 The remainder of this topic includes these sections:
@@ -205,6 +205,9 @@ the block.
 ## Storing Your PL/SQL Code {#Storing}
 
 All PL/SQL procedures that you create with Splice\*Plus are stored in the SYS.SYSSOURCECODE table in your database.
+
+The `SYS.SYSSOURCECODE` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
 
 You can specify that your code should *not* be stored in your database with the `--debug DISABLE_PERSISTENCE` command line option.
 

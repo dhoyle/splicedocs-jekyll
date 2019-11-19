@@ -4,7 +4,7 @@ summary: A quick overview of the Splice Machine in-memory engine, powered by Apa
 keywords: spark, overview, 'in-memory engine', 'spark overview'
 toc: false
 product: all
-sidebar:  notes_sidebar
+sidebar: home_sidebar
 permalink: notes_sparkoverview.html
 folder: Notes
 ---
@@ -134,7 +134,7 @@ Examples include <code>save</code> and <code>collect</code> functions.</td>
   Console](tutorials_dbconsole_features.html)
 * [Managing Queries with the Console](tutorials_dbconsole_queries.html)
 * [Using Spark Libraries with Splice
-  Machine](developers_spark_libs.html)
+  Machine](developers_fundamentals_sparklibs.html)
 * The Apache Spark web site, [spark.apache.org][1]{: target="_blank"}
 
  

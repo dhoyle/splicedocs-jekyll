@@ -4,7 +4,7 @@ summary: A summary of the data types available in Splice Machine SQL.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_intro.html
 folder: SQLReference/DataTypes
 ---
@@ -34,8 +34,7 @@ SQL Data Types, in the following subsections:
 
 ## Character String Data Types   {#Characte}
 
-These are the [character string data
-types](sqlref_datatypes_charstringtypes.html):
+These are the character string data types:
 
 <table summary="Links to and descriptions of the available character string data types">
                 <col />
@@ -70,8 +69,7 @@ types](sqlref_datatypes_charstringtypes.html):
             </table>
 ## Date and Time Data Types   {#Date}
 
-These are the [date and time data
-types](sqlref_datatypes_datetimetypes.html):
+These are the date and time data types:
 
 <table summary="Links to and descriptions of the available date and time data types">
                 <col />
@@ -105,7 +103,7 @@ types](sqlref_datatypes_datetimetypes.html):
             </table>
 ## Large Object Binary (LOB) Data Types   {#Large}
 
-These are the [LOB data types](sqlref_datatypes_lobtypes.html):
+These are the LOB data types:
 
 <table summary="Links to and descriptions of the available LOB data types">
                 <col />
@@ -136,7 +134,7 @@ These are the [LOB data types](sqlref_datatypes_lobtypes.html):
             </table>
 ## Numeric Data Types   {#Numeric}
 
-These are the [numeric data types](sqlref_datatypes_numerictypes.html):
+These are the numeric data types:
 
 <table summary="Links to and descriptions of the available numeric data types">
                 <col />
@@ -149,7 +147,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                 </th>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_bigint.html">BIGINT</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_bigint.html">BIGINT</a>
                     </td>
                     <td>
                         <p>The <code>BIGINT</code> data type provides 8 bytes of storage for integer values.</p>
@@ -164,7 +162,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_double.html">DOUBLE</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_double.html">DOUBLE</a>
                     </td>
                     <td>
                         <p>The <code>DOUBLE</code> data type provides 8-byte storage for numbers
@@ -190,7 +188,7 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_integer.html">INTEGER</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_integer.html">INTEGER</a>
                     </td>
                     <td>
                         <p><code>INTEGER</code> provides 4 bytes of storage for integer values.</p>
@@ -213,16 +211,23 @@ These are the [numeric data types](sqlref_datatypes_numerictypes.html):
                     </td>
                 </tr>
                 <tr>
-                    <td class="CodeFont"><a href="sqlref_builtinfcns_smallint.html">SMALLINT</a>
+                    <td class="CodeFont"><a href="sqlref_datatypes_smallint.html">SMALLINT</a>
                     </td>
                     <td>
                         <p>The <code>SMALLINT</code> data type provides 2 bytes of storage.</p>
                     </td>
                 </tr>
+                <tr>
+                    <td class="CodeFont"><a href="sqlref_datatypes_tinyint.html">TINYINT</a>
+                    </td>
+                    <td>
+                        <p>The <code>TINYINT</code> data type provides 1 byte of storage.</p>
+                    </td>
+                </tr>
             </table>
 ## Other Data Types   {#Other}
 
-These are the [other data types](sqlref_datatypes_othertypes.html):
+These are the other data types:
 
 <table summary="Links to and descriptions of primitive data types">
                 <col />
@@ -267,4 +272,3 @@ These are the [other data types](sqlref_datatypes_othertypes.html):
 
 </div>
 </section>
-

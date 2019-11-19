@@ -4,7 +4,7 @@ summary: Used in statements to specify the definition of a column.
 keywords: column name, column definition
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_columndef.html
 folder: SQLReference/Statements
 ---

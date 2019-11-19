@@ -4,7 +4,7 @@ summary: Describes the SELECT expression, which builds a table value based on fi
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_select.html
 folder: SQLReference/Expressions
 ---
@@ -34,8 +34,8 @@ SELECT clause
 {: .paramName}
 
 The `SELECT` clause contains a list of expressions and an optional
-quantifier that is applied to the results of the &nbsp;[`WHERE`
-clause](sqlref_clauses_where.html).
+quantifier that is applied to the results of the `WHERE`
+clause.
 {: .paramDefnFirst}
 
 If `DISTINCT` is specified, only one copy of any row value is included
@@ -54,11 +54,11 @@ SelectItem:
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 {
     * |
-    { <a href="correlation-Name } .* |
-      Expression [AS <a href="sqlref_identifiers_types.html#SimpleColumnName">Simple-column-Name</a>] }
+    { table-Name | correlation-Name } .* |
+    Expression [AS Simple-column-Name]
 }</pre>
-
 </div>
+
 A<em> SelectItem</em> projects one or more result column values for a
 table result being constructed in a *SelectExpression*.
 {: .paramDefn}
@@ -236,14 +236,10 @@ This example shows using correlation names for the tables:
 
 <div class="preWrapperWide" markdown="1">
 
-    splice> SELECT CONSTRAINTNAME, COLUMNNAME
-      FROM SYS.SYSTABLES t, SYS.SYSCOLUMNS col,
-      SYS.SYSCONSTRAINTS cons, SYS.SYSCHECKS checks
-      WHERE t.TABLENAME = 'FLIGHTS'
-        AND t.TABLEID = col.REFERENCEID
-        AND t.TABLEID = cons.TABLEID
-        AND cons.CONSTRAINTID = checks.CONSTRAINTID
-      ORDER BY CONSTRAINTNAME;
+    splice> SELECT DisplayName, Team, Salary
+      FROM Players p, Salaries s
+      WHERE p.Position = '1B'
+        AND p.Id   = s.Id
 {: .Example}
 
 This example shows using the `DISTINCT` clause:

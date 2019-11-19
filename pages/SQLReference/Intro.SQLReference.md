@@ -4,13 +4,13 @@ summary: Introduces the Splice Machine SQL Reference manual
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_intro.html
 folder: SQLReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "SQL Reference Manual" %}
+{% assign site.guide_heading = "SQL Reference Manual" %}
 # SQL Reference Manual
 
 This section contains reference information for Splice Machine SQL. Our
@@ -83,6 +83,11 @@ sections:
             <td>Descriptions of the system tables.</td>
         </tr>
         <tr>
+            <td><a href="sqlref_systables_intro.html">System Views</a>
+            </td>
+            <td>Descriptions of the system views.</td>
+        </tr>
+        <tr>
             <td><a href="sqlref_sqlargmatching.html">Argument Matching</a>
             </td>
             <td>Describes how Splice Machine matches Java data types and methods with arguments supplied in SQL statements.</td>
@@ -100,7 +105,7 @@ sections:
     </tbody>
 </table>
 For a summary of all Splice Machine documentation, see the
-[Documentation Summary](notes_usingdocs.html) topic.
+[Getting Started with Splice Machine Documentation](gettingstarted_usingdocs.html) topic.
 
 ## Acknowledgment
 

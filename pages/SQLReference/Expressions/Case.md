@@ -4,7 +4,7 @@ summary: Syntax for and examples of CASE expressions in Splice Machine SQL.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_case.html
 folder: SQLReference/Expressions
 ---

@@ -4,7 +4,7 @@ summary: Built-in system procedure that updates the stored declaration of a spec
 keywords: update_system_procedure, update system procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_updatesysproc.html
 folder: SQLReference/BuiltInSysProcs
 ---

@@ -4,7 +4,7 @@ summary: Built-in system procedure that imports data from an hfile.
 keywords: bulk import, hfile import, bulk_import_hfile, import_hfile
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_importhfile.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -21,10 +21,7 @@ Unlike our standard [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)Â
 procedure does not perform constraint checking while loading your data.
 {: noteImportant}
 
-Our *Importing Data Tutorial* includes topics to help with bulk HFile import:
-* [Importing Data Tutorial](tutorials_ingest_importoverview.html) provides an overview of the different data loading procedures you can use, and includes a decision tree to help you determine which is appropriate for your situation.
-* [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) describes how to use `SYSCS_UTIL.BULK_IMPORT_HFILE` and the different methods for computing the split keys used to create the HFiles.
-* [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile) includes examples of using bulk HFile import.
+Our []*Best Practices: Ingestion*] chapter includes an overview and examples of using bulk HFile import.
 
 ## Syntax
 
@@ -55,7 +52,7 @@ If you have specified `skipSampling=true` to indicate that you've computed *pre-
 
 ## Parameters
 
-This table includes a brief description of each parameter; additional information is available in the [Import Parameters](tutorials_ingest_importparams.html) topic of our *Importing Data* tutorial.
+This table includes a brief description of each parameter; additional information is available in the [Ingestion Parameter Values](bestpractices_ingest_params.html) topic of our *Importing Data* tutorial.
 
 <table>
     <col />
@@ -79,16 +76,19 @@ This table includes a brief description of each parameter; additional informatio
             <td>The name of the table into which to import.</td>
             <td class="CodeFont">playerTeams</td>
         </tr>
-            <tr>
-                <td class="CodeFont">insertColumnList</td>
-                <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
-                <td class="CodeFont">'ID, TEAM'</td>
-            </tr>
+        <tr>
+            <td class="CodeFont">insertColumnList</td>
+            <td><p>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</p>
+            <p class="noteNote">The individual column names in the <code>insertColumnList</code> do not need to be double-quoted, even if they contain special characters. However, if you do double-quote any column name, <strong>you must</strong> double-quote all of the column names.</p>
+            </td>
+            <td class="CodeFont">'ID, TEAM'</td>
+        </tr>
         <tr>
             <td class="CodeFont">fileOrDirectoryName</td>
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
-            MapR-FS)</code>. If you're using our *Database Service* product, files can only be imported from S3.</p>
+            <p>On a cluster, the files to be imported <strong>MUST be in Azure Storage, S3, HDFS (or
+            MapR-FS)</strong>. If you're using our Database Service product, you can import files from S3 or Azure Storage.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for SpliceÂ Machine Access</a> or <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> topics for information.</p>
             </td>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>
@@ -135,7 +135,7 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on Azure Storage, S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
@@ -170,7 +170,7 @@ This table includes a brief description of each parameter; additional informatio
                     <li>Uses that histogram to calculate the split key for the table.</li>
                     <li>Uses the calculated split key to split the table into HFiles.</li>
                 </ol>
-                <p>This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the <a href="tutorials_ingest_importbulkhfile.html">Importing Data: Using Bulk HFile Import</a> topic of our Importing Data tutorial.</p>
+                <p>This allows you more control over the splits, but adds a layer of complexity. You can learn about computing splits for your input data in the <a href="bestpractices_ingest_bulkimport.html">Using Bulk HFile Import</a> topic of our Best Practices Guide.</p>
             </td>
             <td class="CodeFont">false</td>
         </tr>
@@ -184,13 +184,10 @@ the data file into multiple HFiles. Splitting the file into evenly-size HFiles y
 
 You have these choices for determining how the data is split:
 
-* You can call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `false`; this procedure then samples and analyzes the data in your file and splits the data into temporary HFiles based on that analysis. [Example 1: Automatic Splitting](tutorials_ingest_importexampleshfile.html#autosplit) shows how to use the automatic splits computation built into the `SYSCS_UTIL.BULK_IMPORT_HFILE` procedure.
+* You can call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `false`; this procedure then samples and analyzes the data in your file and splits the data into temporary HFiles based on that analysis. You'll find an example in the [Best Practices: Bulk Importing Flag Files](bestpractices_ingest_bulkimport.html) chapter of our Best Practices Guide.
 
-* You can *pre-split* your data by first creating a CSV file that specifies the split keys to use to perform the pre-splits, and then calling the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to pre-split your table or index file. You then call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true` to import the data. [Example 2: Computed Pre-Splits](tutorials_ingest_importexampleshfile.html#computesplit) shows how to pre-split your data using `SPLIT_TABLE_OR_INDEX` before performing the import.
-
-* If you want even more control over how your data is split into evenly-sized regions, you can specify the row boundaries for pre-splitting yourself in a CSV file. You then
-supply that file as a parameter to the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS`](sqlref_sysprocs_splittableatpoints.html) procedure, which performs the pre-splitting, after which you call `SYSCS_UTIL.BULK_IMPORT_HFILE` with the `skipSampling` parameter set to `true`. We recommend that only expert customers use this procedure.
-
+* You can *pre-split* your data by first creating a CSV file that specifies the split keys to use to perform the pre-splits, and then calling the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) to pre-split your table or index file. You'll also find an example of this in the [Best Practices: Bulk Importing Flag Files](bestpractices_ingest_bulkimport.html) chapter of our Best Practices Guide.
+*
 `SYSCS_UTIL.BULK_IMPORT_HFILE` automatically deletes the temporary HFiles after the import process has completed.
 {: .noteNote}
 
@@ -200,9 +197,9 @@ A few important notes:
 
 * Splice Machine advises you to __run a full compaction__ (with the  [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html) system procedure) after importing large amounts of data into your database.
 
-* On a cluster, the files to be imported **MUST be on S3, HDFS (or
+* On a cluster, the files to be imported **MUST be on Azure Storage, S3, HDFS (or
 MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
-our Database Service product, files can only be imported from S3.
+our Database Service product, files can only be imported from Azure Storage or S3.
 
   In addition, the files must be readable by the `hbase` user, and the
 `badRecordDirectory` directory must be writable by the `hbase` user,
@@ -229,14 +226,13 @@ process results that looks like this:
 
 ## Examples
 
-You'll find examples of using this procedure in the [Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html) topic of our *Importing Tutorial*.
+You'll find examples of using this procedure in the [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) topic of our Best Practices Guide.
 
 ## See Also
 
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
-*  [Importing Data: Bulk HFile Import Examples](tutorials_ingest_importexampleshfile.html)
+*  [Best Practices: Ingestion](bestpractices_ingest_overview.html)
+*  [Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html)
 *  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html)
 *  [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html)

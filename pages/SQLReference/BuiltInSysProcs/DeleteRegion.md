@@ -4,7 +4,7 @@ summary: Built-in system procedure that deletes a region.
 keywords: region deletion, delete region
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_deleteregion.html
 folder: SQLReference/BuiltInSysProcs
 ---

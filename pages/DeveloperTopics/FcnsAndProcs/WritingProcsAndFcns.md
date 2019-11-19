@@ -4,7 +4,7 @@ summary: A mini-tutorial on writing database functions and stored procedures for
 keywords: stored procedures, writing procedures, writing functions, creating procedures, creating stored procedures, creating functions
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_writing.html
 folder: DeveloperTopics/FcnsAndProcs
 ---
@@ -73,7 +73,7 @@ Follow the steps below to write a Splice Machine database function in Java.
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
-        CREATE FUNCTION add(val1 int, val2 int)
+        CREATE FUNCTION addNum(val1 int, val2 int)
             RETURNS integer
             LANGUAGE JAVA
             PARAMETER STYLE JAVA
@@ -105,7 +105,7 @@ Follow the steps below to write a Splice Machine database function in Java.
     {: .indentLevel1}
 
     <div class="preWrapper" markdown="1">
-        SELECT add(1,2) FROM SYS.SYSTABLES;
+        SELECT add(1,2) FROM myTable;
     {: .AppCommand xml:space="preserve"}
 
     </div>
@@ -127,11 +127,11 @@ Creating functions in Python is currently a __Beta Release__ feature; it will be
           RETURNS VARCHAR(50)
           PARAMETER STYLE JAVA
           READS SQL DATA
-          SQL LANGUAGE PYTHON
-          AS ' def run(inputStr):
-                import re
-                result = inputStr.strip().split(",")[0]
-                return result ';
+          LANGUAGE PYTHON
+          AS 'def run(inputStr):
+             import re
+             result = inputStr.strip().split(",")[0]
+             return result';
     {: .Example xml:space="preserve"}
 
     </div>
@@ -204,7 +204,7 @@ Follow the steps below to write a stored procedure in Java.
         	 throws SQLException
            {
         	Connection conn = DriverManager.getConnection("jdbc:default:connection");
-        	PreparedStatement pstmt = conn.prepareStatement("select * from sys.systables");
+        	PreparedStatement pstmt = conn.prepareStatement("select * from myTable");
         	rs[0] = pstmt.executeQuery();
         	conn.close();
            }
@@ -348,19 +348,19 @@ When creating a Python stored procedure, include your Python script directly in 
         LANGUAGE PYTHON
         DYNAMIC RESULT SETS 1
         READS SQL DATA
-        AS ' def run(lim, res):
-                c = conn.cursor()
-                    # select alias and javaclassname columns from sys.sysaliases tables
-                    # return them as a ResultSet
-                stmt = "select alias, javaclassname from sys.sysaliases {limit ?}"
-                c.executemany(stmt,[lim])
-                d = c.description
-                result = c.fetchall()
+        AS 'def run(lim, res):
+           c = conn.cursor()
+                # select tableID and tableName columns from sys.systablesview system view
+                # return them as a ResultSet
+           stmt = "select alias, javaclassname from sys.systablesview {limit ?}"
+           c.executemany(stmt,[lim])
+           d = c.description
+           result = c.fetchall()
                     # construct the ResultSet and fill it into the ResultSet list res
-                res[0] = factory.create([d,result])
-                conn.commit()
-                c.close()
-                conn.close() ';
+           res[0] = factory.create([d,result])
+           conn.commit()
+           c.close()
+           conn.close()';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 </div>

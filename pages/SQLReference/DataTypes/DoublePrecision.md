@@ -4,7 +4,7 @@ summary: The DOUBLE PRECISION data type provides 8-byte storage for numbers usin
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_doubleprecision.html
 folder: SQLReference/DataTypes
 ---

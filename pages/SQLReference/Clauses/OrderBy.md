@@ -4,7 +4,7 @@ summary: A clause that allows you to specify the order in which rows appear in t
 keywords: row order, DISTINCT, ROW NUMBER
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_orderby.html
 folder: SQLReference/Clauses
 ---

@@ -4,7 +4,7 @@ summary: Displays information about the primary keys in a table.
 keywords: primary key, keys, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showprimarykeys.html
 folder: CmdLineReference
 ---

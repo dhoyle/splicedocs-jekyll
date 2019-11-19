@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the arctangent, in radians, of the q
 keywords: atan2, arc tangent radians
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_atan2.html
 folder: SQLReference/BuiltInFcns
 ---

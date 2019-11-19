@@ -4,7 +4,7 @@ summary: Creates a sequence generator, which is&#xA;  a mechanism for generating
 keywords: creating a sequence
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createsequence.html
 folder: SQLReference/Statements
 ---
@@ -64,7 +64,7 @@ sequenceElement
 dataType
 {: .paramName}
 
-If specified, the *dataType* must be an integer type (`SMALLINT`, `INT`,
+If specified, the *dataType* must be an integer type (`TINYINT`, `SMALLINT`, `INT`,
 or `BIGINT`). If not specified, the default data type is `INT`.
 {: .paramDefnFirst}
 

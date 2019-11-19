@@ -4,7 +4,7 @@ summary:
 keywords:
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_spliceplus_intro.html
 folder: DeveloperTopics/SplicePlus
 ---
@@ -39,11 +39,6 @@ PL/SQL for Splice Machine:
             <td><a href="developers_spliceplus_lang.html">The Splice*Plus Language</a>
             </td>
             <td>A summary of the Splice*Plus PL/SQL language implementation.</td>
-        </tr>
-        <tr>
-            <td><a href="developers_spliceplus_migrating.html">Migrating PL/SQL to Splice*Plus</a>
-            </td>
-            <td>Describes modifications that may be necessary when moving a PL/SQL program to SpliceMachine.</td>
         </tr>
     </tbody>
 </table>

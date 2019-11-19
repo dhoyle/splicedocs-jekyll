@@ -4,7 +4,7 @@ summary: Built-in SQL function that extracts a portion of a character or bit str
 keywords: substring
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_substr.html
 folder: SQLReference/BuiltInFcns
 ---

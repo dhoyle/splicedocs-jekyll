@@ -4,13 +4,13 @@ title: Splice Machine On-Premise Database
 keywords:
 toc: false
 product: all
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_intro.html
 folder: OnPrem
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "On-Premise Database Product" %}
+{% assign site.guide_heading = "On-Premise Database Product" %}
 # Welcome to the Splice Machine On-Premise Database!
 
 Welcome to Splice Machine, the database platform for adaptive
@@ -55,30 +55,42 @@ sales team to start using Splice Machine:
 
 ## Using our Documentation
 
-Please visit our [Documentation Summary](notes_usingdocs.html) page for
+Please visit our [Getting Started with Splice Machine Documentation](gettingstarted_usingdocs.html) topic for
 a quick introduction to navigating and using the components of our
 documentation system.
 
+
 ### Version Information
 
-This site contains the documentation for version 2.5 of Splice Machine.
+{% if site.build_type == "doc" %}
+This web contains the current customer documentation for __version {{site.version_display}}__ of Splice Machine.
 
-If you're using an earlier version, you'll find the documentation here:
+If you're using an earlier version, you can find the documentation in these locations:
 
-<table>
-    <col />
-    <col />
-    <tbody>
-        <tr>
-            <td>Version 2.5</td>
-            <td><a href="https://doc.splicemachine.com/2.5/index.html">Release 2.5 Documentation</a> (Feb 2017)</td>
-        </tr>
-    </tbody>
-</table>
+{% if site.build_version == "2.8" or site.build_version == "3.0" %}
+* [Splice Machine Version 2.7 Documentation](https://doc.splicemachine.com/2.7/index.html){: target="_blank"}
+{% endif %}
+* [Splice Machine Version 2.5 Documentation](https://doc.splicemachine.com/2.5/index.html){: target="_blank"}
+
+{% elsif site.build_type == "docstest" %}
+This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.
+
+If you're using an earlier version, you can find the documentation in these locations:
+
+{% if site.build_version == "2.8" or site.build_version == "3.0" %}
+* [Splice Machine Version 2.7 Documentation](https://doc.splicemachine.com/2.7/index.html){: target="_blank"}
+{% endif %}
+* [Splice Machine Version 2.5 Documentation](https://doc.splicemachine.com/2.5/index.html){: target="_blank"}
+
+{% else %}
+This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.
+
+<p class="noteIcon">This <em>Internal Development Version</em> of our documentation <strong>DOES NOT</strong> include Search. You must use the top-menu and sidebar navigation to find topics.</p>
+{% endif %}
 
 </div>
 </section>
 
 
 
-[1]: http://www.splicemachine.com/company/contact-us/
+[1]: https://www.splicemachine.com/company/contact-us/

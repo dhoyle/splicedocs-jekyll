@@ -4,7 +4,7 @@ summary: Executes an SQL&#160;prepared statement or SQL&#160;command string.
 keywords: prepared statement, command string
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_execute.html
 folder: CmdLineReference
 ---

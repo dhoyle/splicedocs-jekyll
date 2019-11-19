@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XIE Errors
 keywords: XIE errors, error XIE
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxie.html
 folder: SQLReference/ErrorCodes
 ---

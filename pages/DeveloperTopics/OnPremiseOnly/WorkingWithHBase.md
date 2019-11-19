@@ -4,7 +4,7 @@ summary: Presents information about working in HBase with Splice Machine.
 keywords: HBase tables
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_hbase.html
 folder: DeveloperTopics/OnPremiseOnly
 ---
@@ -45,9 +45,7 @@ follow these steps:
         -------------------------------------------------------------
         SYS             |SYSALIASES         |368       |
         SYS             |SYSBACKUP          |944       |
-        SYS             |SYSBACKUPFILESET   |976       |
         SYS             |SYSBACKUPITEMS     |1056      |
-        SYS             |SYSBACKUPJOBS      |1184      |
         SYS             |SYSCHECKS          |384       |
         SYS             |SYSCOLPERMS        |640       |
         SYS             |SYSCOLUMNS         |80        |

@@ -4,7 +4,7 @@ summary: Built-in system procedure that tells Splice Machine to physically purge
 keywords: purge_deleted_rows, purging rows, physical delete, delete physical
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_purgedeletedrows.html
 folder: SQLReference/BuiltInSysProcs
 ---

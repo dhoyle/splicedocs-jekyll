@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the day part of a date
 keywords: day part, day function
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_day.html
 folder: SQLReference/BuiltInFcns
 ---

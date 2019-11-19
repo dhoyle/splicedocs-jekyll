@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the schema name that is used to qual
 keywords: schema
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_currentschema.html
 folder: SQLReference/BuiltInFcns
 ---

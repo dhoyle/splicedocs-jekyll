@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the absolute value of a numeric expr
 keywords: Abs, absolute value
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_abs.html
 folder: SQLReference/BuiltInFcns
 ---

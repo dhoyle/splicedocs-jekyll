@@ -4,7 +4,7 @@ summary: Examples of creating and using database functions and stored procedures
 keywords: stored procedures, examples
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_examples.html
 folder: DeveloperTopics/FcnsAndProcs
 ---
@@ -13,7 +13,7 @@ folder: DeveloperTopics/FcnsAndProcs
 # Examples of Splice Machine Functions and Stored Procedures
 
 This topic walks you through creating, storing, and using a sample
-database function and a sample database stored procedure, in these
+database function (a UDF, or user-defined function) and a sample database stored procedure, in these
 sections:
 
 * [Creating and Using a Sample Function in Splice
@@ -27,13 +27,18 @@ This section walks you through creating a sample function named
 `word_limiter` that limits the number of words in a string; for example,
 given this sentence:
 
-> <span class="AppCommand">Today is a wonderful day and I am looking
-> forward to going to the beach.</span>
+```
+Today is a wonderful day and I am looking forward to going to the beach.
+```
+{: .AppCommand}
 
 If you tell `word_limiter` to return the first five words in the
 sentence, the returned string would be:
 
-> <span class="AppCommand">Today is a wonderful day</span>
+```
+Today is a wonderful day
+```
+{: .AppCommand}
 
 Follow these steps to define and use the `word_limiter` function:
 

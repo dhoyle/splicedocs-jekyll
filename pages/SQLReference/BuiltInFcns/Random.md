@@ -4,7 +4,7 @@ summary: Built-in SQL function that computes a random number
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_random.html
 folder: SQLReference/BuiltInFcns
 ---

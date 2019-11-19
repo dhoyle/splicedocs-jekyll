@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays information about each Splice M
 keywords: operations, server ops, kill operation
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getrunningops.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -28,6 +28,12 @@ system procedure.
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
+## Security Note
+This procedure runs another, internal (undocumented) system procedure named `SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS_LOCAL`. This means that when you change permissions for `SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS`, you must also make the same permission changes to `SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS_LOCAL`.
+
+This will be handled automatically in a future release.
+{: .noteNote}
+
 ## Results
 
 The displayed results of calling
@@ -90,7 +96,7 @@ The displayed results of calling
 <code>splice> call SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS();</code>
 
 |UUID                                    |USER                              |HOSTNAME                                                                                                                |SESSION    |SQL                                                                                                                                                                                                                     |SUBMITTED     |ELAPSED                        |ENGINE      |JOBTYPE                                  |
-|34b0f479-be9a-4933-9b4d-900af218a19c    |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |264        |select * from sys.systables --splice-properties useSpark=true                                                                                                                                                                                                   |2018-02-02 17:39:05               | 26 sec(s)|SPARK     |Produce Result Set |
+|34b0f479-be9a-4933-9b4d-900af218a19c    |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |264        |select * from sysvw.systablesview --splice-properties useSpark=true                                                                                                                                                                                                   |2018-02-02 17:39:05               | 26 sec(s)|SPARK     |Produce Result Set |
 |4099f016-3c9d-4c62-8059-ff18d3b38a19     |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |4          |call syscs_util.syscs_get_running_operations()                                                                                                                                                                                                                  |2018-02-02 17:39:31               |0 sec(s) |CONTROL   |Call Procedure |
 
 ```

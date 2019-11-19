@@ -4,7 +4,7 @@ summary: How to store and update your compiled jar files when developing stored 
 keywords: stored procedures, functions, updating stored procedures, updating functions, storing procedures, storing functions
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fcnsandprocs_storing.html
 folder: DeveloperTopics/FcnsAndProcs
 ---
@@ -18,8 +18,16 @@ Splice Machine.
 
 Jar files are not versioned: the `GENERATIONID` is always zero. You can
 view the metadata for the Jar files in the Splice data dictionary by
-executing this query: `select * from sys.sysfiles;`
-{: .noteNote}
+executing this query:
+
+```
+SELECT * FROM SYS.SYSFILES;
+```
+{: .Example}
+
+The `SYS.SYSFILES` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
 
 ## Adding a Jar File
 

@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays the derby properties.
 keywords: display derby properties, get_all_properties
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getallprops.html
 folder: SQLReference/BuiltInSysProcs
 ---

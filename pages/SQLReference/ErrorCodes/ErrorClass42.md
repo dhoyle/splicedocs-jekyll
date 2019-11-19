@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 42 Errors
 keywords: 42 errors, error 42
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class42.html
 folder: SQLReference/ErrorCodes
 ---
@@ -195,7 +195,7 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>42818</code></td>
-                        <td>Comparisons between '<span class="VarName">&lt;type&gt;</span>' and '<span class="VarName">&lt;type&gt;</span>' are not supported. Types must be comparable. String types must also have matching collation. If collation does not match, a possible solution is to cast operands to force them to the default collation (e.g. SELECT tablename FROM sys.systables WHERE CAST(tablename AS VARCHAR(128)) = 'T1')</td>
+                        <td>Comparisons between '<span class="VarName">&lt;type&gt;</span>' and '<span class="VarName">&lt;type&gt;</span>' are not supported. Types must be comparable. String types must also have matching collation. If collation does not match, a possible solution is to cast operands to force them to the default collation (e.g. SELECT name FROM myTable WHERE CAST(name AS VARCHAR(128)) = 'T1')</td>
                     </tr>
                     <tr>
                         <td><code>42820</code></td>
@@ -1218,11 +1218,11 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>42ZB1</code></td>
-                        <td>Parameter style DERBY_JDBC_RESULT_SET is only allowed for table functions.</td>
+                        <td>Parameter style SPLICE_JDBC_RESULT_SET is only allowed for table functions.</td>
                     </tr>
                     <tr>
                         <td><code>42ZB2</code></td>
-                        <td>Table functions can only have parameter style DERBY_JDBC_RESULT_SET.</td>
+                        <td>Table functions can only have parameter style SPLICE_JDBC_RESULT_SET.</td>
                     </tr>
                     <tr>
                         <td><code>42ZB3</code></td>
@@ -1306,10 +1306,9 @@ folder: SQLReference/ErrorCodes
                     </tr>
                     <tr>
                         <td><code>44003</code></td>
-                        <td>Timestamp '<span class="VarName">&lt;dateOrTimestamp&gt;</span>' is out of range (~ from 21 Sep 1677 00:12:44 GMT to 11 Apr 2262 23:47:16 GMT).</td>
+                        <td>Timestamp '<span class="VarName">&lt;dateOrTimestamp&gt;</span>' is out of range (~ from 0000-00-00 00:00:00 GMT to 9999-12-31 23:59:59 GMT).</td>
                     </tr>
                 </tbody>
             </table>
 </div>
 </section>
-

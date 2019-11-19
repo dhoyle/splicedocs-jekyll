@@ -2,7 +2,7 @@
 summary: Overview of the Cloud Manager Event Manager
 title: Cloud Manager Event Manager
 keywords: dbaas, paas, cloud manager, events, notifications
-sidebar:  dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_eventsmgr.html
@@ -14,8 +14,6 @@ folder: DBaaS/CloudManager
 
 This topic describes the Splice Machine Events Manager, which allows you
 to examine notification messages sent to your cluster.
-
-{% include splice_snippets/dbaasonlytopic.md %}
 
 Here's a screenshot of a partially populated <span
 class="ConsoleLink">Events Manager screen:</span>

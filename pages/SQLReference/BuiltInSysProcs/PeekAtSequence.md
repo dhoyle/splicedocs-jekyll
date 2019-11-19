@@ -4,7 +4,7 @@ summary: Built-in system function that allows users to observe the current value
 keywords: peek_at_sequence, peek, sequence
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_peekatseq.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -21,6 +21,9 @@ Querying the `SYSSEQUENCES` table does not actually return the current
 value; it only returns an upper bound on that value, which is the end of
 the chunk of sequence values that has been pre-allocated but not yet
 used.
+
+The `SYS.SYSSEQUENCES` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
 
 The `SYSCS_UTIL.SYSCS_PEEK_AT_SEQUENCE` function shows you the very next
 value that will be returned by a `NEXT VALUE FOR` clause. Users should

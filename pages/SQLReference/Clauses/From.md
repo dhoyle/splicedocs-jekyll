@@ -4,7 +4,7 @@ summary: A&#160;clause in a Select Expression that specifies the tables from whi
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_from.html
 folder: SQLReference/Clauses
 ---
@@ -43,7 +43,7 @@ Specifies a table, view, or function; it is the source from which a
 
         -- other types of TableExpressions
       SELECT TABLENAME, ISINDEX
-      FROM SYS.SYSTABLES T, SYS.SYSCONGLOMERATES C
+      FROM SYSVW.SYSTABLESVIEW T, SYSVW.SYSCONGLOMERATESINSCHEMA C
       WHERE T.TABLEID = C.TABLEID
       ORDER BY TABLENAME, ISINDEX;
 

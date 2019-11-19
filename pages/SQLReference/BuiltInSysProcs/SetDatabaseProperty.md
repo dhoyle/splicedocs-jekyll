@@ -4,7 +4,7 @@ summary: Built-in system procedure that sets or deletes the value of a property 
 keywords: properties, SET_GLOBAL_DATABASE_PROPERTY, set property value
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_setglobaldbprop.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -14,6 +14,9 @@ folder: SQLReference/BuiltInSysProcs
 
 Use the `SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY` system procedure to set
 or delete the value of a property of the database.
+
+Modifying global database property values can have negative and potentially disastrous impact on how your database performs. You should __only use this procedure__ if you truly understand the consequences of the change(s) you are making.
+{: .noteImportant}
 
 ## Syntax
 

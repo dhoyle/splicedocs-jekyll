@@ -4,7 +4,7 @@ summary: Sets the maximum displayed width for each column of results displayed b
 keywords: display width, column width
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_maximumdisplaywidth.html
 folder: CmdLineReference
 ---

@@ -4,7 +4,7 @@ summary: A quick summary of window functions, as implemented in Splice Machine S
 keywords: window functions, grouping, partition, default value
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_windowfcns.html
 folder: DeveloperTopics/Fundamentals
 ---
@@ -856,7 +856,7 @@ online. Here are a few you might find valuable:
 
 
 [1]: https://www.simple-talk.com/sql/learn-sql-server/window-functions-in-sql-server/
-[2]: http://www.oracle.com/technetwork/issue-archive/2013/13-mar/o23sql-1906475.html
+[2]: https://blogs.oracle.com/oraclemagazine/a-window-into-the-world-of-analytic-functions
 [3]: http://www.postgresql.org/docs/9.1/static/tutorial-window.html
 [4]: https://wiki.postgresql.org/wiki/SQL2008_windowing_queries
 [5]: http://en.wikipedia.org/wiki/Select_(SQL)

@@ -4,7 +4,7 @@ summary: Built-in system procedure that imports data to a subset of columns in a
 keywords: import data, import_data, load data
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_importdata.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -18,7 +18,7 @@ After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.
 
-This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [*Importing Data Tutorial*](tutorials_ingest_importoverview.html) for help with selecting the right process for your situation.
+This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [Best Practices: Ingestion](bestpractices_ingest_overview.html) for help with selecting the right process for your situation.
 
 ## Syntax
 
@@ -44,7 +44,7 @@ This procedure is one of several built-in system procedures provided by Splice M
 
 ## Parameters
 
-This table includes a brief description of each parameter; additional information is available in the [Import Parameters](tutorials_ingest_importparams.html) topic of our *Importing Data* tutorial.
+This table includes a brief description of each parameter; additional information is available in the [Ingestion Parameter Values](bestpractices_ingest_params.html) topic of our *Importing Data* tutorial.
 
 <table>
     <col />
@@ -71,15 +71,17 @@ This table includes a brief description of each parameter; additional informatio
         </tr>
         <tr>
             <td class="CodeFont">insertColumnList</td>
-            <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
+            <td><p>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</p>
+            <p class="noteNote">The individual column names in the <code>insertColumnList</code> do not need to be double-quoted, even if they contain special characters. However, if you do double-quote any column name, <strong>you must</strong> double-quote all of the column names.</p>
+            </td>
             <td class="CodeFont">'ID, TEAM'</td>
         </tr>
         <tr>
             <td class="CodeFont">fileOrDirectoryName</td>
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
-            <p>On a cluster, the files to be imported <code>MUST be on S3, HDFS (or
-            MapR-FS)</code>. If you're using our Database Service product, files can only be imported from S3.</p>
-            </td>
+            <p>On a cluster, the files to be imported <strong>MUST be in Azure Storage, S3, HDFS (or
+            MapR-FS)</strong>. If you're using our Database Service product, you can import files from S3 or Azure Storage.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> or <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> topics for information.</p>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>
                 <p>'s3a://splice-benchmark-data/flat/TPCH/100/region'</p>
@@ -125,7 +127,7 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on Azure Storage, S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
@@ -163,16 +165,8 @@ the `badRecordDirectory` directory; one file for each imported file.
 
 ## Importing and Updating Records
 
-What distinguishes `SYSCS_UTIL.IMPORT_DATA` from the similar
- &nbsp;[`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) and
- &nbsp;[`SYSCS_UTIL.SYSCS_MERGED_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html) procedures is how each works with these specific conditions:
-
-* You are importing only a subset of data from the input data into your table, either because the table contains less columns than does the input file, or because you've specified a subset of the columns in your `insertColumnList` parameter.
-* Inserting and updating data in a column with generated values.
-* Inserting and updating data in a column with default values.
-* Handling of missing values.
-
-The [Importing Data Tutorial: Input Handling](tutorials_ingest_importinput.html) topic describes how each of these conditions is handled by the different system procedures.
+The `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` imports new records into your database in the same way as does the
+ [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure. `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` can also update existing records in your database; for this to work, the table you're importing into must have a primary key. Because this procedure has to determine if a record already exists and how to update it, `MERGE_DATA` is slightly slower than using `IMPORT_DATA`; if you know that you're ingesting all new records, you'll get better performance with `IMPORT_DATA`.
 
 ## Record Import Failure Reasons
 
@@ -190,9 +184,9 @@ A few important notes:
 
 * Splice Machine advises you to run a full compaction (with the  [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html) system procedure) after importing large amounts of data into your database.
 
-* On a cluster, the files to be imported **MUST be on S3, HDFS (or
+* On a cluster, the files to be imported **MUST be on Azure Storage, S3, HDFS (or
 MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
-our Database Service product, files can only be imported from S3.
+our Database Service product, files can only be imported from Azure Storage or S3.
 
   In addition, the files must be readable by the `hbase` user, and the
 `badRecordDirectory` directory must be writable by the `hbase` user,
@@ -208,7 +202,7 @@ for example:
 
 This section presents a couple simple examples.
 
-The [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) topic contains a more extensive set of examples.
+The [Importing Flat Files](bestpractices_ingest_import.html) topic contains a more extensive set of examples.
 
 ### Example 1: Importing our doc examples player data
 
@@ -257,13 +251,12 @@ servers with timestamps set to different time zones, the value in the
 table shown will be different. Additionally, daylight savings time may
 account for a 1-hour difference if timezone is specified.
 
-See [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) for more examples.
+See [Importing Flat Files](bestpractices_ingest_import.html) for more examples.
 
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
-* [Importing Data Usage Examples](tutorials_ingest_importexamples1.html)
-* [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
+* [Best Practices: Ingestion](bestpractices_ingest_overview.html)
+* [Importing Flat Files](bestpractices_ingest_import.html)
 * [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 * [`SYSCS_UTIL.BULK_HFILE_IMPORT`](sqlref_sysprocs_importhfile.html)
 

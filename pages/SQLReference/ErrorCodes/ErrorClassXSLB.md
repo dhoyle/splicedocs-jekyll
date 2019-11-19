@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSLB Errors
 keywords: XSLB errors, error XSLB
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxslb.html
 folder: SQLReference/ErrorCodes
 ---

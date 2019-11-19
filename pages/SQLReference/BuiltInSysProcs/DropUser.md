@@ -4,7 +4,7 @@ summary: Built-in system procedure that removes a user account from a database.
 keywords: drop user, drop_user
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_dropuser.html
 folder: SQLReference/BuiltInSysProcs
 ---

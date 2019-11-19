@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays table information for all user 
 keywords: get schema info, get_schema_info
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getschemainfo.html
 folder: SQLReference/BuiltInSysProcs
 ---

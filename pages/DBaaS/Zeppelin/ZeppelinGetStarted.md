@@ -2,7 +2,7 @@
 summary: Introduction to using Zeppelin with Splice Machine.
 title: Getting Started with Zeppelin
 keywords: getting started, zep, notebook, paragraph
-sidebar: dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_zep_getstarted.html
@@ -12,13 +12,19 @@ folder: DBaaS/Zeppelin
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Getting Started with Zeppelin
 
-This topic helps you to get started with using Zeppelin with your Splice
-Machine database service.
+This topic helps you to get started with using Zeppelin with your Splice Machine database service, in the following sections:
 
+* [The Zeppelin Dashboard](#dashboard)
+* [Adding Your Credentials](#credentials)
+* [The Zeppelin Note Toolbar](#toolbar)
+* [The Zeppelin Drop-Down Menu](#Dropdown)
+* [Monitoring Job Status](#Job)
+* [Creating Notebooks](#create)
+*
 {% include splice_snippets/dbaasonlytopic.md %}
 
 
-## The Zeppelin Dashboard
+## The Zeppelin Dashboard  {#dashboard}
 
 When you click the <span class="CalloutFont">Notebook</span> button in
 your Cluster Management dashboard, you land on the Zeppelin welcome
@@ -44,6 +50,36 @@ page in Zeppelin. From there, you can run all or portions of the
 notebook, modify its content, and create new notebooks. Our next topic,
 [A Simple Tutorial](dbaas_zep_simple.html), uses the our <span
 class="CalloutFont">Simple Example</span> tutorial.
+
+## Adding Your Credentials  {#credentials}
+
+You use the Splice Machine interpreter (`%splicemachine`) in Zeppelin notebooks to interact with your Splice Machine database; this interpreter uses a JDBC connection to the database, and making that connection requires you to supply user credentials. Here's how you can create the credentials to use with the Splice Machine interpreter in your Zeppelin notebooks:
+
+<div class="opsStepsList" markdown="1">
+1.  Log in to Zeppelin, using the <span class="ConsoleLink">Notebook</span> button, as described above.
+
+2.  Click the <span class="ConsoleLink">Zeppelin</span> dropdrop in the upper right corner of the window, and select <span class="ConsoleLink">Credential</span>:
+
+    <img class="indentedSmall" src="images/CloudZepDropdown.png" alt="image of the Zeppelin drop-down" />
+
+    The <span class="ConsoleLink">Zeppelin Credentials Management</span> page displays:
+
+    <img class="indented" src="images/CloudZepCredentials.png" alt="image of the Zeppelin credentials management page" />
+
+3.  Click the <span class="ConsoleLink">Add</span> button to add your credentials:
+
+    <img class="indented" src="images/CloudZepAddCredential.png" alt="image of the Zeppelin add credentials page" />
+
+    * Enter `jdbc.splicemachine` as the <span class="ConsoleLink">Entity</span>.
+    * Use the same <span class="ConsoleLink">Username</span> and <span class="ConsoleLink">password</span> that you use to log into your database.
+
+4.  Click the <span class="ConsoleLink">Save</span> button to add your credentials.
+</div>
+
+Now, when you specify the `%splicemachine` interpreter for a Zeppelin paragraph, your credentials will be used to connect to your Splice Machine database.
+
+Remember to explicitly specify the `%splicemachine` interpreter in paragraphs, even if `%splicemachine` is the default interpreter for the notebook you're working on.
+{: .noteImportant}
 
 ### First Notebook Run: Save Interpreter Bindings
 

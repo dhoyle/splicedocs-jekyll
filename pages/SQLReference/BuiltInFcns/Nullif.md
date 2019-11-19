@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the first argument, or returns NULL 
 keywords: null if,
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_nullif.html
 folder: SQLReference/BuiltInFcns
 ---

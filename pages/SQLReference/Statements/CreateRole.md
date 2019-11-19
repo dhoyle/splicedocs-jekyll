@@ -4,7 +4,7 @@ summary: Creates SQL roles
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createrole.html
 folder: SQLReference/Statements
 ---
@@ -97,7 +97,6 @@ an error:
 * [`REVOKE`](sqlref_statements_revoke.html) statement
 * [RoleName](sqlref_identifiers_types.html#RoleName)
 * [`SET ROLE`](sqlref_statements_setrole.html) statement
-* [`SYSROLES`](sqlref_systables_sysroles.html) system table
 
 </div>
 </section>

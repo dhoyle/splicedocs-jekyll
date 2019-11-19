@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSAM Errors
 keywords: XSAM errors, error XSAM
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxsam.html
 folder: SQLReference/ErrorCodes
 ---

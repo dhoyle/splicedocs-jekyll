@@ -4,7 +4,7 @@ summary: Creates a prepared statement for use by other commands.
 keywords: prepared statement
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_prepare.html
 folder: CmdLineReference
 ---

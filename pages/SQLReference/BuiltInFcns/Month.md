@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the month part of a value
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_month.html
 folder: SQLReference/BuiltInFcns
 ---

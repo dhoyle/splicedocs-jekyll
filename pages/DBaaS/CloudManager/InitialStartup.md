@@ -2,7 +2,7 @@
 summary: Walks you through creating your cluster and getting started.
 title: Getting Started with Splice Machine Cloud Manager
 keywords: dbaas, create cluster, cloud manager, dashboard, splice units
-sidebar:  dbaas_sidebar
+sidebar: home_sidebar
 toc: false
 product: dbaas
 permalink: dbaas_cm_initialstartup.html
@@ -26,7 +26,7 @@ to:
 
 1.  [Configure Cluster Parameters](#Configure) for data sizing, cluster
     power, and backup frequency.
-2.  [Configure Cluster Access](#Configur) for your users.
+2.  [Configure Cluster Access and Options](#Configur) for your users.
 3.  [Set Up Payment](#Payment) for your Splice Machine cluster.
 4.  Start Using Splice Machine!
 
@@ -37,11 +37,6 @@ to provision your cluster:
 
 ![](images/CreateNewCluster1.png "Initial settings for new Splice
 Machine cluster"){: .indentedTightSpacing}
-
-You can select your cloud provider from the <span class="ConsoleLink">Cloud Provider</span> drop-down, just beneath the <span class="ConsoleLink">Cluster Name</span> field:
-
-![](images/CloudProviderDropdown.png "Cloud Provider Drop-down List"){: .indentedTightSpacing}
-
 
 If you have subscribed to Splice Machine via the AWS Marketplace, your
 costs will be estimated on an hourly basis instead of a monthly basis:
@@ -56,6 +51,12 @@ Cluster</span> screen, like most of our Cloud Manager screens, include
 small information buttons ![](images/infobutton.png){: .icon36} that you
 can click to display a small pop-up that describes the components.
 
+For example, here are the pop-ups from the <span class="ConsoleLink">Create New Cluster</span> screen:
+
+![](images/CreateClusterPopups.png "Create Cluster screen Pop-ups"){: .indentedTightSpacing}
+
+Click the information button again to dismiss a pop-up.
+
 ### About the Cluster Parameters
 
 You'll notice several sliders that you can adjust to modify the
@@ -69,69 +70,94 @@ future, so you're not stuck forever with your initial settings.
 {: .noteNote}
 
 <table>
-               <col />
-               <col />
-               <col />
-               <tbody>
-                   <tr>
-                       <td> </td>
-                       <td><code>Cluster Name</code></td>
-                       <td>Supply whatever name you want for your Splice Machine cluster.</td>
-                   </tr>
-                   <tr>
-                       <td> </td>
-                       <td><code>Region</code></td>
-                       <td>You can select in which AWS region your cluster will reside by clicking the previously selected region name, which drops down a list of choices.</td>
-                   </tr>
-                   <tr>
-                       <td rowspan="2" class="ConsoleLink">Data Sizing</td>
-                       <td><code>Internal Dataset (TB)</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how large your database will be.</p>
-                           <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td><code>External Dataset (TB)</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how large your external dataset will be.</p>
-                           <p><code>External Dataset</code> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td rowspan="2" class="ConsoleLink">Cluster Power</td>
-                       <td><code>OLTP Splice Units</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how much processing power you need for transactional query processing. More OLTP units means more region servers in your cluster.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td><code>OLAP Splice Units</code></td>
-                       <td>
-                           <p>Move the slider to modify your estimate of how much processing power you need for analytical query processing. More OLAP units means more Spark executors.</p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td class="ConsoleLink">Backup Frequency</td>
-                       <td><code>Frequency</code></td>
-                       <td>
-                           <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
-                           <p>Hourly:</p>
-                           <p>
-                               <img src="images/HourlyBackupOptions_450x78.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 78;" />
-                           </p>
-                           <p>Daily:</p>
-                           <p>
-                               <img src="images/DailyBackupOptions_450x68.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 68;" />
-                           </p>
-                           <p>Weekly:</p>
-                           <p>
-                               <img src="images/WeeklyBackupOptions_450x67.png" class="tableCell450" title="Hourly backup options" style="width: 450;height: 67;" />
-                           </p>
-                       </td>
-                   </tr>
-               </tbody>
-           </table>
+   <col />
+   <col />
+   <col />
+   <tbody>
+       <tr>
+           <td> </td>
+           <td><code>Cluster Name</code></td>
+           <td>Supply whatever name you want for your Splice Machine cluster.</td>
+       </tr>
+       <tr>
+           <td> </td>
+           <td><code>Cloud Provider</code></td>
+           <td><p>You can select which cloud provider is hosting your cluster by clicking the current provider name, which drops down a list of choices.</p>
+               <p class="noteNote">If you have subscribed to Splice Machine via the AWS Marketplace, your costs will be estimated on an hourly basis instead of on a monthly basis.</p>
+           </td>
+       </tr>
+       <tr>
+           <td> </td>
+           <td><code>Region</code></td>
+           <td>You can select in which region your cluster will reside by clicking the current region name, which drops down a list of choices.</td>
+       </tr>
+       <tr>
+           <td rowspan="3" class="ConsoleLink">Data Sizing</td>
+           <td><code>Internal Dataset (TB)</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how large your database will be.</p>
+               <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>Dedicated Storage</code></td>
+           <td>
+               <p>Select this checkbox to have us provision dedicated storage for your database instance, which does add cost.</p>
+               <p>Leave this unselected to have your database instance stored on shared hardware.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>External Dataset (TB)</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how large your external dataset will be.</p>
+               <p><code>External Dataset</code> is the amount of data the you will be accessing from external data sources, using features such as external tables and our virtual table interface.</p>
+           </td>
+       </tr>
+       <tr>
+           <td rowspan="3" class="ConsoleLink">Cluster Power</td>
+           <td><code>OLTP Splice Units</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how much processing power you need for transactional activity, involving quick inserts, lookups, updates, and deletes. More OLTP units means more region servers in your cluster.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>OLAP Splice Units</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how much processing power you need for running longer queries, typically analytical queries. More OLAP units means more Spark executors.</p>
+           </td>
+       </tr>
+       <tr>
+           <td><code>Notebook Spark Units</code></td>
+           <td>
+               <p>Move the slider to modify your estimate of how many Spark units should be utilized by the Splice Machine Native Spark Datasource and other external uses of Spark libraries, such as MLlib.</p>
+           </td>
+       </tr>
+       <tr>
+           <td class="ConsoleLink">ML Manager</td>
+           <td><code>Enable</code></td>
+           <td>Select this checkbox to enable the Splice Machine ML Manager, which provides access to our Model Workflow and Deployment integration and additional Machine Learning libraries.</td>
+       </tr>
+       <tr>
+           <td class="ConsoleLink">Backup Frequency</td>
+           <td><code>Frequency</code></td>
+           <td>
+               <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
+               <p>Hourly:</p>
+               <p>
+                   <img src="images/HourlyBackupOptions_450x78.png" class="indentedTightSpacing" title="Hourly backup options" />
+               </p>
+               <p>Daily:</p>
+               <p>
+                   <img src="images/DailyBackupOptions_450x68.png" class="indentedTightSpacing" title="Hourly backup options"  />
+               </p>
+               <p>Weekly:</p>
+               <p>
+                   <img src="images/WeeklyBackupOptions_450x67.png" class="indentedTightSpacing" title="Hourly backup options" />
+               </p>
+           </td>
+       </tr>
+   </tbody>
+</table>
 A *Splice Unit* is a measure of processing work; one unit currently
 translates (approximately) to 2 virtual CPUs and 16 GB of memory.
 {: .noteIcon}
@@ -166,15 +192,15 @@ If you don't correct the required setting and attempt to advance to the
 message and will be unable to advance until you do correct it.
 {: .noteNote}
 
-## Configure Cluster Access   {#Configur}
+## Configure Cluster Access and Options   {#Configur}
 
 Once you've configured your cluster, click the <span
 class="CalloutFont">Next</span> button to display the <span
-class="ConsoleLink">Cluster Access</span> screen. The following image
+class="ConsoleLink">Cluster Access and Options</span> screen. The following image
 includes displays of the pop-up help information displays for the
 different access methods:
 
-![](images/CreateNewCluster4.png "Setting up VPC and/or IAM for a new
+![](images/CreateNewCluster4.png "Setting up access and options for a new
 cluster"){: .indentedTightSpacing}
 
 You can set your cluster up for access to your Amazon Virtual Private
@@ -184,7 +210,7 @@ option and providing your VPC account ID.
 You need to configure AWS Identity and Access Management (IAM) for your
 cluster to allow Splice Machine to access selected S3 folders; this is
 described in our [Configuring an S3 bucket for Splice Machine
-Acces](tutorials_ingest_configures3.html) tutorial.
+Acces](developers_cloudconnect_configures3.html) tutorial.
 
 <div class="notePlain" markdown="1">
 For more information about Amazon VPC, see
@@ -194,7 +220,17 @@ For more information about Amazon IAM, see
 [https://aws.amazon.com/iam/][2]{: target="_blank"}.
 
 </div>
-After setting up any access methods, please confirm that you `accept our
+
+You can change the number of Zeppelin instances available on your cluster, and you can adjust
+how much Java memory is allocated for the Spark Interpreter in each instance. Multiple Zeppelin instances allow multiple users to develop and run notebooks independently.
+
+You can also add (at an additional cost) our *Machine Learning Manager*) to your
+cluster by clicking the <span class="CalloutFont">Enable button</span> in the <span
+class="ConsoleLink">ML Manager</span> section at the bottom of this screen. The Splice Machine ML Manager
+facilitates machine learning development by integrating MLflow, Amazon Sagemaker deployment, additional Machine Learning
+libraries, and our database together.
+
+After setting up any options and access methods, please confirm that you `accept our
 terms and conditions`, then click the <span
 class="CalloutFont">Launch</span> button, which will take you to the
 <span class="ConsoleLink">Payment</span> screen, unless you've
@@ -215,7 +251,7 @@ one of these actions happens:
   elect to use on of three payment methods:
 
 ![](images/PaymentScreen_436x219.png "Splice Machine Provisioning
-Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
+Payment Screen"){: .indentedSmall}
 
 <table>
                <col />
@@ -225,7 +261,7 @@ Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
                        <td>Credit Card</td>
                        <td>
                            <p>
-                               <img src="images/PaymentCC_450x236.png" class="tableCell450" title="Paying with a credit card" style="width: 450;height: 236;" />
+                               <img src="images/PaymentCC_450x236.png" class="indentedSmall" title="Paying with a credit card" />
                            </p>
                        </td>
                    </tr>
@@ -233,7 +269,7 @@ Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
                        <td>ACH Electronic Transfer</td>
                        <td>
                            <p>
-                               <img src="images/PaymentACH_450x130.png" class="tableCell450" title="Paying with ACH transfer" style="width: 450;height: 130;" />
+                               <img src="images/PaymentACH_450x130.png" class="indentedSmall" title="Paying with ACH transfer" />
                            </p>
                        </td>
                    </tr>
@@ -241,7 +277,7 @@ Payment Screen"){: .nestedTightSpacing style="width: 436;height: 219;"}
                        <td>Authorization Code</td>
                        <td>
                            <p>
-                               <img src="images/PaymentAuthCode_450x164.png" class="tableCell450" title="Paying with an authorization code" style="width: 450;height: 164;" />
+                               <img src="images/PaymentAuthCode_450x164.png" class="indentedSmall" title="Paying with an authorization code" />
                            </p>
                        </td>
                    </tr>
@@ -256,8 +292,7 @@ the <span class="CalloutFont">Update</span> button to revisit the <span
 class="ConsoleLink">Payment</span> screen:
 
 ![](images/BillingActivity_729x348.png "Billing Activity tab of the
-Account screen"){: .indentedTightSpacing style="width: 729;height:
-348;"}
+Account screen"){: .indentedTightSpacing}
 
 If you've purchased Splice Machine through Amazon Marketplace, change
 your billing credentials in the Marketplace instead.
@@ -276,17 +311,13 @@ results, all without writing any code. We've provided a number of useful
 Zeppelin tutorials, including one that walks you through setting up a
 schema, creating tables, loading data, and then running queries.
 
-Note that your data must be in an AWS S3 bucket before you can import it
+Note that your data must be in Azure storage or an AWS S3 bucket before you can import it
 into your Splice Machine database:
 
-* If you don't yet know how to create an S3 bucket or upload data to a
-  bucket, please check our [Uploading Data to an S3
-  Bucket](tutorials_ingest_uploadtos3.html) tutorial.
-* You may need to configure IAM permissions to allow Splice Machine to
-  access your bucket; see our [Configuring an S3 Bucket for Splice
-  Machine Access](tutorials_ingest_configures3.html) tutorial.
-* Once you've got your data in a bucket, you can follow our [Importing
-  Data Tutorial](tutorials_ingest_importoverview.html) to load that data into
+* For information about uploading data to S3, please check our [Uploading Data to an S3
+  Bucket](developers_cloudconnect_uploadtos3.html) tutorial. You may need to configure your Amazon IAM permissions to allow Splice Machine to access your bucket; see our [Configuring an S3 Bucket for Splice Machine Access](developers_cloudconnect_configures3.html) tutorial.
+* To configure Azure Storage for use with Splice Machine, see our [Using Azure Storage](developers_cloudconnect_configureazure.html) tutorial.
+* Once you've got your data uploaded, you can follow our [Ingestion Best Practices](bestpractices_ingest_overview.html) topic to load that data into
   Splice Machine.
 
 </div>

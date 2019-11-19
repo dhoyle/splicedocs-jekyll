@@ -4,7 +4,7 @@ summary: Built-in system procedure that imports or updates data from a file into
 keywords: upserting, merging, merge data, merge_data_from_file
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_mergedata.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -18,7 +18,7 @@ After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.
 
-This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [*Importing Data Tutorial*](tutorials_ingest_importoverview.html) for help with selecting the right process for your situation.
+This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [Best Practices: Ingestion](bestpractices_ingest_overview.html) for help with selecting the right process for your situation.
 
 ## Syntax
 
@@ -27,7 +27,7 @@ This procedure is one of several built-in system procedures provided by Splice M
                    schemaName,
                    tableName,
                    insertColumnList | null,
-                   fileName,
+                   fileOrDirectoryName,
                    columnDelimiter | null,
                    characterDelimiter | null,
                    timestampFormat | null,
@@ -44,7 +44,7 @@ This procedure is one of several built-in system procedures provided by Splice M
 
 ## Parameters
 
-The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FROM_FILE`. Each parameter name links to a more detailed description in our [Importing Data Tutorial](tutorials_ingest_importparams.html).
+The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FROM_FILE`. Each parameter name links to a more detailed description in our [Ingestion Parameter Values](bestpractices_ingest_params.html).
 
 <table>
     <col />
@@ -71,16 +71,23 @@ The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FRO
         </tr>
         <tr>
             <td class="CodeFont">insertColumnList</td>
-            <td>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</td>
+            <td><p>The names, in single quotes, of the columns to import. If this is <code>null</code>, all columns are imported.</p>
+            <p class="noteNote">The individual column names in the <code>insertColumnList</code> do not need to be double-quoted, even if they contain special characters. However, if you do double-quote any column name, <strong>you must</strong> double-quote all of the column names.</p>
+            </td>
             <td class="CodeFont">'ID, TEAM'</td>
         </tr>
         <tr>
-            <td class="CodeFont">fileName</td>
-            <td><p>The file is imported; you can import compressed or uncompressed files.</p>
-                <p>On a cluster, the file to be imported <code>MUST be on S3, HDFS (or
-                MapR-FS)</code>. If you're using our Database Service product, the file can only be imported from S3.</p>
+            <td class="CodeFont">fileOrDirectoryName</td>
+            <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
+            <p>On a cluster, the files to be imported <strong>MUST be in Azure Storage, S3, HDFS (or
+            MapR-FS)</strong>. If you're using our Database Service product, you can import files from S3 or Azure Storage.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> or <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> topics for information.</p>
             </td>
-            <td class="CodeFont">/data/mydata/mytable.csv
+            <td class="CodeFont">
+                <p>/data/mydata/mytable.csv</p>
+                <p>'s3a://splice-benchmark-data/flat/TPCH/100/region'</p>
+            </td>
+        </tr>
         </tr>
             <td class="CodeFont">columnDelimiter</td>
             <td>The character used to separate columns, Specify <code>null</code> if using the comma (<code>,</code>) character as your delimiter. </td>
@@ -121,7 +128,7 @@ The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FRO
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on Azure Storage, S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, files can only be imported from S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
@@ -137,12 +144,8 @@ The following table summarizes the parameters used by `SYSCS_UTIL.MERGE_DATA_FRO
             </td>
             <td class="CodeFont">null</td>
         </tr>
-        <tr>
     </tbody>
 </table>
-
-The `SYSCS_UTIL.MERGE_DATA_FROM_FILE` procedure only imports single files; it does not process directories.
-{: .noteNote}
 
 ## Results
 
@@ -163,21 +166,12 @@ the `badRecordDirectory` directory; one file for each imported file.
 
 ## Importing and Updating Records
 
-What distinguishes `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` from the
- similar [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html) and
- [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedures is how each works with these specific conditions:
-
-* You are importing only a subset of data from the input data into your table, either because the table contains less columns than does the input file, or because you've specified a subset of the columns in your `insertColumnList` parameter.
-* Inserting and updating data in a column with generated values.
-* Inserting and updating data in a column with default values.
-* Handling of missing values.
-
-The [Importing Data Tutorial: Input Handling](tutorials_ingest_importinput.html) topic describes how each of these conditions is handled by the different system procedures.
+The `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` imports new records into your database in the same way as does the
+ [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html) procedure. `SYSCS_UTIL.SYSCS_MERGE_DATA_FROM_FILE` can also update existing records in your database; for this to work, the table you're importing into must have a primary key. Because this procedure has to determine if a record already exists and how to update it, `MERGE_DATA` is slightly slower than using `IMPORT_DATA`; if you know that you're ingesting all new records, you'll get better performance with `IMPORT_DATA`.
 
 ## Record Import Failure Reasons
 
-When upserting data from a file, the input file you generate must
-contain:
+When merging data from a file, the input file you generate must contain:
 
 * the columns to be changed
 * all `NON_NULL` columns
@@ -194,9 +188,9 @@ A few important notes:
 
 * Splice Machine advises you to run a full compaction (with the  [`SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE`](sqlref_sysprocs_compacttable.html) system procedure) after importing large amounts of data into your database.
 
-* On a cluster, the files to be imported **MUST be on S3, HDFS (or
+* On a cluster, the files to be imported **MUST be on Azure Storage, S3, HDFS (or
 MapR-FS)**, as must the `badRecordDirectory` directory. If you're using
-our Database Service product, files can only be imported from S3.
+our Database Service product, files can only be imported from Azure Storage or S3.
 
   In addition, the files must be readable by the `hbase` user, and the
 `badRecordDirectory` directory must be writable by the `hbase` user,
@@ -210,9 +204,9 @@ for example:
 
 ## Examples   {#Examples}
 
-This section presents a couple simple examples.
+This section presents a few simple examples.
 
-The [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) topic contains a more extensive set of examples.
+The [Importing Flat Files](bestpractices_ingest_import.html) topic contains a more extensive set of examples.
 
 ### Example 1: Updating our doc examples player data
 
@@ -231,7 +225,58 @@ This example shows the `MERGE_DATA` call used to update the Players in our docum
 
 </div>
 
-### Example 2: Using single quotes to delimit strings
+## Example 2: Basic Merge of a Flat File {#exmerge}
+
+Here's a very basic example of using `MERGE_DATA_FROM_FILE` to add new records *and* update a few existing records in a table. This example ingests into the same table that we just used in the `IMPORT_DATA` example above.
+
+1.  __Access a simple file named `mergetest.csv` from an S3 bucket on AWS. That file contains the following data. Note that the rows with key values `2` and `4` already exist in the table:__
+
+    ```
+    2|22
+    4|44
+    5|55
+    6|66
+    ```
+    {: .Example }
+
+2.  __Use `MERGE_DATA` to import that data into the `testImport` table:__
+
+    ```
+    splice> CALL SYSCS_UTIL.MERGE_DATA_FROM_FILE('TEST', 'testImport', null,
+                        's3a:/mypublicbucket/mergetest.csv',
+                        '|', null, null, null, null, 0,
+                        'hdfs:///tmp/test_import/', false, null);
+
+    rowsUpdated   |rowsInserted  |failedRows     |files  |dataSize           |failedLog
+    -------------------------------------------------------------------------------------
+    2             |2             |0              |1      |20                 |NONE
+
+    1 row selected
+    ```
+    {: .Example }
+
+3.  __Use a `SELECT` statement to verify that all went well:__
+
+    ```
+    splice> SELECT * FROM testImport;
+    A1         |B1         |C1         |D1
+    -----------------------------------------------
+    0          |0          |1          |999
+    1          |2          |2          |999
+    2          |22         |3          |999
+    3          |6          |4          |999
+    4          |44         |5          |999
+    5          |55         |10001      |999
+    6          |66         |10002      |999
+
+    7 rows selected
+    ```
+    {: .Example}
+
+    Note that this `MERGE_DATA_FROM_FILE` call uses exactly the same parameter values as does the previous call to `IMPORT_DATA`, with the exception of importing a different file. As you can see, two rows (`A1=2` and `A1=4`) were updated with new `B1` values, and two new rows were added by this merge call.
+    {: .spaceAbove}
+
+### Example 3: Using single quotes to delimit strings
 
 This example uses single quotes instead of double quotes as the character delimiter
 in the input:
@@ -254,14 +299,13 @@ quotes, as follow
 
 </div>
 
-See [Importing Data Usage Examples](tutorials_ingest_importexamples1.html) for more examples.
+See [Importing Flat Files](bestpractices_ingest_import.html) for more examples.
 
 ## See Also
 
-* [Our Importing Data Tutorial](tutorials_ingest_importoverview.html)
-* [Importing Data Usage Examples](tutorials_ingest_importexamples1.html)
+* [Best Practices: Ingestion](bestpractices_ingest_overview.html)
+* [Importing Flat Files](bestpractices_ingest_import.html)
 * [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-* [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 
 </div>
 </section>

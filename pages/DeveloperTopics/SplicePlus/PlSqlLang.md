@@ -4,7 +4,7 @@ toc: false
 keywords:
 product: all
 summary:
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_spliceplus_lang.html
 folder: DeveloperTopics/SplicePlus
 ---
@@ -43,17 +43,24 @@ You define a PL/SQL block with a declaration section, a procedural
 section, and an exception section.The following is an example of an
 anonymous block:
 
-<div class="preWrapperWide" markdown="1">
-    <<Main>>
-    DECLARE   myNum   number(2); 
-       myText  varchar2(12) := 'Hello world';
-       myDate  date := SYSDATE;
-    BEGIN   SELECT name      INTO myText      FROM playerNames      WHERE ID= 27;
-    EXCEPTION
-       WHEN others THEN      dbms_output.put_line('Error Message is ' || sqlerrm   );END;/
+```
+<<Main>>
+DECLARE
+   myNum   number(2); 
+   myText  varchar2(12) := 'Hello world';
+   myDate  date := SYSDATE;
+BEGIN
+   SELECT name
+      INTO myText
+       FROM playerNames
+        WHERE ID= 27;
+EXCEPTION
+   WHEN others THEN
+         dbms_output.put_line('Error Message is ' || sqlerrm   );
+END;/
+```
 {: .Example}
 
-</div>
 Some notes of interest about the basic constructs of PL/SQL:
 
 <table>
@@ -135,38 +142,40 @@ Like anonymous blocks, functions and procedures include:
 
 The syntax for specifying functions and procedures is:
 
-<div class="fcnWrapperWide" markdown="1">
-    CREATE [OR REPLACE] FUNCTION function_name
-       [(parameter_name [IN | OUT | IN OUT] type [, ...])]
-       RETURN return_datatype 
-       {IS | AS}
-    BEGIN
-       < function_body >
-    END [function_name];
+```
+CREATE [OR REPLACE] FUNCTION function_name
+   [(parameter_name [IN | OUT | IN OUT] type [, ...])]
+   RETURN return_datatype 
+   {IS | AS}
+BEGIN
+   < function_body >
+END [function_name];
+```
 {: .FcnSyntax}
 
-</div>
-<div class="fcnWrapperWide" markdown="1">
-    CREATE [OR REPLACE] PROCEDURE procedure_name
-       [(parameter_name [IN | OUT | IN OUT] type [, ...])]
-       {IS | AS}
-    BEGIN
-       < procedure body >
-    END [procedure_name];
+```
+CREATE [OR REPLACE] PROCEDURE procedure_name
+   [(parameter_name [IN | OUT | IN OUT] type [, ...])]
+   {IS | AS}
+BEGIN
+   < procedure body >
+END [procedure_name];
+```
 {: .FcnSyntax}
 
-</div>
 As mentioned, you can define your local variables in a procedure or
 function just as you do for anonymous blocks; however, the
 `DECLARE` keyword is not used. For example:
 
-    CREATE OR REPLACE FUNCTION
-       GetDisplayString( prefixStr IN VARCHAR(50), numVal IN number)   RETURN varchar2(60)
-    IS
-       defaultPrefix varchar2(30) := "The number is: ";
-    BEGIN   IF (prefixStr = '') THEN      prefixStr := defaultPrefix;   END IF;
-       RETURN( prefixStr || numVal );
-    END;/
+```
+CREATE OR REPLACE FUNCTION
+   GetDisplayString( prefixStr IN VARCHAR(50), numVal IN number)   RETURN varchar2(60)
+IS
+   defaultPrefix varchar2(30) := "The number is: ";
+BEGIN   IF (prefixStr = '') THEN      prefixStr := defaultPrefix;   END IF;
+   RETURN( prefixStr || numVal );
+END;/
+```
 {: .Example}
 
 #### Nested Functions and Procedures
@@ -180,12 +189,34 @@ blocks.
 For example, here's an anonymous block that declares a function
 definition and then uses that function:
 
-    <<<Main>>DECLARE   prefix VARCHAR(50);   FUNCTION GetDisplayString( prefixStr IN VARCHAR(50), numVal IN NUMBER)      RETURN VARCHAR2(60)
-       IS
-          defaultPrefix VARCHAR2(30) := "The number is: ";      negNumException EXCEPTION;
-       BEGIN      IF (prefixStr = '') THEN         prefixStr := defaultPrefix;      END IF;      IF (numVal < 0) THEN         RAISE 'negativeNum'
-          RETURN( prefixStr || numVal );   EXCEPTION      WHEN negativeNum THEN         dbms_output.put_line('Got a negative number!');
-       END;BEGIN   prefix := "The number you want is: ";   dbms_output.put_line(GetDisplayString(prefix, 13));EXCEPTION   WHEN others THEN      dbms_output.put_line('Uh-oh; something went wrong');END;/
+```
+<<<Main>>
+DECLARE   prefix VARCHAR(50);
+   FUNCTION GetDisplayString( prefixStr IN VARCHAR(50), numVal IN NUMBER)
+      RETURN VARCHAR2(60)
+   IS
+      defaultPrefix VARCHAR2(30) := "The number is: ";
+      negNumException EXCEPTION;
+   BEGIN
+      IF (prefixStr = '') THEN
+         prefixStr := defaultPrefix;
+      END IF;
+      IF (numVal < 0) THEN
+         RAISE 'negativeNum'
+      RETURN( prefixStr || numVal );
+   EXCEPTION
+      WHEN negativeNum THEN
+         dbms_output.put_line('Got a negative number!');
+   END;
+BEGIN
+   prefix := "The number you want is: ";
+   dbms_output.put_line(GetDisplayString(prefix, 13));
+EXCEPTION
+   WHEN others THEN
+       dbms_output.put_line('Uh-oh; something went wrong');
+END;/
+{: .Example}
+```
 {: .Example}
 
 #### Handling Exceptions in PL/SQL
@@ -196,11 +227,10 @@ an exception handling block that can contain any number of
 
 * You can raise exceptions by name in your code:
 
-  <div class="fcnWrapperWide" markdown="1">
-      RAISE <exception_name>;
-  {: .FcnSyntax}
-
-  </div>
+```
+  RAISE <exception_name>;
+```
+{: .FcnSyntax}
 
 * Each block can contain an optional exception section that begins with
   the `exception` keyword.
@@ -208,11 +238,10 @@ an exception handling block that can contain any number of
   each of which is defined in a `WHEN` statement.
 * Each `WHEN` statement handles a specific `exception_name`:
 
-  <div class="fcnWrapperWide" markdown="1">
-      WHEN <exception_name>;
-  {: .FcnSyntax}
-
-  </div>
+```
+WHEN <exception_name>;
+```
+{: .FcnSyntax}
 
 * The exception name `others` is used to define an exception handler
   that handles any exceptions not specifically handled by another

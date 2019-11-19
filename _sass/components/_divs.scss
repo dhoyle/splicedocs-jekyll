@@ -92,6 +92,11 @@ div.invisible
     display: none;
 }
 
+div.newAndNoteWorthy {
+    @include notes($border:  $border-newAndNoteWorthy,
+                   $bgColor: $bgcolor-newAndNoteWorthy );
+}
+
 div.noteChange {
     @include notes($beforeTxt: "CHANGE ALERT: ");
 }
@@ -121,7 +126,7 @@ p.noteDBaaSOnly {
 }
 
 div.noteEnterprise {
-  @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
+  @include notes($bgImg: url('../images/SpliceNoteIcon.png'),
                  $minHeight: 48px,
                  $maxWidth:  80%,
                  $radius: 0,
@@ -130,7 +135,7 @@ div.noteEnterprise {
 }
 
 p.noteEnterprise {
-  @include pgfnotes($bgImg: url('/images/SpliceNoteIcon.png'),
+  @include pgfnotes($bgImg: url('../images/SpliceNoteIcon.png'),
                     $minHeight: 48px,
                     $maxWidth: 80%,
                     $radius: 0,
@@ -138,20 +143,32 @@ p.noteEnterprise {
                     $padding: (5px 10px 5px 40px) );
 }
 
+
 div.noteIcon {
-  @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
+  @include notes($bgImg: url('../images/SpliceNoteIcon.png'),
                  $minHeight: 48px,
                  $margin: (20px 60px 20px 60px),
                  $padding: (5px 10px 5px 48px) );
 }
 
 p.noteIcon {
-  @include pgfnotes($bgImg: url('/images/SpliceNoteIcon.png'),
+  @include pgfnotes($bgImg: url('../images/SpliceNoteIcon.png'),
                     $minHeight: 48px,
                     $margin: (20px 60px 20px 60px),
                     $padding: (5px 10px 5px 48px) );
 }
 
+div.noteImportant {
+  @include notes($beforeTxt: "IMPORTANT:  ",
+                 $margin:(20px 20px 20px 60px),
+                 $leaderColor: red)
+}
+
+p.noteImportant {
+  @include pgfnotes($beforeTxt: "IMPORTANT:  ",
+                    $margin:(20px 20px 20px 60px),
+                    $leaderColor: red)
+}
 div.noteIndent {
   @include notes($beforeTxt: "NOTE:  ",
                  $margin:(20px 20px 20px 60px))
@@ -199,7 +216,7 @@ p.notePlain {
 }
 
 div.openSourceNote {
-  @include notes($bgImg: url('/images/SpliceNoteIcon.png'),
+  @include notes($bgImg: url('../images/SpliceNoteIcon.png'),
                  $minHeight: 48px,
                  $maxWidth: 80%,
                  $margin: (0 20px 15px 20px),
@@ -207,7 +224,7 @@ div.openSourceNote {
 }
 
 p.openSourceNote {
-  @include pgfnotes($bgImg: url('/images/SpliceNoteIcon.png'),
+  @include pgfnotes($bgImg: url('../images/SpliceNoteIcon.png'),
                     $minHeight: 48px,
                     $maxWidth: 80%,
                     $margin: (0 20px 15px 20px),
@@ -236,6 +253,11 @@ div.opsStepsList {
 
     li {
         margin-top: 12px;
+    }
+
+    li.topLevel {
+        margin-top: 24px;
+        margin-bottom: 0;
     }
 
     p.indentLevel1
@@ -279,6 +301,7 @@ div.fcnWrapper
     max-width: 55%;
 }
 
+
 div.preWrapper
 {
         @extend %div.preWrap;
@@ -299,4 +322,26 @@ div.topicContent
 div.videoEnvelope
 {
 
+}
+
+
+div.PageNavigationTop,
+div.PageNavigationBottom {
+    font-size: $pagelink-size;
+    display: block;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+
+    a {
+        color: $pagelink-color;
+    }
+}
+
+div.PageNavigationTop {
+    margin: 0 auto 24px auto;
+}
+
+div.PageNavigationBottom {
+    margin: 32px auto 0px auto;
 }

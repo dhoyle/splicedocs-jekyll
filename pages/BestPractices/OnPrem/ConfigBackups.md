@@ -4,7 +4,7 @@ summary: Summary of options for configuring backups
 keywords: importing
 toc: false
 product: all
-sidebar: bestpractices_sidebar
+sidebar: home_sidebar
 permalink: bestpractices_onprem_backups.html
 folder: BestPractices/OnPrem
 ---
@@ -22,7 +22,9 @@ This section contains best practice and troubleshooting information related to b
 
 ## How Backup Jobs Run {#howjobsrun}
 
-Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance.
+Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles.
+
+In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance. You can choose to revert to using `distcp`, as described in the [Resource Configuration When Using `distcp`](#usingdistcp) section below.
 
 ## Configuring Backups When Copying with Spark Executors {#usingspark}
 

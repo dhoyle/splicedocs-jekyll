@@ -4,7 +4,7 @@ summary: Drops a view from a database.
 keywords: dropping a view
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropview.html
 folder: SQLReference/Statements
 ---

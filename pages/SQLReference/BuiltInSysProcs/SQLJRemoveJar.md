@@ -4,7 +4,7 @@ summary: Built-in system procedure that removes a jar file from a database.
 keywords: jar file, remove_jar
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_removejar.html
 folder: SQLReference/BuiltInSysProcs
 ---

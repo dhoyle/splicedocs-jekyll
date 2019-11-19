@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XBCX Errors
 keywords: XBCX errors, error XBCX
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxbcx.html
 folder: SQLReference/ErrorCodes
 ---

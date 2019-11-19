@@ -4,7 +4,7 @@ summary: Summarizes numerous value limitations in Splice Machine SQL.
 keywords: limits, column limits, table limits, identifier length, numeric limitations, string limitations, xml limitations, maximum limits in database
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sqllimitations.html
 folder: SQLReference
 ---
@@ -15,12 +15,21 @@ folder: SQLReference
 This topic specifies limitations for various values in Splice Machine
 SQL:
 
+{% comment %}
+* [SQL Statement Maximum Length](#SqlStatement)
+{% endcomment %}
 * [Database Value Limitations](#Database)
 * [Date, Time, and TimeStamp Limitations](#DATE)
 * [Identifier Length Limitations](#Identifier)
 * [Numeric Limitations](#Numeric)
 * [String Limitations](#String)
 * [XML Limitations](#XML)
+
+{%comment %}
+## SQL Statement Maximum Length  {#SQLStatement}
+
+The maximum length of an SQL statement is {{splvar_limit_SQLStatement}} bytes
+{% endcomment %}
 
 ## Database Value Limitations   {#Database}
 
@@ -152,11 +161,11 @@ values in Splice Machine.
                     </tr>
                     <tr>
                         <td>Smallest <code>TIMESTAMP</code> value</td>
-                        <td><code>1677-09-21-00.12.44.000000</code></td>
+                        <td><code>0000-00-00-00.00.00.000000</code></td>
                     </tr>
                     <tr>
                         <td>Largest <code>TIMESTAMP</code> value</td>
-                        <td><code>2262-04-11-23.47.16.999999</code></td>
+                        <td><code>9999-12-31-23.59.59.999999</code></td>
                     </tr>
                 </tbody>
             </table>
@@ -276,6 +285,14 @@ The following lists limitations on the numeric values in Splice Machine.
                         <td><code>32,767</code></td>
                     </tr>
                     <tr>
+                        <td>Smallest <code>TINYINT</code></td>
+                        <td><code>-128</code></td>
+                    </tr>
+                    <tr>
+                        <td>Largest <code>TINYINT</code></td>
+                        <td><code>127</code></td>
+                    </tr>
+                    <tr>
                         <td>Largest decimal precision</td>
                         <td><code>31</code></td>
                     </tr>
@@ -383,4 +400,3 @@ Machine.
             </table>
 </div>
 </section>
-

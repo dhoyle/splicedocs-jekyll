@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays the names of all Splice Machine
 keywords: get_loggers, display loggers, log levels
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getloggers.html
 folder: SQLReference/BuiltInSysProcs
 ---

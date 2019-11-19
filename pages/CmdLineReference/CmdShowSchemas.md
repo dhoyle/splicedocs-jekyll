@@ -4,7 +4,7 @@ summary: Displays information about the schemas in the current connection.
 keywords: schema, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showschemas.html
 folder: CmdLineReference
 ---
@@ -13,12 +13,12 @@ folder: CmdLineReference
 # Show Schemas
 
 The <span class="AppCommand">show schemas</span> command displays all of
-the schemas in the current connection.
+the schemas for which the current user has `ACCESS` privileges.
 
 ### Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SHOW SCHEMAS 
+    SHOW SCHEMAS
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -45,4 +45,3 @@ the schemas in the current connection.
 </div>
 </div>
 </section>
-

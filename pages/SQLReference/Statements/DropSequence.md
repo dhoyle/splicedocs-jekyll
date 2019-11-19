@@ -4,7 +4,7 @@ summary: Drops a sequence from a database.
 keywords: dropping a sequence
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropsequence.html
 folder: SQLReference/Statements
 ---

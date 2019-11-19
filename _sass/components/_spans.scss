@@ -51,7 +51,9 @@ span.AppCommand {
 }
 
 span.bodyFont {
-	@include spanStyle( $fontStyle: normal )
+	@include spanStyle( $fontStyle: normal,
+						$fontFamily: $bodyfont-face,
+						$color: $bodyfont-color )
 }
 
 span.BoldFont {
@@ -128,6 +130,15 @@ span.ShellCommand {
 	@include spanStyle( $bgColor: $bgcolor-shellcmd,
 						$fontWeight: $codefont-weight,
 						$fontFamily: $codefont-face )
+}
+span.spliceCheckbox {
+	color: #f7a800;
+}
+
+span.spliceLargeCheckbox {
+	color: 		$splicecheckbox-color;
+	font-size:	1.8em;
+	font-weight: bold;
 }
 
 span.upperCase

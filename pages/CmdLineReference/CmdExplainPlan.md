@@ -4,7 +4,7 @@ summary: Displays the execution plan for an SQL statement.
 keywords: execution plan, performance tuning
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_explainplan.html
 folder: CmdLineReference
 ---
@@ -42,7 +42,7 @@ statement such as `CREATE TABLE` will generate a syntax error.
 
 For more information about using the explain command, including a number
 of annotated examples, see [Explain
-Plan](developers_tuning_explainplan.html).
+Plan](developers_optimizer_explain.html).
 
 ## Examples
 
@@ -51,9 +51,8 @@ Plan](developers_tuning_explainplan.html).
 {: .AppCommand xml:space="preserve"}
 
 </div>
-The [Explain Plan](developers_tuning_explainplan.html) topic contains a
+The [Explain Plan](bestpractices_optimizer_explain.html) topic contains a
 number of examples that are described in detail.
 
 </div>
 </section>
-

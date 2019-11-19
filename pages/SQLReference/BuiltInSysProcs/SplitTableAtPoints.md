@@ -4,21 +4,16 @@ summary: Built-in system procedure that splits a table or index into HFiles base
 keywords: split table at points, split_table_or_index_at_points
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_splittableatpoints.html
 folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS
-This procedure splits a table or index file that you want to bulk import into HFiles, using the *split keys* that you specify. The split keys are specified in a CSV file that you can create in one of two ways:
+This procedure splits a table or index file that you want to bulk import into HFiles, using the *split keys* that you specify. The split keys are specified in a CSV file that is encoded in HBase format.
 
-* If you know how your data can best be split into evenly sized HFiles, you can manually create a CSV file, as described in our [Importing Data: Bulk HFile Examples](tutorials_ingest_importexampleshfile.html) topic.
-* You can call the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure to compute the split keys for the data and save them in a CSV file.
-
-For more information about splitting your tables and indexes into HFiles, see the [Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data* tutorial.
-
-Splice Machine recommends using the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system procedure instead of this one unless you're an expert user. The combination of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` with `SYSCS_UTIL.COMPUTE_SPLIT_KEY` is exactly equivalent to using `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`.
+Unless you already have your split keys accessible in HBase format, Splice Machine recommends using the [`SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`](sqlref_sysprocs_splittable.html) system procedure instead of this one. The combination of using `SYSCS_UTIL.COMPUTE_SPLIT_KEY` with `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` is exactly equivalent to using `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX`.
 {: .noteIcon}
 
 ## Syntax
@@ -58,7 +53,7 @@ instead.
 splitPoints
 {: .paramName}
 
-A list of split points for the table or index, supplied in a CSV file; this list can be created by a previous call to the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure, or you can prepare it manually, in which case, it needs to follow the criteria specified in the next section, [Split Points CSV File Format](#csvfile).
+A list of split points for the table or index, supplied in HBase format in a CSV file this list can be created by a previous call to the [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html) procedure, or you can prepare it manually, in which case, it needs to follow the criteria specified in the next section, [Split Points CSV File Format](#csvfile).
 {: .paramDefnFirst}
 
 </div>
@@ -71,18 +66,17 @@ If you are manually preparing the `splitPoints` CSV file, you must create a vers
 
 ## Usage {#Usage}
 
-You can use the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` procedure to pre-split a data file that you're importing with the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure. 
+You can use the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX_AT_POINTS` procedure to pre-split a data file that you're importing with the [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure.
 
 When you pre-split your data, make sure that you set the `skipSampling` parameter to `true` when calling `SYSCS_UTIL.BULK_IMPORT_HFILE`; that tells the bulk import procedure that you have already split your data.
 {: .noteIcon}
 
-The [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
+The [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
 
 ## See Also
 
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [Best Practices: Ingestion](bestpractices_ingest_overview.html)
 *  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 *  [`SYSCS_UTIL.COMPUTE_SPLIT_KEY`](sqlref_sysprocs_computesplitkey.html)

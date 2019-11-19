@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 08 Errors
 keywords: 08 errors, error 08
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class08.html
 folder: SQLReference/ErrorCodes
 ---

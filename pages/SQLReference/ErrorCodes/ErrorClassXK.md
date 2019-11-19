@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XK Errors
 keywords: XK errors, error XK
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxk.html
 folder: SQLReference/ErrorCodes
 ---

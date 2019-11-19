@@ -4,7 +4,7 @@ summary: Drops a role from a database.
 keywords: dropping a role
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_droprole.html
 folder: SQLReference/Statements
 ---
@@ -54,7 +54,6 @@ revoking a role may impact any dependent objects.
 * [`GRANT`](sqlref_statements_grant.html) statement
 * [`REVOKE`](sqlref_statements_revoke.html) statement
 * [`SET ROLE`](sqlref_statements_setrole.html) statement
-* [`SYSROLES`](sqlref_systables_sysroles.html) system table
 
 </div>
 </section>

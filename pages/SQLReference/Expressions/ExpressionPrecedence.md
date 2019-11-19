@@ -4,7 +4,7 @@ summary: Specifies operator precedence in Splice Machine SQL expressions.
 keywords:  constant, null, scalar subquery, unary, concatenation, binary, operators, operator precedence, comparison, quantified comparisons, logical, parentheses
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_precedence.html
 folder: SQLReference/Expressions
 ---

@@ -4,7 +4,7 @@ title: Splice Machine Installation Guide
 keywords: installation, hadoop, hbase, hdfs
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_install_intro.html
 folder: OnPrem/InstallingSpliceMachine
 ---
@@ -12,111 +12,11 @@ folder: OnPrem/InstallingSpliceMachine
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine Installation Guide
 
-The table below links to instructions for installing Splice Machine. We recommend that you review the [installation requirements for Splice Machine](onprem_info_requirements.html) before proceeding.
+Splice Machine offers these product versions:
 
-{% include splice_snippets/onpremonlytopic.md %}
+* You can install our *On-Premise Database* product for use on Cloudera, Hortonworks, and MapR platform managers.  You'll find a link to the installer and instructions for your platform and product version in our [Installer Links](onprem_install_links.html) page, in this section.
+* You can also install a *standalone version* of Splice Machine on your Mac OS or CentOS computers. Links and instructions for the standalone version are also found in our  [Installer Links](onprem_install_links.html) page.
+* Our [*Database-as-Service*](dbaas_intro.html) product runs in the cloud and is managed for you by Splice Machine; no installation is required.
 
-<table summary="Links to instructions for installing Splice Machine on each platform.">
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Splice Machine Version</th>
-            <th>Platform Version</th>
-            <th>Install Instructions URL</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan="9"><strong>2.7</strong></td>
-            <td>CDH 5.14.0</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.13.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.3/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.3/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.13.2</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.12.0</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/tree/branch-2.7/platforms/cdh5.12.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/tree/branch-2.7/platforms/cdh5.12.0/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.4</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.1</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.1/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.1/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>MapR 5.2.0</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/mapr5.2.0/docs/MapR-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/mapr5.2.0/docs/MapR-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>Standalone</td>
-            <td><p><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md</a></p>
-            <p class="noSpaceBelow">See our <a href="onprem_install_demodata.html">Import and Query Sample Standalone Sample Data</a> topic if you wish to import and query the sample data packaged with our standalone installer.</p>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="10"><strong>2.5</strong></td>
-            <td>CDH 5.14.0</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.14.0/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.13.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.3/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.3/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.13.2</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.2/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/cdh5.13.2/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>CDH 5.12.0</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/tree/branch-2.5/platforms/cdh5.12.0/docs/CDH-installation.md">https://github.com/splicemachine/spliceengine/tree/branch-2.5/platforms/cdh5.12.0/docs/CDH-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.4</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.1</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.1/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.1/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.5.5</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.5.5/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.5.5/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>MapR 5.2.0</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/mapr5.2.0/docs/MapR-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/mapr5.2.0/docs/MapR-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>Standalone</td>
-            <td><p><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/std/docs/STD-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/std/docs/STD-installation.md</a></p>
-            <p class="noSpaceBelow">See our <a href="onprem_install_demodata.html">Import and Query Sample Standalone Sample Data</a> topic if you wish to import and query the sample data packaged with our standalone installer.</p></td>
-        </tr>
-<!--
-        <tr>
-            <td>VirtualBox VM</td>
-            <td>See our <a href="onprem_install_virtualbox.html">Virtual Box VM</a> installation instructions.</td>
-        </tr>
--->
-    </tbody>
-</table>
-
-{% include splice_snippets/githublink.html %}
 </div>
 </section>

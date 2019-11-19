@@ -4,7 +4,7 @@ summary: Creates Java functions that you can then use in expressions.
 keywords: creating functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createfunction.html
 folder: SQLReference/Statements
 ---
@@ -191,11 +191,11 @@ parameterStyle
 {: .paramName}
 
 <div class="fcnWrapperWide" markdown="1">
-    JAVA | DERBY_JDBC_RESULT_SET
+    JAVA | SPLICE_JDBC_RESULT_SET
 {: .FcnSyntax}
 
 </div>
-Only use `DERBY_JDBC_RESULT_SET` if this is a Splice Machine-style table
+Only use `SPLICE_JDBC_RESULT_SET` if this is a Splice Machine-style table
 function that returns a [TableType](#TableType) result, and is mapped to
 a Java method that returns a JDBC *ResultSet*.
 {: .paramDefnFirst}
@@ -277,7 +277,8 @@ Procedures](developers_fcnsandprocs_intro.html) section of our
     splice> CREATE FUNCTION TO_DEGREES( RADIANS DOUBLE )
       RETURNS DOUBLE
       PARAMETER STYLE JAVA
-      NO SQL LANGUAGE JAVA
+      NO SQL
+      LANGUAGE JAVA
       EXTERNAL NAME 'java.lang.Math.toDegrees';
 
     0 rows inserted/updated/deleted
@@ -294,11 +295,11 @@ Creating functions in Python is currently a __Beta Release__ feature; it will be
       RETURNS VARCHAR(50)
       PARAMETER STYLE JAVA
       READS SQL DATA
-      SQL LANGUAGE PYTHON
-      AS ' def run(inputStr):
-            import re
-            result = inputStr.strip().split(",")[0]
-            return result ';
+      LANGUAGE PYTHON
+      AS 'def run(inputStr):
+         import re
+         result = inputStr.strip().split(",")[0]
+         return result';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 </div>

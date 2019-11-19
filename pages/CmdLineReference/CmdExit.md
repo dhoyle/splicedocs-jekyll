@@ -4,7 +4,7 @@ summary: Causes the command line interface to exit.
 keywords: quit, exit, cli
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_exit.html
 folder: CmdLineReference
 ---

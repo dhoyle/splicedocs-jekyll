@@ -4,7 +4,7 @@ summary: Built-in SQL window function that returns the rank of a value within a 
 keywords: over clause, rank, dense_rank
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_denserank.html
 folder: SQLReference/BuiltInFcns
 ---

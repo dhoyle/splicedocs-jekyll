@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class 0A Errors
 keywords: 0A errors, error 0a
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_class0a.html
 folder: SQLReference/ErrorCodes
 ---

@@ -4,7 +4,7 @@ summary: Describes the NEXT VALUE FOR expression, which retrieves the next value
 keywords: sequences, find next value, sequence, increment
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_nextvaluefor.html
 folder: SQLReference/Expressions
 ---

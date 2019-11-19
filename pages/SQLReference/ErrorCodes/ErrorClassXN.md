@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XN Errors
 keywords: XN errors, error XN
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxn.html
 folder: SQLReference/ErrorCodes
 ---

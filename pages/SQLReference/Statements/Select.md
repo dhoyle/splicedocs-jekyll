@@ -4,7 +4,7 @@ summary: Selects records from your database.
 keywords: selecting records
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_select.html
 folder: SQLReference/Statements
 ---

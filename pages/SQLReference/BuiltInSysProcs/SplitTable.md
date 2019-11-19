@@ -4,7 +4,7 @@ summary: Built-in system procedure that computes split points for a table or ind
 keywords: compute split points, splice_table_or_index
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_splittable.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInSysProcs
 # SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX
 
 The `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` system procedure pre-splits a table or index
-that you are import in HFile format. You must use this procedure in conjunction with the
+that you are importing in HFile format. You must use this procedure in conjunction with the
  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 system procedure to import your data in HFile format.
 
@@ -45,7 +45,7 @@ system procedure to import your data in HFile format.
 The parameter values that you pass into this procedure should match the values for the same-named parameters that you use when you subsequently call the  &nbsp;[`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html) procedure to perform the import.
 {: .noteIcon}
 
-This table includes a brief description of each parameter; additional information is available in the [Import Parameters](tutorials_ingest_importparams.html) topic of our *Importing Data* tutorial.
+This table includes a brief description of each parameter; additional information is available in the [Ingestion Parameter Values](bestpractices_ingest_params.html) topic of our *Importing Data* tutorial.
 
 <table>
     <col />
@@ -83,8 +83,8 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">fileName</td>
             <td><p>The name of the file in which you have specified the split keys.</p>
-                <p>On a cluster, this file <code>MUST be on S3, HDFS (or
-            MapR-FS)</code>. If you're using our *Database Service* product, this file must be on S3.</p>
+                <p>On a cluster, this file <strong>MUST be on S3, HDFS (or
+            MapR-FS)</strong>. If you're using our *Database Service* product, this file must be on Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">/data/mydata/mytable.csv</td>
         </tr>
@@ -128,7 +128,7 @@ This table includes a brief description of each parameter; additional informatio
         <tr>
             <td class="CodeFont">badRecordDirectory</td>
             <td><p>The directory in which bad record information is logged. Splice Machine logs information to the <code>&lt;import_file_name&gt;.bad</code> file in this directory; for example, bad records in an input file named <code>foo.csv</code> would be logged to a file named <code><em>badRecordDirectory</em>/foo.csv.bad</code>.</p>
-            <p>On a cluster, this directory <span class="BoldFont">MUST be on S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, it must be on S3.</p>
+            <p>On a cluster, this directory <span class="BoldFont">MUST be on Azure Storage, S3, HDFS (or MapR-FS)</span>. If you're using our Database Service product, it must be on Azure Storage or S3.</p>
             </td>
             <td class="CodeFont">'importErrsDir'</td>
         </tr>
@@ -154,7 +154,7 @@ You can use the `SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX` procedure to pre-split a
 When you pre-split your data, make sure that you set the `skipSampling` parameter to `true` when calling `SYSCS_UTIL.BULK_IMPORT_HFILE`; that tells the bulk import procedure that you have already split your data.
 {: .noteIcon}
 
-The [Importing Data: Using Bulk HFile Import](tutorials_ingest_importbulkhfile.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
+The [Best Practices: Bulk Importing Flat Files](bestpractices_ingest_bulkimport.html) section of our *Importing Data Tutorial* describes the different methods for using our bulk HFile import functionality.
 
 ## Example {#Example}
 
@@ -313,9 +313,8 @@ Follow these steps:
 
 ## See Also
 
-*  [Importing Data: Tutorial Overview](tutorials_ingest_importoverview.html)
+*  [Best Practices: Ingestion](bestpractices_ingest_overview.html)
 *  [`SYSCS_UTIL.IMPORT_DATA`](sqlref_sysprocs_importdata.html)
-*  [`SYSCS_UTIL.UPSERT_DATA_FROM_FILE`](sqlref_sysprocs_upsertdata.html)
 *  [`SYSCS_UTIL.MERGE_DATA_FROM_FILE`](sqlref_sysprocs_mergedata.html)
 *  [`SYSCS_UTIL.BULK_IMPORT_HFILE`](sqlref_sysprocs_importhfile.html)
 

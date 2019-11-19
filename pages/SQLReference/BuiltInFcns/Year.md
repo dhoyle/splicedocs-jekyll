@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the year part of a value
 keywords: date math, date arithmetic
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_year.html
 folder: SQLReference/BuiltInFcns
 ---

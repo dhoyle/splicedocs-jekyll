@@ -4,7 +4,7 @@ summary: Join operation that selects all rows from both tables as long as there 
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_joinops_innerjoin.html
 folder: SQLReference/JoinOps
 ---

@@ -1,18 +1,18 @@
 ---
-title: Binary_Export command
+title: Export_Binary command
 summary: Exports query results to binary format files.
 keywords: csv file, export, compression, encoding, separator
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
-permalink: cmdlineref_binaryexport.html
+sidebar: home_sidebar
+permalink: cmdlineref_exportbinary.html
 folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Binary_Export Command
+# Export_Binary Command
 
-The <span class="AppCommand">binary_export</span> command exports the results
+The <span class="AppCommand">export_binary</span> command exports the results
 of an SQL query to one or more binary files.
 
 This command is currently limited to writing binary files only in `parquet` format; other formats will be supported in a future release.
@@ -21,7 +21,7 @@ This command is currently limited to writing binary files only in `parquet` form
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    BINARY_EXPORT ( exportPath,
+    EXPORT_BINARY ( exportPath,
                     compression,
                     format )  <SQL_QUERY>;
 {: .FcnSyntax xml:space="preserve"}
@@ -33,10 +33,43 @@ exportPath
 The directory in which you want the export file(s) written.
 {: .paramDefnFirst}
 
-compress
+compression
 {: .paramName}
-A Boolean value that specifies whether (`true`) or not (`false`) to compress the exported files. Files are compressed using the *Snappy* compression standard.
+
+A Boolean or string value that specifies how to compress the exported files; you can specify one of
+the following values:
 {: .paramDefnFirst}
+
+<div markdown="0">
+    <table summary="Possible values for compression">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>true</code></td>
+                    <td>The exported files are compressed using <code>snappy</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>false</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+                <tr>
+                    <td><code>'snappy'</code></td>
+                    <td>The exported files are compressed using <code>snappy</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>'none'</code></td>
+                    <td>Exported files are not compressed.</td>
+                </tr>
+            </tbody>
+        </table>
+</div>
 
 format
 {: .paramName}
@@ -46,7 +79,7 @@ The format in which to write the exported file(s). The only format supported at 
 
 ## Usage
 
-The <span class="AppCommand">BINARY_EXPORT</span> command generates one or
+The <span class="AppCommand">EXPORT_BINARY</span> command generates one or
 more binary files and stores them in the directory that you specify in the
 `exportPath` parameter. More than one output file can be generated to
 enhance the parallelism and performance of this operation.
@@ -91,7 +124,7 @@ target="_blank"}
 ## Examples
 
  <div class="preWrapperWide" markdown="1">
-     splice> BINARY_EXPORT('/my/export/dir', true, 'parquet')
+     splice> EXPORT_BINARY('/my/export/dir', true, 'parquet')
               SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;
 {: .AppCommand xml:space="preserve"}
 </div>

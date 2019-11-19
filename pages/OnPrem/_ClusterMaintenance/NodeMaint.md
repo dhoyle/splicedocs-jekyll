@@ -4,7 +4,7 @@ title: Splice Machine Cluster Maintenance
 keywords: administer
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_clustermaint_nodemaint.html
 folder: OnPrem/ClusterMaintenance
 ---

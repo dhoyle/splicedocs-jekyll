@@ -4,7 +4,7 @@ summary: Built-in system procedure that validates a previous database backup.
 keywords: backing up, backup_database, backup database
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_validatebackup.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -97,18 +97,21 @@ This section contains an example showing a successful validation and a validatio
 {: .Example xml:space="preserve"}
 
 
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
+
+
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
-* [`SYSBACKUP`](sqlref_systables_sysbackup.html)
-* [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

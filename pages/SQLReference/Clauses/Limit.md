@@ -4,7 +4,7 @@ summary: A clause that  limits the number of results returned by a query and sup
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_limitn.html
 folder: SQLReference/Clauses
 ---

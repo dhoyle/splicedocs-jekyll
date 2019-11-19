@@ -4,7 +4,7 @@ summary: Built-in system procedure that backs up the database to a specified bac
 keywords: backing up, backup_database, backup database
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_backupdb.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -15,6 +15,8 @@ folder: SQLReference/BuiltInSysProcs
 The `SYSCS_UTIL.SYSCS_BACKUP_DATABASE` system procedure performs an
 immediate full or incremental backup of your database to a specified
 backup directory.
+
+{% include splice_snippets/enterpriseonly_note.md %}
 
 Splice Machine supports both full and incremental backups: 
 
@@ -73,6 +75,13 @@ there already is a backup for the system; if not, Splice Machine will
 perform a full backup, and subsequent backups will be incremental.
 {: .paramDefn}
 
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
+
 </div>
 ## Results
 
@@ -80,14 +89,19 @@ This procedure does not return a result.
 
 ## Backup Resource Allocation
 
-Splice Machine backup jobs use a Map Reduce job to copy HFiles; this process may hang up if the resources required for the Map Reduce job are not available from Yarn. See the [Troubleshooting Backups](bestpractices_onprem_backups.html) section of our *Best Practices Guide* for specific information about allocation of resources.
+Splice Machine backups run as Spark jobs, submitting tasks to copy HFiles. In the past, Splice Machine backups used the Apache Hadoop `distcp` tool to copy the HFile; `distcp` uses MapReduce to copy, which can require significant resources. These requirements can limit file copying parallelism and reduce backup throughput. Splice Machine backups now can run (and do so by default) using a Spark executor to copy the HFiles, which significantly increases backup performance.
+
+You can revert to using `distcp`, which uses a MapReduce job that can run into resource issues. For more information, see the [Understanding and Troubleshooting Backups](bestpractices_onprem_backups.html) topic.
+
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
 
 ## Usage Notes
 
 Please review these important notes about usage of this system procedure:
 
 * HBase Configuration Options for Incremental Backup
-* Incremental Backups and Bulk HFile Imports
 * Temporary Tables and Backups
 
 ### HBase Configuration Options for Incremental Backup {#UsageConfig}
@@ -174,14 +188,15 @@ Splice Machine:
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

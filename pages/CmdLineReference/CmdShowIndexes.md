@@ -4,7 +4,7 @@ summary: Displays information about the indexes defined on a table, a database, 
 keywords: indices, index, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showindexes.html
 folder: CmdLineReference
 ---

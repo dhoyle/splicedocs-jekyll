@@ -4,7 +4,7 @@ summary: Built-in SQL function that adds an interval value to a timestamp value
 keywords: date arithmetic, date math, timestamp math, add timestamps
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_timestampadd.html
 folder: SQLReference/BuiltInFcns
 ---

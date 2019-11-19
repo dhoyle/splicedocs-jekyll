@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window function that returns the number of ro
 keywords: count, results count, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_count.html
 folder: SQLReference/BuiltInFcns
 ---

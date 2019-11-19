@@ -3,9 +3,9 @@ title: CURRENT_TIME built-in SQL function
 summary: Built-in SQL function that returns the current time
 keywords: current time
 toc: false
-compatible_level: 2.7
+compatible_version: 2.7
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_currenttime.html
 folder: SQLReference/BuiltInFcns
 ---

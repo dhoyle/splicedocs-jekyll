@@ -4,7 +4,7 @@ summary: Displays information about functions defined in the database or in a sc
 keywords: function, show commands
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_showfunctions.html
 folder: CmdLineReference
 ---
@@ -67,18 +67,18 @@ contains the following columns:
     splice> CREATE FUNCTION TO_DEGREES ( RADIANS DOUBLE )
     > RETURNS DOUBLE
     > PARAMETER STYLE JAVA
-    > NO SQL LANGUAGE JAVA
+    > NO SQL
+    > LANGUAGE JAVA
     > EXTERNAL NAME 'java.lang.Math.toDegrees';
     0 rows inserted/updated/deleted
     splice> show functions in splice;
     FUNCTION_SCHEM|FUNCTION_NAME               |REMARKS
     -------------------------------------------------------------------------
     SPLICE        |TO_DEGREES                  |java.lang.Math.toDegrees
-    
+
     1 row selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
 </div>
 </section>
-

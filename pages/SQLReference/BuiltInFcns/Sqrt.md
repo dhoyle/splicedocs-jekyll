@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the square root of a number
 keywords: 
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_sqrt.html
 folder: SQLReference/BuiltInFcns
 ---

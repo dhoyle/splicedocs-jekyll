@@ -1,10 +1,11 @@
 ---
 title: NUMERIC data type
+
 summary: The  NUMERIC data type provides an exact numeric in which the precision and scale can be arbitrarily sized. You can use NUMERIC&#160;and DECIMAL&#160;interchangeably.
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_datatypes_numeric.html
 folder: SQLReference/DataTypes
 ---
@@ -34,9 +35,11 @@ of storage required depends on the precision you specify.
 precision
 {: .paramName}
 
-Must be between `1` and `31`. If not specified, the default precision is
+Must be between `1` and `38`. If not specified, the default precision is
 `5`.
 {: .paramDefnFirst}
+
+{% include splice_snippets/numprecisionnote.md %}
 
 scale
 {: .paramName}

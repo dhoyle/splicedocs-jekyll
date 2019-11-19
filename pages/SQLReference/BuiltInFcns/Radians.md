@@ -4,7 +4,7 @@ summary: Built-in SQL function that converts a number from degrees to radians
 keywords: convert degrees to radians
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_radians.html
 folder: SQLReference/BuiltInFcns
 ---

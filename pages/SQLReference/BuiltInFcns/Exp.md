@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns e raised to the specified numeric va
 keywords: logarithms
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_exp.html
 folder: SQLReference/BuiltInFcns
 ---

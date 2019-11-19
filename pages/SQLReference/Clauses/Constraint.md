@@ -4,7 +4,7 @@ summary: An optional clause in CREATE TABLE and ALTER TABLE statements that spec
 keywords: constraints, column-level constraints, primary key, foreign key, unique
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_clauses_constraint.html
 folder: SQLReference/Clauses
 ---
@@ -86,7 +86,7 @@ Specifies the column that uniquely identifies a row in the table. The
 identified columns must be defined as `NOT NULL`.
 {: .paramDefnFirst}
 
-At this time, you **cannot** add a primary key using `ALTER TABLE`.
+At this time, you **can only add or remove a primary key** using `ALTER TABLE` if the table is empty.
 {: .noteNote}
 
 {% if site.incl_hidden %}
@@ -147,7 +147,7 @@ Specifies the column or columns that uniquely identify a row in the
 table. `NULL` values are not allowed.
 {: .paramDefnFirst}
 
-At this time, you **cannot** add a primary key using `ALTER TABLE`.
+At this time, you **can only add or remove a primary key** using `ALTER TABLE` if the table is empty.
 {: .noteNote}
 
 UNIQUE
@@ -177,9 +177,6 @@ Specifies a wide range of rules for values in the table.
 </div>
 ## Primary Key Constraints
 
-At this time, you **cannot** alter primary keys using `ALTER TABLE`.
-{: .noteNote}
-
 Primary keys are constrained as follows:
 
 * A primary key defines the set of columns that uniquely identifies rows
@@ -188,6 +185,9 @@ Primary keys are constrained as follows:
   in the primary key can have `NULL` constraints; that is, they must not
   permit `NULL` values.
 * A table can have at most one `PRIMARY KEY` constraint.
+
+At this time, you **can only add or remove a primary key** using `ALTER TABLE` if the table is empty.
+{: .noteNote}
 
 ## Unique constraints
 
@@ -394,10 +394,8 @@ from the target table.
 * [`CREATE TABLE`](sqlref_statements_createtable.html) statement
 * [`INSERT`](sqlref_statements_insert.html) statement
 * [`DELETE`](sqlref_statements_delete.html) statement
-* [Foreign Keys](developers_fundamentals_foreignkeys.html) in the
-  *Developer's Guide*.
-* [Triggers](developers_fundamentals_triggers.html) in the *Developer's
-  Guide*.
+* [Foreign Keys](developers_fundamentals_foreignkeys.html)
+* [Triggers](developers_fundamentals_triggers.html)
 * [`UPDATE`](sqlref_statements_update.html) statement
 
 </div>

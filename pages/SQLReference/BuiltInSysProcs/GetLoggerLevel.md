@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays the log level of the specified 
 keywords: get_logger_level
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getloggerlevel.html
 folder: SQLReference/BuiltInSysProcs
 ---

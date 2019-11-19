@@ -4,7 +4,7 @@ summary: Summarizes RLWrap commands.
 keywords: rlWrap
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_using_rlwrap.html
 folder: CmdLineReference/Using
 ---

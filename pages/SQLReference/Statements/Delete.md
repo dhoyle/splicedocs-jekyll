@@ -4,7 +4,7 @@ summary: Deletes records from a table.
 keywords: deleting records, hfile delete, delete hfile, bulk delete
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_delete.html
 folder: SQLReference/Statements
 ---
@@ -67,11 +67,10 @@ generating HFiles for the deletion and then bypasses the Splice Machine
 write pipeline and HBase write path when deleting the data.
 
 You simply add a
-[`splice-properties`](developers_tuning_queryoptimization.html) hint
+[`splice-properties`](bestpractices_optimizer_hints.html) hint
 that specifies where to generate the HFiles. If you're specifying an S3
 bucket on AWS, please review our [Configuring an S3 Bucket for Splice
-Machine Access](tutorials_ingest_configures3.html) tutorial before
-proceeding.
+Machine Access](developers_cloudconnect_configures3.html) topic; if you're specifying Azure Storage, please see our [Using Azure Storage](developers_cloudconnect_configureaszure.html) topic.
 
 <div class="preWrapperWide" markdown="1">
     splice> DELETE FROM my_table --splice-properties bulkDeleteDirectory='/bulkFilesPath'

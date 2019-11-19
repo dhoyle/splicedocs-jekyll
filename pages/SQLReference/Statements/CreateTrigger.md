@@ -4,7 +4,7 @@ summary: Creates a trigger, which defines a set of actions that are executed whe
 keywords: creating a trigger
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createtrigger.html
 folder: SQLReference/Statements
 ---
@@ -274,8 +274,7 @@ This section presents examples of creating triggers:
 </div>
 ## See Also
 
-* [Database Triggers](developers_fundamentals_triggers.html) in the
-  *Developer's Guide*
+* [Database Triggers](developers_fundamentals_triggers.html)
 * [`DROP TRIGGER`](sqlref_statements_droptrigger.html) statement
 * [`WHERE`](sqlref_clauses_where.html) clause
 

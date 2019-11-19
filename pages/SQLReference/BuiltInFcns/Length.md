@@ -4,7 +4,7 @@ summary: Built-in SQL function that computes the length of a character or bit st
 keywords: len, length
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_length.html
 folder: SQLReference/BuiltInFcns
 ---

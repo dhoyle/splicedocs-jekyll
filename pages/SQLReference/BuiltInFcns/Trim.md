@@ -4,7 +4,7 @@ summary: Built-in SQL function that removes leading and/or trailing pad characte
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_trim.html
 folder: SQLReference/BuiltInFcns
 ---

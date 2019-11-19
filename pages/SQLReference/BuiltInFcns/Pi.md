@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the constant PI.
 keywords: 3.1416
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_pi.html
 folder: SQLReference/BuiltInFcns
 ---

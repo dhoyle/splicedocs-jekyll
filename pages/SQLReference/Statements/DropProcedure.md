@@ -4,7 +4,7 @@ summary: Drops a procedure from a database.
 keywords: dropping a procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropprocedure.html
 folder: SQLReference/Statements
 ---

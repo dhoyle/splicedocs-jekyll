@@ -4,7 +4,7 @@ summary: Built-in system procedure that collects statistics on a schema.
 keywords: collect schema stats, collect_schema_stats, collect statistics
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_collectschemastats.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -144,8 +144,7 @@ Collecting statistics on a schema can take some time.
 * [`SYSCS_UTIL.ENABLE_COLUMN_STATISTICS`](sqlref_sysprocs_enablecolumnstats.html)
 * [`SYSCS_UTIL.DISABLE_COLUMN_STATISTICS`](sqlref_sysprocs_disablecolumnstats.html)
 * [`SYSCS_UTIL.DROP_SCHEMA_STATISTICS`](sqlref_sysprocs_dropschemastats.html)
-* [Using Statistics](developers_tuning_usingstats.html) in the
-  *Developer's Guide*
+* [Using Statistics](bestpractices_optimizer_statistics.html)
 
 </div>
 </section>

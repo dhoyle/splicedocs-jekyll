@@ -4,7 +4,7 @@ summary: Built-in SQL window function normally used to limit the number of rows 
 keywords: row number function, ranking functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_rownumber.html
 folder: SQLReference/BuiltInFcns
 ---

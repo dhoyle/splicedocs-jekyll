@@ -4,7 +4,7 @@ summary: Introduction to and summary of expression syntax and rules
 keywords: expressions overview, exists, order by, update, values, where
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_expressions_about.html
 folder: SQLReference/Expressions
 ---
@@ -108,6 +108,7 @@ have one of the following types:
 * {: .CodeFont value="4"} INTEGER
 * {: .CodeFont value="5"} REAL
 * {: .CodeFont value="6"} SMALLINT
+* {: .CodeFont value="7"} TINYINT
 
 The following table lists the types of numeric expressions.
 
@@ -244,4 +245,3 @@ value. The following table lists the types of date and time expressions.
 
 </div>
 </section>
-

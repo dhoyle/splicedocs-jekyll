@@ -4,7 +4,7 @@ summary: Built-in system function that fetches the value of the specified proper
 keywords: properties, GET_GLOBAL_DATABASE_PROPERTY, get property, property value
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getglobaldbprop.html
 folder: SQLReference/BuiltInSysProcs
 ---

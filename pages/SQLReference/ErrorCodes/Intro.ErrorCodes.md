@@ -4,7 +4,7 @@ summary: Summarizes the Splice Machine Error Codes
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_intro.html
 folder: SQLReference/ErrorCodes
 ---

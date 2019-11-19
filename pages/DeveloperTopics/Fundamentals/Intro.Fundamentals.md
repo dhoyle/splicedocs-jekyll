@@ -4,7 +4,7 @@ summary: Describes the fundamental developer-oriented features in Splice Machine
 keywords: fundamentals, developers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_intro.html
 folder: DeveloperTopics/Fundamentals
 ---
@@ -31,11 +31,6 @@ Machine developers:
             <td>Introduces you to the basics of running transactions with Splice Machine.</td>
         </tr>
         <tr>
-            <td><a href="developers_fundamentals_dates.html">Working with Dates</a>
-            </td>
-            <td>Provides an overview of working with date and time values in Splice Machine.</td>
-        </tr>
-        <tr>
             <td><a href="developers_fundamentals_triggers.html">Using Database Triggers</a>
             </td>
             <td>Describes database triggers and how you can use them with Splice Machine.</td>
@@ -45,10 +40,11 @@ Machine developers:
             </td>
             <td>Describes our implementation of foreign keys and how our implementation ensures referential integrity.</td>
         </tr>
+developers_fundamentals_sparklibs.html
         <tr>
-            <td><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a>
+            <td><a href="developers_fundamentals_sparklibs.html">Using Spark Libraries</a>
             </td>
-            <td>A quick summary of window functions, as implemented in Splice Machine SQL.</td>
+            <td>Describes how to use Spark Libraries with Splice Machine.</td>
         </tr>
         <tr>
             <td><a href="developers_fundamentals_temptables.html">Using Temporary Tables</a>
@@ -56,14 +52,14 @@ Machine developers:
             <td>Describes how to use temporary tables with Splice Machine.</td>
         </tr>
         <tr>
-            <td><a href="developers_fundamentals_vti.html">Using the VTI Interface</a>
+            <td><a href="developers_fundamentals_windowfcns.html">Using Window Functions</a>
             </td>
-            <td>Allows you to use an SQL interface with data that is external to your database.</td>
+            <td>A quick summary of window functions, as implemented in Splice Machine SQL.</td>
         </tr>
         <tr>
-            <td><a href="developers_fundamentals_externaltables.html">Using External Tables</a>
+            <td><a href="developers_fundamentals_dates.html">Working with Dates</a>
             </td>
-            <td>Describes the use of external tables (which are stored as flat files outside of your database) with Splice Machine.</td>
+            <td>Provides an overview of working with date and time values in Splice Machine.</td>
         </tr>
     </tbody>
 </table>

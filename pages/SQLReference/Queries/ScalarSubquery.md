@@ -4,7 +4,7 @@ summary: A subquery that returns a single row with a single column.
 keywords: exists, order by
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_queries_scalarsubquery.html
 folder: SQLReference/Queries
 ---

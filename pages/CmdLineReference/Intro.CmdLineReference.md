@@ -4,13 +4,13 @@ summary: Summarizes the splice&gt; commands.
 keywords: splice>, cli, command reference
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_intro.html
 folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.pdf_runninghead = "Command Line Reference" %}
+{% assign site.guide_heading = "splice&gt; Command Line Reference" %}
 # Splice Machine Commands Reference
 
 This guide contains reference information for using the Splice Machine command line interpreter, which is also known as the Splice Prompt (<span class="AppCommand">splice&gt;</span>).
@@ -55,7 +55,15 @@ The following table summarizes the commands that you can use them with the `sqls
             <td><span class="AppCommand">splice&gt; autocommit off;</span>
             </td>
         </tr>
-        <tr>
+         <tr>
+             <td class="CodeFont"><a href="cmdlineref_exportbinary.html">Export</a>
+             </td>
+             <td>Exports query results to binary files.</td>
+             <td><span class="AppCommand">splice&gt; EXPORT_BINARY('/my/export/dir', true, 'parquet')
+SELECT a,b,sqrt(c) FROM t1 WHERE a > 100;</span>
+             </td>
+         </tr>
+       <tr>
             <td class="CodeFont"><a href="cmdlineref_commit.html">Commit</a>
             </td>
             <td>Commits the currently active transaction and initiates a new transaction.</td>
@@ -223,6 +231,13 @@ our *On-Premise Database* and *Database-as-Service* products.
             </td>
             <td>Displays information about active connections and database objects.</td>
             <td><span class="AppCommand">splice&gt; show connections;</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont"><a href="cmdlineref_showcreatetable.html">Show Create Table</a>
+            </td>
+            <td>command displays the DDL used with the `create table` statement to create a specified table..</td>
+            <td><span class="AppCommand">splice&gt; show create table players;</span>
             </td>
         </tr>
         <tr>

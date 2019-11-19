@@ -4,7 +4,7 @@ summary: Syntax, capitalization, and special character usage within Splice Machi
 keywords: identifier syntax
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_identifiers_syntax.html
 folder: SQLReference/Identifiers
 ---

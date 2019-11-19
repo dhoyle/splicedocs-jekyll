@@ -4,7 +4,7 @@ summary: Allows you to query data stored in a flat file as if that data were sto
 keywords: external tables, orc, avro, parquet, textfile, compression, encoding, separator
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_createexternaltable.html
 folder: SQLReference/Statements
 ---
@@ -70,8 +70,8 @@ external table. You can specify one of the following values:
 
 If you don't specify a compression format, the default is uncompressed.
 You cannot specify a <span
-class="CodeItalicFont">compression-format</span> when using the
-`TEXTFILE `<span class="CodeItalicFont">file-format</span>; doing so
+class="CodeItalicFont">compression-format</span> when using either `AVRO` or
+`TEXTFILE `<span class="CodeItalicFont">file-formats</span>; doing so
 generates an error.
 {: .paramDefn}
 
@@ -154,6 +154,7 @@ Here are some notes about using external tables:
   at that location.
 * `AVRO` external tables do not currently work with compressed files;
   any compression format you specify will be ignored.
+* Our current implementation of `AVRO` external tables does not support the use of `DECIMAL` data values. This restriction will be eliminated in a future release.
 * Splice Machine isn't able to know when the schema of the file
   represented by an external table is updated; when this occurs, you
   need to update the external table in Splice Machine by calling the
@@ -168,6 +169,8 @@ Here are some notes about using external tables:
 
 This section presents examples of the `CREATE EXTERNAL TABLE` statement.
 
+### External Table PARQUET Single File Example
+
 This example creates an external table for the `PARQUET` data files in the `users/myName/myParquetData` directory, inferring the table schema from one data file in that directory:
 {: .body}
 
@@ -179,9 +182,9 @@ This example creates an external table for the `PARQUET` data files in the `use
                         LOCATION '/users/myName/myParquetData';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
+</div>
 
-This example creates an external table for a `PARQUET` file:
-{: .body}
+### External Table PARQUET Multiple Files Example
 
 This example creates an external table for the `PARQUET` data files in the `users/myName/myParquetData` directory, inferring the table schema from **all** of the data files in that directory:
 {: .body}
@@ -195,7 +198,27 @@ This example creates an external table for the `PARQUET` data files in the `use
                         MERGE SCHEMA;
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
+</div>
 
+### External Table Compressed PARQUET Example
+
+This example creates an external table for a `PARQUET` file that was
+compressed with Snappy compression:
+{: .body}
+
+<div class="preWrapper" markdown="1">
+    splice> CREATE EXTERNAL TABLE mySnappyParquetTable
+                        (col1 INT, col2 VARCHAR(24))
+                        COMPRESSED WITH SNAPPY
+                        PARTITIONED BY (col1)
+                        STORED AS PARQUET
+                        LOCATION '/users/myName/mySnappyParquetFile';
+    0 rows inserted/updated/deleted
+{: .Example xml:space="preserve"}
+
+</div>
+
+### External Table AVRO Example
 This example creates an external table for an `AVRO` file:
 {: .body}
 
@@ -207,8 +230,10 @@ This example creates an external table for an `AVRO` file:
                         LOCATION '/users/myName/myAvroFile';
     0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
-
 </div>
+
+### External Table ORC (on S3) Example
+
 This example creates an external table for an `ORC` file stored in an AWS S3 bucket and inserts
 data into it:
 {: .body}
@@ -231,6 +256,12 @@ data into it:
 {: .Example xml:space="preserve"}
 
 </div>
+
+See the [Configuring an S3 Bucket for Splice Machine Access](developers_cloudconnect_configures3.html) topic for information about accessing data on S3.
+{: .noteNote}
+
+### External Table Plain Text Example
+
 This example creates an external table for a plain text file stored on HDFS:
 {: .body}
 
@@ -248,26 +279,9 @@ This example creates an external table for a plain text file stored on HDFS:
 {: .Example xml:space="preserve"}
 
 </div>
-This example creates an external table for a `PARQUET` file that was
-compressed with Snappy compression:
-{: .body}
-
-<div class="preWrapper" markdown="1">
-    splice> CREATE EXTERNAL TABLE mySnappyParquetTable
-                        (col1 INT, col2 VARCHAR(24))
-                        COMPRESSED WITH SNAPPY
-                        PARTITIONED BY (col1)
-                        STORED AS PARQUET
-                        LOCATION '/users/myName/mySnappyParquetFile';
-    0 rows inserted/updated/deleted
-{: .Example xml:space="preserve"}
-
-</div>
-</div>
 ## See Also
 
 * [`CREATE TABLE`](sqlref_statements_createtable.html)
-* [`PIN TABLE`](sqlref_statements_pintable.html)
 * [`DROP TABLE`](sqlref_statements_droptable.html)
 * [`REFRESH EXTERNAL TABLE`](sqlref_sysprocs_refreshexttable.html)
 * [Foreign Keys](developers_fundamentals_foreignkeys.html)

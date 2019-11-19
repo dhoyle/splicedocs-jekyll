@@ -4,7 +4,7 @@ summary: Built-in system procedure that restores a database from a previous back
 keywords: restoring, restore_database, restore from backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_restoredb.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -14,9 +14,9 @@ folder: SQLReference/BuiltInSysProcs
 
 The `SYSCS_UTIL.SYSCS_RESTORE_DATABASE` system procedure restores your
 database to the state it was in when a specific backup was performed,
-using a backup that you previously created using either the
-&nbsp; [`SYSCS_UTIL_SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedure.
+using a backup that you previously created.
+
+{% include splice_snippets/enterpriseonly_note.md %}
 
 You can restore your database from any previous full or incremental
 backup.
@@ -27,6 +27,7 @@ from a previous backup:
 * Restoring a database **wipes out your database** and replaces it with
   what had been previously backed up.
 * You **cannot use your cluster** while restoring your database.
+* The restore runs asynchronously, which means that you **need to** look at the region server log for a message that the restore is complete, and then reboot your database.
 * You **must reboot your database** after the restore is complete. See
   the [Starting Your Database](onprem_admin_startingdb.html) topics in
   this book for instructions on restarting your database.
@@ -72,12 +73,11 @@ each backup) may also be corrupted.
 backupId
 {: .paramName}
 
-The ID of the backup job from which you want to restore your database.
+The ID of the backup job from which you want to restore your database. To find the *backupId*, you can query the [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) system table, as described in the [*Backing Up and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefnFirst}
 
-The system [*Backing Up and Restoring*](onprem_admin_backingup.html)
-topic for more information.
-{: .paramDefn}
+The `SYS.SYSBACKUP` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
 
 validate
 {: .paramName}
@@ -86,9 +86,14 @@ A Boolean value that specifies whether to validate the backup before restoring f
 {: .paramDefnFirst}
 
 * If *validate* is `false`, the restore proceeds without any pre-validation.
-* If *validate* is `true`, the backup is validated before the restoration is started. (See [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
+* If *validate* is `true`, the backup is validated before the restoration is started. (See&nbsp;&nbsp; [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)). If the validation check finds inconsistencies, the errors are reported to the user, and the database is _not_ restored. If the inconsistencies are minor, you can choose to re-run this procedure with `validate` set to `false`.
 {: .nested}
 </div>
+
+## Backup and Restore Compatibility
+
+{% include splice_snippets/backupcompatibility.md %}
+
 ## Usage
 
 Restoring you database can take a while, and has several major
@@ -104,6 +109,9 @@ from a previous backup:
 * You **cannot use your cluster** while restoring your database.
 * You **must reboot your database** after the restore is complete by
   first [Starting Your Database](onprem_admin_startingdb.html).
+
+You must look at the region server log for a message that the restore is complete, and then restart your database.
+{: .noteIcon}
 
 </div>
 As noted at the top of this topic: if you are restoring from an
@@ -170,18 +178,22 @@ Here's a similar restore attempt that terminates after finding inconsistencies i
     2 rows selected
 {: .Example xml:space="preserve"}
 
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
+
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

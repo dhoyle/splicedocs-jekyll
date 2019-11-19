@@ -4,7 +4,7 @@ summary: Walks you through compiling and running a Scala program that connects t
 keywords: Scala, JDBC, connect tutorial
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: tutorials_connect_scala.html
 folder: DeveloperTopics/JDBCConnect
 ---
@@ -20,6 +20,9 @@ connects to Splice Machine using our JDBC driver. The
 * creates a table named `MYTESTTABLE`
 * inserts several sample records
 * selects and displays records from one of the system tables
+
+You can read more about [our JDBC Driver here](tutorials_connectjdbc_intro.html). And you can download the driver from here: <a href="{{splvar_jdbc_dllink}}" target="_blank">{{splvar_jdbc_dllink}}.</a>
+{: .notePlain}
 
 ## Compile and Run the Sample Program   {#Compile}
 

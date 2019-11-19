@@ -4,7 +4,7 @@ summary: Built-in system procedure that displays information about the number of
 keywords: get write info, get_write_intake_info, get write intake info
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_getwriteintakeinfo.html
 folder: SQLReference/BuiltInSysProcs
 ---

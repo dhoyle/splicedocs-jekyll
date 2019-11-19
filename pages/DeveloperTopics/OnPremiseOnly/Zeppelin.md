@@ -5,7 +5,7 @@ keywords: on-premise notebook, on-premise Zeppelin
 toc: false
 compatible_version: 2.7
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_zeppelin.html
 folder: DeveloperTutorials/ML
 ---

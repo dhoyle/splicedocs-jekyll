@@ -4,7 +4,7 @@ summary: Built-in system procedure that delete a specific backup.
 keywords: Delete a backup, delete_backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_deletebackup.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -12,10 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_DELETE_BACKUP
 
-The `SYSCS_UTIL.SYSCS_DELETE_BACKUP` system procedure deletes a backup
-that you previously created using either the
-[`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedures.
+The `SYSCS_UTIL.SYSCS_DELETE_BACKUP` system procedure deletes a previously created backup.
 
 ## Syntax
 
@@ -31,9 +28,16 @@ backupId
 Specifies the ID of the backup job you want to delete.
 {: .paramDefnFirst}
 
-To find the *jobId* you want to cancel, see the [*Backing Up
-and Restoring*](onprem_admin_backingup.html) topic.
+To find the *jobId* you want to cancel, you can query the [`SYS.SYSBACKUP`](sqlref_systables_sysbackup.html) system table, as described in the
+[*Backing Up and Restoring*](onprem_admin_backingup.html) topic.
 {: .paramDefn}
+
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
 
 </div>
 ## Results
@@ -66,17 +70,20 @@ And then delete that job:
     Statement executed.
 {: .Example xml:space="preserve"}
 
+
+
+The `SYS.SYSBACKUP` table is part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
+{: .noteIcon}
+
+
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS`](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS`](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

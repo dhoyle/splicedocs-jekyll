@@ -4,7 +4,7 @@ summary: How to access Splice Machine as a data source using HCatalog.
 keywords: HCatalog, metadata, HDFS
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_fundamentals_hcatalog.html
 folder: DeveloperTopics/OnPremiseOnly
 ---
@@ -100,6 +100,41 @@ illustrated here:
 
 For more information about Hive joins, see the Apache Hive
 documentation.
+
+## Hive Integration on a Kerberized Cluster
+
+To integrate with Hive on a Kerberized cluster, you need to:
+<div class="opsStepsList" markdown="1">
+1.  Make the following configuration changes in the `hive-site.xml` configuration file:
+   ```
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10001</value>
+    </property>
+    <property>
+        <name>hive.server2.authentication</name>
+        <value>KERBEROS</value>
+    </property>
+    <property>
+        <name>hive.server2.authentication.kerberos.principal</name>
+        <value>hive/<HiveServer2Host></value><!-- for example：my_hive/test@HADOOP.TEST.COM -->
+    </property>
+    <property>
+        <name>hive.server2.authentication.kerberos.keytab</name>
+        <value>/home/user/user.keytab</value>
+    </property>
+    ```
+    {: .Example}
+
+2.  Connect to the Hive server with Hive principal.
+3.  Grant the Hive user privileges to access HBase:
+    ```
+    GRANT 'hive' 'RWCA';
+    ```
+    {: .Example}
+
+4.  Update your code to authenticate with the Hive principal/keytab for accessing HBase; alternatively you can authenticate with a Hive delegation token.
+</div>
 
 ## Examples
 

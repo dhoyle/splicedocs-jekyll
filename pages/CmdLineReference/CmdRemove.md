@@ -4,7 +4,7 @@ summary: Removes a previously prepared statement.
 keywords: prepared statements
 toc: false
 product: all
-sidebar: cmdlineref_sidebar
+sidebar: home_sidebar
 permalink: cmdlineref_remove.html
 folder: CmdLineReference
 ---

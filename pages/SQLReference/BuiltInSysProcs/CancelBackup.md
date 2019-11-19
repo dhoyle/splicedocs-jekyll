@@ -4,7 +4,7 @@ summary: Built-in system procedure that cancels a specific backup.
 keywords: cancel backup, cancel_backup
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_cancelbackup.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -44,16 +44,10 @@ This cancels the currently running backup:
 ## See Also
 
 * [*Backing Up and Restoring Databases*](onprem_admin_backingup.html)
-
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
-
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
-
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
-
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
 
 
 </div>

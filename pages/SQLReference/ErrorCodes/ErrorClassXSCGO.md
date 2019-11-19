@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XSCG0 Errors
 keywords: XSCG0 errors, error XSCG0
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxscgo.html
 folder: SQLReference/ErrorCodes
 ---

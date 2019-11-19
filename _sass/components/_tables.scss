@@ -6,7 +6,8 @@
 				   $fontColor: $bodyfont-color,
 				   $fontSize: 1em,
 				   $fontTransform: none,
-				   $vertAlign: top ) {
+				   $vertAlign: top,
+				   $horizAlign: left ) {
 	background-color: $bgColor;
 	font-family: $fontFace;
 	font-weight: $fontWeight;
@@ -15,10 +16,13 @@
 	font-size: $fontSize;
 	text-transform: $fontTransform;
 	vertical-align: $vertAlign;
+	text-align: $horizAlign;
 }
 
 table,
-table.noBorder
+table.noBorder,
+table.oddEven,
+table.pageNav
 {
 	table-layout: auto;
 	border: $border-table;
@@ -101,10 +105,26 @@ table.noBorder
 	}
 }
 
-table.noBorder {
+table.oddEven tr:nth-child(even) {
+	border: 1px solid $border-table;
+	background-color: $table-evenrow-bgcolor;
+}
+
+table.oddEven tr:nth-child(odd) {
+	border: 1px solid $border-table;
+	background-color: $table-oddrow-bgcolor;
+}
+
+table.noBorder,
+table.pageNav  {
     border: none;
     td { border: none;}
     th { border: none;}
+}
+
+table.pageNav {
+	margin: 0 auto 0 auto;
+	width: 100%;
 }
 
 table td.AppFont {
@@ -116,6 +136,18 @@ table td.AppFont {
 table td.AppFont {
 	@include cellStyle ($fontFace: $codefont-face,
 						$bgColor: $table-appFont-color)
+}
+
+table td.spliceCheckbox {
+	@include cellStyle ($fontColor: $splicecheckbox-color,
+						$fontSize: 1.4em,
+						$horizAlign: center )
+}
+
+table td.spliceCheckboxBlue {
+	@include cellStyle ($fontColor: #3ba3d8,
+						$fontSize: 1.4em,
+						$horizAlign: center )
 }
 
 table td.DbaasIntroNum{
@@ -131,7 +163,6 @@ table td.DbaasIntroStep{
 						$vertAlign: middle,
 						$fontWeight: bold )
 }
-
 
 table td.DbaasIntroArrow{
 	@include cellStyle ($fontSize:  $extralargefont-size,
@@ -195,6 +226,26 @@ table td.ItalicFont {
 table td.MenuName {
 	@include cellStyle ($fontStyle: italic,
 						$bgColor: $table-appFont-color)
+}
+
+table td.PageLinkNext {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align:    right;
+	margin-right:  0;
+	padding-right: 0;
+}
+
+table td.PageLinkPrev {
+	@include cellStyle ($fontColor:  $pagelink-color,
+					    $fontSize:   $pagelink-size,
+						$fontStyle:  $pagelink-style,
+						$fontWeight: $pagelink-weight);
+	text-align:   left;
+	margin-left:  0;
+	padding-left: 0;
 }
 
 table td.PlainFont {
@@ -283,4 +334,10 @@ table.featureList
 		color: $featureTable-th-color;
 		font-weight: $bodyfont-bold;
 	}
+}
+
+caption.tblCaption {
+	font-size: $caption-size;
+	color: $caption-color;
+	font-weight: $caption-bold;
 }

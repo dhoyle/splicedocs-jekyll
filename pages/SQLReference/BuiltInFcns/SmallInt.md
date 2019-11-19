@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns a small integer representation of a 
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_smallint.html
 folder: SQLReference/BuiltInFcns
 ---

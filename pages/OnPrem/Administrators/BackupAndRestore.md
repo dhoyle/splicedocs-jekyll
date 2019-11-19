@@ -4,7 +4,7 @@ title: Backing Up and Restoring Your Database
 keywords: back up, restore, backup, backup restore, backing up, restoring, incremental backup, full backup
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_backingup.html
 folder: OnPrem/Administrators
 ---
@@ -17,7 +17,6 @@ Splice Machine provides built-in system procedures that make it easy to
 back up and restore your entire database. You can:
 
 * create full and incremental backups to run immediately
-* schedule daily full or incremental backups
 * restore your database from a backup
 * validate backups
 * manage your backups
@@ -29,6 +28,24 @@ these sections:
 * [About Splice Machine Backups](#About)
 * [Using the Backup Operations](#Using)
 * [Backing Up to Cloud Storage](#Backing)
+
+## Backup and Restore Types and Compatibility
+
+To back up and restore your entire database, use these system procedures:
+* [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
+
+If you only want to back up  or restore the tables and indexes belonging to a specific schema, you can use these procedures:
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
+
+And if you only want to back up or restore a specific table, you can use these procedures:
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
+
+
+{% include splice_snippets/backupcompatibility.md %}
+
 
 ## Backup Resource Allocation
 
@@ -47,7 +64,7 @@ Because backups can consume a lot of disk space, most customers define a
 backup strategy that blends their needs for security, recover-ability,
 and space restrictions. Since incremental backups require a lot less
 space than do full backups, and allow for faster recovery of data, many
-customers schedule daily, incremental backups.
+customers choose to schedule frequent incremental backups.
 
 Splice Machine automatically detects when it is the first run of an
 incremental backup and performs a one-time full backup; subsequent runs
@@ -55,12 +72,13 @@ will only back up changed files/blocks.
 {: .noteNote}
 
 
-### Backup IDs, Backup Jobs, and Backup Tables
+### Backup IDs, Backup Jobs, and Backup Tables  {#systables}
 
 Splice Machine uses *backup IDs* to identify a specific full or
 incremental *backup* that is stored on a file system, and *backup job
-IDs* to identify each scheduled *backup job*. Information about backups
-and backup jobs is stored in these system tables:
+IDs* to identify each scheduled *backup job*.
+
+Information about backups and backup jobs is stored in these system tables:
 
 <table summary="Table of Splice Machine system backup tables.">
     <col />
@@ -82,13 +100,16 @@ and backup jobs is stored in these system tables:
             </td>
             <td>Each item (table) in a backup.</td>
         </tr>
-        <tr>
-            <td><code>SYS.SYSBACKUPJOBS</code>
-            </td>
-            <td>Each backup job that has been run for the database.</td>
-        </tr>
     </tbody>
 </table>
+
+<div class="noteIcon" markdown="1">
+Access to the system tables that store backup information (actually, to the entire `SYS` schema) is restricted, for security purposes, to users for whom your Database Administrator has explicitly granted access.
+
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
+</div>
+
 ### Temporary Tables and Backups
 
 There's a subtle issue with performing a backup when you're using a
@@ -133,12 +154,10 @@ If you're going to perform incremental backups, you _must_ follow these steps:
 This section summarizes and provides examples of using the Splice
 Machine backup operations:
 
-* [Scheduling a Daily Backup Job](#Scheduling)
 * [Running an Immediate Backup](#Running)
 * [Restoring Your Database From a Previous Backup](#Restorin)
 * [Validating Backups](#Validating)
 * [Reviewing Backup Information](#Reviewing)
-* [Canceling a Scheduled Backup Job](#Cancelin)
 * [Canceling a Backup That's In Progress](#CancelB){: .WithinBook}
 * [Deleting a Backup](#Deleting)
 * [Deleting Outdated Backups](#DeleteOld)
@@ -153,67 +172,6 @@ such as AWS; for more information, see the [Backing Up to Cloud
 Storage](#Backing) section below.
 {: .noteNote}
 
-### Scheduling a Daily Backup Job   {#Scheduling}
-
-Use the
-[`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html) system
-procedure to schedule a job that performs a daily incremental or full
-backup of your database:
-
-<div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP( backupDir, backupType, startHour );
-{: .FcnSyntax xml:space="preserve"}
-
-</div>
-<div class="paramList" markdown="1">
-backupDir
-{: .paramName}
-
-A `VARCHAR` value that specifies the path to the directory in which you
-want the backup stored.
-{: .paramDefnFirst}
-
-Note that this directory can be cloud-based, as described in the
-[Backing Up to Cloud Services](#Backing) section below.
-{: .paramDefn}
-
-backupType
-{: .paramName}
-
-A `VARCHAR(30)` value that specifies the type of backup that you want
-performed; one of the following values: `full` or `incremental`. The
-first run of an incremental backup is always a full backup.
-{: .paramDefnFirst}
-
-startHour
-{: .paramName}
-
-Specifies the hour (`0-23`) in GMT at which you want the backup to run
-each day. A value less than `0` or greater than `23` produces an error
-and the backup is not scheduled.
-{: .paramDefnFirst}
-
-#### Example 1: Set up a full backup to run every day at 3am:
-
-To run a full backup every night at 3am:
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'full', 3);
-{: .AppCommand xml:space="preserve"}
-
-</div>
-<div markdown="1">
-#### Example 2: Set up an incremental backup to run every day at noon:
-
-To run an incremental backup every day at noon.
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP('/home/backup', 'incremental', 12);
-{: .AppCommand xml:space="preserve"}
-
-</div>
-</div>
-</div>
 ### Running an Immediate Backup   {#Running}
 
 Use the
@@ -261,6 +219,9 @@ checks the &nbsp;[`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
 to determine if there already is a backup for the system; if not, Splice
 Machine will perform a full backup, and subsequent backups will be
 incremental. The backup data is stored in the specified directory.
+
+Access to system tables is limited, as described in the [Backup Tables](#systables) section above.
+{: .noteIcon}
 
 <div class="preWrapperWide" markdown="1">
     call SYSCS_UTIL.SYSCS_BACKUP_DATABASE('/home/backup', 'incremental');
@@ -313,6 +274,7 @@ from a previous backup:
 * Restoring a database **wipes out your database** and replaces it with
   what had been previously backed up.
 * You **cannot use your cluster** while restoring your database.
+* The restore runs asynchronously, which means that you **need to** look at the region server log for a message that the restore is complete, and then reboot your database.
 * You **must reboot your database** after the restore is complete by
   first [Starting Your Database](onprem_admin_startingdb.html).
 
@@ -373,21 +335,12 @@ Splice Machine stores information about your backups and scheduled
 backup jobs in system tables that you can query, and stores a backup log
 file in the directory to which a backup is written when it runs.
 
-#### Backup Job Information
+<div class="noteIcon" markdown="1">
+The system tables that store backup information are part of the `SYS` schema, to which access is restricted for security purposes. You can only access tables in the `SYS` schema if you are a Database Administrator or if your Database Administrator has explicitly granted access to you.
 
-Information about your scheduled backup jobs is stored in the
-[`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html):
-
-<div class="preWrapperWide" markdown="1">
-    splice> select * from SYS.SYSBACKUPJOBS;
-    JOB_ID         |FILESYSTEM        |TYPE           |HOUR_OF_DAY|BEGIN_TIMESTAMP
-    --------------------------------------------------------------------------------------
-    22275          |/data/backup/0101 |FULL           |22         |2015-04-03 18:43:42.631
-{: .Example xml:space="preserve"}
-
+If you attempt to select information from a table such as `SYS.SYSBACKUP` and you don't have access, you'll see a message indicating that _"No schema exists with the name `SYS`."_&nbsp; If you believe you need access, please request
+ `SELECT` privileges from your administrator.
 </div>
-You can query this table to find a job ID, if you need to cancel a
-scheduled backup.
 
 #### Backup Information
 
@@ -423,42 +376,6 @@ Here's a sample snippet from a log file:
     Finished with Success. Total time taken for backup was 11 hours 32 minutes.
 {: .Example xml:space="preserve"}
 
-</div>
-### Canceling a Scheduled Backup   {#Cancelin}
-
-You can cancel a daily backup with the
-[`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html) system
-procedure:
-
-<div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP( jobId );
-{: .FcnSyntax xml:space="preserve"}
-
-</div>
-<div class="paramList" markdown="1">
-jobId
-{: .paramName}
-
-A `BIGINT` value that specifies which scheduled backup job you want to
-cancel.
-{: .paramDefnFirst}
-
-You can find the *jobId* you want to cancel by querying the
-[`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html).
-{: .paramDefn}
-
-Once you cancel a daily backup, it will no longer be scheduled to run.
-{: .noteNote}
-
-#### Example: Cancel a daily backup
-
-This example cancels the backup that has `jobId=1273`:
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP(1273);
-{: .AppCommand xml:space="preserve"}
-
-</div>
 </div>
 ### Canceling a Backup That's In Progress   {#CancelB}
 
@@ -564,7 +481,7 @@ guidelines; however, S3 access differs in every deployment. For more
 information, see these sites:
 
 * <a href="http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html" target="_blank">http://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html</a>
-* <a href="https://wiki.apache.org/hadoop/AmazonS3" target="_blank">https://wiki.apache.org/hadoop/AmazonS3</a>
+* <a href="https://cwiki.apache.org/confluence/display/HADOOP2/AmazonS3" target="_blank">https://cwiki.apache.org/confluence/display/HADOOP2/AmazonS3</a>
 
 </div>
 * [Enabling backups on CDH](#Enabling)
@@ -773,16 +690,17 @@ Follow these steps:
 ## See Also
 
 * [`SYSCS_UTIL.SYSCS_BACKUP_DATABASE`](sqlref_sysprocs_backupdb.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
 * [`SYSCS_UTIL.SYSCS_CANCEL_BACKUP`](sqlref_sysprocs_cancelbackup.html)
-* [`SYSCS_UTIL.SYSCS_CANCEL_DAILY_BACKUP`](sqlref_sysprocs_canceldailybackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_BACKUP`](sqlref_sysprocs_deletebackup.html)
 * [`SYSCS_UTIL.SYSCS_DELETE_OLD_BACKUPS`](sqlref_sysprocs_deleteoldbackups.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
-* [`SYSCS_UTIL.SYSCS_SCHEDULE_DAILY_BACKUP`](sqlref_sysprocs_scheduledailybackup.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
 * [`SYSCS_UTIL.VALIDATE_BACKUP`](sqlref_sysprocs_validatebackup.html)
 * [`SYSBACKUP` system table](sqlref_systables_sysbackup.html)
 * [`SYSBACKUPITEMS` system table](sqlref_systables_sysbackupitems.html)
-* [`SYSBACKUPJOBS` system table](sqlref_systables_sysbackupjobs.html)
 
 </div>
 </section>

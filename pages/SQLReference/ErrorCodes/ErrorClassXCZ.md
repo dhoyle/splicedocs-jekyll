@@ -4,7 +4,7 @@ summary: Summary of Splice Machine Class XCZ Errors
 keywords: XCZ errors, error XCZ
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_errcodes_classxcz.html
 folder: SQLReference/ErrorCodes
 ---

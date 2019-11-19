@@ -4,7 +4,7 @@ summary: Drops a function from a database.
 keywords: dropping functions
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_dropfunction.html
 folder: SQLReference/Statements
 ---

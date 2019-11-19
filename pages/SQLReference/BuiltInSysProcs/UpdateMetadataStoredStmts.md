@@ -5,7 +5,7 @@ summary: Built-in system procedure that updates updates the execution plan for s
 keywords: update_system_procedure, update system procedure
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_updatemetastmts.html
 folder: SQLReference/BuiltInSysProcs
 ---
@@ -13,7 +13,7 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS
 
-The `SYSCS_UPDATE_METADATA_STORED_STATEMENTS` system procedure updates the execution plan for stored procedures in your  database.
+The `SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS` system procedure updates the execution plan for stored procedures in your  database.
 
 ## About System Procedures and Metadata
 
@@ -30,7 +30,7 @@ Use this function to update the execution plans stored in the data dictionary.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UPDATE_METADATA_STORED_STATEMENTS()
+    SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS()
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -42,7 +42,7 @@ This procedure does not return a result.
 ## Example
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UPDATE_METADATA_STORED_STATEMENTS();
+    splice> CALL SYSCS_UTIL.SYSCS_UPDATE_METADATA_STORED_STATEMENTS();
     Statement executed.
 {: .Example xml:space="preserve"}
 

@@ -4,7 +4,7 @@ title: Installing the Virtual Box Version of Splice Machine.
 keywords: virtualbox, standalone
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_install_virtualbox.html
 folder: OnPrem/InstallingSpliceMachine
 ---

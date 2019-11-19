@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the authorization ID of the user who
 keywords: authorization ID, user id, session user
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_user.html
 folder: SQLReference/BuiltInFcns
 ---

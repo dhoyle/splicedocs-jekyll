@@ -4,7 +4,7 @@ summary: Join operation that returns all rows from the left table with the match
 keywords:
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_joinops_leftouterjoin.html
 folder: SQLReference/JoinOps
 ---

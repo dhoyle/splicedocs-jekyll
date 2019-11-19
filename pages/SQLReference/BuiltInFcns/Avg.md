@@ -4,7 +4,7 @@ summary: Built-in SQL aggregate or window (analytic) function that returns the a
 keywords: average, aggregate function, DISTINCT
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_avg.html
 folder: SQLReference/BuiltInFcns
 ---

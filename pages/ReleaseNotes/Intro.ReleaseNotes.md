@@ -4,76 +4,136 @@ summary: Release notes for this release of Splice Machine.
 keywords: release notes, on-premise
 toc: false
 product: all
-sidebar:  releasenotes_sidebar
+sidebar: home_sidebar
 permalink: releasenotes_intro.html
 folder: ReleaseNotes
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 {% include splicevars.html %}
-{% assign site.pdf_runninghead = "Release Notes" %}
 
 # Release Notes for Splice Machine
 
-Welcome to the {{site.build_version}} Release of Splice Machine, originally released  {{site.release_date}}. Our release notes are presented in these topics:
+Welcome to the {{site.build_version}} Release of Splice Machine, originally released  {{site.release_date}}.
+
+Our release notes are presented in these topics:
+
+* This topic summarizes the [major new features and improvements](#major) in version {{site.build_version}}.
+* The [Database Release Notes](#releasenotes) section below links to the notes for each update (patch release) of the Splice Machine database, which is part of all Splice Machine products.
+* The [Known Issues and Workarounds](releasenotes_workarounds.html) topic describes each known issue in the current release and its workaround.
+* The [Database-as-Service Product Release Notes](releasenotes_dbaas.html) topic contains release information specific to our Database-as-Service product.
+* The [On-Premise Product Release Notes](releasenotes_onprem.html) topic contains release information specific to our On-Premise product.
+* If you're looking for older release notes, you'll find them in the [Archived Release Notes](releasenotes_archived_intro.html) section, under the *Previous Release Docs* heading.
+
+## Major Updates in Release {{site.build_version}}  {#major}
 
 <table>
-    <col width="40%" />
-    <col />
+    <col width="20%" />
+    <col width="25%" />
+    <col width="60%" />
     <thead>
         <tr>
-            <th>Topic</th>
+            <th>Category</th>
+            <th>Update</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Database Release Notes</td>
-            <td><p>Release notes for the Splice Machine database, which is the basis for both our <em>Database-as-Service</em> and <em>On-Premise Database</em> products. Each major and patch release has its own page of notes:</p>
-            <ul>
-                <li><a href="releasenotes_2.7.1840.html">Patch Release 2.7.0.1840</a></li>
-                <li><a href="releasenotes_2.7.1839.html">Patch Release 2.7.0.1839</a></li>
-                <li><a href="releasenotes_2.7.1838.html">Patch Release 2.7.0.1838</a></li>
-                <li><a href="releasenotes_2.7.1835.html">Patch Release 2.7.0.1835</a></li>
-                <li><a href="releasenotes_2.7.1834.html">Patch Release 2.7.0.1834</a></li>
-                <li><a href="releasenotes_2.7.1833.html">Patch Release 2.7.0.1833</a></li>
-                <li><a href="releasenotes_2.7.1832.html">Patch Release 2.7.0.1832</a></li>
-                <li><a href="releasenotes_2.7.1831.html">Patch Release 2.7.0.1831</a></li>
-                <li><a href="releasenotes_2.7.1830.html">Patch Release 2.7.0.1830</a></li>
-                <li><a href="releasenotes_2.7.1829.html">Patch Release 2.7.0.1829</a></li>
-                <li><a href="releasenotes_2.7.1828.html">Patch Release 2.7.0.1828</a></li>
-                <li><a href="releasenotes_2.7.1827.html">Patch Release 2.7.0.1827</a></li>
-                <li><a href="releasenotes_2.7.1826.html">Patch Release 2.7.0.1826</a></li>
-                <li><a href="releasenotes_2.7.1825.html">Patch Release 2.7.0.1825</a></li>
-                <li><a href="releasenotes_2.7.1824.html">Patch Release 2.7.0.1824</a></li>
-                <li><a href="releasenotes_2.7.1823.html">Patch Release 2.7.0.1823</a></li>
-                <li><a href="releasenotes_2.7.1822.html">Patch Release 2.7.0.1822</a></li>
-                <li><a href="releasenotes_2.7.1821.html">Patch Release 2.7.0.1821</a></li>
-                <li><a href="releasenotes_2.7.1820.html">Patch Release 2.7.0.1820</a></li>
-                <li><a href="releasenotes_2.7.1819.html">Patch Release 2.7.0.1819</a></li>
-                <li><a href="releasenotes_2.7.1818.html">Patch Release 2.7.0.1818</a></li>
-                <li><a href="releasenotes_2.7.1817.html">Patch Release 2.7.0.1817</a></li>
-                <li><a href="releasenotes_2.7.1816.html">Patch Release 2.7.0.1816</a></li>
-                <li><a href="releasenotes_2.7.1815.html">GA Release 2.7.0.1815</a></li>
-            </ul>
+            <td class="BoldFont" rowspan="3">New Feature</td>
+            <td>Application Server Queues</td>
+            <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
+                <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p>
             </td>
         </tr>
         <tr>
-            <td><a href="releasenotes_dbaas.html">Splice Machine Database-as-Service Product</a></td>
-            <td>Release notes specific to changes in our database-as-a-service product.</td>
+            <td>Schema Access Restrictions</td>
+            <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the [Schema Restriction](tutorials_security_schemarestrict.html) topic.</p>
+                <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
+                <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
+            </td>
         </tr>
         <tr>
-            <td><a href="releasenotes_onprem.html">Splice Machine On-Premise Database Product</a></td>
-            <td>Release notes specific to changes in our on-premise database product.</td>
+            <td>Log Filtering</td>
+            <td>You can now filter sensitive information out of log entries by specifying matching patterns (with regular expressions).</td>
         </tr>
         <tr>
-            <td><a href="releasenotes_workarounds.html">Known Issues and Workarounds</a></td>
-            <td>Describes each known issue in the current release and its workaround.</td>
+            <td class="BoldFont" rowspan="4">New Built-in Function</td>
+            <td><code>STRIP</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_strip.html"><code>STRIP</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>RIGHT</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_right.html"><code>RIGHT</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2344" target="_blank">SPLICE-2344</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>LEFT</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_left.html"><code>LEFT</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2343" target="_blank">SPLICE-2343</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>CHR</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="BoldFont" rowspan="3">Feature Enhancement</td>
+            <td>Merge Data From Multiple Files</td>
+            <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>
+        </tr>
+        <tr>
+            <td>Statistics Backed Up and Restored</td>
+            <td><p>The <a href="sqlref_sysprocs_backuptable.html"><code>SYSCS_UTIL.SYSCS_BACKUP_TABLE</code></a> and <a href="sqlref_sysprocs_backupschema.html"><code>SYSCS_UTIL.SYSCS_BACKUP_SCHEMA</code></a> system procedures now back up statistics, and the <a href="sqlref_sysprocs_restoretable.html"><code>SYSCS_UTIL.SYSCS_RESTORE_TABLE</code></a> and <a href="sqlref_sysprocs_restoreschema.html"><code>SYSCS_UTIL.SYSCS_RESTORE_SCHEMA</code></a> system procedures restore those statistics.</p>
+            <p class="noteIcon">This means that, if the statistics were current when you backed up, you do not need to run an <code>ANALYZE</code> after restoring the table or schema.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Decimal Precision Increase</td>
+            <td>Maximum precision for the <a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> data type has been increased from <code>31</code> to <code>38</code>.</td>
+        </tr>
+        <tr>
+            <td class="BoldFont" rowspan="3">Performance Enhancement</td>
+            <td>Native Spark Aggregation</td>
+            <td><p>This update improves the performance of queries that perform aggregation after a join or series of joins that are CPU bound; for example: cross join cases or join queries with join keys that have high rows-per-value. This is achieved by using the latest Spark Dataset methods to perform the aggregation, which allows Spark to use WholeStageCodeGen to combine multiple physical operators into a single Java function.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2302" target="_blank">SPLICE-2302</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Cross Join</td>
+            <td>The implementation of <code>Nested Loop Inner Join</code> has been enhanced to use Spark's DataFrame Cross Join implementation, resulting in performance improvement for applicable queries.</td>
+        </tr>
+        <tr>
+            <td>Property Caching</td>
+            <td>Property cache added for Spark executor to reduce hits to splice:16 region.</td>
         </tr>
     </tbody>
 </table>
 
-The product is available to build from open source (see <https://github.com/splicemachine/spliceengine>), as well as prebuilt packages for use on a cluster or cloud.
+## Database Patch Release Notes  {#releasenotes}
+
+<ul>
+    <li><a href="releasenotes_2.8.1936.html">Patch Release 2.8.0.1936</a></li>
+    <li><a href="releasenotes_2.8.1935.html">Patch Release 2.8.0.1935</a></li>
+    <li><a href="releasenotes_2.8.1934.html">Patch Release 2.8.0.1934</a></li>
+    <li><a href="releasenotes_2.8.1933.html">Patch Release 2.8.0.1933</a></li>
+    <li><a href="releasenotes_2.8.1932.html">Patch Release 2.8.0.1932</a></li>
+    <li><a href="releasenotes_2.8.1931.html">Patch Release 2.8.0.1931</a></li>
+    <li><a href="releasenotes_2.8.1930.html">Patch Release 2.8.0.1930</a></li>
+    <li><a href="releasenotes_2.8.1929.html">Patch Release 2.8.0.1929</a></li>
+    <li><a href="releasenotes_2.8.1928.html">Patch Release 2.8.0.1928</a></li>
+    <li><a href="releasenotes_2.8.1927.html">Patch Release 2.8.0.1927</a></li>
+    <li><a href="releasenotes_2.8.1926.html">Patch Release 2.8.0.1926</a></li>
+    <li><a href="releasenotes_2.8.1925.html">Patch Release 2.8.0.1925</a></li>
+    <li><a href="releasenotes_2.8.1924.html">Patch Release 2.8.0.1924</a></li>
+</ul>
+
+The product is available to build from open source (see [https://github.com/splicemachine/spliceengine](https://github.com/splicemachine/spliceengine)), as well as prebuilt packages for use on a cluster or cloud.
 
 </div>
 </section>

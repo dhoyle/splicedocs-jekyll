@@ -4,7 +4,7 @@ summary: Built-in SQL function that finds an interval difference between two tim
 keywords: date arithmetic, date math, timestamp diff, subtract timestamps
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_timestampdiff.html
 folder: SQLReference/BuiltInFcns
 ---

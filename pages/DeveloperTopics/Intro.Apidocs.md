@@ -1,10 +1,10 @@
 ---
-title: API Docs for SpliceEngine and Spark Adapter Source
+title: API Docs for SpliceEngine and Native Spark DataSource
 summary: JavaDocs and ScalaDocs for our open source code
 keywords: developers
 toc: false
 product: all
-sidebar: developers_sidebar
+sidebar: home_sidebar
 permalink: developers_apidocs.html
 folder: DeveloperTopics
 ---
@@ -12,7 +12,7 @@ folder: DeveloperTopics
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine API Docs
 
-Splice Machine provides *JavaDocs* and *ScalaDocs* for our open source `spliceengine`and *Spark Adapter* APIs. These are hosted in a separate subdomain, and automatically open in a separate browser tab or window:
+Splice Machine provides *JavaDocs* and *ScalaDocs* for our open source `spliceengine`and *Native Spark DataSource* APIs. These are hosted in a separate subdomain, and automatically open in a separate browser tab or window:
 
 <ul>
    <li><a href="https://apidocs.splicemachine.com/JavaDocs/{{site.build_version}}" target="blank">JavaDocs</a></li>

@@ -4,7 +4,7 @@ title: Splice Machine Administrator's Guide
 keywords: administer
 toc: false
 product: onprem
-sidebar:  onprem_sidebar
+sidebar: home_sidebar
 permalink: onprem_admin_intro.html
 folder: OnPrem/Administrators
 ---
@@ -63,7 +63,7 @@ software, in the topics shown in the following table.
 
 {% include splice_snippets/githublink.html %}
 For a summary of all Splice Machine documentation, see the
-[Documentation Summary](notes_usingdocs.html) topic.
+[Getting Started with Splice Machine Documentation](gettingstarted_usingdocs.html) topic.
 
 </div>
 </section>

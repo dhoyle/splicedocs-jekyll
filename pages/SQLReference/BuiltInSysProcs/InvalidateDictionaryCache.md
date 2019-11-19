@@ -4,7 +4,7 @@ summary: Built-in system procedure that invalidates the dictionary cache on the 
 keywords: dictionary, cache
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_sysprocs_invaldictcache.html
 folder: SQLReference/BuiltInSysProcs
 ---

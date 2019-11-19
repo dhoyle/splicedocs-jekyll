@@ -4,7 +4,7 @@ summary: Drops a trigger from a database.
 keywords: dropping a trigger
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_statements_droptrigger.html
 folder: SQLReference/Statements
 ---
@@ -44,8 +44,7 @@ dropping the table.
 
 ## See Also
 
-* [Database Triggers](developers_fundamentals_triggers.html) in the
-  *Developer's Guide*
+* [Database Triggers](developers_fundamentals_triggers.html)
 * [`CREATE TRIGGER`](sqlref_statements_createtrigger.html) statement
 
 </div>

@@ -4,7 +4,7 @@ summary: Built-in SQL function that returns the month name from a date expressio
 keywords: month name, name of month
 toc: false
 product: all
-sidebar:  sqlref_sidebar
+sidebar: home_sidebar
 permalink: sqlref_builtinfcns_monthname.html
 folder: SQLReference/BuiltInFcns
 ---
