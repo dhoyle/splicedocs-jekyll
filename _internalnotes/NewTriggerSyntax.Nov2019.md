@@ -12,21 +12,24 @@ CREATE TRIGGER <a href="sqlref_identifiers_types.html#TriggerName">TriggerName</
       [ <a href="sqlref_statements_createtrigger.html#ReferencingClause">ReferencingClause</a> ]
       [ FOR EACH { ROW | STATEMENT } ]
    Triggered-Action
-
 ```
+{: .FcnSyntax}
 
-Referencing Clause:
+### Referencing Clause
+
 ```
 REFERENCING {  OLD AS correlation-name
              | NEW AS correlation-name
              | OLD_TABLE AS table-Name
              | NEW_TABLE AS table-Name }
 ```
+{: .FcnSyntax}
 
 Triggered-Action:
 ```
 [WHEN search-condition] { triggered-sql-statement | BEGIN ATOMIC triggered-sql-statement+ END}
 ```
+{: .FcnSyntax}
 
 FOR EACH STATEMENT not supported when there's an OLD_TABLE or NEW_TABLE referencing clause
 MODE DB2SQL syntax is accepted but has no impact
