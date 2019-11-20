@@ -44,15 +44,3 @@ BUILD:
                         <loc>https://docstest.splicemachine.com/2.5/sitemap.2.5.xml</loc>
                       </sitemap>
                     </sitemapindex>
-
-
-REVIEW:
-    https://docstest.splicemachine.com/onprem_info_requirements.html
-
-    https://docstest.splicemachine.com/onprem_install_links.html
-
-    FRONT PAGE HIGHLIGHTING NEW FEATURES
-
-    ONPREM FRONT PAGE
-
-    RELEASE NOTES
