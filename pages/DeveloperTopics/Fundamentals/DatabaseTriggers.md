@@ -119,8 +119,9 @@ Trigger definitions have a number of required and optional components:
         </tr>
         <tr>
             <td class="ItalicFont">Search Condition</td>
-            <td>You can apply a search condition ********************************</td>
-        </tr>
+            <td>
+                <p>You can optionally define a Boolean expression in the `WHEN` clause that specifies a *search condition* for a trigger. If you include a `WHEN` clause in your trigger, the trigger action is only executed if the search condition evaluates to `TRUE`.</p>
+                <p class="noteNote">This `search-condition` *can* refer to the correlation names or tables names defined in the `REFERENCING` clause.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\        </tr>
     </tbody>
 </table>
 

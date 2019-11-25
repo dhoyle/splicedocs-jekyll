@@ -160,8 +160,11 @@ This option is ignored by Splice Machine.
 search-condition
 {: .paramName}
 
-The conditional expression that specifies when this trigger should fire; this expression must evaluation to `true`, `false`, or unknown.
+The Boolean expression that defines whether the triggered SQL statement(s) should execute for a specific trigger event; the statements are executed only if this expression evaluates to `TRUE`.
 {: .paramDefnFirst}
+
+This `search-condition` *can* refer to the correlation names or tables names defined in the `REFERENCING` clause.
+{: .noteNote}
 
 Triggered-SQL-Statement
 {: .paramName}
