@@ -118,19 +118,7 @@ Our release notes are presented in these topics:
 ## Database Patch Release Notes  {#releasenotes}
 
 <ul>
-    <li><a href="releasenotes_2.8.1936.html">Patch Release 2.8.0.1936</a></li>
-    <li><a href="releasenotes_2.8.1935.html">Patch Release 2.8.0.1935</a></li>
-    <li><a href="releasenotes_2.8.1934.html">Patch Release 2.8.0.1934</a></li>
-    <li><a href="releasenotes_2.8.1933.html">Patch Release 2.8.0.1933</a></li>
-    <li><a href="releasenotes_2.8.1932.html">Patch Release 2.8.0.1932</a></li>
-    <li><a href="releasenotes_2.8.1931.html">Patch Release 2.8.0.1931</a></li>
-    <li><a href="releasenotes_2.8.1930.html">Patch Release 2.8.0.1930</a></li>
-    <li><a href="releasenotes_2.8.1929.html">Patch Release 2.8.0.1929</a></li>
-    <li><a href="releasenotes_2.8.1928.html">Patch Release 2.8.0.1928</a></li>
-    <li><a href="releasenotes_2.8.1927.html">Patch Release 2.8.0.1927</a></li>
-    <li><a href="releasenotes_2.8.1926.html">Patch Release 2.8.0.1926</a></li>
-    <li><a href="releasenotes_2.8.1925.html">Patch Release 2.8.0.1925</a></li>
-    <li><a href="releasenotes_2.8.1924.html">Patch Release 2.8.0.1924</a></li>
+    <li><a href="releasenotes_3.0.1937.html">Patch Release 3.0.0.1937</a></li>
 </ul>
 
 The product is available to build from open source (see [https://github.com/splicemachine/spliceengine](https://github.com/splicemachine/spliceengine)), as well as prebuilt packages for use on a cluster or cloud.
