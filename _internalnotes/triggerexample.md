@@ -1,0 +1,16 @@
+CREATE TABLE t1 (a INT, b INT, PRIMARY KEY(a));
+CREATE TABLE t2 (a INT, b INT);
+INSERT INTO t1 VALUES (1,2);
+SELECT * FROM t1;
+
+CREATE TRIGGER mytrig
+          AFTER UPDATE OF a,b
+          ON t1
+          REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
+          FOR EACH ROW
+            WHEN (NEW_ROW.a = OLD_ROW.b OR OLD_ROW.a = NEW_ROW.b)
+            INSERT INTO t2 values(OLD_ROW.a + 2, NEW_ROW.b - 40);
+
+UPDATE t1 SET a=2;
+SELECT * FROM t1;
+SELECT * FROM t2;

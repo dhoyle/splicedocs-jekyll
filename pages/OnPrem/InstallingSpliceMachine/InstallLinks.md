@@ -12,13 +12,17 @@ folder: OnPrem/InstallingSpliceMachine
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine v2.8 Installer Links
 
-The tables below link to both the downloadable installer and installation instructions for the each supported, platform-specific version of Splice Machine 2.8.
+The tables below link to both the downloadable installer and installation instructions for the each supported, platform-specific version of Splice Machine 2.8:
+
+* [Splice Machine Installation Links for Cloudera CDH](#CDH)
+* [Splice Machine Installation Links for Hortonworks HDP](#HDP)
+* [Splice Machine Standalone Version Installation Links](#standalone)
 
 We recommend that you review the [installation requirements for Splice Machine](onprem_info_requirements.html) before proceeding.
 
 {% include splice_snippets/onpremonlytopic.md %}
 
-## Splice Machine Installation Links for Cloudera CDH
+## Splice Machine Installation Links for Cloudera CDH {#CDH}
 
 <table summary="Links for Installing on Cloudera">
     <col />
@@ -68,7 +72,7 @@ We recommend that you review the [installation requirements for Splice Machine](
     </tbody>
 </table>
 
-## Splice Machine Installation Links for Hortonworks HDP
+## Splice Machine Installation Links for Hortonworks HDP  {#HDP}
 
 <table summary="Links for Installing on Hortonworks HDP">
     <col />
@@ -107,6 +111,27 @@ We recommend that you review the [installation requirements for Splice Machine](
                 <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.3/splicemachine_ambari_service-hdp2.6.3.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.3 - Ambari Installer</a></p>
             </td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.3/docs/HDP-installation.md">Install instructions for HDP 2.6.3</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+## Splice Machine Standalone (Version 2.7) Installation Links  {#standalone}
+
+<table summary="Links for Installing the Standalone Version of Splice Machine">
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Installer URL</th>
+            <th>Install Instructions URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+			<td><a href="{{splvar_location_StandaloneLink}}">Standalone Version Installer</a>
+            </td>
+			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">Install instructions for the Standalone Version</a>
             </td>
         </tr>
     </tbody>

@@ -121,7 +121,9 @@ Trigger definitions have a number of required and optional components:
             <td class="ItalicFont">Search Condition</td>
             <td>
                 <p>You can optionally define a Boolean expression in the `WHEN` clause that specifies a *search condition* for a trigger. If you include a `WHEN` clause in your trigger, the trigger action is only executed if the search condition evaluates to `TRUE`.</p>
-                <p class="noteNote">This `search-condition` *can* refer to the correlation names or tables names defined in the `REFERENCING` clause.\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\        </tr>
+                <p class="noteNote">This `search-condition` *can* refer to the correlation names or tables names defined in the `REFERENCING` clause.</p>
+            </td>
+        </tr>
     </tbody>
 </table>
 
@@ -175,6 +177,8 @@ Row triggers have the following reference restrictions:
 * `INSERT` row triggers cannot reference an OLD row.
 * `DELETE` row triggers cannot reference a NEW row.
 * Row triggers cannot designate `OLD_TABLE` or `NEW_TABLE`.
+
+Note that Splice Machine considers `OLD_TABLE` and `OLD TABLE` equivalent, as well as `NEW_TABLE`  and `NEW TABLE`.
 
 ### Referencing Tables in Statement Triggers
 
@@ -288,6 +292,33 @@ inserted into the `employees` table.
 {: .Example xml:space="preserve"}
 
 </div>
+
+### Example 4: Row Level with WHEN Clause
+
+This example shows a row level trigger that is called after a row is updated in table `t1`, to insert a new row in table `t2`; the trigger only executes the insertion if the WHEN condition evaluates to `true`.
+inserted into the `employees` table.
+```
+splice> CREATE TABLE t1 (a INT, b INT, PRIMARY KEY(a));
+splice> CREATE TABLE t2 (a INT, b INT);
+splice> INSERT INTO t1 VALUES (1,2);
+splice> SELECT * FROM t1;
+
+splice> CREATE TRIGGER mytrig
+          AFTER UPDATE OF a,b
+          ON t1
+          REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
+          FOR EACH ROW
+            WHEN (NEW_ROW.a = OLD_ROW.b OR OLD_ROW.a = NEW_ROW.b)
+            INSERT INTO t2 values(OLD_ROW.a + 2, NEW_ROW.b - 40);
+
+splice> UPDATE t1 SET a=2;
+splice> SELECT * FROM t1;
+splice> SELECT * FROM t2;
+```
+{: .Example}
+
+</div>
+
 ## See Also
 
 * [`CREATE TRIGGER`](sqlref_statements_createtrigger.html)

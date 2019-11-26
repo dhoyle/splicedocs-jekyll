@@ -181,6 +181,13 @@ table.
             <td><code>YES</code></td>
             <td>Pseudoname as set using the <code>REFERENCING NEW AS</code> clause </td>
         </tr>
+        <tr>
+            <td><code>WHENCLAUSETEXT</code></td>
+            <td><code>LONG VARCHAR</code></td>
+            <td><code>2,147,483,647</code></td>
+            <td><code>YES</code></td>
+            <td>The text of the <code>WHEN</code> clause for this trigger.</td>
+        </tr>
     </tbody>
 </table>
 Any SQL text that is part of a triggered-SQL-statement is compiled and

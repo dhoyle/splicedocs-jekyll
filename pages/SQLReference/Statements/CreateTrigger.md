@@ -37,8 +37,8 @@ CREATE TRIGGER <a href="sqlref_identifiers_types.html#TriggerName">TriggerName</
    ON { <a href="sqlref_identifiers_types.html#TableName">table-Name</a> }
    [ REFERENCING {  OLD AS correlation-name
                   | NEW AS correlation-name
-                  | OLD_TABLE AS table-Name
-                  | NEW_TABLE AS table-Name } ]
+                  | {OLD_TABLE | OLD TABLE} AS table-Name
+                  | {NEW_TABLE | NEW TABLE} AS table-Name } ]
    [ FOR EACH { ROW | STATEMENT } ]
    [ WHEN search-condition]
    { triggered-sql-statement
@@ -120,16 +120,16 @@ The complete set of rows that are affected by the triggering operation is availa
 {: .paramDefn}
 
 <div class="paramListNested" markdown="1">
-OLD_TABLE AS table-name
+{ OLD_TABLE \| OLD TABLE } AS table-name
 {: .paramName}
 
-Specifies the name of a temporary table that identifies the values in the complete set of rows that are modified rows by the triggering SQL operation prior to any actual changes.
+Specifies the name of a temporary table that identifies the values in the complete set of rows that are modified rows by the triggering SQL operation prior to any actual changes. The terms `OLD_TABLE` and `OLD TABLE` are exactly equivalent.
 {: .paramDefnFirst}
 
-NEW_TABLE AS table-name
+{ NEW_TABLE \| NEW TABLE } AS table-name
 {: .paramName}
 
-Specifies the name of a temporary table that identifies the values in the complete set of rows as modified by the triggering SQL operation and by any SET statement in a before trigger that has already been executed.
+Specifies the name of a temporary table that identifies the values in the complete set of rows as modified by the triggering SQL operation and by any SET statement in a before trigger that has already been executed.  The terms `NEW_TABLE` and `NEW TABLE` are exactly equivalent.
 {: .paramDefnFirst}
 </div>
 
@@ -139,7 +139,7 @@ Only one `OLD` and one `NEW` correlation-name can be specified for a trigger. On
 See the description of using the Referencing Clause in the [Using Database Triggers in Splice Machine](developers_fundamentals_triggers.html#ReferencingClause) topic for additional specifics about and examples of using this clause.
 {: .paramDefn}
 
-FOR EACH {ROW \| STATEMENT}
+FOR EACH { ROW \| STATEMENT }
 {: .paramName}
 
 A `FOR EACH STATEMENT` trigger fires once per triggering event and regardless of whether any rows are modified by the insert, update, or delete event. This is the default value, which is assumed if you omit the `FOR EACH` clause.
@@ -301,6 +301,28 @@ splice> CREATE TRIGGER myTrigger
    FOR EACH ROW
       CALL my_custom_stored_procedure('arg1', 'arg2', OLD_ROW.col1, NEW_ROW.col1);
 0 rows insert/updated/deleted
+```
+{: .Example}
+
+### A row trigger that references old and new tables and uses a WHEN clause
+
+```
+splice> CREATE TABLE t1 (a INT, b INT, PRIMARY KEY(a));
+splice> CREATE TABLE t2 (a INT, b INT);
+splice> INSERT INTO t1 VALUES (1,2);
+splice> SELECT * FROM t1;
+
+splice> CREATE TRIGGER mytrig
+          AFTER UPDATE OF a,b
+          ON t1
+          REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
+          FOR EACH ROW
+            WHEN (NEW_ROW.a = OLD_ROW.b OR OLD_ROW.a = NEW_ROW.b)
+            INSERT INTO t2 values(OLD_ROW.a + 2, NEW_ROW.b - 40);
+
+splice> UPDATE t1 SET a=2;
+splice> SELECT * FROM t1;
+splice> SELECT * FROM t2;
 ```
 {: .Example}
 
