@@ -12,7 +12,11 @@ folder: MLManager
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the Splice ML Manager
 
-This topic shows you how to use the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications. This topic is organized into these sections:
+This topic shows you how to use the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications.
+
+{% include splice_snippets/dbaasonlytopic.md %}
+
+This topic is organized into these sections:
 
 * [*ML Manager Workflow*](#workflow) provides a quick overview of what the *ML Manager* does and how it interfaces with MLflow and SageMaker to provide a complete Machine Learning production environment.
 * [*Running an Experiment*](#runExperiment) walks you through creating an ML experiment for detecting credit card fraud and shows you how to train, run, and compare two different learning models.
@@ -23,7 +27,7 @@ The [*ML Manager Introduction*](mlmanager_intro.html) topic in this chapter prov
 
 ## *ML Manager* WorkFlow  {#workflow}
 
-Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with *ML Manager*:
+Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with *ML Manager* and our cloud-based Database-as-Service product:
 
 <img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
 

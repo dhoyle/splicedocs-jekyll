@@ -14,6 +14,8 @@ folder: MLManager
 
 This topic describes the methods available in the ML Manager API; you'll find examples of each of these in the [Using ML Manager](mlmanager_using.html) topic, in this chapter.
 
+{% include splice_snippets/dbaasonlytopic.md %}
+
 You can use Splice ML Manager with Python in Zeppelin notebooks, using  our `pyspark` interpreter and our `MLManager` class in your program to manipulate experiments.
 
 This topic contains the following sections:
