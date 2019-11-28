@@ -169,39 +169,33 @@ This `search-condition` *can* refer to the correlation names or tables names def
 Triggered-SQL-Statement
 {: .paramName}
 
-A statement that is executed when the trigger fires. The statement has
-the following restrictions:
+A statement that is executed when the trigger fires.
 {: .paramDefnFirst}
 
+You can use the [`SIGNAL SQLSTATE`](#signalstmt) statement within a trigger to rollback changes and return diagnostic information to the user, and you can use the [`SET`](#setstmt) statement within a `BEGIN` trigger to modify a column value that’s being inserted or updated. Both statements are summarized below, and both are described in more detail in the [Using Database Triggers in Splice Machine](developers_fundamentals_triggers.html) topic.
+{: .paramDefn}
+
+The statement has the following restrictions:
+{: .paramDefn}
+
 <div class="indented" markdown="1">
-* It must not contain any dynamic (`?`) parameters.
+* It must not contain any dynamic parameters, which are represented by the `?` character.
 * It cannot create, alter, or drop any table.
 * It cannot add an index to or remove an index from any table.
 * It cannot add a trigger to or drop a trigger from any table.
-* It must not commit or roll back the current transaction or change the
-  isolation level.
-* Before triggers cannot have `INSERT`, `UPDATE`, `SELECT`, or `DELETE`
-  statements as their action.
-* Before triggers cannot call procedures that modify SQL data as their
-  action.
-* The `NEW` variable of a `BEFORE` trigger cannot reference a generated
-  column.
+* It must not commit or roll back the current transaction or change the isolation level.
+* Before triggers cannot have `INSERT`, `UPDATE`, `SELECT`, or `DELETE` statements as their action.
+* Before triggers cannot call procedures that modify SQL data as their action.
+* The `NEW` variable of a `BEFORE` trigger cannot reference a generated column.
 </div>
 
-The statement can reference database objects other than the table upon which the trigger is declared. If any of these database objects is
-dropped, the trigger is invalidated. If the trigger cannot be
-successfully recompiled upon the next execution, the invocation throws
-an exception and the statement that caused it to fire will be rolled
-back.
-{: .paramDefn}
-
-You can use the `SIGNAL` statement to trigger a rollback and to return the specified error code to the user; you can also optionally specify a diagnostic text message to return in the `SIGNAL` statement.
+The statement can reference database objects other than the table upon which the trigger is declared. If any of these database objects is dropped, the trigger is invalidated. If the trigger cannot be successfully recompiled upon the next execution, the invocation throws an exception and the statement that caused it to fire will be rolled back.
 {: .paramDefn}
 
 BEGIN ATOMIC ... END
 {: .paramName}
 
-You can specify multiple `triggered-sql-statements` between the `BEGIN ATOMIC` and `END` keywords. Each of these `triggered-sql-statement` is executed when the trigger fires; each must be terminated with a semicolon (`;`).
+You can specify one or multiple `triggered-sql-statements` between the `BEGIN ATOMIC` and `END` keywords. Each of these `triggered-sql-statement` is executed when the trigger fires; each must be terminated with a semicolon (`;`).
 {: .paramDefnFirst}
 
 Multiple `triggered-sql-statements` are not currently supported; this limitation will be removed in the near future.
@@ -209,13 +203,87 @@ Multiple `triggered-sql-statements` are not currently supported; this limitation
 
 </div>
 
+### The `SIGNAL SQLSTATE` Statement  {#signalstmt}
+
+You can use the `SIGNAL SQLSTATE` statement within a trigger definition to abort and rollback the triggering action and any other triggers that may have fired along with that action. This statement also return an error or warning condition.
+
+#### Syntax
+
+```
+SIGNAL SQLSTATE diagnosticId
+   [SET MESSAGE_TEXT] messageExpr
+```
+{: .FcnSyntax}
+
+<div class="paramList" markdown="1">
+diagnosticId
+{: .paramName}
+
+A character string constant with a length of five bytes that is a valid `SQLSTATE` value; for example, '55345' or '3234B'. If this value does not conform to the following rules, an error occurs:
+{: .paramDefnFirst}
+
+<div class="indented" markdown="1">
+* It must be exactly 5 bytes long.
+* Each character must be from the set of digits (`0-9`) or non-accented upper case letters (`A-Z`).
+* The first two characters, which represent the `SQLSTATE` class, cannot be `'00'`, because the value `00` represents successful completion.
+</div>
+
+messageExpr
+{: .paramName}
+
+A string constant or expression (of data type `CHAR` or `VARCHAR`) of up to 1000 bytes that describes the error or warning condition.
+{: .paramDefnFirst}
+
+</div>
+
+Here are two examples:
+
+```
+SIGNAL SQLSTATE '75002'
+    SET MESSAGE_TEXT = 'Customer number is not known';
+
+SIGNAL SQLSTATE '76003' ('Insufficient stock for order');
+```
+{: .Example}
+
+For more information and examples of the `SIGNAL SQLSTATE` statement in triggers, see the [Using Database Triggers in Splice Machine](developers_fundamentals_triggers.html#SignalStmt) topic.
+{: .noteNote}
+
+### The `SET` Statement  {#setstmt}
+
+You can use the `SET` statement in a `BEFORE` trigger to modify a column value that’s being inserted or updated. The value you specify in the `SET` statement is inserted or updated instead of the value that came from the `UPDATE` or `INSERT` statments; this value can be a literal or an SQL expression.
+
+#### Syntax
+
+```
+SET NEW.columnIdentifier = value ( , NEW.columnIdentifier = value )*;
+```
+{: .FcnSyntax}
+
+Here's a simple example:
+
+```
+CREATE TRIGGER mytrig
+   BEFORE INSERT
+   ON t1
+   REFERENCING NEW AS N
+   FOR EACH ROW
+BEGIN ATOMIC
+SET N.a = 'hello', N.b = 'goodbye';
+END;
+```
+{: .Example}
+
+For more information and examples of the `SET` statement in triggers, see the [Using Database Triggers in Splice Machine](developers_fundamentals_triggers.html#SetStmt) topic.
+{: .noteNote}
+
 ### Trigger Recursion
 
 The maximum trigger recursion depth is 16.
 
 ## Examples
 
-This section presents examples of creating triggers:
+This section presents examples of creating triggers. For more information about these examples, see the [Database Triggers](developers_fundamentals_triggers.html) topic.
 
 ### A statement trigger:
 
@@ -307,10 +375,6 @@ splice> CREATE TRIGGER myTrigger
 ### A row trigger that references old and new tables and uses a WHEN clause
 
 ```
-splice> CREATE TABLE t1 (a INT, b INT, PRIMARY KEY(a));
-splice> CREATE TABLE t2 (a INT, b INT);
-splice> INSERT INTO t1 VALUES (1,2);
-splice> SELECT * FROM t1;
 
 splice> CREATE TRIGGER mytrig
           AFTER UPDATE OF a,b
@@ -321,10 +385,24 @@ splice> CREATE TRIGGER mytrig
             INSERT INTO t2 values(OLD_ROW.a + 2, NEW_ROW.b - 40);
 
 splice> UPDATE t1 SET a=2;
-splice> SELECT * FROM t1;
-splice> SELECT * FROM t2;
 ```
 {: .Example}
+
+### A trigger that alert to the user to a condition
+
+```
+splice> CREATE TRIGGER mytrig
+   AFTER UPDATE OF a,b
+   ON t1
+   REFERENCING OLD AS OLD NEW AS NEW
+   FOR EACH ROW
+     WHEN (EXISTS (SELECT 1 from t2 where t2.a = OLD.a and t2.b = OLD.b))
+BEGIN ATOMIC
+   SIGNAL SQLSTATE '87101' SET MESSAGE_TEXT = 'mytrig fired.  Old row: ' concat char(old.a) concat ', ' concat char(old.b) concat '    New row rejected: ' concat char(new.a) concat ', ' concat char(new.b);
+END;
+```
+{: .Example}
+
 
 ## See Also
 

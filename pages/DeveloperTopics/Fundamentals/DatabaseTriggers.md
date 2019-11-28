@@ -213,6 +213,107 @@ Statement triggers have the following reference restrictions:
 * `DELETE` statement triggers cannot reference a NEW table.
 * Statement triggers cannot use `OLD` or `NEW` to designate a row correlation name.
 
+## Using the SIGNAL SQLSTATE Statement  {#SignalStmt}
+
+You can use a `SIGNAL SQLSTATE` statement within a trigger definition to abort and rollback the triggering action and any other triggers that may have fired along with that action. This statement also return an error or warning condition.
+
+Here are the two forms for specifying this statement:
+
+```
+SIGNAL SQLSTATE diagnosticId "(" messageExpr ")"
+
+SIGNAL SQLSTATE diagnosticId SET MESSAGE_TEXT = messageExpr
+```
+{: .FcnSyntax}
+
+The `mesgExpr` string constant or expression (of data type `CHAR` or `VARCHAR`) of up to 1000 bytes that describes the error or warning condition.
+
+These two statements are equivalent:
+
+```
+SIGNAL SQLSTATE '12345' ('This is the diagnostic text.')
+
+SIGNAL SQLSTATE '12345' SET MESSAGE_TEXT = 'This is the diagnostic text.'
+```
+{: .Example}
+
+The `diagnosticId` is a five-character long value comprised of numeric (`0-9`) or uppercase alphabetic (`A-Z`)characters . The first two characters of this ID represent the `SQLSTATE` class; you cannot use the value `00` as the first characters because `00` represents successful completion.
+
+Here is an example:
+
+```
+splice> MAXIMUMDISPLAYWIDTH 0;
+splice> CREATE TABLE t1 (a INT, b INT);
+0 rows inserted/updated/deleted
+
+splice> CREATE TABLE t2 (a INT, b INT);
+0 rows inserted/updated/deleted
+
+splice> INSERT INTO t1 VALUES (1,1);
+1 row inserted/updated/deleted
+
+splice> INSERT INTO t2 VALUES (1,1);
+1 row inserted/updated/deleted
+
+splice> CREATE TRIGGER mytrig
+   AFTER UPDATE OF a,b
+   ON t1
+   REFERENCING OLD AS OLD NEW AS NEW
+   FOR EACH ROW
+   WHEN (EXISTS (SELECT 1 from t2 where t2.a = OLD.a and t2.b = OLD.b))
+BEGIN ATOMIC
+SIGNAL SQLSTATE '87101' SET MESSAGE_TEXT = 'mytrig fired.  Old row: ' concat char(old.a) concat ', ' concat char(old.b) concat '    New row rejected: ' concat char(new.a) concat ', ' concat char(new.b);
+END;
+0 rows inserted/updated/deleted
+
+splice> UPDATE t1 SET a=2;
+ERROR 87101: Application raised error or warning with diagnostic text: "mytrig fired.  Old row: 1          , 1              New row rejected: 2          , 1          "
+
+splice> SELECT * FROM t1;
+A|B
+---
+1|1
+```
+{: .Example}
+
+
+## Using the `SET` Statement  {#SetStmt}
+
+You can use the `SET` statement in a `BEFORE` trigger to modify a column value that’s being inserted or updated. The value you specify in the `SET` statement is inserted or updated instead of the value that came from the `UPDATE` or `INSERT` statments; this value can be a literal or an SQL expression.
+
+Here are the two forms for using the `SET` statement in a trigger:
+
+```
+SET NEW.columnIdentifier = value
+
+SET NEW.columnIdentifier1 = value1, NEW.columnIdentifier2 = value2, ...
+```
+{: .FcnSyntax}
+
+Here's an example:
+
+```
+CREATE TABLE t1 (a VARCHAR(30), b VARCHAR(30));
+
+CREATE TRIGGER mytrig
+   BEFORE INSERT
+   ON t1
+   REFERENCING NEW AS N
+   FOR EACH ROW
+BEGIN ATOMIC
+    SET N.a = 'hello', N.b = 'goodbye';
+END;
+
+INSERT INTO t1 VALUES ('Guten Tag', 'Auf Wiedersehen');
+1 row inserted/updated/deleted
+
+splice> SELECT * FROM t1;
+A                             |B
+-------------------------------------------------------------
+hello                         |goodbye
+```
+{: .Example}
+
 ## Examples
 
 This section presents examples of using database triggers.
@@ -248,11 +349,6 @@ inserted) for each employee in the department named `PD`.
 
 ### Example 2: Statement Level After Trigger
 
-This example shows a statement level trigger that is called after the
-`employees` table is updated. The action of this trigger is to insert
-exactly one record into the change history table (`reviews_history`)
-whenever the `employee_reviews` table is updated.
-
 This example shows a row level trigger that is called after a row is
 updated in the `employees` table. The action of this trigger is to
 insert one record into the audit trail table (`employees_log`) for each
@@ -260,8 +356,10 @@ record that gets updated in the `employees` table.
 
 <div class="preWrapperWide" markdown="1">
     CREATE TRIGGER log_salary_increase
-    AFTER UPDATE ON employees referencing NEW as NEW FOR EACH ROW
-    INSERT INTO employees_log
+    AFTER UPDATE ON employees
+    REFERENCING NEW as NEW
+    FOR EACH ROW
+      INSERT INTO employees_log
         (emp_id, log_date, new_salary, action)
         VALUES (NEW.empno, CURRENT_DATE, NEW.salary, 'NEW SALARY');
 {: .Example xml:space="preserve"}
@@ -277,8 +375,7 @@ example:
 
 </div>
 Then the trigger will fire once and exactly one record will be inserted
-into the `employees_log` table, no matter how many records are updated
-by the statement.
+into the `employees_log` table for each record that is updated by the statement.
 
 ### Example 3: Statement Level Before Trigger
 
@@ -296,28 +393,55 @@ inserted into the `employees` table.
 ### Example 4: Row Level with WHEN Clause
 
 This example shows a row level trigger that is called after a row is updated in table `t1`, to insert a new row in table `t2`; the trigger only executes the insertion if the WHEN condition evaluates to `true`.
-inserted into the `employees` table.
+
 ```
 splice> CREATE TABLE t1 (a INT, b INT, PRIMARY KEY(a));
+0 rows inserted/updated/deleted
 splice> CREATE TABLE t2 (a INT, b INT);
+0 rows inserted/updated/deleted
 splice> INSERT INTO t1 VALUES (1,2);
+1 row inserted/updated/deleted
+
 splice> SELECT * FROM t1;
+A          |B
+-----------------------
+1          |2
+
+1 row selected
+
+splice> SELECT * FROM t2;
+A          |B
+-----------------------
+
+0 rows selected
 
 splice> CREATE TRIGGER mytrig
-          AFTER UPDATE OF a,b
-          ON t1
-          REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
-          FOR EACH ROW
-            WHEN (NEW_ROW.a = OLD_ROW.b OR OLD_ROW.a = NEW_ROW.b)
-            INSERT INTO t2 values(OLD_ROW.a + 2, NEW_ROW.b - 40);
+>   AFTER UPDATE OF a,b
+>   ON t1
+>   REFERENCING OLD AS OLD_ROW NEW AS NEW_ROW
+>   FOR EACH ROW
+>     WHEN (NEW_ROW.a = OLD_ROW.b OR OLD_ROW.a = NEW_ROW.b)
+>        INSERT INTO t2 values(OLD_ROW.a + 2, NEW_ROW.b - 40);
+0 rows inserted/updated/deleted
 
 splice> UPDATE t1 SET a=2;
+1 row inserted/updated/deleted
+
 splice> SELECT * FROM t1;
+A          |B
+-----------------------
+2          |2
+
+1 row selected
+
 splice> SELECT * FROM t2;
+A          |B
+-----------------------
+3          |-38
+
+1 row selected
 ```
 {: .Example}
-
-</div>
 
 ## See Also
 
