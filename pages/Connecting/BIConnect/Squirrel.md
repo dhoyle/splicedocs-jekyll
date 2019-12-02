@@ -137,18 +137,7 @@ alias in SQuirreL.
         driver entry in SQuirreL.
     {: .LowerAlphaPlainFont}
 
-5.  Change How SQL Comments are Specified
-    {: .topLevel}
-
-    You use the `--` character to specify *hints* in Splice Machine, so you need to change how SQuirreL interprets those characters in SQL:
-
-    1. Click the *SQL* tab in the SQuirreL window.
-
-    2. Change the *Start of Line Comment* setting from `--` to `//`:
-
-       ![](images/SquirrelComments.png){: .tableCell450}
-
-6.  Create a connection alias in SQuirreL
+5.  Create a connection alias in SQuirreL
     {: .topLevel}
 
     1.  Click the *Aliases* tab in the SQuirreL window, and then click
@@ -171,6 +160,21 @@ alias in SQuirreL.
         verify your connection. You should see the success message:
 
         ![](images/SquirrelSuccess.png){: .tableCell450}
+    {: .LowerAlphaPlainFont}
+
+
+6.  Change How SQL Comments are Specified
+    {: .topLevel}
+
+    You use the `--` character to specify *hints* in Splice Machine, so you need to change how SQuirreL interprets those characters in SQL:
+
+    1. Select *Session Properties* from the SQuirreL *Session* menu.
+
+    2. Click the *SQL* tab in the Session Properties window.
+
+    3. Change the *Start of Line Comment* setting from `--` to `//`:
+
+       ![](images/SquirrelComments.png){: .tableCell450}
     {: .LowerAlphaPlainFont}
 {: .boldFont}
 
