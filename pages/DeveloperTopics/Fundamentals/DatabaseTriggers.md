@@ -215,7 +215,10 @@ Statement triggers have the following reference restrictions:
 
 ## Using the SIGNAL SQLSTATE Statement  {#SignalStmt}
 
-You can use a `SIGNAL SQLSTATE` statement within a trigger definition to abort and rollback the triggering action and any other triggers that may have fired along with that action. This statement also return an error or warning condition.
+You can use a `SIGNAL SQLSTATE` statement within a trigger definition to abort and rollback the triggering action and any other triggers that may have fired along with that action. This statement also returns an error with the specified SQLState (error code) and optional message text.
+
+`SIGNAL SQLSTATE` is often used in conjuction with a `WHEN` clause as a form of constraint, so that a DML statement can be conditionally rolled back if certain prerequisites are not met.
+{:. noteNote}
 
 Here are the two forms for specifying this statement:
 
@@ -226,7 +229,7 @@ SIGNAL SQLSTATE diagnosticId SET MESSAGE_TEXT = messageExpr
 ```
 {: .FcnSyntax}
 
-The `mesgExpr` string constant or expression (of data type `CHAR` or `VARCHAR`) of up to 1000 bytes that describes the error or warning condition.
+The `mesgExpr` string constant or expression (of data type `CHAR` or `VARCHAR`) that describes the error or warning condition.
 
 These two statements are equivalent:
 
@@ -237,7 +240,7 @@ SIGNAL SQLSTATE '12345' SET MESSAGE_TEXT = 'This is the diagnostic text.'
 ```
 {: .Example}
 
-The `diagnosticId` is a five-character long value comprised of numeric (`0-9`) or uppercase alphabetic (`A-Z`)characters . The first two characters of this ID represent the `SQLSTATE` class; you cannot use the value `00` as the first characters because `00` represents successful completion.
+The `diagnosticId` is a five-character long identifier. If you specify an ID longer than 5 characters, it is truncated; if you specify an ID of less than 5 characters, the ID will be left-padded with spaces.
 
 Here is an example:
 
@@ -330,7 +333,7 @@ record that gets updated in the `employees` table.
     AFTER UPDATE ON employees FOR EACH ROW
     INSERT INTO employees_log
         (emp_id, log_date, new_salary, action)
-        VALUES (:new.empno, CURRENT_DATE, :new.salary, 'NEW SALARY');
+        VALUES ( new.empno, CURRENT_DATE,  new.salary, 'NEW SALARY');
 {: .Example xml:space="preserve"}
 
 </div>

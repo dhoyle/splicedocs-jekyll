@@ -198,14 +198,18 @@ BEGIN ATOMIC ... END
 You can specify one or multiple `triggered-sql-statements` between the `BEGIN ATOMIC` and `END` keywords. Each of these `triggered-sql-statement` is executed when the trigger fires; each must be terminated with a semicolon (`;`).
 {: .paramDefnFirst}
 
-Multiple `triggered-sql-statements` are not currently supported; this limitation will be removed in the near future.
+Multiple `triggered-sql-statements` are not currently supported; this limitation will be removed in the near
+future.
 {: .noteNote}
 
 </div>
 
 ### The `SIGNAL SQLSTATE` Statement  {#signalstmt}
 
-You can use the `SIGNAL SQLSTATE` statement within a trigger definition to abort and rollback the triggering action and any other triggers that may have fired along with that action. This statement also return an error or warning condition.
+You can use the `SIGNAL SQLSTATE` statement within a trigger definition to abort and rollback the triggering action and any other triggers that may have fired along with that action. This statement also returns an error with the specified SQLState (error code) and optional message text.
+
+`SIGNAL SQLSTATE` is often used in conjuction with a `WHEN` clause as a form of constraint, so that a DML statement can be conditionally rolled back if certain prerequisites are not met.
+{:. noteNote}
 
 #### Syntax
 
@@ -219,19 +223,14 @@ SIGNAL SQLSTATE diagnosticId
 diagnosticId
 {: .paramName}
 
-A character string constant with a length of five bytes that is a valid `SQLSTATE` value; for example, '55345' or '3234B'. If this value does not conform to the following rules, an error occurs:
-{: .paramDefnFirst}
+A character string constant with a length of five characters that is a valid `SQLSTATE` value; for example, '55345' or '3234B'. If you specify an ID longer than 5 characters, it is truncated; if you specify an ID of less than 5 characters, the ID will be left-padded with spaces.
 
-<div class="indented" markdown="1">
-* It must be exactly 5 bytes long.
-* Each character must be from the set of digits (`0-9`) or non-accented upper case letters (`A-Z`).
-* The first two characters, which represent the `SQLSTATE` class, cannot be `'00'`, because the value `00` represents successful completion.
-</div>
+{: .paramDefnFirst}
 
 messageExpr
 {: .paramName}
 
-A string constant or expression (of data type `CHAR` or `VARCHAR`) of up to 1000 bytes that describes the error or warning condition.
+A string constant or expression (of data type `CHAR` or `VARCHAR`) that describes the error or warning condition.
 {: .paramDefnFirst}
 
 </div>
@@ -251,7 +250,7 @@ For more information and examples of the `SIGNAL SQLSTATE` statement in triggers
 
 ### The `SET` Statement  {#setstmt}
 
-You can use the `SET` statement in a `BEFORE` trigger to modify a column value that’s being inserted or updated. The value you specify in the `SET` statement is inserted or updated instead of the value that came from the `UPDATE` or `INSERT` statments; this value can be a literal or an SQL expression.
+You can use the `SET` statement in a `BEFORE` trigger to modify a column value that’s being inserted or updated. The value you specify in the `SET` statement is inserted or updated instead of the value that came from the `UPDATE` or `INSERT` statements; this value can be a literal or an SQL expression.
 
 #### Syntax
 
