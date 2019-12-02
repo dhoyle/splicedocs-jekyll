@@ -87,7 +87,7 @@ There are a number of restrictions on using using `BLOB`and `CLOB` /
 `TEXT` objects, which we refer to as LOB-types:
 
 * LOB-types cannot be compared for equality (`=`) and non-equality
-  (`!=`, `<>`).
+  (`!=`, `^=`, or `<>`).
 * LOB-typed values cannot be ordered, so `<, <=, >, >=` tests are not
   supported.
 * LOB-types cannot be used in indexes or as primary key columns.
@@ -104,4 +104,3 @@ There are a number of restrictions on using using `BLOB`and `CLOB` /
 </div>
 </div>
 </section>
-

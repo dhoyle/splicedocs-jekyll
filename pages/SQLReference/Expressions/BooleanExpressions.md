@@ -54,7 +54,7 @@ The following table shows the syntax for the Boolean operators
  | &gt;
  | &lt;=
  | &gt;=
- | &lt;&gt;
+ | &lt;&gt; | !=  | ^=
 }</pre>
                             </div>
                         </td>
@@ -137,7 +137,7 @@ The following example presents examples of the Boolean operators.
                     </tr>
                     <tr>
                         <td>Comparisons </td>
-                        <td><code>&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;</code> are applicable to all of the built-in types.
+                        <td><code>&lt;, =, &gt;, &lt;=, &gt;=, &lt;&gt;, !=, ^=</code> are applicable to all of the built-in types.
 						<div class="preWrapper"><pre class="ExampleCell" xml:space="preserve">DATE('1998-02-26') &lt; DATE('1998-03-01')
 	-- returns true</pre></div><p class="noteNote">Splice Machine also accepts the != operator, which is not included in the SQL standard.</p></td>
                     </tr>
@@ -207,4 +207,3 @@ The following example presents examples of the Boolean operators.
 
 </div>
 </section>
-

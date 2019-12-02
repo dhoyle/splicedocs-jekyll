@@ -31,7 +31,7 @@ types.
       "UPDATE HotelAvailability SET rooms_available = " +
       "(rooms_available - ?) WHERE hotel_id = ? " +
       "AND booking_date BETWEEN ? AND ?");
-    
+
            -- this sample code sets the values of dynamic parameters
            -- to be the values of program variables
     ps2.setInt(1, numberRooms);
@@ -55,7 +55,7 @@ data type can be easily deduced.
       WHERE ? BETWEEN DATE('1996-01-01') AND ?
          -- types assumed to be DATE
   {: .Example}
-  
+
   </div>
 
 * Use as the second or third operand of `BETWEEN` is allowed. Type is
@@ -64,7 +64,7 @@ data type can be easily deduced.
       WHERE DATE('1996-01-01') BETWEEN ? AND ?
          -- types assumed to be DATE
   {: .Example}
-  
+
   </div>
 
 * Use as the left operand of an `IN` list is allowed if at least one
@@ -75,7 +75,7 @@ data type can be easily deduced.
       WHERE ? NOT IN (?, ?, 'Santiago')
          -- types assumed to be CHAR
   {: .Example}
-  
+
   </div>
 
 * Use in the values list in an `IN` predicate is allowed if the first
@@ -86,17 +86,16 @@ data type can be easily deduced.
       WHERE FloatColumn IN (?, ?, ?)
          -- types assumed to be FLOAT
   {: .Example}
-  
+
   </div>
 
-* For the binary operators `+, -, *, /, AND, OR, <, >, =, <>, <=, and
-  >=,` use of a dynamic parameter as one operand but not both is
+* For the binary operators (<span class="Example">+,&nbsp;&nbsp;-,&nbsp;&nbsp;*,&nbsp;&nbsp;/,&nbsp;&nbsp;AND,&nbsp;&nbsp;OR,&nbsp;&nbsp;&lt;,&nbsp;&nbsp;&gt;,&nbsp;&nbsp;=,&nbsp;&nbsp;&lt;&gt;,&nbsp;&nbsp;!=,&nbsp;&nbsp;^=,&nbsp;&nbsp;&lt;=,&nbsp;&nbsp;&gt;=</span>), use of a dynamic parameter as one operand but not both is
   permitted. Its type is taken from the other side.
   <div class="preWrapper" markdown="1">
       WHERE ? < CURRENT_TIMESTAMP
          -- type assumed to be a TIMESTAMP
   {: .Example}
-  
+
   </div>
 
 * Use in a `CAST` is always permitted. This gives the dynamic parameter
@@ -104,7 +103,7 @@ data type can be easily deduced.
   <div class="preWrapper" markdown="1">
       CALL valueOf(CAST (? AS VARCHAR(10)))
   {: .Example}
-  
+
   </div>
 
 * Use on either or both sides of `LIKE` operator is permitted. When used
@@ -119,7 +118,7 @@ data type can be easily deduced.
          -- type assumed to be CHAR with a length of
          -- java.lang.Integer.MAX_VALUE
   {: .Example}
-  
+
   </div>
 
 * In a conditional expression, which uses a `?`, use of a dynamic
@@ -135,7 +134,7 @@ data type can be easily deduced.
          -- you cannot have dynamic parameters on both sides
          -- of the :
   {: .Example}
-  
+
   </div>
 
 * A dynamic parameter is allowed as an item in the values list or select
@@ -149,7 +148,7 @@ data type can be easily deduced.
       FROM t2
          -- not allowed
   {: .Example}
-  
+
   </div>
 
 * A `?` parameter in a comparison with a subquery takes its type from
@@ -164,7 +163,7 @@ data type can be easily deduced.
          -- In both cases, the type of the dynamic parameter is
          -- assumed to be the same as the type of tab2.x.
   {: .Example}
-  
+
   </div>
 
 * A dynamic parameter is allowed as the value in an `UPDATE` statement.
@@ -174,7 +173,7 @@ data type can be easily deduced.
       UPDATE t2 SET c2 =?
          -- type is assumed to be type of c2
   {: .Example}
-  
+
   </div>
 
 * Dynamic parameters are allowed as the operand of the unary operators
@@ -187,7 +186,7 @@ data type can be easily deduced.
          -- because c11 is INT, the unary parameters also get the
          -- type INT.
   {: .Example}
-  
+
   </div>
 
 * `LENGTH` allow a dynamic parameter. The type is assumed to be a
@@ -195,18 +194,18 @@ data type can be easily deduced.
   <div class="preWrapper" markdown="1">
       SELECT LENGTH(?)
   {: .Example}
-  
+
   </div>
 
 * Qualified comparisons.
   <div class="preWrapper" markdown="1">
       ? = SOME (SELECT 1 FROM t)
          -- is valid. Dynamic parameter assumed to be INTEGER type
-      
+
       1 = SOME (SELECT ? FROM t)
          -- is valid. Dynamic parameter assumed to be INTEGER type.
   {: .Example xml:space="preserve"}
-  
+
   </div>
 
 * A dynamic parameter is allowed as the left operand of an `IS`
@@ -214,4 +213,3 @@ data type can be easily deduced.
 
 </div>
 </section>
-
