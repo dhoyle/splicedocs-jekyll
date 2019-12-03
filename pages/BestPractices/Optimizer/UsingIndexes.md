@@ -30,7 +30,7 @@ The remainder of this topic describes using the optional `SPLITKEYS` clause of o
 * [Specifying Split Keys for Index Creation](#splitkeys)
 * [Using Bulk HFile Loading and Split Keys](#bulkload)
 
-For more information about bulk HFile loading, please see our [Best Practices: Ingestion](bestpractices_ingest_intro.html) chapter.
+For more information about bulk HFile loading, please see our [Best Practices: Ingestion](bestpractices_ingest_overview.html) chapter.
 
 ## Specifying Split Keys for Index Creation  {#splitkeys}
 

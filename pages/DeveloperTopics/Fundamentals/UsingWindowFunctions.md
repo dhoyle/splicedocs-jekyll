@@ -321,7 +321,7 @@ Any value expression that does not itself contain window function calls.
 
 </div>
 When you use an [aggregate
-function](sqlref_builtinfcns_windowfcnsintro.html) such as `AVG` with an
+function](sqlref_builtinfcns_intro.html) such as `AVG` with an
 `OVER` clause, the aggregated value is computed per partition.
 {: .noteNote}
 

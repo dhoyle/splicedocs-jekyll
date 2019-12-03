@@ -23,7 +23,7 @@ This topic helps you to get started with importing data into your Splice Machine
 Once you've gotten started with importing data here, we strongly suggest visiting these other sections in our documentation:
 
 * The [Best Practices - Data Ingestion](bestpractices_ingest_overview.html) chapter describes and compares the different methods available for importing data in Splice Machine, including highly performant methods for ingesting extremely large datasets.
-* The [Best Practices - Splice Machine Optimizer](bestpractices_ingest_optimizer.html) chapter provides detailed instructions about using query execution plans, statistics, hints, and other techniques to boost performance of your queries.
+* The [Best Practices - Splice Machine Optimizer](bestpractices_optimizer_intro.html) chapter provides detailed instructions about using query execution plans, statistics, hints, and other techniques to boost performance of your queries.
 * Our [Developer's Guide](developers_intro.html) contains a number of topics to help you take advantage of available features.
 
 ## 1. Create and Populate an Example Table  {#loaddata}
@@ -75,7 +75,7 @@ splice> SELECT * FROM IMPORT_EXAMPLE
 
 ## Import Data with Custom Formatting  {#customimport}
 
-Splice Machine offers a number of highly performant methods for importing data into your database; these are described, along with examples, in our [Best Practices - Ingesting Data](bestpractices_ingesting_intro.html).
+Splice Machine offers a number of highly performant methods for importing data into your database; these are described, along with examples, in our [Best Practices - Ingesting Data](bestpractices_ingest_overview.html).
 
 In this topic, we're using the standard `IMPORT_DATA` method with CSV files. When you import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Syntax for the `IMPORT_DATA` command looks like this:
 

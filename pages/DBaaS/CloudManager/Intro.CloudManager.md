@@ -50,7 +50,7 @@ Machine Cloud Manager. Here are the topics included in this guide:
                 <p>You can load your data into Splice Machine from Azure Storage or an AWS S3 bucket:</p>
                 <ul>
                     <li>For information about uploading data to S3, please check our <a href="developers_cloudconnect_uploadtos3">Uploading Data to an S3 Bucket</a> tutorial. You may need to configure your Amazon IAM permissions to allow Splice Machine to access your bucket; see our <a href="developers_cloudconnect_configures3">Configuring an S3 Bucket for Splice Machine Access</a> tutorial.</li>
-                    <li> To configure Azure Storage for use with Splice Machine, see our <a href="developers_cloudconnect_configureazure">Using Azure Storage</a> tutorial.</li>
+                    <li> To configure Azure Storage for use with Splice Machine, see our <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> tutorial.</li>
                     <li>Once you've got your data uploaded, you can follow our <a href="bestpractices_ingest_overview.html">Best Practices: Ingesting Data</a> topic to load that data into Splice Machine.</li>
                 </ul>
                 <p>Also note that the directory you specify for the log of record import issues (the <em>bad record</em> directory), must be write-accessible using the same credentials that apply to the input directory.</p>

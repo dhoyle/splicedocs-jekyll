@@ -36,7 +36,7 @@ With this feature enabled, access to the `SYS` schema is restricted, by default,
     Although non-admin users can access the system views, only the rows associated with schemas for which the user has access are visible in these views. For example, in the [`SYSVW.SYSTABLESVIEW`](sqlref_sysviews_systablesview.html) view, each row represents a table; each user will only be able to see those rows belonging to schemas that are visible to him or her.
     {: .noteNote}
 
-Please see the [tutorials_security_permissions.html](Summary of Permissions for Users and Roles) topic for an updated summary of which permissions are available to and can be granted or revoked by the `Splice` user, regular users, and roles, with and without schema restriction enabled.
+Please see the [Summary of Permissions for Users and Roles](tutorials_security_permissions.html) topic for an updated summary of which permissions are available to and can be granted or revoked by the `Splice` user, regular users, and roles, with and without schema restriction enabled.
 
 <p class="noteNote">The Splice Machine schema restrictions are compatible with <em>Apache Ranger</em>. </p>
 

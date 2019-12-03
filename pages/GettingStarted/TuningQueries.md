@@ -132,7 +132,7 @@ Databases employ different algorithms to efficiently perform a join, depending o
 
 When planning a query with joins, the optimizer will choose the join strategy with the lowest cost.  Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge).
 
-For more information about joins and join strategies, see the [Best Practices - Join Strategies](bestpractices_optimizer_joinstrategies.html) topic.
+For more information about joins and join strategies, see the [*Join Strategy Hints* section](bestpractices_optimizer_hints.html#JoinStrategy) of our *Using Query Hints* topic.
 
 
 </div>

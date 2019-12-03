@@ -57,11 +57,11 @@ The following table lists the System Views:
             <td>Statistics gathered for each column in each table.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysviews_syscolumns.html">SYSVW.SYSCOLUMNSVIEW</a></td>
+            <td class="CodeFont"><a href="sqlref_sysviews_syscolumnsview.html">SYSVW.SYSCOLUMNSVIEW</a></td>
             <td>Describes the columns within all tables in the current database.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_sysviews_sysconglomeratesinschemas.html">SYSVW.SYSCONGLOMERATESINSCHEMAS</a>
+            <td class="CodeFont"><a href="sqlref_sysviews_sysconglomerateinschemas.html">SYSVW.SYSCONGLOMERATESINSCHEMAS</a>
             </td>
             <td>Describes the conglomerates within the current database. A conglomerate is a unit of storage and is either a table or an index.</td>
         </tr>
