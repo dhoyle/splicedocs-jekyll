@@ -23,7 +23,7 @@ The other topics in this chapter provide the information you need to get started
 * [Getting Started: Using the Command Line Interpreter](gettingstarted_cmdline.html)
 * [Getting Started: Loading Data and Running Queries](gettingstarted_loadandrun.html)
 * [Getting Started: Tuning Your Queries](gettingstarted_tuning.html)
-* [Getting Started: Using Splice Machine Documentation](gettingstarted_docs.html)
+* [Getting Started: Using Splice Machine Documentation](gettingstarted_usingdocs.html)
 
 ### Hybrid Transactional and Analytical Processing  {#hybrid}
 

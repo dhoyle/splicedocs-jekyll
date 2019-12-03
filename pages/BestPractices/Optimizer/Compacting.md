@@ -14,7 +14,7 @@ folder: BestPractices/Optimizer
 
 # Compacting and Vacuuming Your Database Files
 
-[Compaction](#compaction) and [Vacuuming](vacuum) are two mechanisms for clearing the physical space occupied by previously deleted items in your database. Cleaning up deleted space helps keep your database running efficiently.
+[Compaction](#compaction) and [Vacuuming](#vacuum) are two mechanisms for clearing the physical space occupied by previously deleted items in your database. Cleaning up deleted space helps keep your database running efficiently.
 
 ## About Compaction  {#compaction}
 

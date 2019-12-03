@@ -42,7 +42,7 @@ statement such as `CREATE TABLE` will generate a syntax error.
 
 For more information about using the explain command, including a number
 of annotated examples, see [Explain
-Plan](developers_optimizer_explain.html).
+Plan](bestpractices_optimizer_explain.html).
 
 ## Examples
 
