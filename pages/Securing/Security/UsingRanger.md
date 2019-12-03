@@ -49,6 +49,19 @@ You can install Apache Ranger with the Splice Machine Ambari Service on Hortonwo
     </thead>
     <tbody>
         <tr>
+            <td rowspan="3"><strong>2.8</strong></td>
+            <td>HDP 2.6.5</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.5/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.5/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>HDP 2.6.4</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>HDP 2.6.3</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
             <td rowspan="2"><strong>2.7</strong></td>
             <td>HDP 2.6.4</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
@@ -56,15 +69,6 @@ You can install Apache Ranger with the Splice Machine Ambari Service on Hortonwo
         <tr>
             <td>HDP 2.6.3</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td rowspan="2"><strong>2.5</strong></td>
-            <td>HDP 2.6.4</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
         </tr>
     </tbody>
 </table>
@@ -163,8 +167,42 @@ To add new policies for your database users, you need to:
 ## Using Ranger with LDAP  {#ldap}
 When you use Ranger with LDAP, you don't need to create a user in your Splice Machine database; you just need to make sure that the user name in your Ranger configuration matches the LDAP user name.
 
-Beware: LDAP is not case sensitive and converts user names to uppercase. Since Splice Machine is case sensitive, you must specify the Ranger user name in uppercase for it to correctly match the LDAP name in Splice Machine.
-{: .noteIcon}
+To ensure that your Ranger user names correctly match your Splice Machine user names, you need to configure Splice Machine and Ranger to apply the same case conversion rules to Ranger user names.
+
+Ranger includes the following configuration parameter, which you can use to specify that you want case conversion Ranger user names:
+
+```
+ranger.usersync.ldap.username.caseconversion
+```
+{: .Example}
+
+Splice Machine includes the following configuration parameter, which you can use to specify how Ranger user names are stored in your system:
+
+```
+splice.ranger.usersync.username.caseconversion
+```
+{: .Example}
+
+You must set both parameters to the same value; the possible values are:
+
+<table class="noBorder">
+    <col />
+    <col />
+    <tbody>
+        <tr>
+            <td class="CodeFont">UPPERCASE</td>
+            <td>Ranger user names are converted to uppercase characters.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">LOWERCASE</td>
+            <td>Ranger user names are converted to lowercase characters.</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">NONE</td>
+            <td>Ranger user names are not converted.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Using Ranger with Kerberos  {#kerberos}
 There are some additional changes you need to make if you're using Ranger in a Kerberized environment:
