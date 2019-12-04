@@ -17,6 +17,7 @@ Machine also allows you to exercise direct control over logging in your
 database. This topic contains these sections:
 
 * [Using Logging](#Using)
+* [Splice Machine Security Audit Logging](#securityaudit)
 * [Configure Individual Logger Objects to Log](#SpliceLoggers)
 * [SQL Logger Functions](#LoggerFunctions)
 
@@ -125,6 +126,77 @@ The following table displays the logger levels from lowest level to the highest:
         </tr>
     </tbody>
 </table>
+
+## Splice Machine Security Audit Logging  {#securityaudit}
+
+Whenever a user creates a connection or executes one of the following system procedures, Splice Machine records the action in your audit log files.
+
+```
+SYSCS_UTIL.SYSCS_CREATE_USER
+SYSCS_UTIL.SYSCS_DROP_USER
+SYSCS_UTIL.SYSCS_MODIFY_PASSWORD
+SYSCS_UTIL.SYSCS_RESET_PASSWORD
+```
+{: .Example}
+
+Each record in the audit log contains the following information:
+
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Explanation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">userid</td>
+            <td>Username of action executor</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">event</td>
+            <td>Name of </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">status</td>
+            <td>Success or Failure</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">ip</td>
+            <td>The IP address of the executor of the action</td>
+        </tr>
+        <tr>
+            <td class="CodeFont">statement</td>
+            <td><p>The statement that executed.</p>
+                <p>Note that no statement is recorded for the <code>LOGIN</code> action.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">reason</td>
+            <td>The reason for failure, if the statement failed (<code>status=Failure</code>).</td>
+        </tr>
+    </tbody>
+</table>
+
+### Modifying the Audit Log File Location
+
+You can modify where Splice Machine stores the audit log by adding the following snippet to the *RegionServer Logging
+Advanced Configuration Snippet (Safety Valve)* section of your HBase Configuration:
+
+```
+log4j.appender.spliceAudit=org.apache.log4j.FileAppender
+log4j.appender.spliceAudit.File=${hbase.log.dir}/splice-audit.log
+log4j.appender.spliceAudit.layout=org.apache.log4j.PatternLayout
+log4j.appender.spliceAudit.layout.ConversionPattern=%d{ISO8601} %m%n
+
+log4j.logger.splice-audit=INFO, spliceAudit
+log4j.additivity.splice-audit=false
+```
+{: .Example}
+
+Splice Machine logs to a separate audit log file on each region server; each file stores only the events that were active on that region server.
+{: .noteIcon}
+
 
 ## Splice Machine Loggers   {#SpliceLoggers}
 
