@@ -29,6 +29,7 @@ The remainder of this topic describes using Ranger with Splice Machine in these 
 * [Installing Ranger for Splice Machine](#install)
 * [Ranger Components](#components)
 * [Establishing Splice Machine Security Policies with Ranger](#policies)
+* [Configuring User Name Case Conversion](#namematching)
 * [Using Ranger with LDAP](#ldap)
 * [Using Ranger with Kerberos](#kerberos)
 * [Reviewing Audit Logs](#audits)
@@ -49,6 +50,19 @@ You can install Apache Ranger with the Splice Machine Ambari Service on Hortonwo
     </thead>
     <tbody>
         <tr>
+            <td rowspan="3"><strong>2.8</strong></td>
+            <td>HDP 2.6.5</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.5/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.5/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>HDP 2.6.4</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
+            <td>HDP 2.6.3</td>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
+        </tr>
+        <tr>
             <td rowspan="2"><strong>2.7</strong></td>
             <td>HDP 2.6.4</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
@@ -56,15 +70,6 @@ You can install Apache Ranger with the Splice Machine Ambari Service on Hortonwo
         <tr>
             <td>HDP 2.6.3</td>
             <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td rowspan="2"><strong>2.5</strong></td>
-            <td>HDP 2.6.4</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.4/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.4/docs/HDP-installation.md</a></td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.3</td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md">https://github.com/splicemachine/spliceengine/blob/branch-2.5/platforms/hdp2.6.3/docs/HDP-installation.md</a></td>
         </tr>
     </tbody>
 </table>
@@ -160,11 +165,55 @@ To add new policies for your database users, you need to:
        splice>
    ````
 
-## Using Ranger with LDAP  {#ldap}
-When you use Ranger with LDAP, you don't need to create a user in your Splice Machine database; you just need to make sure that the user name in your Ranger configuration matches the LDAP user name.
 
-Beware: LDAP is not case sensitive and converts user names to uppercase. Since Splice Machine is case sensitive, you must specify the Ranger user name in uppercase for it to correctly match the LDAP name in Splice Machine.
-{: .noteIcon}
+## Configuring User Name Case Conversion {#namematching}
+
+To ensure that your Ranger user names correctly match your Splice Machine user names, you need to configure Splice Machine and Ranger to apply the same case conversion rules to Ranger user names. That's because you want Splice Machine and Ranger to be using exactly the same user name spelling for authorization for Splice Machine-related Ranger policies.
+
+Splice Machine provides the following property setting, which you can use to specify how Splice Machine should convert Ranger user names to ensure that names match:
+
+```
+splice.ranger.usersync.username.caseconversion
+```
+{: .Example}
+
+You can configure this property with one of the three settings shown in the following table:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>Property Value</th>
+            <th>Description and Discussion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="CodeFont">NONE</td>
+            <td><p>This is the default value: Splice Machine does not convert Ranger user names.</p>
+                <p>If you use this setting, your Ranger user names should be defined in uppercase for policies that are related to Splice Machine; this is because Splice Machine user names are stored in uppercase.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">UPPERCASE</td>
+            <td><p>Splice Machine converts Ranger user names to uppercase characters.</p>
+                <p>If you use this setting, you should also set <code>ranger.usersync.ldap.username.caseconversion = UPPERCASE</code> to ensure that Splice Machine user names are properly authorized in Ranger.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont">LOWERCASE</td>
+            <td><p>Splice Machine converts Ranger user names to lowercase characters.</p>
+                <p>If you use this setting, you should also set <code>ranger.usersync.ldap.username.caseconversion = LOWERCASE</code> to ensure that Splice Machine user names are properly authorized in Ranger.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+You can set the value of the `ranger.usersync.ldap.username.caseconversion` property to exactly the same values (`NONE`, `UPPERCASE`, `LOWERCASE`) that you can use with the Splice Machine `splice.ranger.usersync.username.caseconversion` property. For consistent behavior, we strongly recommend setting both properties to the same value.
+
+## Using Ranger with LDAP  {#ldap}
+When you use Ranger with LDAP, you don't need to create a user in your Splice Machine database; you just need to make sure that the user name in your Ranger configuration matches the LDAP user name. Please review the [Configuring User Name Case Conversion](#namematching) section (above) for details about matching user name casing between Splice Machine and Ranger.
 
 ## Using Ranger with Kerberos  {#kerberos}
 There are some additional changes you need to make if you're using Ranger in a Kerberized environment:
