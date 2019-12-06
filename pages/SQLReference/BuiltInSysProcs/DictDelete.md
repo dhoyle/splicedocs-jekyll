@@ -1,4 +1,3 @@
-
 ---
 title: SYSCS_UTIL.SYSCS_DICTIONARY_DELETE built-in system procedure
 summary: Built-in system procedure that deletes a dictionary entry.
@@ -9,8 +8,6 @@ sidebar: home_sidebar
 permalink: sqlref_sysprocs_dictdelete.html
 folder: SQLReference/BuiltInSysProcs
 ---
-{% if site.build_type != "doc" %}
-
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SYSCS_UTIL.SYSCS_DICTIONARY_DELETE
@@ -100,5 +97,3 @@ COMMIT;
 
 </div>
 </section>
-
-{% endif %}
