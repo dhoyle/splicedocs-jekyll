@@ -29,7 +29,7 @@ The [*ML Manager Introduction*](mlmanager_intro.html) topic in this chapter prov
 
 Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with *ML Manager* and our cloud-based Database-as-Service product:
 
-<img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/ML+full+circle.png'>
+<img class='indentedTightSpacing' src='images/DSFlow3.png'>
 
 The basic workflow is:
 <div class="opsStepsList" markdown="1">
