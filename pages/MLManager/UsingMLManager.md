@@ -12,7 +12,7 @@ folder: MLManager
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the Splice ML Manager
 
-This topic shows you how to use the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Apache Zeppelin notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications.
+This topic shows you how to use the Splice Machine *ML Manager*, a machine learning framework that combines the power of Splice Machine with the power of Jupyter notebooks, Apache MLflow, and Amazon Sagemaker to create a full-cycle platform for developing and maintaining your smart applications.
 
 {% include splice_snippets/dbaasonlytopic.md %}
 
@@ -33,7 +33,7 @@ Here's what the basic flow of processes involved in developing, tuning, and depl
 
 The basic workflow is:
 <div class="opsStepsList" markdown="1">
-1. Work with MLlib and other machine learning libraries in a Zeppelin notebook to directly interact with Spark and your Splice Machine database.
+1. Work with MLlib and other machine learning libraries in a Jupyter notebook to directly interact with Spark and your Splice Machine database.
 2. Use MLflow within your notebook to create *experiments* and *runs*, and to track variables, parameters, and other information about your runs.
 3. Use the MLflow Tracking UI to monitor information about your experiments and runs.
 4. Iterate on your experiments until you develop the learning model that you want to deploy, using the tracking UI to compare your runs.
