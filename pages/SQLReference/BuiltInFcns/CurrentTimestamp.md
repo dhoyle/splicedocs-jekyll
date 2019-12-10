@@ -49,7 +49,7 @@ splice.function.currentTimestampPrecision
 
 You can set the value of this property to any value between `0` and `9`. The default value is `6`.
 
-Use the SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY` system procedure to modify the value; for example:
+Use the `SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY` system procedure to modify the value; for example:
 
 ```
 splice> call SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY( 'splice.function.currentTimestampPrecision', '3' );
@@ -62,16 +62,25 @@ A timestamp value.
 
 ## Examples
 
-<div class="preWrapper" markdown="1">
-    splice> VALUES CURRENT_TIMESTAMP;
-    1
-    -----------------------------
-    2015-11-19 11:03:44.095
+```
+splice> VALUES CURRENT_TIMESTAMP;
+1
+-----------------------------
+2019-12-10 14:01:20.156522
 
-    1 row selected
-{: .Example xml:space="preserve"}
+1 row selected
 
-</div>
+
+splice> CALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY( 'splice.function.currentTimestampPrecision', '3' );
+Statement executed.
+
+splice> VALUES CURRENT_TIMESTAMP;
+1
+-----------------------------
+2019-12-10 14:02:19.456
+```
+{: .Example}
+
 
 ## See Also
 
