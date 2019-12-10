@@ -37,6 +37,25 @@ or, alternately
 {: .FcnSyntax}
 
 </div>
+
+## Timestamp Precision
+
+Splice Machine uses a global property to define the precision (the number of decimal places in the seconds value) of timestamps returned by this function:
+
+```
+splice.function.currentTimestampPrecision
+```
+{: .Example}
+
+You can set the value of this property to any value between `0` and `9`. The default value is `6`.
+
+Use the SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY` system procedure to modify the value; for example:
+
+```
+splice> call SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY( 'splice.function.currentTimestampPrecision', '3' );
+```
+{: .Example}
+
 ## Results
 
 A timestamp value.
