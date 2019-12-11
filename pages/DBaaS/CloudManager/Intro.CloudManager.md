@@ -68,7 +68,7 @@ Machine Cloud Manager. Here are the topics included in this guide:
             <td class="ItalicFont"><a href="dbaas_zep_intro.html">Using the Notebooks Manager</a>
             </td>
             <td>
-                <p>One of the great features of our database service is the ease with which you can use Apache Zeppelin notebooks to interact with your database. Our <span class="ConsoleLink">Notebooks Manager</span> provides convenient access to your notebooks, and to information about using Zeppelin.</p>
+                <p>One of the great features of our database service is the ease with which you can use Jupyter notebooks to interact with your database. Our <span class="ConsoleLink">Notebooks Manager</span> provides convenient access to your notebooks, and to information about using Jupyter.</p>
                 <p>This tutorial walks you through using a notebook created by Splice Machine that:</p>
                 <ul>
                     <li>Creates a schema and the tables in your database to store the TPCH-1 benchmarks data.</li>

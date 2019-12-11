@@ -16,7 +16,7 @@ This topic describes the methods available in the ML Manager API; you'll find ex
 
 {% include splice_snippets/dbaasonlytopic.md %}
 
-You can use Splice ML Manager with Python in Zeppelin notebooks, using  our `pyspark` interpreter and our `MLManager` class in your program to manipulate experiments.
+You can use Splice ML Manager with Python in Jupyter notebooks, using  our `pyspark` interpreter and our `MLManager` class in your program to manipulate experiments.
 
 This topic contains the following sections:
 
@@ -77,7 +77,7 @@ manager.create_new_run(user_id=‘firstrun’)
 
 ### Run Your Experiment
 
-The [Using ML Manager](mlmanager_using.html) topic in this chapter provides a complete example of running machine learning experiments with ML Manager in a Zeppelin notebook.
+The [Using ML Manager](mlmanager_using.html) topic in this chapter provides a complete example of running machine learning experiments with ML Manager in a Jupyter notebook.
 
 
 ## ML Manager Methods  {#methods}

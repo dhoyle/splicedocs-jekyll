@@ -28,7 +28,7 @@ Splice ML Manager provides end-to-end life-cycle management for your ML models, 
 
 ## Overview
 
-The *Splice ML Manager* facilitates machine learning development within Zeppelin notebooks.  Here are some of its key features:
+The *Splice ML Manager* facilitates machine learning development within Jupyter notebooks.  Here are some of its key features:
 
 * *ML Manager* runs directly on Apache Spark, allowing you to complete massive jobs in parallel.
 * Our native `PySpliceContext` lets you directly access the data in your database and very efficiently convert it to/from a Spark DataFrame with no serialization/deserialization required.

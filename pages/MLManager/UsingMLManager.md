@@ -105,7 +105,7 @@ In this section, we'll prepare our first experiment, in these steps:
 
 1. [Connect to your database](#connecttodb)
 2. [Load the data into your database](#loadtodb)
-3. [Try visualizing the data in Zeppelin](#tryvis)
+3. [Try visualizing the data in Jupyter](#tryvis)
 4. [Create your `MLManager` instance](#createmlmgr)
 5. [Create a new experiment](##createexperiment)
 6. [Load the database table directly into a Spark DataFrame](#loadintodf)
@@ -191,7 +191,7 @@ call SYSCS_UTIL.IMPORT_DATA (
 
 #### 3. Try visualizing your data in the Notebook:  {#tryVis}
 
-You can query the data and use one of the many visualizations built into Zeppelin to display your results. For example, you might run the following query to find the imbalance of fraud data, and display it as a pie chart:
+You can query the data and use one of the many visualizations built into Jupyter to display your results. For example, you might run the following query to find the imbalance of fraud data, and display it as a pie chart:
 
 ```
 %splicemachine

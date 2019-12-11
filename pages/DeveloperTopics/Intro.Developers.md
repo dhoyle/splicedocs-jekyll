@@ -69,7 +69,6 @@ This section contains fundamental developer topics that apply only to the Splice
 * [Using HAProxy with Splice Machine](developers_fundamentals_haproxy.html)
 * [Using MapReduce](developers_fundamentals_mapreduce.html)
 * [Working with HBase](developers_fundamentals_hbase.html)
-* [Using Zeppelin with our On-Premise Database](developers_fundamentals_zeppelin.html)
 
 ## Splice\*Plus (PL/SQL)] {#SplicePlus}
 * [Introduction](developers_spliceplus_intro.html)

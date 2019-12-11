@@ -59,7 +59,7 @@ ready, our documentation offers:
 In addition to easy connectivity with almost any Business Intelligence
 tool, Splice Machine includes:
 
-* An integrated *Zeppelin Notebook* interface. Zeppelin notebooks are
+* An integrated *Jupyter Notebook* interface. Jupyter notebooks are
   like text documents, but with code that can be executed and of which
   the output can be rendered as tables, reports and beautiful graphs.
   This enables you to prepare and run SQL DDL and DML, stored
@@ -79,8 +79,8 @@ Our documentation provides:
 
 * Complete descriptions of our [Cloud Manager
   dashboard](dbaas_cm_intro.html)
-* An introduction to [Using Zeppelin with Splice
-  Machine](dbaas_zep_intro.html)
+* An introduction to [Using Jupyter with Splice
+  Machine](dbaas_jup_intro.html)
 * A wealth of [Developer's Guide information](developers_intro.html) and
   our [SQL Reference Manual](sqlref_intro.html)
 

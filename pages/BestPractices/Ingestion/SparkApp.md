@@ -13,19 +13,19 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Ingesting Data in a Spark App
 
-The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
+The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Jupyter notebooks.
 
 This topic presents two examples of using the Splice Machine Native Spark DataSource to load data with Spark into a table in your database:
 
-* [Using the Native Spark DataSource to Ingest Data in Zeppelin](#loadzep)
+* [Using the Native Spark DataSource to Ingest Data in Jupyter](#loadjup)
 * [Using the Native Spark DataSource with spark-submit to Ingest Data](#loadsubmit)
 
 For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
 
-## Using the Native Spark DataSource to Ingest Data in Zeppelin  {#loadzep}
+## Using the Native Spark DataSource to Ingest Data in Jupyter  {#loadjup}
 
-This section presents a simple Zeppelin notebook example, written in Scala, of moving data between a Spark DataFrame and a Splice Machine table:
+This section presents a simple Jupyter notebook example, written in Scala, of moving data between a Spark DataFrame and a Splice Machine table:
 
 1.  __Create the context:__
 

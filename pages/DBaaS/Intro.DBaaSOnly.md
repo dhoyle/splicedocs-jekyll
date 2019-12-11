@@ -51,13 +51,13 @@ these steps, and you can be up and running in less than an hour:
             <td class="DbaasIntroNum">➍</td>
             <td class="DbaasIntroStep"><a href="dbaas_zep_simple.html">LOAD YOUR DATA</a></td>
             <td class="DbaasIntroArrow">→</td>
-            <td class="DbaasIntroDesc">Copy data to S3, then perform a fast import. Time required varies with dataset size. Our <a href="dbaas_zep_simple.html">Zeppelin Simple Example</a> provides a quick example.</td>
+            <td class="DbaasIntroDesc">Copy data to S3, then perform a fast import. Time required varies with dataset size. Our <a href="dbaas_jup_simple.html">Jupyter Simple Example</a> provides a quick example.</td>
         </tr>
         <tr>
             <td class="DbaasIntroNum">&#x278E;</td>
             <td class="DbaasIntroStep"><a href="dbaas_zep_getstarted.html">QUERY AND UPDATE YOUR DATABASE</a></td>
             <td class="DbaasIntroArrow">→</td>
-            <td class="DbaasIntroDesc">Use Zeppelin notebooks to quickly update, query, and display results graphically, without coding.</td>
+            <td class="DbaasIntroDesc">Use Jupyter notebooks to quickly update, query, and display results graphically, without coding.</td>
         </tr>
     </tbody>
 </table>
@@ -69,8 +69,8 @@ database system:
 * Our [About the Splice Machine Database Service](dbaas_about.html)
   topic introduces this edition of Splice Machine and links to main
   documentation pages related to the service.
-* Spend some time learning more about [creating and using Zeppelin
-  notebooks](dbaas_zep_getstarted.html), which you can use to prepare
+* Spend some time learning more about [creating and using Jupyter
+  notebooks](dbaas_jup_getstarted.html), which you can use to prepare
   and run SQL DDL and DML, stored procedures, Java, Scala, and Python
   and Spark-SQL programs with Splice Machine data, all without writing
   code.

@@ -13,7 +13,7 @@ folder: BestPractices/SparkAdapter
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # How to Use the Splice Machine Native Spark DataSource
 
-This topic will help you to get started with using the Splice Machine Native Spark DataSource (aka the *Spark Adapter*) in your applications and Zeppelin notebooks, in the following sections:
+This topic will help you to get started with using the Splice Machine Native Spark DataSource (aka the *Spark Adapter*) in your applications and Jupyter notebooks, in the following sections:
 
 * [The SplicemachineContext Class](#class)
 * [Database Permissions and the Native Spark DataSource](#prereq)
@@ -45,7 +45,7 @@ val ds = SpliceContext.df("select * from splice.test")
 {: .Example }
 
 
-And here's a similar example from a Zeppelin notebook:
+And here's a similar example from a Jupyter notebook:
 
 ```
 %spark
@@ -60,7 +60,7 @@ val splicemachineContext = new SplicemachineContext(JDBC_URL)
 
 ### Using the Context to Populate a Table
 
-Here's a simple example that illustrates how to populate a Splice Machine table from a Spark DataFrame. This example uses Zeppelin.
+Here's a simple example that illustrates how to populate a Splice Machine table from a Spark DataFrame. This example uses Jupyter.
 
 First we'll create a DataFrame with a little data in it:
 
@@ -98,7 +98,7 @@ splicemachineContext.insert( carsDF, "mySchema.carsTbl");
 
 Though this simple example contains little data, you can operate on a DataFrame of any size in exactly the same way.
 
-The [Running Apps with the Native Spark DataSource](bestpractices_sparkadapter_submit.html) and [Using our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_zeppelin.html) topics in this chapter contains example walkthroughs that show you how to use the context object to interact with your Splice Machine database.
+The [Running Apps with the Native Spark DataSource](bestpractices_sparkadapter_submit.html) and [Using our Native Spark DataSource with Jupyter](bestpractices_sparkadapter_jupyter.html) topics in this chapter contains example walkthroughs that show you how to use the context object to interact with your Splice Machine database.
 
 ## Accessing Database Objects with Internal Access {#access}
 

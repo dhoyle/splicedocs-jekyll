@@ -32,7 +32,7 @@ The  <span class="ConsoleLink">Cluster Management</span> screen includes three b
 
 * Click the <span class="CalloutFont">DB Console</span> button to open a new browser tab for the Database Console, which you can use to monitor the Splice Machine queries running on your cluster in real-time. The DB Console uses port 4040.
 
-* Click the <span class="CalloutFont">Notebooks</span> button to open a new browser tab for your Zeppelin notebooks. you can use the notebooks that are pre-installed on your cluster to learn about and experiment with using various features of Splice Machine; you can also quickly develop your own notebooks that use your database, Spark, and Machine Learning.
+* Click the <span class="CalloutFont">Notebooks</span> button to open a new browser tab for your Jupyter notebooks. you can use the notebooks that are pre-installed on your cluster to learn about and experiment with using various features of Splice Machine; you can also quickly develop your own notebooks that use your database, Spark, and Machine Learning.
 
 * Click the <span class="CalloutFont">Spark Console</span> button to open a new browser tab for the Spark Console, which you can use to monitor the Spark jobs running on your cluster in real-time. The Spark Console uses port 4041.
 
@@ -49,7 +49,7 @@ reconfiguration screen:
   ![](images/Reconfigure1.png){: .indentedMedium}
   {: .spaceAbove}
 
-  You can modify your VPC and/or IAM configuration information or change the Zeppelin instances settings. Click the   <span   class="CalloutFont">Reconfigure</span> button to update your
+  You can modify your VPC and/or IAM configuration information or change the Jupyter instances settings. Click the   <span   class="CalloutFont">Reconfigure</span> button to update your
   configuration and return to your Cluster Management screen.
 
 * Click the <span class="CalloutFont">Resize</span> button to modify the size of this cluster. This displays the cluster resize screen, which is almost identical to the <span class="ConsoleLink">Create New Cluster</span> screen:
