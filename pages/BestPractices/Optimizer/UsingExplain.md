@@ -93,6 +93,8 @@ Each row includes the action being performed (a Scan, Join, grouping, etc.) foll
 
 We will see that the `scannedRows` and `outputRows` are key numbers to monitor as we tune query performance.
 
+<p class="noteIcon">The term <em>cost</em> in a Splice Machine explain plan is a measurement of the combined resources needed to execute an operation or a plan (which is a set of operations). The resources taken into account include CPU time, input/output, and network utilization; these are input to a cost model that produces a single number. The optimizer then selects the plan with the lowest number.</p>
+
 ### Explaining DDL Statements
 
 SQL Data Definition Language (DDL) statements have no known cost, and
