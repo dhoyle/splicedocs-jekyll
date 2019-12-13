@@ -37,7 +37,7 @@ visual representations of your query results, as described here:
         </tr>
         <tr>
             <td>Notebooks Manager</td>
-            <td><a href="dbaas_zep_intro.html">Jupyter notebooks</a> make it easy to query your database and apply various visualizations to the results of your queries. We've created several notebooks that will help you to quickly become productive and to see how easy it is to create your own notebooks.</td>
+            <td><a href="dbaas_jup_intro.html">Jupyter notebooks</a> make it easy to query your database and apply various visualizations to the results of your queries. We've created several notebooks that will help you to quickly become productive and to see how easy it is to create your own notebooks.</td>
         </tr>
         <tr>
             <td>Database Console</td>

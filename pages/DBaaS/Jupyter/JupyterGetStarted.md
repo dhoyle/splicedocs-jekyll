@@ -176,7 +176,7 @@ From the <span class="ConsoleLink">Job</span> screen, you can:
 
 ## Creating Notebooks   {#create}
 
-Be sure to view our [Usage Notes](dbaas_zep_notes.html) page for
+Be sure to view our [Usage Notes](dbaas_jup_notes.html) page for
 important information about creating Zeppelin notebooks to use with
 Splice Machine.
 

@@ -60,20 +60,20 @@ These are the major updates in the current version, which was released on {{splv
 These features are not yet available, but will be very soon:
 
 * VPC Settings are not yet enabled but will be in a near future release.
-* You currently cannot cancel queries that are running through Zeppelin or JDBC tools; you can use the Spark User Interface to cancel Spark queries.
+* You currently cannot cancel queries that are running through Jupyter or JDBC tools; you can use the Spark User Interface to cancel Spark queries.
 
 
 ## Current Limitations {#current-limitations}
 
 These limitations exist in this release, and will be removed in the near future:
 
-* On a JDBC connection, individual queries or actions will time out after one hour; you can run long-running queries within a Zeppelin notebook.
+* On a JDBC connection, individual queries or actions will time out after one hour; you can run long-running queries within a Jupyter notebook.
 
 ## Important Notes {#important-notes}
 
 These are important notes about issues you need to be aware of when using our Database Service:
 
-* The timestamps displayed in Zeppelin will be different than the timestamps you see in the Splice Machine Spark User Interface, depending upon your time zone.
+* The timestamps displayed in Jupyter will be different than the timestamps you see in the Splice Machine Spark User Interface, depending upon your time zone.
 
 ## Major Updates in Previous Releases  {#prev-release}
 

@@ -65,7 +65,7 @@ Machine Cloud Manager. Here are the topics included in this guide:
             </td>
         </tr>
         <tr>
-            <td class="ItalicFont"><a href="dbaas_zep_intro.html">Using the Notebooks Manager</a>
+            <td class="ItalicFont"><a href="dbaas_jup_intro.html">Using the Notebooks Manager</a>
             </td>
             <td>
                 <p>One of the great features of our database service is the ease with which you can use Jupyter notebooks to interact with your database. Our <span class="ConsoleLink">Notebooks Manager</span> provides convenient access to your notebooks, and to information about using Jupyter.</p>

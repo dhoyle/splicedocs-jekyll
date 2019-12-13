@@ -49,13 +49,13 @@ these steps, and you can be up and running in less than an hour:
         </tr>
         <tr>
             <td class="DbaasIntroNum">➍</td>
-            <td class="DbaasIntroStep"><a href="dbaas_zep_simple.html">LOAD YOUR DATA</a></td>
+            <td class="DbaasIntroStep"><a href="dbaas_jup_simple.html">LOAD YOUR DATA</a></td>
             <td class="DbaasIntroArrow">→</td>
             <td class="DbaasIntroDesc">Copy data to S3, then perform a fast import. Time required varies with dataset size. Our <a href="dbaas_jup_simple.html">Jupyter Simple Example</a> provides a quick example.</td>
         </tr>
         <tr>
             <td class="DbaasIntroNum">&#x278E;</td>
-            <td class="DbaasIntroStep"><a href="dbaas_zep_getstarted.html">QUERY AND UPDATE YOUR DATABASE</a></td>
+            <td class="DbaasIntroStep"><a href="dbaas_jup_getstarted.html">QUERY AND UPDATE YOUR DATABASE</a></td>
             <td class="DbaasIntroArrow">→</td>
             <td class="DbaasIntroDesc">Use Jupyter notebooks to quickly update, query, and display results graphically, without coding.</td>
         </tr>

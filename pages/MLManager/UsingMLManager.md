@@ -211,11 +211,12 @@ explain select class_result, count(*) from cc_fraud.cc_fraud_data group by class
 Now we'll create a connection to your database using Python, via our Native Spark DataSource:
 
 ```
+from splicemachine.spark.context import PySpliceContext
 from pyspark.sql import SparkSession
 # Create our Spark Session
 spark = SparkSession.builder.getOrCreate()
 sc = spark.sparkContext
-# Create out Native Database Connection
+# Create our Native Database Connection
 splice = PySpliceContext(spark)
 ```
 {: .Example}
@@ -227,9 +228,6 @@ To use ML Manager, you need to first create a class instance; creating the MLMan
 There is exactly one tracking URL *per cluster*, which means that if you create another MLManager object in another notebook, it will return the same tracking URL. This means that you can create multiple experiments in multiple notebooks, and and all of them will be tracked in the MLFlow UI.
 
 ```
-import os
-os.environ['MLFLOW_URL'] = 'mlflow:5001'
-
 from splicemachine.ml.management import MLManager
 manager = MLManager(splice)
 ```
@@ -317,7 +315,7 @@ Using our MLManager object, we'll first configure tags for our experiment; you c
 ```
     #start our first MLFlow run
 tags = {
-        'team': 'Clearsense',
+        'team': 'MyCompany',
         'purpose': 'fraud r&d',
         'attempt-date': '12/31/2019',
         'attempt-number': '1'
@@ -487,7 +485,7 @@ oversample_rate = [0.4,0.7,1.0]
 
 for i in range(1,5):
     tags = {
-        'team': 'Clearsense',
+        'team': 'MyCompany',
         'purpose': 'fraud r&d',
         'attempt-date': '11/07/2019',
         'attempt-number': 'f{i}'
