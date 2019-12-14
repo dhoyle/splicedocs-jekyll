@@ -1043,7 +1043,7 @@ MLManager provides a few shortcut functions for setting parameters, metrics, and
 ### lm  {#lm}
 {: .extraTopSpace}
 
-`lm` is a shortcut function for the [`log_metric`](#log_metric) method.
+`lm` is a shortcut function for the &nbsp;&nbsp;[`log_metric`](#log_metric) method.
 
 ```
 lm(*args, **kwargs)
@@ -1054,7 +1054,7 @@ lm(*args, **kwargs)
 ### lp  {#lp}
 {: .extraTopSpace}
 
-`lp` is a shortcut function for the [`log_param`](#log_param) method.
+`lp` is a shortcut function for the &nbsp;&nbsp;[`log_param`](#log_param) method.
 
 ```
 lp(*args, **kwargs)
@@ -1065,7 +1065,7 @@ lp(*args, **kwargs)
 ### st  {#st}
 {: .extraTopSpace}
 
-`st` is a shortcut function for the [`set_tag`](#set_tag) method.
+`st` is a shortcut function for the &nbsp;&nbsp;[`set_tag`](#set_tag) method.
 
 ```
 st(*args, **kwargs)
