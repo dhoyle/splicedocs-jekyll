@@ -73,7 +73,7 @@ NULL       |NULL       |1     |1     |2
 ## See Also
 
 * [Window and Aggregate
-  functions](sqlref_builtinfcns_windowfcnsintro.html)
+  functions](sqlref_builtinfcns_intro.html#window)
 
 </div>
 </section>

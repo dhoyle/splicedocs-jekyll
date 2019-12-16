@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInFcns
 `ROW_NUMBER()` is a *ranking function* that numbers the rows within the
 ordered partition of values defined by its `OVER` clause. Ranking
 functions are a subset of [window
-functions](sqlref_builtinfcns_windowfcnsintro.html).
+functions](sqlref_builtinfcns_intro.html#window).
 
 ## Syntax
 
@@ -80,7 +80,7 @@ salaries are at least $1 million:
 ## See Also
 
 * [Window and Aggregate
-  ](sqlref_builtinfcns_windowfcnsintro.html)functions
+  ](sqlref_builtinfcns_intro.html#window)functions
 * [`BIGINT`](sqlref_builtinfcns_bigint.html) data type
 * [`OVER`](sqlref_clauses_over.html) clause
 * [`OVER`](sqlref_clauses_over.html) clause

@@ -15,7 +15,7 @@ folder: SQLReference/BuiltInFcns
 `DENSE_RANK()` is a *ranking function* that returns the rank of a value
 within the ordered partition of values defined by its `OVER` clause.
 Ranking functions are a subset of [window
-functions](sqlref_builtinfcns_windowfcnsintro.html).
+functions](sqlref_builtinfcns_intro.html#window).
 
 ## Syntax
 
@@ -198,7 +198,7 @@ tied rankings are handled differently:
 ## See Also
 
 * [Window and Aggregate
-  ](sqlref_builtinfcns_windowfcnsintro.html)functions
+  ](sqlref_builtinfcns_intro.html#window)functions
 * [`BIGINT`](sqlref_builtinfcns_bigint.html) data type
 * [`RANK`](sqlref_builtinfcns_rank.html) function
 * [`OVER`](sqlref_clauses_over.html) clause

@@ -235,7 +235,7 @@ Here are some examples of window functions using frame clauses:
 ## See Also
 
 * [Window and Aggregate
-  ](sqlref_builtinfcns_windowfcnsintro.html)functions
+  ](sqlref_builtinfcns_intro.html#window)functions
 * [`SELECT`](sqlref_expressions_select.html) expression
 * [`HAVING`](sqlref_clauses_having.html) clause
 * [`ORDER BY`](sqlref_clauses_orderby.html) clause

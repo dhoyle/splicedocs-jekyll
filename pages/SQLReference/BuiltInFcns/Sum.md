@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInFcns
 
 `SUM`returns the sum of values of an expression over a set of rows. You
 can use it as an [window
-(analytic) function](sqlref_builtinfcns_windowfcnsintro.html).
+(analytic) function](sqlref_builtinfcns_intro.html#window).
 
 The `SUM` function function takes as an argument any numeric data type
 or any non-numeric data type that can be implicitly converted to a
@@ -158,7 +158,7 @@ only the players who make at least $5 million in salary.
 ## See Also
 
 * [About Data Types](sqlref_datatypes_numerictypes.html)
-* [Window and aggregate](sqlref_builtinfcns_windowfcnsintro.html)
+* [Window and aggregate](sqlref_builtinfcns_intro.html#window)
   functions
 * [`AVG`](sqlref_builtinfcns_avg.html) function
 * [`COUNT`](sqlref_builtinfcns_count.html) function
