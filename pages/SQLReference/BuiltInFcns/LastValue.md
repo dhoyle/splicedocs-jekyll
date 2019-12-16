@@ -112,7 +112,7 @@ team:
 ## See Also
 
 * [Window and Aggregate
-  ](sqlref_builtinfcns_windowfcnsintro.html)functions
+  ](sqlref_builtinfcns_intro.html#window)functions
 * [`AVG`](sqlref_builtinfcns_avg.html) function
 * [`COUNT`](sqlref_builtinfcns_count.html) function
 * [`FIRST_VALUE`](sqlref_builtinfcns_firstvalue.html) function

@@ -86,8 +86,8 @@ A `NEXT VALUE` expression **may not appear** in any of these situations:
 * [`CASE`](sqlref_expressions_case.html) expression
 * [`WHERE`](sqlref_clauses_where.html) clause
 * [`ORDER BY`](sqlref_clauses_orderby.html) clause
-* [Aggregate expression](sqlref_builtinfcns_windowfcnsintro.html)
-* [Window functions](sqlref_builtinfcns_windowfcnsintro.html)
+* [Aggregate expression](sqlref_builtinfcns_intro.html#window)
+* [Window functions](sqlref_builtinfcns_intro.html#window)
 * [`ROW_NUMBER`](sqlref_builtinfcns_rownumber.html) function
 * `DISTINCT` select list
 

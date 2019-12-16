@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInFcns
 
 `COUNT` returns the number of rows returned by the query. You can use it
 as an [window
-(analytic) function](sqlref_builtinfcns_windowfcnsintro.html).
+(analytic) function](sqlref_builtinfcns_intro.html#window).
 
 The `COUNT(Expression)` version returns the number of row where
 *Expression* is not null. You can count either all rows, or only
@@ -136,7 +136,7 @@ rows from the beginning of the data window:
 
 * [<span>About Data Types</span>](sqlref_datatypes_numerictypes.html)
 * [Window and Aggregate
-  Functions](sqlref_builtinfcns_windowfcnsintro.html)
+  Functions](sqlref_builtinfcns_intro.html#window)
 * [`AVG`](sqlref_builtinfcns_avg.html) function
 * [`MAX`](sqlref_builtinfcns_max.html) function
 * [`MIN`](sqlref_builtinfcns_min.html) function

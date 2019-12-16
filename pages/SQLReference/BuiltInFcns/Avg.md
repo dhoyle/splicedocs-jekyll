@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInFcns
 
 `AVG` evaluates the average of an expression over a set of rows. You can
 use it as an [window
-(analytic) function](sqlref_builtinfcns_windowfcnsintro.html).
+(analytic) function](sqlref_builtinfcns_intro.html#window).
 
 ## Syntax
 
@@ -104,7 +104,7 @@ type if you want more precision:
     Average
     --------
     2949737
-    
+
     1 row selected
 {: .Example xml:space="preserve"}
 
@@ -119,7 +119,7 @@ the San Francisco Giants in 2015:
        OVER (PARTITION by Position) "Average for Position"
        FROM players join Salaries on players.ID=salaries.ID
        WHERE Team='Giants' and Season=2015;
-    
+
     POS&|ID    |SALARY              |Average for Po&
     ------------------------------------------------
     C   |1     |17277777            |3733139.8000
@@ -170,7 +170,7 @@ the San Francisco Giants in 2015:
     OF  |19    |91516               |962397.2500
     OF  |21    |149754              |962397.2500
     OF  |25    |8319                |962397.2500
-    
+
     48 rows selected
 {: .Example xml:space="preserve"}
 
@@ -179,7 +179,7 @@ the San Francisco Giants in 2015:
 
 * [About Data Types](sqlref_datatypes_numerictypes.html)
 * [Window and aggregate
-  functions](sqlref_builtinfcns_windowfcnsintro.html)
+  functions](sqlref_builtinfcns_intro.html#window)
 * [`COUNT`](sqlref_builtinfcns_count.html) function
 * [`MAX`](sqlref_builtinfcns_max.html) function
 * [`MIN`](sqlref_builtinfcns_min.html) function
@@ -190,4 +190,3 @@ the San Francisco Giants in 2015:
 
 </div>
 </section>
-

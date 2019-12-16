@@ -20,7 +20,7 @@ A *major compaction* actually reads every block of data from the every store fil
 
 Splice Machine recommends running a major compaction on a table after you've imported a large dataset into the table or deleted a large number of rows from the table in your database.
 
-For more information about compactions, see [Best Practices: Using Compaction ](developers_bestpractices_compacting.html).
+For more information about compactions, see [Best Practices: Using Compaction ](bestpractices_optimizer_compacting.html).
 
 ## Syntax
 
