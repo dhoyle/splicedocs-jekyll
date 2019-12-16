@@ -112,7 +112,7 @@ group on his team:
 ## See Also
 
 * [Window and Aggregate
-  ](sqlref_builtinfcns_windowfcnsintro.html)functions
+  ](sqlref_builtinfcns_intro.html#window)functions
 * [`AVG`](sqlref_builtinfcns_avg.html) function
 * [`COUNT`](sqlref_builtinfcns_count.html) function
 * [`LAG`](sqlref_builtinfcns_lag.html) function

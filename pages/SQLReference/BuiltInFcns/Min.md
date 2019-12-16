@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInFcns
 
 `MIN` evaluates the minimum of an expression over a set of rows. You can
 use it as an [window
-(analytic) function](sqlref_builtinfcns_windowfcnsintro.html).
+(analytic) function](sqlref_builtinfcns_intro.html#window).
 
 ## Syntax
 
@@ -150,7 +150,7 @@ more on his team:
 ## See Also
 
 * [Window and Aggregate
-  functions](sqlref_builtinfcns_windowfcnsintro.html)
+  functions](sqlref_builtinfcns_intro.html#window)
 * [About Data Types](sqlref_datatypes_numerictypes.html)
 * [`AVG`](sqlref_builtinfcns_avg.html) function
 * [`COUNT`](sqlref_builtinfcns_count.html) function

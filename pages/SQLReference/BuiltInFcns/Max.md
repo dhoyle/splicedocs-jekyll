@@ -14,7 +14,7 @@ folder: SQLReference/BuiltInFcns
 
 `MAX`evaluates the maximum of an expression over a set of rows. You can
 use it as an [window
-(analytic) function](sqlref_builtinfcns_windowfcnsintro.html).
+(analytic) function](sqlref_builtinfcns_intro.html#window).
 
 ## Syntax
 
@@ -154,7 +154,7 @@ team:
 
 * [About Data Types](sqlref_datatypes_numerictypes.html)
 * [Window and Aggregate
-  Functions](sqlref_builtinfcns_windowfcnsintro.html)
+  Functions](sqlref_builtinfcns_intro.html#window)
 * [`AVG`](sqlref_builtinfcns_avg.html) function
 * [`COUNT`](sqlref_builtinfcns_count.html) function
 * [`MIN`](sqlref_builtinfcns_min.html) function
