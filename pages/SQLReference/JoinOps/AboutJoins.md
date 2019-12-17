@@ -25,7 +25,7 @@ clause](sqlref_clauses_from.html)*, perform joins between two tables.
 The following table describes the `JOIN` operations:
 
 <table summary="Splice Machine SQL Join operations">
-    <col />
+    <col width="25%" />
     <col />
     <thead>
         <tr>
@@ -40,7 +40,9 @@ The following table describes the `JOIN` operations:
         </tr>
         <tr>
             <td><code>FULL JOIN</code></td>
-            <td>Specifies a full outer join between two tables, combining rows from both tables.</td>
+            <td><p>Also referred to as <code>FULL OUTER JOIN.</code></p>
+                <p>Specifies a full outer join between two tables, combining rows from both tables.</p>
+            </td>
         </tr>
         <tr>
             <td><code>LEFT OUTER JOIN</code></td>

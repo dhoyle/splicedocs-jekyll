@@ -44,6 +44,31 @@ does).
 
 ## Examples
 
+```
+splice> CREATE TABLE t1 (a1 INT, b1 INT, c1 INT);
+splice> INSERT INTO t1 VALUES (1,1,1), (2,2,2), (2,2,2), (3,3,3), (4,4,null);
+splice> CREATE TABLE t2 (a2 INT, b2 INT, c2 INT);
+splice> INSERT INTO t2 VALUES (2,2,2), (2,2,2), (3,3,3), (4,4,null), (5,5,5), (6,6,6);
+
+splice> SELECT a1, b1, a2, b2, c2 FROM t1 FULL JOIN t2 ON a1>a2;
+
+A1         |B1         |A2         |B2         |C2
+-----------------------------------------------------------
+2          |2          |NULL       |NULL       |NULL
+1          |1          |NULL       |NULL       |NULL
+2          |2          |NULL       |NULL       |NULL
+3          |3          |2          |2          |2
+3          |3          |2          |2          |2
+4          |4          |2          |2          |2
+4          |4          |2          |2          |2
+4          |4          |3          |3          |3
+NULL       |NULL       |4          |4          |NULL
+NULL       |NULL       |5          |5          |5
+NULL       |NULL       |6          |6          |6
+
+11 rows selected
+```
+{: .Example}
 
 ## See Also
 
