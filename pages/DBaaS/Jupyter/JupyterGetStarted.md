@@ -26,79 +26,91 @@ This topic helps you to get started with using Jupyter with your Splice Machine 
 
 ## The Jupyter Dashboard  {#dashboard}
 
-When you click the <span class="CalloutFont">Notebook</span> button in
-your Cluster Management dashboard, you land on the Jupyter welcome
-page. To start using Jupyter with your database service, you need to
-log in to your database by clicking the <span
-class="ConsoleLink">Login</span> button.
+When you click the <span class="CalloutFont">Notebook</span> button in your Cluster Management dashboard, you'll be asked to log into your database, and will then land on the Jupyter home page (dashboard):
 
-![](images/Notebooks1.png){: .indentedTightSpacing}
+![](images/juphome.png){: .indentedTightSpacing}
 
 Use the same user ID and password to log into Jupyter as you use to log
 into your database.
 
-When you log into Jupyter for your database, you'll land on the
-Jupyter dashboard, which displays the list of available notebooks and notebook folders. Simply click a folder name to display the notebooks within that folder.
+The Jupyter home page displays any notebooks and notebook folders that are available to you. The
 
-Splice Machine has already created a number of useful notebooks, which we've organized into folders:
+<table >
+    <col />
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>UI Element</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="ConsoleLink">Logout</td>
+            <td>Click to log out of Jupyter.</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">Control Panel</td>
+            <td>Click to display your control panel, which you can use to </td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">Files</td>
+            <td>Displays the [Files](#filestab) tab.</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">Running</td>
+            <td>Displays the <span class="ConsoleLink">Running</span> tab, from which you can access or shut down a running notebook or terminal window.</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">Clusters</td>
+            <td>Displays the <span class="ConsoleLink">Clusters</span> tab.</td>
+            <td>XXX</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">BeakerX</td>
+            <td>Displays the [BeakerX](#beakerx) tab.</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">Upload</td>
+            <td>Allows you to upload notebooks to your Jupyter server.</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">New</td>
+            <td>Displays the [New](#newmenu) menu, which you can use to create new notesbooks, text files, folders, and terminal windows.</td>
+        </tr>
+        <tr>
+            <td class="ConsoleLink">Sorting Options</td>
+            <td>Use the <span class="ConsoleLink">Name</span>, <span class="ConsoleLink">Last Modified</span>, and <span class="ConsoleLink">File size</span> buttons to change the order in which the files are displayed in the Files tab.</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
 
-![](images/Jupyter1.png){: .indentedTightSpacing}
 
-We suggest that you try running some of them to get a feel for what
-Jupyter can do: click a notebook name, and you'll land on the notebook
-page in Jupyter. From there, you can run all or portions of the
-notebook, modify its content, and create new notebooks. Our next topic,
-[A Simple Tutorial](dbaas_jup_simple.html), uses the our <span
-class="CalloutFont">Simple Example</span> tutorial.
+### The Jupyter Files Tab  {#filestab}
 
-## Adding Your Credentials  {#credentials}
+The <span class="ConsoleLink">Files</span> tab displays the Jupyter notebooks and folders of notebooks that Splice Machine has created for you to learn more about our products:
 
-You use the Splice Machine interpreter (`%splicemachine`) in Jupyter notebooks to interact with your Splice Machine database; this interpreter uses a JDBC connection to the database, and making that connection requires you to supply user credentials. Here's how you can create the credentials to use with the Splice Machine interpreter in your Jupyter notebooks:
+<img class="indentedTightSpacing" src="images/jupsplicenotebooks.png" alt="image of the Splice Machine cloud notebooks" />
 
-<div class="opsStepsList" markdown="1">
-1.  Log in to Jupyter, using the <span class="ConsoleLink">Notebook</span> button, as described above.
+You can click a folder to display the notebooks in the folder.
 
-2.  Click the <span class="ConsoleLink">Jupyter</span> dropdrop in the upper right corner of the window, and select <span class="ConsoleLink">Credential</span>:
+You can run or edit a notebook by clicking it; Jupyter opens the notebook in a separate browser tab. See the [Running or Editing a Notebook](#runoredit) section below for more information.
 
-    <img class="indentedSmall" src="images/CloudZepDropdown.png" alt="image of the Jupyter drop-down" />
+### The BeakerX Tab {#beakerx}
 
-    The <span class="ConsoleLink">Jupyter Credentials Management</span> page displays:
 
-    <img class="indented" src="images/CloudZepCredentials.png" alt="image of the Jupyter credentials management page" />
+## Running or Editing a Notebook  {#runoredit}
 
-3.  Click the <span class="ConsoleLink">Add</span> button to add your credentials:
 
-    <img class="indented" src="images/CloudZepAddCredential.png" alt="image of the Jupyter add credentials page" />
+### The Jupyter Notebook Toolbar   {#toolbar}
 
-    * Enter `jdbc.splicemachine` as the <span class="ConsoleLink">Entity</span>.
-    * Use the same <span class="ConsoleLink">Username</span> and <span class="ConsoleLink">password</span> that you use to log into your database.
-
-4.  Click the <span class="ConsoleLink">Save</span> button to add your credentials.
-</div>
-
-Now, when you specify the `%splicemachine` interpreter for a Jupyter paragraph, your credentials will be used to connect to your Splice Machine database.
-
-Remember to explicitly specify the `%splicemachine` interpreter in paragraphs, even if `%splicemachine` is the default interpreter for the notebook you're working on.
-{: .noteImportant}
-
-### First Notebook Run: Save Interpreter Bindings
-
-The first time that you run any Jupyter notebook, you need to bind any
-interpreters needed by the notebook. For our tutorials, these are
-preconfigured for you; all you need to do is click the Save button:
-
-![](images/ZepInterpreters.png){: .indentedTightSpacing}
-
-If you neglect to save its bindings, the notebook will not run. And
-again: you only need to do this one time for each notebook that you run.
-{: .noteNote}
-
-## The Zeppelin Note Toolbar   {#toolbar}
-
-Zeppelin displays a toolbar at the top of each note that provides
+Jupyter displays a toolbar at the top of each notebook that provides
 convenient access to a number of options:
 
-![](images/ZepToolbar.png){: .indentedTightSpacing}
+<img class="indentedTightSpacing" src="images/jupstoolbar.png" alt="image of the Jupyter notebook toolbar" />
 
 The following table describes the toolbar buttons:
 
