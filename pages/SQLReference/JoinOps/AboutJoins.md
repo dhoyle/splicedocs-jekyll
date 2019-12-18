@@ -40,8 +40,8 @@ The following table describes the `JOIN` operations:
         </tr>
         <tr>
             <td><code>FULL JOIN</code></td>
-            <td><p>Also referred to as <code>FULL OUTER JOIN.</code></p>
-                <p>Specifies a full outer join between two tables, combining rows from both tables.</p>
+            <td><p>Also referred to as <code>FULL OUTER JOIN</code></p>
+                <p>Combines the results of a <code>LEFT OUTER JOIN</code> and <code>RIGHT OUTER JOIN</code>, selecting rows from both tables even when there are no matching rows in the other table.</p>
             </td>
         </tr>
         <tr>
