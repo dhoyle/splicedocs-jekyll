@@ -27,9 +27,7 @@ A *FULL JOIN* can also be referred to as a *FULL OUTER JOIN*.
 You can specify the join clause by specifying `ON` with a Boolean
 expression.
 
-The scope of expressions in the `ON` clause includes the current tables
-and any tables in outer query blocks to the current `SELECT`. In the
-following example, the `ON` clause refers to the current tables:
+The  `ON` clause can only reference the left and right sources of the join; for example:
 
 <div class="preWrapper" markdown="1">
     SELECT *
@@ -38,9 +36,6 @@ following example, the `ON` clause refers to the current tables:
 {: .Example xml:space="preserve"}
 
 </div>
-The `ON` clause can reference tables not being joined and does not have
-to reference either of the tables being joined (though typically it
-does).
 
 ## Examples
 
