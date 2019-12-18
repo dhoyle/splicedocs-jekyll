@@ -104,6 +104,7 @@ You can run or edit a notebook by clicking it; Jupyter opens the notebook in a s
 
 ## Running or Editing a Notebook  {#runoredit}
 
+Introduce cells, kernels, magics, run or edit
 
 ### The Jupyter Notebook Toolbar   {#toolbar}
 
@@ -112,8 +113,7 @@ convenient access to a number of options:
 
 <img class="indentedTightSpacing" src="images/jupstoolbar.png" alt="image of the Jupyter notebook toolbar" />
 
-The following table describes the toolbar buttons:
-
+You can hover over any of the icons in the toolbar to disp
 <table>
     <tr>
         <td><img src="images/ZepToolbarIcon1.png" class="icon36" /></td>
