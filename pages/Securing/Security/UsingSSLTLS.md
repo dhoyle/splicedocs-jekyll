@@ -152,9 +152,9 @@ After you've generated your certificates, it's time to:
 
 You need to copy (`scp`) the server certificate to the client.
 
-<p class="noteIcon">In this context, <em>client</em> refers to the host from which the JDBC connections originate.
-
+In this context, <em>client</em> refers to the host from which the JDBC connections originate.
 After the copy, use a *keytool* command like this to import the certificate:
+{: .noteIcon}
 
 <div class="preWrap" markdown="1">
     % keytool -import -alias favoriteServerCertificate \
