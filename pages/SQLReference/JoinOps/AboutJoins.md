@@ -66,6 +66,7 @@ The following table describes the `JOIN` operations:
     </tbody>
 </table>
 
+
 In all cases, you can specify additional restrictions on one or both of
 the tables being joined in outer join clauses or in the &nbsp;[`WHERE`
 clause](sqlref_clauses_where.html).
