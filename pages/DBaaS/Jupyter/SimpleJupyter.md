@@ -18,7 +18,7 @@ help you learn about using Jupyter with the Splice Machine database service.
 {% include splice_snippets/dbaasonlytopic.md %}
 
 Our [Getting Started with Jupyter](dbaas_jup_getstarted.html) page
-provides a very brief overview of using  ; If you're new to
+provides a very brief overview of using Jupyter; If you're new to
 Jupyter, we strongly encourage you to visit the [Jupyter documentation
 site][1]{: target="_blank"} to learn about creating, modifying, and
 running your own Jupyter notebooks.
@@ -26,57 +26,28 @@ running your own Jupyter notebooks.
 
 ## Running the Tutorial Notebook
 
-You can access this Jupyter notebook by clicking the Basics (Spark)
-link under Jupyter Tutorials on the Jupyter Dashboard page:
+To run the first notebook in our tutorials section, follow these steps:
 
-![](images/Zeppelin2.png){: .indentedTightSpacing}
+1. Log into your Jupyter server, which lands you on the Jupyter dashboard.
+2. Select the *splice notebooks* folder:
 
-Once you've opened the tutorial, you can run each step (each Zeppelin
-*paragraph*) by clicking the <span class="CalloutFont">Ready</span>
-button that you'll see on the right side of each paragraph. This example
-includes these steps:
+   <img class="indentedTightSpacing" src="images/jupselectsplice.png" alt="selecting the splice notebooks folder" />
 
-* Click the first <span class="CalloutFont">READY</span> button to
-  create the schema and a table:
+3. Select the *Tutorials* folder:
 
-  ![](images/ZepSimple1.png){: .indentedTightSpacing}
+   <img class="indentedTightSpacing" src="images/jupselecttutorial.png" alt="selecting the Splice Tutorials notebooks folder" />
 
-* Import data (in this case, TPCH1 benchmark data) into the table, then
-  verify the data load by counting the number of records in the table:
+4. Select the *Jupyter Notebook Basics* notebook:
 
-  ![](images/zepSimple2a.png){: .indentedTightSpacing}
+   <img class="indentedTightSpacing" src="images/jupselectbasics.png" alt="selecting the first tutorial notebook" />
 
-* Create indexes on the table, and then run compaction on the data,
-  which is always a good idea after updating a large number of records:
+5. You'll now be viewing that notebook:
 
-  ![](images/zepSimple2b.png){: .indentedTightSpacing}
+   <img class="indentedTightSpacing" src="images/juptutorialtop.png" alt="selecting the splice notebooks folder" />
 
-* Collect statistics, to improve query planning, and then run a query:
+6. Run each cell in the notebook: click in the cell to activate it, and then either press *Shift+Enter* or click the *Run* icon in the Jupyter toolbar.
 
-  ![](images/ZepSimple3.png){: .indentedTightSpacing}
-
-After the query runs, you can take advantage of Zeppelin's built-in
-visualization tools to display the query results in various graphical
-and tabular formats.
-
-When you click the <span class="CalloutFont">READY</span> button,
-Zeppelin runs the paragraph that loads your data and subsequently
-displays the *Finished* message.
-
-If you see *Error* instead of *Finished*, it usually means that you've
-forgotten to set SpliceMachine interpreter as the default.
-{: .noteNote}
-
-## Apply Different Visualizations to Your Results   {#view}
-
-Zeppelin provides a wealth of data visualization tools you can use. In
-the example below, we have modified the presentation of query results to
-use different visualizations by clicking different visualization icons
-in the output pane. You can define and modify the values of variables
-that you use in your queries; for example, the `maxAge` and `marital`
-values in the examples below:
-
-![](images/ZepVis1.png){: .indentedTightSpacing}
+   The cells in this notebook are self-explanatory; running each will introduce you to the basics of working with Jupyter notebooks.
 
 </div>
 </section>

@@ -32,10 +32,6 @@ interact with your Splice Machine database service.
             <td>Introduces you to using Jupyter with your Splice Machine database.</td>
         </tr>
         <tr>
-            <td><em><a href="dbaas_jup_notes.html">Jupyter Usage Notes</a></em></td>
-            <td>Specific usage notes for creating Jupyter notebooks to use with Splice Machine.</td>
-        </tr>
-        <tr>
             <td><em><a href="dbaas_jup_simple.html">A Simple Tutorial</a></em></td>
             <td>Walks you through a quick and simple tutorial that shows you how to use Jupyter notebooks to load and query data, and apply different visualizations to the results.</td>
         </tr>
