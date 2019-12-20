@@ -221,8 +221,8 @@ For more information about Amazon IAM, see
 
 </div>
 
-You can change the number of Zeppelin instances available on your cluster, and you can adjust
-how much Java memory is allocated for the Spark Interpreter in each instance. Multiple Zeppelin instances allow multiple users to develop and run notebooks independently.
+You can change the number of Jupyter instances available on your cluster, and you can adjust
+how much Java memory is allocated for the Spark Interpreter in each instance. Multiple Jupyter instances allow multiple users to develop and run notebooks independently.
 
 You can also add (at an additional cost) our *Machine Learning Manager*) to your
 cluster by clicking the <span class="CalloutFont">Enable button</span> in the <span
@@ -305,10 +305,10 @@ you can load your data into your Splice Machine database and start
 running queries.
 
 The easiest way to get going with your new database is to use our
-[Zeppelin Notebook interface](dbaas_zep_intro.html), with which you can
+[Jupyter Notebook interface](dbaas_jup_intro.html), with which you can
 quickly run queries and generate different visualizations of your
 results, all without writing any code. We've provided a number of useful
-Zeppelin tutorials, including one that walks you through setting up a
+Jupyter tutorials, including one that walks you through setting up a
 schema, creating tables, loading data, and then running queries.
 
 Note that your data must be in Azure storage or an AWS S3 bucket before you can import it

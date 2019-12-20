@@ -178,7 +178,7 @@ output is displayed, without truncation.
 ## Command Line Syntax   {#Syntax}
 
 This section briefly summarizes the syntax of command lines you can
-enter in Zeppelin notebooks and in response to the <span
+enter in Jupyter notebooks and in response to the <span
 class="AppCommand">splice&gt;</span> prompt, including these
 subsections:
 

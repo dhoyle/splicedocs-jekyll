@@ -693,7 +693,7 @@ The Catalyst schema of the master table.
 ## See Also
 * [Using the Splice Machine Native Spark DataSource](bestpractices_sparkadapter_intro.html)
 * [Using Spark Submit](bestpractices_sparkadapter_submit.html)
-* [Using our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html)
+* [Using our Native Spark DataSource with Jupyter](bestpractices_sparkadapter_jupyter.html)
 
 </div>
 </section>

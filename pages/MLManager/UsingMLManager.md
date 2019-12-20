@@ -100,33 +100,28 @@ This section walks you through creating and running an experiment with ML Manage
 
 The Splice ML Manager, along with MLflow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the MLflow user interface.
 
+The default cell type in our Jupyter environment is a code cell that runs Python.
+{: .noteNote}
+
 ### Preparing Your Experiment  {#prepareExperiment}
 In this section, we'll prepare our first experiment, in these steps:
 
-1. [Connect to your database](#connecttodb)
-2. [Load the data into your database](#loadtodb)
-3. [Try visualizing the data in Zeppelin](#tryvis)
+1. [Load the data into your database](#loadtodb)
+2. [Run a few simple queries](#query)
+3. [Establish a Connection to Your Database](#connect)
 4. [Create your `MLManager` instance](#createmlmgr)
 5. [Create a new experiment](##createexperiment)
-6. [Load the database table directly into a Spark DataFrame](#loadintodf)
-7. [View your Experiment in the MLflow UI](#viewexpinui)
+6. [Review your data](#review)
 
-#### 1. Connect to your database  {#connecttodb}
 
-First, let's establish a connection to your database using Python via our Native Spark Datasource. We will use the SpliceMLContext to establish our direct connection-- it allows us to do inserts, selects, upserts, updates and many more functions without serialization
+#### 1. Load the Data into your database  {#loadtodb}
+
+First we'll create the table in our Splice Machine database for our fraud data:
 
 ```
-%spark.pyspark
-from splicemachine.spark.context import SpliceMLContext
-splice = SpliceMLContext(spark)
-```
-{: .Example}
+%%sql
 
-#### 2. Load the Data into your database  {#loadtodb}
-
-Next, we create the table in our Splice Machine database for our fraud data:
-```
-%splicemachine
+create schema cc_fraud;
 set schema cc_fraud;
 
 drop table if exists cc_fraud_data;
@@ -171,6 +166,8 @@ And then we import the data from S3 into the table:
 {: .spaceAbove}
 
 ```
+%%sql
+
 call SYSCS_UTIL.IMPORT_DATA (
      'cc_fraud',
      'cc_fraud_data',
@@ -181,7 +178,7 @@ call SYSCS_UTIL.IMPORT_DATA (
      null,
      null,
      null,
-     100000,
+     -1,
      's3a://splice-demo/kaggle-fraud-data/bad',
      null,
      null);
@@ -189,184 +186,273 @@ call SYSCS_UTIL.IMPORT_DATA (
 {: .Example}
 
 
-#### 3. Try visualizing your data in the Notebook:  {#tryVis}
+#### 2. Run a few simple queries against the new data:  {#query}
 
-You can query the data and use one of the many visualizations built into Zeppelin to display your results. For example, you might run the following query to find the imbalance of fraud data, and display it as a pie chart:
+You can query the data to verify that everything was loaded properly:
 
 ```
-%splicemachine
-select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result;
+%%sql
+select top 10 * from cc_fraud.cc_fraud_data
+```
+{: .Example}
+```
+%%sql
+select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result
+```
+{: .Example}
+```
+%%sql
+explain select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result
 ```
 {: .Example}
 
-<img src="images/MLpie1.png" style="max-width:150px; margin-left:50px; display:block">
+#### 3. Establish a Connection to Your Database  {#connect}
+
+Now we'll create a connection to your database using Python, via our Native Spark DataSource:
+
+```
+from splicemachine.spark.context import PySpliceContext
+from pyspark.sql import SparkSession
+# Create our Spark Session
+spark = SparkSession.builder.getOrCreate()
+sc = spark.sparkContext
+# Create our Native Database Connection
+splice = PySpliceContext(spark)
+```
+{: .Example}
 
 #### 4. Create your MLManager Instance  {#createmlmgr}
 
-To use ML Manager, you need to first create a class instance:
+To use ML Manager, you need to first create a class instance; creating the MLManager object returns a tracking URL.
+
+There is exactly one tracking URL *per cluster*, which means that if you create another MLManager object in another notebook, it will return the same tracking URL. This means that you can create multiple experiments in multiple notebooks, and and all of them will be tracked in the MLFlow UI.
+
 ```
-%spark.pyspark
+from splicemachine.ml.management import MLManager
+manager = MLManager(splice)
+```
+{: .Example}
+
+```
 from splicemachine.ml.management import MLManager
 manager = MLManager()
 ```
 {: .Example}
 
+You should see a message similar to this:
+
+```
+Tracking Model Metadata on MLFlow Server @ http://mlflow:5001
+```
+{: .Example}
+
 #### 5. Create an Experiment  {#createexperiment}
 
-Now we'll create an MLflow experiment named `fraud_demo`:
+Now we'll create an MLflow experiment named `fraud_demo` and load our data into a DataFrame:
 
 ```
-%spark.pyspark
-manager.create_experiment('fraud-demo')
-manager.set_active_experiment('fraud-demo')
-```
-{: .Example}
-
-#### 6. Load our data into a DataFrame  {#loadintodf}
-
-And then we'll pull the data from our database table directly into a Spark DataFrame:
-
-```
+#create our MLFlow experiment
+manager.create_experiment('fraud_demo')
 df = splice.df("SELECT * FROM cc_fraud.cc_fraud_data")
 df = df.withColumnRenamed('CLASS_RESULT', 'label')
-z.show(df)
+display(df.limit(10).toPandas())
 ```
 {: .Example}
 
-#### 7. View your Experiment in the MLflow UI  {#viewexpinui}
 You can now view your new experiment in the MLflow Tracking UI, at port `5001`:
 
 <img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/mlflow_UI_fraud.png'>
 
+#### 6. Review your data  {#review}
+
+It's a good idea to review your data before going any further. Specifically, you should look at the correlations between your features each other and the label. We'll create a heatmap for this purpose:
+
+```
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+for i in df.columns:
+    df = df.withColumn(i,df[i].cast(FloatType()))
+
+pdf = df.limit(5000).toPandas()
+correlations = pdf.corr()
+correlations.style.set_precision(2)
+
+plt.rcParams["figure.figsize"] = (8,12)
+plt.matshow(correlations, cmap='coolwarm')
+
+ticks = [i for i in range(len(correlations.columns))]
+plt.xticks(ticks, correlations.columns)
+plt.yticks(ticks, correlations.columns)
+
+
+plt.title('Fraud Data correlation heatmap')
+plt.show()
+```
+{: .Example}
+
+Here's the result:
+
+<img class='indentedTightSpacing' src='images/heatmap.png'>
 
 ### Running Your First Experiment  {#runfirst}
 
 Now that we're set up, let's create a run named `Ben` and run our experiment, using the logging functionality of `MLManager` to record and track the attributes of our run.
 
 We'll use these steps to run our experiment:
-1. [Create a run](#createrun)
-2. [Run the experiment](#runexperiment)
-3. [Create a Pipeline](#createpipeline)
-4. [Train and Run the Model](#trainandrun)
-5. [View Run Information](#viewruninfo)
-6. [Make Sure Model is Generalizable to Unbalanced Data](#modelgeneralizable)
+1. [Set up and start a run](#createrun)
+2. [Create a Pipeline](#createpipeline)
+4. [Set up the Model](#trainandrun)
+5. [Run the Cross Validator](#runcross)
+6. [Train the Model](#trainmodel)
 7. [Save the Model](#savemodel)
 
-#### 1. Create a run  {#createrun}
+#### 1. Set up and start a run  {#createrun}
 
-We use a method of our `MLManager` object to create a new run:
-```
-manager.create_new_run(user_id=‘Ben’)
-```
-{: .Example}
-
-#### 2. Run the experiment  {#runexperiment}
-
-We'll start our first MLflow run; since our data contains
-a limited number of fraudulent examples, we decide to expand that number for training purposes. To achieve this, we oversample fraudulent transactions and undersample non-fraudulent ones:
+Using our MLManager object, we'll first configure tags for our experiment; you can attach whatever tags you like to an experiment. Note that your `user_id` tag (the ID used to log into the notebook) is automatically added.
 
 ```
-%spark.pyspark
-#start our first MLflow run
-manager.create_new_run(user_id='Ben')
-
-#oversample fraud data 2X
-fraud_data = df.filter('label=1')
-print('fraud data has {} rows'.format(fraud_data.count()))
-fraud_data = fraud_data.unionAll(fraud_data)
-print('fraud data has {} rows'.format(fraud_data.count()))
-#log oversample rate
-manager.log_param('oversample','2X')
-
-#undersample non-fraud data 1:1
-non_fraud_df = df.filter('label=0')
-ratio = float(fraud_data.count())/float(df.count())
-sampled_non_fraud = non_fraud_df.sample(withReplacement=False,fraction=ratio)
-final_df = fraud_data.unionAll(sampled_non_fraud)
-#log undersample ratio
-manager.log_param('undersample', '1:1')
-z.show(final_df)
+    #start our first MLFlow run
+tags = {
+        'team': 'MyCompany',
+        'purpose': 'fraud r&d',
+        'attempt-date': '12/31/2019',
+        'attempt-number': '1'
+       }
+manager.start_run(tags=tags)
 ```
 {: .Example}
+
+##### Model Considerations
+
+Since our data contains a limited number of fraudulent examples, we decide to expand that number for training purposes. To achieve this, we oversample fraudulent transactions and undersample non-fraudulent ones. We need to make sure the model isn't overfit and doesn't always predict non-fraud (due to the lack of fraud data), so we can't only rely on accuracy. Our goal is to pick a model that does not have a high over-fitting rate.
 
 #### 3. Create a Pipeline  {#createpipeline}
-Now we can create a Pipeline to normalize our continuous features. We'll use the `StandardScaler`, which standardizes features by scaling to unit variance and/or removing the mean using, column summary statistics on the samples in the training set.
+Now we can create a Pipeline to normalize our continuous features. We can use Spark's `Pipeline` class to define a set of Transformers that set up your dataset for modeling.
 
-And we'll create our feature vector with the `VectorAssembler` transformer, which combines a given list of columns into a single vector column
+We'll use the `StandardScaler`, which standardizes features by scaling to unit variance and/or removing the mean using, column summary statistics on the samples in the training set. And we'll create our feature vector with the `VectorAssembler` transformer, which combines a given list of columns into a single vector column.
+
+Finally, we'll use `MLManager` to `log` our Pipeline stages.
 
 ```
-%spark.pyspark
 from pyspark.ml.feature import StandardScaler, VectorAssembler
 from pyspark.ml import Pipeline,PipelineModel
-feature_cols = df.columns
-feature_cols.remove("label")
-feature_cols.remove('TIME_OFFSET')
-print("Features: " + str(feature_cols))
+from pyspark.ml.classification import RandomForestClassifier, MultilayerPerceptronClassifier
 
+feature_cols = df.columns[:-1]
 assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
 scaler = StandardScaler(inputCol="features", outputCol='scaledFeatures')
-stages = [assembler, scaler]
-#log preprocessing steps
-manager.log_param('preprocessing','Pipeline[VectorAssembler, StandardScaler]')
-#log features that we will use
-manager.log_param('features',str(feature_cols))
-pipeline = Pipeline(stages=stages)
-z.show(pipeline.fit(df).transform(df))
+rf = RandomForestClassifier()
+
+stages = [assembler,scaler,rf]
+mlpipe = Pipeline(stages=stages)
+manager.log_pipeline_stages(mlpipe)
 ```
 {: .Example}
 
 #### 4. Train and Run the Model   {#trainandrun}
 
-Now we can train and run this model using the `SpliceBinaryClassificationEvaluator`, again logging our parameters and metrics.
+Now we can set up our modeling process; we'll use `OverSampleCrossValidator` to properly oversample our dataset for model building. And we'll add a few lines of code to track all of our moves in MLFlow:
 
 ```
-%spark.pyspark
-from pyspark.ml.classification import MultilayerPerceptronClassifier
-from splicemachine.ml.utilities import SpliceBinaryClassificationEvaluator
-import time
+from utils1 import OverSampleCrossValidator as OSCV
+from pyspark.ml.tuning import ParamGridBuilder
+from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassificationEvaluator
+import pandas as pd
+import numpy as np
 
-evaluator = SpliceBinaryClassificationEvaluator(spark)
-first = len(feature_cols)
-hidden = first/2
-output = 2
-layers = [first,hidden,output]
-nn = MultilayerPerceptronClassifier(maxIter=100, layers=layers, blockSize=64, seed=5724, featuresCol='scaledFeatures')
-manager.log_param('classifier', 'neural network')
-manager.log_param('maxIter', '100')
-manager.log_param('layers', '[{first}, {hidden}, 2]'.format(first=first,hidden=hidden))
-manager.log_param('blockSize', '64')
+# Define evaluation metrics
+PRevaluator = BinaryClassificationEvaluator(metricName = 'areaUnderPR') # Because this is a needle in haystack problem
+AUCevaluator = BinaryClassificationEvaluator(metricName = 'areaUnderROC')
+ACCevaluator = MulticlassClassificationEvaluator(metricName="accuracy")
+f1evaluator = MulticlassClassificationEvaluator(metricName="f1")
 
-df = df.repartition(50)
-train, test = df.randomSplit([0.8,0.2])
-t0 = time.time()
-stages.append(nn)
-full_pipeline = Pipeline(stages=stages)
-model = full_pipeline.fit(train)
-time_taken = time.time() - t0
-print("Model took: " + str(time_taken) + " seconds to train")
-#make predictions
-predictions = model.transform(test)
+# Define hyperparameters to try
+params = {rf.maxDepth: [5,15], \
+          rf.numTrees: [10,30], \
+          rf.minInfoGain: [0.0,2.0]}
 
-evaluator.input(predictions)
-z.show(evaluator.get_results())
+paramGrid_stages = ParamGridBuilder()
+for param in params:
+    paramGrid_stages.addGrid(param,params[param])
+paramGrid = paramGrid_stages.build()
 
-#log how long the model took
-manager.log_metric('time',time_taken)
-#log metrics for reference
-vals = evaluator.get_results('dict')
-for key in vals:
-    manager.log_metric(key, vals[key])
+# Create the CrossValidator
+fraud_cv = OSCV(estimator=mlpipe,
+                        estimatorParamMaps=paramGrid,
+                        evaluator=PRevaluator,
+                        numFolds=3,
+                        label = 'label',
+                        seed = 1234,
+                        parallelism = 3,
+                        altEvaluators = [ACCevaluator, f1evaluator, AUCevaluator])
 ```
 {: .Example}
 
-#### 5. View Run Information  {#viewruninfo}
+#### 5. Run the Cross Validator  {#runcross}
 
-You can now view the run in the MLflow user interface, at port `5001`:
+Now we can run the `CrossValidator` and log the results to MLFlow:
 
-<img src='https://s3.amazonaws.com/splice-demo/mlflow_ui_ben_run.png' class="indentedTightSpacing">
+```
+df = df.withColumnRenamed('Amount', 'label')
+manager.start_timer('with_oversample')
+fraud_cv_model, alt_metrics = fraud_cv.fit(df)
+execution_time = manager.log_and_stop_timer()
+
+print(f"--- {execution_time} seconds == {execution_time/60} minutes == {execution_time/60/60} hours")
 
 
-#### 6. Make Sure Model is Generalizable to Unbalanced Data  {#modelgeneralizable}
+# Grab metrics of best model
+best_avg_prauc = max(mycvModel.avgMetrics)
+best_performing_model = np.argmax(fraud_cv_model.avgMetrics)
+
+# metrics at the best performing model for this iteration
+best_avg_acc = [alt_metrics[i][0] for i in range(len(alt_metrics))][best_performing_model]
+best_avg_f1 = [alt_metrics[i][1] for i in range(len(alt_metrics))][best_performing_model]
+best_avg_rocauc = [alt_metrics[i][2] for i in range(len(alt_metrics))][best_performing_model]
+
+print(f"The Best average (Area under PR) for this grid search: {best_avg_prauc}")
+print(f"The Best average (Accuracy) for this grid search: {best_avg_acc}")
+print(f"The Best average (F1) for this grid search: {best_avg_f1}")
+print(f"The Best average (Area under ROC) for this grid search: {best_avg_rocauc}")
+
+evals = [('areaUnderPR',best_avg_prauc), ('Accuracy',best_avg_acc),('F1',best_avg_f1),('areaUnderROC',best_avg_rocauc)]
+manager.log_metrics(evals)
+
+# Get the best parameters
+bestParamsCombination = {}
+for stage in fraud_cv_model.bestModel.stages:
+    bestParams = stage.extractParamMap()
+    for param in params:
+        if param in bestParams:
+            bestParamsCombination[param] = bestParams[param]
+
+#log the hyperparams
+manager.log_params(list(bestParamsCombination.items()))
+
+print("Best Param Combination according to f1 is: \n")
+print(pd.DataFrame([(str(i.name),str(bestParamsCombination[i]))for i in bestParamsCombination], columns = ['Param','Value']))
+
+# Feature importance of the Principal comp
+importances = fraud_cv_model.bestModel.stages[-1].featureImportances.toArray()
+top_5_idx = np.argsort(importances)[-5:]
+top_5_values = [importances[i] for i in top_5_idx]
+
+top_5_features = [new_features[i] for i in top_5_idx]
+print("___________________________________")
+importances = fraud_cv_model.bestModel.stages[-1].featureImportances.toArray()
+
+print("Most Important Features are")
+print(pd.DataFrame(zip(top_5_features,top_5_values), columns = ['Feature','Importance']).sort_values('Importance',ascending=False))
+
+
+#Log feature importances
+manager.log_params()
+```
+{: .Example}
+
+#### 6. Run the Model  {#runmodel}
 We have a model that looks fairly accurate; however, we trained this model on balanced data, so we need to verify that it can be generalized to work with unbalanced data:
 
 ```
@@ -384,12 +470,74 @@ z.show(new_eval.get_results())
 ```
 {: .Example}
 
+#### 6. Train the Model  {#trainmodel}
+
+Now we can train our model:
+
+```
+import random
+from utils1 import overSampler
+from splicemachine.ml.utilities import SpliceBinaryClassificationEvaluator
+rf_depth = [5,10,20,30]
+rf_trees = [8,12,18,26]
+rf_subsampling_rate = [1.0,0.9,0.8]
+oversample_rate = [0.4,0.7,1.0]
+
+for i in range(1,5):
+    tags = {
+        'team': 'MyCompany',
+        'purpose': 'fraud r&d',
+        'attempt-date': '11/07/2019',
+        'attempt-number': 'f{i}'
+       }
+    manager.start_run(tags=tags)
+
+    #random variable choice
+    depth = random.choice(rf_depth)
+    trees = random.choice(rf_trees)
+    subsamp_rate = random.choice(rf_subsampling_rate)
+    ovrsmpl_rate = random.choice(oversample_rate)
+
+    #transformers
+    feature_cols = df.columns[:-1]
+    ovr = overSampler(label='label',ratio = ovrsmpl_rate, majorityLabel = 0, minorityLabel = 1, withReplacement = False)
+    assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+    scaler = StandardScaler(inputCol="features", outputCol='scaledFeatures')
+    rf = RandomForestClassifier(maxDepth=depth, numTrees=trees, subsamplingRate=subsamp_rate)
+
+    #pipeline
+    stages = [ovr,assembler,scaler,rf]
+    mlpipe = Pipeline(stages=stages)
+    #log the stages of the pipeline
+    manager.log_pipeline_stages(mlpipe)
+    #log what happens to each feature
+    manager.log_feature_transformations(mlpipe)
+
+    #run on the data
+    train, test = df.randomSplit([0.8,0.2])
+    manager.start_timer(f'CV iteration {i}')
+    trainedModel = mlpipe.fit(train)
+    execution_time = manager.log_and_stop_timer()
+    print(f"--- {execution_time} seconds == {execution_time/60} minutes == {execution_time/60/60} hours")
+
+    #log model parameters
+    manager.log_model_params(trainedModel)
+    preds = trainedModel.transform(test)
+    #evaluate
+    evaluator = SpliceBinaryClassificationEvaluator()
+    evaluator.input(preds)
+    metrics = evaluator.get_results(dict=True)
+    #log model performance
+    manager.log_metrics(list(metrics.items()))
+```
+{: .Example}
+
+
 #### 7. Save the Model  {#savemodel}
 
 We want to be able to retrain our model when new data arrives, so we'll save the pipeline and model to an S3 bucket. And since we're planning to deploy this model, we'll also save it to MLflow:
 
 ```
-%spark.pyspark
 #save the pipeline and model to s3
 model.save('s3a://splice-demo/fraudDemoPipelineModel')
 #save model to MLflow for deployment
@@ -397,157 +545,7 @@ manager.log_spark_model(model)
 ```
 {: .Example}
 
-### Trying a Different Model  {#trydifferentmodel}
 
-Now that we've saved our run, we can look at creating a different pipeline and comparing results; this time, we'll re-import the data and create a pipeline by oversampling ata a `1.5x` rate and using a `LogisticRegression` model, in these steps:
-
-1. [Start a new run](#rerun)
-2. [Scale and vectorize our features](#scalefeatures)
-3. [Train and test the model](#trainandtest)
-4. [Test on unbalanced Data](#testunbalanced)
-5. [Compare results](#compareresults)
-6. [Save the model](#savemodel2)
-
-#### Start a new run {#rerun}
-
-First, we'll create a new run and name it `Amy`:
-```
-manager.create_new_run(user_id=`Amy`)
-```
-{: .Example}
-
-
-Next we'll reload the data from our database table into a Spark DataFrame, and then
- and undersample/oversample like we did previously:
-
-```
-%spark.pyspark
-from pyspark.ml.classification import LogisticRegression
-from pyspark.ml.feature import StandardScaler, VectorAssembler
-from pyspark.ml import Pipeline,PipelineModel
-
-#create new run
-manager.create_new_run(user_id='Amy')
-df = splice.df("SELECT * FROM cc_fraud.cc_fraud_data")
-df = df.withColumnRenamed('CLASS_RESULT', 'label')
-
-
-#oversample fraud data 1.5X
-fraud_data = df.filter('label=1')
-print('fraud data has {} rows'.format(fraud_data.count()))
-#sample half the data
-fraud_ratio = 0.5
-half_fraud_data = fraud_data.sample(withReplacement=False,fraction=fraud_ratio)
-#1.5X as many rows
-fraud_data = fraud_data.unionAll(half_fraud_data)
-print('fraud data has {} rows'.format(fraud_data.count()))
-#log oversample rate
-manager.log_param('oversample','1.5X')
-
-#undersample non-fraud data 1:1
-non_fraud_df = df.filter('label=0')
-
-ratio = float(fraud_data.count())/float(df.count())
-sampled_non_fraud = non_fraud_df.sample(withReplacement=False,fraction=ratio)
-
-final_df = fraud_data.unionAll(sampled_non_fraud)
-#log undersample ratio
-manager.log_param('undersample', '1:1')
-```
-{: .Example}
-
-#### 2. Scale and Vectorize our Features  {#scalefeatures}
-
-We'll again use the `StandardScaler` and `VectorAssembler` components to normalize and vectorize our features:
-
-```
-%spark.pyspark
-#feature engineering
-feature_cols = df.columns
-feature_cols.remove("label")
-print("Features: " + str(feature_cols))
-
-#feature vector and scale features
-assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
-scaler = StandardScaler(inputCol="features", outputCol='scaledFeatures')
-stages = [assembler, scaler]
-#log preprocessing steps
-manager.log_param('preprocessing','Pipeline[VectorAssembler, StandardScaler]')
-#log features that we will use
-for feature,i in zip(feature_cols,range(len(feature_cols))):
-    manager.log_param('feature {}'.format(i),feature)
-```
-{: .Example}
-
-
-#### 3. Train and Test the Model  {#trainandtest}
-
-Now we can train and test this model:
-
-```
-%spark.pyspark
-#build and evaluate model
-evaluator = SpliceBinaryClassificationEvaluator(spark)
-lr = LogisticRegression(featuresCol='scaledFeatures')
-manager.log_param('classifier', 'logistic regression')
-stages.append(lr)
-
-df = df.repartition(50)
-train, test = df.randomSplit([0.8,0.2])
-t0 = time.time()
-full_pipeline = Pipeline(stages=stages)
-model = full_pipeline.fit(train)
-time_taken = time.time() - t0
-print("Model took: " + str(time_taken) + " seconds to train")
-#make predictions
-predictions = model.transform(test)
-
-evaluator.input(predictions)
-z.show(evaluator.get_results())
-
-#log how long the model took
-manager.log_metric('time',time_taken)
-#log metrics for reference
-vals = evaluator.get_results('dict')
-for key in vals:
-    manager.log_metric(key, vals[key])
-```
-{: .Example}
-
-#### 4. Test on Unbalanced Data  {#testunbalanced}
-
-We also need to make sure that this model will generalize to work with unbalanced data:
-
-```
-%spark.pyspark
-#pull in full dataset
-new_df = splice.df('select * from cc_fraud.cc_fraud_data')
-new_df = new_df.withColumnRenamed('CLASS_RESULT', 'label')
-
-#transform and run model on new dataframe
-new_predictions = model.transform(new_df)
-
-new_eval = SpliceBinaryClassificationEvaluator(spark)
-new_eval.input(new_predictions)
-z.show(new_eval.get_results())
-```
-{: .Example}
-
-#### 5. Compare Results  {#compareresults}
-We can now visit the MLflow Tracking UI again to compare the results of this run with our previous one:
-
-<img src='https://s3.amazonaws.com/splice-demo/mlflow_ui_both_runs.png' class="indentedTightSpacing">
-
-Though this run was faster, its was not as accurate; the False Positive Rate (FPR) was too high to use for fraud prediction, so we'll move forward with our initial model.
-
-#### 6. Save the run  {#savemodel2}
-We'll save this run to S3 for future testing; however, since we won't be deploying it,  we don't need to log it to MLflow at this time.
-
-```
-%spark.pyspark
-model.save('s3a://splice-demo/fraudDemoPipelineLogisticRegression')
-```
-{: .Example}
 
 ## Deploying the Model with SageMaker  {#deploywithsagemaker}
 
@@ -664,7 +662,6 @@ Once you know your Experiment and Run ID values, you can use the Splice ML Jobs 
 Whenever additional labeled data arrives, we can pull either or both of our models from S3 and run the new data through it, allowing us to easily enhance accuracy over time.
 
 ```
-%spark.pyspark
 #load the fraud data from splicemachine
 new_data = splice.df('select * from cc_fraud.cc_fraud_data2')
 #load NN model from s3

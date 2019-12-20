@@ -13,37 +13,58 @@ folder: BestPractices/Database
 
 # ﻿Best Practices: Ingesting Data in a Spark App
 
-The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Zeppelin notebooks.
+The *Splice Machine Native Spark DataSource* allows you to directly insert data into your database from a Spark DataFrame, which provides great performance by eliminating the need to serialize and deserialize the data. You can write Spark programs that take advantage of the Native Spark DataSource, or you can use it in your Jupyter notebooks.
 
 This topic presents two examples of using the Splice Machine Native Spark DataSource to load data with Spark into a table in your database:
 
-* [Using the Native Spark DataSource to Ingest Data in Zeppelin](#loadzep)
+* [Using the Native Spark DataSource to Ingest Data in Jupyter](#loadjup)
 * [Using the Native Spark DataSource with spark-submit to Ingest Data](#loadsubmit)
 
 For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
 
 
-## Using the Native Spark DataSource to Ingest Data in Zeppelin  {#loadzep}
+## Using the Native Spark DataSource to Ingest Data in Jupyter  {#loadjup}
 
-This section presents a simple Zeppelin notebook example, written in Scala, of moving data between a Spark DataFrame and a Splice Machine table:
+This section presents a simple Jupyter notebook example, written in Scala, of moving data between a Spark DataFrame and a Splice Machine table:
 
-1.  __Create the context:__
-
-    Using the `%spark` interpreter in Zeppelin, create an instance of the `SplicemachineContext` class; this class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations such as directly inserting into your database from a DataFrame:
+1.  __Set Up Our Environment__
 
     ```
-    %spark
-    import com.splicemachine.spark.splicemachine._
-    import com.splicemachine.derby.utils._
+    import os
+    import pyspark
+    from splicemachine.spark.context import PySpliceContext
+    from pyspark.conf import SparkConf
+    from pyspark.sql import SparkSession
 
-    val JDBC_URL = "jdbc:splice://<yourJDBCUrl>:1527/splicedb;user=<yourUserId>;password=<yourPassword>"
-    val splicemachineContext = new SplicemachineContext(JDBC_URL)
+    # make sure pyspark tells workers to use python3 not 2 if both are installed
+    os.environ['PYSPARK_PYTHON'] = '/usr/bin/python3'
     ```
     {: .Example}
 
-2.  __Create a DataFrame in Scala and populate it:__
 
-    Again using the `%spark` interpreter in Zeppelin, we create a DataFrame and populate it with a little data:
+2.  __Create the context:__
+
+    Using Python cells in JUpyter, create an instance of the `SplicemachineContext` class; this class interacts with your Splice Machine cluster in your Spark executors, and provides the methods that you can use to perform operations such as directly inserting into your database from a DataFrame:
+
+    ```
+    from splicemachine.spark.context import PySpliceContext
+
+    jdbc_host = os.environ['JDBC_HOST']
+
+    conf = pyspark.SparkConf()
+    sc = pyspark.SparkContext(conf=conf)
+
+    spark = SparkSession.builder.config(conf=conf).getOrCreate()
+
+    splicejdbc='jdbc:splice://{jdbc_host}:1527/splicedb;user=splice;password=admin'
+
+    splice = PySpliceContext(spark, splicejdbc)
+    ```
+    {: .Example}
+
+3.  __Create a DataFrame in Scala and populate it:__
+
+    Now we create a DataFrame and populate it with a little data:
 
     ```
     %spark
@@ -59,24 +80,23 @@ This section presents a simple Zeppelin notebook example, written in Scala, of m
     Though this DataFrame contains only a very small amount of data, the code in this example can be scaled to DataFrames of any size.
     {: .spaceAbove}
 
-3.  __Create a Table in your Splice Machine Database:__
+4.  __Create a Table in your Splice Machine Database:__
 
-    Now we'll create a simple table in our database, using the `%splicemachine` interpreter in Zeppelin:
+    Now we'll create a simple table in our database, using the `%%sql` magic in Jupyter:
 
     ```
-    %splicemachine
+    %%sql
     create table mySchema.carsTbl ( number int primary key,
                                     make  varchar(20),
                                     model varchar(20) );
     ```
     {: .Example}
 
-4.  __Populate the Database Table from the DataFrame:__
+5.  __Populate the Database Table from the DataFrame:__
 
     To ingest all of the data in the DataFrame into your database, simply use the `Insert` method of the Splice Machine Native Spark DataSource:
 
     ```
-    %spark
     splicemachineContext.insert( carsDF, "mySchema.carsTbl");
     ```
     {: .Example}
@@ -84,10 +104,10 @@ This section presents a simple Zeppelin notebook example, written in Scala, of m
     Ingesting data in this way is extremely performant because it requires no serialization or deserialization and works with any Spark DataFrame. You can also use the Native Spark DataSource to quickly query your database, and to update or delete records.
     {: .noteImportant}
 
-5.  __Verify that All Went Well:__
+6.  __Verify that All Went Well:__
 
     ```
-    %splicemachine
+    %%sql
     select * from mySchema.carsTbl;
 
     NUMBER      MAKE            MODEL

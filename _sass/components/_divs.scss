@@ -169,6 +169,7 @@ p.noteImportant {
                     $margin:(20px 20px 20px 60px),
                     $leaderColor: red)
 }
+
 div.noteIndent {
   @include notes($beforeTxt: "NOTE:  ",
                  $margin:(20px 20px 20px 60px))
@@ -185,6 +186,16 @@ div.noteNote {
 
 p.noteNote {
     @include pgfnotes($beforeTxt: "NOTE: ");
+}
+
+div.noteWarning {
+  @include notes($beforeTxt: "WARNING:  ",
+                 $margin:(20px 20px 20px 60px))
+}
+
+p.noteWarning {
+  @include pgfnotes($beforeTxt: "WARNING:  ",
+                    $margin:(20px 20px 20px 60px))
 }
 
 div.noteOnPremiseOnly {
@@ -213,6 +224,18 @@ div.notePlain {
 
 p.notePlain {
     @include pgfnotes;
+}
+
+div.noteWarning {
+  @include notes($beforeTxt: "WARNING:  ",
+                 $margin:(20px 20px 20px 60px),
+                 $leaderColor: red)
+}
+
+p.noteImportant {
+  @include pgfnotes($beforeTxt: "IMPORTANT:  ",
+                    $margin:(20px 20px 20px 60px),
+                    $leaderColor: red)
 }
 
 div.openSourceNote {

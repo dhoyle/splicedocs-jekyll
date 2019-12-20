@@ -184,7 +184,7 @@ $TargetTable $TargetSchema $RSHostName $SpliceConnectPort $UserName $UserPasswor
 ## See Also
 * [Using the Native Spark DataSource](bestpractices_sparkadapter_intro.html)
 * [Native Spark DataSource Methods](bestpractices_sparkadapter_api.html)
-* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html)
+* [Using Our Native Spark DataSource with Jupyter](bestpractices_sparkadapter_jupyter.html)
 
 
 </div>

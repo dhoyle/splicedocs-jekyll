@@ -27,7 +27,7 @@ command. As shown in the tables below, you can use many of the commands when con
 
 ## Commands You Can Use with All Connections to a Splice Machine Database   {#splice}
 
-The following table summarizes the commands that you can use them with the `sqlshell` interface in our *On-Premise Database* and *Database-as-Service* products, and also with programs that connect to a Splice Machine database using JDBC or ODBC, including the Zeppelin notebook interface in our Database Service.
+The following table summarizes the commands that you can use them with the `sqlshell` interface in our *On-Premise Database* and *Database-as-Service* products, and also with programs that connect to a Splice Machine database using JDBC or ODBC, including the Jupyter notebook interface in our Database Service.
 
 <table summary="Command Line Interface - Splice commands">
     <col />

@@ -55,7 +55,7 @@ Splice Machine:
             <td> </td>
         </tr>
         <tr>
-            <td class="featureName">Integrated Zeppelin Notebooks</td>
+            <td class="featureName">Integrated Jupyter Notebooks</td>
             <td class="checkmark">✓</td>
             <td> </td>
             <td> </td>

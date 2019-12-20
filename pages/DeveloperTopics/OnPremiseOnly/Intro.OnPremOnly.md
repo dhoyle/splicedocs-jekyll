@@ -40,11 +40,6 @@ This section contains the following fundamental developer topics that are only r
             <td>The Splice Machine MapReduce API provides a simple programmatic interface for using MapReduce with HBase and taking advantage of the transactional capabilities that Splice Machine provides.</td>
         </tr>
         <tr>
-            <td><a href="developers_fundamentals_zeppelin.html">Using Zeppelin</a>
-            </td>
-            <td>Using Apache Zeppelin with your on-premise database.</td>
-        </tr>
-        <tr>
             <td><a href="developers_fundamentals_hbase.html">Working with HBase</a>
             </td>
             <td>Working in HBase with Splice Machine.</td>

@@ -19,15 +19,15 @@ The other topics in this chapter provide additional information about the Native
 
 * [Native Spark DataSource API](bestpractices_sparkadapter_api.html) provides reference information for the Native Spark DataSource API methods.
 * [Native Spark DataSource Examples](bestpractices_sparkadapter_submit.html) includes examples that show you how to launch a Spark app with our *Spark Submit* script, and how to use the Native Spark DataSource interactively, with the *Spark Shell*.
-* [Using Our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_zeppelin.html) presents an example of using our Native Spark DataSource in a Zeppelin notebook.
+* [Using Our Native Spark DataSource with Jupyter](bestpractices_sparkadapter_jupyter.html) presents an example of using our Native Spark DataSource in a Jupyter notebook.
 
 ## Native Spark DataSource Overview
 
 The Splice Machine Native Spark DataSource, which is also referred to as the *Spark Adapter*, allows you to directly connect Spark DataFrames and Splice Machine database tables, bypassing the need to send your data to/from Spark over a JDBC or ODBC connection. You can efficiently insert, upsert, select, update, and delete data in your Splice Machine tables directly from Spark in a transactionally consistent manner. With the Spark Adapter, transfers of data between Spark and your database are completed without serialization/deserialization, which generates tremendous performance boosts over traditional *over-the-wire* (sequentially over a JDBC/ODBC connection) transfers.
 
-To use the Spark Adapter in your code, you simply instantiate a `SplicemachineContext` object in your Spark code. You can run Spark applications that interface with your Splice Machine database interactively in the Spark shell, in Zeppelin notebooks, or by using our Spark Submit script. One common use of the Adapter is to ingest data into your Splice Machine database directly from a Spark DataFrame.
+To use the Spark Adapter in your code, you simply instantiate a `SplicemachineContext` object in your Spark code. You can run Spark applications that interface with your Splice Machine database interactively in the Spark shell, in Jupyter notebooks, or by using our Spark Submit script. One common use of the Adapter is to ingest data into your Splice Machine database directly from a Spark DataFrame.
 
-The Native DataSource allows data scientists to bypass the limitations of the SQL-based JDBC interface in favor of the more scalable and powerful Spark DataFrame API, making it possible for them to operate on data at scale and ingest real-time streaming data with outstanding performance. You can craft applications that use Spark and our Native Spark DataSource in Scala, Python, and Java. Note that you can use the Native Spark DataSource in the Splice Machine [*ML Manager*](mlmanager_intro.html) and *Zeppelin Notebook* interfaces.
+The Native DataSource allows data scientists to bypass the limitations of the SQL-based JDBC interface in favor of the more scalable and powerful Spark DataFrame API, making it possible for them to operate on data at scale and ingest real-time streaming data with outstanding performance. You can craft applications that use Spark and our Native Spark DataSource in Scala, Python, and Java. Note that you can use the Native Spark DataSource in the Splice Machine [*ML Manager*](mlmanager_intro.html) and *Jupyter Notebook* interfaces.
 
 ## Why Use the Native DataSource?
 
