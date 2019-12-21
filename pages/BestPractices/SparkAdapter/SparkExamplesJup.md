@@ -1,27 +1,25 @@
 ---
-title: Using our Native Spark DataSource with Zeppelin
-summary: Using the Splice Machine Native Spark DataSource in Zeppelin
+title: Using our Native Spark DataSource with Jupyter
+summary: Using the Splice Machine Native Spark DataSource in Jupyter
 keywords: spark, adapter, splicemachineContext
 toc: false
 compatible_version: 2.7
 product: all
 sidebar: home_sidebar
-permalink: bestpractices_sparkadapter_zeppelin.html
+permalink: bestpractices_sparkadapter_jupyter.html
 folder: BestPractices/SparkAdapter
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-# Using the Native Spark DataSource in Zeppelin Notebooks {#zepexamples}
+# Using the Native Spark DataSource in Jupyter Notebooks {#zepexamples}
 
-This topic shows you how to use the Native Spark DataSource in an Apache Zeppelin notebook. We use the `%spark` and `%splicemachine` Zeppelin interpreters to create a simple Splice Machine database table, and then access and modify that table, in these steps:
+This topic shows you how to use the Native Spark DataSource in a Jupyter notebook. We use the Python kernel and `%%sql` magic to create a simple Splice Machine database table, and then access and modify that table, in these steps:
 
 * [1. Set up the Native Spark DataSource](#setup)
 * [2. Create a Table in Your Database](#createtable)
 * [3. Populate the Table](#populatetable)
 * [4. Perform Table Operations](#performops)
-
-We have posted a [blog article](https://www.splicemachine.com/the-splice-machine-native-spark-datasource) on our website walks that you through this Zeppelin notebook example in greater detail.
 
 ## 1. Set Up the Native Spark DataSource {#setup}
 
