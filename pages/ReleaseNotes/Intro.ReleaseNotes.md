@@ -118,6 +118,8 @@ Our release notes are presented in these topics:
 ## Database Patch Release Notes  {#releasenotes}
 
 <ul>
+    <li><a href="releasenotes_3.0.1942.html">Patch Release 3.0.0.1942</a></li>
+    <li><a href="releasenotes_3.0.1941.html">Patch Release 3.0.0.1941</a></li>
     <li><a href="releasenotes_3.0.1940.html">Patch Release 3.0.0.1940</a></li>
     <li><a href="releasenotes_3.0.1939.html">Patch Release 3.0.0.1939</a></li>
     <li><a href="releasenotes_3.0.1938.html">Patch Release 3.0.0.1938</a></li>
