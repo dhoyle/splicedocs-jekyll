@@ -34,7 +34,7 @@ The YARN *ResourceManager* keeps track of the resources on your cluster, assigni
 
 ### About the Fair Scheduler
 
-The YARN Fair Scheduler enables the allocation of resources to applications in a way that all applications gety, on average, an equal share of the cluster resources over a given time period:
+The YARN Fair Scheduler enables the allocation of resources to applications in a way that all applications get, on average, an equal share of the cluster resources over a given time period:
 
 * If one app is running on the cluster, it can request all resources for its execution. When other apps are submitted, the free resources are distributed such that each app gets a fairly equal share of cluster resources.
 * Fair scheduling ensures that every queue gets a minimum share of the cluster resources, and excess resources are distributed equally among the running apps.
