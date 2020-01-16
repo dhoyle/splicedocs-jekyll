@@ -44,7 +44,7 @@ directory, in which case the directory is optional).
 Here are a few examples:
 {: .paramDefn}
 <div class="preWrapper" markdown="1">
-    https://s3a.amazonaws.com/splice/examples/jars/tours.jar
+    s3a://splice/examples/jars/tours.jar
     hdfs:///home/jars/tours.jar
     d:/todays_build/tours.jar
 {: .Example}
