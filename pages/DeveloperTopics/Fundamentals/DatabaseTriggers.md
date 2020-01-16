@@ -114,7 +114,7 @@ Trigger definitions have a number of required and optional components:
             <td class="ItalicFont">Referencing Clause</td>
             <td>
                 <p>Your triggered SQL statements can refer to the data this is being changed by the triggered action, both before the changes and after the changes, using the optional <em>referencing clause</em>.</p>
-                <p>Please see the [Referencing Clause](#ReferencingClause) section below for a detailed description and examples.</p>
+                <p>Please see the <a href="#ReferencingClause">Referencing Clause</a> section below for a detailed description and examples.</p>
             </td>
         </tr>
         <tr>
@@ -178,7 +178,7 @@ Row triggers have the following reference restrictions:
 * `DELETE` row triggers cannot reference a NEW row.
 * Row triggers cannot designate `OLD_TABLE` or `NEW_TABLE`.
 
-Note that Splice Machine considers `OLD_TABLE` and `OLD TABLE` equivalent, as well as `NEW_TABLE`  and `NEW TABLE`.
+Note that Splice Machine considers `OLD_TABLE` equivalent to `OLD TABLE`, and  `NEW_TABLE` equivalent to `NEW TABLE`.
 
 ### Referencing Tables in Statement Triggers
 
