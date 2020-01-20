@@ -117,55 +117,13 @@ requirements:
 The following table summarizes the required Hadoop ecosystem components
 for Splice Machine __Release {{site.build_version}}__ on your platform:
 
-<table summary="Splice Machine Hadoop ecosystem requirements">
-    <col />
-    <col width="135px" />
-    <col />
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>Hadoop platform</th>
-            <th>Linux</th>
-            <th>Hadoop</th>
-            <th>HBase</th>
-            <th>ZooKeeper</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{splvar_requirements_CDH-Versions}}</td>
-            <td>
-                <p class="noSpaceAbove">{{splvar_requirements_CDH-OS}}
-                </p>
-            </td>
-            <td>{{splvar_requirements_CDH-Hadoop}}</td>
-            <td>{{splvar_requirements_CDH-HBase}}</td>
-            <td>{{splvar_requirements_CDH-ZooKeeper}}</td>
-        </tr>
-        <tr>
-            <td>{{splvar_requirements_HDP-Versions}}</td>
-            <td>
-                <p class="noSpaceAbove">{{splvar_requirements_HDP-OS}}
-                </p>
-            </td>
-            <td>{{splvar_requirements_HDP-Hadoop}}</td>
-            <td>{{splvar_requirements_HDP-HBase}}</td>
-            <td>{{splvar_requirements_HDP-ZooKeeper}}</td>
-        </tr>
-        <tr>
-            <td>{{splvar_requirements_MapR-Versions}}
-            </td>
-            <td>
-                <p class="noSpaceAbove">{{splvar_requirements_MapR-OS}}
-                </p>
-            </td>
-            <td>{{splvar_requirements_MapR-Hadoop}}</td>
-            <td>{{splvar_requirements_MapR-HBase}}</td>
-            <td>{{splvar_requirements_MapR-ZooKeeper}}</td>
-        </tr>
-    </tbody>
-</table>
+{% if site.build_version == "3.0" %}
+{% include splice_snippets/Vers3.0Requirements.md %}
+{% elsif site.build_version == "2.8" %}
+{% include splice_snippets/Vers2.8Requirements.md %}
+{% else %}
+{% include splice_snippets/Vers2.7Requirements.md %}
+{% endif %}
 
 ## Linux Configuration Requirements {#LinuxReq}
 The following table summarizes Linux configuration requirements for
