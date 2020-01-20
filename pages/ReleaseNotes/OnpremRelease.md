@@ -32,12 +32,14 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
 
 ## Supported Platforms {#supported-platforms}
 The supported platforms for release {{site.build_version}} are:
-{% include splicevars.html %}
 
-* {{splvar_requirements_CDH-Versions}}
-* {{splvar_requirements_HDP-Versions}}
-* {{splvar_requirements_MapR-Versions}}
-
+{% if site.build_version == "3.0" %}
+{% include splice_snippets/Vers3.0Platforms.md %}
+{% elsif site.build_version == "2.8" %}
+{% include splice_snippets/Vers2.8Platforms.md %}
+{% else %}
+{% include splice_snippets/Vers2.7Platforms.md %}
+{% endif %}
 
 ## Enterprise-only Features {#enterprise-only-features}
 Some features only work on the *Enterprise Edition* of Splice Machine; they __do not__ work on the Community Edition of Splice Machine. To obtain a license for the Splice Machine *Enterprise Edition*, please [Contact Splice Machine Sales](https://www.splicemachine.com/company/contact-us/)
