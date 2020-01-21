@@ -16,11 +16,12 @@ Use the `SELECT` statement to query a database and receive back results.
 
 ## Syntax
 
-<div class="fcnWrapperWide"><pre class="FcnSyntax">
+<div class="fcnWrapperWide"><pre class="FcnSyntax" markdown="1">
 SELECT <a href="sqlref_queries_query.html">Query</a>
    [<a href="sqlref_clauses_orderby.html">ORDER BY clause</a>]
    [<a href="sqlref_clauses_resultoffset.html">result offset clause</a>]
-   [<a href="sqlref_clauses_resultoffset.html">fetch first clause</a>]</pre>
+   [<a href="sqlref_clauses_resultoffset.html">fetch first clause</a>]
+   [AS OF date]</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -48,10 +49,16 @@ be combined with the `result offset` clause, limits the number of rows
 fetched.
 {: .paramDefnFirst}
 
-</div>
-## Example
+AS OF date
+{: .paramName}
 
-This example selectss all records in the Players table:
+You can optionally specify the `AS OF` clause to issue a *point-in-time* query, which will return results based on the data that was in your database as of the specfied `date` value.
+{: .paramDefnFirst}
+
+</div>
+## Examples
+
+This example selects all records in the Players table:
 {: .body}
 
 <div class="preWrapperWide" markdown="1">
@@ -135,6 +142,16 @@ in 1985 and 1989:
 {: .Example xml:space="preserve"}
 
 </div>
+
+This example selects a customer's home phone number as of Jan. 20, 2019 (assuming that point-in-time queries are enabled for the `customer` table):
+
+```
+splice> SELECT home_phone FROM customer WHERE cust_id = 1020 AS OF `2019-01-20`;
+splice> (555) 555-1234
+```
+{: .Example}
+
+
 ## Statement dependency system
 
 The `SELECT` statement depends on all the tables and views named in the
@@ -147,14 +164,14 @@ the alias.
 
 ## See Also
 
-* [`CREATE INDEX`](sqlref_statements_createindex.html)statement
-* [`CREATE VIEW`](sqlref_statements_createview.html)statement
-* [`DROP INDEX`](sqlref_statements_dropindex.html)statement
-* [`DROP VIEW`](sqlref_statements_dropview.html)statement
-* [`GRANT`](sqlref_statements_grant.html)statement
-* [`ORDER BY`](sqlref_clauses_orderby.html)clause
-* [`FETCH FIRST`](sqlref_clauses_resultoffset.html)clause
-* [`RESULT OFFSET`](sqlref_clauses_resultoffset.html)clause
+* [`CREATE INDEX`](sqlref_statements_createindex.html) statement
+* [`CREATE VIEW`](sqlref_statements_createview.html) statement
+* [`DROP INDEX`](sqlref_statements_dropindex.html) statement
+* [`DROP VIEW`](sqlref_statements_dropview.html) statement
+* [`GRANT`](sqlref_statements_grant.html) statement
+* [`ORDER BY`](sqlref_clauses_orderby.html) clause
+* [`FETCH FIRST`](sqlref_clauses_resultoffset.html) clause
+* [`RESULT OFFSET`](sqlref_clauses_resultoffset.html) clause
 
 </div>
 </section>
