@@ -143,11 +143,57 @@ in 1985 and 1989:
 
 </div>
 
-This example selects a customer's home phone number as of Jan. 20, 2019 (assuming that point-in-time queries are enabled for the `customer` table):
+This example demonstrates the use of the `AS OF` clause on a table for which *Time Travel* has been enabled. First, we'll look at row of the table for customer ID `1020`; note that we display the system-added `valid_from` and `valid_to` columns, which track each row in the table over time:
+
+<table>
+    <col />
+    <col />
+    <thead>
+        <tr>
+            <th>cust_id</th>
+            <th>home_phone</th>
+            <th>address</th>
+            <th>city</th>
+            <th>state</th>
+            <th>valid_from</th>
+            <th>valid_to</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1020</td>
+            <td>775-555-7575</td>
+            <td>312 First St.</td>
+            <td>Nowhere</td>
+            <td>NV</td>
+            <td>2018-04-13</td>
+            <td>2018-12-31</td>
+        </tr>
+        <tr>
+            <td>1020</td>
+            <td>408-555-1212</td>
+            <td>786 Second St.</td>
+            <td>Somewhere</td>
+            <td>CA</td>
+            <td>2019-01-20</td>
+            <td>null</td>
+        </tr>
+    </tbody>
+</table>
+
+As you can see, the information for customer `1020` was last modified on Jan. 20, 2019; a standard `SELECT` operation will display that information:
 
 ```
-splice> SELECT home_phone FROM customer WHERE cust_id = 1020 AS OF `2019-01-20`;
-splice> (555) 555-1234
+splice> SELECT home_phone FROM customer WHERE cust_id = 1020;
+splice> 408-555-1212
+```
+{: .Example}
+
+Now, if you specify an `AS OF` date, you can see the previous version of the table row for customer `1020`:
+
+```
+splice> SELECT home_phone FROM customer WHERE cust_id = 1020 AS OF `2018-09-15`;
+splice> 775-555-7575
 ```
 {: .Example}
 
