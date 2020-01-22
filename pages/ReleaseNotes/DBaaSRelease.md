@@ -28,7 +28,6 @@ The current AWS and Azure versions of our Splice Machine Database-as-a-Service p
 These are the major updates in the current version, which was released on {{splvar_cloud_CloudReleaseDate}}:
 
 <table class="oddEven">
-    <col width="20%" />
     <col width="25%" />
     <col width="60%" />
     <thead>
@@ -50,14 +49,16 @@ These are the major updates in the current version, which was released on {{splv
             <td><em>ML Manager</em></td>
             <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
         </tr>
+        <tr>
+            <td><em>NSDS 2.0</em></td>
+            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+        </tr>
     </tbody>
 </table>
 
 ### Database New Features and Enhancements
 
 In addition to the enhancements listed above, our database includes a large number of new features and updates, which are summarized in our [Database Release Notes](releasenotes_onprem.html) topic page.
-
-If you're using the Splice Machine Database-as-a-Service produce, you'll find additional enhancements in the [Database Service Release Notes](releasenotes_dbaas.html) topic page.
 
 
 ## Features Not Yet Available {#features-not-yet-available}

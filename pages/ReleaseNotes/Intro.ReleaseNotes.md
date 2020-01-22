@@ -27,20 +27,26 @@ Our release notes are presented in these topics:
 
 ## Major Updates in Release {{site.build_version}}  {#major}
 
+This section lists the significant updates in release {{site.build_version}}, in these subsections:
+
+* [Major New Features](#new-features)
+* [New Built-in Functions](#new-functions)
+* [Feature Enhancements](#feature-enhancements)
+* [Notable Performance Enhancements](#performance-enhancements)
+
+### Major New Features  {#new-features}
+
 <table class="oddEven">
-    <col width="20%" />
     <col width="25%" />
-    <col width="60%" />
+    <col width="75%" />
     <thead>
         <tr>
-            <th>Category</th>
             <th>Update</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="BoldFont" rowspan="9">New Feature</td>
             <td><em>Kubernetes</em></td>
             <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>
@@ -78,8 +84,22 @@ Our release notes are presented in these topics:
             <td><em>Log Filtering</em></td>
             <td>You can now filter sensitive information out of log entries by specifying matching patterns (with regular expressions).</td>
         </tr>
+    </tbody>
+</table>
+
+### New Built-in Functions  {#new-functions}
+
+<table class="oddEven">
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
         <tr>
-            <td class="BoldFont" rowspan="7">New Built-in Function</td>
+            <th>Update</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
             <td><code>CHR</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
@@ -115,8 +135,22 @@ Our release notes are presented in these topics:
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
             </td>
         </tr>
+    </tbody>
+</table>
+
+### Feature Enhancements  {#feature-enhancements}
+
+<table class="oddEven">
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
         <tr>
-            <td class="BoldFont" rowspan="8">Feature Enhancement</td>
+            <th>Update</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
             <td><em>Merge Data From Multiple Files</em></td>
             <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>
         </tr>
@@ -150,8 +184,22 @@ Our release notes are presented in these topics:
             <td><em>TimeStamp Precision Increase</em></td>
             <td>Timestamp precision has been increased to microseconds (6 decimals places).</td>
         </tr>
+    </tbody>
+</table>
+
+### Notable Performance Enhancements  {#performance-enhancements}
+
+<table class="oddEven">
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
         <tr>
-            <td class="BoldFont" rowspan="3">Performance Enhancement</td>
+            <th>Update</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
             <td><em>Native Spark Aggregation</em></td>
             <td><p>This update improves the performance of queries that perform aggregation after a join or series of joins that are CPU bound; for example: cross join cases or join queries with join keys that have high rows-per-value. This is achieved by using the latest Spark Dataset methods to perform the aggregation, which allows Spark to use WholeStageCodeGen to combine multiple physical operators into a single Java function.</p>
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2302" target="_blank">SPLICE-2302</a>.</p>
@@ -170,6 +218,9 @@ Our release notes are presented in these topics:
 
 ## Database Patch Release Notes  {#releasenotes}
 
+This is the first release of version 3.0, so there are not yet any patch release notes.
+
+{% comment %}
 <ul>
     <li><a href="releasenotes_3.0.1943.html">Patch Release 3.0.0.1943</a></li>
     <li><a href="releasenotes_3.0.1942.html">Patch Release 3.0.0.1942</a></li>
@@ -179,6 +230,7 @@ Our release notes are presented in these topics:
     <li><a href="releasenotes_3.0.1938.html">Patch Release 3.0.0.1938</a></li>
     <li><a href="releasenotes_3.0.1937.html">Patch Release 3.0.0.1937</a></li>
 </ul>
+{% endcomment %}
 
 The product is available to build from open source (see [https://github.com/splicemachine/spliceengine](https://github.com/splicemachine/spliceengine)), as well as prebuilt packages for use on a cluster or cloud.
 
