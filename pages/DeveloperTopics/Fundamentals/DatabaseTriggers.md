@@ -446,6 +446,49 @@ A          |B
 ```
 {: .Example}
 
+### Example 5: Statement Trigger with Referencing Clause
+
+
+This example shows a statement trigger that uses a `REFERENCING` clause.
+
+```
+splice> create table t1 (a int, b int, primary key(b));
+0 rows inserted/updated/deleted
+splice> create table t2 (a int, b int, primary key(b));
+0 rows inserted/updated/deleted
+splice> create table t3 (a_old int, a_new int);
+0 rows inserted/updated/deleted
+splice> insert into t1 values (1,12);
+1 row inserted/updated/deleted
+splice> insert into t1 values (2,34);
+1 row inserted/updated/deleted
+splice> insert into t1 values (3,56);
+1 row inserted/updated/deleted
+splice> insert into t1 values (4,78);
+1 row inserted/updated/deleted
+splice> insert into t2 select * from t1;
+4 rows inserted/updated/deleted
+splice> -- In the following trigger "OLD" and "NEW" are treated as independent tables
+-- that contain the old version of updated rows (before the update took place),
+-- and the new version of the updated rows (after the update took place).
+CREATE TRIGGER mytrig
+   AFTER UPDATE OF a,b
+   ON t2
+   REFERENCING OLD TABLE AS OLD NEW TABLE AS NEW
+   FOR EACH STATEMENT
+insert into t3 select OLD.A, NEW.A from OLD, NEW where OLD.B = NEW.B;
+0 rows inserted/updated/deleted
+splice> UPDATE t2 SET a=a*2 WHERE A >= 3;
+2 rows inserted/updated/deleted
+splice> -- Here we have collected the before value and after value of column A.
+SELECT * from t3;
+A_OLD|A_NEW
+-----------
+3|6
+4|8
+```
+{: .Example}
+
 ## See Also
 
 * [`CREATE TRIGGER`](sqlref_statements_createtrigger.html)
