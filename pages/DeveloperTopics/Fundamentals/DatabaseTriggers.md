@@ -350,7 +350,7 @@ employees in the PD department:
 Then the trigger will fire once (and one audit record will be
 inserted) for each employee in the department named `PD`.
 
-### Example 2: Statement Level After Trigger
+### Example 2: Row Level After Trigger
 
 This example shows a row level trigger that is called after a row is
 updated in the `employees` table. The action of this trigger is to
