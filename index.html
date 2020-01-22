@@ -17,14 +17,22 @@ folder: /
         <h2 class="heading2">New and Noteworthy!</h2>
         <p>This release includes several new features of significant note:</p>
         <div class="indented">
+            <h3>Kubernetes Support</h3>
+            <p>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</p>
             <h3>Application Server Queues</h3>
             <p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues allow you to specify how different queries are prioritized; they are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
             <h3>Schema Access Restrictions</h3>
             <p>Access to the <code>SYS</code> schema (including system tables) is now, by default, restricted to only Database Administrators, who have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, which includes the new <code>ACCESS</code> permission type, see the <a href="tutorials_security_schemarestrict.html">Schema Restriction</a> topic.</p>
             <p>Since access to system tables is now restricted, views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users, though each user will only be able to access the values within each view to which s/he has been granted access.</p>
             <p class="noteNote">If you are upgrading from a previous version of Splice Machine, it is especially important that you review the information in the <a href="tutorials_security_schemarestrict.html#upgrading"><em>Upgrading to Splice Machine with Schema Restriction</em></a> section.</p>
+            <h3>Jupyter Notebooks</h3>
+            <p>Splice Machine now uses Jupyter notebooks instead of Zeppelin notebooks. Your cluster includes a fully integrated implementation of Jupyter notebooks, allowing data scientists to work with familiar tools.</p>
             <h3>Log Filtering</h3>
             <p>You can now <a href="developers_tuning_logging.html#Filtering">filter sensitive information out of log entries</a> by specifying matching patterns (with regular expressions).</p>
+            <h3>Replication</h3>
+            <p>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</p>
+            <h3>Point-in-Time Queries</h3>
+            <p>Point-in-Time queries can query data as it existed at some point in the past.</p>
         </div>
         <p>See our <a href="releasenotes_intro.html">Release Notes</a> for a list of all new features, enhancements, and bug fixes.</p>
     </div>
@@ -34,18 +42,19 @@ folder: /
     <p>This web contains the current customer documentation for <strong>version {{site.version_display}}</strong> of Splice Machine.</p>
     <p>If you're using an earlier version, you can find the documentation in these locations:</p>
     <ul>
-    {% if site.build_version == "2.8" or site.build_version == "3.0" %}
-        <li><a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
+    {% if site.build_version == "3.0" %}
+        <li><a href="https://doc.splicemachine.com/2.8/index.html" target="_blank">Splice Machine Version 2.8 Documentation</a></li>
     {% endif %}
+        <li><a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
         <li><a href="https://doc.splicemachine.com/2.5/index.html" target="_blank">Splice Machine Version 2.5 Documentation</a></li>
     </ul>
 {% elsif site.build_type == "docstest" %}
     <p>This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.</p>
     <ul>
-    {% if site.build_version == "2.8" or site.build_version == "3.0" %}
-        <li><a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
+    {% if site.build_version == "3.0" %}
+        <li><a href="https://docstest.splicemachine.com/2.8/index.html" target="_blank">Splice Machine Version 2.8 Documentation</a></li>
     {% endif %}
-        <li><a href="https://doc.splicemachine.com/2.5/index.html" target="_blank">Splice Machine Version 2.5 Documentation</a></li>
+        <li><a href="https://docstest.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
     </ul>
 {% else %}
     <p>This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.</p>

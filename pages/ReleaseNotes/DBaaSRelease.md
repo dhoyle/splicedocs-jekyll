@@ -28,12 +28,19 @@ The current AWS and Azure versions of our Splice Machine Database-as-a-Service p
 These are the major updates in the current version, which was released on {{splvar_cloud_CloudReleaseDate}}:
 
 <table class="oddEven">
-    <col width="140px" />
-    <col />
+    <col width="20%" />
+    <col width="25%" />
+    <col width="60%" />
+    <thead>
+        <tr>
+            <th>Update</th>
+            <th>Description</th>
+        </tr>
+    </thead>
     <tbody>
         <tr>
             <td><em>Kubernetes</em></td>
-            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardwared to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
+            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>
         <tr>
             <td><em>Jupyter Notebooks</em></td>
@@ -43,48 +50,14 @@ These are the major updates in the current version, which was released on {{splv
             <td><em>ML Manager</em></td>
             <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
         </tr>
-        <tr>
-            <td><em>NSDS 2.0</em></td>
-            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
-        </tr>
-        <tr>
-            <td><em>Application Server Queues</em></td>
-            <td>Workload Management and Isolation is added with Splice Machine Application Server Queues, which allow you to specify resource management for specific queries, and to track server and role levels.</td>
-        </tr>
-        <tr>
-            <td><em>Replication</em></td>
-            <td>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</td>
-        </tr>
-        <tr>
-            <td><em>Point-in-Time queries</em></td>
-            <td>Point-in-Time queries can query data as it existed at some point in the past.</td>
-        </tr>
-        <tr>
-            <td><em>Schema Restrict</em></td>
-            <td>Schema Restrict extends our security capabilities such that only authorized users can access system tables.</td>
-        </tr>
-        <tr>
-            <td><em>Log Redaction</em></td>
-            <td>Log Redaction allows you to define log masks for automatic redaction in system log files.</td>
-        </tr>
-        <tr>
-            <td><em>Extended SQL Coverage</em></td>
-            <td><p>SQL Coverage has been extended to facilitate migration from alternative databases such as DB2, including:</p>
-                <ul>
-                    <li><code>FULL OUTER JOIN</code>.</li>
-                    <li><code>ALTER TABLE</code> now supports self-referencing foreign keys.</li>
-                    <li>Microsecond timestamps.</li>
-                    <li>Trigger enhancements, including support for <code>SIGNAL, NO CASCADE,</code> search conditions, and multiple statements per trigger.</li>
-                    <li>Alternative syntax extensions, e.g. SYNONYM and ALIAS can be used interchangeably.</li>
-                    <li>DB2 error code compatibility mode.</li>
-                    <li>DB2 system table metadatga compatibility.</li>
-                    <li>DB2 expression indexing compatibility.</li>
-                    <li>DB2 text manipulation compatibility.</li>
-                </ul>
-            </td>
-        </tr>
     </tbody>
 </table>
+
+### Database New Features and Enhancements
+
+In addition to the enhancements listed above, our database includes a large number of new features and updates, which are summarized in our [Database Release Notes](releasenotes_onprem.html) topic page.
+
+If you're using the Splice Machine Database-as-a-Service produce, you'll find additional enhancements in the [Database Service Release Notes](releasenotes_dbaas.html) topic page.
 
 
 ## Features Not Yet Available {#features-not-yet-available}
