@@ -23,36 +23,41 @@ This topic includes any release notes that are specific to the Splice Machine *D
 
 ## Current Release Notes  {#release-notes}
 
-The current AWS and Azure versions of our Splice Machine Database-as-a-Service product are running _release  {{splvar_dbaas_AWSDBVersion}}_ of the Splice Machine database.
+The current AWS and Azure versions of our Splice Machine Database-as-a-Service product are running _release  {{splvar_dbaas_DBVersion}}_ of the Splice Machine database.
 
 These are the major updates in the current version, which was released on {{splvar_cloud_CloudReleaseDate}}:
 
-<table>
-    <col width="145px"/>
-    <col />
+<table class="oddEven">
+    <col width="20%" />
+    <col width="25%" />
+    <col width="60%" />
     <thead>
         <tr>
-            <th>Category</th>
-            <th>Note</th>
+            <th>Update</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td rowspan="3"><em>New Features</em></td>
-            <td>Added the ability to make another user a Primary user.</td>
+            <td><em>Kubernetes</em></td>
+            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>
         <tr>
-            <td>SSL and Authentication were enabled for the Spark user interface.</td>
+            <td><em>Jupyter Notebooks</em></td>
+            <td>Splice Machine now uses Jupyter notebooks instead of Zeppelin notebooks. Your cluster includes a fully integrated implementation of Jupyter notebooks, allowing data scientists to work with familiar tools.</td>
         </tr>
         <tr>
-            <td>Support was added for multiple <code>%splicemachine</code> interpreter settings.</td>
-        </tr>
-        <tr>
-            <td rowspan="1"><em>Bug Fixes</em></td>
-            <td>An issue with the password not being correctly set is fixed.</td>
+            <td><em>ML Manager</em></td>
+            <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
         </tr>
     </tbody>
 </table>
+
+### Database New Features and Enhancements
+
+In addition to the enhancements listed above, our database includes a large number of new features and updates, which are summarized in our [Database Release Notes](releasenotes_onprem.html) topic page.
+
+If you're using the Splice Machine Database-as-a-Service produce, you'll find additional enhancements in the [Database Service Release Notes](releasenotes_dbaas.html) topic page.
 
 
 ## Features Not Yet Available {#features-not-yet-available}
@@ -60,20 +65,20 @@ These are the major updates in the current version, which was released on {{splv
 These features are not yet available, but will be very soon:
 
 * VPC Settings are not yet enabled but will be in a near future release.
-* You currently cannot cancel queries that are running through Zeppelin or JDBC tools; you can use the Spark User Interface to cancel Spark queries.
+* You currently cannot cancel queries that are running through Jupyter or JDBC tools; you can use the Spark User Interface to cancel Spark queries.
 
 
 ## Current Limitations {#current-limitations}
 
 These limitations exist in this release, and will be removed in the near future:
 
-* On a JDBC connection, individual queries or actions will time out after one hour; you can run long-running queries within a Zeppelin notebook.
+* On a JDBC connection, individual queries or actions will time out after one hour; you can run long-running queries within a Jupyter notebook.
 
 ## Important Notes {#important-notes}
 
 These are important notes about issues you need to be aware of when using our Database Service:
 
-* The timestamps displayed in Zeppelin will be different than the timestamps you see in the Splice Machine Spark User Interface, depending upon your time zone.
+* The timestamps displayed in Jupyter will be different than the timestamps you see in the Splice Machine Spark User Interface, depending upon your time zone.
 
 ## Major Updates in Previous Releases  {#prev-release}
 

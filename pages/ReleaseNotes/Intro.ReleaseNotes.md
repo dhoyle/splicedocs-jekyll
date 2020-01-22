@@ -27,7 +27,7 @@ Our release notes are presented in these topics:
 
 ## Major Updates in Release {{site.build_version}}  {#major}
 
-<table>
+<table class="oddEven">
     <col width="20%" />
     <col width="25%" />
     <col width="60%" />
@@ -40,35 +40,58 @@ Our release notes are presented in these topics:
     </thead>
     <tbody>
         <tr>
-            <td class="BoldFont" rowspan="3">New Feature</td>
-            <td>Application Server Queues</td>
-            <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
-                <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p>
-            </td>
+            <td class="BoldFont" rowspan="9">New Feature</td>
+            <td><em>Kubernetes</em></td>
+            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>
         <tr>
-            <td>Schema Access Restrictions</td>
+            <td><em>Jupyter Notebooks</em></td>
+            <td>Splice Machine now uses Jupyter notebooks instead of Zeppelin notebooks. Your cluster includes a fully integrated implementation of Jupyter notebooks, allowing data scientists to work with familiar tools.</td>
+        </tr>
+        <tr>
+            <td><em>ML Manager</em></td>
+            <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
+        </tr>
+        <tr>
+            <td><em>NSDS 2.0</em></td>
+            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+        </tr>
+        <tr>
+            <td><em>Application Server Queues</em></td>
+            <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
+                <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p></td>
+        </tr>
+            <td><em>Schema Access Restrictions</em></td>
             <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the [Schema Restriction](tutorials_security_schemarestrict.html) topic.</p>
                 <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
                 <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
             </td>
+        <tr>
+            <td><em>Replication</em></td>
+            <td>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</td>
         </tr>
         <tr>
-            <td>Log Filtering</td>
+            <td><em>Point-in-Time queries</em></td>
+            <td>Point-in-Time queries can query data as it existed at some point in the past.</td>
+        </tr>
+        <tr>
+            <td><em>Log Filtering</em></td>
             <td>You can now filter sensitive information out of log entries by specifying matching patterns (with regular expressions).</td>
         </tr>
         <tr>
-            <td class="BoldFont" rowspan="4">New Built-in Function</td>
-            <td><code>STRIP</code></td>
-            <td><p>The built-in function <a href="sqlref_builtinfcns_strip.html"><code>STRIP</code></a> has been added.</p>
-                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
+            <td class="BoldFont" rowspan="7">New Built-in Function</td>
+            <td><code>CHR</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
             </td>
         </tr>
         <tr>
-            <td><code>RIGHT</code></td>
-            <td><p>The built-in function <a href="sqlref_builtinfcns_right.html"><code>RIGHT</code></a> has been added.</p>
-                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2344" target="_blank">SPLICE-2344</a>.</p>
-            </td>
+            <td><code>CONCAT</code></td>
+            <td>You can now use either <code>||</code> or the term <code>CONCAT</code> to denote the concatenation operator.</td>
+        </tr>
+        <tr>
+            <td><code>HEX</code></td>
+            <td>The built-in function <a href="sqlref_builtinfcns_hex.html"><code>HEX</code></a> has been added.</td>
         </tr>
         <tr>
             <td><code>LEFT</code></td>
@@ -77,39 +100,69 @@ Our release notes are presented in these topics:
             </td>
         </tr>
         <tr>
-            <td><code>CHR</code></td>
-            <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
-                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
+            <td><code>REPEAT</code></td>
+            <td>The built-in function <a href="sqlref_builtinfcns_repeat.html"><code>REPEAT</code></a> has been added.</td>
+        </tr>
+        <tr>
+            <td><code>RIGHT</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_right.html"><code>RIGHT</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2344" target="_blank">SPLICE-2344</a>.</p>
             </td>
         </tr>
         <tr>
-            <td class="BoldFont" rowspan="3">Feature Enhancement</td>
-            <td>Merge Data From Multiple Files</td>
+            <td><code>STRIP</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_strip.html"><code>STRIP</code></a> has been added.</p>
+                <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="BoldFont" rowspan="8">Feature Enhancement</td>
+            <td><em>Merge Data From Multiple Files</em></td>
             <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>
         </tr>
         <tr>
-            <td>Statistics Backed Up and Restored</td>
+            <td><em>Full Join Support</em></td>
+            <td>Full joins, also referred to as <em>full outer joins</em>, allow you to combine the rows from two tables, including the rows in either table that don’t have match in the other table.</td>
+        </tr>
+        <tr>
+            <td><em>Triggers</em></td>
+            <td>Our <a href="developers_fundamentals_triggers.html">Triggers</a> implementation has been greatly enhanced, and now includes supports for <code>SIGNAL</code>, <code>NO CASCADE</code>, search conditions (<code>WHEN</code>), and multiple statements per trigger.</td>
+        </tr>
+        <tr>
+            <td><em>Alter Table</em></td>
+            <td>The <a href="sqlref_statements_altertable.html"><code>ALTER TABLE</code></a> statement now supports self-referencing foreign keys.</td>
+        </tr>
+        <tr>
+            <td><em>Alias</em></td>
+            <td>You can now use <code>ALIAS</code> interchangeably with <code>SYNONYM</code>.</td>
+        </tr>
+        <tr>
+            <td><em>Statistics Backed Up and Restored</em></td>
             <td><p>The <a href="sqlref_sysprocs_backuptable.html"><code>SYSCS_UTIL.SYSCS_BACKUP_TABLE</code></a> and <a href="sqlref_sysprocs_backupschema.html"><code>SYSCS_UTIL.SYSCS_BACKUP_SCHEMA</code></a> system procedures now back up statistics, and the <a href="sqlref_sysprocs_restoretable.html"><code>SYSCS_UTIL.SYSCS_RESTORE_TABLE</code></a> and <a href="sqlref_sysprocs_restoreschema.html"><code>SYSCS_UTIL.SYSCS_RESTORE_SCHEMA</code></a> system procedures restore those statistics.</p>
             <p class="noteIcon">This means that, if the statistics were current when you backed up, you do not need to run an <code>ANALYZE</code> after restoring the table or schema.</p>
             </td>
         </tr>
         <tr>
-            <td>Decimal Precision Increase</td>
+            <td><em>Decimal Precision Increase</em></td>
             <td>Maximum precision for the <a href="sqlref_datatypes_decimal.html"><code>DECIMAL</code></a> data type has been increased from <code>31</code> to <code>38</code>.</td>
         </tr>
         <tr>
+            <td><em>TimeStamp Precision Increase</em></td>
+            <td>Timestamp precision has been increased to microseconds (6 decimals places).</td>
+        </tr>
+        <tr>
             <td class="BoldFont" rowspan="3">Performance Enhancement</td>
-            <td>Native Spark Aggregation</td>
+            <td><em>Native Spark Aggregation</em></td>
             <td><p>This update improves the performance of queries that perform aggregation after a join or series of joins that are CPU bound; for example: cross join cases or join queries with join keys that have high rows-per-value. This is achieved by using the latest Spark Dataset methods to perform the aggregation, which allows Spark to use WholeStageCodeGen to combine multiple physical operators into a single Java function.</p>
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2302" target="_blank">SPLICE-2302</a>.</p>
             </td>
         </tr>
         <tr>
-            <td>Cross Join</td>
+            <td><em>Cross Join</em></td>
             <td>The implementation of <code>Nested Loop Inner Join</code> has been enhanced to use Spark's DataFrame Cross Join implementation, resulting in performance improvement for applicable queries.</td>
         </tr>
         <tr>
-            <td>Property Caching</td>
+            <td><em>Property Caching</em></td>
             <td>Property cache added for Spark executor to reduce hits to splice:16 region.</td>
         </tr>
     </tbody>
