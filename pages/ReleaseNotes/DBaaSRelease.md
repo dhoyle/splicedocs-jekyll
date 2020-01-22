@@ -23,33 +23,65 @@ This topic includes any release notes that are specific to the Splice Machine *D
 
 ## Current Release Notes  {#release-notes}
 
-The current AWS and Azure versions of our Splice Machine Database-as-a-Service product are running _release  {{splvar_dbaas_AWSDBVersion}}_ of the Splice Machine database.
+The current AWS and Azure versions of our Splice Machine Database-as-a-Service product are running _release  {{splvar_dbaas_DBVersion}}_ of the Splice Machine database.
 
 These are the major updates in the current version, which was released on {{splvar_cloud_CloudReleaseDate}}:
 
-<table>
-    <col width="145px"/>
+<table class="oddEven">
+    <col width="140px" />
     <col />
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Note</th>
-        </tr>
-    </thead>
     <tbody>
         <tr>
-            <td rowspan="3"><em>New Features</em></td>
-            <td>Added the ability to make another user a Primary user.</td>
+            <td><em>Kubernetes</em></td>
+            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardwared to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>
         <tr>
-            <td>SSL and Authentication were enabled for the Spark user interface.</td>
+            <td><em>Jupyter Notebooks</em></td>
+            <td>Splice Machine now uses Jupyter notebooks instead of Zeppelin notebooks. Your cluster includes a fully integrated implementation of Jupyter notebooks, allowing data scientists to work with familiar tools.</td>
         </tr>
         <tr>
-            <td>Support was added for multiple <code>%splicemachine</code> interpreter settings.</td>
+            <td><em>ML Manager</em></td>
+            <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
         </tr>
         <tr>
-            <td rowspan="1"><em>Bug Fixes</em></td>
-            <td>An issue with the password not being correctly set is fixed.</td>
+            <td><em>NSDS 2.0</em></td>
+            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+        </tr>
+        <tr>
+            <td><em>Application Server Queues</em></td>
+            <td>Workload Management and Isolation is added with Splice Machine Application Server Queues, which allow you to specify resource management for specific queries, and to track server and role levels.</td>
+        </tr>
+        <tr>
+            <td><em>Replication</em></td>
+            <td>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</td>
+        </tr>
+        <tr>
+            <td><em>Point-in-Time queries</em></td>
+            <td>Point-in-Time queries can query data as it existed at some point in the past.</td>
+        </tr>
+        <tr>
+            <td><em>Schema Restrict</em></td>
+            <td>Schema Restrict extends our security capabilities such that only authorized users can access system tables.</td>
+        </tr>
+        <tr>
+            <td><em>Log Redaction</em></td>
+            <td>Log Redaction allows you to define log masks for automatic redaction in system log files.</td>
+        </tr>
+        <tr>
+            <td><em>Extended SQL Coverage</em></td>
+            <td><p>SQL Coverage has been extended to facilitate migration from alternative databases such as DB2, including:</p>
+                <ul>
+                    <li><code>FULL OUTER JOIN</code>.</li>
+                    <li><code>ALTER TABLE</code> now supports self-referencing foreign keys.</li>
+                    <li>Microsecond timestamps.</li>
+                    <li>Trigger enhancements, including support for <code>SIGNAL, NO CASCADE,</code> search conditions, and multiple statements per trigger.</li>
+                    <li>Alternative syntax extensions, e.g. SYNONYM and ALIAS can be used interchangeably.</li>
+                    <li>DB2 error code compatibility mode.</li>
+                    <li>DB2 system table metadatga compatibility.</li>
+                    <li>DB2 expression indexing compatibility.</li>
+                    <li>DB2 text manipulation compatibility.</li>
+                </ul>
+            </td>
         </tr>
     </tbody>
 </table>

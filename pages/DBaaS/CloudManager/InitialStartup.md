@@ -25,24 +25,17 @@ to:
 {: .spaceAbove}
 
 1.  [Configure Cluster Parameters](#Configure) for data sizing, cluster
-    power, and backup frequency.
+    power, ML Manager, and backup frequency.
 2.  [Configure Cluster Access and Options](#Configur) for your users.
-3.  [Set Up Payment](#Payment) for your Splice Machine cluster.
-4.  Start Using Splice Machine!
+3.  Start Using Splice Machine!
 
 ## Configure Cluster Parameters   {#Configure}
 
 You use the <span class="ConsoleLink">Create New Cluster</span> screen
-to provision your cluster:
+to provision your cluster. Note that cluster creation is the same on both AWS and Azure:
 
-![](images/CreateNewCluster1.png "Initial settings for new Splice
+![](images/CloudCreateCluster.png "Initial settings for new Splice
 Machine cluster"){: .indentedTightSpacing}
-
-If you have subscribed to Splice Machine via the AWS Marketplace, your
-costs will be estimated on an hourly basis instead of a monthly basis:
-
-![](images/hourlycosts.png){: .indentedTightSpacing style="max-width:
-300px"}
 
 ### Screen Help
 
@@ -51,9 +44,9 @@ Cluster</span> screen, like most of our Cloud Manager screens, include
 small information buttons ![](images/infobutton.png){: .icon36} that you
 can click to display a small pop-up that describes the components.
 
-For example, here are the pop-ups from the <span class="ConsoleLink">Create New Cluster</span> screen:
+For example, here you can see several of the information pop-ups from the <span class="ConsoleLink">Create New Cluster</span> screen:
 
-![](images/CreateClusterPopups.png "Create Cluster screen Pop-ups"){: .indentedTightSpacing}
+![](images/CloudCreateClusterInfo.png "Create Cluster screen Pop-ups"){: .indentedTightSpacing}
 
 Click the information button again to dismiss a pop-up.
 
@@ -92,18 +85,11 @@ future, so you're not stuck forever with your initial settings.
            <td>You can select in which region your cluster will reside by clicking the current region name, which drops down a list of choices.</td>
        </tr>
        <tr>
-           <td rowspan="3" class="ConsoleLink">Data Sizing</td>
+           <td rowspan="2" class="ConsoleLink">Data Sizing</td>
            <td><code>Internal Dataset (TB)</code></td>
            <td>
                <p>Move the slider to modify your estimate of how large your database will be.</p>
                <p><code>Internal Dataset</code> is the amount of data that you will be storing within your Splice Machine database.</p>
-           </td>
-       </tr>
-       <tr>
-           <td><code>Dedicated Storage</code></td>
-           <td>
-               <p>Select this checkbox to have us provision dedicated storage for your database instance, which does add cost.</p>
-               <p>Leave this unselected to have your database instance stored on shared hardware.</p>
            </td>
        </tr>
        <tr>
@@ -114,7 +100,7 @@ future, so you're not stuck forever with your initial settings.
            </td>
        </tr>
        <tr>
-           <td rowspan="3" class="ConsoleLink">Cluster Power</td>
+           <td rowspan="2" class="ConsoleLink">Cluster Power</td>
            <td><code>OLTP Splice Units</code></td>
            <td>
                <p>Move the slider to modify your estimate of how much processing power you need for transactional activity, involving quick inserts, lookups, updates, and deletes. More OLTP units means more region servers in your cluster.</p>
@@ -127,25 +113,53 @@ future, so you're not stuck forever with your initial settings.
            </td>
        </tr>
        <tr>
-           <td><code>Notebook Spark Units</code></td>
+           <td rowspan="6" class="ConsoleLink">Notebook</td>
+           <td><code>Total Users</code></td>
            <td>
-               <p>Move the slider to modify your estimate of how many Spark units should be utilized by the Splice Machine Native Spark Datasource and other external uses of Spark libraries, such as MLlib.</p>
+               <p>The total number of users who can use notebooks on your cluster.</p>
            </td>
+       </tr>
+       <tr>
+            <td><code>Active Users</code></td>
+            <td>
+                <p>The number of users who can concurrently be working in Jupyter notebooks.</p>
+            </td>
+       </tr>
+       <tr>
+            <td><code>Notebooks per User</code></td>
+            <td>
+                <p>The number of notebooks that a single user can be working on at any point in time.</p>
+            </td>
+       </tr>
+       <tr>
+            <td><code>Splice Units per Notebook</code></td>
+            <td>
+                <p>The number of Spark units allocated per notebook.</p>
+            </td>
+       </tr>
+       <tr>
+            <td><code>Storage Total</code></td>
+            <td>
+                <p>The total amount of storage for notebooks; Splice Machine allocates 10GB per user.</p>
+            </td>
+       </tr>
+       <tr>
+            <td><code>Total Splice Units</code></td>
+            <td>
+                <p>This is computed by:</p>
+                <pre class="PlainCell"><code>Active-Users * Notebooks-per-User * Splice-Units-per-Notebook</code></pre>
+            </td>
        </tr>
        <tr>
            <td class="ConsoleLink">ML Manager</td>
            <td><code>Enable</code></td>
-           <td>Select this checkbox to enable the Splice Machine ML Manager, which provides access to our Model Workflow and Deployment integration and additional Machine Learning libraries.</td>
+           <td>Select this checkbox to enable the beta version of the Splice Machine ML Manager, which provides access to our Model Workflow and Deployment integration and additional Machine Learning libraries.</td>
        </tr>
        <tr>
            <td class="ConsoleLink">Backup Frequency</td>
            <td><code>Frequency</code></td>
            <td>
-               <p>Select how frequently you want Splice Machine to back up your database. You can select <code>Hourly</code>, <code>Daily</code>, or <code>Weekly</code>; each selection displays additional backup timing and retention options:</p>
-               <p>Hourly:</p>
-               <p>
-                   <img src="images/HourlyBackupOptions_450x78.png" class="indentedTightSpacing" title="Hourly backup options" />
-               </p>
+               <p>Select how frequently you want Splice Machine to back up your database. You can select <code>None</code>, or you can select automatic <code>Daily</code> or <code>Weekly</code> backups, each of which displays additional backup timing and retention options:</p>
                <p>Daily:</p>
                <p>
                    <img src="images/DailyBackupOptions_450x68.png" class="indentedTightSpacing" title="Hourly backup options"  />
@@ -180,7 +194,7 @@ as a result the <span class="ConsoleLink">Cluster Power</span> values
 are no longer adequate to support that large a dataset, as indicated by
 the striping:
 
-![](images/CreateNewCluster2.png "Modified cluster parameters"){:
+![](images/CloudCreateClash.png "Modified cluster parameters"){:
 .indentedTightSpacing}
 
 Splice Machine will not allow you to create your cluster if any of your
@@ -192,111 +206,25 @@ If you don't correct the required setting and attempt to advance to the
 message and will be unable to advance until you do correct it.
 {: .noteNote}
 
-## Configure Cluster Access and Options   {#Configur}
+## Configure Database Credentials   {#Configur}
 
 Once you've configured your cluster, click the <span
 class="CalloutFont">Next</span> button to display the <span
-class="ConsoleLink">Cluster Access and Options</span> screen. The following image
-includes displays of the pop-up help information displays for the
-different access methods:
+class="ConsoleLink">Database Credentials</span> screen.
 
-![](images/CreateNewCluster4.png "Setting up access and options for a new
+![](images/CloudAWSCredentials.png "Setting up credentials for a new
 cluster"){: .indentedTightSpacing}
 
-You can set your cluster up for access to your Amazon Virtual Private
-Cloud (VPC) access by selecting the `Client VPC connectivity required`
-option and providing your VPC account ID.
+You need to enter the Password for the <code>splice</code> user on your new cluster.
 
-You need to configure AWS Identity and Access Management (IAM) for your
-cluster to allow Splice Machine to access selected S3 folders; this is
-described in our [Configuring an S3 bucket for Splice Machine
-Acces](developers_cloudconnect_configures3.html) tutorial.
+If you're creating your cluster on AWS, you will see the <span class="ConsoleLink">IAM S3 Access</span> panel;
+use this to configure AWS Identity and Access Management (IAM) for your cluster to allow Splice Machine to access selected S3 folders, as described in our [Configuring an S3 bucket for Splice Machine Access](developers_cloudconnect_configures3.html) topic.
 
-<div class="notePlain" markdown="1">
-For more information about Amazon VPC, see
-[https://aws.amazon.com/vpc/][1]{: target="_blank"}.
-
-For more information about Amazon IAM, see
-[https://aws.amazon.com/iam/][2]{: target="_blank"}.
-
-</div>
-
-You can change the number of Jupyter instances available on your cluster, and you can adjust
-how much Java memory is allocated for the Spark Interpreter in each instance. Multiple Jupyter instances allow multiple users to develop and run notebooks independently.
-
-You can also add (at an additional cost) our *Machine Learning Manager*) to your
-cluster by clicking the <span class="CalloutFont">Enable button</span> in the <span
-class="ConsoleLink">ML Manager</span> section at the bottom of this screen. The Splice Machine ML Manager
-facilitates machine learning development by integrating MLflow, Amazon Sagemaker deployment, additional Machine Learning
-libraries, and our database together.
-
-After setting up any options and access methods, please confirm that you `accept our
-terms and conditions`, then click the <span
-class="CalloutFont">Launch</span> button, which will take you to the
-<span class="ConsoleLink">Payment</span> screen, unless you've
-subscribed to Splice Machine from the Amazon Marketplace or have already
-set up a payment method for your account.
-
-## Set Up Payment   {#Payment}
-
-When you click the <span class="CalloutFont">Launch button</span>, then
-one of these actions happens:
-
-* If you subscribed to Splice Machine via the AWS Marketplace, or you
-  already have a payment method set up on your account, you'll land on
-  your dashboard and will be notified when your cluster has been
-  initialized.
-* If you don't yet have a payment method set up, you'll land on the
-  <span class="ConsoleLink">Payment</span> screen, in which you can
-  elect to use on of three payment methods:
-
-![](images/PaymentScreen_436x219.png "Splice Machine Provisioning
-Payment Screen"){: .indentedSmall}
-
-<table>
-               <col />
-               <col style="width: 52px;" />
-               <tbody>
-                   <tr>
-                       <td>Credit Card</td>
-                       <td>
-                           <p>
-                               <img src="images/PaymentCC_450x236.png" class="indentedSmall" title="Paying with a credit card" />
-                           </p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td>ACH Electronic Transfer</td>
-                       <td>
-                           <p>
-                               <img src="images/PaymentACH_450x130.png" class="indentedSmall" title="Paying with ACH transfer" />
-                           </p>
-                       </td>
-                   </tr>
-                   <tr>
-                       <td>Authorization Code</td>
-                       <td>
-                           <p>
-                               <img src="images/PaymentAuthCode_450x164.png" class="indentedSmall" title="Paying with an authorization code" />
-                           </p>
-                       </td>
-                   </tr>
-               </tbody>
-           </table>
-#### Modifying Payment Information
-
-If you ever need to change your Splice Machine payment information, you
-can update it in the <span class="ConsoleLink">Billing Activity</span>
-tab of the <span class="ConsoleLink">Account</span> screen; just click
-the <span class="CalloutFont">Update</span> button to revisit the <span
-class="ConsoleLink">Payment</span> screen:
-
-![](images/BillingActivity_729x348.png "Billing Activity tab of the
-Account screen"){: .indentedTightSpacing}
-
-If you've purchased Splice Machine through Amazon Marketplace, change
-your billing credentials in the Marketplace instead.
+You will not see this panel if you're on Azure.
 {: .noteNote}
+
+After configuring your credentials, please confirm that you `accept our terms and conditions`, then click the <span
+class="CalloutFont">Launch</span> button. Splice Machine will immediately begin creating your cluster, and you'll receive an email notfication when it's done.
 
 ## Start Using Your Database!   {#loadData}
 
@@ -322,8 +250,3 @@ into your Splice Machine database:
 
 </div>
 </section>
-
-
-
-[1]: https://aws.amazon.com/vpc/
-[2]: https://aws.amazon.com/iam/
