@@ -33,27 +33,33 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
 
 ## New Features and Enhancements  {#new-features}
 
+This section lists the significant updates in release {{site.build_version}}, in these subsections:
+
+* [Major New Features](#new-features)
+* [New Built-in Functions](#new-functions)
+* [Feature Enhancements](#feature-enhancements)
+* [Notable Performance Enhancements](#performance-enhancements)
+
+### Major New Features  {#new-features}
+
 <table class="oddEven">
-    <col width="20%" />
     <col width="25%" />
-    <col width="60%" />
+    <col width="75%" />
     <thead>
         <tr>
-            <th>Category</th>
             <th>Update</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="BoldFont" rowspan="6">New Feature</td>
             <td><em>NSDS 2.0</em></td>
             <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
         </tr>
         <tr>
             <td><em>Application Server Queues</em></td>
             <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
-                <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p</td>
+                <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p></td>
         </tr>
             <td><em>Schema Access Restrictions</em></td>
             <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the [Schema Restriction](tutorials_security_schemarestrict.html) topic.</p>
@@ -72,12 +78,22 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
             <td><em>Log Filtering</em></td>
             <td>You can now filter sensitive information out of log entries by specifying matching patterns (with regular expressions).</td>
         </tr>
+    </tbody>
+</table>
+
+### New Built-in Functions  {#new-functions}
+
+<table class="oddEven">
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
         <tr>
-            <td><em>Full Join Support</em></td>
-            <td>Full joins, also referred to as *full outer joins*, allow you to combine the rows from two tables, including the rows in either table that don’t have match in the other table.</td>
+            <th>Update</th>
+            <th>Description</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
-            <td class="BoldFont" rowspan="7">New Built-in Function</td>
             <td><code>CHR</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
@@ -113,14 +129,28 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2345" target="_blank">SPLICE-2345</a>.</p>
             </td>
         </tr>
+    </tbody>
+</table>
+
+### Feature Enhancements  {#feature-enhancements}
+
+<table class="oddEven">
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
         <tr>
-            <td class="BoldFont" rowspan="8">Feature Enhancement</td>
-            <td>Merge Data From Multiple Files</td>
+            <th>Update</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><em>Merge Data From Multiple Files</em></td>
             <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>
         </tr>
         <tr>
             <td><em>Full Join Support</em></td>
-            <td>Full joins, also referred to as *full outer joins*, allow you to combine the rows from two tables, including the rows in either table that don’t have match in the other table.</td>
+            <td>Full joins, also referred to as <em>full outer joins</em>, allow you to combine the rows from two tables, including the rows in either table that don’t have match in the other table.</td>
         </tr>
         <tr>
             <td><em>Triggers</em></td>
@@ -132,7 +162,7 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
         </tr>
         <tr>
             <td><em>Alias</em></td>
-            <td>You can now use <code>ALIAS</code> interchangeably with <code>SYNONYM</code>.<td>
+            <td>You can now use <code>ALIAS</code> interchangeably with <code>SYNONYM</code>.</td>
         </tr>
         <tr>
             <td><em>Statistics Backed Up and Restored</em></td>
@@ -148,8 +178,22 @@ CALL <a href="sqlref_sysprocs_updatemetastmts.html">SYSCS_UTIL.SYSCS_UPDATE_META
             <td><em>TimeStamp Precision Increase</em></td>
             <td>Timestamp precision has been increased to microseconds (6 decimals places).</td>
         </tr>
+    </tbody>
+</table>
+
+### Notable Performance Enhancements  {#performance-enhancements}
+
+<table class="oddEven">
+    <col width="25%" />
+    <col width="75%" />
+    <thead>
         <tr>
-            <td class="BoldFont" rowspan="3">Performance Enhancement</td>
+            <th>Update</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
             <td><em>Native Spark Aggregation</em></td>
             <td><p>This update improves the performance of queries that perform aggregation after a join or series of joins that are CPU bound; for example: cross join cases or join queries with join keys that have high rows-per-value. This is achieved by using the latest Spark Dataset methods to perform the aggregation, which allows Spark to use WholeStageCodeGen to combine multiple physical operators into a single Java function.</p>
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2302" target="_blank">SPLICE-2302</a>.</p>
