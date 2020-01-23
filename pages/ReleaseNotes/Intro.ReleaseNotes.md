@@ -68,7 +68,7 @@ This section lists the significant updates in release {{site.build_version}}, in
                 <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p></td>
         </tr>
             <td><em>Schema Access Restrictions</em></td>
-            <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the [Schema Restriction](tutorials_security_schemarestrict.html) topic.</p>
+            <td><p>Access to the <code>SYS</code> schema is now, by default, restricted to only Database Administrators, who now have the ability to restrict access to the <code>SYS</code> schema on a user or role basis. For more information about this feature, see the <a href="tutorials_security_schemarestrict.html">Schema Restriction</a> topic.</p>
                 <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
                 <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
             </td>
