@@ -38,20 +38,16 @@ These are the major updates in the current version, which was released on {{splv
     </thead>
     <tbody>
         <tr>
-            <td><em>Kubernetes</em></td>
-            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
+            <td><em>Primary User</em></td>
+            <td>Added the ability to make another user a Primary user.</td>
         </tr>
         <tr>
-            <td><em>Jupyter Notebooks</em></td>
-            <td>Splice Machine now uses Jupyter notebooks instead of Zeppelin notebooks. Your cluster includes a fully integrated implementation of Jupyter notebooks, allowing data scientists to work with familiar tools.</td>
+            <td><em>SSL for Spark UI</em></td>
+            <td>SSL and Authentication were enabled for the Spark user interface.</td>
         </tr>
         <tr>
-            <td><em>ML Manager</em></td>
-            <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
-        </tr>
-        <tr>
-            <td><em>NSDS 2.0</em></td>
-            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+            <td><em>Zeppelin Notebooks</em></td>
+            <td>Support was added for multiple %splicemachine interpreter settings.</td>
         </tr>
     </tbody>
 </table>

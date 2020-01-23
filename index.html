@@ -34,16 +34,20 @@ folder: /
     <p>This web contains the current customer documentation for <strong>version {{site.version_display}}</strong> of Splice Machine.</p>
     <p>If you're using an earlier version, you can find the documentation in these locations:</p>
     <ul>
-    {% if site.build_version == "2.8" or site.build_version == "3.0" %}
-        <li><a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
+    {% if site.build_version == "3.0" %}
+        <li><a href="https://doc.splicemachine.com/2.8/index.html" target="_blank">Splice Machine Version 2.8 Documentation</a></li>
     {% endif %}
+        <li><a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
         <li><a href="https://doc.splicemachine.com/2.5/index.html" target="_blank">Splice Machine Version 2.5 Documentation</a></li>
     </ul>
 {% elsif site.build_type == "docstest" %}
     <p>This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.</p>
-    <p>If you're looking for an earlier version:</p>
     <ul>
-        <li><a href="https://doc.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
+    {% if site.build_version == "3.0" %}
+        <li><a href="https://docstest.splicemachine.com/2.8/index.html" target="_blank">Splice Machine Version 2.8 Documentation</a></li>
+    {% endif %}
+        <li><a href="https://docstest.splicemachine.com/2.7/index.html" target="_blank">Splice Machine Version 2.7 Documentation</a></li>
+        <li><a href="https://docstest.splicemachine.com/2.5/index.html" target="_blank">Splice Machine Version 2.5 Documentation</a></li>
     </ul>
 {% else %}
     <p>This web contains the current internal documentation for <strong>version {{site.build_version}}</strong> of Splice Machine.</p>

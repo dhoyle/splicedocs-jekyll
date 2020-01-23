@@ -47,22 +47,6 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
-            <td><em>Kubernetes</em></td>
-            <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
-        </tr>
-        <tr>
-            <td><em>Jupyter Notebooks</em></td>
-            <td>Splice Machine now uses Jupyter notebooks instead of Zeppelin notebooks. Your cluster includes a fully integrated implementation of Jupyter notebooks, allowing data scientists to work with familiar tools.</td>
-        </tr>
-        <tr>
-            <td><em>ML Manager</em></td>
-            <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
-        </tr>
-        <tr>
-            <td><em>NSDS 2.0</em></td>
-            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
-        </tr>
-        <tr>
             <td><em>Application Server Queues</em></td>
             <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
                 <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p></td>
@@ -72,13 +56,6 @@ This section lists the significant updates in release {{site.build_version}}, in
                 <p>Views have been added on many of the system tables; these <a href="sqlref_sysviews_intro.html">Splice Machine system views</a> provide access to all users; however, each user will only be able to access the values within each view to which s/he has been granted access.</p>
                 <p class="noteNote">These restrictions are compatible with <em>Apache Ranger</em>. </p>
             </td>
-        <tr>
-            <td><em>Replication</em></td>
-            <td>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</td>
-        </tr>
-        <tr>
-            <td><em>Point-in-Time queries</em></td>
-            <td>Point-in-Time queries can query data as it existed at some point in the past.</td>
         </tr>
         <tr>
             <td><em>Log Filtering</em></td>
