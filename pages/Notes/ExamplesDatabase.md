@@ -69,7 +69,7 @@ The remainder of this topic includes this information:
 ## Loading the Examples Database {#loading}
 To load the examples database, you need to follow these steps:
 
-1. Click this link to download this small (~12KB) tarball: [https:/doc.splicemachine.com/examples/DocExamplesDb.gz]
+1. Click this link to download this small (~12KB) tarball: [https:/doc.splicemachine.com/examples/DocExamplesDb.tar.gz]
 
 2. Unpack the tarball. On MacOS, you can simply double-click the `.gz` file; on Linux, use the following command:
    ```
