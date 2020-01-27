@@ -19,7 +19,7 @@ Welcome to the {{site.build_version}} Release of Splice Machine, originally rele
 Our release notes are presented in these topics:
 
 * This topic summarizes the [major new features and improvements](#major) in version {{site.build_version}}.
-* The [Database Release Notes](#releasenotes) section below links to the notes for each update (patch release) of the Splice Machine database, which is part of all Splice Machine products.
+* The [Database Patch Updates](#releasenotes) section below links to the notes for each update (patch release) of the Splice Machine database, which is part of all Splice Machine products.
 * The [Known Issues and Workarounds](releasenotes_workarounds.html) topic describes each known issue in the current release and its workaround.
 * The [Database-as-Service Product Release Notes](releasenotes_dbaas.html) topic contains release information specific to our Database-as-Service product.
 * The [On-Premise Product Release Notes](releasenotes_onprem.html) topic contains release information specific to our On-Premise product.
@@ -222,6 +222,7 @@ This is the first release of version 3.0, so there are not yet any patch release
 
 {% comment %}
 <ul>
+    <li><a href="releasenotes_3.0.1944.html">Patch Release 3.0.0.1944</a></li>
     <li><a href="releasenotes_3.0.1943.html">Patch Release 3.0.0.1943</a></li>
     <li><a href="releasenotes_3.0.1942.html">Patch Release 3.0.0.1942</a></li>
     <li><a href="releasenotes_3.0.1941.html">Patch Release 3.0.0.1941</a></li>
