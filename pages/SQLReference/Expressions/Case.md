@@ -23,20 +23,55 @@ chooses an expression to evaluate based on a boolean test.
 <div class="fcnWrapperWide" markdown="1">
     CASE
       WHEN booleanExpression THEN thenExpression
-      [ WHEN booleanExpression
-        THEN thenExpression ]...
-        ELSE elseExpression
+      [ WHEN booleanExpression THEN thenExpression ]...
+      ELSE elseExpression
     END
+ |
+    CASE term
+      WHEN value1 THEN result1
+      [ WHEN value2 THEN result2 ]*
+      ELSE elseValue
+    END
+
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
 <div class="paramList" markdown="1">
-*thenExpression* and *elseExpression*
+
+booleanExpression
 {: .paramName}
 
-Both are both that must be type-compatible. For built-in types, this
-means that the types must be the same or a built-in broadening
-conversion must exist between the types.
+A Boolean expression.
+{: .paramDefnFirst}
+
+thenExpression, elseExpression
+{: .paramName}
+
+Both expressions must be type-compatible. For built-in types, this means that the types must be the same or a built-in broadening conversion must exist between the types.
+{: .paramDefnFirst}
+
+term
+{: .paramName}
+
+XXX
+{: .paramDefnFirst}
+
+value1, value2, ...
+{: .paramName}
+
+XXX
+{: .paramDefnFirst}
+
+result1, result2, ...
+{: .paramName}
+
+XXX
+{: .paramDefnFirst}
+
+elseValue
+{: .paramName}
+
+XXX
 {: .paramDefnFirst}
 
 </div>
@@ -45,7 +80,7 @@ conversion must exist between the types.
 <div class="preWrapper" markdown="1">
        -- returns 3
      CASE WHEN 1=1 THEN 3 ELSE 4 END;
-    
+
       -- returns 7
      CASE
        WHEN 1 = 2 THEN 3
@@ -57,4 +92,3 @@ conversion must exist between the types.
 </div>
 </div>
 </section>
-
