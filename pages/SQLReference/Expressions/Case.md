@@ -21,74 +21,90 @@ You can place a `CASE` expression anywhere an expression is allowed. It
 chooses an expression to evaluate based on a boolean test.
 
 <div class="fcnWrapperWide" markdown="1">
-    CASE
-      WHEN booleanExpression THEN thenExpression
-      [ WHEN booleanExpression THEN thenExpression ]...
-      ELSE elseExpression
+    CASE leftExpression
+      WHEN rightExpression THEN thenExpression
+      [ WHEN rightExpression2 THEN thenExpression2 ]...
+        ELSE elseExpression
     END
- |
-    CASE term
-      WHEN value1 THEN result1
-      [ WHEN value2 THEN result2 ]*
-      ELSE elseValue
-    END
-
 {: .FcnSyntax xml:space="preserve"}
-
 </div>
+
+<div class="fcnWrapperWide" markdown="1">
+    CASE
+      WHEN leftExpression = rightExpression THEN thenExpression
+      [ WHEN leftExpression = rightExpression2 THEN thenExpression2 ]...
+        ELSE elseExpression
+    END
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
 <div class="paramList" markdown="1">
 
-booleanExpression
+leftExpression
 {: .paramName}
 
-A Boolean expression.
+An expression.
 {: .paramDefnFirst}
 
-thenExpression, elseExpression
+thenExpression
 {: .paramName}
 
-Both expressions must be type-compatible. For built-in types, this means that the types must be the same or a built-in broadening conversion must exist between the types.
+An expression.
+{: .paramDefnFirst}
+
+elseExpression
+{: .paramName}
+
+An expression.
 {: .paramDefnFirst}
 
 term
 {: .paramName}
 
-XXX
+An expression to be matched.
 {: .paramDefnFirst}
-
-value1, value2, ...
-{: .paramName}
-
-XXX
-{: .paramDefnFirst}
-
-result1, result2, ...
-{: .paramName}
-
-XXX
-{: .paramDefnFirst}
-
-elseValue
-{: .paramName}
-
-XXX
-{: .paramDefnFirst}
-
 </div>
-## Example
+
+## Usage
+
+In both forms of the `CASE` expression, the following must be true:
+
+* _thenExpression_ and _elseExpression_ must be type compatible.
+* _leftExpression_ and _rightExpression_ must be type compatible.
+
+Note that any of the expressions can be a sub-select expression, as shown in the final example, below.
+
+## Examples
+
 
 <div class="preWrapper" markdown="1">
-       -- returns 3
-     CASE WHEN 1=1 THEN 3 ELSE 4 END;
+    splice> CREATE TABLE t (c INT);
+    splice> INSERT INTO t VALUES 5,6,6,78;
+    splice> CREATE TABLE y (c INT);
+    splice> INSERT INTO y VALUES 1,2,3,4;
+    splice> SELECT CASE MOD(c,2) WHEN 0 THEN (SELECT COUNT(*) FROM y) ELSE 0 END FROM t;
+    1
+    --------------------
+    4
+    0
+    4
+    4
 
-      -- returns 7
-     CASE
-       WHEN 1 = 2 THEN 3
-       WHEN 4 = 5 THEN 6
-       ELSE 7
-     END;
+    4 rows selected
+
+
+    splice> SELECT CASE WHEN 1=1 then 99 ELSE 0 END FROM t;
+    1
+    -----------
+    99
+    99
+    99
+    99
+
+    4 rows selected
+
 {: .Example xml:space="preserve"}
-
 </div>
+
 </div>
 </section>
