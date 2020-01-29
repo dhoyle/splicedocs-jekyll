@@ -102,7 +102,6 @@ Note that any of the expressions can be a sub-select expression, as shown in the
     99
 
     4 rows selected
-
 {: .Example xml:space="preserve"}
 </div>
 
