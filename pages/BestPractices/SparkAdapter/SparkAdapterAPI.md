@@ -225,7 +225,7 @@ A structure that specifies the layout of the data in the RDD.
 
 These methods executes an SQL string within Splice Machine and returns the results in a Spark DataFrame.
 
-The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects](bestpractices_sparkadapter_intro.html#access) section in our *Using the Native Spark DataSource* topic.
+The only difference between `df` and `internalDf` methods is that the `internalDf` method runs internally and temporarily persists data on HDFS; this has a slight performance impact, but allows for checking permissions on Views. For more information, please see the [Accessing Database Objects with Internal Access](bestpractices_sparkadapter_using.html#access) section in our *Using the Native Spark DataSource* topic.
 {: .noteIcon}
 
 <div class="fcnWrapperWide" markdown="1"><pre>
@@ -693,7 +693,7 @@ The Catalyst schema of the master table.
 ## See Also
 * [Using the Splice Machine Native Spark DataSource](bestpractices_sparkadapter_intro.html)
 * [Using Spark Submit](bestpractices_sparkadapter_submit.html)
-* [Using our Native Spark DataSource with Zeppelin](bestpractices_sparkadapter_submit.html)
+* [Using our Native Spark DataSource with Jupyter](bestpractices_sparkadapter_jupyter.html)
 
 </div>
 </section>
