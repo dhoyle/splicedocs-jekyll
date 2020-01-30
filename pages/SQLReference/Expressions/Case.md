@@ -23,7 +23,7 @@ chooses an expression to evaluate based on a boolean test.
 <div class="fcnWrapperWide" markdown="1">
     CASE leftExpression
       WHEN rightExpression THEN thenExpression
-      [ WHEN rightExpression2 THEN thenExpression2 ]...
+      [ WHEN rightExpression2 THEN thenExpression ]...
         ELSE elseExpression
     END
 {: .FcnSyntax xml:space="preserve"}
@@ -31,8 +31,8 @@ chooses an expression to evaluate based on a boolean test.
 
 <div class="fcnWrapperWide" markdown="1">
     CASE
-      WHEN leftExpression = rightExpression THEN thenExpression
-      [ WHEN leftExpression = rightExpression2 THEN thenExpression2 ]...
+      WHEN booleanExpression THEN thenExpression
+      [ WHEN booleanExpression THEN thenExpression ]...
         ELSE elseExpression
     END
 {: .FcnSyntax xml:space="preserve"}
@@ -56,6 +56,12 @@ elseExpression
 {: .paramName}
 
 An expression.
+{: .paramDefnFirst}
+
+booleanExpression
+{: .paramName}
+
+A Boolean expression.
 {: .paramDefnFirst}
 
 term
