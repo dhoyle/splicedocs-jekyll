@@ -34,21 +34,27 @@ The following table shows the contents of the `SYS.SYSREPLICATION` system table.
     </thead>
     <tbody>
         <tr>
-            <td><code>DATABASE</code></td>
+            <td><code>SCOPE</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>10</code></td>
             <td><code>NO</code></td>
-            <td>The database ID.</td>
+            <td><p>The database ID, which can be one of the following values:</p>
+                <ul>
+                    <li><code>DATABASE</code>, which means that replication is enabled for the database; the <code>SCHEMANAME</code> and <code>TABLENAME</code> columns are both <code>NULL</code>.</li>
+                    <li><code>SCHEMANAME</code>, which means that replication is enabled for the schema; the <code>SCHEMANAME</code> column contains the name of the schema for which replication is enabled, and the <code>TABLENAME</code> column is <code>NULL</code>.</li>
+                    <li><code>TABLENAME</code>, which means that replication is enabled for the table; the <code>SCHEMANAME</code> column contains the name of the table's schema, and the <code>TABLENAME</code> column contains the name of the table for which replication is enabled.</li>
+                </ul>
+            </td>
         </tr>
         <tr>
-            <td><code>SCHEMA</code></td>
+            <td><code>SCHEMANAME</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>YES</code></td>
             <td>The schema name.</td>
         </tr>
         <tr>
-            <td><code>TABLE</code></td>
+            <td><code>TABLENAME</code></td>
             <td><code>VARCHAR</code></td>
             <td><code>128</code></td>
             <td><code>YES</code></td>
@@ -74,10 +80,30 @@ If you see the table description, you have access; if, instead, you see a messag
 
 ## Usage Example
 
-Here's an example of using this table:
+Here's an example of using this table after calling replication functions:
 
 ```
-SELECT * FROM SYS.SYSREPLICATION;
+splice> CALL SYSCS_UTIL.ENABLE_TABLE_REPLICATION('SPLICE', 'T');
+Success
+--------------------------------------
+Enabled replication for table SPLICE.T
+
+splice> SELECT * FROM SYS.SYSREPLICATION;
+
+SCOPE     |SCHEMANAME     |TABLENAME
+---------------------------------------------
+TABLE     |SPLICE         |T
+
+
+splice> CALL SYSCS_UTIL.DISABLE_TABLE_REPLICATION('SPLICE', 'T');
+Success
+---------------------------------------
+Disabled replication for table SPLICE.T
+
+splice> SELECT * FROM SYS.SYSREPLICATION;
+
+SCOPE     |SCHEMANAME     |TABLENAME
+---------------------------------------------
 ```
 {: .Example}
 
