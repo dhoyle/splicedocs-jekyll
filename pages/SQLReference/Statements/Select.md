@@ -20,8 +20,7 @@ Use the `SELECT` statement to query a database and receive back results.
 SELECT <a href="sqlref_queries_query.html">Query</a>
    [<a href="sqlref_clauses_orderby.html">ORDER BY clause</a>]
    [<a href="sqlref_clauses_resultoffset.html">result offset clause</a>]
-   [<a href="sqlref_clauses_resultoffset.html">fetch first clause</a>]
-   [AS OF date]</pre>
+   [<a href="sqlref_clauses_resultoffset.html">fetch first clause</a>]</pre>
 
 </div>
 <div class="paramList" markdown="1">
@@ -47,12 +46,6 @@ result offset and fetch first clauses
 The &nbsp;[`fetch first` clause](sqlref_clauses_resultoffset.html), which can
 be combined with the `result offset` clause, limits the number of rows
 fetched.
-{: .paramDefnFirst}
-
-AS OF date
-{: .paramName}
-
-You can optionally specify the `AS OF` clause to issue a *point-in-time* query, which will return results based on the data that was in your database as of the specfied `date` value.
 {: .paramDefnFirst}
 
 </div>
@@ -142,61 +135,6 @@ in 1985 and 1989:
 {: .Example xml:space="preserve"}
 
 </div>
-
-This example demonstrates the use of the `AS OF` clause on a table for which *Time Travel* has been enabled. First, we'll look at row of the table for customer ID `1020`; note that we display the system-added `valid_from` and `valid_to` columns, which track each row in the table over time:
-
-<table>
-    <col />
-    <col />
-    <thead>
-        <tr>
-            <th>cust_id</th>
-            <th>home_phone</th>
-            <th>address</th>
-            <th>city</th>
-            <th>state</th>
-            <th>valid_from</th>
-            <th>valid_to</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1020</td>
-            <td>775-555-7575</td>
-            <td>312 First St.</td>
-            <td>Nowhere</td>
-            <td>NV</td>
-            <td>2018-04-13</td>
-            <td>2018-12-31</td>
-        </tr>
-        <tr>
-            <td>1020</td>
-            <td>408-555-1212</td>
-            <td>786 Second St.</td>
-            <td>Somewhere</td>
-            <td>CA</td>
-            <td>2019-01-20</td>
-            <td>null</td>
-        </tr>
-    </tbody>
-</table>
-
-As you can see, the information for customer `1020` was last modified on Jan. 20, 2019; a standard `SELECT` operation will display that information:
-
-```
-splice> SELECT home_phone FROM customer WHERE cust_id = 1020;
-splice> 408-555-1212
-```
-{: .Example}
-
-Now, if you specify an `AS OF` date, you can see the previous version of the table row for customer `1020`:
-
-```
-splice> SELECT home_phone FROM customer WHERE cust_id = 1020 AS OF `2018-09-15`;
-splice> 775-555-7575
-```
-{: .Example}
-
 
 ## Statement dependency system
 

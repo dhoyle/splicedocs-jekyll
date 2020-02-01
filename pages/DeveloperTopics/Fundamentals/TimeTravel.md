@@ -12,29 +12,30 @@ folder: DeveloperTopics/Fundamentals
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using Time Travel
 
-This topic describes the Splice Machine *Time Travel* mechanism, which you can use to query data in your database as it existed at some point in the past.
-
-You can issue these *point-in-time* queries using the *AS OF* option in `SELECT` statements. For example, if you use the following query to determine a customer's home phone number:
+This topic describes the Splice Machine *Time Travel* mechanism, which you can use to query data in your database as it existed at some point in the past. To do so, you provide the snapshot/transaction ID for the date/time at which you want to query, in your connection URL. For example:
 
 ```
-splice> SELECT home_phone FROM customer WHERE cust_id = 1020;
-splice> (555) 555-1212
+connect 'jdbc:splice://localhost:1527/splicedb;user=myUserId;password=myPswd;snapshot=15798'
 ```
 {: .Example}
 
-Then you could use the following query to find what the same customer's home phone number was as of a previous date:
+You can find the transaction ID in one of two ways:
 
-```
-splice> SELECT home_phone FROM customer WHERE cust_id = 1020 AS OF `2019-01-20`;
-splice> (555) 555-1234
-```
-{: .Example}
+* For a running transaction, you can call the &nbsp;[`SYSCS_UTIL.SYSCS_GET_CURRENT_TRANSACTION()`](sqlref_sysprocs_getcurrenttransaction.html)
 
+* For a previously run transaction, you can use one of these options:
+  * Find it in the `splice` logs.
+  * Find it in the Spark UI.
+  * Use the &nbsp;[`SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS()`](sqlref_sysprocs_getrunningops.html) system procedure.
+
+{% comment %}
 ## Enabling Time Travel
 
 Time Travel is disabled by default. You can enable it on a per-table basis. You can also specify the time period for which historical information is available for point-in-time queries.
 
 <span class="Highlighted">TBD: Configuration details, including cost/performance considerations.</span>
+
+{% endcomment %}
 
 </div>
 </section>
