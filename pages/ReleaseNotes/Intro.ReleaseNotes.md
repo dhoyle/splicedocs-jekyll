@@ -222,6 +222,7 @@ This is the first release of version 3.0, so there are not yet any patch release
 
 {% comment %}
 <ul>
+    <li><a href="releasenotes_3.0.1945.html">Patch Release 3.0.0.1945</a></li>
     <li><a href="releasenotes_3.0.1944.html">Patch Release 3.0.0.1944</a></li>
     <li><a href="releasenotes_3.0.1943.html">Patch Release 3.0.0.1943</a></li>
     <li><a href="releasenotes_3.0.1942.html">Patch Release 3.0.0.1942</a></li>
