@@ -1,0 +1,18 @@
+---
+layout: none
+search: exclude
+---
+
+{% if site.build_type == "doc" %}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for page in site.pages %}{% unless page.search == "exclude" %}<url><loc>{{site.sitemap_url}}{{ page.url}}</loc></url>
+{% endunless %}{% endfor %}
+</urlset>
+{% else %}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for page in site.pages %}{% unless page.search == "exclude" %}<url><loc>{{site.sitemap_url | append: '/3.1' }}{{ page.url}}</loc></url>
+{% endunless %}{% endfor %}
+</urlset>
+{% endif %}
