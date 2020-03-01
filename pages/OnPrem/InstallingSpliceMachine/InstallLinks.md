@@ -10,9 +10,9 @@ folder: OnPrem/InstallingSpliceMachine
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Splice Machine v2.8 Installer Links
+# Splice Machine v3.0 Installer Links
 
-The tables below link to both the downloadable installer and installation instructions for the each supported, platform-specific version of Splice Machine 2.8:
+The tables below link to both the downloadable installer and installation instructions for the each supported, platform-specific version of Splice Machine 3.0:
 
 * [Splice Machine Installation Links for Cloudera CDH](#CDH)
 * [Splice Machine Installation Links for Hortonworks HDP](#HDP)
@@ -31,44 +31,26 @@ We recommend that you review the [installation requirements for Splice Machine](
     <thead>
         <tr>
             <th>CDH Version</th>
-            <th>Installer URL</th>
+            <th>Installer URL by Parcel Type</th>
             <th>Install Instructions URL</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-			<td>CDH 5.16.1</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.16.1/">CDH 5.16.1 Installer</a>
+			<td>CDH 6.3.0</td>
+			<td>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-el6.parcel">CDH 6.3.0 Installer - EL6</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-el7.parcel">CDH 6.3.0 Installer - EL7</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-precise.parcel">CDH 6.3.0 Installer - Precise</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-sles11.parcel">CDH 6.3.0 Installer - SLES11</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-trusty.parcel">CDH 6.3.0 Installer - Trusty</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-wheezy.parcel">CDH 6.3.0 Installer - Wheezy</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-xenial.parcel">CDH 6.3.0 Installer - Xenial</a></p>
+			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/manifest.json">manifest.json</a></p>
             </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.16.1/docs/CDH-installation.md">Install instructions for CDH 5.16.1</a>
-            </td>
-        </tr>
-        <tr>
-			<td>CDH 5.14.0</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.14.0/">CDH 5.14.0 Installer</a>
-            </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.14.0/docs/CDH-installation.md">Install instructions for CDH 5.14.0</a>
-            </td>
-        </tr>
-        <tr>
-			<td>CDH 5.13.3</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.13.3/">CDH 5.13.3 Installer</a>
-            </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.13.3/docs/CDH-installation.md">Install instructions for CDH 5.13.3</a>
+			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/cdh6.3.0/docs/CDH-installation.md">Install instructions for CDH 6.3.0</a>
             </td>
         </tr>
-        <tr>
-            <td>CDH 5.12.2 (Spark 2.3)</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.12.2-2.3/">CDH 5.12.2 Installer</a>
-            </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.13.2/docs/CDH-installation.md">Install instructions for CDH 5.12.2</a>
-            </td>
-        </tr>
-			<td>CDH 5.12.2 (Spark 2.2)</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.12.2/">CDH 5.12.2 Installer</a>
-            </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.13.2/docs/CDH-installation.md">Install instructions for CDH 5.12.2</a>
-            </td>
     </tbody>
 </table>
 
@@ -87,30 +69,12 @@ We recommend that you review the [installation requirements for Splice Machine](
     </thead>
     <tbody>
         <tr>
-            <td>HDP 2.6.5 (rpm)</td>
+            <td>HDP 3.1 (rpm)</td>
             <td>
-                <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.5/splicemachine-hdp2.6.5.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.5 Installer</a></p>
-                <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.5/splicemachine_ambari_service-hdp2.6.5.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.5 - Ambari Installer</a></p>
+                <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/installer/hdp3.1.0/splicemachine-hdp3.1.0.3.0.0.1948.p0.109-1.noarch.rpm">HDP 3.1.0 Installer</a></p>
+                <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/installer/hdp3.1.0/splicemachine_ambari_service-hdp3.1.0.3.0.0.1948.p0.109-1.noarch.rpm">HDP 3.1.0 - Ambari Installer</a></p>
             </td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.5/docs/HDP-installation.md">Install instructions for HDP 2.6.5</a>
-            </td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.4 (rpm)</td>
-            <td>
-                <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.4/splicemachine-hdp2.6.4.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.4 Installer</a></p>
-                <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.4/splicemachine_ambari_service-hdp2.6.4.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.4 - Ambari Installer</a></p>
-            </td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.4/docs/HDP-installation.md">Install instructions for HDP 2.6.4</a>
-            </td>
-        </tr>
-        <tr>
-            <td>HDP 2.6.3 (rpm)</td>
-            <td>
-                <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.3/splicemachine-hdp2.6.3.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.3 Installer</a></p>
-                <p><a href="https://splice-releases.s3.amazonaws.com/2.8.0.1929/cluster/installer/hdp2.6.3/splicemachine_ambari_service-hdp2.6.3.2.8.0.1929.p0.33-1.noarch.rpm">HDP 2.6.3 - Ambari Installer</a></p>
-            </td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/hdp2.6.3/docs/HDP-installation.md">Install instructions for HDP 2.6.3</a>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/hdp3.1.0/docs/HDP-installation.md">Install instructions for HDP 3.1.0</a>
             </td>
         </tr>
     </tbody>
