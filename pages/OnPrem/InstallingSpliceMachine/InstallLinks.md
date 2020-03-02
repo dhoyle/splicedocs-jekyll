@@ -31,7 +31,7 @@ We recommend that you review the [installation requirements for Splice Machine](
     <thead>
         <tr>
             <th>CDH Version</th>
-            <th>Installer URL by Parcel Type</th>
+            <th>Copy this URL (New Remote Parcel Repository - see Install Instructions)</th>
             <th>Install Instructions URL</th>
         </tr>
     </thead>
@@ -39,14 +39,7 @@ We recommend that you review the [installation requirements for Splice Machine](
         <tr>
 			<td>CDH 6.3.0</td>
 			<td>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-el6.parcel">CDH 6.3.0 Installer - EL6</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-el7.parcel">CDH 6.3.0 Installer - EL7</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-precise.parcel">CDH 6.3.0 Installer - Precise</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-sles11.parcel">CDH 6.3.0 Installer - SLES11</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-trusty.parcel">CDH 6.3.0 Installer - Trusty</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-wheezy.parcel">CDH 6.3.0 Installer - Wheezy</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/SPLICEMACHINE-3.0.0.1948.cdh6.3.0.p0.109-xenial.parcel">CDH 6.3.0 Installer - Xenial</a></p>
-			    <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/manifest.json">manifest.json</a></p>
+			    https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/
             </td>
 			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/cdh6.3.0/docs/CDH-installation.md">Install instructions for CDH 6.3.0</a>
             </td>
