@@ -31,44 +31,41 @@ We recommend that you review the [installation requirements for Splice Machine](
     <thead>
         <tr>
             <th>CDH Version</th>
-            <th>Installer URL</th>
+            <th>Copy this URL (New Remote Parcel Repository - see Install Instructions)</th>
             <th>Install Instructions URL</th>
         </tr>
     </thead>
     <tbody>
         <tr>
 			<td>CDH 5.16.1</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.16.1/">CDH 5.16.1 Installer</a>
-            </td>
+			<td>https://splice-releases.s3.amazonaws.com/2.8.0.1948/cluster/parcel/cdh5.16.1/</td>
 			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.16.1/docs/CDH-installation.md">Install instructions for CDH 5.16.1</a>
             </td>
         </tr>
         <tr>
 			<td>CDH 5.14.0</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.14.0/">CDH 5.14.0 Installer</a>
-            </td>
+			<td>https://splice-releases.s3.amazonaws.com/2.8.0.1948/cluster/parcel/cdh5.14.0/</td>
 			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.14.0/docs/CDH-installation.md">Install instructions for CDH 5.14.0</a>
             </td>
         </tr>
         <tr>
 			<td>CDH 5.13.3</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.13.3/">CDH 5.13.3 Installer</a>
-            </td>
+			<td>https://splice-releases.s3.amazonaws.com/2.8.0.1948/cluster/parcel/cdh5.13.3/</td>
 			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.13.3/docs/CDH-installation.md">Install instructions for CDH 5.13.3</a>
             </td>
         </tr>
         <tr>
             <td>CDH 5.12.2 (Spark 2.3)</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.12.2-2.3/">CDH 5.12.2 Installer</a>
-            </td>
+			<td>https://splice-releases.s3.amazonaws.com/2.8.0.1948/cluster/parcel/cdh5.12.2-2.3/</td>
 			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.13.2/docs/CDH-installation.md">Install instructions for CDH 5.12.2</a>
             </td>
         </tr>
+        <tr>
 			<td>CDH 5.12.2 (Spark 2.2)</td>
-			<td><a href="https://s3.amazonaws.com/splice-releases/2.8.0.1929/cluster/parcel/cdh5.12.2/">CDH 5.12.2 Installer</a>
-            </td>
+			<td>https://splice-releases.s3.amazonaws.com/2.8.0.1948/cluster/parcel/cdh5.12.2/</td>
 			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.8/platforms/cdh5.13.2/docs/CDH-installation.md">Install instructions for CDH 5.12.2</a>
             </td>
+        </tr> 
     </tbody>
 </table>
 
