@@ -73,25 +73,27 @@ We recommend that you review the [installation requirements for Splice Machine](
     </tbody>
 </table>
 
-## Splice Machine Standalone (Version 2.7) Installation Links  {#standalone}
+## Splice Machine Standalone Installation Links  {#standalone}
 
 <table summary="Links for Installing the Standalone Version of Splice Machine">
     <col />
     <col />
     <thead>
         <tr>
-            <th>Installer URL</th>
-            <th>Install Instructions URL</th>
+            <th>Splice Machine Version</th>
+            <th>Installer Download URL</th>
+            <th>Install Instructions Link</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-			<td><a href="{{splvar_location_StandaloneLink}}">Standalone Version Installer</a>
+			<td>Version 3.0</td>
+			<td><a href="https://splice-releases.s3.amazonaws.com/standalone/SPLICEMACHINE-3.0.0.1958.standalone.tar.gz">Standalone Version 3.0</a>
             </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-2.7/platforms/std/docs/STD-installation.md">Install instructions for the Standalone Version</a>
+			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/std/docs/STD-installation.md">Install instructions for the Standalone Version 3.0</a>
             </td>
         </tr>
-    </tbody>
+     </tbody>
 </table>
 
 {% include splice_snippets/githublink.html %}
