@@ -83,7 +83,7 @@ database:
             <td>Performs a minor compaction on a table or index region.</td>
         </tr>
         <tr>
-            <td class="CodeFont"><a href="sqlref_builtinfcns_user.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
+            <td class="CodeFont"><a href="sqlref_sysprocs_createuser.html">SYSCS_UTIL.SYSCS_CREATE_USER</a>
             </td>
             <td>Adds a new user account to a database.</td>
         </tr>
