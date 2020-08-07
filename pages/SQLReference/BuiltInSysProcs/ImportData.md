@@ -18,7 +18,7 @@ After a successful import completes, a simple report displays, showing
 how many files were imported, and how many record imports succeeded or
 failed.
 
-This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See our [Best Practices: Ingestion](bestpractices_ingest_overview.html) for help with selecting the right process for your situation.
+This procedure is one of several built-in system procedures provided by Splice Machine for importing data into your database. See [Best Practices: Ingestion](bestpractices_ingest_overview.html) for help with selecting the right process for your situation.
 
 ## Syntax
 
