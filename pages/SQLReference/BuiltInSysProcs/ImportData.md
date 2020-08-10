@@ -81,7 +81,7 @@ This table includes a brief description of each parameter; additional informatio
             <td><p>Either a single file or a directory. If this is a single file, that file is imported; if this is a directory, all of the files in that directory are imported. You can import compressed or uncompressed files.</p>
             <p>On a cluster, the files to be imported <strong>MUST be in Azure Storage, S3, HDFS (or
             MapR-FS)</strong>. If you're using our Database Service product, you can import files from S3 or Azure Storage.</p>
-            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> or <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> topics for information.</p>
+            <p>See the <a href="developers_cloudconnect_configures3.html">Configuring an S3 Bucket for Splice Machine Access</a> or <a href="developers_cloudconnect_configureazure.html">Using Azure Storage</a> topics for information.</p></td>
             <td class="CodeFont">
                 <p>/data/mydata/mytable.csv</p>
                 <p>'s3a://splice-benchmark-data/flat/TPCH/100/region'</p>
