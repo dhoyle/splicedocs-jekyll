@@ -73,8 +73,8 @@ splice.olap_server.isolated.roles=ROLE1=spliceQueue1,ROLE2=spliceQueue2,ROLE3=sp
 You can then map each Splice Machine queue to its own YARN queue. For example:
 
 ```
-splice.olap_server.queue.spliceQueue1=YarnQueue1
-splice.olap_server.queue.spliceQueue2=YarnQueue2
+splice.olap_server.queue.spliceQueue1=root.YarnQueue1
+splice.olap_server.queue.spliceQueue2=root.YarnQueue2
 ```
 {: .Example}
 
@@ -97,7 +97,7 @@ YARN defines a `default` queue, which handles jobs that are not assigned to a sp
 Splice Machine also defines a default queue, `splice.olap_server.queue.default`. This queue is initially mapped to the YARN `default` queue; however, you can override that and map it to a different YARN queue; for example:
 
 ```
-splice.olap_server.queue.default=someYarnQueue
+splice.olap_server.queue.default=root.someYarnQueue
 ```
 {: .Example}
 
