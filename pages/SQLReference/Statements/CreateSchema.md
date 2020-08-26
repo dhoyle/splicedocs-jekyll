@@ -19,7 +19,7 @@ provide a unique name-space for those objects.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    
+
     CREATE SCHEMA {
          [ schemaName ]
          }
@@ -32,6 +32,10 @@ database.
 
 A schema name cannot start with the prefix `SYS` (after case
 normalization). Use of the prefix `SYS` raises a *SQLException*.
+
+## CREATE SCHEMA ... IF NOT EXISTS ...    {#createSchemaIfNotExists}
+
+The `IF NOT EXISTS` clause checks for schemas with the same name. If no schema with the same name is found, the query is executed and a new schema is created. If a schema with the same name exists, the query is not executed.
 
 ## CREATE SCHEMA examples
 
@@ -66,7 +70,7 @@ schemas, use the following syntax:
        PRIMARY KEY (Flight_ID, Segment_Number, Flight_Date)
        );
     0 rows inserted/updated/deleted
-    
+
     splice> CREATE TABLE EMP.AVAILABILITY(
        Hotel_ID INT NOT NULL,
        Booking_Date DATE NOT NULL,
@@ -85,4 +89,3 @@ schemas, use the following syntax:
 
 </div>
 </section>
-

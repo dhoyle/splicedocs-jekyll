@@ -198,6 +198,10 @@ the data, and then insert the data; for example:
 </div>
 </div>
 
+## CREATE TABLE ... IF NOT EXISTS ...    {#createTableIfNotExists}
+
+The `IF NOT EXISTS` clause checks for tables with the same name. If no table with the same name is found, the query is executed and a new table is created. If a table with the same name exists, the query is not executed.  
+
 ## Examples
 
 This section presents examples of both forms of the
