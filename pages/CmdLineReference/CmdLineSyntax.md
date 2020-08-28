@@ -378,6 +378,21 @@ allows you to scroll through your command line history, reuse and alter
 lines, and more. We've included a [synopsis of it
 here.](cmdlineref_using_rlwrap.html)
 
+### Show Local Time in the Command Prompt   {#ShowTime}
+
+You can use the <code>prompt clock on</code> command to display the current local time in the splice command prompt. Use the <code>prompt clock off</code> command to redisplay the default splice command prompt. 
+
+<div class="preWrapper" markdown="1">
+
+    splice> prompt clock on;
+    ELAPSED TIME = 1 milliseconds
+    splice 2020-08-28 16:30:04-0400> prompt clock off;
+    ELAPSED TIME = 0 milliseconds
+    splice>
+{: .AppCommand xml:space="preserve"}
+
+</div>
+
 ## Example Command Lines   {#ExampleCommands}
 
 Here are several example command lines:
