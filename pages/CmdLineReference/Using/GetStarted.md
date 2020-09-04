@@ -54,7 +54,7 @@ Use the following steps to launch the Splice Machine CLI on Linux or Mac OS X:
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        cd ~/splicemachine    #Use the applicable path for your splicemachine directory
+        cd ~/splicemachine   #Use the applicable path for your splicemachine directory
     {: .ShellCommand}
 
     </div>
@@ -75,7 +75,8 @@ Use the following steps to launch the Splice Machine CLI on Linux or Mac OS X:
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        Running Splice Machine SQL ShellFor help: "Splice> help;"SPLICE** = current connectionsplice>
+        Running Splice Machine SQL ShellFor help: "Splice> help;"SPLICE** = current connection
+        splice>
     {: .AppCommand}
 
     </div>
@@ -89,7 +90,7 @@ Use the following steps to launch the Splice Machine CLI on Linux or Mac OS X:
 #### Restarting the CLI
 
 If you are running the standalone version of Splice Machine and your
-computer goes to sleep, any live database connections are lost. You can use the following commands to restart Splice Machine:
+computer goes to sleep, any live database connections are lost. You can use the following commands to restart the Splice Machine CLI:
 
 <table>
                 <col />
@@ -143,7 +144,7 @@ Use the following steps to launch the Splice Machine CLI on Windows:
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        cd ~/spliceengine/assembly/target/sqlshell    #Use the correct path for your spliceengine directory
+        cd ~/spliceengine/assembly/target/sqlshell    #Use the applicable path for your spliceengine directory
     {: .ShellCommand}
 
     </div>
@@ -178,24 +179,24 @@ Use the following steps to launch the Splice Machine CLI on Windows:
 
     <div class="preWrapperWide" markdown="1">
 
-      C:\Splice-test\sqlshell>winsqlshell --help
-      Splice Machine SQL client wrapper script
-      Usage: winsqlshell.cmd [-U url] [-h host] [-p port] [-u user] [-Q] [-s pass] [-P
-      ] [-S] [-k principal] [-K keytab] [-w width] [-f script] [-o output] [-q]
-      -U url       full JDBC URL for Splice Machine database
-      -h host      IP address or hostname of Splice Machine (HBase RegionServer)
-      -p port      Port which Splice Machine is listening on, defaults to 1527
-      -u user      username for Splice Machine database
-      -Q       Quote the username, e.g. for users with . - or @ in the username. e.g.
-      dept-first.last@@company.com
-      -s pass      password for Splice Machine database
-      -P       prompt for unseen password
-      -S       use ssl=basic on connection
-      -k principal     kerberos principal (for kerberos)
-      -K keytab    kerberos keytab - requires principal
-      -w width     output row width. defaults to 128
-      -f script    sql file to be executed
-      -o output    file for output
+        C:\Splice-test\sqlshell>winsqlshell --help
+        Splice Machine SQL client wrapper script
+        Usage: winsqlshell.cmd [-U url] [-h host] [-p port] [-u user] [-Q] [-s pass] [-P
+        ] [-S] [-k principal] [-K keytab] [-w width] [-f script] [-o output] [-q]
+        -U url       full JDBC URL for Splice Machine database
+        -h host      IP address or hostname of Splice Machine (HBase RegionServer)
+        -p port      Port which Splice Machine is listening on, defaults to 1527
+        -u user      username for Splice Machine database
+        -Q       Quote the username, e.g. for users with . - or @ in the username. e.g.
+        dept-first.last@@company.com
+        -s pass      password for Splice Machine database
+        -P       prompt for unseen password
+        -S       use ssl=basic on connection
+        -k principal     kerberos principal (for kerberos)
+        -K keytab    kerberos keytab - requires principal
+        -w width     output row width. defaults to 128
+        -f script    sql file to be executed
+        -o output    file for output
 
     {: .ShellCommand}
 
@@ -328,15 +329,15 @@ Here is a breakdown of the the database connection string elements:
 ### Displaying Database Objects   {#Viewing4}
 
 You can use the `show` command to view
-various object types in your database, including:
+various object types in your database, including
 [connections](#Viewing), [schemas](#Viewing2), [tables](#Viewing3),
-[indexes](#Indexes), [views](#Views), [procedures](#Stored), and others.
+[indexes](#Indexes), [views](#Views), and [procedures](#Stored).
 
 #### Displaying and Changing Connections   {#Viewing}
 
-You can connection to multiple database in Splice Machine; one
+You can connect to multiple database in Splice Machine. One
 connection is designated as the current database; this is the database
-with which you're currently working.
+in which you are currently working.
 
 To view your current connections, use the &nbsp;[`show
 connections`](cmdlineref_showconnections.html) command:
@@ -526,23 +527,24 @@ views`](cmdlineref_showviews.html) command to display all of the indexes
 in your database or in a schema:
 
 <div class="preWrapperWide" markdown="1">
-splice> SHOW VIEWS;
-TABLE_SCHEM         |TABLE_NAME                       |CONGLOM_ID|REMARKS
------------------------------------------------------------------------------
-SYSVW               |SYSALLROLES                      |NULL      |
-SYSVW               |SYSCOLPERMSVIEW                  |NULL      |
-SYSVW               |SYSCOLUMNSTATISTICS              |NULL      |
-SYSVW               |SYSCOLUMNSVIEW                   |NULL      |
-SYSVW               |SYSCONGLOMERATEINSCHEMAS         |NULL      |
-SYSVW               |SYSPERMSVIEW                     |NULL      |
-SYSVW               |SYSROUTINEPERMSVIEW              |NULL      |
-SYSVW               |SYSSCHEMAPERMSVIEW               |NULL      |
-SYSVW               |SYSSCHEMASVIEW                   |NULL      |
-SYSVW               |SYSTABLEPERMSVIEW                |NULL      |
-SYSVW               |SYSTABLESTATISTICS               |NULL      |
-SYSVW               |SYSTABLESVIEW                    |NULL      |
 
-12 rows selected
+        splice> SHOW VIEWS;
+        TABLE_SCHEM         |TABLE_NAME                       |CONGLOM_ID|REMARKS
+        -----------------------------------------------------------------------------
+        SYSVW               |SYSALLROLES                      |NULL      |
+        SYSVW               |SYSCOLPERMSVIEW                  |NULL      |
+        SYSVW               |SYSCOLUMNSTATISTICS              |NULL      |
+        SYSVW               |SYSCOLUMNSVIEW                   |NULL      |
+        SYSVW               |SYSCONGLOMERATEINSCHEMAS         |NULL      |
+        SYSVW               |SYSPERMSVIEW                     |NULL      |
+        SYSVW               |SYSROUTINEPERMSVIEW              |NULL      |
+        SYSVW               |SYSSCHEMAPERMSVIEW               |NULL      |
+        SYSVW               |SYSSCHEMASVIEW                   |NULL      |
+        SYSVW               |SYSTABLEPERMSVIEW                |NULL      |
+        SYSVW               |SYSTABLESTATISTICS               |NULL      |
+        SYSVW               |SYSTABLESVIEW                    |NULL      |
+
+        12 rows selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
@@ -552,8 +554,8 @@ You can create *user-defined database functions* that can be evaluated
 in SQL statements. These functions can be invoked where most other
 built-in functions are allowed, including within SQL expressions and
 `SELECT` statements. Functions must be deterministic, and cannot be used
-to make changes to the database. You can use the [`show
-functions`](cmdlineref_showfunctions.html) command to display which
+to make changes to the database. You can use the &nbsp;[show
+functions](cmdlineref_showfunctions.html) command to display which
 functions are defined in your database or schema:
 
 <div class="preWrapperWide" markdown="1">
@@ -571,7 +573,7 @@ logic into a *stored procedure*, which is a subroutine that is stored in
 your database's data dictionary. Unlike user-defined functions, a stored
 procedure is not an expression and can only be invoked using the `CALL`
 statement. Stored procedures allow you to modify the database and return
-`Result Sets` or nothing at all. You can use the [`show
+`Result Sets` or nothing at all. You can use the &nbsp;[`show
 procedures`](cmdlineref_showprocedures.html) command to display which
 functions are defined in your database or schema:
 
@@ -757,8 +759,7 @@ You can also qualify which records to select with a
     1 row selected
 {: .AppCommand}
 
-You can count the records in a table using the
-[`SELECT`](sqlref_expressions_select.html) statement. For example:
+You can use the [`SELECT`](sqlref_expressions_select.html) statement to count the records in a table. For example:
 
 
     splice> select count(*) from Players;
