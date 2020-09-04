@@ -75,14 +75,16 @@ Use the following steps to launch the Splice Machine CLI on Linux or Mac OS X:
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        Running Splice Machine SQL ShellFor help: "Splice> help;"SPLICE** = current connection
+        Running Splice Machine SQL Shell
+        For help: "Splice> help;"
+        SPLICE** = current connection
         splice>
     {: .AppCommand}
 
     </div>
 
     `SPLICE` is the name of the default connection, which becomes the
-    current connection when you start the interpreter.
+    current connection when you start the CLI.
 {: .boldFont}
 
 </div>
