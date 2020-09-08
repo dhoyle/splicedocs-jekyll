@@ -10,7 +10,7 @@ folder: SQLReference/BuiltInFcns
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# STRIP
+# STRING_AGG
 
 The `STRING_AGG` function concatenates multiple values into a single string value.
 
