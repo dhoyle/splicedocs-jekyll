@@ -141,28 +141,32 @@ Return a result where `state_code` is concatenated into single strings as follow
     </tbody>
 </table>
 
-```
-SELECT
-    [item_id],
-    STRING_AGG([state_code], ', ') AS state_code
-FROM
-    stores
-GROUP BY
-    item_id;
-```
+<div class="preWrapper" markdown="1">
+    SELECT
+        [item_id],
+        STRING_AGG([state_code], ', ') AS state_code
+    FROM
+        stores
+    GROUP BY
+        item_id;
+{: .Example xml:space="preserve"}
+
+</div>
 Currently the ORDER BY clause is not supported, but you can simulate the ORDER BY clause using window funtions. For example:
 
-```
-create table b (i int, v varchar(10));
+<div class="preWrapper" markdown="1">
+    create table b (i int, v varchar(10));
 
-select i, string_agg(v, ',' order by v) from b group by i; -- this doesn’t work
+    select i, string_agg(v, ',' order by v) from b group by i; -- this doesn’t work
 
-select i, agg from (
-select i,
-lead(i) over (partition by i order by v asc) as l,
-string_agg(v, ',') over (partition by i order by v asc) as agg
-) b where l is null;
-```
+    select i, agg from (
+    select i,
+    lead(i) over (partition by i order by v asc) as l,
+    string_agg(v, ',') over (partition by i order by v asc) as agg
+    ) b where l is null;
+{: .Example xml:space="preserve"}
+
+</div>
 Note that in the example above, the window function does not work properly if the grouping column has NULL values.
 
 {: .Example}
