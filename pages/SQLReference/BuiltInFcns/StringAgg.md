@@ -152,6 +152,7 @@ Return a result where `state_code` is concatenated into single strings as follow
 {: .Example xml:space="preserve"}
 
 </div>
+
 Currently the ORDER BY clause is not supported, but you can simulate the ORDER BY clause using window funtions. For example:
 
 <div class="preWrapper" markdown="1">
@@ -167,9 +168,9 @@ Currently the ORDER BY clause is not supported, but you can simulate the ORDER B
 {: .Example xml:space="preserve"}
 
 </div>
+
 Note that in the example above, the window function does not work properly if the grouping column has NULL values.
 
-{: .Example}
 
 ## See Also
 
