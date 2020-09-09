@@ -79,8 +79,8 @@ And the Stores table:
     <col />
     <tbody>
         <tr>
+            <td><b>store_id</b></td>
             <td><b>item_id</b></td>
-            <td><b>item_name</b></td>
             <td><b>state_code</b></td>
         </tr>
         <tr>
