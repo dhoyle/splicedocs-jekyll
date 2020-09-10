@@ -1,6 +1,6 @@
 ---
-title: Getting Started with the splice&gt; Command Line Interpreter
-summary: An introduction to using our command line interpreter to create and interact with your Splice Machine database.
+title: Getting Started with the Splice Machine Command Line Interface
+summary: An introduction to using our command line interface to create and interact with your Splice Machine database.
 keywords: CLI, cli, command line interface
 toc: false
 product: all
@@ -10,25 +10,18 @@ folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Getting Started With the splice&gt; Command Line Interface
+# Getting Started With the Splice Machine Command Line Interface
 
-The <span class="AppCommand">splice&gt;</span> command line interpreter
-is an easy way to interact with your Splice Machine database. This topic
-introduces <span class="AppCommand">splice&gt;</span> and some of the
-more common commands you'll use.
+You can use the Splice Machine Command Line Interface (CLI) to interact with your Splice Machine database.
 
-Our [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each available command.
+This topic provides a quick introduction the the Splice Machine CLI. The Splice Machine [Command Line Reference](cmdlineref_intro.html) contains additional information about command line syntax and commands, and includes examples of each command.
 
 {% if site.incl_notpdf %}
 <div markdown="1">
-You can complete this tutorial by [watching a short video](#Watch) or by
-[following the written version](#Follow).
 
-## Watch the Video   {#Watch}
+## Splice Machine CLI Video   {#GettingStartedVideo}
 
-The following video shows you how to launch and start using the <span
-class="AppCommand">splice&gt;</span> command line interpreter to connect
-to and interact with your database.
+The following video shows you how to launch the Splice Machine CLI and use it to interact with your database.
 
 <div class="centered" markdown="1">
 <iframe class="youtube-player_0"
@@ -38,41 +31,35 @@ allowfullscreen="1" width="560px" height="315px"></iframe>
 </div>
 </div>
 {% endif %}
-## Follow the Written Version   {#Follow}
 
-This topic walks you through getting started with the <span
-class="AppCommand">splice&gt;</span> command line interpreter, in these
-sections:
+## Getting Started with the Splice Machine CLI   {#GettingStartedGuide}
 
-* [Starting splice&gt;](#Starting)
+* [Starting the CLI on Linux or Mac OS X](#StartingCLILinux)
+* [Starting the CLI on Windows](#StartingCLIWindows)
 * [Basic Syntax Rules](#Basic)
 * [Connecting to a Database](#Connecti)
 * [Displaying Database Objects](#Viewing4)
 * [Basic DDL and DML Statements](#Basic2)
 
-**NOTE:** Although we focus here on executing command lines with the
-splice&gt;, you can also use the command line interface to directly
-execute any SQL statement, including the DDL and DML statements that we
-introduce in the [last section](#Basic2) of this topic.
-{: .notePlain}
 
-### Starting splice&gt;   {#Starting}
+### Starting the CLI on Linux or Mac OS X   {#StartingCLILinux}
 
-To launch the <span class="AppCommand">splice&gt;</span> command line
-interpreter, follow these steps:
+Use the following steps to launch the Splice Machine CLI on Linux or Mac OS X:
 
 <div class="opsStepsList" markdown="1">
-1.  Open a terminal window
-2.  Navigate to your splicemachine directory
+
+1.  Open a terminal window.
+
+2.  Navigate to your <code>splicemachine</code> directory.
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        cd ~/splicemachine    #Use the correct path for your Splice Machine installation
+        cd ~/splicemachine   #Use the applicable path for your splicemachine directory
     {: .ShellCommand}
 
     </div>
 
-3.  Start splice&gt;
+3.  Start the Splice Machine CLI.
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
@@ -84,25 +71,28 @@ interpreter, follow these steps:
     The full path to this script on Splice Machine standalone
     installations is `./splicemachine/bin/sqlshell.sh`.
 
-4.  The command line interpreter starts:
+4.  The CLI starts and the `splice>` command prompt appears:
     {: .topLevel}
 
     <div class="preWrapperWide" markdown="1">
-        Running Splice Machine SQL ShellFor help: "Splice> help;"SPLICE** = current connectionsplice>
+        Running Splice Machine SQL Shell
+        For help: "Splice> help;"
+        SPLICE** = current connection
+        splice>
     {: .AppCommand}
 
     </div>
 
     `SPLICE` is the name of the default connection, which becomes the
-    current connection when you start the interpreter.
+    current connection when you start the CLI.
 {: .boldFont}
 
 </div>
-#### Restarting splice&gt;
+
+#### Restarting the CLI
 
 If you are running the standalone version of Splice Machine and your
-computer goes to sleep, any live database connections are lost. You'll
-need to restart Splice Machine by following these steps:
+computer goes to sleep, any live database connections are lost. You can use the following commands to restart the Splice Machine CLI:
 
 <table>
                 <col />
@@ -115,8 +105,10 @@ need to restart Splice Machine by following these steps:
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Exit <span class="AppCommand">splice&gt;</span></td>
-                        <td class="CodeFont"><span class="AppCommand">splice&gt; quit; (exit;)</span>
+                        <td>Exit the CLI</td>
+                        <td><p><code>splice> quit; </code></p>
+                        <p>-or-</p>
+                        <p><code>splice> exit; </code></p>
                         </td>
                     </tr>
                     <tr>
@@ -128,15 +120,124 @@ need to restart Splice Machine by following these steps:
                         <td><code>$ ./bin/start-splice.sh</code></td>
                     </tr>
                     <tr>
-                        <td>Restart <span class="AppCommand">splice&gt;</span></td>
+                        <td>Restart the CLI</td>
                         <td><code>$ ./bin/sqlshell.sh</code></td>
                     </tr>
                 </tbody>
             </table>
+
+### Starting the CLI on Windows   {#StartingCLIWindows}
+
+Use the following steps to launch the Splice Machine CLI on Windows:
+
+<div class="opsStepsList" markdown="1">
+
+1.  Checkout and build [Splice Engine](https://github.com/splicemachine/spliceengine) on a machine running Linux or Mac OS X. For example:
+
+    <div class="preWrapper" markdown="1">
+
+        mvn clean package -Pcdh6.3.0,sqlshell -DskipTests
+    {: .ShellCommand}
+
+    </div>
+
+
+2.  Navigate to your <code>spliceengine/assembly/target/sqlshell</code> directory.
+    {: .topLevel}
+
+    <div class="preWrapperWide" markdown="1">
+        cd ~/spliceengine/assembly/target/sqlshell    #Use the applicable path for your spliceengine directory
+    {: .ShellCommand}
+
+    </div>
+
+
+3. Copy the contents of the `spliceengine/assembly/target/sqlshell` directory to the Windows machine. This directory contains the following files:  
+
+    <div class="preWrapperWide" markdown="1">
+        /lib/db-tools-ij-3.0.0.1973-SNAPSHOT.jar # (version could be different)
+        /lib/db-client-3.0.0.1973-SNAPSHOT.jar   # (version could be different)
+        /sqlshell.sh
+        /winsqlshell.cmd
+    {: .ShellCommand}
+
+    </div>  
+
+    The `sqlshell.sh` file is not required for Windows.
+
+4. Ensure that the Windows machine has OpenJDK 1.8 installed. You may also need to set the JAVA_HOME environment variable to the OpenJDK 1.8 path.
+
+5. Open the Windows command prompt and navigate to the `sqlshell` folder on the Windows machine. For example:
+
+    <div class="preWrapperWide" markdown="1">
+
+        C:\>cd C:\Splice-test\sqlshell
+
+    {: .ShellCommand}
+
+    </div>
+
+6. Run the `winsqlshell.cmd --help` command to display information about command options:
+
+    <div class="preWrapperWide" markdown="1">
+
+        C:\Splice-test\sqlshell>winsqlshell --help
+        Splice Machine SQL client wrapper script
+        Usage: winsqlshell.cmd [-U url] [-h host] [-p port] [-u user] [-Q] [-s pass] [-P
+        ] [-S] [-k principal] [-K keytab] [-w width] [-f script] [-o output] [-q]
+        -U url       full JDBC URL for Splice Machine database
+        -h host      IP address or hostname of Splice Machine (HBase RegionServer)
+        -p port      Port which Splice Machine is listening on, defaults to 1527
+        -u user      username for Splice Machine database
+        -Q       Quote the username, e.g. for users with . - or @ in the username. e.g.
+        dept-first.last@@company.com
+        -s pass      password for Splice Machine database
+        -P       prompt for unseen password
+        -S       use ssl=basic on connection
+        -k principal     kerberos principal (for kerberos)
+        -K keytab    kerberos keytab - requires principal
+        -w width     output row width. defaults to 128
+        -f script    sql file to be executed
+        -o output    file for output
+
+    {: .ShellCommand}
+
+    </div>
+
+7. To start the Splice Machine CLI, run the `winsqlshell.cmd` command. The CLI starts and the `splice>` command prompt appears:  
+    {: .topLevel}
+
+    <div class="preWrapperWide" markdown="1">
+        C:\Splice-test\sqlshell>winsqlshell
+        Running Splice Machine SQL shell
+        For help: "splice> help;"
+        ERROR 08001: java.net.ConnectException : Error connecting to server localhost on
+        port 1527 with message Connection refused: connect.
+        splice>
+
+    {: .ShellCommand}
+
+    </div>
+
+    The error message appears because there is no Splice Machine server running locally. You can use the [`connect`](cmdlineref_connect.html) command to connect to a Splice Machine host.
+
+**NOTES:**
+
+* When starting the Splice Machine CLI with the `winsqlshell.cmd` command, you can use the -h option to specify and connect to a Splice Machine host. You can also specify a user name (-u) and password (-s). For example:
+
+  `C:\Splice-test\sqlshell>winsqlshell.cmd -h <splice-machine-hostname> -u <username> -s <password>`
+
+* You can use pipe SQL syntax with the `winsqlshell.cmd` command to run a SQL query from the Windows command prompt:
+
+  `C:\Splice-test\sqlshell>echo show tables; | winsqlshell.cmd -h <splice-machine-hostname> -u <username> -s <password>`
+
+{: .notePlain}  
+
+</div>
+
 ### Basic Syntax Rules   {#Basic}
 
-When using the command line (the <span
-class="AppCommand">splice&gt;</span> prompt), you must end each SQL
+When using the Splice Machine CLI, you must end each SQL
 statement with a semicolon (`;`). For example:
 
 <div class="preWrapper" markdown="1">
@@ -146,8 +247,7 @@ statement with a semicolon (`;`). For example:
 
 </div>
 You can extend SQL statements across multiple lines, as long as you end
-the last line with a semicolon. Note that the `splice>` command line
-interface prompts you with a fresh <span class="AppCommand">&gt;</span>
+the last line with a semicolon. Note that the CLI prompts you with a fresh <span class="AppCommand">&gt;</span>
 at the beginning of each line. For example:
 
 <div class="preWrapper" markdown="1">
@@ -156,9 +256,7 @@ at the beginning of each line. For example:
 {: .AppCommand xml:space="preserve"}
 
 </div>
-In most cases, the commands you enter are not case sensitive; you can
-Certain identifiers and keywords are case sensitive: this means that
-these commands are all equivalent:
+In most cases, the commands you enter are not case sensitive, but some identifiers and keywords are case sensitive. The following commands are all equivalent:
 
 <div class="preWrapperWide" markdown="1">
     splice> show connections;
@@ -167,15 +265,14 @@ these commands are all equivalent:
 {: .AppCommand}
 
 </div>
+
 The *[Command Line Syntax](cmdlineref_using_cli.html)* topic
-contains a complete syntax reference for <span
-class="AppCommand">splice&gt;</span>.
+provides a complete syntax reference for the CLI.
 
 ### Connecting to a Database   {#Connecti}
 
-When you start splice&gt;, you are automatically connected to your
-default database. You can connect to other databases with the
-[`connect`](cmdlineref_connect.html) command:
+When you start the Splice Machine CLI, you are automatically connected to your
+default database. You can use the [`connect`](cmdlineref_connect.html) command to connect to other databases:
 
 <div class="preWrapperWide" markdown="1">
     connect 'jdbc:splice://srv55:1527/splicedb;user=YourUserId;password=YourPassword' AS DEMO;
@@ -184,8 +281,7 @@ default database. You can connect to other databases with the
 </div>
 #### Anatomy of a Connection String
 
-Here's how to breakdown the connection strings we use to connect to a
-database:
+Here is a breakdown of the the database connection string elements:
 
 <table>
     <col />
@@ -234,16 +330,16 @@ database:
 </table>
 ### Displaying Database Objects   {#Viewing4}
 
-We'll first explore the `show` command, which is available to view
-numerous object types in your database, including:
+You can use the `show` command to view
+various object types in your database, including
 [connections](#Viewing), [schemas](#Viewing2), [tables](#Viewing3),
-[indexes](#Indexes), [views](#Views), [procedures](#Stored), and others.
+[indexes](#Indexes), [views](#Views), and [procedures](#Stored).
 
 #### Displaying and Changing Connections   {#Viewing}
 
-You can connection to multiple database in Splice Machine; one
+You can connect to multiple database in Splice Machine. One
 connection is designated as the current database; this is the database
-with which you're currently working.
+in which you are currently working.
 
 To view your current connections, use the &nbsp;[`show
 connections`](cmdlineref_showconnections.html) command:
@@ -279,9 +375,8 @@ close a connection:
 {: .AppCommand}
 
 </div>
-Notice that there's now no current connection because we've disconnected
-the connection named `DEMO`, which had been the current connection. We
-can easily resolve this by connecting to a named connection:
+Note that there is now no current connection because we have disconnected from
+the `DEMO` connection. You can resolve this by connecting to a new named connection:
 
 <div class="preWrapperWide" markdown="1">
     splice> connect splice;
@@ -326,7 +421,7 @@ the schemas that are defined in your currently connected database:
 </div>
 The current schema is used as the default value when you issue commands
 that optionally take a schema name as a parameter. For example, you can
-optionally specify a schema name in the show tables command; if you
+optionally specify a schema name in the show tables command. If you
 don't include a schema name, Splice Machine assumes the current schema
 name.
 
@@ -360,7 +455,7 @@ schema`](sqlref_statements_setschema.html) statement:
 #### Displaying Tables   {#Viewing3}
 
 The &nbsp;[`show tables`](cmdlineref_showtables.html) command displays a list
-of all tables in all of the schemas in your database, or all of the tables in a  specific schema; for example:
+of all tables in all of the schemas in your database, or all of the tables in a specific schema. For example:
 
 <div class="preWrapperWide" markdown="1">
     splice> show tables in SPLICE;
@@ -429,39 +524,40 @@ display the indexes in a table.
 </div>
 #### Displaying Views   {#Views}
 
-Similarly to indexes, you can use the &nbsp;[`show
+Similar to indexes, you can use the &nbsp;[`show
 views`](cmdlineref_showviews.html) command to display all of the indexes
 in your database or in a schema:
 
 <div class="preWrapperWide" markdown="1">
-splice> SHOW VIEWS;
-TABLE_SCHEM         |TABLE_NAME                       |CONGLOM_ID|REMARKS
------------------------------------------------------------------------------
-SYSVW               |SYSALLROLES                      |NULL      |
-SYSVW               |SYSCOLPERMSVIEW                  |NULL      |
-SYSVW               |SYSCOLUMNSTATISTICS              |NULL      |
-SYSVW               |SYSCOLUMNSVIEW                   |NULL      |
-SYSVW               |SYSCONGLOMERATEINSCHEMAS         |NULL      |
-SYSVW               |SYSPERMSVIEW                     |NULL      |
-SYSVW               |SYSROUTINEPERMSVIEW              |NULL      |
-SYSVW               |SYSSCHEMAPERMSVIEW               |NULL      |
-SYSVW               |SYSSCHEMASVIEW                   |NULL      |
-SYSVW               |SYSTABLEPERMSVIEW                |NULL      |
-SYSVW               |SYSTABLESTATISTICS               |NULL      |
-SYSVW               |SYSTABLESVIEW                    |NULL      |
 
-12 rows selected
+        splice> SHOW VIEWS;
+        TABLE_SCHEM         |TABLE_NAME                       |CONGLOM_ID|REMARKS
+        -----------------------------------------------------------------------------
+        SYSVW               |SYSALLROLES                      |NULL      |
+        SYSVW               |SYSCOLPERMSVIEW                  |NULL      |
+        SYSVW               |SYSCOLUMNSTATISTICS              |NULL      |
+        SYSVW               |SYSCOLUMNSVIEW                   |NULL      |
+        SYSVW               |SYSCONGLOMERATEINSCHEMAS         |NULL      |
+        SYSVW               |SYSPERMSVIEW                     |NULL      |
+        SYSVW               |SYSROUTINEPERMSVIEW              |NULL      |
+        SYSVW               |SYSSCHEMAPERMSVIEW               |NULL      |
+        SYSVW               |SYSSCHEMASVIEW                   |NULL      |
+        SYSVW               |SYSTABLEPERMSVIEW                |NULL      |
+        SYSVW               |SYSTABLESTATISTICS               |NULL      |
+        SYSVW               |SYSTABLESVIEW                    |NULL      |
+
+        12 rows selected
 {: .AppCommand xml:space="preserve"}
 
 </div>
 #### Displaying Stored Procedures and Functions   {#Stored}
 
 You can create *user-defined database functions* that can be evaluated
-in SQL statements; these functions can be invoked where most other
+in SQL statements. These functions can be invoked where most other
 built-in functions are allowed, including within SQL expressions and
-`SELECT` statement. Functions must be deterministic, and cannot be used
-to make changes to the database. You can use the &nbsp;[`show
-functions`](cmdlineref_showfunctions.html) command to display which
+`SELECT` statements. Functions must be deterministic, and cannot be used
+to make changes to the database. You can use the &nbsp;[show
+functions](cmdlineref_showfunctions.html) command to display which
 functions are defined in your database or schema:
 
 <div class="preWrapperWide" markdown="1">
@@ -498,13 +594,10 @@ functions are defined in your database or schema:
 ### Basic DDL and DML Statements   {#Basic2}
 
 This section introduces the basics of running SQL Data Definition
-Language (*DDL*) and Data Manipulation Language (*DML*) statements from
-<span class="AppCommand">splice&gt;</span>.
+Language (*DDL*) and Data Manipulation Language (*DML*) statements in the Splice Machine CLI.
 
-* [Getting Started With the splice&gt; Command Line
-  Interface](#CREATESta)
-* [Getting Started With the splice&gt; Command Line
-  Interface](#DROPSta)
+* [CREATE Statements](#CREATESta)
+* [DROP Statements](#DROPSta)
 * [Inserting Data](#INSERTIN)
 * [Selecting and Displaying Data](#SELETING)
 
@@ -606,9 +699,9 @@ there are any objects defined in the schema.
 
 #### Inserting Data   {#INSERTIN}
 
-Once you've created a table, you can use
+Once you have created a table, you can use
 [`INSERT`](sqlref_statements_insert.html) statements to insert records
-into that table; for example:
+into the table. For example:
 
 
     splice> INSERT INTO Players
@@ -624,13 +717,13 @@ into that table; for example:
 
 #### Selecting and Displaying Data   {#SELETING}
 
-Now that you have a bit of data in your table, you can use
+Now that you have data in your table, you can use
 [`SELECT`](sqlref_expressions_select.html) statements to select specific
-records or portions of records. This section contains several simple
+records or portions of records. This section contains a few simple
 examples of selecting data from the `Players` table we created in the
 previous section.
 
-You can select a single column from all of the records in a table; for
+You can select a single column from all of the records in a table. For
 example:
 
     splice> select NAME from Players;
@@ -643,7 +736,7 @@ example:
     3 rows selected
 {: .AppCommand}
 
-You can select all columns from all of the records in a table; for
+You can select all columns from all of the records in a table. For
 example:
 
 
@@ -668,8 +761,7 @@ You can also qualify which records to select with a
     1 row selected
 {: .AppCommand}
 
-You can easily count the records in a table by using the
-[`SELECT`](sqlref_expressions_select.html) statement; for example:
+You can use the [`SELECT`](sqlref_expressions_select.html) statement to count the records in a table. For example:
 
 
     splice> select count(*) from Players;
@@ -679,14 +771,11 @@ You can easily count the records in a table by using the
 
 ## See Also
 
-* To learn how to script <span
-  class="AppCommand">splice&gt;</span> commands, please see the
+* To learn how to script Splice Machine CLI commands, see the
   [Scripting Splice Machine Commands](cmdlineref_using_cliscripting.html)
   tutorial.
-* For more information about the <span
-  class="AppCommand">splice&gt;</span> command line interpreter, see
-  [the Command Line Reference Manual](cmdlineref_intro.html), which
-  includes information about and examples of all supported commands.
+* For more information about the Splice Machine CLI, see
+  [the Command Line Reference Manual](cmdlineref_intro.html).
 
 </div>
 </section>
