@@ -80,13 +80,13 @@ splice.olap_server.queue.spliceQueue2=root.YarnQueue2
 
 You can also specify a dedicated queue to use for compaction jobs by setting the following property value to `true` (the default value is `false`):
 ```
-splice.olap.server.isolated.compaction=true
+splice.olap_server.isolated.compaction=true
 ```
 {: .Example}
 
 You can also configure the name of the dedicated compaction queue with the following property:
 ```
-splice.olap.server.isolated.compaction.queue_name=myCompactionQueue
+splice.olap_server.isolated.compaction.queue_name=myCompactionQueue
 ```
 {: .Example}
 
