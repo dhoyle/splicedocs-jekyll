@@ -79,7 +79,8 @@ echo "Building Splice Documentation HTML suite"
 echo "done"
 
 echo "Creating PDF file: pdf/splicedocs.pdf"
- prince --javascript --input-list=_site/pdfconfigs/suite/prince-list.txt -o pdf/splicedocs.pdf 2>pdfwarns.txt
+ mkdir -m777 _site/pdf
+ prince --javascript --input-list=_site/pdfconfigs/suite/prince-list.txt -o _site/pdf/splicedocs.pdf 2>pdfwarns.txt
 echo "done"
 
 # say -v Fiona "$version $branch PDF Done"
