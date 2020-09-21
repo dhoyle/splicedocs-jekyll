@@ -273,8 +273,7 @@ Splice Machine for Splice Machine version __Release {{site.version_display}}__ s
   We recommend that you do not use JDK 1.8.0_40
   {: .noteNote}
 
-Splice Machine does not test our releases with OpenJDK, so we recommend
-against using it.
+* OpenJDK 1.8
 
 </div>
 </section>
