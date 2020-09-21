@@ -165,6 +165,11 @@ Use the following steps to launch the Splice Machine CLI on Windows:
 
     The `sqlshell.sh` file is not required for Windows.
 
+    {: .AppCommand xml:space="preserve"}
+
+    If you have access to Splice Machine parcels, you do not need to install Splice Engine. You can simply download and extract the parcel using an application such as [7-Zip](https://www.7-zip.org/) and copy the files from there.  
+    {: .noteIcon}
+
 4. Ensure that the Windows machine has OpenJDK 1.8 installed. You may also need to set the JAVA_HOME environment variable to the OpenJDK 1.8 path.
 
 5. Open the Windows command prompt and navigate to the `sqlshell` folder on the Windows machine. For example:
@@ -219,7 +224,7 @@ Use the following steps to launch the Splice Machine CLI on Windows:
 
     </div>
 
-    The error message appears because there is no Splice Machine server running locally. You can use the [`connect`](cmdlineref_connect.html) command to connect to a Splice Machine host.
+    The error message appears because there is no connection to a Splice Machine server. You can use the [`connect`](cmdlineref_connect.html) command to connect to a Splice Machine host.
 
 **NOTES:**
 
@@ -230,6 +235,8 @@ Use the following steps to launch the Splice Machine CLI on Windows:
 * You can use pipe SQL syntax with the `winsqlshell.cmd` command to run a SQL query from the Windows command prompt:
 
   `C:\Splice-test\sqlshell>echo show tables; | winsqlshell.cmd -h <splice-machine-hostname> -u <username> -s <password>`
+
+* In order to use the `-P` password prompt option, the directory that contains the `winsqlshell.cmd` file must be writable by the user. This is because the password prompt script creates a temporary file, which is subsequently deleted.   
 
 {: .notePlain}  
 
