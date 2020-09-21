@@ -41,8 +41,7 @@ The name of the table
 enable
 {: .paramName}
 
-A Boolean specifying whether or not to physically delete rows that have
-been logically deleted during major compaction.
+When a major compaction takes place, this Boolean specifies whether or not to physically delete rows that have been logically deleted.
 {: .paramDefnFirst}
 
 </div>
@@ -62,10 +61,9 @@ This specifies that deleted rows from `my_table` will be physically
 deleted when the next major compaction is run:
 
 <div class="preWrapperWide" markdown="1">
-    CALL SYSCS_UTIL.SET_PURGE_DELETED_ROWS('SPLICE', 'my_table', true); 
+    CALL SYSCS_UTIL.SET_PURGE_DELETED_ROWS('SPLICE', 'my_table', true);
 {: .Example xml:space="preserve"}
 
 </div>
 </div>
 </section>
-
