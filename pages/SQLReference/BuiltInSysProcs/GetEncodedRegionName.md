@@ -172,7 +172,7 @@ for a table row that has key value `1|2`:
 
 <div class="preWrapperWide" markdown="1">
     splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME(
-                    'SPLICE', 'TESTTABLE', null, '1|2', '|', null, null, null, null););
+                    'SPLICE', 'TESTTABLE', null, '1|2', '|', null, null, null, null);
     ENCODED_REGION_NAME                     |START_KEY      |END_KEY
     -----------------------------------------------------------------------
     8ffc80e3f8ac3b180441371319ea90e2        |\x81\x00\x82   |\x81\x00\x84
