@@ -95,13 +95,13 @@ unencoded key value, `1|2`, into the
 `SYSCS_UTIL.GET_ENCODED_REGION_NAME` procedure:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME('SPLICE', 'TESTTABLE', null, '1|2', '|', null, null, null, null););
+    splice> CALL SYSCS_UTIL.GET_ENCODED_REGION_NAME('SPLICE', 'TESTTABLE', null, '1|2', '|', null, null, null, null);
     ENCODED_REGION_NAME                     |START_KEY                                         |END_KEY
     ------------------------------------------------------------------------------------------------------------------
     8ffc80e3f8ac3b180441371319ea90e2        |\x81\x00\x82                                      |\x81\x00\x84
-    
+
     1 row selected
-    
+
     splice> CALL SYSCS_UTIL.COMPACT_REGION('SPLICE', 'testTable', NULL, '8ffc80e3f8ac3b180441371319ea90e2');
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -119,9 +119,9 @@ passing the unencoded index key value,
     ENCODED_REGION_NAME                     |START_KEY                                         |END_KEY
     ------------------------------------------------------------------------------------------------------------------
     ff8f9e54519a31e15f264ba6d2b828a4        |\xEC\xC1\x15\xAD\xCD\x80\x00\xE1\x06\xEE\x00\xE4V&|
-    
+
     1 row selected
-    
+
     splice> CALL SYSCS_UTIL.COMPACT_REGION('SPLICE', 'testTable', 'testIndex', 'ff8f9e54519a31e15f264ba6d2b828a4');
     Statement executed.
 {: .Example xml:space="preserve"}
@@ -137,4 +137,3 @@ passing the unencoded index key value,
 
 </div>
 </section>
-
