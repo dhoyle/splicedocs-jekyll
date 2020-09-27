@@ -17,7 +17,7 @@ The <span class="AppCommand">spool</span> command logs Splice Machine command li
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SPOOL fileName;
+    SPOOL 'fileName';
 
     SPOOL STOP;
 
@@ -29,7 +29,7 @@ The <span class="AppCommand">spool</span> command logs Splice Machine command li
 fileName
 {: .paramName}
 
-The name of the target log file for the command line session data.
+The name of the target log file for the command line session data. Include the full path on the local file system, and enclose the path in single quotes.
   * Session data is appended to the end of the file.
   * If a log file is already in use, subsequent data is written to the new file.
 {: .paramDefnFirst}
@@ -98,7 +98,7 @@ Switch to a new log file:
   splice>
 </pre></div>
 
-Example of data logged to file:
+Example of data logged to the file:
 
 <div class="preWrapperWide" markdown="1"><pre class="Example">
   splice> show schema;
