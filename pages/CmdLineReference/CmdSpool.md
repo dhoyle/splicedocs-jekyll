@@ -30,17 +30,11 @@ fileName
 {: .paramName}
 
 The name of the target log file for the command line session data.
+  * Session data is appended to the end of the file.
+  * If a log file is already in use, subsequent data is written to the new file.
 {: .paramDefnFirst}
 
-Session data is appended to the end of the file.
-{: .paramDefn}
-
-If a log file is already in use, subsequent data is written to the new file.
-{: .paramDefn}
-
 The session data that is logged to the file includes:
-{: .paramDefn}
-
   * SQL statements issued
   * SQL output messages (errors, row counts when successful, etc.)
   * Data returned
@@ -72,14 +66,14 @@ Log to a new file:
   splice> spool '/Library/splicelogs/splicelog1';
   Create new spool file /Library/splicelogs/splicelog1.
   splice>
-</div>
+</pre></div>
 
 Stop logging to the file:
 
 <div class="preWrapperWide" markdown="1"><pre class="Example">
   splice> spool stop;
   splice>
-</div>
+</pre></div>
 
 Resume logging to the file:
 
@@ -87,14 +81,14 @@ Resume logging to the file:
   splice> spool '/Library/splicelogs/splicelog1';
   Warning: spool is set to /Library/splicelogs/splicelog1 which already exists, future commands will be appended to it.
   splice>  
-</div>
+</pre></div>
 
 Clear the contents of the file:
 
 <div class="preWrapperWide" markdown="1"><pre class="Example">
   splice> spool clear;
   splice>   
-</div>
+</pre></div>
 
 Switch to a new log file:
 
@@ -102,7 +96,7 @@ Switch to a new log file:
   splice> spool '/Library/splicelogs/splicelog2';
   Create new spool file /Library/splicelogs/splicelog2.
   splice>
-</div>
+</pre></div>
 
 Example of data logged to file:
 
@@ -132,7 +126,7 @@ Example of data logged to file:
   13 rows selected
   ELAPSED TIME = 622 milliseconds
   splice>
-</div>
+</pre></div>
 
 </div>
 </section>
