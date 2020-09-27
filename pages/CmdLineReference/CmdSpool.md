@@ -38,8 +38,9 @@ Session data is appended to the end of the file.
 If a log file is already in use, subsequent data is written to the new file.
 {: .paramDefn}
 
-
 The session data that is logged to the file includes:
+{: .paramDefn}
+
   * SQL statements issued
   * SQL output messages (errors, row counts when successful, etc.)
   * Data returned
