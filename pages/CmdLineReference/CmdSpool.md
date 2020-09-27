@@ -30,8 +30,9 @@ fileName
 {: .paramName}
 
 The name of the target log file for the command line session data. Include the full path on the local file system, and enclose the path in single quotes.
-  * Session data is appended to the end of the file.
-  * If a log file is already in use, subsequent data is written to the new file.
+  * If the file does not exist, a new file is created.
+  * If the file exists, session data is appended to the end of the file.
+  * If a log file is already in use and a new file is specified, subsequent data is written to the new file.
 {: .paramDefnFirst}
 
 The session data that is logged to the file includes:
