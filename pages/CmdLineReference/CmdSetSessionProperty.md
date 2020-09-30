@@ -78,7 +78,15 @@ The following table summarizes the currently available session properties:
                 <p>Setting this to <code>null</code> unsets the property, which is equivalent to not specifying the <code>useSpark=false</code> hint by default in any query.</p>
             </td>
         </tr>
-    </tbody>
+        <tr>
+            <td class="CodeFont">DISABLE_TC_PUSHED_DOWN_INTO_VIEWS</td>
+            <td>
+                <p>This setting is <code>false</code> by default, which means that transitive closure is performed for predicates pushed from outside of the view/DT.</p>
+                <p>Setting this to <code>true</code> disables transitive closure for predicates pushed from outside of the view/DT.</p>
+                <p>Setting this to <code>false</code> re-enables this feature.</p>
+            </td>
+        </tr>
+      </tbody>  
 </table>
 
 ### Unsetting a Property
@@ -101,7 +109,7 @@ USESPARK=true;
 1 row selected</pre>
 </div>
 
-And here's an example of unsetting those values (resetting them to their connection default values):
+And this is an example of resetting those values to their connection default values:
 
 <div class="preWrapperWide" markdown="1"><pre class="Example">
 splice> set session_property useSpark=null;
@@ -113,6 +121,25 @@ splice> values current session_property;
 
 1 row selected</pre>
 </div>
+
+Disable transitive closure for predicates pushed from outside of the view/DT:
+
+<div class="preWrapperWide" markdown="1"><pre class="Example">
+set session_property DISABLE_TC_PUSHED_DOWN_INTO_VIEWS=true;
+</pre></div>
+
+Disable transitive closure for predicates pushed from outside of the view/DT using a connection string:
+
+<div class="preWrapperWide" markdown="1"><pre class="Example">
+connect 'jdbc:splice://localhost:1527/splicedb;user=splice;password=admin;disableAdvancedTC=true' as tc_con;
+</pre></div>
+
+Re-enable transitive closure for predicates pushed from outside of the view/DT:
+
+<div class="preWrapperWide" markdown="1"><pre class="Example">
+set session_property DISABLE_TC_PUSHED_DOWN_INTO_VIEWS=false;
+</pre></div>
+
 
 ## See Also
 * [Using Hints to Improve Performance](bestpractices_optimizer_hints.html)
