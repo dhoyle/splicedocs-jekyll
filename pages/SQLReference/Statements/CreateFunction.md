@@ -349,16 +349,13 @@ function to read data from our external database and insert it into our
 Splice Machine database:
 
 <div class="preWrapperWide" markdown="1">
-    CREATE FUNCTION externalEmployees()
-       RETURNS TABLE
-         (
-          employeeId    INT,
-          lastName      VARCHAR( 50 ),
-          firstName     VARCHAR( 50 ),
-          birthday      DATE
-         )
-       LANGUAGE JAVA
-       PARAMETER STYLE SPLICE_JDBC_RESULT_SET   READS SQL DATA   EXTERNAL NAME 'com.splicemachine.example.vti.readEmployees';
+    CREATE FUNCTION STRING_SPLIT(s varchar(1000))
+    RETURNS TABLE
+    (
+    value varchar(100)
+    )
+    LANGUAGE JAVA
+    PARAMETER STYLE SPLICE_JDBC_RESULT_SET  READS SQL DATA  EXTERNAL NAME 'splicemachine.example.vti.SplitString.split';
 {: .Example}
 
 </div>
@@ -374,7 +371,7 @@ database:
 <div class="preWrapperWide" markdown="1">
     INSERT INTO employees
       SELECT myExtTbl.*
-        FROM TABLE (externalEmployees() ) myExtTbl;
+        FROM TABLE (STRING_SPLIT('Lorem ipsum dolor sit amet.') ) myExtTbl;
 {: .Example}
 
 </div>
