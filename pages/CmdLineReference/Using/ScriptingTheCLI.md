@@ -20,7 +20,7 @@ You can use two methods to script the Splice Machine CLI:
 ## Run CLI Commands from a Text File   {#Running}
 
 You can create a simple text file of command lines and use the
-splice&gt; run command to run the commands in that file. Follow these
+`run` command to run the commands in that file. Follow these
 steps:
 
 <div class="opsStepsList" markdown="1">
