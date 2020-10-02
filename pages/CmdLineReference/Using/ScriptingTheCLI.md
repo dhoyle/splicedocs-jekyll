@@ -146,14 +146,14 @@ the previous section into a shell script that starts the CLI, runs several comma
     {: .ShellCommand}
     </div>
 
-    If you're not familiar with this kind of input redirection: the
+    If you are not familiar with this kind of input redirection: the
     &lt;&lt; specifies that an interactive program (`./bin/sqlshell.sh`)
     will receive its input from the lines in the file until it
     encounters EOF. The program responds exactly as it would had a user
     directly typed in those commands.
     {: .indentLevel1}
 
-2.  Make your script executable
+2.  Make your script executable.
     {: .topLevel}
 
     Be sure to update permissions on your script file to allow it to
@@ -169,7 +169,7 @@ the previous section into a shell script that starts the CLI, runs several comma
 3.  Run the script
     {: .topLevel}
 
-    In your terminal window, invoke the script:
+    In a terminal window, invoke the script:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
@@ -231,7 +231,7 @@ example:
 {: .ShellCommand xml:space="preserve"}
 
 </div>
-Once you've issued this command, you can log out, and subsequently view
+Once you have issued this command, you can log out, and subsequently view
 the output of your script in the `myShellScript.out` file.
 {: .topLevel}
 

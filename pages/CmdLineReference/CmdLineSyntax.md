@@ -32,10 +32,9 @@ This topic describes how to use the Splice Machine command line interface (CLI).
 The remainder of this section contains a reference page for each of the
 commands.
 
-## splice&gt; Command Line Interpreter
+## Running the Splice Machine CLI
 
-To run the Splice Machine command line interpreter, run the <span
-class="ShellCommand">sqlshell.sh</span> script in your terminal window.
+To start the Splice Machine CLI, run the following command in a terminal window.
 
 <div class="preWrapperWide" markdown="1">
     % ./sqlshell.sh
@@ -43,10 +42,7 @@ class="ShellCommand">sqlshell.sh</span> script in your terminal window.
 {: .ShellCommand xml:space="preserve"}
 
 </div>
-When the interpreter prompts you with <span
-class="AppCommand">splice&gt;</span>, you can enter commands, ending
-each with a semicolon. For a complete description of CLI syntax, see the next section in
-this topic, [Command Line Syntax](#Syntax).
+When the <span class="AppCommand">splice&gt;</span> command prompt appears, you can enter commands. You must terminate each command with a semicolon. For a complete description of CLI syntax, see [Command Line Syntax](#Syntax).
 
 Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you'll see an error message indicating that the connection has been terminated.
 {: .noteIcon}
