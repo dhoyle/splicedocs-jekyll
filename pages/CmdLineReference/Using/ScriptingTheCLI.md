@@ -1,5 +1,5 @@
 ---
-title: Scripting the splice&gt; Command Line Interpreter
+title: Scripting the Splice Machine Command Line Interface
 summary: Walks you through scripting a set of commands to submit to the splice&gt; command line interpreter.
 keywords: scripting cli
 toc: false
@@ -10,16 +10,14 @@ folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Scripting the splice&gt; Command Line Interface
+# Scripting the Splice Machine Command Line Interface
 
-You can use two simple and different methods to script the <span
-class="AppCommand">splice&gt;</span> command line interpreter; both of
-described here:
+You can use two methods to script the Splice Machine CLI:
 
-* [Running a File of splice&gt; Commands](#Running)
-* [Running Splice Machine From a Shell Script](#Running2)
+* [Run CLI Commands from a Text File](#Running)
+* [Run CLI Commands from a Shell Script](#Running2)
 
-## Running a File of splice&gt; Commands   {#Running}
+## Run CLI Commands from a Text File   {#Running}
 
 You can create a simple text file of command lines and use the
 splice&gt; run command to run the commands in that file. Follow these
@@ -59,20 +57,16 @@ steps:
 
     </div>
 
-2.  Start splice&gt;
+2.  Start the CLI.
     {: .topLevel}
 
-    If you've not yet done so, start Splice Machine and the
-    <span class="AppCommand">splice&gt;</span> command line interface. If you don't know how to do so,
-    please see our [Introduction to the splice&gt; Command Line
-    Interface](cmdlineref_using_getstarted.html).
+    If you have not already done so, start Splice Machine and the CLI. See [Introduction to the Command Line Interface](cmdlineref_using_getstarted.html) for more information.
     {: .indentLevel1}
 
 3.  Run the SQL Script
     {: .topLevel}
 
-    Now, in <span class="AppCommand">splice&gt;</span>, run your script
-    with the &nbsp;[`run`](cmdlineref_run.html) command:
+    Run your script in the CLI using the &nbsp;[`run`](cmdlineref_run.html) command:
     {: .indentLevel1}
 
     <div class="preWrapperWide" markdown="1">
@@ -81,8 +75,7 @@ steps:
 
     </div>
 
-    You'll notice that <span
-    class="AppCommand">splice&gt;</span> displays exactly the same
+    You will notice that the CLI displays exactly the same
     results as you would see if you typed each command line into the
     interface:
     {: .spaceAbove}
@@ -117,14 +110,11 @@ steps:
 {: .boldFont}
 
 </div>
-## Running Splice Machine From a Shell Script   {#Running2}
+## Run CLI Commands from a Shell Script   {#Running2}
 
-You can also use a shell script to start the splice&gt; command line
-interpreter and run command lines with Unix heredoc (`<<`) input
+You can also use a shell script to start the Splice Manchine CLI and run commands using Unix heredoc (`<<`) input
 redirection. For example, we can easily rework the SQL script we used in
-the previous section into a shell script that starts <span
-class="AppCommand">splice&gt;</span>, runs several commands/statements,
-and then exits <span class="AppCommand">splice&gt;</span>.
+the previous section into a shell script that starts the CLI, runs several commands/statements, and then exits the CLI.
 
 <div class="opsStepsList" markdown="1">
 1.  Create a shell script
@@ -188,8 +178,8 @@ and then exits <span class="AppCommand">splice&gt;</span>.
 
     </div>
 
-    You'll notice that <span class="AppCommand">splice&gt;</span> starts
-    and runs exactly as it did in the SQL script example above, then
+    You will notice that the Splice Machine CLI starts
+    and runs exactly as it did in the SQL script example above, and then
     exits.
     {: .spaceAbove}
 

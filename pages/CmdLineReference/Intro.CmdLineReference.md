@@ -1,6 +1,6 @@
 ---
 title: Command Line Commands Summary
-summary: Summarizes the splice&gt; commands.
+summary: Summarizes the Splice Machine CLI commands.
 keywords: splice>, cli, command reference
 toc: false
 product: all
@@ -10,20 +10,18 @@ folder: CmdLineReference
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-{% assign site.guide_heading = "splice&gt; Command Line Reference" %}
-# Splice Machine Commands Reference
+{% assign site.guide_heading = "Splice Command Line Reference" %}
+# Splice Machine Command Line Reference
 
-This guide contains reference information for using the Splice Machine command line interpreter, which is also known as the Splice Prompt (<span class="AppCommand">splice&gt;</span>).
+This guide describes how to use the Splice Machine command line interface (CLI).
 
-The *Using* section of the guide will help you to get started, in the topics:
-
-* [Getting Started with the CLI](cmdlineref_using_getstarted.html) introduces you to using the CLI.
+* [Getting Started with the CLI](cmdlineref_using_getstarted.html) provides a quick introduction to the CLI.
 * [Command Line Syntax](cmdlineref_using_cli.html) summarizes command line parameters and syntax.
 * [Scripting the CLI](cmdlineref_using_cliscripting.html) shows you how to script a set of commands to submit via the CLI.
 * [Using RLWrap with splice>](cmdlineref_using_rlwrap.html) summarizes the RLWrap commands you can use to enhance the CLI.
 
 The remainder of this guide contains a reference topic page for each Splice Machine
-command. As shown in the tables below, you can use many of the commands when connected in any way (including JDBC and ODBC) to Splice Machine, while some commands can only be used via our command line interpreter.
+command. As shown in the tables below, you can use many of the commands when connected in any way (including JDBC and ODBC) to Splice Machine, while some commands can only be used via the command line interface (`sqlshell.sh`).
 
 ## Commands You Can Use with All Connections to a Splice Machine Database   {#splice}
 

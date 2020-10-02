@@ -1,6 +1,6 @@
 ---
 title: Command Line Syntax
-summary: Syntax rules and helpful information for using the Splice Machine splice&gt; command line interpreter.
+summary: Syntax rules and helpful information for using the Splice Machine CLI.
 keywords: cli syntax, splice>
 toc: false
 product: all
@@ -10,13 +10,11 @@ folder: CmdLineReference/Using
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Using the splice&gt; Command Line Interface
+# Using the Splice Machine Command Line Interface
 
-This topic presents information that will help you in using the Splice
-Machine <span class="AppCommand">splice&gt;</span> command line
-interpreter, in the following sections:
+This topic describes how to use the Splice Machine command line interface (CLI).
 
-* The [splice&gt; Command Line Interpreter](#splice%3E){: .selected}
+* The [Command Line Interface](#splice%3E){: .selected}
   section shows you how to invoke the splice&gt; command line.
 * The [Command Line Output](#Command){: .selected} section describes how
   you can adjust the appearance of output from the interepreter.
@@ -28,12 +26,11 @@ interpreter, in the following sections:
 * The [Example Command Lines](#ExampleCommands){: .selected} section
   shows several examples of command lines.
 * Our [Scripting Splice Commands](cmdlineref_using_cliscripting.html) tutorial
-  describes how to create a script of <span
-  class="AppCommand">splice&gt;</span> commands to run a series of
-  operations like loading a number of files into your database
+  describes how to create a script of CLI commands to run a series of
+  operations such as loading a number of files into your database
 
 The remainder of this section contains a reference page for each of the
-command line commands.
+commands.
 
 ## splice&gt; Command Line Interpreter
 
@@ -48,8 +45,7 @@ class="ShellCommand">sqlshell.sh</span> script in your terminal window.
 </div>
 When the interpreter prompts you with <span
 class="AppCommand">splice&gt;</span>, you can enter commands, ending
-each with a semicolon. For a complete description of <span
-class="AppCommand">splice&gt;</span> syntax, see the next section in
+each with a semicolon. For a complete description of CLI syntax, see the next section in
 this topic, [Command Line Syntax](#Syntax).
 
 Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you'll see an error message indicating that the connection has been terminated.
@@ -58,7 +54,7 @@ Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try 
 ### sqlshell.sh Command Line Options
 You can optionally include parameter values when running <span
 class="ShellCommand">sqlshell.sh</span> script, to change default
-values. Here's the syntax:
+values:
 
 <div class="preWrapper" markdown="1">
     sqlshell.sh [-U url] [-h host] [-p port] [-u user] [-s pass] [-P] [-S]
@@ -164,8 +160,8 @@ values. Here's the syntax:
 
 ## Command Line Output   {#Command}
 
-Output from <span class="AppCommand">splice&gt;</span> commands is
-displayed in your terminal window. The
+Output from CLI commands is
+displayed in the terminal window. The
 [`maximumdisplaywidth`](cmdlineref_maximumdisplaywidth.html) setting
 affects how the output is displayed; specifically, it determines if the
 content of each column is truncated to fit within the width that you
@@ -177,10 +173,7 @@ output is displayed, without truncation.
 
 ## Command Line Syntax   {#Syntax}
 
-This section briefly summarizes the syntax of command lines you can
-enter in Jupyter notebooks and in response to the <span
-class="AppCommand">splice&gt;</span> prompt, including these
-subsections:
+This section provides a brief summary of the CLI syntax.
 
 * [Finishing and submitting command lines](#Finish){: .selected}
 * [Capitalization and case sensitivity rules](#Capitali){: .selected}
@@ -380,7 +373,7 @@ here.](cmdlineref_using_rlwrap.html)
 
 ### Show Local Time in the Command Prompt   {#ShowTime}
 
-You can use the <code>prompt clock on</code> command to display the current local time in the splice command prompt. Use the <code>prompt clock off</code> command to redisplay the default splice command prompt. 
+You can use the <code>prompt clock on</code> command to display the current local time in the splice command prompt. Use the <code>prompt clock off</code> command to redisplay the default splice command prompt.
 
 <div class="preWrapper" markdown="1">
 
