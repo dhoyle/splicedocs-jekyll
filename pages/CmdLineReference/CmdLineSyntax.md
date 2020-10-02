@@ -48,9 +48,6 @@ Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try 
 {: .noteIcon}
 
 ### sqlshell.sh Command Line Options
-You can optionally include parameter values when running <span
-class="ShellCommand">sqlshell.sh</span> script, to change default
-values:
 
 <div class="preWrapper" markdown="1">
     sqlshell.sh [-U url] [-h host] [-p port] [-u user] [-s pass] [-P] [-S]
@@ -165,7 +162,7 @@ specify.
 
 When you set
 [`maximumdisplaywidth`](cmdlineref_maximumdisplaywidth.html) to `0`, all
-output is displayed, without truncation.
+output is displayed without truncation.
 
 ## Command Line Syntax   {#Syntax}
 
@@ -390,7 +387,7 @@ You can use the <code>prompt clock on</code> command to display the current loca
     <thead>
         <tr>
             <th>Operation</th>
-            <th>Command Example</th>
+            <th>Example Command</th>
         </tr>
     </thead>
     <tbody>
