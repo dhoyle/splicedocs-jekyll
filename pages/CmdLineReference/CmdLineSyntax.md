@@ -44,7 +44,7 @@ To start the Splice Machine CLI, run the following command in a terminal window.
 </div>
 When the <span class="AppCommand">splice&gt;</span> command prompt appears, you can enter commands. You must terminate each command with a semicolon. For a complete description of CLI syntax, see [Command Line Syntax](#Syntax).
 
-Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you'll see an error message indicating that the connection has been terminated.
+Splice Machine requires Oracle JDK 1.8, update 60 or higher to run; if you try to start sqlshell.sh on a system that doesn't have the required version of the JDK, you will see an error message indicating that the connection has been terminated.
 {: .noteIcon}
 
 ### sqlshell.sh Command Line Options
@@ -382,9 +382,7 @@ You can use the <code>prompt clock on</code> command to display the current loca
 
 </div>
 
-## Example Command Lines   {#ExampleCommands}
-
-Here are several example command lines:
+## Example Commands   {#ExampleCommands}
 
 <table summary="Example command lines">
     <col />
@@ -418,7 +416,7 @@ Here are several example command lines:
         </tr>
         <tr>
             <td colspan="2">
-                <p class="noteNote">Remember that you must end your command lines with the semicolon (<code>;</code>) character, which submits the command line to the interpreter.</p>
+                <p class="noteNote">You must terminate each command with a semicolon (<code>;</code>).</p>
             </td>
         </tr>
     </tbody>
