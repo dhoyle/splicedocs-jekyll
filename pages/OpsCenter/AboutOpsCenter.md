@@ -1,12 +1,12 @@
 ---
 title: Introduction
-summary: A list of the topics in this documentation that apply only to our database-as-a-service; these topics do not apply to our on-premise product product.
-keywords: home, welcome, dbaas, Service, paas
+summary: About Splice Machine Kubernetes Ops Center.
+keywords: home, welcome, Kubernetes Ops Center, Ops Center, paas
 sidebar: home_sidebar
 toc: false
 product: all
-permalink: dbaas_about.html
-folder: DBaaS
+permalink: opscenter_about.html
+folder: OpsCenter
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

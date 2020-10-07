@@ -1,11 +1,11 @@
 ---
-summary: Introduction to the Splice Machine DBaaS User Interface
+summary: Introduction to the Splice Machine Ops Center User Interface
 title: Introduction
-keywords: dbaas, paas, cloud manager, ui, user interface
+keywords: Kubernetes Ops Center, Ops Center, paas, ui, user interface
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: dbaas_cm_intro.html
+permalink: opscenter_ui_intro.html
 folder: DBaaS/CloudManager
 ---
 <section>

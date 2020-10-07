@@ -1,12 +1,12 @@
 ---
 title: Splice Machine Database Service Overview
-summary: An overview of the Splice Machine Cloud Managed Database Service.
-keywords: dbaas, Service, paas, service overview, overview of service, availability, support, service support, service terms, license
+summary: An overview of the Splice Machine Kubernetes Ops Center.
+keywords: Kubernetes Ops Center, Ops Center, service overview, overview of service, availability, support, service support, service terms, license
 sidebar: home_sidebar
 toc: false
 product: all
-permalink: dbaas_serviceoverview.html
-folder: DBaaS
+permalink: opscenter_overview.html
+folder: OpsCenter
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">

@@ -1,12 +1,12 @@
 ---
 title: Splice Machine User Interface Overview
 summary: An overview of the Splice Machine Cloud Managed Database Service.
-keywords: dbaas, Service, user interface, cloud manager, account manager, events manager, ui for service
+keywords: Kubernetes Ops Center, Ops Center, user interface, account manager, events manager, ui for service
 sidebar: home_sidebar
 toc: false
 product: all
-permalink: dbaas_uioverview.html
-folder: DBaaS
+permalink: opscenter_ui_overview.html
+folder: OpsCenter
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
