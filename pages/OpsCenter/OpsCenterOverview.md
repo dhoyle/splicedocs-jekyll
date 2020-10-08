@@ -1,5 +1,5 @@
 ---
-title: Splice Machine Database Service Overview
+title: Splice Machine Kubernetes Ops Center Overview
 summary: An overview of the Splice Machine Kubernetes Ops Center.
 keywords: Kubernetes Ops Center, Ops Center, service overview, overview of service, availability, support, service support, service terms, license
 sidebar: home_sidebar
@@ -10,13 +10,42 @@ folder: OpsCenter
 ---
 {% include splicevars.html %} <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Service Overview
+# Splice Machine Kubernetes Ops Center Overview
 
-Our Database Service is a subscription-based service, hosted in the
-Cloud. We take care of managing your cluster services, and you can focus
-on working with our scalable, dual-engine database.
+Protect against cloud vendor lock-in with a unified deployment across AWS, Azure, GCP, and on-premises K8s clusters.
 
-## Service Availability   {#serviceavail}
+Simplify management of a stateful, distributed data platform on Kubernetes with the Splice Machine Kubernetes Operator.
+
+the easiest way to provision, manage, and operate a collection of Splice Machine scale-out SQL databases and machine learning platforms.
+
+Kubernetes Ops Center enables you to deploy the Splice Machine database in a Kubernetes environment. You can deploy Kubernetes Ops Center on multiple Cloud environments -- AWS, Azure, and GCP -- and avoid Cloud vendor lock-in. You can also deploy Kubernetes Ops Center on-premises.
+
+Kubernetes Ops Center is designed to meet a diverse range of infrastucture requirements: Cloud, on-prem, or hybrid deployments, and provision, manage, and operate a collection of Splice Machine scale-out SQL databases and machine learning platforms.
+
+ The installation methods that we provide to our customers are the same ones used internally.  We designed our architecture mindful of our customers’ diverse infrastructure needs, knowing that not all of our customers can move their workloads to the cloud.  
+
+When used this way, Kubernetes becomes an environment that you can store one (or many) Splice Machine database instances into.  And, you can have multiple Kubernetes environments, each configured uniquely to your needs.  
+
+If you are not familiar with Kubernetes (often abbreviated as K8s), it is an open-source, portable, extensible platform for managing containerized workloads and services.   It abstracts away the underlying computing resources, allowing users to deploy workloads to the entire cluster instead of a particular server.  It provides you with:
+
+Service discovery and load balancing
+Storage orchestration
+Automated rollouts and rollbacks
+Automated bin packing
+Self-healing
+Secret and configuration management
+
+Some of the advantages of using Kubernetes are:
+
+Customers protected against vendor logic
+Dynamic Scaling - scale up and scale down
+Fault Tolerance - failure of the underlying hardware, auto-healing capabilities
+Cloud providers allow for a diverse set of server types
+Increases developer and admin productivity by having a simplified deployment process
+Admin and developers use the same tools regardless of the platform..
+
+
+## Kubernetes Concepts and Terminology   {#k8sconcepts}
 
 Splice Machine's target Service availability commitment is 99.9% per
 calendar month, excluding scheduled downtime. You can expect the
@@ -28,7 +57,7 @@ following:
   receiving your request to do so.
 * Splice Machine can resize your cluster with minimal downtime.
 
-## Support for Your Service   {#servicesupport}
+## Deployment Options   {#deploymentoptions}
 
 Splice Machine provides two support options, as shown in the following
 table:
