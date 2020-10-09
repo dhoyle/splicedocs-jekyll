@@ -12,50 +12,60 @@ folder: OpsCenter
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine Kubernetes Ops Center Overview
 
-Protect against cloud vendor lock-in with a unified deployment across AWS, Azure, GCP, and on-premises K8s clusters.
+Kubernetes Ops Center enables you to deploy the Splice Machine database in a Kubernetes environment. You can deploy Kubernetes Ops Center both on-premises and in the cloud, and on multiple cloud environments -- AWS, Azure, and GCP -- to prevent cloud vendor lock-in.
 
-Simplify management of a stateful, distributed data platform on Kubernetes with the Splice Machine Kubernetes Operator.
+Kubernetes Ops Center is designed to meet a diverse range of infrastructure requirements: cloud, on-premises, or hybrid deployments. Kubernetes Ops Center makes it easy to provision, manage, and operate as many Splice Machine database instances as you need, where you need them, with each instance uniquely configured to meet your requirements.  
 
-the easiest way to provision, manage, and operate a collection of Splice Machine scale-out SQL databases and machine learning platforms.
+If you are not familiar with Kubernetes (often abbreviated as K8s), it is an open-source, portable, extensible platform for managing containerized workloads and services. It abstracts away the underlying computing resources, which allows you to deploy workloads to an entire cluster instead of a particular server.
 
-Kubernetes Ops Center enables you to deploy the Splice Machine database in a Kubernetes environment. You can deploy Kubernetes Ops Center on multiple Cloud environments -- AWS, Azure, and GCP -- and avoid Cloud vendor lock-in. You can also deploy Kubernetes Ops Center on-premises.
+### Kubernetes Features
 
-Kubernetes Ops Center is designed to meet a diverse range of infrastucture requirements: Cloud, on-prem, or hybrid deployments, and provision, manage, and operate a collection of Splice Machine scale-out SQL databases and machine learning platforms.
+* Storage orchestration
+* Automated rollouts and rollbacks
+* Automated bin packing
+* Self-healing
+* Secret and configuration management
 
- The installation methods that we provide to our customers are the same ones used internally.  We designed our architecture mindful of our customers’ diverse infrastructure needs, knowing that not all of our customers can move their workloads to the cloud.  
+### Kubernetes Advantages
 
-When used this way, Kubernetes becomes an environment that you can store one (or many) Splice Machine database instances into.  And, you can have multiple Kubernetes environments, each configured uniquely to your needs.  
-
-If you are not familiar with Kubernetes (often abbreviated as K8s), it is an open-source, portable, extensible platform for managing containerized workloads and services.   It abstracts away the underlying computing resources, allowing users to deploy workloads to the entire cluster instead of a particular server.  It provides you with:
-
-Service discovery and load balancing
-Storage orchestration
-Automated rollouts and rollbacks
-Automated bin packing
-Self-healing
-Secret and configuration management
-
-Some of the advantages of using Kubernetes are:
-
-Customers protected against vendor logic
-Dynamic Scaling - scale up and scale down
-Fault Tolerance - failure of the underlying hardware, auto-healing capabilities
-Cloud providers allow for a diverse set of server types
-Increases developer and admin productivity by having a simplified deployment process
-Admin and developers use the same tools regardless of the platform..
+* Customers are protected against vendor logic.
+* Dynamic Scaling - scale up and scale down.
+* Fault-tolerance - auto-healing capabilities when failure of the underlying hardware occurs.
+* Cloud providers allow for a diverse set of server types.
+* Simplified deployment process increases developer and administrator productivity.
+* Administrators and developers use the same tools regardless of the platform.
 
 
 ## Kubernetes Concepts and Terminology   {#k8sconcepts}
 
-Splice Machine's target Service availability commitment is 99.9% per
-calendar month, excluding scheduled downtime. You can expect the
-following:
+#### Container
+A container is a binary executable that contains all of the software, dependencies, and configuration needed to run an application. Containers can run standalone, do not have virtualization overhead, and are smaller than VM images because they only contain the files they need. They are typically created using Dockerfiles and maintained in a container registry.
 
-* Splice Machine will deliver product updates with minimal, scheduled
-  downtime.
-* Splice Machine can recover your database from a stored backup after
-  receiving your request to do so.
-* Splice Machine can resize your cluster with minimal downtime.
+#### Pod
+In Kubernetes a pod runs one or more containers on the same host. It is the smallest deployable unit of computing that you can create and manage in Kubernetes. In most instances, a pod runs only one container. When you create a pod, you define the resources required to run the container(s), such as CPU and memory.
+
+Pods are rarely if ever created directly. They are normally created and managed by a controller. A controller defines a desired state and then compares the desired state against the current state of the Kubernetes cluster. The three most common controllers used by Splice Machine are Deployments, Statefulsets and Daemon Sets.
+
+#### Deployment
+A Deployment is a set of multiple, identical Pods with no unique identifier. A deployment automatically replaces any instances that fail or become unresponsive. Deployments are typically used for stateless applications.
+
+#### Statefulset
+Statefulsets are similar to deployments, but they have unique persistent identities and stable host names, and are used for stateful applications.
+
+#### DaemonSet
+DaemonSets are similar deployments, but they adhere to one-pod-per-node across the entire cluster, or a subset of cluster nodes.  As nodes are added to a cluster, the DaemonSets automatically add pods to the new nodes.
+
+A node is a server, either virtual or physical machine, that contains the services necessary  to run pods.  Nodes can be grouped into node pools that run on the same instance type / size and have the same configuration.  A node pool can have one or more nodes in its pool.  Pods can be deployed to specific node pools using node selectors.
+
+Node affinity/anti-affinity allows you to constrain which nodes a pod can run on based on the nodes’ labels.  Pod affinity/anti-affinity allows you to specify rules about how pods should be placed relative to one another.  Splice Machine uses affinity/anti-affinity rules for both High Availability as well as to ensure some pods are co-located.
+
+Namespaces allow you to group objects together so that you can filter and control them as a unit as well as provide a scope for Kubernetes resources.  In Splice Machine, we use a namespace for each database.
+
+Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components. Splice Machine has two operators that are defined as a part of the Kubernetes OpsCenter.
+
+### Related Information
+
+
 
 ## Deployment Options   {#deploymentoptions}
 
