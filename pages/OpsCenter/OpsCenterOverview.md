@@ -12,11 +12,11 @@ folder: OpsCenter
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Splice Machine Kubernetes Ops Center Overview
 
-Kubernetes Ops Center enables you to deploy the Splice Machine database in a Kubernetes environment. You can deploy Kubernetes Ops Center both on-premises and in the cloud, and on multiple cloud environments -- AWS, Azure, and GCP -- to prevent cloud vendor lock-in.
+Kubernetes Ops Center enables you to deploy the Splice Machine database in a Kubernetes environment. You can deploy Kubernetes Ops Center both on-premises and in the cloud, and on multiple cloud environments – AWS, Azure, and GCP – to prevent cloud vendor lock-in.
 
 Kubernetes Ops Center is designed to meet a diverse range of infrastructure requirements: cloud, on-premises, or hybrid deployments. Kubernetes Ops Center makes it easy to provision, manage, and operate as many Splice Machine database instances as you need, where you need them, with each instance uniquely configured to meet your requirements.  
 
-If you are not familiar with Kubernetes (often abbreviated as K8s), it is an open-source, portable, extensible platform for managing containerized workloads and services. It abstracts away the underlying computing resources, which allows you to deploy workloads to an entire cluster instead of a particular server.
+If you are not familiar with Kubernetes (often abbreviated as K8s), it is an open-source, portable, extensible platform for managing containerized workloads and services. It abstracts away the underlying computing resources, which allows you to deploy workloads to an entire cluster rather than a particular server.
 
 ### Kubernetes Features
 
@@ -29,8 +29,8 @@ If you are not familiar with Kubernetes (often abbreviated as K8s), it is an ope
 ### Kubernetes Advantages
 
 * Customers are protected against vendor logic.
-* Dynamic Scaling - scale up and scale down.
-* Fault-tolerance - auto-healing capabilities when failure of the underlying hardware occurs.
+* Dynamic Scaling – scale up and scale down.
+* Fault-tolerance – auto-healing capabilities when failure of the underlying hardware occurs.
 * Cloud providers allow for a diverse set of server types.
 * Simplified deployment process increases developer and administrator productivity.
 * Administrators and developers use the same tools regardless of the platform.
@@ -55,22 +55,59 @@ Statefulsets are similar to deployments, but they have unique persistent identit
 #### DaemonSet
 DaemonSets are similar deployments, but they adhere to one-pod-per-node across the entire cluster, or a subset of cluster nodes.  As nodes are added to a cluster, the DaemonSets automatically add pods to the new nodes.
 
-A node is a server, either virtual or physical machine, that contains the services necessary  to run pods.  Nodes can be grouped into node pools that run on the same instance type / size and have the same configuration.  A node pool can have one or more nodes in its pool.  Pods can be deployed to specific node pools using node selectors.
+#### Node
+A node is a server, either a virtual or a physical machine, that contains the services necessary to run pods.  Nodes can be grouped into node pools that run on the same instance type/size and have the same configuration. A node pool can have one or more nodes in its pool. Pods can be deployed to specific node pools using node selectors.
 
-Node affinity/anti-affinity allows you to constrain which nodes a pod can run on based on the nodes’ labels.  Pod affinity/anti-affinity allows you to specify rules about how pods should be placed relative to one another.  Splice Machine uses affinity/anti-affinity rules for both High Availability as well as to ensure some pods are co-located.
+Node affinity/anti-affinity allows you to constrain which nodes a pod can run on based on the node labels. Pod affinity/anti-affinity lets you specify rules about how pods should be placed relative to one another. Splice Machine uses affinity/anti-affinity rules for high availability, as well as to ensure some pods are co-located.
 
-Namespaces allow you to group objects together so that you can filter and control them as a unit as well as provide a scope for Kubernetes resources.  In Splice Machine, we use a namespace for each database.
+#### Namespaces
+Namespaces allow you to group objects together so that you can filter and control them as a unit, as well as provide a scope for Kubernetes resources. In Splice Machine, we use a namespace for each database.
 
+#### Operators
 Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components. Splice Machine has two operators that are defined as a part of the Kubernetes OpsCenter.
 
 ### Related Information
 
+* [Kubernetes Documentation](https://kubernetes.io/docs/home/)
+* [Interactive Kubernetes Tutorials](https://kubernetes.io/docs/tutorials/)
 
 
 ## Deployment Options   {#deploymentoptions}
 
-Splice Machine provides two support options, as shown in the following
-table:
+<table>
+    <col width="20%" />
+    <col />
+    <thead>
+        <tr>
+            <th>Deployment Option</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Splice Machine Kubernetes Ops Center Managed Service</td>
+            <td>Full solution managed by Splice Machine on the customer’s cloud or in Splice Machine’s cloud environment. </td>
+        </tr>
+        <tr>
+            <td>Splice Machine Kubernetes Ops Center</td>
+            <td>Full solution provided to the customer to support and manage.</td>
+        </tr>
+        <tr>
+            <td>Splice Machine Kubernetes Enterprise Edition</td>
+            <td>Helm Charts or Rancher catalog to be integrated by the customer into their Kubernetes environment with enterprise features enabled.</td>
+        </tr>
+        <tr>
+            <td>Splice Machine Kubernetes Community Edition</td>
+            <td>Helm Charts or Rancher catalog to be integrated by the customer into their Kubernetes environment.</td>
+        </tr>
+    </tbody>
+</table>
+
+### Service Install
+
+With the Kubernetes Ops Center, you get the scripts that Splice Machine uses to stand up a Kubernetes environment in each of the three major cloud providers: GCP, AWS, and Azure.  In addition, the Kubernetes Ops Center deploys two operators: one that manages multiple databases, and another that provides command-line API access for running common commands against a K8s cluster. In Kubernetes Ops Center, the creation, pausing, and resuming of the Splice Machine database are done through a user interface. Additionally, REST APIs exist internally to the Kubernetes cluster for some services such as pausing and resuming databases.
+
+Depending upon the deployment option selected, you will have access to certain capabilities to manage your OpsCenter environment and databases deployed within K8s:
 
 <table>
                 <col />
@@ -80,72 +117,278 @@ table:
                 <col />
                 <thead>
                     <tr>
-                        <th>Support Type</th>
-                        <th>Pricing</th>
-                        <th>Support Feature</th>
-                        <th>Description</th>
-                        <th>Details</th>
+                        <th></th>
+                        <th>Kubernetes Ops Center Managed Service</th>
+                        <th>Kubernetes Ops Center</th>
+                        <th>Helm Chart/Rancher Catalog (Enterprise)
+</th>
+                        <th>Helm Chart/Rancher Catalog (Community)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th rowspan="3">Standard Support</th>
-                        <td rowspan="3">Free</td>
-                        <td>Coverage Hours</td>
-                        <td>Monday-Friday<br />9am-6pm Pacific time</td>
-                        <td>(subject to local holidays)</td>
+                        <th>Splice K8s scripts</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>System Impaired</td>
-                        <td>Significant issues with speed, quality, or funtionality of Service.</td>
-                        <td>&lt; 12 business hours</td>
+                        <th>SpliceDB Operators</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Other Issues</td>
-                        <td>General queries and guidance requests</td>
-                        <td>&lt; 24 business hours</td>
+                        <th>Helm Charts with ML Manager</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
                     </tr>
                     <tr>
-                        <th rowspan="5">Business Support</th>
-                        <td rowspan="5"><p>As per contract</p><p>Includes SLA</p></td>
-                        <td>Coverage Hours</td>
-                        <td>24 hours a day, 7 days a week, 365 days a year</td>
-                        <td> </td>
+                        <th>Splice Database Enterprise Edition</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Production System Down</td>
-                        <td>Complete loss of Service on Production cluster.</td>
-                        <td>&lt; 1 hour</td>
+                        <th>Management Tools (Elastic Stack, Prometheus, Grafana, etc.)</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Production System Impaired</td>
-                        <td>Significant issues with speed, quality, or funtionality of Service on Production cluster.</td>
-                        <td>&lt; 4 hours</td>
+                        <th>Management UI</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Production System Down</td>
-                        <td>Significant issues with speed, quality, or funtionality of Service on non-production cluster.</td>
-                        <td>&lt; 12 hours</td>
+                        <th>MRunbooks, Best Practices</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>Other Issues</td>
-                        <td>General queries and guidance requests</td>
-                        <td>&lt; 24 business hours</td>
+                        <th>Pagerduty, Slack Integration</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
-### Service Level Agreement (SLA)
 
-Our *business support agreement* includes a *Service Level Agreement
-(SLA)* that specifies our commitment to a target Service availability of
-99.9% per calendar year, excluding scheduled downtimes.
+### Database Management
 
-## Service Terms   {#serviceterms}
+All Kubernetes Ops Center and Helm Chart/Rancher Enterprise deployment options provide the Splice Machine database enterprise features. Note that the Community edition of the database does not support some features such as backup/restore and LDAP integration.
 
-Subscription fees are payable monthly in advance on the 1st of the
-month, pro-rated for any partial months. We'll charge your credit card
-or withdraw payment by ACH on the first of each month, until your
-service is cancelled. See your license agreement for more details.
+<table>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Kubernetes Ops Center Managed Service</th>
+                        <th>Kubernetes Ops Center</th>
+                        <th>Helm Chart/Rancher Catalog (Enterprise)</th>
+                        <th>Helm Chart/Rancher Catalog (Community)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Create/Drop Database</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Pause/Resume Database</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Resize/Reconfigure Database</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>LDAP Integration for DB User Login</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Scheduled Backups</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Backups on Demand</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
+### Basic Database Features
+
+All deployment options include the following basic database features.  
+
+<table>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Kubernetes Ops Center Managed Service</th>
+                        <th>Kubernetes Ops Center</th>
+                        <th>Helm Chart/Rancher Catalog (Enterprise)
+</th>
+                        <th>Helm Chart/Rancher Catalog (Community)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Connect to DB</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Run SQL</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Import/Export Data</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Jupyter Notebooks</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>ML Manager</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>User Management Privileges</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+### Monitoring
+
+The Kubernetes Ops Center includes components of Elastic Stack for consolidating logs from pods, containers, and nodes. These logs are parsed, tagged, and augmented for easy search and analytic capabilities. Server metrics are captured and available for display on dashboards, as well as for automated alerting. Finally, the Kubernetes Ops Center provides two user interfaces – one user interface allows end users to have a more self-service process when it comes to managing their databases.   The other user interface provides an administrator’s view of all the databases created in the Kubernetes environment.   
+
+<table>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Kubernetes Ops Center Managed Service</th>
+                        <th>Kubernetes Ops Center</th>
+                        <th>Helm Chart/Rancher Catalog (Enterprise)
+</th>
+                        <th>Helm Chart/Rancher Catalog (Community)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Connect to DB</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Run SQL</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Import/Export Data</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>Jupyter Notebooks</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>ML Manager</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+                    <tr>
+                        <th>User Management Privileges</th>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                        <td align="center">X</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
 
 </div>
 </section>
