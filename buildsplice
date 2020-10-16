@@ -15,16 +15,31 @@ echo ""
 
 PS3="Select which Docs Version to build: "
 COLUMNS=12
-OPTIONS=( 'DocsDev 3.0'
+OPTIONS=( 'DocsDev 3.1'
+          'DocsTest 3.1'   
+          'DocsDev 3.0'
           'DocsTest 3.0'
           'DocsTest 2.8'
           'DocsTest 2.7'
+          'Doc 3.1'
           'Doc 3.0'
           'Doc 2.8'
           'Doc 2.7'
           'Doc 2.5' )
 select opt in "${OPTIONS[@]}"; do
     case $opt in
+        'DocsDev 3.1')
+            version='docsdev'
+            branch='3.1'
+            smap='sitemapgen'
+            break;
+            ;;
+        'DocsTest 3.1')
+            version='docstest'
+            branch='3.1'
+            smap='sitemapgen'
+            break;
+            ;;
         'DocsDev 3.0')
             version='docsdev'
             branch='3.0'
@@ -47,6 +62,12 @@ select opt in "${OPTIONS[@]}"; do
             version='docstest'
             branch='2.7'
             smap='sitemapgen.2.7'
+            break;
+            ;;
+        'Doc 3.1')
+            version='doc'
+            branch='3.1'
+            smap='sitemapgen'
             break;
             ;;
         'Doc 3.0')
