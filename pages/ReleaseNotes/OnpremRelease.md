@@ -53,8 +53,8 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
-            <td><em>NSDS 2.0</em></td>
-            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+            <td><em>Time Travel</em></td>
+            <td>The Splice Machine <a href="developers_fundamentals_timetravel.html">Time Travel</a> feature enables you to query data in your database as it existed at some point in the past. </td>
         </tr>
         <tr>
             <td><em>Application Server Queues</em></td>
