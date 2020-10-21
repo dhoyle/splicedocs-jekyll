@@ -57,6 +57,14 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>The Splice Machine <a href="developers_fundamentals_timetravel.html">Time Travel</a> feature enables you to query data in your database as it existed at some point in the past. </td>
         </tr>
         <tr>
+            <td><em></em></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><em>NSDS 2.0</em></td>
+            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+        </tr>
+        <tr>
             <td><em>Application Server Queues</em></td>
             <td><p>We have added support for <a href="bestpractices_appservers_intro.html">multiple OLAP (analytical query processing) servers</a>, each of which has its own YARN queue. These queues are role-based, which means that the role assigned to the user submitting a query defines which OLAP server will run that query.</p>
                 <p>Application server queues are sometimes referred to as <em>multiple OLAP servers;</em> they allow you to specify how different queries are prioritized into different execution lanes.</p></td>
@@ -93,6 +101,14 @@ This section lists the significant updates in release {{site.build_version}}, in
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td><code>MONTH</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> has been added.</p>
+            </td>
+        </tr>        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
         <tr>
             <td><code>CHR</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
@@ -144,6 +160,18 @@ This section lists the significant updates in release {{site.build_version}}, in
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td><em>WHERE Clause Tuple Support</em></td>
+            <td>Statements with <code>WHERE (KEY1#,KEY2#)=(?,?)</code> are now supported.</td>
+        </tr>
+        <tr>
+            <td><em>Support for Mulitple Jar Files in User Defined Functions</em></td>
+            <td><a href="developers_fcnsandprocs_intro.html">User Defined Functions and Stored Procedures</a> now support multiple Jar files per schema.</td>
+        </tr>
+        <tr>
+            <td><em></em></td>
+            <td></td>
+        </tr>
         <tr>
             <td><em>Merge Data From Multiple Files</em></td>
             <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>

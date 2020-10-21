@@ -47,6 +47,14 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
+            <td><em>Time Travel</em></td>
+            <td>The Splice Machine <a href="developers_fundamentals_timetravel.html">Time Travel</a> feature enables you to query data in your database as it existed at some point in the past. </td>
+        </tr>
+        <tr>
+            <td><em></em></td>
+            <td></td>
+        </tr>
+        <tr>
             <td><em>Kubernetes</em></td>
             <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>
@@ -100,6 +108,14 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
+            <td><code>MONTH</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> has been added.</p>
+            </td>
+        </tr>        <tr>
+            <td><code></code></td>
+            <td></td>
+        </tr>
+        <tr>
             <td><code>CHR</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
                 <p>This work originated with this open-source JIRA issue: <a href="https://splice.atlassian.net/browse/SPLICE-2341" target="_blank">SPLICE-2341</a>.</p>
@@ -150,6 +166,18 @@ This section lists the significant updates in release {{site.build_version}}, in
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td><em>WHERE Clause Tuple Support</em></td>
+            <td>Statements with <code>WHERE (KEY1#,KEY2#)=(?,?)</code> are now supported.</td>
+        </tr>
+        <tr>
+            <td><em>Support for Mulitple Jar Files in User Defined Functions</em></td>
+            <td><a href="developers_fcnsandprocs_intro.html">User Defined Functions and Stored Procedures</a> now support multiple Jar files per schema.</td>
+        </tr>
+        <tr>
+            <td><em></em></td>
+            <td></td>
+        </tr>
         <tr>
             <td><em>Merge Data From Multiple Files</em></td>
             <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>
