@@ -27,10 +27,10 @@ To mask sensitive information, you:
 * Use the `com.splicemachine.utils.logging.MaskPatternLayout` log4j layout pattern.
 * Specify a regular expression in `MaskPattern` that matches the part of log messages you want matched; the regular expression is parsed using the Java built-in regex parse.
 
-When logging with this layout, log4j will replace any text that matches the filter with this text:
+When logging with this layout, log4j will replace any text that matches the filter with eight asterisk (*) symbols.
 
 ```
-_MASKED SENSITIVE INFO_
+********
 ```
 {: .Example}
 
@@ -52,6 +52,13 @@ splice> INSERT INTO a VALUES 123,234;
 will be logged as:
 
 ```
-INSERT INTO a VALUES MASKED SENSITIVE INFO, MASKED SENSITIVE INFO
+INSERT INTO a VALUES ********,********
+```
+{: .Example}
+
+You can use the `log4j.appender.File1.layout.MaskString` property to switch from the default eight asterisk (*) symbols to a new masking text string: 
+
+```
+log4j.appender.File1.layout.MaskString="new-string"
 ```
 {: .Example}
