@@ -57,6 +57,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>The Splice Machine <a href="developers_fundamentals_timetravel.html">Time Travel</a> feature enables you to query data in your database as it existed at some point in the past. </td>
         </tr>
         <tr>
+            <td><em>Mask Sensitive Information in Log Messages</em></td>
+            <td>You can now <a href="developers_tuning_logging.html#Filtering">mask sensitive information in log messages</a> to prevent sensitive information such as passwords and credit card information from appearing in log messages.</td>
+        </tr>
+        <tr>
             <td><em></em></td>
             <td></td>
         </tr>
