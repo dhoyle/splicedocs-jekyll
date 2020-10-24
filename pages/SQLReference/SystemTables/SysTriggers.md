@@ -212,7 +212,7 @@ stored in the `SYSSTATEMENTS` table. `ACTIONSTMTID` and `WHENSTMTID` are
 foreign keys that reference `SYSSTATEMENTS.STMTID`. The statement for a
 trigger is always in the same schema as the trigger.
 
-## Triggers with a Multiple Statements
+## Triggers with Multiple Statements
 
 To create a trigger with multiple statements:
 
