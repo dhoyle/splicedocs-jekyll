@@ -226,7 +226,7 @@ To create a trigger with multiple statements:
 
 5. If a value is not found – as is the case for a trigger with multiple statements – the `DEPENDENTID` column in the `SYSDEPENDS` table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.  
 
-6. When the the value is found in the `DEPENDENTID` column in the `SYSDEPENDS` table, the `TRIGGERDEFINITIONLIST` and  `ACTIONSTMTIDLIST` columns of the `STSTRIGGERS` table are loaded with Java lists of the `TRIGGERDEFINITION and `ACTIONSTMTID` values for the multiple statements.
+6. When the the value is found in the `DEPENDENTID` column in the `SYSDEPENDS` table, the `TRIGGERDEFINITIONLIST` and  `ACTIONSTMTIDLIST` columns of the `STSTRIGGERS` table are loaded with Java lists of the `TRIGGERDEFINITION` and `ACTIONSTMTID` values for the multiple statements.
 
 7. The referenced multiple statements are executed when the trigger is activated.
 
