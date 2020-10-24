@@ -134,7 +134,14 @@ table.
             <td><code>CHAR</code></td>
             <td><code>36</code></td>
             <td><code>YES</code></td>
-            <td>ID of the stored prepared statement for the triggered-SQL-statement (join with <code>SYSSTATEMENTS.STMTID</code>)</td>
+            <td>ID of the stored prepared statement for a single triggered SQL statement (join with <code>SYSSTATEMENTS.STMTID</code>).</td>
+        </tr>
+        <tr>
+            <td><code>ACTIONSTMTIDLIST</code></td>
+            <td><code>CHAR</code></td>
+            <td><code>36</code></td>
+            <td><code>YES</code></td>
+            <td>A list of the IDs of the stored prepared statements for a trigger with multiple SQL statements. <code>NULL</code> for single statements.</td>
         </tr>
         <tr>
             <td><code>REFERENCEDCOLUMNS</code></td>
@@ -150,6 +157,13 @@ table.
             <td><code>2,147,483,647</code></td>
             <td><code>YES</code></td>
             <td>Text of the action SQL statement</td>
+        </tr>
+        <tr>
+            <td><code>TRIGGERDEFINITIONLIST</code></td>
+            <td><code>LONG VARCHAR</code></td>
+            <td><code>2,147,483,647</code></td>
+            <td><code>YES</code></td>
+            <td>The trigger definition list for a trigger with multiple SQL statements. <code>NULL</code> for single statements.</td>
         </tr>
         <tr>
             <td><code>REFERENCINGOLD</code></td>
@@ -190,10 +204,32 @@ table.
         </tr>
     </tbody>
 </table>
-Any SQL text that is part of a triggered-SQL-statement is compiled and
+
+## Triggers with a Single Statement
+
+Any SQL text that is part of a trigger with a single SQL statement is compiled and
 stored in the `SYSSTATEMENTS` table. `ACTIONSTMTID` and `WHENSTMTID` are
-foreign keys that reference `SYSSTATEMENTS.STMTID`. The statements for a
-trigger are always in the same schema as the trigger.
+foreign keys that reference `SYSSTATEMENTS.STMTID`. The statement for a
+trigger is always in the same schema as the trigger.
+
+## Triggers with a Multiple Statements
+
+To create a trigger with multiple statements:
+
+1. Create the multiple statements in multiple rows of the `SYSSTATEMENTS` table.
+
+2. Create a row for each statement in the `SYSDEPENDS` table. The rows in the `SYSDEPENDS` table should use the same `DEPENDENTID` value, and use the `PROVIDERID` value to point to the `STMTID` for the corresponding statement in the in the `SYSSTATEMENTS` table.
+
+3. In the `SYSTRIGGERS` table, create a row whose `ACTIONSTMTID` has the value of the `DEPENDENTID` with multiple rows in the `SYSDEPENDS` table.
+
+4. The `STMTID` column in the SYSSTATEMENTS table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.
+
+5. If a value is not found – as is the case for a trigger with multiple statements – the `DEPENDENTID` column in the `SYSDEPENDS` table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.  
+
+6. When the the value is found in the `DEPENDENTID` column in the `SYSDEPENDS` table, the `TRIGGERDEFINITIONLIST` and  `ACTIONSTMTIDLIST` columns of the `STSTRIGGERS` table are loaded with Java lists of the `TRIGGERDEFINITION and `ACTIONSTMTID` values for the multiple statements.
+
+7. The referenced multiple statements are executed when the trigger is activated.
+
 
 ## Usage Restrictions
 
