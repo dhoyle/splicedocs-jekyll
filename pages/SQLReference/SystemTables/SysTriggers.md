@@ -222,7 +222,7 @@ To create a trigger with multiple statements:
 
 3. In the `SYSTRIGGERS` table, create a row whose `ACTIONSTMTID` has the value of the `DEPENDENTID` with multiple rows in the `SYSDEPENDS` table.
 
-4. The `STMTID` column in the SYSSTATEMENTS table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.
+4. The `STMTID` column in the `SYSSTATEMENTS` table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.
 
 5. If a value is not found – as is the case for a trigger with multiple statements – the `DEPENDENTID` column in the `SYSDEPENDS` table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.  
 
