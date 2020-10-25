@@ -72,7 +72,7 @@ This section lists the significant updates in release {{site.build_version}}, in
         </tr>
         <tr>
             <td><em>NSDS 2.0</em></td>
-            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
+            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented with Kafka.</td>
         </tr>
         <tr>
             <td><em>Application Server Queues</em></td>
@@ -175,8 +175,20 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>Statements with <code>WHERE (KEY1#,KEY2#)=(?,?)</code> are now supported.</td>
         </tr>
         <tr>
-            <td><em>Support for Mulitple Jar Files in User Defined Functions</em></td>
+            <td><em>Support for Multiple Jar Files in User Defined Functions</em></td>
             <td><a href="developers_fcnsandprocs_intro.html">User Defined Functions and Stored Procedures</a> now support multiple Jar files per schema.</td>
+        </tr>
+        <tr>
+            <td><em>External Table Support for CDH 6.3</em></td>
+            <td>External tables are now fully supported for CDH 6.3.</td>
+        </tr>
+        <tr>
+            <td><em>Support for Multiple Statements in Database Triggers</em></td>
+            <td><a href="sqlref_systables_systriggers.html">Database triggers</a> now support multiple statements.</td>
+        </tr>
+        <tr>
+            <td><em>Disable Option for Transitive Closure</em></td>
+            <td>A property has been added to the <a href="cmdlineref_setsessionproperty.html"><code>SET SESSION_PROPERTY</code></a> command that allows you to disable transitive closure for predicates pushed from outside of the view/DT. </td>
         </tr>
         <tr>
             <td><em></em></td>
@@ -219,7 +231,7 @@ This section lists the significant updates in release {{site.build_version}}, in
     </tbody>
 </table>
 
-### Notable Performance Enhancements  {#performance-enhancements}
+### Performance Enhancements  {#performance-enhancements}
 
 <table class="oddEven">
     <col width="25%" />
@@ -250,7 +262,7 @@ This section lists the significant updates in release {{site.build_version}}, in
 
 ## Database Patch Release Notes  {#releasenotes}
 
-This is the first release of version 3.0, so there are not yet any patch release notes.
+This is the first release of version 3.1, so there are currently no patch release notes.
 
 {% comment %}
 <ul>
