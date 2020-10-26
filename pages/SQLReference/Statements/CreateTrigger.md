@@ -19,13 +19,12 @@ event` occurs on a specified table. The event can be a `INSERT`,
 SQL statements that constitute the action are executed.
 
 You can define any number of triggers for a single table, including
-multiple triggers on the same table for the same event. To define a
-trigger on a table, you must be the owner of the of the database, the
+multiple triggers on the same table for the same event. You can also create a trigger that contains multiple statements. To define a trigger on a table, you must be the owner of the of the database, the
 owner of the table's schema, or have `TRIGGER` privileges on the table.
 You cannot define a trigger for any schema whose name begins with `SYS`.
 
 The [Database Triggers](developers_fundamentals_triggers.html) topic in
-our *Developer's Guide* provides additional information about database
+the *Developer's Guide* provides additional information about database
 triggers.
 
 ## Syntax
@@ -387,7 +386,7 @@ splice> UPDATE t1 SET a=2;
 ```
 {: .Example}
 
-### A trigger that alert to the user to a condition
+### A trigger that alerts the user to a condition
 
 ```
 splice> CREATE TRIGGER mytrig
@@ -399,6 +398,56 @@ splice> CREATE TRIGGER mytrig
 BEGIN ATOMIC
    SIGNAL SQLSTATE '87101' SET MESSAGE_TEXT = 'mytrig fired.  Old row: ' concat char(old.a) concat ', ' concat char(old.b) concat '    New row rejected: ' concat char(new.a) concat ', ' concat char(new.b);
 END;
+```
+{: .Example}
+
+### A trigger with multiple statements
+
+```
+splice> CREATE TABLE base (col1 int, col2 int);
+splice> CREATE TABLE t1(col1 int, col2 int);
+splice> CREATE TABLE t2(col1 int, col2 int);
+splice> CREATE TRIGGER multi_statement_trigger AFTER UPDATE OF
+col1 ON base REFERENCING NEW AS N OLD AS O
+FOR EACH ROW
+WHEN (O.col1 <> N.col1)
+BEGIN ATOMIC
+  UPDATE t1 T
+    SET T.col1 = N.col1 WHERE T.col2 = N.col2;
+  UPDATE t2 D
+    SET D.col1 = N.col1 WHERE D.col2 = N.col2;
+END;
+splice> select * from base;
+COL1       |COL2
+-----------------------
+0          |0
+
+splice> select * from t1;
+COL1       |COL2
+-----------------------
+0          |0
+
+splice> select * from t2;
+COL1       |COL2
+-----------------------
+0          |0
+
+splice> update base set col1 = 19 where col2 = 0;
+splice> select * from base;
+COL1       |COL2
+-----------------------
+19         |0
+
+splice> select * from t1;
+COL1       |COL2
+-----------------------
+19         |0
+
+splice> select * from t2;
+COL1       |COL2
+-----------------------
+19         |0
+
 ```
 {: .Example}
 

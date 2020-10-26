@@ -205,31 +205,10 @@ table.
     </tbody>
 </table>
 
-## Triggers with a Single Statement
-
-Any SQL text that is part of a trigger with a single SQL statement is compiled and
+Any SQL text that is part of a trigger is compiled and
 stored in the `SYSSTATEMENTS` table. `ACTIONSTMTID` and `WHENSTMTID` are
 foreign keys that reference `SYSSTATEMENTS.STMTID`. The statement for a
 trigger is always in the same schema as the trigger.
-
-## Triggers with Multiple Statements
-
-To create a trigger with multiple statements:
-
-1. Create the multiple statements in multiple rows of the `SYSSTATEMENTS` table.
-
-2. Create a row for each statement in the `SYSDEPENDS` table. The rows in the `SYSDEPENDS` table should use the same `DEPENDENTID` value, and use the `PROVIDERID` value to point to the `STMTID` for the corresponding statement in the in the `SYSSTATEMENTS` table.
-
-3. In the `SYSTRIGGERS` table, create a row whose `ACTIONSTMTID` has the value of the `DEPENDENTID` with multiple rows in the `SYSDEPENDS` table.
-
-4. The `STMTID` column in the `SYSSTATEMENTS` table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.
-
-5. If a value is not found – as is the case for a trigger with multiple statements – the `DEPENDENTID` column in the `SYSDEPENDS` table is checked for the value in the `ACTIONSTMTID` column of the `SYSTRIGGERS` table.  
-
-6. When the the value is found in the `DEPENDENTID` column in the `SYSDEPENDS` table, the `TRIGGERDEFINITIONLIST` and  `ACTIONSTMTIDLIST` columns of the `STSTRIGGERS` table are loaded with Java lists of the `TRIGGERDEFINITION` and `ACTIONSTMTID` values for the multiple statements.
-
-7. The referenced multiple statements are executed when the trigger is activated.
-
 
 ## Usage Restrictions
 
