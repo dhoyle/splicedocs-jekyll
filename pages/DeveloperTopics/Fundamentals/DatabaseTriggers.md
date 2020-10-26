@@ -489,6 +489,56 @@ A_OLD|A_NEW
 ```
 {: .Example}
 
+### Example 6: Trigger with Multiple Statements
+
+```
+splice> CREATE TABLE base (col1 int, col2 int);
+splice> CREATE TABLE t1(col1 int, col2 int);
+splice> CREATE TABLE t2(col1 int, col2 int);
+splice> CREATE TRIGGER multi_statement_trigger AFTER UPDATE OF
+col1 ON base REFERENCING NEW AS N OLD AS O
+FOR EACH ROW
+WHEN (O.col1 <> N.col1)
+BEGIN ATOMIC
+  UPDATE t1 T
+    SET T.col1 = N.col1 WHERE T.col2 = N.col2;
+  UPDATE t2 D
+    SET D.col1 = N.col1 WHERE D.col2 = N.col2;
+END;
+splice> select * from base;
+COL1       |COL2
+-----------------------
+0          |0
+
+splice> select * from t1;
+COL1       |COL2
+-----------------------
+0          |0
+
+splice> select * from t2;
+COL1       |COL2
+-----------------------
+0          |0
+
+splice> update base set col1 = 19 where col2 = 0;
+splice> select * from base;
+COL1       |COL2
+-----------------------
+19         |0
+
+splice> select * from t1;
+COL1       |COL2
+-----------------------
+19         |0
+
+splice> select * from t2;
+COL1       |COL2
+-----------------------
+19         |0
+
+```
+{: .Example}
+
 ## See Also
 
 * [`CREATE TRIGGER`](sqlref_statements_createtrigger.html)

@@ -178,7 +178,7 @@ This section lists the significant updates in release {{site.build_version}}, in
         </tr>
         <tr>
             <td><em>Support for Multiple Statements in Database Triggers</em></td>
-            <td><a href="sqlref_systables_systriggers.html">Database triggers</a> now support multiple statements.</td>
+            <td><a href="sqlref_statements_createtrigger.html"><code>CREATE TRIGGER</code></a> now supports multiple statements for <a href="developers_fundamentals_triggers.html">Database Triggers</a></td>
         </tr>
         <tr>
             <td><em>Disable Option for Transitive Closure</em></td>
@@ -195,10 +195,6 @@ This section lists the significant updates in release {{site.build_version}}, in
         <tr>
             <td><em>Full Join Support</em></td>
             <td>Full joins, also referred to as <em>full outer joins</em>, allow you to combine the rows from two tables, including the rows in either table that don’t have match in the other table.</td>
-        </tr>
-        <tr>
-            <td><em>Triggers</em></td>
-            <td>Our <a href="developers_fundamentals_triggers.html">Triggers</a> implementation has been greatly enhanced, and now includes supports for <code>SIGNAL</code>, <code>NO CASCADE</code>, search conditions (<code>WHEN</code>), and multiple statements per trigger.</td>
         </tr>
         <tr>
             <td><em>Alter Table</em></td>
