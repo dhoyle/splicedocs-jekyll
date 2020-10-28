@@ -57,8 +57,12 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>The Splice Machine <a href="developers_fundamentals_timetravel.html">Time Travel</a> feature enables you to query data in your database as it existed at some point in the past. </td>
         </tr>
         <tr>
-            <td><em>Mask Sensitive Information in Log Messages</em></td>
-            <td>You can now <a href="developers_tuning_logging.html#Filtering">mask sensitive information in log messages</a> to prevent sensitive information such as passwords and credit card information from appearing in log messages.</td>
+            <td><em>Splice Machine CLI Windows Support</em></td>
+            <td>The <a href="cmdlineref_using_getstarted.html#StartingCLIWindows">Splice Machine CLI</a> is now supported on Windows.</td>
+        </tr>
+        <tr>
+            <td><em>Spool Command</em></td>
+            <td>The <a href="cmdlineref_spool.html"><code>spool</code></a> command logs Splice Machine command line session data to a specified file on the local file system.</td>
         </tr>
         <tr>
             <td><em></em></td>
@@ -183,6 +187,18 @@ This section lists the significant updates in release {{site.build_version}}, in
         <tr>
             <td><em>Disable Option for Transitive Closure</em></td>
             <td>A property has been added to the <a href="cmdlineref_setsessionproperty.html"><code>SET SESSION_PROPERTY</code></a> command that allows you to disable transitive closure for predicates pushed from outside of the view/DT. </td>
+        </tr>
+        <tr>
+            <td><em>Mask Sensitive Information in Log Messages</em></td>
+            <td>You can now <a href="developers_tuning_logging.html#Filtering">mask sensitive information in log messages</a> to prevent sensitive information such as passwords and credit card information from appearing in log messages.</td>
+        </tr>
+        <tr>
+            <td><em>CREATE TABLE ... IF NOT EXISTS</em></td>
+            <td>The  <a href="sqlref_statements_createtable.html#createTableIfNotExists"><code>IF NOT EXISTS</code></a> clause for <code>CREATE TABLE</code> blocks table creation if a table with the same name already exists.</td>
+        </tr>
+        <tr>
+            <td><em>Show Local Time in Command Prompt</em></td>
+            <td>You can use the <a href=cmdlineref_using_cli.html#ShowTime"><code>prompt clock on</code></a> command to display the current local time in the Splice Machine CLI command prompt.</td>
         </tr>
         <tr>
             <td><em></em></td>
