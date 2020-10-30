@@ -31,7 +31,7 @@ WHERE l_shipdate <= DATE({fn TIMESTAMPADD(SQL_TSI_DAY, -90, CAST('1998-12-01 00:
 
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=1,updateMode=,engine=Spark)
+Cursor(n=6,rows=1,updateMode=,engine=OLAP)
   ->  ScrollInsensitive(n=5,totalCost=2010896.134,outputRows=1,outputHeapSize=0 B,partitions=1)
     ->  ProjectRestrict(n=4,totalCost=20131.62,outputRows=1,outputHeapSize=0 B,partitions=1)
       ->  GroupBy(n=3,totalCost=20131.62,outputRows=1,outputHeapSize=0 B,partitions=1)
@@ -86,7 +86,7 @@ Each row includes the action being performed (a Scan, Join, grouping, etc.) foll
         </tr>
         <tr>
             <td class="CodeFont">engine</td>
-            <td>Which execution path the query will take: <code>Spark</code> for OLAP queries, and <code>Control</code> for OLTP queries.</td>
+            <td>Which execution path the query will take: <code>OLAP</code> for OLAP queries, and <code>OLTP</code> for OLTP queries.</td>
         </tr>
     </tbody>
 </table>
@@ -141,17 +141,17 @@ Here are a few key notes about reviewing joins in a plan:
 The final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:
 
 ```
-Cursor(n=5,rows=360,updateMode=, engine=control)
+Cursor(n=5,rows=360,updateMode=, engine=OLTP)
 ```
 {: .Example}
 
 This line shows you which *engine* Splice Machine plans to use for the query.
 
 <div class="noteIcon">
-<p>As you may know, Splice Machine is a dual-engine database:</p>
+<p>Splice Machine is a dual-engine database:</p>
 <ul style="margin-bottom:0; padding-bottom:0">
-<li>Fast-running queries (e.g. those only processing a few rows) typically get executed on the <code>control</code> side, directly in HBase.</li>
-<li>Longer-running queries or queries that process a lot of data go through <code>Spark</code>.</li>
+<li>Fast-running queries (e.g. those only processing a few rows) are typically executed on the <code>OLTP</code> side, directly in HBase.</li>
+<li>Longer-running queries or queries that process a lot of data are executed on the <code>OLAP</code> side using Spark.</li>
 </ul>
 </div>
 
@@ -211,7 +211,7 @@ This example show a plan for a `TableScan` operation that has no qualifiers, kno
 splice> EXPLAIN SELECT * FROM tpch1.orders;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=3,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=3,rows=1500000,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=2,totalCost=19472.843,outputRows=1500000,outputHeapSize=143.051 MB,partitions=1)
     ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=143.051 MB,partitions=1)
 
@@ -228,7 +228,7 @@ EXPLAIN SELECT * FROM tpch1.orders --SPLICE-PROPERTIES INDEX=NULL
 where o_custkey=1;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=3,rows=15,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=3,rows=15,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=2,totalCost=3008.164,outputRows=15,outputHeapSize=1.465 KB,partitions=1)
     ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=15,outputHeapSize=1.465 KB,partitions=1,preds=[(O_CUSTKEY[0:2] = 1)])
 
@@ -259,7 +259,7 @@ predicates:
 EXPLAIN SELECT o_custkey, o_orderkey FROM tpch1.orders; --covering index
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=5,rows=1500000,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=4,totalCost=17163.52,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1)
     ->  ProjectRestrict(n=3,totalCost=1834,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1)
       ->  ProjectRestrict(n=2,totalCost=1834,outputRows=1500000,outputHeapSize=31.789 MB,partitions=1)
@@ -278,7 +278,7 @@ EXPLAIN SELECT o_custkey, o_orderkey FROM tpch1.orders --splice-properties index
 where o_custkey=1;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=15,updateMode=READ_ONLY (1),engine=control)
+Cursor(n=5,rows=15,updateMode=READ_ONLY (1),engine=OLTP)
   ->  ScrollInsensitive(n=4,totalCost=8.171,outputRows=15,outputHeapSize=333 B,partitions=1)
     ->  ProjectRestrict(n=3,totalCost=4.018,outputRows=15,outputHeapSize=333 B,partitions=1)
       ->  ProjectRestrict(n=2,totalCost=4.018,outputRows=15,outputHeapSize=333 B,partitions=1)
@@ -310,7 +310,7 @@ This example show a plan for a `Projection` operation:
 EXPLAIN SELECT SUBSTR(o_comment, 1, 10) FROM tpch1.orders;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=4,rows=1500000,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=3,totalCost=18170.76,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
     ->  ProjectRestrict(n=2,totalCost=3004,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
       ->  TableScan[ORDERS(2256)](n=1,totalCost=3004,scannedRows=1500000,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
@@ -326,7 +326,7 @@ This example shows a plan for a `Restriction` operation:
 EXPLAIN SELECT o_custkey, o_orderkey FROM tpch1.orders WHERE CAST(o_custkey AS char(10)) LIKE '3%';
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=750000,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=5,rows=750000,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=4,totalCost=9534.093,outputRows=750000,outputHeapSize=15.895 MB,partitions=1)
     ->  ProjectRestrict(n=3,totalCost=1867.333,outputRows=750000,outputHeapSize=15.895 MB,partitions=1)
       ->  ProjectRestrict(n=2,totalCost=1867.333,outputRows=750000,outputHeapSize=15.895 MB,partitions=1,preds=[like(O_CUSTKEY[0:1], 3%) ])
@@ -352,7 +352,7 @@ EXPLAIN SELECT * FROM tpch1.orders --SPLICE-PROPERTIES INDEX=o_cust_idx
 WHERE o_custkey=1;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=15,updateMode=READ_ONLY (1),engine=control)
+Cursor(n=4,rows=15,updateMode=READ_ONLY (1),engine=OLTP)
   ->  ScrollInsensitive(n=3,totalCost=68.182,outputRows=15,outputHeapSize=1.465 KB,partitions=1)
     ->  IndexLookup(n=2,totalCost=64.018,outputRows=15,outputHeapSize=1.465 KB,partitions=1)
       ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=4.018,scannedRows=15,outputRows=15,outputHeapSize=1.465 KB,partitions=1,baseTable=ORDERS(2256),preds=[(O_CUSTKEY[1:2] = 1)])
@@ -375,7 +375,7 @@ This example shows a plan for a `Join` operation:
 EXPLAIN SELECT * FROM tpch1.orders O, tpch1.customer C WHERE O.o_custkey = C.c_custkey;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=2369593,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=6,rows=2369593,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=5,totalCost=113207.492,outputRows=2369593,outputHeapSize=488.804 MB,partitions=1)
     ->  ProjectRestrict(n=4,totalCost=59891.557,outputRows=2369593,outputHeapSize=488.804 MB,partitions=1)
       ->  MergeSortJoin(n=3,totalCost=59891.557,outputRows=2369593,outputHeapSize=488.804 MB,partitions=1,preds=[(O.O_CUSTKEY[4:10] = C.C_CUSTKEY[4:1])])
@@ -417,7 +417,7 @@ EXPLAIN SELECT * FROM tpch1.orders O LEFT JOIN tpch1.customer C ON O.o_custkey =
 
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=5,rows=1500000,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=4,totalCost=92772.017,outputRows=1500000,outputHeapSize=164.938 MB,partitions=1)
     ->  MergeSortLeftOuterJoin(n=3,totalCost=59021.964,outputRows=1500000,outputHeapSize=164.938 MB,partitions=1,preds=[(O.O_CUSTKEY[4:2] = C.C_CUSTKEY[4:10])])
       ->  TableScan[CUSTOMER(2272)](n=2,totalCost=383.5,scannedRows=150000,outputRows=150000,outputHeapSize=164.938 MB,partitions=1)
@@ -439,7 +439,7 @@ EXPLAIN SELECT *
     SELECT * FROM tpch1.orders WHERE o_orderkey=100;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=5,rows=2,updateMode=READ_ONLY (1),engine=control)
+Cursor(n=5,rows=2,updateMode=READ_ONLY (1),engine=OLTP)
   ->  ScrollInsensitive(n=4,totalCost=16.044,outputRows=2,outputHeapSize=100 B,partitions=1)
     ->  Union(n=3,totalCost=12.024,outputRows=2,outputHeapSize=100 B,partitions=1)
       ->  TableScan[ORDERS(2256)](n=2,totalCost=4.002,scannedRows=1,outputRows=1,outputHeapSize=100 B,partitions=1,preds=[(O_ORDERKEY[3:1] = 100)])
@@ -462,7 +462,7 @@ This example shows a plan for an order by operation:
 EXPLAIN SELECT o_custkey FROM tpch1.orders ORDER BY o_custkey desc;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=4,rows=1500000,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=4,rows=1500000,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=3,totalCost=34001.52,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
     ->  OrderBy(n=2,totalCost=18834.76,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1)
       ->  IndexScan[O_CUST_IDX(2369)](n=1,totalCost=1834,scannedRows=1500000,outputRows=1500000,outputHeapSize=15.895 MB,partitions=1,baseTable=ORDERS(2256))
@@ -483,7 +483,7 @@ This example show a plan for a grouped aggregate operation:
 EXPLAIN SELECT o_custkey, count(*) FROM tpch1.orders GROUP BY o_custkey;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=94953,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=6,rows=94953,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=5,totalCost=2910.182,outputRows=94953,outputHeapSize=1.006 MB,partitions=1)
     ->  ProjectRestrict(n=4,totalCost=1950.096,outputRows=94953,outputHeapSize=1.006 MB,partitions=1)
       ->  GroupBy(n=3,totalCost=1950.096,outputRows=94953,outputHeapSize=1.006 MB,partitions=1)
@@ -501,7 +501,7 @@ This example shows a plan for a scalar aggregate operation:
 EXPLAIN SELECT COUNT(*) FROM tpch1.orders;
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=5,totalCost=16838.001,outputRows=1,outputHeapSize=0 B,partitions=1)
     ->  ProjectRestrict(n=4,totalCost=1834.001,outputRows=1,outputHeapSize=0 B,partitions=1)
       ->  GroupBy(n=3,totalCost=1834.001,outputRows=1,outputHeapSize=0 B,partitions=1)
@@ -525,7 +525,7 @@ This example shows a plan for a `SubQuery` operation:
 EXPLAIN SELECT * FROM tpch1.orders WHERE o_orderdate = (SELECT MAX(o_orderdate) FROM tpch1.orders);
 Plan
 --------------------------------------------------------------------------------
-Cursor(n=9,rows=657,updateMode=READ_ONLY (1),engine=Spark)
+Cursor(n=9,rows=657,updateMode=READ_ONLY (1),engine=OLAP)
   ->  ScrollInsensitive(n=8,totalCost=3015.215,outputRows=657,outputHeapSize=64.19 KB,partitions=1)
     ->  ProjectRestrict(n=7,totalCost=3004,outputRows=657,outputHeapSize=64.19 KB,partitions=1)
       ->  TableScan[ORDERS(2256)](n=6,totalCost=3004,scannedRows=1500000,outputRows=657,outputHeapSize=64.19 KB,partitions=1,preds=[(O_ORDERDATE[5:5] = subq=4)])
