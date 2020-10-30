@@ -83,7 +83,7 @@ The displayed results of calling
                     </tr>
                     <tr>
                         <td><code>ENGINE</code></td>
-                        <td>Which engine (SPARK or CONTROL) is running the operation.</td>
+                        <td>Which engine (OLAP or OLTP) is running the operation.</td>
                     </tr>
                     <tr>
                         <td><code>JOBTYPE</code></td>
@@ -96,8 +96,8 @@ The displayed results of calling
 <code>splice> call SYSCS_UTIL.SYSCS_GET_RUNNING_OPERATIONS();</code>
 
 |UUID                                    |USER                              |HOSTNAME                                                                                                                |SESSION    |SQL                                                                                                                                                                                                                     |SUBMITTED     |ELAPSED                        |ENGINE      |JOBTYPE                                  |
-|34b0f479-be9a-4933-9b4d-900af218a19c    |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |264        |select * from sysvw.systablesview --splice-properties useSpark=true                                                                                                                                                                                                   |2018-02-02 17:39:05               | 26 sec(s)|SPARK     |Produce Result Set |
-|4099f016-3c9d-4c62-8059-ff18d3b38a19     |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |4          |call syscs_util.syscs_get_running_operations()                                                                                                                                                                                                                  |2018-02-02 17:39:31               |0 sec(s) |CONTROL   |Call Procedure |
+|34b0f479-be9a-4933-9b4d-900af218a19c    |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |264        |select * from sysvw.systablesview --splice-properties useOLAP=true                                                                                                                                                                                                   |2018-02-02 17:39:05               | 26 sec(s)|OLAP     |Produce Result Set |
+|4099f016-3c9d-4c62-8059-ff18d3b38a19     |SPLICE                                  |MacBook-Pro.local:1527                                                                                          |4          |call syscs_util.syscs_get_running_operations()                                                                                                                                                                                                                  |2018-02-02 17:39:31               |0 sec(s) |OLTP   |Call Procedure |
 
 ```
 2 rows selected
