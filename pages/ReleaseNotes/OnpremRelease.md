@@ -201,6 +201,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>You can use the <a href=cmdlineref_using_cli.html#ShowTime"><code>prompt clock on</code></a> command to display the current local time in the Splice Machine CLI command prompt.</td>
         </tr>
         <tr>
+            <td><em>Updated Explain Plan Execution Engine Terminology</em></td>
+            <td>In <a href=bestpractices_optimizer_explain.html">Explain Plans</a> <code>OLTP</code> is now used to reference the OLTP (HBase) execution engine, and <code>OLAP</code> is used to reference the OLAP (Spark) execution engine. These terms have also been updated for <a href=sqlref_sysprocs_getrunningops.html"><code>GET_RUNNING_OPERATIONS</code></a>.</td>
+        </tr>
+        <tr>
             <td><em></em></td>
             <td></td>
         </tr>
