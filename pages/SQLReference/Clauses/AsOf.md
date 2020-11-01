@@ -19,17 +19,17 @@ The `AS OF` clause returns data from tables as it existed at the time of a speci
 ## Syntax
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-AS OF <a href="sqlref_identifiers_types.html#ColumnName">transactionID</a>
+AS OF <a href="sqlref_identifiers_types.html#ColumnName">transactionID</a></pre>
 </div>
 
 <div class="paramList" markdown="1">
-
 transactionID
 {: .paramName}
 
-</div>
-
 The ID of a completed transaction. You can find the transaction ID of a specific SQL statement in the `splice-derby.log` file. You can also use <a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code></a> to note a transaction ID for future reference.
+{: .paramDefnFirst}
+
+</div>
 
 ## Examples
 
