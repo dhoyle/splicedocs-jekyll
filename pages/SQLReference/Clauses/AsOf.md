@@ -12,7 +12,7 @@ folder: SQLReference/Clauses
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # AS OF
 
-The `AS OF` clause is an optional element of the [`SELECT`](sqlref_statements_select.html) statement and can also be used in a [`SELECT Expression`](sqlref_expressions_select.html).
+The `AS OF` clause is an optional element of the &nbsp;[`SELECT`](sqlref_statements_select.html) statement and can also be used in a [`SELECT Expression`](sqlref_expressions_select.html).
 
 The `AS OF` clause returns data from tables as it existed at the time of a specified Transaction ID.
 
@@ -21,12 +21,15 @@ The `AS OF` clause returns data from tables as it existed at the time of a speci
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 AS OF <a href="sqlref_identifiers_types.html#ColumnName">transactionID</a>
 </div>
+
 <div class="paramList" markdown="1">
 
 transactionID
 {: .paramName}
 
-The ID of a completed transaction. You can find the transaction ID of a specific SQL statement in the `splice-derby.log` file. You can also use <a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code> to note a transaction ID for future reference.
+</div>
+
+The ID of a completed transaction. You can find the transaction ID of a specific SQL statement in the `splice-derby.log` file. You can also use <a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code></a> to note a transaction ID for future reference.
 
 ## Examples
 
