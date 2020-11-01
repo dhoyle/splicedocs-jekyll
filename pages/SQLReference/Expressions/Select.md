@@ -21,6 +21,7 @@ tables.
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 SELECT [ DISTINCT | ALL ] SelectItem [ , SelectItem ]*
    <a href="sqlref_clauses_from.html">FROM clause</a>
+   [<a href="sqlref_clauses_asof.html">AS OF clause</a>]
    [ <a href="sqlref_clauses_where.html">WHERE clause</a> ]
    [ <a href="sqlref_clauses_groupby.html">GROUP BY clause</a> ]
    [ <a href="sqlref_clauses_having.html">HAVING clause</a> ]
@@ -76,6 +77,12 @@ FROM clause
 
 The result of the &nbsp;[`FROM` clause](sqlref_clauses_from.html) is the cross
 product of the `FROM` items.
+{: .paramDefnFirst}
+
+AS OF clause
+{: .paramName}
+
+The &nbsp;[`AS OF`](sqlref_clauses_asof.html) clause returns data from tables as it existed at the time of a specified Transaction ID.
 {: .paramDefnFirst}
 
 WHERE clause
@@ -264,10 +271,18 @@ is less than the average salary i all other departments:
        ORDER BY BOSS;
 {: .Example}
 
+Use `AS OF` to select at a point in time specified by a transaction ID:
+
+    SELECT * FROM TABLE_1 AS OF 151044864;
+{: .Example}
+
+</div>
+
 </div>
 ## See Also
 
 * [`FROM`](sqlref_clauses_from.html) clause
+* [`AS OF`](sqlref_clauses_asof.html) clause
 * [`GROUP BY`](sqlref_clauses_groupby.html) clause
 * [`HAVING`](sqlref_clauses_having.html) clause
 * [`ORDER BY`](sqlref_clauses_orderby.html) clause

@@ -18,6 +18,7 @@ Use the `SELECT` statement to query a database and receive back results.
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax" markdown="1">
 SELECT <a href="sqlref_queries_query.html">Query</a>
+   [<a href="sqlref_clauses_asof.html">AS OF clause</a>]
    [<a href="sqlref_clauses_orderby.html">ORDER BY clause</a>]
    [<a href="sqlref_clauses_resultoffset.html">result offset clause</a>]
    [<a href="sqlref_clauses_resultoffset.html">fetch first clause</a>]</pre>
@@ -30,6 +31,12 @@ Query
 The `SELECT` statement is so named because the typical first word of the
 query construct is `SELECT`. (*Query* includes the
 [`SELECT`](sqlref_expressions_select.html) expressions).
+{: .paramDefnFirst}
+
+AS OF clause
+{: .paramName}
+
+The &nbsp;[`AS OF`](sqlref_clauses_asof.html) clause returns data from tables as it existed at the time of a specified Transaction ID.
 {: .paramDefnFirst}
 
 ORDER BY clause
@@ -153,6 +160,7 @@ the alias.
 * [`DROP INDEX`](sqlref_statements_dropindex.html) statement
 * [`DROP VIEW`](sqlref_statements_dropview.html) statement
 * [`GRANT`](sqlref_statements_grant.html) statement
+* [`AS OF`](sqlref_clauses_asof.html) clause
 * [`ORDER BY`](sqlref_clauses_orderby.html) clause
 * [`FETCH FIRST`](sqlref_clauses_resultoffset.html) clause
 * [`RESULT OFFSET`](sqlref_clauses_resultoffset.html) clause
