@@ -36,7 +36,7 @@ The ID of a completed transaction. You can find the transaction ID of a specific
 Single table:
 
 <div class="preWrapper" markdown="1">
-    SELECT * FROM TABLE_1 AS OF 151044864;
+  SELECT * FROM TABLE_1 AS OF 151044864;
 {: .Example xml:space="preserve"}
 
 </div>
