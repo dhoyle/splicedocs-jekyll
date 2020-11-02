@@ -21,24 +21,22 @@ You must have administrative access to AWS to configure your S3 buckets
 for Splice Machine.
 {: .noteNote}
 
-You can also enable *anonymous* S3 read access on Cloudera, which is convenient for when you want a file to be publicly accessible.
+You can also enable anonymous S3 read access on Cloudera, which is convenient for when you want a file to be publicly accessible.
 
-This topic contains these sections:
+Use the following steps to configure access to your S3 buckets for Splice Machine:
 
 * [Configuring Secure S3 Bucket Access](#configure)
 * [Configuring Anonymous S3 Read Access on Cloudera](#configanon)
 * [Accessing S3 Buckets](#accessing)
 
-You can follow these steps to configure access to your S3 bucket(s) for Splice Machine; when you're done, you will have:
-
 ## Configuring Secure S3 Bucket Access  {#configure}
 
-You can follow the steps in this section to configure secure access to your S3 bucket(s) for Splice Machine; when you're done, you will have:
+Use the following steps to:
 
-* created an IAM policy for an S3 bucket
-* created an IAM user
-* generated access credential for that user
-* attached the security policy to that user
+* Create an IAM policy for an S3 bucket.
+* Create an IAM user.
+* Generate an access credential for that user.
+* Attach the security policy to that user.
 
 <div class="opsStepsList" markdown="1">
 1.  Log in to the AWS Database Console
@@ -170,7 +168,7 @@ You can follow the steps in this section to configure secure access to your S3 b
 6.  Save your access credentials
     {: .topLevel}
 
-    You **must** write down your Access key ID and secret access key;
+    You **must** save your Access key ID and secret access key;
     you will be unable to recover the secret access key.
     {: .indentLevel1}
 
@@ -219,15 +217,8 @@ hadoop fs -ls s3a://bucket/path/to/file.csv
 
 ## Accessing S3 Buckets {#accessing}
 
-Once you've established your S3 access keys, you can include them inline when accessing a secured bucket; for example:
-
-<div class="preWrapperWide" markdown="1">
-    call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, -1, 's3a://(access key):(secret key)@splice-benchmark-data/flat/TPCH/100/importLog', true, null);
-{: .Example}
-
-</div>
-Alternatively, you can specify the S3 keys once in the `core-site.xml` file
-on your cluster, and then simply specify the `s3a` URL, just as you can when accessing a public S3 bucket. For example:
+After you have created S3 access keys, you can specify the S3 keys in the `core-site.xml` file
+on your cluster, and then specify the `s3a` URL, just as you can when accessing a public S3 bucket. For example:
 
 <div class="preWrapperWide" markdown="1">
     call SYSCS_UTIL.IMPORT_DATA ('TPCH', 'REGION', null, 's3a://splice-benchmark-data/flat/TPCH/100/region', '|', null, null, null, null, 0, '/BAD', true, null);
@@ -235,7 +226,7 @@ on your cluster, and then simply specify the `s3a` URL, just as you can when acc
 
 </div>
 To add your access and secret access keys to the `core-site.xml` file,
-define the `fs.s3a.awsAccessKeyId` and `fs.s3a.awsSecretAccessKey`
+define the `fs.s3a.access.key` and `fs.s3a.secret.key`
 properties in that file:
 
 <div class="preWrapperWide" markdown="1">
