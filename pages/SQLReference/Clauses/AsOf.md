@@ -31,7 +31,6 @@ transactionID
 The ID of a completed transaction. You can find the transaction ID of a specific SQL statement in the <code>splice-derby.log</code> file. You can also use <a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code></a> to note a transaction ID for future reference.
 {: .paramDefnFirst}
 
-<div class="paramList" markdown="1">
 TIMESTAMP
 {: .paramName}
 
