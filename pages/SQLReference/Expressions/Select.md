@@ -82,7 +82,7 @@ product of the `FROM` items.
 AS OF clause
 {: .paramName}
 
-The &nbsp;[`AS OF`](sqlref_clauses_asof.html) clause returns data from tables as it existed at the time of a specified Transaction ID.
+The &nbsp;[`AS OF`](sqlref_clauses_asof.html) clause returns data from tables as it existed at the time of a specified Transaction ID or timestamp.
 {: .paramDefnFirst}
 
 WHERE clause
