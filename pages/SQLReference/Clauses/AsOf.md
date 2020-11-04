@@ -36,7 +36,7 @@ TIMESTAMP
 {: .paramName}
 
 The <a href="sqlref_datatypes_timestamp.html"><code>TIMESTAMP</code></a> data type references a specific date and time.
-{: .paramDefn}
+{: .paramDefnFirst}
 
 </div>
 
