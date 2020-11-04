@@ -19,8 +19,8 @@ The `AS OF` clause returns data from tables as it existed at the time of a speci
 ## Syntax
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
-AS OF [ <a href="sqlref_identifiers_types.html#ColumnName">transactionID</a> ]
-      [ <a href="sqlref_identifiers_types.html#ColumnName">TIMESTAMP</a> ]
+AS OF [ <a href="sqlref_identifiers_types.html#txnId">transactionID</a> ]
+      [ <a href="sqlref_datatypes_timestamp.html">TIMESTAMP</a> ]
 </pre>
 </div>
 
