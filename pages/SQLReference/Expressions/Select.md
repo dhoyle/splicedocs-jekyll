@@ -21,6 +21,7 @@ tables.
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 SELECT [ DISTINCT | ALL ] SelectItem [ , SelectItem ]*
    <a href="sqlref_clauses_from.html">FROM clause</a>
+   [ <a href="sqlref_clauses_asof.html">AS OF clause</a> ]
    [ <a href="sqlref_clauses_where.html">WHERE clause</a> ]
    [ <a href="sqlref_clauses_groupby.html">GROUP BY clause</a> ]
    [ <a href="sqlref_clauses_having.html">HAVING clause</a> ]
@@ -76,6 +77,12 @@ FROM clause
 
 The result of the &nbsp;[`FROM` clause](sqlref_clauses_from.html) is the cross
 product of the `FROM` items.
+{: .paramDefnFirst}
+
+AS OF clause
+{: .paramName}
+
+The &nbsp;[`AS OF`](sqlref_clauses_asof.html) clause returns data from tables as it existed at the time of a specified Transaction ID or timestamp.
 {: .paramDefnFirst}
 
 WHERE clause
@@ -156,6 +163,7 @@ Splice Machine processes the clauses in a `Select` expression in the
 following order:
 
 * `FROM` clause
+* `AS OF` clause
 * `WHERE` clause
 * `GROUP BY` (or implicit `GROUP BY`)
 * `HAVING` clause
@@ -241,20 +249,22 @@ This example shows using correlation names for the tables:
       WHERE p.Position = '1B'
         AND p.Id   = s.Id
 {: .Example}
+</div>
 
 This example shows using the `DISTINCT` clause:
 {: .body}
 
-
+<div class="preWrapperWide" markdown="1">
      SELECT DISTINCT SALARY   FROM Salaries;
 {: .Example}
+</div>
 
 This example shows how to rename an expression. We use the name BOSS as
 the maximum department salary for all departments whose maximum salary
 is less than the average salary i all other departments:
 {: .body}
 
-
+<div class="preWrapperWide" markdown="1">
      SELECT WORKDEPT AS DPT, MAX(SALARY) AS BOSS
        FROM EMPLOYEE EMP_COR
        GROUP BY WORKDEPT
@@ -263,11 +273,21 @@ is less than the average salary i all other departments:
           WHERE NOT WORKDEPT = EMP_COR.WORKDEPT)
        ORDER BY BOSS;
 {: .Example}
+</div>
+
+Use `AS OF` to select at a point in time specified by a transaction ID:
+{: .body}
+
+<div class="preWrapperWide" markdown="1">
+    SELECT * FROM TABLE_1 AS OF 151044864;
+{: .Example}
 
 </div>
+
 ## See Also
 
 * [`FROM`](sqlref_clauses_from.html) clause
+* [`AS OF`](sqlref_clauses_asof.html) clause
 * [`GROUP BY`](sqlref_clauses_groupby.html) clause
 * [`HAVING`](sqlref_clauses_having.html) clause
 * [`ORDER BY`](sqlref_clauses_orderby.html) clause
