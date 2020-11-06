@@ -115,28 +115,35 @@ table.
         <tr>
             <td class="CodeFont" id="SynonymName">synonym-Name</td>
             <td>
-                <p>A <code>synonym-Name</code> is an <code>SQLIdentifier</code> used for synonyms.</p>
+                <p>A <code>synonym-Name</code> is a <code>SQLIdentifier</code> used for synonyms.</p>
                 <p>You can optionally be qualify a <code>synonym-Name</code> with a <code>schemaName</code>. If you do not use a qualifying schema name, the default schema is assumed. </p>
             </td>
         </tr>
         <tr>
             <td class="CodeFont" id="ta">table-Name</td>
             <td>
-                <p>A <code>table-Name</code> is an <code>SQLIdentifier</code> use to name tables.</p>
+                <p>A <code>table-Name</code> is a <code>SQLIdentifier</code> use to name tables.</p>
                 <p>You can optionally qualify a <code>table-Name</code> with a <code>schemaName</code>. If you do not use a qualifying schema name, the default schema is assumed. Note that system table names are qualified with the <code>SYS.</code> schema prefix.</p>
+            </td>
+        </tr>
+        <tr>
+            <td class="CodeFont" id="txnId">txnId</td>
+            <td>
+                <p>A <code>txnId</code> (transaction ID) is the ID of a completed transaction. </p>
+                <p>You can find the transaction ID of a specific SQL statement in the <code>splice-derby.log</code> file. You can also use <a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code></a> to note a transaction ID for future reference.</p>
             </td>
         </tr>
         <tr>
             <td class="CodeFont" id="TriggerName">triggerName</td>
             <td>
-                <p>A <code>triggerName</code> is an <code>SQLIdentifier</code> used to name user-defined triggers.</p>
+                <p>A <code>triggerName</code> is a <code>SQLIdentifier</code> used to name user-defined triggers.</p>
                 <p>You can optionally qualify a <code>triggerName</code> with a <code>schemaName</code>. If you do not use a qualifying schema name, the default schema is assumed.</p>
             </td>
         </tr>
         <tr>
             <td class="CodeFont" id="ViewName">view-Name</td>
             <td>
-                <p>A <code>view-Name</code> is an <code>SQLIdentifier</code> used to name views.</p>
+                <p>A <code>view-Name</code> is a <code>SQLIdentifier</code> used to name views.</p>
                 <p>You can optionally qualify a <code>view-Name</code> with a <code>schemaName</code>. If you do not use a qualifying schema name, the default schema is assumed.</p>
             </td>
         </tr>
