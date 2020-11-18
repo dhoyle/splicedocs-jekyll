@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInSysProcs
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # SSYSCS_UTIL.SET_MIN_RETENTION_PERIOD
 
-The `SYSCS_UTIL.SYSCS_SET_LOGGER_LEVEL` system procedure sets the minimum retention period for time travel data.
+The `SSYSCS_UTIL.SET_MIN_RETENTION_PERIOD` system procedure sets the minimum retention period for time travel data.
 
 
 ## Syntax
@@ -45,7 +45,7 @@ The minimum retention period in seconds.
 </div>
 ## Results
 
-This procedure returns `Statement executed.`
+This procedure does not return a result.
 
 ## Examples
 
@@ -69,5 +69,4 @@ Set the minimum retention period for all user tables in schema SPLICE to 250 sec
 * [`AS OF` clause ](sqlref_clauses_asof.html)
 
 
-</div>
 </section>
