@@ -69,4 +69,5 @@ Set the minimum retention period for all user tables in schema SPLICE to 250 sec
 * [`AS OF` clause ](sqlref_clauses_asof.html)
 
 
+</div>
 </section>
