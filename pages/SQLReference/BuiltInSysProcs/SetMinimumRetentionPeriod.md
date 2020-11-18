@@ -56,6 +56,8 @@ Set the minimum retention period for table T1 in schema SPLICE to 300 seconds:
     Statement executed.
 {: .Example xml:space="preserve"}
 
+</div>
+
 Set the minimum retention period for all user tables in schema SPLICE to 250 seconds:
 
 <div class="preWrapperWide" markdown="1">
@@ -64,10 +66,10 @@ Set the minimum retention period for all user tables in schema SPLICE to 250 sec
 {: .Example xml:space="preserve"}
 
 </div>
+
 ## See Also
 
 * [`AS OF` clause ](sqlref_clauses_asof.html)
-
 
 </div>
 </section>
