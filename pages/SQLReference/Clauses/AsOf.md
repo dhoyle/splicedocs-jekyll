@@ -14,7 +14,7 @@ folder: SQLReference/Clauses
 
 The `AS OF` clause is an optional element of the &nbsp;[`SELECT`](sqlref_statements_select.html) statement and can also be used in a [`SELECT Expression`](sqlref_expressions_select.html).
 
-The `AS OF` clause returns data from tables as it existed at the time of a specified Transaction ID or timestamp.
+The `AS OF` clause returns data from tables as it existed at the time of a specified Transaction ID or timestamp expression.
 
 ## Syntax
 
@@ -28,13 +28,13 @@ AS OF [ <a href="sqlref_identifiers_types.html#txnId">transactionID</a> ]
 transactionID
 {: .paramName}
 
-The ID of a completed transaction. You can find the transaction ID of a specific SQL statement in the <code>splice-derby.log</code> file. You can also use <a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code></a> to note a transaction ID for future reference.
+The ID of a completed transaction. You can find the transaction ID of a specific SQL statement in the <code>splice-derby.log</code> file. You can also use &nbsp;<a href="sqlref_sysprocs_getcurrenttransaction.html"><code>GET_CURRENT_TRANSACTION</code></a> to note a transaction ID for future reference.
 {: .paramDefnFirst}
 
 TIMESTAMP
 {: .paramName}
 
-The <a href="sqlref_datatypes_timestamp.html"><code>TIMESTAMP</code></a> data type references a specific date and time.
+A <a href="sqlref_datatypes_timestamp.html"><code>TIMESTAMP</code></a> expression that references a specific date and time.
 {: .paramDefnFirst}
 
 </div>
@@ -84,6 +84,7 @@ Create a new table:
 
 * [`SELECT`](sqlref_statements_select.html) statement
 * [`SELECT Expression`](sqlref_expressions_select.html) statement
+* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html)function
 
 </div>
 </section>
