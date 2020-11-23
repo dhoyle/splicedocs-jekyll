@@ -47,8 +47,8 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
-            <td><em>Time Travel</em></td>
-            <td>The Splice Machine <a href="developers_fundamentals_timetravel.html">Time Travel</a> feature enables you to query data in your database as it existed at some point in the past. </td>
+            <td><em>Time Travel Query</em></td>
+            <td>The Splice Machine <a href="sqlref_queries_time_travel_query.html">Time Travel Query</a> feature enables you to query data in your database as it existed at some point in the past. </td>
         </tr>
         <tr>
             <td><em>AS OF Clause</em></td>
@@ -62,10 +62,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><em>Spool Command</em></td>
             <td>The <a href="cmdlineref_spool.html"><code>spool</code></a> command logs Splice Machine command line session data to a specified file on the local file system.</td>
         </tr>
-        <tr>
+        <!--tr>
             <td><em></em></td>
             <td></td>
-        </tr>
+        </tr-->
         <tr>
             <td><em>Kubernetes</em></td>
             <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
@@ -97,10 +97,6 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</td>
         </tr>
         <tr>
-            <td><em>Point-in-Time queries</em></td>
-            <td>Point-in-Time queries can query data as it existed at some point in the past.</td>
-        </tr>
-        <tr>
             <td><em>Log Filtering</em></td>
             <td>You can now filter sensitive information out of log entries by specifying matching patterns (with regular expressions).</td>
         </tr>
@@ -123,10 +119,11 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><code>MONTH</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> has been added.</p>
             </td>
-        </tr>        <tr>
+        </tr>        
+        <!--tr>
             <td><code></code></td>
             <td></td>
-        </tr>
+        </tr-->
         <tr>
             <td><code>CHR</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_chr.html"><code>CHR</code></a> has been added.</p>
@@ -214,10 +211,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><em>Updated Explain Plan Execution Engine Terminology</em></td>
             <td>In <a href=bestpractices_optimizer_explain.html">Explain Plans</a> <code>OLTP</code> is now used to reference the OLTP (HBase) execution engine, and <code>OLAP</code> is used to reference the OLAP (Spark) execution engine. These terms have also been updated for <a href=sqlref_sysprocs_getrunningops.html"><code>GET_RUNNING_OPERATIONS</code></a>.</td>
         </tr>
-        <tr>
+        <!--tr>
             <td><em></em></td>
             <td></td>
-        </tr>
+        </tr-->
         <tr>
             <td><em>Merge Data From Multiple Files</em></td>
             <td>The <a href="sqlref_sysprocs_mergedata.html"><code>SYSCS_UTIL.MERGE_DATA_FROM_FILE</code></a> system procedure now supports merging all files in a directory.</td>
