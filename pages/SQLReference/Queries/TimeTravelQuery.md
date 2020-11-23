@@ -130,7 +130,7 @@ Time travel with timestamp expects a server time, and does not currently support
 
 As is the case with other database systems, Splice Machine recycles deleted data from time to time to free up resources. This is done behind the scenes using flushing, minor compactions, and major compactions. During these operations, Splice Machine performs several optimizations that remove obsolete data such as rows marked as deleted, which are not visible by subsequent transactions.
 
-Perform a time travel query on a table that is optimized using these techniques may return incorrect results. For example:
+Performing a time travel query on a table that is optimized using these techniques may return incorrect results. For example:
 
 <div class="preWrapperWide" markdown="1">
 
