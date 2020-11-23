@@ -12,11 +12,11 @@ folder: SQLReference/Queries
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Time Travel Query
 
-A *Time Travel Query* allows you to query the content of a relational table as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression.
+A *Time Travel Query* enables you to query the content of a relational table as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression.
 
 ## Time Travel Query using Transaction ID
 
-In the following example, `GET_CURRENT_TRANSACTION` is used to retrieve the transaction ID after each operation, which can be used later to query the state of the table at that point of time.
+In the following example, `GET_CURRENT_TRANSACTION` is used to retrieve the transaction ID after each operation, which can be used later to query the state of the table at that point in time.
 
 <div class="preWrapperWide" markdown="1">
 
@@ -59,11 +59,11 @@ In the following example, `GET_CURRENT_TRANSACTION` is used to retrieve the tran
 
 </div>
 
-After we insert the row (42,'a'); (line 4) we check the transaction ID, which was 20224. Later on, we do multiple CRUD operations, but if we use `AS OF` to query the table at that point in time (line 16), we get back the row (42,'a') which is the state of our table at the point in time for that transaction ID.
+After we insert the row (42,'a'); (line 4) we check the transaction ID, which was 20224. Subsequently we perform multiple CRUD operations, but if we use `AS OF` to query the table at that point in time (line 16), we get back the row (42,'a'), which is the state of the table at the point in time for that transaction ID.
 
 Trying to query the table a bit earlier than that returns empty results. Subsequent normal queries without using `AS OF` return the current status of the table.
 
-To better understand how time travel works, it is useful to look at how table data is versioned and stored in Splice Machine. The following illustration depicts a simplified overview of how our `T` from the preceding example is stored, and how it progresses over time with respect to various CRUD operations on its rows:
+To better understand how time travel works, it is useful to look at how table data is versioned and stored in Splice Machine. The following illustration depicts a simplified overview of how the table data from the preceding example is stored, and how it progresses over time with respect to various CRUD operations on the table rows:
 
 ![](images/timetravel.png){: .indentedTightSpacing}
 {: .spaceAbove}
@@ -76,9 +76,9 @@ To better understand how time travel works, it is useful to look at how table da
 
 * Finally, when a row is deleted, a new version of the row is created with a special mark (referred to as a tombstone) making it invisible for all subsequent transactions. The previous versions of the row are kept for a period of time.
 
-## Time Travel Query using a Timestamp Expression
+## Time Travel Query using a Timestamp
 
-In the following example we repeat the same steps as in the previous example, but this time we use timestamp expressions to specify the previous points in time.
+In the following example we repeat the same steps as in the previous example, but this time we use timestamps to specify the previous points in time.
 
 <div class="preWrapperWide" markdown="1">
 
@@ -128,9 +128,9 @@ Time travel with timestamp expects a server time, and does not currently support
 
 ## Retention Period
 
-As is the case with other database systems, Splice Machine recycles deleted data from time to time to free up resources. This is done behind the scenes using flushing, minor compactions, and major compactions. During these operations, Splice Machine performs several optimizations that remove obsolete data such as rows marked as deleted, which are not visible by any subsequent transactions.
+As is the case with other database systems, Splice Machine recycles deleted data from time to time to free up resources. This is done behind the scenes using flushing, minor compactions, and major compactions. During these operations, Splice Machine performs several optimizations that remove obsolete data such as rows marked as deleted, which are not visible by subsequent transactions.
 
-Trying to perform time travel on a table that is optimized using these techniques could return incorrect results. For example:
+Perform a time travel query on a table that is optimized using these techniques may return incorrect results. For example:
 
 <div class="preWrapperWide" markdown="1">
 
@@ -191,7 +191,7 @@ A table MRP is stored as a column in the `SYSTABLES` table:
 
 * The minimum retention period is set to 604800 seconds (7 days) by default for all system tables. This value can be configured by setting the `splice.sys.tables.retention.period` configuration parameter.
 
-* Be careful when choosing the MRP value.  A very large value could consume a large amount of system resources and cause significant performance overhead.  Setting this value properly for a table requires understanding how fast the table is changing and how critical it is to get consistent time travel results.
+* Use caution when choosing the MRP value. A very large value could consume a large amount of system resources and cause significant performance overhead.  Setting this value properly for a table requires understanding how fast the table is changing and how critical it is to get consistent time travel results.
 
 * The built-in system procedure `SYSCS_UTIL.SET_PURGE_DELETED_ROWS` forces purging deleted rows regardless of the MRP. Be sure to set it to FALSE for any table you plan to perform time travel on.
 {: .noteIcon}
