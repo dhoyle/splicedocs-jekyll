@@ -12,7 +12,7 @@ folder: SQLReference/Queries
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Time Travel Query
 
-A *Time Travel Query* lets you query the content of a relational table as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression.
+A *Time Travel Query* allows you to query the content of a relational table as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression.
 
 ## Time Travel Query using Transaction ID
 
@@ -63,7 +63,7 @@ After we insert the row (42,'a'); (line 4) we check the transaction ID, which wa
 
 Trying to query the table a bit earlier than that returns empty results. Subsequent normal queries without using `AS OF` return the current status of the table.
 
-To better understand how time travel works, it is worth explaining how table data is versioned and stored in Splice Machine. The following illustration depicts a simplified overview of how our `T` from the preceding example is stored, and how it progresses over time with respect to various CRUD operations on its rows:
+To better understand how time travel works, it is useful to look at how table data is versioned and stored in Splice Machine. The following illustration depicts a simplified overview of how our `T` from the preceding example is stored, and how it progresses over time with respect to various CRUD operations on its rows:
 
 ![](images/timetravel.png){: .indentedTightSpacing}
 {: .spaceAbove}
@@ -78,7 +78,7 @@ To better understand how time travel works, it is worth explaining how table dat
 
 ## Time Travel Query using a Timestamp Expression
 
-The following example we repeat the same steps as in the previous example, but this time we use timestamp expressions to specify the previous point in time.
+In the following example we repeat the same steps as in the previous example, but this time we use timestamp expressions to specify the previous points in time.
 
 <div class="preWrapperWide" markdown="1">
 
