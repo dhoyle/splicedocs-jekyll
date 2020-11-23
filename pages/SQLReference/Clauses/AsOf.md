@@ -84,7 +84,8 @@ Create a new table:
 
 * [`SELECT`](sqlref_statements_select.html) statement
 * [`SELECT Expression`](sqlref_expressions_select.html) statement
-* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html)function
+* [`TIMESTAMP`](sqlref_builtinfcns_timestamp.html) function
+* [Time Travel Query](sqlref_queries_time_travel_query.html)
 
 </div>
 </section>

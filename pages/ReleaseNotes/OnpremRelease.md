@@ -71,8 +71,8 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>Asynchronous, Active/Passive Replication allows you to define a master cluster and follower cluster, which is automatically kept in synch with the master. Reads are allowed in either cluster, while only the master cluster supports writes.</td>
         </tr>
         <tr>
-            <td><em>Point-in-Time queries</em></td>
-            <td>Point-in-Time queries can query data as it existed at some point in the past.</td>
+            <td><em>Time Travel Query</em></td>
+            <td>The Splice Machine <a href="sqlref_queries_time_travel_query.html">Time Travel Query</a> feature enables you to query data in your database as it existed at some point in the past. </td>
         </tr>
         <tr>
             <td><em>Log Filtering</em></td>
