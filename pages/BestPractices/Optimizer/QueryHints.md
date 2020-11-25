@@ -80,6 +80,11 @@ The following table summarizes the hint types available in Splice Machine:
             <td class="CodeFont">--splice-properties doNotFlatten=true</td>
             <td>Tells the optimizer to flatten (<code>=false</code>) or not flatten (<code>=true</code>) a subquery that could be flattened.</td>
         </tr>
+        <tr>
+            <td><a href="#UnboundedTimeTravelQuery">Unbounded Time Travel Query</a></td>
+            <td class="CodeFont">--splice-properties unbounded_time_travel=true</td>
+            <td>Allows you to run a time travel query at a time in the past beyond the minimum retention period.</td>
+        </tr>
     </tbody>
 </table>
 
@@ -161,6 +166,7 @@ This section provides specific information about how to use the different hint t
 * [JoinStrategy Hints](#JoinStrategy)
 * [Spark Hints](#Spark)
 * [Subquery Flatten Hints](#SubQueryFlatten)
+* [Unbounded Time Travel Query Hints](#UnboundedTimeTravelQuery)
 
 
 ### Delete Hints   {#Delete}
@@ -402,6 +408,7 @@ You can specify these join strategies:
         </tr>
     </tbody>
 </table>
+
 <!--    Hidden by GRH 12/2018 via note from GDavis
 ### Pinned Table Hint   {#Pinned}
 
@@ -419,6 +426,7 @@ You can read more about pinning tables in the
 [`PIN TABLE`](sqlref_statements_pintable.html) statement topic.
 {: .indentLevel1}
 -->
+
 ### Spark Hints   {#Spark}
 
 You can use the `useSpark` hint to specify to the optimizer that you
@@ -527,6 +535,32 @@ Cursor(n=9,rows=1,updateMode=READ_ONLY (1),engine=control)
 9 rows selected
 ```
 {: .Example}
+
+### Unbounded Time Travel Query   {#UnboundedTimeTravelQuery}
+
+Allows you to run a [time travel query](sqlref_queries_time_travel_query.html) at a time in the past beyond the [minimum retention period](sqlref_sysprocs_setminretentionperiod.html).
+
+For example, given that the following time travel query throws an exception because the specified timestamp is earlier than the minimum retention period.
+
+```
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469');
+```
+{: .Example }
+
+The following query runs without throwing an exception, but may return incorrect results.
+
+```
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469') --splice-properties unbounded_time_travel=true
+```
+{: .Example }
+
+Join operation with an unbounded time travel query:
+
+```
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469'), --splice-properties unbounded_time_travel=true
+SELECT * FROM T2 AS OF TIMESTAMP('2018-10-10 10:10:10');
+```
+{: .Example }
 
 </div>
 </section>
