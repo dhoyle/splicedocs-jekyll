@@ -53,13 +53,9 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
     <tr>
-    <td><em>Time Travel Query</em></td>
-        <td>The Splice Machine <a href="sqlref_queries_time_travel_query.html">Time Travel Query</a> feature enables you to query data in your database as it existed at some point in the past. </td>
+        <td><em>Time Travel Query</em></td>
+        <td>The Splice Machine <a href="sqlref_queries_time_travel_query.html">Time Travel Query</a> feature enables you to query data in your database as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression. </td>
     </tr>
-        <tr>
-            <td><em>AS OF Clause</em></td>
-            <td>The <a href="sqlref_clauses_asof.html"><code>AS OF</code></a> clause returns data from tables as it existed at the time of a specified Transaction ID or timestamp. </td>
-        </tr>
         <tr>
             <td><em>Splice Machine CLI Windows Support</em></td>
             <td>The <a href="cmdlineref_using_getstarted.html#StartingCLIWindows">Splice Machine CLI</a> is now supported on Windows.</td>
