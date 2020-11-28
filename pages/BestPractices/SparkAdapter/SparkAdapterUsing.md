@@ -31,7 +31,7 @@ The first thing you need to do when using the Native Spark DataSource is to crea
 
 ### Creating Your Context
 
-Here's a example of creating a context in an interactive Spark Shell session:
+Here is a example of creating a context in an interactive Spark Shell session:
 
 ```
 import com.splicemachine.spark.splicemachine._
@@ -45,7 +45,7 @@ val ds = SpliceContext.df("select * from splice.test")
 {: .Example }
 
 
-And here's a similar example from a Jupyter notebook:
+And a similar example from a Jupyter notebook:
 
 ```
 %spark
@@ -54,6 +54,19 @@ import com.splicemachine.derby.utils._
 
 val JDBC_URL = "jdbc:splice://:1527/splicedb;user=<yourname>;password=<yourpswd>"
 val splicemachineContext = new SplicemachineContext(JDBC_URL)
+```
+{: .Example }
+
+Here is an example of instantiating NSDS v2 for use in a cloud environment:
+
+
+```
+import com.splicemachine.spark2.splicemachine._
+
+val JDBC_URL = "jdbc:splice://SPLICESERVERHOST:1527/splicedb;user=<yourUserId>;password=<yourPassword>"
+// Don’t include http:// at the beginning of the Kafka url
+val KAFKA_URL = "kafkaBrokerHostName:9092"
+val splicemachineContext = new SplicemachineContext(JDBC_URL, KAFKA_URL)
 ```
 {: .Example }
 

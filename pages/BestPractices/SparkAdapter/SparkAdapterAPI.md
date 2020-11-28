@@ -19,6 +19,7 @@ This topic describes the following methods of the `SplicemachineContext` class:
 * [`analyzeSchema`](#analyzeschema)
 * [`analyzeTable`](#analyzetable)
 * [`bulkImportHFile`](#bulkimporthfile)
+* [`columnNamesCaseSensitive`](columnnamescasesensitive)
 * [`createTable`](#createtable)
 * [`delete`](#delete)
 * [`df` and `internalDf`](#df)
@@ -135,6 +136,26 @@ A collection of (key, value) pairs specifying the import options. For example, y
 ````
     val bulkImportOptions = scala.collection.mutable.Map( "skipSampling" -> "true" )
 ````
+
+{: .paramDefnFirst}
+</div>
+
+## columnNamesCaseSensitive {#columnnamescasesensitive}
+
+This methods sets whether column names are treated as case sensitive. The default value is false.
+
+
+<div class="fcnWrapperWide" markdown="1"><pre>
+columnNamesCaseSensitive(caseSensitive: Boolean): Unit</pre>
+{: .FcnSyntax xml:space="preserve"}
+</div>
+
+<div class="paramList" markdown="1">
+caseSensitive
+{: .paramName}
+
+A Boolean that specifies whether column names are treated as case sensitive. The default value is false.
+
 
 {: .paramDefnFirst}
 </div>
