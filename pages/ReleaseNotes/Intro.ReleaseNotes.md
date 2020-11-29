@@ -51,6 +51,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>The Splice Machine <a href="sqlref_queries_time_travel_query.html">Time Travel Query</a> feature enables you to query data in your database as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression. </td>
         </tr>
         <tr>
+            <td><em>SSDS</em></td>
+            <td>The [Structured Streaming Data Sink](bestpractices_ingest_streaming.html) is the Splice Machine implementation of Spark Structured Streaming for high performance data streaming.</td>
+        </tr>    
+        <tr>
             <td><em>Splice Machine CLI Windows Support</em></td>
             <td>The <a href="cmdlineref_using_getstarted.html#StartingCLIWindows">Splice Machine CLI</a> is now supported on Windows.</td>
         </tr>

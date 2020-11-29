@@ -10,12 +10,9 @@ folder: DeveloperTopics/Streaming
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# Ingesting and Streaming Data With Splice Machine
+# Ingesting and Streaming Data with Splice Machine
 
-This section provides tutorials to help you stream data with Splice Machine, in these topics:
-
-* [Creating a Kafka Producer](tutorials_ingest_kafkaproducer.html)
-* [Configuring a Kafka Feed](tutorials_ingest_kafkafeed.html)
+For information about streaming data with Splice machine, see [Best Practices: Ingesting Streaming Data](bestpractices_ingest_streaming.html).
 
 </div>
 </section>
