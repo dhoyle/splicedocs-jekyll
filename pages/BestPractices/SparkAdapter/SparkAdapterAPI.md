@@ -19,7 +19,7 @@ This topic describes the following methods of the `SplicemachineContext` class:
 * [`analyzeSchema`](#analyzeschema)
 * [`analyzeTable`](#analyzetable)
 * [`bulkImportHFile`](#bulkimporthfile)
-* [`columnNamesCaseSensitive`](columnnamescasesensitive)
+* [`columnNamesCaseSensitive`](#columnnamescasesensitive)
 * [`createTable`](#createtable)
 * [`delete`](#delete)
 * [`df` and `internalDf`](#df)
