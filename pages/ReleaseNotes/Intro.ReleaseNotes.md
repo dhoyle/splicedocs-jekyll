@@ -52,7 +52,7 @@ This section lists the significant updates in release {{site.build_version}}, in
         </tr>
         <tr>
             <td><em>SSDS</em></td>
-            <td>The [Structured Streaming Data Sink](bestpractices_ingest_streaming.html) is the Splice Machine implementation of Spark Structured Streaming for high performance data streaming.</td>
+            <td>The <a href="bestpractices_ingest_streaming.html">Structured Streaming Data Sink</a> is the Splice Machine implementation of Spark Structured Streaming for high performance data streaming.</td>
         </tr>    
         <tr>
             <td><em>Splice Machine CLI Windows Support</em></td>

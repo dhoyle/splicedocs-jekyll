@@ -18,7 +18,7 @@ This topic describes how to use Spark streaming to ingest real-time data from In
 * [Using the Structured Streaming Data Sink to Ingest Streaming Data](#streamsubmit)
 * [Running the Application](#runcode)
 
-For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html), in this Best Practices chapter.
+For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html).
 
 ## About Ingesting Streaming Data  {#streaming}
 
@@ -36,8 +36,10 @@ This section presents a sample Spark application that uses Kafka to both produce
 2. [Create a Kafka producer](#createproducer) to stream data.
 3. [Review the sample Spark application](#createapp) that uses Kafka to consume the stream and uses the Splice Machine Structured Streaming Data Sink to insert the data into the database table.
 
-* All of the files required to build and run this program are available here: [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz)
-* The input source in this example is simulated.
+All of the files required to build and run this program are available here: [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz)
+{: .noteNote}
+
+The input source in this example is simulated.
 {: .noteNote}
 
 ### 1. Create a table for the data in your Splice Machine database  {#createtable}
@@ -239,7 +241,7 @@ The following code sends messages to the Kafka queue:
 ```
 {: .Example}
 
-And these are the *helper* functions:
+And these are the helper functions:
 {: .spaceAbove}
 
 ```
@@ -290,14 +292,14 @@ And these are the *helper* functions:
 
 The following sample application consumes the data stream produced by the Kafka producer and inserts it into the Splice Machine database table.
 
-The `main` body of this application uses Kafka to consume entries in the stream into a Spark RDD and invokes the `doWork` method to process the stream entries. The `doWork` method:
+The main body of this application uses Kafka to consume entries in the stream into a Spark RDD and invokes the `doWork` method to process the stream entries. The `doWork` method:
 
 * Creates a Spark session.
 * Connects to your Splice Machine database.
 * Maps stream entries into a Spark DataFrame.
 * Uses the `insert` function of the Splice Machine Structured Streaming Data Sink to insert the data into the table in real-time.
 
-This code is available in  [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz) in the `SparkStreamingSubmit/src/main/java/com/splicemachine/sample/KafkaTopicProducer.java` file.
+This code is available in [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz).
 {: .noteNote}
 
 These are the package and class import statements in the application:
@@ -444,8 +446,6 @@ And this is the code that moves consumed data into your Splice Machine database:
 
 ## Running the Application  {#runcode}
 
-To put it all together, you need to start streaming data, consume that data and store it in the database table, and then use the data from the table.
-
 1. [Use Spark Submit to run the application](#submitapp).
 2. [Run the Kafka Producer to stream data](#runproducer) to start streaming weather data.
 3. [Use the table](#usetable).
@@ -571,7 +571,7 @@ java -cp target/<span class="HighlightedCode">splice-adapter-kafka-streaming-1.0
   ${HOST}:9092 $@</pre>
 </div>
 
-You must modify this script for your environment, updating at least some of the following highlighted values, as appropriate.
+You must modify this script for your environment, updating at least some of the values highlighted above, as appropriate.
 
 #### The `streamToKafka` Script
 
@@ -590,7 +590,7 @@ done</pre>
 
 ### 3. Use the table  {#usetable}
 
-Once the application is running, you can query the table and use the information for other purposes. For example, you could use the weather data to train a machine learning model that predicts how weather will impact delivery dates.
+Once the application is running and data is streaming, you can query the table and use the information for other purposes. For example, you could use the weather data to train a machine learning model that predicts how weather will impact delivery dates.
 
 Here is a simple query you can use to verify that the table has been populated:
 
