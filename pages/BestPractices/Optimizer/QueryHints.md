@@ -82,7 +82,7 @@ The following table summarizes the hint types available in Splice Machine:
         </tr>
         <tr>
             <td><a href="#UnboundedTimeTravelQuery">Unbounded Time Travel Query</a></td>
-            <td class="CodeFont">--splice-properties unbounded_time_travel=true</td>
+            <td class="CodeFont">--splice-properties ￼unboundedTimeTrave￼l=true</td>
             <td>Allows you to run a time travel query at a time in the past beyond the minimum retention period.</td>
         </tr>
     </tbody>
@@ -550,14 +550,14 @@ SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469');
 The following query runs without throwing an exception, but may return incorrect results.
 
 ```
-SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469') --splice-properties unbounded_time_travel=true
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469') --splice-properties ￼unboundedTimeTrave￼l=true
 ```
 {: .Example }
 
 Join operation with an unbounded time travel query:
 
 ```
-SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469'), --splice-properties unbounded_time_travel=true
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469'), --splice-properties ￼unboundedTimeTrave￼l=true
 SELECT * FROM T2 AS OF TIMESTAMP('2018-10-10 10:10:10');
 ```
 {: .Example }

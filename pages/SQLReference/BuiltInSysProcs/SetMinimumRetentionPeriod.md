@@ -1,5 +1,5 @@
 ---
-title: SSYSCS_UTIL.SET_MIN_RETENTION_PERIOD built-in system procedure
+title: SYSCS_UTIL.SET_MIN_RETENTION_PERIOD built-in system procedure
 summary: Built-in system procedure that sets the minimum retention period for time travel data.
 keywords: time travel, retention period, set_minimum_retention_period
 toc: false
@@ -10,15 +10,15 @@ folder: SQLReference/BuiltInSysProcs
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
-# SSYSCS_UTIL.SET_MIN_RETENTION_PERIOD
+# SYSCS_UTIL.SET_MIN_RETENTION_PERIOD
 
-The `SSYSCS_UTIL.SET_MIN_RETENTION_PERIOD` system procedure sets the minimum retention period for time travel data.
+The `SYSCS_UTIL.SET_MIN_RETENTION_PERIOD` system procedure sets the minimum retention period for time travel data.
 
 
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SSYSCS_UTIL.SET_MIN_RETENTION_PERIOD(schema, table, timeInSeconds)
+    SYSCS_UTIL.SET_MIN_RETENTION_PERIOD(schema, table, timeInSeconds)
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
