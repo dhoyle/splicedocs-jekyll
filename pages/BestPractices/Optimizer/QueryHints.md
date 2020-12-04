@@ -550,14 +550,14 @@ SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469');
 The following query runs without throwing an exception, but may return incorrect results.
 
 ```
-SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469') --splice-properties ￼unboundedTimeTrave￼l=true
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469') --splice-properties unboundedTimeTrave￼l=true
 ```
 {: .Example }
 
 Join operation with an unbounded time travel query:
 
 ```
-SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469'), --splice-properties ￼unboundedTimeTrave￼l=true
+SELECT * FROM T1 AS OF TIMESTAMP('2020-09-14 18:47:13.204469'), --splice-properties unboundedTimeTrave￼l=true
 SELECT * FROM T2 AS OF TIMESTAMP('2018-10-10 10:10:10');
 ```
 {: .Example }
