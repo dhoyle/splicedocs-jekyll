@@ -82,7 +82,7 @@ The following table summarizes the hint types available in Splice Machine:
         </tr>
         <tr>
             <td><a href="#UnboundedTimeTravelQuery">Unbounded Time Travel Query</a></td>
-            <td class="CodeFont">--splice-properties ￼unboundedTimeTravel=true</td>
+            <td class="CodeFont">--splice-properties unboundedTimeTravel=true</td>
             <td>Allows you to run a time travel query at a time in the past beyond the minimum retention period.</td>
         </tr>
     </tbody>
