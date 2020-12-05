@@ -18,10 +18,20 @@ in-progress backup.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_BACKUP( );
+    SYSCS_UTIL.SYSCS_CANCEL_BACKUP( BIGINT backupId );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
+
+<div class="paramList" markdown="1">
+backupId
+{: .paramName}
+
+The ID of the backup job you want to cancel.
+{: .paramDefnFirst}
+
+</div>
+
 ## Results
 
 This procedure does not return a result.
