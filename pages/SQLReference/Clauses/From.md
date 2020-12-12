@@ -88,6 +88,9 @@ This qualifier returns the same intermediate result table as NEW TABLE. In addit
 
 FINAL TABLE guarantees that the returned rows hold the actual final column values that will be added or modified, and that no other trigger will fire during the statement to cause the values to change, or to alter the set of changed rows. If such a trigger fires as part of the SQL statement, the statement is aborted with an error message indicating the name of the trigger that is updating the changed rows.
 
+* OLD TABLE shows the changed rows before the change is applied.
+* NEW TABLE and FINAL TABLE show the changed rows after the change is applied.
+
 ### Example
 
 <div class="preWrapperWide" markdown="1">
@@ -103,10 +106,6 @@ Inside the parentheses we may have any INSERT, UPDATE or DELETE statement. The r
 
     SELECT * FROM FINAL TABLE (INSERT INTO t1 select * from t2) where c1 > 9;
 {: .Example xml:space="preserve"}
-
-
-* OLD TABLE shows the changed rows before the change is applied.
-* NEW TABLE and FINAL TABLE show the changed rows after the change is applied.
 
 
 ## See Also
