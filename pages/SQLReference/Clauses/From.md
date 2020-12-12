@@ -93,16 +93,18 @@ FINAL TABLE guarantees that the returned rows hold the actual final column value
 <div class="preWrapperWide" markdown="1">
 
     SELECT * FROM FINAL TABLE (INSERT INTO t1 values (1,1));
+{: .Example xml:space="preserve"}
 
-</div>
+    </div>
 
 Inside the parentheses we may have any INSERT, UPDATE or DELETE statement. The rows that are inserted, updated, or deleted are returned back to the user as part of the SELECT. There can be a WHERE clause appended at the end, so that only a subset of the changed rows are returned, for example:
 
 <div class="preWrapperWide" markdown="1">
 
     SELECT * FROM FINAL TABLE (INSERT INTO t1 select * from t2) where c1 > 9;
+{: .Example xml:space="preserve"}
 
-</div>
+    </div>
 
 * OLD TABLE shows the changed rows before the change is applied.
 * NEW TABLE and FINAL TABLE show the changed rows after the change is applied.
