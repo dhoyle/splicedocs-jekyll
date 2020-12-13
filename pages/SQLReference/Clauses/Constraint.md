@@ -270,6 +270,137 @@ or `FOREIGN KEY` constraint on it, you do not need to create an index on
 those columns for performance. Splice Machine has already created it for
 you.
 
+### Foreign key with ON DELETE SET NULL
+
+A foreign key with ON DELETE SET NULL specifies that if a record in the parent table is deleted, the corresponding records in the child table will have the foreign key fields set to NULL. The records in the child table are not deleted.
+
+A foreign key with ON DELETE SET NULL can be created using either a CREATE TABLE or an ALTER TABLE statement.
+
+#### Syntax
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE TABLE child_table
+(
+  column1 datatype [ NULL | NOT NULL ],
+  column2 datatype [ NULL | NOT NULL ],
+  ...
+
+  CONSTRAINT fk_name
+    FOREIGN KEY (child_col1, child_col2, ... child_col_n)
+    REFERENCES parent_table (parent_col1, parent_col2, ... parent_col_n)
+    ON DELETE SET NULL
+    [ ON UPDATE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
+);</pre>
+
+</div>
+
+<div class="paramList" markdown="1">
+child_table
+{: .paramName}
+
+The name of the child table you would like to create.
+{: .paramDefnFirst}
+
+column1, column2
+{: .paramName}
+
+The columns to create in the child table. Each column must have a datatype. The column should either be defined as NULL or NOT NULL --  if this value is left blank, NULL is set by default.
+{: .paramDefnFirst}
+
+fk_name
+{: .paramName}
+
+The name of the foreign key constraint.
+{: .paramDefnFirst}
+
+child_col1, child_col2, ... child_col_n
+{: .paramName}
+
+The columns in `child_table` that will reference a primary key in the `parent_table`.
+{: .paramDefnFirst}
+
+parent_table
+{: .paramName}
+
+The name of the parent table whose primary key will be used in the child table.
+{: .paramDefnFirst}
+
+parent_col1, parent_col2, ... parent_col3
+{: .paramName}
+
+The columns that make up the primary key in the parent table. The foreign key will enforce a link between this data and the `child_col1, child_col2, ... child_col_n` columns in the child table.
+{: .paramDefnFirst}  
+
+ON DELETE SET NULL
+{: .paramName}
+
+Specifies that the child data is set to `NULL` when the parent data is deleted. The child data is NOT deleted.
+{: .paramDefnFirst}
+
+ON UPDATE
+{: .paramName}
+
+Optional. Specifies what to do with the child data when the parent data is updated. The available options are `NO ACTION`, `CASCADE`, `SET NULL`, or `SET DEFAULT`.
+{: .paramDefnFirst}  
+
+NO ACTION
+{: .paramName}
+
+Used with `ON DELETE` or `ON UPDATE`. It specifies that no action is performed on the child data when the parent data is deleted or updated.
+{: .paramDefnFirst}
+
+CASCADE
+{: .paramName}
+
+Used with `ON DELETE` or `ON UPDATE`. It specifies that the child data is deleted or updated when the parent data is deleted or updated.
+{: .paramDefnFirst
+
+SET NULL
+{: .paramName}
+
+Used with `ON DELETE` or `ON UPDATE`. It specifies the child data is set to `NULL` when the parent data is deleted or updated.
+{: .paramDefnFirst}  
+
+SET DEFAULT
+{: .paramName}
+
+Used with `ON DELETE` or `ON UPDATE`. It specifies the child data is set to their default values when the parent data is deleted or updated.
+{: .paramDefnFirst}  
+
+</div>
+
+#### Example
+
+<div class="preWrapper" markdown="1">
+
+    CREATE TABLE products
+    ( product_id INT PRIMARY KEY,
+    product_name VARCHAR(50) NOT NULL,
+    category VARCHAR(25)
+    );
+
+    CREATE TABLE inventory
+    ( inventory_id INT PRIMARY KEY,
+    product_id INT,
+    quantity INT,
+    min_level INT,
+    max_level INT,
+    CONSTRAINT fk_inv_product_id
+    FOREIGN KEY (product_id)
+    REFERENCES products (product_id)
+    ON DELETE SET NULL
+    );
+{: .Example xml:space="preserve"}
+
+ </div>
+
+In this example, the `products` table is created as the parent table. The products table has a primary key that consists of the `product_id` field.
+
+Next, the `inventory` table is created as the child table. The `CREATE TABLE` statement is used to create a `fk_inv_product_id` foreign key constraint on the `inventory` table. The foreign key establishes a relationship between the `product_id` column in the `inventory` table and the `product_id` column in the `products` table.
+
+The ON DELETE SET NULL clause is used to set the corresponding records in the child table to `NULL` when the data in the parent table is deleted. If a `product_id` value is deleted from the `products` table, the corresponding records in the `inventory` table with this `product_id` will have the product_id set to `NULL`.
+
+
 ## Check constraints
 
 You can use check constraints to limit which values are accepted by one
