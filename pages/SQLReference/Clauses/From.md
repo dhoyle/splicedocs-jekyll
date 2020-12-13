@@ -68,11 +68,11 @@ Specifies a table, view, or function; it is the source from which a
 
 ## FROM Clause Qualifiers: OLD TABLE, NEW TABLE, FINAL TABLE  {#from-clause-qualifiers}
 
-Applications that modify tables with INSERT, UPDATE, or DELETE statements might require additional processing on the modified rows. To facilitate this processing, you can embed SQL data-change operations in the FROM clause of SELECT and SELECT INTO statements. Within a single unit of work, applications can retrieve a result set containing the modified rows from a table or view modified by an SQL data-change operation.
+Applications that modify tables with INSERT, UPDATE, or DELETE statements may require additional processing on the modified rows. To facilitate this processing, you can embed SQL data-change operations in the FROM clause of SELECT statements.
 
-The modified rows of the table or view targeted by a SQL data-change operation in the FROM clause of a SELECT statement compose an intermediate result table. The intermediate result table includes all the columns of the target table or view, along with any include columns defined in the SQL data-change operation. You can reference all of the columns in an intermediate result table by name in the select list, the ORDER BY clause, or the WHERE clause.
+The modified rows of the table or view targeted by a SQL data-change operation in the FROM clause of a SELECT statement compose an intermediate result table. The intermediate result table includes all of the columns of the target table or view, along with any include columns defined in the SQL data-change operation. You can reference all of the columns in an intermediate result table by name in the select list, the ORDER BY clause, or the WHERE clause.
 
-The contents of the intermediate result table are dependent on the qualifier specified in the FROM clause. You must include one of the following FROM clause qualifiers in SELECT statements that retrieve result sets as intermediate result tables.
+The contents of the intermediate result table depend on the qualifier specified in the FROM clause. You must include one of the following FROM clause qualifiers in SELECT statements that retrieve result sets as intermediate result tables.
 
 ### OLD TABLE
 
@@ -100,7 +100,7 @@ FINAL TABLE guarantees that the returned rows hold the actual final column value
 
 
 
-Inside the parentheses we may have any INSERT, UPDATE or DELETE statement. The rows that are inserted, updated, or deleted are returned back to the user as part of the SELECT. There can be a WHERE clause appended at the end, so that only a subset of the changed rows are returned, for example:
+Inside the parentheses we can have any INSERT, UPDATE or DELETE statement. The rows that are inserted, updated, or deleted are returned back as part of the SELECT. There can be a WHERE clause appended at the end, so that only a subset of the changed rows are returned, for example:
 
 <div class="preWrapperWide" markdown="1">
 
