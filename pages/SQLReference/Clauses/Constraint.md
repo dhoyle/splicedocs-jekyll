@@ -400,6 +400,71 @@ Next, the `inventory` table is created as the child table. The `CREATE TABLE` st
 
 The ON DELETE SET NULL clause is used to set the corresponding records in the child table to `NULL` when the data in the parent table is deleted. If a `product_id` value is deleted from the `products` table, the corresponding records in the `inventory` table with this `product_id` will have the product_id set to `NULL`.
 
+### Foreign key with ON DELETE CASCADE
+
+A foreign key with ON DELETE CASCADE specifies that if a record in the parent table is deleted, the corresponding records in the child table will be deleted. This is referred to as a cascade delete.
+
+A foreign key with ON DELETE CASCADE can be created using either a CREATE TABLE or an ALTER TABLE statement.
+
+#### Syntax
+
+<div class="fcnWrapperWide"><pre class="FcnSyntax">
+CREATE TABLE child_table
+(
+  column1 datatype [ NULL | NOT NULL ],
+  column2 datatype [ NULL | NOT NULL ],
+  ...
+
+  CONSTRAINT fk_name
+    FOREIGN KEY (child_col1, child_col2, ... child_col_n)
+    REFERENCES parent_table (parent_col1, parent_col2, ... parent_col_n)
+    ON DELETE CASCADE
+    [ ON UPDATE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
+);</pre>
+
+</div>
+
+The syntax for ON DELETE CASCADE is identical to the syntax for ON DELETE SET NULL, with the exception of the following parameter:
+
+<div class="paramList" markdown="1">
+ON DELETE CASCADE
+{: .paramName}
+
+Specifies that the child data is deleted when the parent data is deleted. The child data is NOT deleted.
+{: .paramDefnFirst}
+
+</div>
+
+#### Example
+
+<div class="preWrapper" markdown="1">
+
+    CREATE TABLE products
+    ( product_id INT PRIMARY KEY,
+      product_name VARCHAR(50) NOT NULL,
+      category VARCHAR(25)
+    );
+
+    CREATE TABLE inventory
+    ( inventory_id INT PRIMARY KEY,
+      product_id INT NOT NULL,
+      quantity INT,
+      min_level INT,
+      max_level INT,
+      CONSTRAINT fk_inv_product_id
+        FOREIGN KEY (product_id)
+        REFERENCES products (product_id)
+        ON DELETE CASCADE
+    );
+{: .Example xml:space="preserve"}
+
+ </div>
+
+In this example, the `products` table is created as the parent table. The products table has a primary key that consists of the `product_id` field.
+
+Next, the `inventory` table is created as the child table. The `CREATE TABLE` statement is used to create a `fk_inv_product_id` foreign key constraint on the `inventory` table. The foreign key establishes a relationship between the `product_id` column in the `inventory` table and the `product_id` column in the `products` table.
+
+The ON DELETE CASCADE clause is used to delete the corresponding records in the child table when the data in the parent table is deleted. If a `product_id` value is deleted from the `products` table, the corresponding records in the `inventory` table with this `product_id` will be deleted.
 
 ## Check constraints
 
