@@ -270,7 +270,7 @@ or `FOREIGN KEY` constraint on it, you do not need to create an index on
 those columns for performance. Splice Machine has already created it for
 you.
 
-### Foreign key with ON DELETE SET NULL
+### Foreign key with ON DELETE SET NULL  {#on-delete-set-null}
 
 A foreign key with ON DELETE SET NULL specifies that if a record in the parent table is deleted, the corresponding records in the child table will have the foreign key fields set to NULL. The records in the child table are not deleted.
 
@@ -400,7 +400,7 @@ Next, the `inventory` table is created as the child table. The `CREATE TABLE` st
 
 The ON DELETE SET NULL clause is used to set the corresponding records in the child table to `NULL` when the data in the parent table is deleted. If a `product_id` value is deleted from the `products` table, the corresponding records in the `inventory` table with this `product_id` will have the product_id set to `NULL`.
 
-### Foreign key with ON DELETE CASCADE
+### Foreign key with ON DELETE CASCADE  {#on-delete-cascade}
 
 A foreign key with ON DELETE CASCADE specifies that if a record in the parent table is deleted, the corresponding records in the child table will be deleted. This is referred to as a cascade delete.
 
