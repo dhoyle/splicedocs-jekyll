@@ -98,5 +98,24 @@ For a cluster with 20 Region Servers, you would set these to:
     -Dsplice.spark.dynamicAllocation.maxExecutors=20
 {: .ShellCommand}
 
+## MVCC Purge  {#MVCCPurge}
+
+Multi-Version Concurrency Control (MVCC) purge enables you to control the way data is purged during memstore flush, minor compaction, and major compaction.
+
+
+MVCC purge is controlled using the following configuration parameters:
+
+* `splice.olap.compaction.automaticallyPurgeDeletedRows` -- enabled (`true`) by default.
+
+* `splice.olap.compaction.automaticallyPurgeOldUpdates` -- disabled (`false`) by default.
+
+
+When a row in a table is deleted, the data is not physically removed from HBase -- instead, a tombstone cell is placed on top of the row. Similarly, when a row in a table is updated, a new entry is added in HBase, shadowing (but not removing) the older value.
+
+* If `automaticallyPurgeDeletedRows` is enabled, the deleted rows are purged as much as possible during memstore flush, minor compaction, and major compaction.
+
+* Similarly, if `automaticallyPurgeOldUpdates` is enabled, shadowed entries are purged as much as possible during memstore flush, minor compaction, and major compaction.
+
+
 </div>
 </section>
