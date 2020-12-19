@@ -18,6 +18,7 @@ This section contains best practice and troubleshooting information related to m
 * [Increasing Parallelism for Spark Shuffles](#SparkShuffles)
 * [Increasing Memory Settings for Heavy Analytical Work Loads](#OLAPMemSettings)
 * [Force Compaction to Run Locally](#LocalCompaction)
+* [MVCC Purge](#MVCCPurge)
 
 {% include splice_snippets/onpremonlytopic.md %}
 
