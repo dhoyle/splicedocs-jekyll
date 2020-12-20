@@ -62,6 +62,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><em>Spool Command</em></td>
             <td>The <a href="cmdlineref_spool.html"><code>spool</code></a> command logs Splice Machine command line session data to a specified file on the local file system.</td>
         </tr>
+        <tr>
+            <td><em>MVCC Purge</em></td>
+            <td><a href="bestpractices_onprem_configperf.html#MVCCPurge">MVCC Purge</a> enables you to control the way data is purged during memstore flush, minor compaction, and major compaction.</td>
+        </tr>
         <!--tr>
             <td><em></em></td>
             <td></td>
