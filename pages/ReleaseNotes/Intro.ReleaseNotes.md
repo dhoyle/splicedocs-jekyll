@@ -219,6 +219,14 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><em>FROM Clause Qualifiers: OLD TABLE, NEW TABLE, FINAL TABLE</em></td>
             <td>You can use <a href="sqlref_clauses_from.html#from-clause-qualifiers">FROM Clause Qualifiers</a> to retrieve intermediate result sets from a SQL data change statement.</td>
         </tr>
+        <tr>
+            <td><em>Foreign Key: ON DELETE SET NULL</em></td>
+            <td>A foreign key with <a href="sqlref_clauses_constraint.html#on-delete-set-null">ON DELETE SET NULL</a> specifies that if a record in the parent table is deleted, the corresponding records in the child table will have the foreign key fields set to NULL. </td>
+        </tr>
+        <tr>
+            <td><em>Foreign Key: ON DELETE CASCADE</em></td>
+            <td>A foreign key with <a href="sqlref_clauses_constraint.html#on-delete-cascade">ON DELETE CASCADE</a> specifies that if a record in the parent table is deleted, the corresponding records in the child table will be deleted.</td>
+        </tr>
         <!--tr>
             <td><em></em></td>
             <td></td>
