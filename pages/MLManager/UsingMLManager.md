@@ -18,549 +18,667 @@ This topic shows you how to use the Splice Machine *ML Manager*, a machine learn
 
 This topic is organized into these sections:
 
-* [*Architecture*](#Architecture) 
-* [*The ML-Workflow*](#The ML-Workflow)
-* [*External Data Access*](#External Data Access)
-* [*Notebooks*](#Notebooks)
-* [*The Native Spark DataSource*](#The Native Spark DataSource)
-* [*ML Manager*](#ML Manager)
+* [*ML Manager Workflow*](#workflow) provides a quick overview of what the *ML Manager* does and how it interfaces with MLflow and SageMaker to provide a complete Machine Learning production environment.
+* [*Running an Experiment*](#runExperiment) walks you through creating an ML experiment for detecting credit card fraud and shows you how to train, run, and compare two different learning models.
+* [*Deploying Your Model to AWS SageMaker*](#deploywithsagemaker) walks you through deploying your model on AWS.
+* [*Retraining the Model with New Data*](#UpdateData) shows you how to retrain your model with new data and update your deployment.
 
 The [*ML Manager Introduction*](mlmanager_intro.html) topic in this chapter provides an overview of the ML Manager, and the [*ML Manager API*](mlmanager_api.html) topic provides reference information for its API.
 
-## Architecture  {#Architecture}
+## *ML Manager* WorkFlow  {#workflow}
 
-Under the hood, Splice Machine uses mlflow to manage experiments, runs, models, artifacts, data, and features in Machine Learning experiments. Splice Machine has extended MLFlow functionality to give users full access to the standard MLFlow API as well as custom Splice Machine features (such as feature store tracking and model deployment).
+Here's what the basic flow of processes involved in developing, tuning, and deploying your ML projects looks like with *ML Manager* and our cloud-based Database-as-Service product:
 
-<img class='indentedTightSpacing' src='images/ML_Manager_Architecture.png'>
+<img class='indentedTightSpacing' src='images/DSFlow3.png'>
 
-Splice Machine can handle the ingestion of both real-time and batch data simultaneously, which is discussed in depth here. All interactions can be tracked and monitored using the ```splicemachine.mlflow_support``` module for a full governance data science experience.
+The basic workflow is:
+<div class="opsStepsList" markdown="1">
+1. Work with MLlib and other machine learning libraries in a Jupyter notebook to directly interact with Spark and your Splice Machine database.
+2. Use MLflow within your notebook to create *experiments* and *runs*, and to track variables, parameters, and other information about your runs.
+3. Use the MLflow Tracking UI to monitor information about your experiments and runs.
+4. Iterate on your experiments until you develop the learning model that you want to deploy, using the tracking UI to compare your runs.
+5. Use the Splice ML Jobs Tracker to deploy your model to AWS SageMaker, by simply filling in a few form fields and clicking a button.
+6. Write Apps that use SageMaker's RESTful API to interface with your deployed model.
+7. As new data arrives, you can return to Step 1 and repeat the process.
 </div>
 
 
-## The ML-Workflow {#The ML-Workflow}
+### About MLflow
 
-The typical workflow within the Splice Machine platform is:
-* Data Ingestion - This can be done either in batch or real-time, using built in support for Nifi, Kafka, Airflow, or Spark Streaming, or through any external tools with JDBC/ODBC support.
-* Data exploration and analysis - This is typically done using custom Splice Machine Jupyter notebooks or through the native Hue interface.
-* Data investigation and engineering - This again can be managed in Hue for a strong SQL IDE experience, or in Jupyter for users who need access to numerous programming languages simultaneously.
-* Machine Learning modeling - At this point in the process, users are using Jupyter notebooks to build and track machine learning models.
-* Model Deployment - Either via the Python APIs, or the available Director UI.
-* Model Monitoring - Done via SQL, Grafana, Hue or any database visualization tool, as models are deployed and tracked as tables (described in depth below).
+MLflow is an open source platform for managing the end-to-end machine learning lifecycle; with MLflow and Splice ML Manager, you can:
 
-## External Data Access {#External Data Access}
+* Track your model training sessions, which are called *runs*.
+* Group a collection of runs under an *experiment*, which allows you to visualize and compare a set of runs, and to download run artifacts for analysis by other tools.
+* View your experiments in the *MLflow Tracking UI*, which you access by pointing your browser at port `5001`.
 
-Accessing your Splice Machine data from outside the Splice Machine platform is incredibly simple. In Java and Scala, standard JDBC connection instructions are available here. Below we will focus on Python. Under the hood, Splice Machine uses our custom SqlAlchemy driver and ODBC driver to connect to the database. You can connect via raw ODBC or via SqlAlchemy.
+### About Storing Models and Pipelines
 
-To connect via raw ODBC, you must be using Mac or Linux and have Python >= 3.5.
-1. Install the necessary packages for your operating system:
-   * Mac: iODBC (via brew)
-   * Ubuntu: See the Ubuntu section here
-   * Centos: See the Centos section here
-2. Run ```pip install splicemachinesa```
-3. Start a Python interpreter. We recommend IPython or Jupyter
-
-Code Block:
-```
-from splicemachinesa.pyodbc import splice_connect
-cnx = splice_connect(UID, PWD, URL)
-cursor = cnx.cursor()
-```
-
-Where UID is your database user, PWD is your database password, and URL is the JDBC URL for the database you want to connect to.
-
-You can retrieve your user and password at cloud.splicemachine.io by clicking on your database, and then clicking Retrieve DB Password
-
-<img class='indentedTightSpacing' src='images/ml_manager_home_page.png'>
-<img class='indentedTightSpacing' src='images/Retreive_password.png'>
-
-You can access your JDBC URL by clicking on the “Connect” tab in the same dashboard and copying the inner URL. Copy the URL after ```jdbc:splice://``` and before ```:1527```. It will look something like: ```jdbc-<database_name>-<your_dns>```
-
-<img class='indentedTightSpacing' src='images/JDBC_link.png'>
-
-## Notebooks {#Notebooks}
-
-### Accessing your Jupyter Notebooks
-
-The recommended way to interact with your Splice Machine Database is via Hue and Jupyter notebooks. To access Hue, simply click on the SQL Client button in the Cloud Manager UI.
-
-<img class='indentedTightSpacing' src='images/SQL_Client.png'>
-
-This will bring you to the standard Hue SQL Client, where you can run SQL queries with table inspection, auto complete, and result visualizations.
-
-The rest of this section will focus on Notebooks.
-
-To access your Jupyter Notebooks, click on the Notebook button (next to SQL Client).
-
-<img class='indentedTightSpacing' src='images/Notebooks.png'>
-
-This will take you to the JupyterHub login screen. Log in with the credentials you accessed in [*the section above*](#External Data Access)  (using the “Retrieve DB Password” button).
-This will bring you to your personal Jupyter Instance. From here, you can walk through the available notebooks in sections 1-7, teaching you how to:
-
-* Create a new user and provide some basic permissions to the new user (section 1)
-* Import data from S3, run simple SQL queries, take a look inside the Splice Machine database (Section 2)
-* Dive deep into Splice Machine internals, monitor Spark jobs in the database, connect to the database using Scala and Python code, and create simple Applications (Section 3)
-* Create custom stored procedures in the database (section 4)
-* Run and evaluate benchmarks (section 5)
-* Build simple Machine Learning Models (section 6)
-* Use ML Manager, the Machine Learning workbench, to build end-to-end machine learning pipelines and deploy them into production using a brand new architecture created by Splice Machine (section 7)
-
-### Using Jupyter Notebooks
-Your Jupyter notebook comes pre-integrated with a number of custom enhancements, which we’ll cover in this section. The biggest enhancement is [*Beakerx*](http://beakerx.com/), an open source project that brings polyglot programming and enhanced graphing capabilities to the Jupyter environment. The SQL and Spark customizations have been pre-configured in Splice Machine to work immediately out of the box.
-
-### Polyglot Programming 
-Your Jupyter notebook comes with a number of programming languages to choose from. By clicking “New” you can see all of the available kernels.
-
-<img class='indentedTightSpacing' src='images/Jupyter_options.png'>
-
-Whichever Kernel (language) you choose will be the default language of the notebook, but you can switch languages within a given notebook by using the available magic commands. Let’s look at an example. 
-
-<img class='indentedTightSpacing' src='images/py_hello_world.png'>
-
-We can see on the top right that this is a Python3 Kernel, and we can run regular Python from inside the cells. If we want to run a particular cell in SQL, for example, we can do that by using the ```%%sql``` magic in the next cell.
-
-<img class='indentedTightSpacing' src='images/SQL_magic.png'>
-
-You will see that the Sql kernel started successfully, connected to the Splice Machine database, and authenticated with your username and password. Let’s create a Scala cell next and define a function.
+You can save your pipeline and model to S3 using the `save` method of MLlib `Pipeline` or MLlib `model` objects. Assuming that you've created a pipeline and built a model, you can save them as follows:
 
 ```
-%%scala
-
-def addInt( a:Int, b:Int ) : Int = {
-      var sum:Int = 0
-      sum = a + b
-      println("Adding in Scala is easy")
-      return sum
-}
-
-addInt(5, 10)
+%spark.pyspark
+model.save('s3a://splice-demo/fraudDemoPipelineModel')
 ```
+{: .Example}
 
-You'll see: 
-```Scala started successfully
-
-Adding in Scala is easy
- 
-Out[1]: 15
-```
-
-To see a list of all available magic commands (line magic denoted by ```%``` and cell magic denoted by ```%%```) run ```%lsmagic``` in any cell. Each Kernel (magic) has its own available sub-magics to be used. For example, if you run, in your standard Python cell
-```%lsmagic```
-
-You will see one of the magics called ```%%timeit```. This will allow you to time the execution of a cell. Let’s try it.
-```
-%%timeit
-import time
-time.sleep(3)
-print('Done!')
-```
-
-### Sharing Variables 
-
-Beyond using multiple languages in each Notebook, you can also share variables between each cell, even if it’s through different languages. Let’s try it by selecting data from SQL, passing it to Python, modifying the data, and then printing it out in Java. With the table created above, let’s select some data:
-
-```%%sql
-select * into ${my_shared_var} from foo;
-```
-
-You’ll notice this time that there is no output from the SQL. This is because of the ```into``` syntax we are using. This stores the result of the query as a JSON object. Now we will display the variable as a Pandas dataframe and manipulate it.
+or
 
 ```
-from beakerx.object import beakerx
-
-beakerx.pandas_display_table()
-display(beakerx.get('my_shared_var'))
-# Create a new, modified object
-beakerx.my_json_var = beakerx.my_shared_var['B'].apply(lambda x: x * x).to_json()
+%spark.pyspark
+pipeline.save('s3a://splice-demo/fraudDemoPipeline')
 ```
+{: .Example}
 
-Finally, we will return it in Java.
 
-```
-%%java
-
-return NamespaceClient.getBeakerX().get("my_json_var");
+If you are developing or have developed a model that you expect to deploy in the future, you should save the model to MLflow. Assuming that you've previously created an instance of `MLManager` named `manager` and have created a MLlib model named `model`, you can save the model to MLflow with this statement:
+{: .spaceAbove}
 
 ```
-To see everything that comes with your Beakerx setup, check out the [*Beakerx official documentation*](https://mybinder.org/v2/gh/twosigma/beakerx/1.2.0?filepath=StartHere.ipynb).
-
-### Spark
-
-To create a Spark Session in your Jupyter notebook, create a new notebook by clicking “New”, then the language that you’d like.
-
-**Scala:**
-
-<img class='indentedTightSpacing' src='images/Scala.png'>
-
-```%%spark --start
-SparkSession.builder
+%spark.pyspark
+manager.log_spark_model(model)
 ```
+{: .Example}
 
-**Python:**
+The code in the [*Running an Experiment*](#runExperiment) section below contains examples of saving models to S3 and to MLflow.
+{: .spaceAbove}
 
-<img class='indentedTightSpacing' src='images/Python.png'>
+### About SageMaker
 
-```from pyspark.sql import SparkSession
-spark = SparkSession.builder.getOrCreate()
-```
+Amazon Sagemaker allows you to easily deploy the machine learning models that you develop with the *Splice ML Manager* on Amazon AWS. The only requirement is that you have an *ECR* repository set up on AWS; ECR is Amazon's fully-managed Docker contrainer registry that simplifies deploying Docker images and is integrated with Amazon's Elastic Container Service (ECS).
 
-You now have a fully scalable Spark Session running on your Kubernetes cluster (**not** locally), so as you want to ingest more data, you can grow your Spark Session to handle it. To monitor your Spark Jobs as they are running, you can use the ```get_spark_ui()``` provided by the Splice Machine Python API. 
+When you tell our *ML Manager* to deploy a model to SageMaker, *ML Manager* creates a Docker image and uploads it to your ECR repository. You can specify which AWS instance types you want to deploy on, and how many instances you want to deploy. We send the deployment request to SageMaker, which creates an endpoint, launches your ML compute instances, and the deploys your model to them.
 
-Because this API is Python based, you can use the ```%%python``` magic available from the Scala notebook to view the UI. The function will automatically detect the running Spark Session if it was created in Python, but if you created it in Scala, you will need to provide the Spark port. Let’s try that now:
+You can also use the same process to deploy an updated version of your model.
 
-**Again, Python and Scala tabs.**
+## Running an Experiment  {#runExperiment}
 
-**Python:**
-```
-from splicemachine.notebook import get_spark_ui
-get_spark_ui()
-```
+This section walks you through creating and running an experiment with ML Manager, in these steps:
 
-**Scala:**
-```
-beakerx.sparkPort = sc.uiWebUrl.get.split(":").last
-```
-Then, in the next cell
-```
-%%python
-from beakerx.object import beakerx
-from splicemachine.notebook import get_spark_ui
+* [Preparing Your Experiment](#prepareExperiment)
+* [The First Run](#runFirst)
+* [Trying a Different Model](#trydifferentmodel)
 
-get_spark_ui(port=beakerx.sparkPort)
-```
-When working with Spark in Python, you can also access the UI (and other running statistics) through the drop down Spark monitor that appears automatically when you start a Spark task. From a Python cell (after creating a Spark Session), run:
-```spark.sparkContext.parallelize(range(520)).collect()```
+The Splice ML Manager, along with MLflow, allows you to group a set of *runs* into an *experiment*. Each run can use different values and parameters, all of which can be easily tracked and evaluated with help from the MLflow user interface.
 
-You will see this drop down.
-<img class='indentedTightSpacing' src='images/spark_ui_dropdown.png'>
+The default cell type in our Jupyter environment is a code cell that runs Python.
+{: .noteNote}
 
-For Spark Jobs that create a lot of tasks (like machine learning algorithms), you can minimize this by clicking on the arrow in the top right of the drop down. To view a popout of the Spark UI, click the computer icon in the top right corner (next to the X).
+### Preparing Your Experiment  {#prepareExperiment}
+In this section, we'll prepare our first experiment, in these steps:
 
-To end your Spark Session and free up those resources, you can run (in either Scala or Python)
-```spark.stop()```
-
-### Customizing your Notebooks
-Each Jupyter Notebook instance is custom to the user, so each user gets their own dedicated environment. This brings ultimate customization, allowing users to build or install open source plugins, python/conda packages, and even create new conda environments for work. Keep in mind that the Splice Machine Jupyter notebooks are already customized with a number of enhancements, so installing custom libraries/conda environments may cause certain functionality to act unexpectedly.
-
-Let’s create a custom Conda environment and use it as a Kernel in the notebook. From the home screen in Jupyter, you can create a new terminal session by clicking “New -> terminal”
-<img class='indentedTightSpacing' src='images/Terminal.png'>
-
-From there, we can create a new conda environment. Let’s first check to see which version of Python we are running.
-```Python --version```
-
-Great, now we will create an environment with Python 3.8
-```
-conda create -y -n NewPyEnv python=3.8
-source activate NewPyEnv
-pip install ipykernel
-python -m ipykernel install --user --name NewPyEnv --display-name "NewPyEnv"
-```
-You can now create a new notebook and click “NewPyEnv” from the dropdown to use your new environment. We can confirm that this environment is running Python3.8
-
-<img class='indentedTightSpacing' src='images/sys_version.png'>
-
-To learn more about managing environments, see the Conda [*documentation*](hhttps://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+1. [Load the data into your database](#loadtodb)
+2. [Run a few simple queries](#query)
+3. [Establish a Connection to Your Database](#connect)
+4. [Create your `MLManager` instance](#createmlmgr)
+5. [Create a new experiment](##createexperiment)
+6. [Review your data](#review)
 
 
-### Native Spark DataSource 
+#### 1. Load the Data into your database  {#loadtodb}
 
-The Native Spark Datasource is a component created by Splice Machine to give distributed, scalable data access to the Splice Database through Dataframe APIs. The Native Spark Datasource accesses data from the database without needing to serialize the data through JDBC or ODBC. The data is immediately distributed across the Spark Session and is lazily evaluated. This gives Data scientist, engineers and analysts a pure DataFrame interface to interact with data that won’t fit in memory.
-
-<img class='indentedTightSpacing' src='images/NSDS.png'>
-
-### Using the Native Spark DataSource 
-
-To use the Native Spark Datasource, you must first have a running Spark Session. To learn more about Spark Sessions on Splice Machine, see [*spark*](#spark).
-
-Once you have your Spark Session, run:
-
-```
-from splicemachine.spark import PySpliceContext
-splice = PySpliceContext(spark)
-```
-
-You can now access your database tables using the PySpliceContext. To see the available functions and their definitions, run
-```help(splice)```
-
-Let’s create a simple table and then read in that data.
+First we'll create the table in our Splice Machine database for our fraud data:
 
 ```
 %%sql
-drop table if exists foo;
-create table foo (a int, b double);
-insert into foo values(52, 142.14);
-insert into foo values(535, 222.14);
-insert into foo values(656, 77.164);
-insert into foo values(1290, 10294.22);
-insert into foo values(332, 12452.11);
-select * from foo;
-```
 
-Now, in Python:
-```
-df = splice.df('select * from foo')
-df.describe().show()
-```
-We can see some basic information about our Spark Dataframe. We now have a distributed Spark dataframe that can scale to millions and billions of rows.
+create schema cc_fraud;
+set schema cc_fraud;
 
-### Basic Spark Dataframe Manipulations 
+drop table if exists cc_fraud_data;
 
-Spark dataframes are a bit different than Pandas, and utilize a more functional paradigm. Let’s look at some basic functions.
-* Cast
-* Sum
-* Count
-* Distinct
-* withColumn and withColumnRenamed
+create table cc_fraud.cc_fraud_data (
+    time_offset integer,
+    v1 double,
+    v2 double,
+    v3 double,
+    v4 double,
+    v5 double,
+    v6 double,
+    v7 double,
+    v8 double,
+    v9 double,
+    v10 double,
+    v11 double,
+    v12 double,
+    v13 double,
+    v14 double,
+    v15 double,
+    v16 double,
+    v17 double,
+    v18 double,
+    v19 double,
+    v20 double,
+    v21 double,
+    v22 double,
+    v23 double,
+    v24 double,
+    v25 double,
+    v26 double,
+    v27 double,
+    v28 double,
+    amount decimal(10,2),
+    class_result int
+);
+```
+{: .Example}
 
-To cast a column to another datatype, you can use the withColumn function.
-
-Let’s cast our column 5 from an int to a string
-```
-df = df.withColumn('A', df['A'].cast('string'))
-df.printSchema()
-```
-You can also use the official “Types” from spark by importing from pyspark.sql.types. The following code is identical:
-```
-from pyspark.sql.types import StringType
-df = df.withColumn('A', df['A'].cast(StringType()))
-df.printSchema()
-```
-
-To get the sum of a column, we can use the ```groupBy``` function to group the dataframe by each available column, ```sum``` to get the sum of each (numeric) column, and then ```collect``` to run the evaluation and show the results. Without the ```collect```, the Spark job will not start because Spark is lazy, and requires an action to begin calculations.
-```
-df.groupBy().sum().collect()
-```
-
-If the output you saw was only a sum for column B, that’s because we modified column A to be a String! We’ll need to make that an int again to get a sum.
+And then we import the data from S3 into the table:
+{: .spaceAbove}
 
 ```
-df = df.withColumn('A', df['A'].cast('int'))
-df.groupBy().sum().collect()
+%%sql
+
+call SYSCS_UTIL.IMPORT_DATA (
+     'cc_fraud',
+     'cc_fraud_data',
+     null,
+     's3a://splice-demo/kaggle-fraud-data/creditcard.csv',
+     ',',
+     null,
+     null,
+     null,
+     null,
+     -1,
+     's3a://splice-demo/kaggle-fraud-data/bad',
+     null,
+     null);
+```
+{: .Example}
+
+
+#### 2. Run a few simple queries against the new data:  {#query}
+
+You can query the data to verify that everything was loaded properly:
 
 ```
-To get the number of rows in the dataframe, simply run
+%%sql
+select top 10 * from cc_fraud.cc_fraud_data
 ```
-df.count()
+{: .Example}
 ```
-
-And to get the number of distinct rows, run
+%%sql
+select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result
 ```
-df.distinct().count()
+{: .Example}
 ```
-
-To rename a column, you can use
+%%sql
+explain select class_result, count(*) from cc_fraud.cc_fraud_data group by class_result
 ```
-df = df.withColumnRenamed('A', 'newA')
-df.show()
-```
+{: .Example}
 
-For a list of all available functions, see the Pyspark [*documentation*](https://spark.apache.org/docs/2.4.4/api/python/_modules/pyspark/sql/functions.html). To see all available functions from the Native Spark Datasources, see [*here*]([*documentation*](https://spark.apache.org/docs/2.4.4/api/python/_modules/pyspark/sql/).
+#### 3. Establish a Connection to Your Database  {#connect}
 
-### Koalas 
-
-Many people may be more comfortable and familiar with the Pandas DataFrame API. It  it more Pythonic in nature and is simpler for many calculations. Koalas, an open source project, brings Pandas APIs to Spark dataframes. As you interact with your Koalas dataframe, Koalas translated those actions into Spark tasks under the hood.
-
-To use Koalas on Splice Machine, simply run:
-```
-!pip install -q koalas
-```
-
-In the notebook. Then, before starting your Spark Session, run
-```
-import databricks.koalas as ks
-```
-
-**Note: You must import koalas before starting your Spark Session.**
-
-Now that you have Koalas imported, and you start your Spark Session, you can import data.
-```
-df = splice.df('select * from foo').to_koalas()
-df
-```
-
-You’ll see that the dataframe is displayed as a Pandas df. We can now use Pandas functions.
-```df[df.B > 250]```
-
-To see what Koalas is doing under the hood on any given function, you can add ```.spark.explain()``` to any dataframe manipulation you make.
-
-```df[df.B > 250].spark.explain()```
-
-To see everything Koalas can do, check out the [*documentation*](https://koalas.readthedocs.io/en/latest/getting_started/10min.html). 
-
-### Getting Data into your Database
-
-Now that we understand our environment a bit better, we can bring our own data into the system. There are a number of ways to get data into your Splice Machine Database. Here we’ll cover 3 basic ways.
-
-### File Import 
-
-On our Cloud Manager dashboard, there is a File Import tab to bring data directly from your machine into tables in your database. Simply click on the Data Import tab, and upload or drag and drop a file onto the screen. 
-
-You can download [*documentation*](https://raw.githubusercontent.com/Ben-Epstein/Medium-Aritcles/master/sample.csv) sample dataset by right **click -> save as** and follow along. 
-
-First, click on the Data Import tab.
-
-<img class='indentedTightSpacing' src='images/data_import.png'>
-
-Now, upload the sample.csv file provided above. You’ll see the following
-
-<img class='indentedTightSpacing' src='images/create_new_table.png'>
-
-We can now provide a table name, like ```sample_data_import```. The delimiter is correct as comma, and this dataset does have headers so we will leave that checked. The datatypes look correct, as do the column names, so we can accept and import.
-
-When prompted for a username and password, you can access those via the “Retrieve DB Password” button at the top of the page. 
-
-<img class='indentedTightSpacing' src='images/DB_password.png'>
-
-That’s it! You now have a new table
-
-<img class='indentedTightSpacing' src='images/create_new_table_2.png'>
-
-You can export the SQL used to create the table or import a new file.
-
-### Naive Spark DataSource 
-
-For users who are comfortable with Python and Pandas, getting data into the database is extremely simple. If you can get your data into a dataframe, it can be put into the database. If you would like to learn more about the Native Spark Datasource, see [*here*](#Native Spark DataSource). Let’s use the same dataset as above. We will head to our Jupyter Notebooks, which you can see how to access [*here*](#Notebooks).
-Once there, you can upload a new file.
-
-<img class='indentedTightSpacing' src='images/jupyter_upload.png'>
-
-
-Now we’ll create a new notebook. To import data into the database using Python, we’ll need to connect to the database using the Native Spark Datasource. See [*here*](#Native Spark DataSource) for detailed information about the Native Spark Datasource. We’ll create a Spark Session, then a PySpliceContext (Python Native Spark Datasource wrapper).
+Now we'll create a connection to your database using Python, via our Native Spark DataSource:
 
 ```
+from splicemachine.spark.context import PySpliceContext
 from pyspark.sql import SparkSession
+# Create our Spark Session
 spark = SparkSession.builder.getOrCreate()
-
-from splicemachine.spark import PySpliceContext
+sc = spark.sparkContext
+# Create our Native Database Connection
 splice = PySpliceContext(spark)
 ```
+{: .Example}
 
-Great, now we can read in our data with any system we want. We’ll use Pandas for simplicity. From Pandas, we can easily get a Spark Dataframe ready for database table insertion.
+#### 4. Create your MLManager Instance  {#createmlmgr}
+
+To use ML Manager, you need to first create a class instance; creating the MLManager object returns a tracking URL.
+
+There is exactly one tracking URL *per cluster*, which means that if you create another MLManager object in another notebook, it will return the same tracking URL. This means that you can create multiple experiments in multiple notebooks, and and all of them will be tracked in the MLFlow UI.
+
+```
+from splicemachine.ml.management import MLManager
+manager = MLManager(splice)
+```
+{: .Example}
+
+```
+from splicemachine.ml.management import MLManager
+manager = MLManager()
+```
+{: .Example}
+
+You should see a message similar to this:
+
+```
+Tracking Model Metadata on MLFlow Server @ http://mlflow:5001
+```
+{: .Example}
+
+#### 5. Create an Experiment  {#createexperiment}
+
+Now we'll create an MLflow experiment named `fraud_demo` and load our data into a DataFrame:
+
+```
+#create our MLFlow experiment
+manager.create_experiment('fraud_demo')
+df = splice.df("SELECT * FROM cc_fraud.cc_fraud_data")
+df = df.withColumnRenamed('CLASS_RESULT', 'label')
+display(df.limit(10).toPandas())
+```
+{: .Example}
+
+You can now view your new experiment in the MLflow Tracking UI, at port `5001`:
+
+<img class='indentedTightSpacing' src='https://s3.amazonaws.com/splice-demo/mlflow_UI_fraud.png'>
+
+#### 6. Review your data  {#review}
+
+It's a good idea to review your data before going any further. Specifically, you should look at the correlations between your features each other and the label. We'll create a heatmap for this purpose:
 
 ```
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-pdf = pd.read_csv('sample.csv')
-df = spark.createDataFrame(pdf)
+for i in df.columns:
+    df = df.withColumn(i,df[i].cast(FloatType()))
+
+pdf = df.limit(5000).toPandas()
+correlations = pdf.corr()
+correlations.style.set_precision(2)
+
+plt.rcParams["figure.figsize"] = (8,12)
+plt.matshow(correlations, cmap='coolwarm')
+
+ticks = [i for i in range(len(correlations.columns))]
+plt.xticks(ticks, correlations.columns)
+plt.yticks(ticks, correlations.columns)
+
+
+plt.title('Fraud Data correlation heatmap')
+plt.show()
 ```
+{: .Example}
 
-Now we can both create a table and insert our dataframe.
+Here's the result:
 
-```
-splice.createTable(df, 'sample_table_python', to_upper=True, drop_table=True)
-splice.insert(df, 'sample_table_python', to_upper=True)
-```
+<img class='indentedTightSpacing' src='images/heatmap.png'>
 
-We pass ```to_upper=True``` because the database is case sensitive by default and defaults columns to uppercase unless otherwise specified. So it is best practice to set columns to upper case when using the Native Spark Datasource to interact with database tables.
+### Running Your First Experiment  {#runfirst}
 
-Now that we’ve created our table and inserted our data, we can read the data from SQL using our ```%%sql``` magic. To read more about Polyglot programming, see the section [*here*](#Polyglot programming). In the next cell, run:
+Now that we're set up, let's create a run named `Ben` and run our experiment, using the logging functionality of `MLManager` to record and track the attributes of our run.
 
-```
-%%sql
-select * from sample_table_python;
-```
+We'll use these steps to run our experiment:
+1. [Set up and start a run](#createrun)
+2. [Create a Pipeline](#createpipeline)
+4. [Set up the Model](#trainandrun)
+5. [Run the Cross Validator](#runcross)
+6. [Train the Model](#trainmodel)
+7. [Save the Model](#savemodel)
 
-This same paradigm can be used to read data from any source, as long as you can get it into a dataframe format. Reading from HDFS, S3, GCP, Azure Blob store, Github etc can all work exactly the same.
+#### 1. Set up and start a run  {#createrun}
 
-### SQL Import 
-
-For SQL inclined users, Splice Machine has built a SQL API for ingesting from external sources. To use this API, your dataset must be in an external location, such as S3, HDFS, GS etc. To learn how to copy data to S3, see [*here*](#https://doc.splicemachine.com/developers_cloudconnect_uploadtos3.html).
-
-To use the SQL API to import data, you must first have a table created.
-
-Let’s create a table that matches the schema of the dataset we have been working with. 
-
-```
-%%sql
-DROP TABLE IF EXISTS SAMPLE_SQL_IMPORT;
-CREATE TABLE SAMPLE_SQL_IMPORT (
-"TIME_OFFSET" BIGINT
-,"V1" DOUBLE
-,"V2" DOUBLE
-,"V3" DOUBLE
-,"V4" DOUBLE
-,"V5" DOUBLE
-,"V6" DOUBLE
-,"V7" DOUBLE
-,"V8" DOUBLE
-,"V9" DOUBLE
-,"V10" DOUBLE
-,"V11" DOUBLE
-,"V12" DOUBLE
-,"V13" DOUBLE
-,"V14" DOUBLE
-,"V15" DOUBLE
-,"V16" DOUBLE
-,"V17" DOUBLE
-,"V18" DOUBLE
-,"V19" DOUBLE
-,"V20" DOUBLE
-,"V21" DOUBLE
-,"V22" DOUBLE
-,"V23" DOUBLE
-,"V24" DOUBLE
-,"V25" DOUBLE
-,"V26" DOUBLE
-,"V27" DOUBLE
-,"V28" DOUBLE
-,"AMOUNT" DOUBLE
-,"CLASS" BIGINT
-) ;
-```
-
-Now we can import the data using the built in SQL API. We will import the data from the S3 Location holding the sample dataset.
+Using our MLManager object, we'll first configure tags for our experiment; you can attach whatever tags you like to an experiment. Note that your `user_id` tag (the ID used to log into the notebook) is automatically added.
 
 ```
-%%sql
-call SYSCS_UTIL.IMPORT_DATA (
-null,
-'SAMPLE_SQL_IMPORT',
-null,
-'s3a://splice-demo/kaggle-fraud-data/creditcard.csv',
-',',
-null,
-null,
-null,
-null,
--1,
-'s3a://splice-demo/kaggle-fraud-data/bad',
-null,
-null);
-
-SELECT TOP 250 * FROM SAMPLE_SQL_IMPORT;
+    #start our first MLFlow run
+tags = {
+        'team': 'MyCompany',
+        'purpose': 'fraud r&d',
+        'attempt-date': '12/31/2019',
+        'attempt-number': '1'
+       }
+manager.start_run(tags=tags)
 ```
+{: .Example}
 
-## ML Manager {#ML Manager}
+##### Model Considerations
 
-ML Manager is Splice Machine’s end-to-end data science workbench. With ML Manager, you can create and track models, analyze data and engineer new features, and deploy and monitor models in production.
+Since our data contains a limited number of fraudulent examples, we decide to expand that number for training purposes. To achieve this, we oversample fraudulent transactions and undersample non-fraudulent ones. We need to make sure the model isn't overfit and doesn't always predict non-fraud (due to the lack of fraud data), so we can't only rely on accuracy. Our goal is to pick a model that does not have a high over-fitting rate.
 
-ML Manager is based on a modified and enhanced MLFlow. To learn about MLFlow and its uses, see [*here*](https://mlflow.org/docs/1.8.0/quickstart.html). In Splice Machine, all Experiments, Runs, Artifacts and Models are stored inside the database, so everything associated with your machine learning models is kept in a secure, durable, ACID compliant data store.
+#### 3. Create a Pipeline  {#createpipeline}
+Now we can create a Pipeline to normalize our continuous features. We can use Spark's `Pipeline` class to define a set of Transformers that set up your dataset for modeling.
 
-The standard MLFlow API is exposed, with additional functions added for deployment and tracking. To see a list of the full API specifications, see [*here*](hhttps://pysplice.readthedocs.io/en/latest/splicemachine.mlflow_support.html). For interactive notebooks that walk you through using ML Manager, click on the “ML Notebook Walkthrough” link in the Quick Start tab of your [*Cloud Manager Dashboard*](https://cloud.splicemachine.io/register?utm_source=website&utm_medium=header&utm_campaign=sandbox).
+We'll use the `StandardScaler`, which standardizes features by scaling to unit variance and/or removing the mean using, column summary statistics on the samples in the training set. And we'll create our feature vector with the `VectorAssembler` transformer, which combines a given list of columns into a single vector column.
 
-<img class='indentedTightSpacing' src='images/Walkthrough.png'>
+Finally, we'll use `MLManager` to `log` our Pipeline stages.
 
-These notebooks will walk you end-to-end through ingesting data, creating machine learning models, and deploying them to production.
+```
+from pyspark.ml.feature import StandardScaler, VectorAssembler
+from pyspark.ml import Pipeline,PipelineModel
+from pyspark.ml.classification import RandomForestClassifier, MultilayerPerceptronClassifier
 
-### Setting up MLFlow
+feature_cols = df.columns[:-1]
+assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+scaler = StandardScaler(inputCol="features", outputCol='scaledFeatures')
+rf = RandomForestClassifier()
+
+stages = [assembler,scaler,rf]
+mlpipe = Pipeline(stages=stages)
+manager.log_pipeline_stages(mlpipe)
+```
+{: .Example}
+
+#### 4. Train and Run the Model   {#trainandrun}
+
+Now we can set up our modeling process; we'll use `OverSampleCrossValidator` to properly oversample our dataset for model building. And we'll add a few lines of code to track all of our moves in MLFlow:
+
+```
+from utils1 import OverSampleCrossValidator as OSCV
+from pyspark.ml.tuning import ParamGridBuilder
+from pyspark.ml.evaluation import BinaryClassificationEvaluator,MulticlassClassificationEvaluator
+import pandas as pd
+import numpy as np
+
+# Define evaluation metrics
+PRevaluator = BinaryClassificationEvaluator(metricName = 'areaUnderPR') # Because this is a needle in haystack problem
+AUCevaluator = BinaryClassificationEvaluator(metricName = 'areaUnderROC')
+ACCevaluator = MulticlassClassificationEvaluator(metricName="accuracy")
+f1evaluator = MulticlassClassificationEvaluator(metricName="f1")
+
+# Define hyperparameters to try
+params = {rf.maxDepth: [5,15], \
+          rf.numTrees: [10,30], \
+          rf.minInfoGain: [0.0,2.0]}
+
+paramGrid_stages = ParamGridBuilder()
+for param in params:
+    paramGrid_stages.addGrid(param,params[param])
+paramGrid = paramGrid_stages.build()
+
+# Create the CrossValidator
+fraud_cv = OSCV(estimator=mlpipe,
+                        estimatorParamMaps=paramGrid,
+                        evaluator=PRevaluator,
+                        numFolds=3,
+                        label = 'label',
+                        seed = 1234,
+                        parallelism = 3,
+                        altEvaluators = [ACCevaluator, f1evaluator, AUCevaluator])
+```
+{: .Example}
+
+#### 5. Run the Cross Validator  {#runcross}
+
+Now we can run the `CrossValidator` and log the results to MLFlow:
+
+```
+df = df.withColumnRenamed('Amount', 'label')
+manager.start_timer('with_oversample')
+fraud_cv_model, alt_metrics = fraud_cv.fit(df)
+execution_time = manager.log_and_stop_timer()
+
+print(f"--- {execution_time} seconds == {execution_time/60} minutes == {execution_time/60/60} hours")
+
+
+# Grab metrics of best model
+best_avg_prauc = max(mycvModel.avgMetrics)
+best_performing_model = np.argmax(fraud_cv_model.avgMetrics)
+
+# metrics at the best performing model for this iteration
+best_avg_acc = [alt_metrics[i][0] for i in range(len(alt_metrics))][best_performing_model]
+best_avg_f1 = [alt_metrics[i][1] for i in range(len(alt_metrics))][best_performing_model]
+best_avg_rocauc = [alt_metrics[i][2] for i in range(len(alt_metrics))][best_performing_model]
+
+print(f"The Best average (Area under PR) for this grid search: {best_avg_prauc}")
+print(f"The Best average (Accuracy) for this grid search: {best_avg_acc}")
+print(f"The Best average (F1) for this grid search: {best_avg_f1}")
+print(f"The Best average (Area under ROC) for this grid search: {best_avg_rocauc}")
+
+evals = [('areaUnderPR',best_avg_prauc), ('Accuracy',best_avg_acc),('F1',best_avg_f1),('areaUnderROC',best_avg_rocauc)]
+manager.log_metrics(evals)
+
+# Get the best parameters
+bestParamsCombination = {}
+for stage in fraud_cv_model.bestModel.stages:
+    bestParams = stage.extractParamMap()
+    for param in params:
+        if param in bestParams:
+            bestParamsCombination[param] = bestParams[param]
+
+#log the hyperparams
+manager.log_params(list(bestParamsCombination.items()))
+
+print("Best Param Combination according to f1 is: \n")
+print(pd.DataFrame([(str(i.name),str(bestParamsCombination[i]))for i in bestParamsCombination], columns = ['Param','Value']))
+
+# Feature importance of the Principal comp
+importances = fraud_cv_model.bestModel.stages[-1].featureImportances.toArray()
+top_5_idx = np.argsort(importances)[-5:]
+top_5_values = [importances[i] for i in top_5_idx]
+
+top_5_features = [new_features[i] for i in top_5_idx]
+print("___________________________________")
+importances = fraud_cv_model.bestModel.stages[-1].featureImportances.toArray()
+
+print("Most Important Features are")
+print(pd.DataFrame(zip(top_5_features,top_5_values), columns = ['Feature','Importance']).sort_values('Importance',ascending=False))
+
+
+#Log feature importances
+manager.log_params()
+```
+{: .Example}
+
+#### 6. Run the Model  {#runmodel}
+We have a model that looks fairly accurate; however, we trained this model on balanced data, so we need to verify that it can be generalized to work with unbalanced data:
+
+```
+%spark.pyspark
+#pull in full dataset
+new_df = splice.df('select * from cc_fraud.cc_fraud_data')
+new_df = new_df.withColumnRenamed('CLASS_RESULT', 'label')
+
+#transform and run model on new dataframe
+new_predictions = model.transform(new_df)
+
+new_eval = SpliceBinaryClassificationEvaluator(spark)
+new_eval.input(new_predictions)
+z.show(new_eval.get_results())
+```
+{: .Example}
+
+#### 6. Train the Model  {#trainmodel}
+
+Now we can train our model:
+
+```
+import random
+from utils1 import overSampler
+from splicemachine.ml.utilities import SpliceBinaryClassificationEvaluator
+rf_depth = [5,10,20,30]
+rf_trees = [8,12,18,26]
+rf_subsampling_rate = [1.0,0.9,0.8]
+oversample_rate = [0.4,0.7,1.0]
+
+for i in range(1,5):
+    tags = {
+        'team': 'MyCompany',
+        'purpose': 'fraud r&d',
+        'attempt-date': '11/07/2019',
+        'attempt-number': 'f{i}'
+       }
+    manager.start_run(tags=tags)
+
+    #random variable choice
+    depth = random.choice(rf_depth)
+    trees = random.choice(rf_trees)
+    subsamp_rate = random.choice(rf_subsampling_rate)
+    ovrsmpl_rate = random.choice(oversample_rate)
+
+    #transformers
+    feature_cols = df.columns[:-1]
+    ovr = overSampler(label='label',ratio = ovrsmpl_rate, majorityLabel = 0, minorityLabel = 1, withReplacement = False)
+    assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+    scaler = StandardScaler(inputCol="features", outputCol='scaledFeatures')
+    rf = RandomForestClassifier(maxDepth=depth, numTrees=trees, subsamplingRate=subsamp_rate)
+
+    #pipeline
+    stages = [ovr,assembler,scaler,rf]
+    mlpipe = Pipeline(stages=stages)
+    #log the stages of the pipeline
+    manager.log_pipeline_stages(mlpipe)
+    #log what happens to each feature
+    manager.log_feature_transformations(mlpipe)
+
+    #run on the data
+    train, test = df.randomSplit([0.8,0.2])
+    manager.start_timer(f'CV iteration {i}')
+    trainedModel = mlpipe.fit(train)
+    execution_time = manager.log_and_stop_timer()
+    print(f"--- {execution_time} seconds == {execution_time/60} minutes == {execution_time/60/60} hours")
+
+    #log model parameters
+    manager.log_model_params(trainedModel)
+    preds = trainedModel.transform(test)
+    #evaluate
+    evaluator = SpliceBinaryClassificationEvaluator()
+    evaluator.input(preds)
+    metrics = evaluator.get_results(dict=True)
+    #log model performance
+    manager.log_metrics(list(metrics.items()))
+```
+{: .Example}
+
+
+#### 7. Save the Model  {#savemodel}
+
+We want to be able to retrain our model when new data arrives, so we'll save the pipeline and model to an S3 bucket. And since we're planning to deploy this model, we'll also save it to MLflow:
+
+```
+#save the pipeline and model to s3
+model.save('s3a://splice-demo/fraudDemoPipelineModel')
+#save model to MLflow for deployment
+manager.log_spark_model(model)
+```
+{: .Example}
 
 
 
+## Deploying the Model with SageMaker  {#deploywithsagemaker}
+
+Once you've run an experiment run that looks good, you can interface with Amazon SageMaker to deploy your model on AWS, following these steps:
+
+1. [Create an ECR Repository for your Experiment](#createEcr).
+2. [Find your Experiment and Run IDs](#findIds)
+3. [Deploy Your Model](#deploy)
 
 
+### Step 1: Create an ECR Repository  {#createEcr}
+
+Elastic Container Registry (*ECR*) is Amazon's managed AWS Docker registry service; it supports private Docker repositories with resource-based permissions using AWS IAM so that specific users or Amazon EC2 instances can access repositories and images.
+
+When you tell the *Splice ML Manager* to deploy your model to SageMaker, *ML Manager* creates a Docker image, saves it to your ECR repo, and tells AWS to deploy it for you. You then have an endpoint on AWS with a RESTfull API that your apps can use to interact with your model.
+
+To take advantage of this capability, you need to create a repository on ECR. See the [Amazon ECR documentation](https://docs.aws.amazon.com/AmazonECR/latest/userguide/get-set-up-for-amazon-ecr.html){: target="_blank"} for information about creating your repository.
 
 
+### Step 2: Find your Experiment and Run IDs  {#findIds}
+Before deploying your model, you need to have the IDs of the experiment and run that you want to deploy; you can find both of these in the *MLflow Tracking UI*. Follow these steps:
 
+<div class="opsStepsList" markdown="1">
+1. Navigate to port 5001 in your web browser to display the MLflow Tracking UI. For example: `https://myacct-machine.splicemachine.io:5001/#/`.
 
+2. Select the experiment that you want to deploy. In this example, we've selected the experiment named `test_exp`:
+   <img src="images/MlflowTrackingUI1.png" class="indentedTightSpacing" class="indentedTightSpacing">
 
+3. Record the Experiment ID displayed for the experiment; in the above example, we're viewing Experiment ID `1`.
 
+4. Select the ID of the run that you want to deploy; here we've selected the topmost (most recent) run of Experiment `1`. When you click this Run ID, you'll see its details displayed:
+   <img src="images/MlflowTrackingUI2.png" class="indentedTightSpacing">
 
+5. Copy the `Run ID` value to your clipboard.
+</div>
 
+### Step 3: Deploy Your Model  {#deploy}
+Once you know your Experiment and Run ID values, you can use the Splice ML Jobs Tracker to deploy your model. Follow these steps:
 
+<div class="opsStepsList" markdown="1">
+1. Navigate to port 5003 in your web browser to display the *ML Manager* Jobs Tracker. For example:<br />
+`https://myacct-machine.splicemachine.io:5003/#/`
+2. Click the <span class="ConsoleLink">deploy</span> link at the top of the screen to display the deploy form:
+   <img src="images/MlJobDeploy1.png" class="indentedTightSpacing">
+3. Fill in the form fields:
+   <table>
+       <col />
+       <col />
+       <thead>
+           <tr>
+               <th>Field</th>
+               <th>Value</th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr>
+               <td><em>Run UUID</em></td>
+               <td>The Run ID that you copied to your clipboard from the MLflow Tracking UI.</td>
+           </tr>
+           <tr>
+               <td><em>Experiment ID</em></td>
+               <td>The ID of the experiment that you recorded from the MLflow Tracking UI. </td>
+           </tr>
+           <tr>
+               <td><em>SageMaker App Name When Deployed</em></td>
+               <td>The name you want to use for your deployed App.</td>
+           </tr>
+           <tr>
+               <td><em>AWS Region</em></td>
+               <td>The AWS regions in which you want the app deployed. Select one of the values from the drop-down list.</td>
+           </tr>
+           <tr>
+               <td><em>Deployment Mode</em>.</td>
+               <td><p>Select one of the values from the drop-down list:</p>
+                    <table class="noBorder" style="margin-left:0; margin-top:0;">
+                        <col />
+                        <col />
+                        <tbody>
+                            <tr>
+                                <td><em>Create</em></td>
+                                <td>Create a new deployment.</td>
+                            </tr>
+                            <tr>
+                                <td><em>Replace</em></td>
+                                <td>Replace an existing deployment.</td>
+                            </tr>
+                            <tr>
+                                <td><em>Add</em></td>
+                                <td>??????????????????????????</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+           </tr>
+           <tr>
+               <td><em>Instance Count</em></td>
+               <td>The number of instances that you want deployed.</td>
+           </tr>
+           <tr>
+               <td><em>SageMaker Instance Type</em></td>
+               <td>The AWS instance type that you want to use for your deployment. Select one of the values from the drop-down list.</td>
+           </tr>
+       </tbody>
+   </table>
 
+   Here's an example of a completed deployment form:
+   <img src="images/MlJobDeploy2.png" class="indentedTightSpacing">
 
+4. Click the <span class="ConsoleLink">Submit</span> button to deploy your model.
+</div>
 
+## Retraining the Model with New Data {#UpdateData}
 
+Whenever additional labeled data arrives, we can pull either or both of our models from S3 and run the new data through it, allowing us to easily enhance accuracy over time.
 
+```
+#load the fraud data from splicemachine
+new_data = splice.df('select * from cc_fraud.cc_fraud_data2')
+#load NN model from s3
+mod = PipelineModel.load('s3a://splice-demo/fraudDemoPipelineModel')
+new_data = new_data.withColumnRenamed('CLASS_RESULT', 'label')
 
+print('running model...')
+preds = mod.transform(new_data)
+eval = SpliceBinaryClassificationEvaluator(spark)
+eval.input(preds)
+z.show(eval.get_results())
+```
+{: .Example}
 
+### Redeploying the Model
 
+To redeploy your model after retraining, you can use the same steps you used when originally deploying it, as described in [Deploy Your Model](#deploy), above. Simply select *Replace* as your deployment mode, and your model will be redeployed.
+
+</div>
+</section>
