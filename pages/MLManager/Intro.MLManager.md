@@ -13,71 +13,18 @@ folder: MLManager
 {% assign site.guide_heading = "Machine Learning Manager" %}
 # Splice Machine ML Manager
 
-The Splice ML Manager is an integrated machine learning (ML) platform that minimizes data movement and enables enterprises to deliver better decisions faster by continuously training the models on the most updated available data.
+Welcome to the Splice Machine ML Manager documentation! The following sections will guide you through interacting with the Splice Machine primarily through Jupyter Notebooks. There will be a focus on importing and accessing data within Splice Machine, performing data analysis and engineering, building and tracking machine learning models, and deployment of models into production.
 
 {% include splice_snippets/dbaasonlytopic.md %}
 
-With Splice ML Manager, which runs in our cloud-based Database-as-Service product, data science teams are able to produce a higher number of more predictive models, facilitated by the ability to:
-
-* Experiment frequently using diverse parameters to compare model effectiveness
-* Leverage updated operational data to concurrently train the model
-* Minimize the movement of data by running the models on your cluster's Spark executors
-* Compress the time from model deployment to action
-
-Splice ML Manager provides end-to-end life-cycle management for your ML models, thereby streamlining and accelerating the design and deployment of intelligent applications using real-time data. ML Manager through its tight integration with Splice data platform results in reduced data movement that empowers data scientists to conduct a higher number of experiments to derive better feature vectors with more signal and compare algorithms with varied parameters to build better models in a limited amount of time.
-
-## Overview
-
-The *Splice ML Manager* facilitates machine learning development within Jupyter notebooks.  Here are some of its key features:
-
-* *ML Manager* runs directly on Apache Spark, allowing you to complete massive jobs in parallel.
-* Our native `PySpliceContext` lets you directly access the data in your database and very efficiently convert it to/from a Spark DataFrame with no serialization/deserialization required.
-* MLflow is integrated directly into your Splice Machine cluster, to facilitate tracking of your entire Machine Learning workflow.
-* After you have found the best model for your task, you can easily deploy it live to AWS SageMaker to make predictions in real time.
-* As new data flows in, updating your model is a simple matter of returning to your Notebook, creating new runs, and redeploying by tapping a button.
-
-The Splice ML Manager leverages Apache MLflow and Amazon Sagemaker, and like MLflow, is organized around the concepts of *runs*:
-
-A run is the execution of some data science code; each run can record different types of information, including:
-
-<table>
-<col width="15%" />
-<col width="45%"/>
-<col width="40%" />
-<thead>
-    <tr>
-        <th>Information Type</th>
-        <th>Purpose</th>
-        <th>Examples</th>
-    </tr>
-</thead>
-<tbody>
-    <tr>
-        <td class="ItalicFont">Metrics</td>
-        <td>Map string values such as <code>F1</code> to double-precision numbers such as <code>0.85</code>.</td>
-        <td>Model output metrics, such as: <em>F1 score, AUC, Precision, Recall, R^2</em>.</td>
-    </tr>
-    <tr>
-        <td class="ItalicFont">Parameters</td>
-        <td>Map strings such as <code>classifier</code> to strings such as <code>DecisionTree</code>. </td>
-        <td>Model parameters, such as <em>Num Trees, Preprocessing Steps, Regularization</em>.</td>
-    </tr>
-    <tr>
-        <td class="ItalicFont">Models</td>
-        <td>So that you can subsequently deploy them to SageMaker.</td>
-        <td>Fitted pipelines or models.</td>
-    </tr>
-    <tr>
-        <td class="ItalicFont">Tags</td>
-        <td>These map strings such as <code>deployable</code> to strings such as <code>true</code>.</td>
-        <td>Specific pieces of information associated with a run, such as the project, version, and deployable status.</td>
-    </tr>
-</tbody>
-</table>
-
-For more information about logging information in the ML Manager, see the [ML Manager API](mlmanager_api.html) topic.
-
-ML Manager organizes runs into *experiments*; each experiment groups runs together for a specific task; for example, you might experiment with using  different machine learning models in different runs, to compare results.
+## Table of Contents
+The sections will be broken down as follows:
+* Architecture
+* The ML-Workflow
+* External Data Access
+* Notebooks
+* The Native Spark Datasource
+ML Manager
 
 ## Using ML Manager
 The other topics in this section will help you to start using ML Manager:
