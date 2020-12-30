@@ -289,7 +289,7 @@ CREATE TABLE child_table
     FOREIGN KEY (child_col1, child_col2, ... child_col_n)
     REFERENCES parent_table (parent_col1, parent_col2, ... parent_col_n)
     ON DELETE SET NULL
-    [ ON UPDATE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
+    [ ON DELETE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
 );</pre>
 
 </div>
@@ -337,34 +337,34 @@ ON DELETE SET NULL
 Specifies that the child data is set to `NULL` when the parent data is deleted. The child data is NOT deleted.
 {: .paramDefnFirst}
 
-ON UPDATE
+ON DELETE
 {: .paramName}
 
-Optional. Specifies what to do with the child data when the parent data is updated. The available options are `NO ACTION`, `CASCADE`, `SET NULL`, or `SET DEFAULT`.
+The available options for ON DELETE are `NO ACTION`, `CASCADE`, `SET NULL`, or `SET DEFAULT`.
 {: .paramDefnFirst}  
 
 NO ACTION
 {: .paramName}
 
-Used with `ON DELETE` or `ON UPDATE`. It specifies that no action is performed on the child data when the parent data is deleted or updated.
+Used with `ON DELETE`. It specifies that no action is performed on the child data when the parent data is deleted.
 {: .paramDefnFirst}
 
 CASCADE
 {: .paramName}
 
-Used with `ON DELETE` or `ON UPDATE`. It specifies that the child data is deleted or updated when the parent data is deleted or updated.
+Used with `ON DELETE`. It specifies that the child data is deleted when the parent data is deleted.
 {: .paramDefnFirst
 
 SET NULL
 {: .paramName}
 
-Used with `ON DELETE` or `ON UPDATE`. It specifies the child data is set to `NULL` when the parent data is deleted or updated.
+Used with `ON DELETE`. It specifies the child data is set to `NULL` when the parent data is deleted.
 {: .paramDefnFirst}  
 
 SET DEFAULT
 {: .paramName}
 
-Used with `ON DELETE` or `ON UPDATE`. It specifies the child data is set to their default values when the parent data is deleted or updated.
+Used with `ON DELETE`. It specifies the child data is set to their default values when the parent data is deleted.
 {: .paramDefnFirst}  
 
 </div>
@@ -396,7 +396,7 @@ Used with `ON DELETE` or `ON UPDATE`. It specifies the child data is set to thei
 
 In this example, the `products` table is created as the parent table. The products table has a primary key that consists of the `product_id` field.
 
-Next, the `inventory` table is created as the child table. The `CREATE TABLE` statement is used to create a `fk_inv_product_id` foreign key constraint on the `inventory` table. The foreign key establishes a relationship between the `product_id` column in the `inventory` table and the `product_id` column in the `products` table.
+Next, the `inventory` table is created as the child table. The `CREATE TABLE` statement is used to create a `fk_inv_product_id` foreign key constraint on the `product_id` column. The foreign key establishes a relationship between the `product_id` column in the `inventory` table and the `product_id` column in the `products` table.
 
 The ON DELETE SET NULL clause is used to set the corresponding records in the child table to `NULL` when the data in the parent table is deleted. If a `product_id` value is deleted from the `products` table, the corresponding records in the `inventory` table with this `product_id` will have the product_id set to `NULL`.
 
@@ -419,21 +419,12 @@ CREATE TABLE child_table
     FOREIGN KEY (child_col1, child_col2, ... child_col_n)
     REFERENCES parent_table (parent_col1, parent_col2, ... parent_col_n)
     ON DELETE CASCADE
-    [ ON UPDATE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
+    [ ON DELETE { NO ACTION | CASCADE | SET NULL | SET DEFAULT } ]
 );</pre>
 
 </div>
 
-The syntax for ON DELETE CASCADE is identical to the syntax for ON DELETE SET NULL, with the exception of the following parameter:
-
-<div class="paramList" markdown="1">
-ON DELETE CASCADE
-{: .paramName}
-
-Specifies that the child data is deleted when the parent data is deleted. The child data is NOT deleted.
-{: .paramDefnFirst}
-
-</div>
+The syntax for ON DELETE CASCADE is identical to the syntax for ON DELETE SET NULL, but the behavior is different. ON DELETE CASCADE deletes the row(s) from the child table referencing the deleted parent row, whereas with ON DELETE SET NULL the foreign key columns in the child table row(s) are set to null. 
 
 #### Example
 
@@ -462,7 +453,7 @@ Specifies that the child data is deleted when the parent data is deleted. The ch
 
 In this example, the `products` table is created as the parent table. The products table has a primary key that consists of the `product_id` field.
 
-Next, the `inventory` table is created as the child table. The `CREATE TABLE` statement is used to create a `fk_inv_product_id` foreign key constraint on the `inventory` table. The foreign key establishes a relationship between the `product_id` column in the `inventory` table and the `product_id` column in the `products` table.
+Next, the `inventory` table is created as the child table. The `CREATE TABLE` statement is used to create a `fk_inv_product_id` foreign key constraint on the `product_id` column. The foreign key establishes a relationship between the `product_id` column in the `inventory` table and the `product_id` column in the `products` table.
 
 The ON DELETE CASCADE clause is used to delete the corresponding records in the child table when the data in the parent table is deleted. If a `product_id` value is deleted from the `products` table, the corresponding records in the `inventory` table with this `product_id` will be deleted.
 
