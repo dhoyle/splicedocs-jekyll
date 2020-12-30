@@ -221,6 +221,10 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><em>Foreign Key: ON DELETE CASCADE</em></td>
             <td>A foreign key with <a href="sqlref_clauses_constraint.html#on-delete-cascade">ON DELETE CASCADE</a> specifies that if a record in the parent table is deleted, the corresponding records in the child table will be deleted.</td>
         </tr>
+        <tr>
+            <td><em>Enhanced Foreign Key Checker</em></td>
+            <td>Foreign key error messages have been enhanced to provide more information.</td>
+        </tr>
         <!--tr>
             <td><em></em></td>
             <td></td>
