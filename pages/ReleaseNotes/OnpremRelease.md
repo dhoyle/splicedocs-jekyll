@@ -117,6 +117,11 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td><code>MONTH</code></td>
             <td><p>The built-in function <a href="sqlref_builtinfcns_month.html"><code>MONTH</code></a> has been added.</p>
             </td>
+        </tr>
+        <tr>
+            <td><code>DECFLOAT</code></td>
+            <td><p>The built-in function <a href="sqlref_builtinfcns_decfloat.html"><code>DECFLOAT</code></a> has been added.</p>
+            </td>
         </tr>        
         <!--tr>
             <td><code></code></td>
