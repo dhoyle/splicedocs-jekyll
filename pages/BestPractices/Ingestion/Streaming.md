@@ -15,7 +15,7 @@ folder: BestPractices/Database
 This topic describes how to use Spark streaming to ingest real-time data from Internet-connected devices into a Splice Machine table using `spark-submit`. This topic includes the following sections:
 
 * [About Ingesting Streaming Data](#streaming)
-* [Using the Structured Streaming Data Sink to Ingest Streaming Data](#streamsubmit)
+* [Using the Native Spark DataSource to Ingest Streaming Data](#streamsubmit)
 * [Running the Application](#runcode)
 
 For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html).
@@ -26,15 +26,15 @@ Internet of Things (IoT) applications must continuously ingest data, process tha
 
 This topic describes how to ingest streams of IoT public weather service data into a Splice Machine table. You can then use the data for other purposes, such as a machine learning application that uses weather forecasts to predict critical timing of shipments.
 
-This topic shows you how to set up a Kafka producer that streams data from a public weather service, along with a Kafka consumer that parses the data, transforms it into Spark DataFrames, and then uses the Splice Machine Structured Streaming Data Sink to insert each DataFrame into a Splice Machine database table.
+This topic shows you how to set up a Kafka producer that streams data from a public weather service, along with a Kafka consumer that parses the data, transforms it into Spark DataFrames, and then uses the Splice Machine Native Spark DataSource to insert each DataFrame into a Splice Machine database table.
 
-## Using the Structured Streaming Data Sink to Ingest Streaming Data  {#streamsubmit}
+## Using the Native Spark DataSource to Ingest Streaming Data  {#streamsubmit}
 
 This section presents a sample Spark application that uses Kafka to both produce and consume a stream of real-time weather data.
 
 1. [Create a table](#createtable) for the data in your Splice Machine database.
 2. [Create a Kafka producer](#createproducer) to stream data.
-3. [Review the sample Spark application](#createapp) that uses Kafka to consume the stream and uses the Splice Machine Structured Streaming Data Sink to insert the data into the database table.
+3. [Review the sample Spark application](#createapp) that uses Kafka to consume the stream and uses the Native Spark DataSource to insert the data into the database table.
 
 All of the files required to build and run this program are available here: [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz)
 {: .noteNote}
@@ -297,7 +297,7 @@ The main body of this application uses Kafka to consume entries in the stream in
 * Creates a Spark session.
 * Connects to your Splice Machine database.
 * Maps stream entries into a Spark DataFrame.
-* Uses the `insert` function of the Splice Machine Structured Streaming Data Sink to insert the data into the table in real-time.
+* Uses the `insert` function of the Splice Machine Native Spark DataSource to insert the data into the table in real-time.
 
 This code is available in [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz).
 {: .noteNote}
