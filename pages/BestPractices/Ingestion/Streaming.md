@@ -22,21 +22,19 @@ For an overview of best practices for data ingestion, see [Best Practices: Inges
 
 ## About Ingesting Streaming Data  {#streaming}
 
-Internet of Things (IoT) applications must continuously ingest data, process that data, make decisions, and then act accordingly. This decision making pattern typically starts with an ingestion phase of streaming raw data from the edge to a storage medium. Next, data engineers and data scientists iteratively process the data into a format that can be used by downstream learning, planning, and operational systems.
-
-This topic describes how to ingest streams of IoT public weather service data into a Splice Machine table. You can then use the data for other purposes, such as a machine learning application that uses weather forecasts to predict critical timing of shipments.
-
-This topic shows you how to set up a Kafka producer that streams data from a public weather service, along with a Kafka consumer that parses the data, transforms it into Spark DataFrames, and then uses the Splice Machine Native Spark DataSource to insert each DataFrame into a Splice Machine database table.
+Internet of Things (IoT) applications must continuously ingest data, process that data, make decisions, and then act. This decision-making pattern typically starts with an ingestion phase of streaming raw data from the edge to a storage medium, then data engineers and data scientists iteratively manipulate the data to get it into a form that can be used downstream by learning, planning, and operational systems.
 
 ## Using the Native Spark DataSource to Ingest Streaming Data  {#streamsubmit}
 
-This section presents a sample Spark application that uses Kafka to both produce and consume a stream of real-time weather data.
+The application documented in this section shows you how to ingest streams of IoT data into Splice Machine tables. This application streams weather data from a public weather data source into a Splice Machine table that you can then use for any purpose, such as a Machine Learning application that needs to consider weather forecasts to predict critical timing of shipments.
+
+This sample application sets up a Kafka producer that streams data from a public weather service and a Kafka consumer that parses the data, transforms it into Spark DataFrames, and then uses the Splice Machine Native Spark DataSource to insert each DataFrame into a Splice Machine database table. This example involves the following steps:
 
 1. [Create a table](#createtable) for the data in your Splice Machine database.
 2. [Create a Kafka producer](#createproducer) to stream data.
 3. [Review the sample Spark application](#createapp) that uses Kafka to consume the stream and uses the Native Spark DataSource to insert the data into the database table.
 
-All of the files required to build and run this program are available here: [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz)
+The files needed to build and run this application are available here: [`./examples/SparkStreamingSubmit.tar.gz`](./examples/SparkStreamingSubmit.tar.gz)
 {: .noteNote}
 
 The input source in this example is simulated.
@@ -598,6 +596,19 @@ Here is a simple query you can use to verify that the table has been populated:
 splice> select * from splice.weather;
 ```
 {: .Example}
+
+## Using the Structured Streaming Data Sink to Ingest Streaming Data  {#streamsubmit}
+
+1. [Set up the Splice Machine Connector for Apache Spark](#sparkconnector).
+2. [Use spark-shell to run Spark structured streaming queries](#sparkssds) for the weather data.
+
+### 1. Set up the Splice Machine Connector for Apache Spark  {#sparkconnector}
+
+Use the following statement in your Splice Machine database to create a table:
+
+### 2. Use spark-shell to run Spark structured streaming queries  {#sparkssds}
+
+Use the following statement in your Splice Machine database to create a table :
 
 </div>
 </section>
