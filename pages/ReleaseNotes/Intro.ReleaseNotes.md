@@ -51,16 +51,16 @@ This section lists the significant updates in release {{site.build_version}}, in
             <td>The Splice Machine <a href="sqlref_queries_time_travel_query.html">Time Travel Query</a> feature enables you to query data in your database as it existed at a past time. The past point in time can be specified by a Transaction ID or a timestamp expression. </td>
         </tr>
         <tr>
+            <td><em>NSDS 2.0</em></td>
+            <td>Version 2.0 of the <a href="bestpractices_ingest_streaming.html#streamsubmitnsds">Splice Machine Native Spark DataSource</a> (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution. This is implemented with Kafka.</td>
+        </tr>
+        <tr>
             <td><em>SSDS</em></td>
-            <td>The <a href="bestpractices_ingest_streaming.html">Structured Streaming Data Sink</a> is the Splice Machine implementation of Spark Structured Streaming for high performance data streaming.</td>
+            <td>The <a href="bestpractices_ingest_streaming.html#streamsubmitssds">Structured Streaming Data Sink</a> is the Splice Machine implementation of Spark Structured Streaming for high performance data streaming.</td>
         </tr>    
         <tr>
             <td><em>Splice Machine CLI Windows Support</em></td>
             <td>The <a href="cmdlineref_using_getstarted.html#StartingCLIWindows">Splice Machine CLI</a> is now supported on Windows.</td>
-        </tr>
-        <tr>
-            <td><em>Spool Command</em></td>
-            <td>The <a href="cmdlineref_spool.html"><code>spool</code></a> command logs Splice Machine command line session data to a specified file on the local file system.</td>
         </tr>
         <tr>
             <td><em>MVCC Purge</em></td>
@@ -81,10 +81,6 @@ This section lists the significant updates in release {{site.build_version}}, in
         <tr>
             <td><em>ML Manager</em></td>
             <td>The beta version of the Splice Machine ML Manager is now included at no additional cost; ML Manager provides an interface for training, running, tracking, and deploying machine learning models.</td>
-        </tr>
-        <tr>
-            <td><em>NSDS 2.0</em></td>
-            <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented with Kafka.</td>
         </tr>
         <tr>
             <td><em>Application Server Queues</em></td>
@@ -235,6 +231,10 @@ This section lists the significant updates in release {{site.build_version}}, in
         <tr>
             <td><em>Enhanced Foreign Key Checker</em></td>
             <td>Foreign key error messages have been enhanced to provide more information.</td>
+        </tr>
+        <tr>
+            <td><em>Spool Command</em></td>
+            <td>The <a href="cmdlineref_spool.html"><code>spool</code></a> command logs Splice Machine command line session data to a specified file on the local file system.</td>
         </tr>
         <!--tr>
             <td><em></em></td>

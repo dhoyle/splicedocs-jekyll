@@ -15,8 +15,8 @@ folder: BestPractices/Database
 This topic describes how to use Spark streaming to ingest real-time data from Internet-connected devices into a Splice Machine table using `spark-submit`. This topic includes the following sections:
 
 * [About Ingesting Streaming Data](#streaming)
-* [Using the Native Spark DataSource to Ingest Streaming Data](#streamsubmit)
-* [Running the Application](#runcode)
+* [Using the Native Spark DataSource to Ingest Streaming Data](#streamsubmitnsds)
+* [Using the Structured Streaming Data Sink to Ingest Streaming Data](#streamsubmitssds)
 
 For an overview of best practices for data ingestion, see [Best Practices: Ingesting Data](bestpractices_ingest_overview.html).
 
@@ -24,7 +24,13 @@ For an overview of best practices for data ingestion, see [Best Practices: Inges
 
 Internet of Things (IoT) applications must continuously ingest data, process that data, make decisions, and then act. This decision-making pattern typically starts with an ingestion phase of streaming raw data from the edge to a storage medium, then data engineers and data scientists iteratively manipulate the data to get it into a form that can be used downstream by learning, planning, and operational systems.
 
-## Using the Native Spark DataSource to Ingest Streaming Data  {#streamsubmit}
+You can use two methods to ingest streaming data into Splice Machine.
+
+* Native Spark DataSource (NSDS) – NSDS allows you to operate directly with Spark RDDs (for insert/update/delete/select) for Spark Streaming. The RDDs are basically microbatches for processing.  
+
+* Structured Streaming Data Sink (SSDS) – The Structured Streaming Data Sink takes streaming one step further by applying SQL DataFrame queries or the Scala DataSet API.
+
+## Using the Native Spark DataSource to Ingest Streaming Data  {#streamsubmitnsds}
 
 The application documented in this section shows you how to ingest streams of IoT data into Splice Machine tables. This application streams weather data from a public weather data source into a Splice Machine table that you can then use for any purpose, such as a Machine Learning application that needs to consider weather forecasts to predict critical timing of shipments.
 
@@ -597,18 +603,144 @@ splice> select * from splice.weather;
 ```
 {: .Example}
 
-## Using the Structured Streaming Data Sink to Ingest Streaming Data  {#streamsubmit}
+## Using the Structured Streaming Data Sink to Ingest Streaming Data  {#streamsubmitssds}
+
+The Structured Streaming Data Sink enables you to ingest streaming data using SQL DataFrame queries or the Scala DataSet API.
 
 1. [Set up the Splice Machine Connector for Apache Spark](#sparkconnector).
-2. [Use spark-shell to run Spark structured streaming queries](#sparkssds) for the weather data.
+2. [Use spark-shell to run Spark structured streaming queries](#sparkssds).
+3. Review the [Related Information](#sparkssdsinfo).
 
 ### 1. Set up the Splice Machine Connector for Apache Spark  {#sparkconnector}
 
-Use the following statement in your Splice Machine database to create a table:
+The Splice Machine Connector for Apache Spark™ is an Apache Spark™ connector that enables you to process data in tables in Splice Machine.
+
+The connector supports loading and saving datasets in batch (Spark SQL) and streaming (Spark Structured Streaming) queries.
+
+For more information on setting up and using the Splice Machine Spark connector, see the [Splice Machine Connector for Apache Spark](https://github.com/splicemachine/splice-machine-spark-connector) GitHub page.
 
 ### 2. Use spark-shell to run Spark structured streaming queries  {#sparkssds}
 
-Use the following statement in your Splice Machine database to create a table :
+The following examples show how to use spark-shell to execute a streaming query over datasets from Apache Kafka (via a [Kafka data source](https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html)).
+
+Note that in the packages option in the spark-shell command, the spark-sql-kafka package is set to Spark version 2.4.5. Be sure to set it to the Spark version you are using.
+
+```
+spark-shell \
+  --jars target/scala-2.11/splice-machine-spark-connector-assembly-0.3.0-SNAPSHOT.jar \
+  --driver-class-path target/scala-2.11/splice-machine-spark-connector-assembly-0.3.0-SNAPSHOT.jar \
+  --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.5
+```
+{: .Example}
+
+The following example uses topic `t1` with a Kafka broker listening on port 9092. The name of the splice table is `kafka`. This example works in Spark 2.4, which supports the `foreachBatch` function.
+
+```
+val values = spark
+  .readStream
+  .format("kafka")
+  .option("subscribe", "t1")
+  .option("kafka.bootstrap.servers", ":9092")
+  .load
+  .select($"value" cast "string")
+
+assert(values.isStreaming)
+
+val user = "splice"
+val password = "admin"
+val url = s"jdbc:splice://localhost:1527/splicedb;user=$user;password=$password"
+
+val strQuery = values
+  .writeStream
+  .option("checkpointLocation", "/tmp/splice-checkpointLocation")
+  .foreachBatch {
+    (batchDF: DataFrame, batchId: Long) =>
+        batchDF
+          .write
+          .format("splice")
+          .option("url", url)
+          .option("table", "kafka")
+          .option("kafkaServers", ":9092")
+          .save
+  }.start
+
+// After you started the streaming query
+// The splice table is constantly updated with new records from Kafka
+// Use kafka-console-producer.sh --broker-list :9092 --topic t1 to send records to Kafka
+
+// You can use `sqlshell` of Splice Machine
+// Or better query the table using Spark SQL
+spark
+  .read
+  .format("splice")
+  .option("url", url)
+  .option("table", "kafka")
+  .load
+  .show
+
+// Stop when you're done
+strQuery.stop()
+```
+{: .Example}
+
+The following example works with Spark 2.0 and higher versions.
+
+```
+import org.apache.spark.sql.streaming.Trigger
+import org.apache.spark.SparkContext
+import com.splicemachine.spark2.splicemachine.SplicemachineContext
+
+val values = spark
+  .readStream
+  .format("kafka")
+  .option("subscribe", "t1")
+  .option("kafka.bootstrap.servers", ":9092")
+  .load
+  .select($"value" cast "string")
+
+assert(values.isStreaming)
+
+val user = "splice"
+val password = "admin"
+val url = s"jdbc:splice://localhost:1527/splicedb;user=$user;password=$password"
+
+val sq = values
+    .writeStream
+    .option("checkpointLocation", s"target/checkpointLocation-$tableName-${UUID.randomUUID()}")
+    .trigger(Trigger.ProcessingTime(1.second))
+    .foreach(
+      new ForeachWriter[Row] {
+        var spliceCtx: SplicemachineContext = _
+        var sparkContext: SparkContext = _
+
+        def open(partitionId: Long, version: Long): Boolean = {
+          spliceCtx = new SplicemachineContext(jdbcUrl)
+          sparkContext = SparkContext.getOrCreate
+          true
+        }
+
+        def process(record: Row): Unit =
+          spliceCtx.insert(
+            sparkContext.parallelize(Seq(record)),
+            record.schema,
+            table
+          )
+
+        def close(errorOrNull: Throwable): Unit = {}
+      }
+    )
+.start()
+
+// Stop when you're done
+strQuery.stop()
+```
+{: .Example}
+
+### Related Information  {#sparkssdsinfo}
+* [Splice Machine Connector for Apache Spark](https://github.com/splicemachine/splice-machine-spark-connector)
+* [Apache Spark Structured Streaming Programming Guide](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)
+* [Spark Structured Streaming and Streaming Queries](https://jaceklaskowski.gitbooks.io/spark-structured-streaming/content/spark-structured-streaming.html)
+
 
 </div>
 </section>
