@@ -1,23 +1,23 @@
 ---
-title: Splice Machine's Feature Store Architecture
-summary: Splice Machine's Feature Store
+title: Splice Machine Feature Store Architecture
+summary: Splice Machine Feature Store Architecture
 keywords: feature store
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: featurestore_using.html
+permalink: featurestore_architecture.html
 folder: FeatureStore
 ---
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-This topic explains how Splice Machine's Feature Store is strutured.
+This topic explains the structure of the Splice Machine Feature Store.
 
 {% include splice_snippets/dbaasonlytopic.md %}
 
 This topic is organized into these sections:
 
-* [*Design*](#Design) 
+* [*Design*](#Design)
 * [*Concept Hierarchy*](#Concept_Hierarchy)
 * [*Implementation*](#Implementation)
 

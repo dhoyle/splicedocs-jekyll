@@ -5,7 +5,7 @@ keywords: feature store
 toc: false
 product: all
 sidebar: home_sidebar
-permalink: featurestore_using.html
+permalink: featurestore_introduction.html
 folder: FeatureStore
 ---
 <section>
