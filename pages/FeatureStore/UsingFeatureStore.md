@@ -46,10 +46,10 @@ All of the components above can work separately, but when combined bring added l
 
 # Feature Set {#feature_set}
 
-##Definition
+## Definition
 A feature set is a grouping of features, typically created from a single pipeline and from a single data source, although the user can organize their feature sets in whatever way works for them.
 
-##Design
+## Design
 What is fundamentally different about Splice Machines Feature Store is how users add data to their feature sets.
 
 In other Feature Stores, all interactions with the feature store must go through the custom feature store API. To add data to a feature set, users must reference the feature store API/SDK inside their data pipelines. Something similar to:
@@ -106,7 +106,7 @@ Limitations:
 ## Definition
 The feature is the smallest unit of measure in the feature store. This represents a single data point. An example of a Feature is a 30 Day rolling average of purchases for a customer.
 
-## API Usage 
+## API Usage
 Currently, you can create a feature and view/access a feature. You cannot yet delete a feature; that is coming in the next release.
 
 To create a feature:
@@ -135,7 +135,7 @@ Limitations:
 
 # Training View {#training_view}
 
-## Definition 
+## Definition
 A Training View is the means by which a data scientist/data engineer combines features across feature sets alongside data outside the Feature Store (if your label exists externally). Training Views ensure [point-in-time consistent](#point_in_time) datasets for model training. The metadata of a Training View is stored in the feature store and can be used to create many training datasets.
 
 When using a Training View to create a Training Set, the training dataset itself is not persisted, only metadata about how to create it upon request. This removes any data duplication, and allows users to utilize the same Training View to access *different* training datasets, both in the features requested as well as the time windows desired.
@@ -158,8 +158,8 @@ The data engineers in our team have created 2 Feature Sets already and they are 
    * desc = The Recency, Frequency and Monetary aggregations by customer for 1, 7, 14, 30 and 90 day windows of purchasing behavior of a product category
 2. Retail.CustomerDemographics
    * schema_name = Retail
-   * table_name = CustomerDemographics 
-   * primary_keys = {customer_id: INTEGER} 
+   * table_name = CustomerDemographics
+   * primary_keys = {customer_id: INTEGER}
    * desc = The age, gender, location, number of children, highest education for each customer
 
 External to the Feature Store, we have 2 tables (either on Splice Machine, or potentially on Snowflake, S3, or Redshift etc).
@@ -185,14 +185,14 @@ In order to join Retail.CustomerRFM the Training View SQL must have both columns
 
 Now that we have the table needed and known Join Key columns, we can create our Training View SQL:
 ```
-SELECT 
-  t1.SESSION_ID, t1.EVENT_TIMESTAMP, t1.CUSTOMER_ID, t1.PRODUCT_CATEGORY, 
-  CASE 
-    WHEN t2.PRODUCT_ID in (t1.PRODUCT_LIST) THEN True 
+SELECT
+  t1.SESSION_ID, t1.EVENT_TIMESTAMP, t1.CUSTOMER_ID, t1.PRODUCT_CATEGORY,
+  CASE
+    WHEN t2.PRODUCT_ID in (t1.PRODUCT_LIST) THEN True
     ELSE False
   END as PRODUCT_WAS_PURCHASED -- Our label
-FROM 
-  RetailExternal.ClickEvents t1, 
+FROM
+  RetailExternal.ClickEvents t1,
   RetailExternal.CustomerPurchases t2
 WHERE t1.SESSION_ID = t2.SESSION_ID
 AND t1.CLICK_TYPE = ‘search’
@@ -215,18 +215,18 @@ And that will return a Spark dataframe with all of the available Features and th
 If the user instead wants a subset of Features for their model, they can pass in a list of Features to this query and receive just those features in their dataframe:
 ```
 fs.get_training_set_from_view(
-  name=‘recommendation_purchase_search_events’, 
+  name=‘recommendation_purchase_search_events’,
   features=[
     ‘monetary_1d_agg’,
     ‘monetary_30d_agg’,
     ‘age’,
     ‘highest_education’
     ]
-)	
+)
 ```
 What we see here is that the Feature Store provides 100% flexibility for creating fully custom Training instances for model development. Users can define their labels in as simple or advanced terms as required for the task at hand. And the user needs only to define this once, as the result will be persisted and other data scientists can pick and choose individual features from the Training View, which will be automatically aligned with the label in a [point-in-time consistent](#point_in_time) manner.
 
-## API Usage 
+## API Usage
 To create the TrainingView, we call:
 ```
 create_training_view(name: str, sql: str, primary_keys: List[str], join_keys: List[str], ts_col: str, label_col: Optional[str] = None, replace: Optional[bool] = False, desc: Optional[str] = None, verbose=False) → None
@@ -309,7 +309,7 @@ You will see an error message because you cannot get a new active Training Set d
 * The user must manually call ```mlflow.register_feature_store(fs)``` before making any calls ```get_training_set``` or ```get_training_set_from_view``` if they want the training set usage to be tracked in mlflow automatically.
 * It is assumed that the set of Features retrieved from the call to ```get_training_set``` or ```get_training_set_from_view``` is the full set of Features being used for model training.
     * If the user calls either ```get_training_set``` or ```get_training_set_from_view``` in the context of an MLFlow run, and then uses only a subset of the features from the training dataset, this model will be tracked with a *superset of the Features used*.
-  
+
 # Deployment {#deployment}
 
 ## Definition
@@ -340,7 +340,7 @@ As seen above, when creating a Training View, a user provides an arbitrary SQL s
 
 <img class='indentedTightSpacing' src='images/point_in_time_tables.png'>
 
-## Serving 
+## Serving
 Another requirement of a production Feature Store is millisecond Feature vector serving for real-time use cases. When serving models in real-time, it’s crucial to be able to retrieve the relevant (and most up to date) Feature values to feed into your models. If retrieval of Feature values takes too long, you may not be able to run particular models in real-time. Likewise, if the Feature values you retrieve are not guaranteed to be the most up to date, you may end up with different behavior in development than production.
 
 ## API Usage
@@ -355,8 +355,8 @@ get_feature_vector(features: List[Union[str, splicemachine.features.feature.Feat
 ```
 
 This function takes:
-* features – List of str Feature names or Features 
-* join_key_values – (dict) join key vals to get the proper Feature values formatted as {join_key_column_name: join_key_value} 
+* features – List of str Feature names or Features
+* join_key_values – (dict) join key vals to get the proper Feature values formatted as {join_key_column_name: join_key_value}
 * return_sql – Whether to return the SQL needed to get the vector or the values themselves. Default False
 
 
@@ -368,6 +368,6 @@ This function takes:
 * features –(List[str]) the list of features from the feature store to be included in the training
     * note- This function will error if the Training View SQL is missing a view key(s) required to retrieve the desired features
 
-    
+
 </div>
 </section>
