@@ -12,8 +12,6 @@ folder: FeatureStore
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the Splice Machine Feature Store
 
-This topic shows you how to use the Splice Machine Feature Store.
-
 {% include splice_snippets/dbaasonlytopic.md %}
 
 This topic is organized into these sections:
@@ -29,7 +27,7 @@ This topic is organized into these sections:
 
 
 # Getting Started  {#getting_started}
-To start using the feature store, in your Splice Machine workspace, inside of your Jupyter Notebooks, run the following:
+To start using the feature store, run the following in Jupyter Notebooks in your Splice Machine workspace:
 ```
 from pyspark.sql import SparkSession
 from splicemachine.spark import PySpliceContext
@@ -42,7 +40,7 @@ fs = FeatureStore(splice) # Feature Store
 mlflow.register_splice_context(splice) # Link mlflow with the database
 mlflow.register_feature_store(fs) # Link mlflow with feature store
 ```
-All of the components above can work separately, but when combined bring added lineage and governance to the ML and Data workflow. One you register the Feature Store with mlflow, the work you do in building models using training datasets from the Feature Store will be tracked automatically and implicitly with mlflow.
+All of the components above can work separately, but when combined they provide additional lineage and governance to the ML and Data workflow. Once you register the feature store with MLFlow, models built using training datasets from the feature store will be tracked automatically and implicitly with MLFlow.
 
 # Feature Set {#feature_set}
 
