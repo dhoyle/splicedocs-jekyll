@@ -17,7 +17,7 @@ folder: FeatureStore
 
 ## Problem Statement
 
-Over the past few years there has been increased focus on how to best put Machine Learning into production. MLOps is an emerging space with a handful of great products, and new ideas emerging every day. Development teams are creating systems for packaging and deploying machine learning models, and managing their health once deployed. The problem is that MLOps is not the whole story. FeatureOps or DataOps is needed to manage the data, features, and pipelines that are actually feeding your ML models. These features are the lifeblood of your algorithms, and without knowing *exactly* where they came from, you cannot trust your models in production.
+Over the past few years there has been increased focus on how to best put Machine Learning into production. MLOps is an emerging space with a handful of great products, with new ideas emerging every day. Development teams are creating systems for packaging and deploying machine learning models, and managing their health once deployed. The problem is that MLOps is not the whole story. FeatureOps or DataOps is needed to manage the data, features, and pipelines that are actually feeding your ML models. These features are the lifeblood of your algorithms, and without knowing *exactly* where they came from, you cannot trust your models in production.
 
 So the question becomes, “How do I manage the extraction, engineering, serving, and management of my features?” DevOps has a clear set of industry standard tools, and standard tools for MLOps are rapidly emerging. The space for DataOps has not yet been defined, and this creates open questions for every team trying to implement Machine Learning in a production environment.
 

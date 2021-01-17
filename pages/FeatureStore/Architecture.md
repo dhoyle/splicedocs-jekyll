@@ -22,7 +22,7 @@ This topic is organized into these sections:
 # Design  {#Design}
 Users interact with the feature store through an API, but under the hood, the feature store interacts directly (via SQL) with relational tables in your Splice Machine database. When you create new data, features, and training sets, that information as well as its metadata is persisted in Splice Machine and tracked automatically.
 
-This is fundamentally different than other feature stores, because the Splice Machine feature store is powered directly by the Splice Machine database, and is embedded into the core of your Splice Machine Workspace. Other feature stores are loosely coupled with their data stores, which can add complexity, latency, and potential data leakage.
+This is fundamentally different than other feature stores, because the Splice Machine feature store is powered directly by the Splice Machine database, and is embedded in the core of your Splice Machine Workspace. Other feature stores are loosely coupled with their data stores, which can add complexity, latency, and potential data leakage.
 
 <img class='indentedTightSpacing' src='images/overall_architecture.png'>
 
