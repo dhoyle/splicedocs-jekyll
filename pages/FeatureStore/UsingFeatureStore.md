@@ -12,8 +12,6 @@ folder: FeatureStore
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Using the Splice Machine Feature Store
 
-{% include splice_snippets/dbaasonlytopic.md %}
-
 This topic is organized into these sections:
 
 * [*Getting Started*](#getting_started)

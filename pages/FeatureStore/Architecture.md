@@ -11,8 +11,6 @@ folder: FeatureStore
 <section>
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 
-{% include splice_snippets/dbaasonlytopic.md %}
-
 This topic is organized into these sections:
 
 * [*Design*](#Design)
