@@ -47,6 +47,10 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
+            <td><em>Splice Machine Feature Store</em></td>
+            <td>The <a href="featurestore_introduction.html">Splice Machine feature store</a> provides a centralized repository of clean and curated data that is used to power ML models. It is the layer that sits between the raw data and the data science. This extra layer adds governance, tracking, and management of data to meet the specific needs of data scientists and data engineers. The Splice Machine feature store stores all features in a single database to deliver low-latency lookups and petabyte scale aggregations. </td>
+        </tr>
+        <tr>
             <td><em>Kubernetes</em></td>
             <td>Splice Machine includes support for Kubernetes, which is a portable, extensible platform for managing containerized workloads and services. Kubernetes makes it easier to scale cluster hardware to match application requirements, automates common tasks, and provides robust error handling and recovery.</td>
         </tr>

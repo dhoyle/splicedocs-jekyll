@@ -53,6 +53,10 @@ This section lists the significant updates in release {{site.build_version}}, in
     </thead>
     <tbody>
         <tr>
+            <td><em>Splice Machine Feature Store</em></td>
+            <td>The <a href="featurestore_introduction.html">Splice Machine feature store</a> provides a centralized repository of clean and curated data that is used to power ML models. It is the layer that sits between the raw data and the data science. This extra layer adds governance, tracking, and management of data to meet the specific needs of data scientists and data engineers. The Splice Machine feature store stores all features in a single database to deliver low-latency lookups and petabyte scale aggregations. </td>
+        </tr>    
+        <tr>
             <td><em>NSDS 2.0</em></td>
             <td>Version 2.0 of the Splice Machine Native Spark DataSource (NSDS) streams DataFrames across the Kubernetes container/network boundary to Splice Machine, offering a high throughput solution; this is implemented behind the screen in Kafka.</td>
         </tr>
