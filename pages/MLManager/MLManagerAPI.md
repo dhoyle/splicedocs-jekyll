@@ -14,8 +14,6 @@ folder: MLManager
 
 This topic describes the methods available in the ML Manager API; you'll find examples of each of these in the [Using ML Manager](mlmanager_using.html) topic, in this chapter.
 
-{% include splice_snippets/dbaasonlytopic.md %}
-
 You can use Splice ML Manager with Python in Jupyter notebooks, using  our `pyspark` interpreter and our `MLManager` class in your program to manipulate experiments.
 
 This topic contains the following sections:
@@ -30,11 +28,11 @@ This topic contains the following sections:
 
 To get started with MLManager, you need to:
 
-1. Create your MLManager instance
-2. Establish a connection to your database
-3. Create an experiment
-4. Create a run
-5. Run your experiment(s)
+1. Create your MLManager instance.
+2. Establish a connection to your database.
+3. Create an experiment.
+4. Create a run.
+5. Run your experiment(s).
 
 ### 1. Create your MLManager instance
 
