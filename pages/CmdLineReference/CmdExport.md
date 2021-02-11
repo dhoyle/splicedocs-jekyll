@@ -23,10 +23,28 @@ of an SQL query to a CSV (comma separated value) file.
              replicationCount,
              fileEncoding,
              fieldSeparator,
-             quoteCharacter )  <SQL_QUERY>;
+             quoteCharacter,
+             quoteMode )  <SQL_QUERY>;
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
+
+–OR–
+
+<div class="fcnWrapperWide" markdown="1">
+    EXPORT TO <exportPath>
+    AS 'csv'
+    COMPRESSION <compression>
+    REPLICATION_COUNT <replicationCount>
+    ENCODING <encoding>
+    FIELD_SEPARATOR <fieldSeparator>
+    QUOTE_CHARACTER <quoteCharacter>
+    QUOTE_MODE <quoteMode>  
+    <SQL_QUERY>;
+{: .FcnSyntax xml:space="preserve"}
+
+</div>
+
 <div class="paramList" markdown="1">
 exportPath
 {: .paramName}
@@ -114,6 +132,15 @@ The character to use for quoting output in the exported CSV files.
 The default quote character is the double quotation mark (`"`).
 {: .paramDefn}
 
+quoteMode
+{: .paramName}
+
+The quoteMode to use for quoting output in the exported CSV files.
+{: .paramDefnFirst}
+
+The default setting `DEFAULT` specifies the default behavior, where quote characters are only used when the column content could lead to an ambiguity. The `ALWAYS` setting specifies that CHAR and VARCAR data types are always quoted in the exported CSV file.
+{: .paramDefn}
+
 </div>
 
 ## Usage
@@ -174,6 +201,36 @@ target="_blank"}
              -- This example explicitly specifies options:
     splice> EXPORT('/my/export/dir', 'bz2', 3, 'utf-8', '|', ';')
               SELECT a,b,sqrt(c) FROM t1 join t2 on t1.a=t2.a2;
+{: .AppCommand xml:space="preserve"}
+
+</div>
+
+The following syntax:
+<div class="preWrapperWide" markdown="1">
+    EXPORT ('/tmp/', null, null, null, null, '#') <SQL_QUERY>;
+{: .AppCommand xml:space="preserve"}
+
+</div>
+Can be replaced with
+<div class="preWrapperWide" markdown="1">
+    EXPORT TO '/tmp' AS 'csv' QUOTE_CHARACTER '#'
+    <SQL_QUERY>;
+{: .AppCommand xml:space="preserve"}
+
+</div>
+
+And the following syntax:
+<div class="preWrapperWide" markdown="1">
+    EXPORT_BINARY ( exportPath,
+                    compression,
+                    format )  <SQL_QUERY>;
+{: .AppCommand xml:space="preserve"}
+
+</div>
+Can be replaced with
+<div class="preWrapperWide" markdown="1">
+    EXPORT TO 'exportPath' AS 'format' COMPRESSION compression
+    <SQL_QUERY>;
 {: .AppCommand xml:space="preserve"}
 
 </div>
