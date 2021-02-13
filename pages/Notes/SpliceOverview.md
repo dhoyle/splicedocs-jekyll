@@ -34,7 +34,7 @@ Our Dual Engine architecture gives you the best of multiple worlds in a hybrid d
 
 ## ANSI SQL Coverage  {#ansi}
 
-Unlike other Big Data systems, Splice Machine supports full [ANSI SQL-2003](https://doc.splicemachine.com/sqlref_sqlsummary.html); here's a quick summary of our coverage:
+Unlike other Big Data systems, Splice Machine supports full [ANSI SQL](https://doc.splicemachine.com/sqlref_sqlsummary.html); here's a quick summary of our coverage:
 
 <table  summary="Summary of SQL features available in Splice Machine.">
     <col />
