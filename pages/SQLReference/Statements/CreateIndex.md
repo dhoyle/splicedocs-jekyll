@@ -209,6 +209,43 @@ Prepared statements that involve `SELECT, INSERT, UPDATE`, and `DELETE`
 on the table referenced by the `CREATE INDEX` statement are invalidated
 when the index is created.
 
+## Indexes on Expressions {#indexonexpression}
+
+You can create an index on an expression, which is also referred to as a key-expression.
+
+Each key-expression must contain as least one reference to a column of the table specified in the ON clause of the index. Referenced columns cannot be LOB, XML, or DECFLOAT data types, or a distinct type that is based on one of these data types. Referenced columns cannot include any FIELDPROCs and cannot include a SECURITY LABEL.
+
+The key-expression also cannot include any of the following:
+
+* A subquery
+* An aggregate function
+* A non-deterministic function
+* A function that has an external action
+* A user-defined function
+* A sequence reference
+* A host variable
+* A parameter marker
+* A special register
+* A CASE expression
+* An OLAP specification
+
+Unlike a simple index, the index key of an index on an expression is composed by concatenating the result (also known as a key-target) of the expression that is specified in the ON clause. An index that is created on an expression lets a query take advantage of index access (if the index is chosen by the optimizer) and avoid a table space scan.
+
+### Index on Expression Example
+
+The following example creates an index on the LAST_NAME column of the EMP table, but indexes the data after applying the UPPER function. This is useful if you store the data in mixed case, but submit queries with parameter markers (or host variables) only in upper case. By indexing the data as upper case, the index better matches your queries.
+
+<div class="preWrapper" markdown="1">
+    CREATE INDEX XUPLN
+    ON EMP
+    (UPPER(LAST_NAME, 'En_US'))
+    USING STOGROUP DSN8G910
+    PRIQTY 360 SECQTY 36
+    ERASE NO
+    COPY YES;
+{: .Example xml:space="preserve"}
+</div>
+
 ## Examples
 This section includes these examples of index creation:
 * [Example 1: Simple Index Creation](#exsimple)
