@@ -13,7 +13,7 @@ folder: SQLReference/Clauses
 # UNION
 
 The `UNION` operator combines the result set of two or more similar
-` SELECT ` queries, and returns distinct rows.
+`SELECT` queries, and returns distinct rows.
 
 ## Syntax
 
@@ -99,7 +99,7 @@ A result set.
       (104,1,3,'NULL',7.4);
 {: .Example}
 
-    splice> SELECT id,i1,i2 FROM t1 UNIONSELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
+    splice> SELECT id,i1,i2 FROM t1 UNION SELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
     ID         |I1         |I2
     -----------------------------------1          |1          |1
     2          |1          |2
@@ -116,7 +116,7 @@ A result set.
     11 rows selected
 {: .Example}
 
-    splice> SELECT id,i1,i2 FROM t1 UNION ALLSELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
+    splice> SELECT id,i1,i2 FROM t1 UNION ALL SELECT id,i1,i2 FROM t2 ORDER BY id,i1,i2;
     ID         |I1         |I2
     -----------------------------------
     1          |1          |1
