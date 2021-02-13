@@ -209,7 +209,7 @@ Prepared statements that involve `SELECT, INSERT, UPDATE`, and `DELETE`
 on the table referenced by the `CREATE INDEX` statement are invalidated
 when the index is created.
 
-## Indexes on Expressions {#indexonexpression}
+## Creating Indexes on Expressions {#indexonexpression}
 
 You can create an index on an expression, which is also referred to as a key-expression.
 
@@ -231,7 +231,7 @@ The key-expression also cannot include any of the following:
 
 Unlike a simple index, the index key of an index on an expression is composed by concatenating the result (also known as a key-target) of the expression that is specified in the ON clause. An index that is created on an expression lets a query take advantage of index access (if the index is chosen by the optimizer) and avoid a table space scan.
 
-### Index on Expression Example
+### Create Index on Expression Example
 
 The following example creates an index on the LAST_NAME column of the EMP table, but indexes the data after applying the UPPER function. This is useful if you store the data in mixed case, but submit queries with parameter markers (or host variables) only in upper case. By indexing the data as upper case, the index better matches your queries.
 
