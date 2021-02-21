@@ -36,12 +36,12 @@ To back up and restore your entire database, use these system procedures:
 * [`SYSCS_UTIL.SYSCS_RESTORE_DATABASE`](sqlref_sysprocs_restoredb.html)
 
 If you only want to back up  or restore the tables and indexes belonging to a specific schema, you can use these procedures:
-* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
-* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html).
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](sqlref_sysprocs_restoreschema.html).
 
 And if you only want to back up or restore a specific table, you can use these procedures:
-* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](#sqlref_sysprocs_backuptable.html)
-* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#sqlref_sysprocs_restoretable.html).
+* [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#qlref_sysprocs_restoretable.html).
 
 
 {% include splice_snippets/backupcompatibility.md %}
