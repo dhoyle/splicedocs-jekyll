@@ -12,7 +12,7 @@ folder: SQLReference/BuiltInFcns
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # ROUND
 
-The `ROUND` function rounds the specified number up or down to the (optionally) specified number of decimal places.
+The `ROUND` function rounds the specified number up or down to the (optionally) specified number of decimal places. Specifically, the rounding behavior corresponds to the value returned by a ROUND_HALF_UP. 
 
 ## Syntax
 
