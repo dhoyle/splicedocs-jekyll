@@ -20,7 +20,7 @@ The `SYSCS_UTIL.VALIDATE_TABLE_BACKUP` system procedure validates a table backup
     SYSCS_UTIL.VALIDATE_TABLE_BACKUP( VARCHAR schemaName,
                                       VARCHAR tableName,
                                       VARCHAR directory,
-                                      BIGINT  backupId,
+                                      BIGINT  backupId, );
 
 {: .FcnSyntax xml:space="preserve"}
 
@@ -45,7 +45,7 @@ directory
 Specifies the path to the directory containing the backup you
 want to validate. This can be a local directory if you're
 using the standalone version of Splice Machine, or a directory in your
-cluster's file system (HDFS or MapR-FS).
+cluster's file system (AWS s3a, HDFS, or MapR-FS).
 {: .paramDefnFirst}
 
 Relative paths are resolved based on the current user directory. To
