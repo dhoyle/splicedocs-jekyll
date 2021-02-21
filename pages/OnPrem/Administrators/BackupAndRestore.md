@@ -41,7 +41,7 @@ If you only want to back up  or restore the tables and indexes belonging to a sp
 
 And if you only want to back up or restore a specific table, you can use these procedures:
 * [`SYSCS_UTIL.SYSCS_BACKUP_TABLE`](sqlref_sysprocs_backuptable.html)
-* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](#qlref_sysprocs_restoretable.html).
+* [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](sqlref_sysprocs_restoretable.html).
 
 
 {% include splice_snippets/backupcompatibility.md %}
