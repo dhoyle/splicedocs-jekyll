@@ -169,7 +169,7 @@ The following example runs an immediate incremental backup to the
 The following example runs the same backup and stores it on AWS:
 
 <div class="preWrapperWide" markdown="1">
-    splice> CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( 's3://backup1234', 'incremental' );
+    splice> CALL SYSCS_UTIL.SYSCS_BACKUP_DATABASE( 's3a://backup1234', 'incremental' );
     Statement executed.
 {: .Example xml:space="preserve"}
 
