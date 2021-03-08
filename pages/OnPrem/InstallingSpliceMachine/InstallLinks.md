@@ -39,9 +39,9 @@ We recommend that you review the [installation requirements for Splice Machine](
         <tr>
 			<td>CDH 6.3.0</td>
 			<td>
-			    https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/parcel/cdh6.3.0/
+			    https://splice-releases.s3.amazonaws.com/3.1.0.2002/cluster/parcel/cdh6.3.0/
             </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/cdh6.3.0/docs/CDH-installation.md">Install instructions for CDH 6.3.0</a>
+			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.1/platforms/cdh6.3.0/docs/CDH-installation.md">Installation instructions for CDH 6.3.0</a>
             </td>
         </tr>
     </tbody>
@@ -62,12 +62,12 @@ We recommend that you review the [installation requirements for Splice Machine](
     </thead>
     <tbody>
         <tr>
-            <td>HDP 3.1 (rpm)</td>
+            <td>HDP 3.1.5 (rpm)</td>
             <td>
-                <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/installer/hdp3.1.0/splicemachine-hdp3.1.0.3.0.0.1948.p0.109-1.noarch.rpm">HDP 3.1.0 Installer</a></p>
-                <p><a href="https://splice-releases.s3.amazonaws.com/3.0.0.1948/cluster/installer/hdp3.1.0/splicemachine_ambari_service-hdp3.1.0.3.0.0.1948.p0.109-1.noarch.rpm">HDP 3.1.0 - Ambari Installer</a></p>
+                <p><a href="https://splice-releases.s3.amazonaws.com/3.1.0.2002/cluster/installer/hdp3.1.5/splicemachine-hdp3.1.5.3.1.0.2002.p0.52-1.noarch.rpm">HDP 3.1.5 Installer</a></p>
+                <p><a href="https://splice-releases.s3.amazonaws.com/3.1.0.2002/cluster/installer/hdp3.1.5/splicemachine_ambari_service-hdp3.1.5.3.1.0.2002.p0.52-1.noarch.rpm">HDP 3.1.5 - Ambari Installer</a></p>
             </td>
-            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/hdp3.1.0/docs/HDP-installation.md">Install instructions for HDP 3.1.0</a>
+            <td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.1/platforms/hdp3.1.0/docs/HDP-installation.md">Installation instructions for HDP</a>
             </td>
         </tr>
     </tbody>
@@ -90,7 +90,7 @@ We recommend that you review the [installation requirements for Splice Machine](
 			<td>Version 3.0</td>
 			<td><a href="https://splice-releases.s3.amazonaws.com/standalone/SPLICEMACHINE-3.0.0.1958.standalone.tar.gz">Standalone Version 3.0</a>
             </td>
-			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/std/docs/STD-installation.md">Install instructions for the Standalone Version 3.0</a>
+			<td><a href="https://github.com/splicemachine/spliceengine/blob/branch-3.0/platforms/std/docs/STD-installation.md">Installation instructions for the Standalone Version 3.0</a>
             </td>
         </tr>
      </tbody>
