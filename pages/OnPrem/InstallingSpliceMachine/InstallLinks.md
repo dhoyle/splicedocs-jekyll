@@ -73,6 +73,7 @@ We recommend that you review the [installation requirements for Splice Machine](
     </tbody>
 </table>
 
+<!--
 ## Splice Machine Standalone Installation Links  {#standalone}
 
 <table summary="Links for Installing the Standalone Version of Splice Machine">
@@ -95,6 +96,7 @@ We recommend that you review the [installation requirements for Splice Machine](
         </tr>
      </tbody>
 </table>
+-->
 
 {% include splice_snippets/githublink.html %}
 </div>
