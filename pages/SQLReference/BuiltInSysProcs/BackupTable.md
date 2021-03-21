@@ -195,8 +195,8 @@ See the reference page for the [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](sqlref_sysproc
 
 ## See Also
 
-* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](#sqlref_sysprocs_backupschema.html)
-* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](#sqlref_sysprocs_restoreschema.html)
+* [`SYSCS_UTIL.SYSCS_BACKUP_SCHEMA`](sqlref_sysprocs_backupschema.html)
+* [`SYSCS_UTIL.SYSCS_RESTORE_SCHEMA`](sqlref_sysprocs_restoreschema.html)
 * [`SYSCS_UTIL.SYSCS_RESTORE_TABLE`](sqlref_sysprocs_restoretable.html)
 * [`SYSCS_UTIL.VALIDATE_TABLE_BACKUP`](sqlref_sysprocs_validatetablebackup.html)
 * [`SYSBACKUP`](sqlref_systables_sysbackup.html)
