@@ -177,8 +177,8 @@ view, trigger, or constraint.
 ## Syntax for Sequences
 
 <div class="fcnWrapperWide" markdown="1">
-    REVOKE USAGE ON SEQUENCE sequence-name}
-     FROM grantees
+    REVOKE USAGE ON SEQUENCE sequence-name
+     FROM grantees RESTRICT
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -196,7 +196,14 @@ The user(s) or role(s) for whom you are revoking access. See the [About
 Grantees](#AboutGrantees) section below for more information.
 {: .paramDefnFirst}
 
+RESTRICT
+{: .paramName}
+
+You **must** use this clause when revoking access for sequences.
+{: .paramDefnFirst}
+
 </div>
+## Syntax for User-Defined Types
 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 REVOKE USAGE
