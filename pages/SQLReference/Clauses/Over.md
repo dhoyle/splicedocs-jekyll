@@ -24,9 +24,9 @@ Functions](developers_fundamentals_windowfcns.html) topic.
 
 <div class="fcnWrapperWide" markdown="1">
     expression OVER( 
-         [partitionClause]
-         [orderClause]
-         [frameClause] );
+        [partitionClause]
+        [orderClause]
+        [frameClause] );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -75,9 +75,9 @@ essentially the same as for the
 
 <div class="fcnWrapperWide" markdown="1">
     ORDER BY expression
-       [ ASC | DESC | USING operator ]
-       [ NULLS FIRST | NULLS LAST ]
-       [, ...]
+        [ ASC | DESC | USING operator ]
+        [ NULLS FIRST | NULLS LAST ]
+        [, ...]
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -95,6 +95,9 @@ the window function should be included in the computation. The
 *frameClause* provides two offsets that determine the start and end of
 the frame.
 {: .paramDefnFirst}
+
+Cumulative is the default frame clause type.
+{: .paramDefn}
 
 The syntax for the frame clause is:
 {: .paramDefn}
@@ -121,7 +124,7 @@ The syntax for both *frameStart* and *frameEnd* is:
 &lt;n&gt;
 {: .paramName}
 
-A a non-negative integer value.
+A non-negative integer value.
 {: .paramDefnFirst}
 
 </div>
@@ -187,34 +190,12 @@ the frame clause.
 The frame clause can be confusing, given all of the options that it
 presents. There are three commonly used frame clauses:
 
-<table summary="Frame clause types">
-                <col />
-                <col />
-                <thead>
-                    <tr>
-                        <th>Frame Clause Type</th>
-                        <th>Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><em>Recycled</em></td>
-                        <td class="CodeFont">
-                            <p>BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Cumulative</em></td>
-                        <td class="CodeFont">
-                            <p>BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><em>Rolling</em></td>
-                        <td><code>BETWEEN 2 PRECEEDING AND 2 FOLLOWING</code></td>
-                    </tr>
-                </tbody>
-            </table>
+| Frame Clause Type | Example |
+| ----------------- | ------- |
+| Cumulative | <code>BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW</code> |
+| Recycled | <code>BETWEEN UNBOUNDED PRECEEDING AND UNBOUNDED FOLLOWING</code> |
+| Rolling | <code>BETWEEN 2 PRECEEDING AND 2 FOLLOWING</code> |
+
 Here are some examples of window functions using frame clauses:
 
 <div class="preWrapperWide" markdown="1">
