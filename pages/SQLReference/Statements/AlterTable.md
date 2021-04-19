@@ -24,7 +24,7 @@ In this release, you <strong>can only</strong> use <code>ALTER TABLE</code> to 
 <div class="fcnWrapperWide"><pre class="FcnSyntax">
 ALTER TABLE <a href="sqlref_identifiers_types.html#TableName">table-Name</a>
    {
-   ADD COLUMN <a href="sqlref_identifiers_types.html#ColumnDefinition">column-definition</a> |
+   ADD COLUMN <a href="sqlref_statements_altertable.html#ColumnDefinition">column-definition</a> |
    ADD <a href="sqlref_clauses_constraint.html#TableName">CONSTRAINT</a> clause |
    DROP [ COLUMN ] column-name
    DROP { constraint-name |
