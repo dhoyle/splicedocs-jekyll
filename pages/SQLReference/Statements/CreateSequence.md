@@ -172,20 +172,20 @@ On Splice Machine, the sequence cache affects the next sequence in two situation
 The following example shows the expected sequences returned.
 
 <div class="preWrapper" markdown="1">
-CREATE SEQUENCE order_id START WITH 10 INCREMENT BY 2;
-VALUES (NEXT VALUE FOR order_id);
--- 10
-VALUES (NEXT VALUE FOR order_id);
--- 12
-VALUES (NEXT VALUE FOR order_id);
--- 14
+    CREATE SEQUENCE order_id START WITH 10 INCREMENT BY 2;
+    VALUES (NEXT VALUE FOR order_id);
+    -- 10
+    VALUES (NEXT VALUE FOR order_id);
+    -- 12
+    VALUES (NEXT VALUE FOR order_id);
+    -- 14
 {: .Example xml:space="preserve"}
 
 If you restart cluster (or wait 1 minute), sequence values returned start after the cache value increment. 
 
 <div class="preWrapper" markdown="1">
-VALUES (NEXT VALUE FOR order_id);
--- 10010
+    VALUES (NEXT VALUE FOR order_id);
+    -- 10010
 {: .Example xml:space="preserve"}
 
 The gap between sequence values is an increment defined by the cache.  
@@ -199,8 +199,8 @@ increases by `1`, and the last legal value is the largest possible
 its maximum value, Splice Machine throws an exception.
 
 <div class="preWrapper" markdown="1">
-splice> CREATE SEQUENCE order_id;
-0 rows inserted/updated/deleted
+    splice> CREATE SEQUENCE order_id;
+    0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -208,9 +208,9 @@ This example creates a player ID sequence that starts with the integer
 value `100`:
 
 <div class="preWrapper" markdown="1">
-splice> CREATE SEQUENCE PlayerID_seq 
-   START WITH 100;
-0 rows inserted/updated/deleted
+    splice> CREATE SEQUENCE PlayerID_seq 
+        START WITH 100;
+    0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
@@ -221,10 +221,10 @@ on the generator after it reaches its maximum value, Splice Machine
 throws an exception.
 
 <div class="preWrapper" markdown="1">
-splice> CREATE SEQUENCE order_entry_id
-   AS BIGINT
-   START WITH 3000000000;
-0 rows inserted/updated/deleted
+    splice> CREATE SEQUENCE order_entry_id
+       AS BIGINT
+       START WITH 3000000000;
+    0 rows inserted/updated/deleted
 {: .Example xml:space="preserve"}
 
 </div>
