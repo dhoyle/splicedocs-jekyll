@@ -142,7 +142,9 @@ stored in a MySQL database:
 <div class="preWrapperWide" markdown="1">
     SELECT * FROM new com.splicemachine.derby.vti.SpliceJDBCVTI(
       'jdbc:mysql://localhost/hr?user=root&password=mysql-passwd','mySchema','myTable') AS b
-       (name VARCHAR(10), title VARCHAR(30), age INT, something VARCHAR(12), date_hired TIMESTAMP, clock TIME);NAME        |TITLE             |AGE   |SOMETHING   |DATE_HIRED             |CLOCK
+       (name VARCHAR(10), title VARCHAR(30), age INT, something VARCHAR(12), date_hired TIMESTAMP, clock TIME);
+    
+    NAME        |TITLE             |AGE   |SOMETHING   |DATE_HIRED             |CLOCK
     ---------------------------------------------------------------------------------------
     sculligan   |Relief Pitcher    |27    |08X-27-2015 |2015-08-27 08:08:08.0  |06:08:08
     jpeepers    |Catcher           |37    |08-26-2015  |2015-08-21 08:09:08.0  |08:08:08
