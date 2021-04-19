@@ -12,10 +12,12 @@ folder: SQLReference/JoinOps
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # LEFT OUTER JOIN
 
-A `LEFT OUTER JOIN` is one of the &nbsp; [`JOIN`
+A `LEFT OUTER JOIN` or `LEFT JOIN` is one of the [`JOIN`
 operations](sqlref_joinops_about.html) that allow you to specify a join
 clause. It preserves the unmatched rows from the first (left) table,
 joining them with a `NULL` row in the shape of the second (right) table.
+
+`OUTER` is optional. `LEFT JOIN` and `LEFT OUTER JOIN` are equivalent operations.
 
 ## Syntax
 
