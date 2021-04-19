@@ -26,7 +26,7 @@ CREATE SEQUENCE
 The sequence name is composed of an optional *schemaName* and a *SQL
 Identifier*. If a *schemaName* is not provided, the current schema is
 the default schema. If a qualified sequence name is specified, the
-schema name cannot begin with SYS.
+schema name cannot begin with `SYS.`.
 
 <div class="paramList" markdown="1">
 schemaName
@@ -157,6 +157,38 @@ To boost performance and concurrency, Splice Machine pre-allocates
 ranges of upcoming values for sequences. The lengths of these ranges can
 be configured by adjusting the value of the
 `derby.language.sequence.preallocator` property.
+
+## Sequence Caching
+
+By default, Splice Machine deinfes an implicit sequence cache of 10,000. This behavior corresponds to a `CACHE 10000` statement for the CREATE SEQUENCE CACHE option in SQL Server. The performance benefits of this behavior are discussed in the [Cache management](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-sequence-transact-sql?view=sql-server-ver15#cache-management) section of the SQL Server CREATE SEQUENCE (Transact-SQL) documentation.
+
+On Splice Machine, you can configure the sequence cache globally for all sequences with option `splice.sequence.allocationBlockSize`.
+
+On Splice Machine, the sequence cache affects the next sequence in two situations
+
+* When the cluster restarts
+* If more than 60 seconds between sequence requests.
+
+The following example shows the expected sequences returned.
+
+```
+CREATE SEQUENCE order_id START WITH 10 INCREMENT BY 2;
+VALUES (NEXT VALUE FOR order_id);
+-- 10
+VALUES (NEXT VALUE FOR order_id);
+-- 12
+VALUES (NEXT VALUE FOR order_id);
+-- 14
+```
+
+If you restart cluster (or wait 1 minute):
+
+```
+VALUES (NEXT VALUE FOR order_id);
+-- 10010
+```
+
+The “gap” size is defined by the cache.
 
 ## Examples
 
