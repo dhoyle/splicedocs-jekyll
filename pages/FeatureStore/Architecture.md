@@ -13,9 +13,9 @@ folder: FeatureStore
 
 This topic is organized into these sections:
 
-* [*Design*](#Design)
-* [*Concept Hierarchy*](#Concept_Hierarchy)
-* [*Implementation*](#Implementation)
+- [Design  {#Design}](#design--design)
+- [Conceptual Hierarchy {#Concept_Hierarchy}](#conceptual-hierarchy-concept_hierarchy)
+- [Implementation {#Implementation}](#implementation-implementation)
 
 # Design  {#Design}
 Users interact with the feature store through an API, but under the hood, the feature store interacts directly (via SQL) with relational tables in your Splice Machine database. When you create new data, features, and training sets, that information as well as its metadata is persisted in Splice Machine and tracked automatically.
@@ -26,7 +26,7 @@ This is fundamentally different than other feature stores, because the Splice Ma
 
 The Splice Machine feature store is designed as an *implicit* tracker of features and data. It is meant to be unobtrusive to the data flow, tracking changes to features and metadata behind the scenes. In this interaction model, data scientists and engineers define metadata (features, feature sets, training datasets) in the feature store through the API, but do not need to use the API itself to feed or use the feature store.
 
-<img class='indentedTightSpacing' src='images/splice_fs.png'>
+<img class='indentedTightSpacing' src='images/splice_FS.png'>
 
 # Conceptual Hierarchy {#Concept_Hierarchy}
 

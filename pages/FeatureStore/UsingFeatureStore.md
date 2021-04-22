@@ -63,7 +63,7 @@ As values in the feature set table are updated, the historical values are record
 
 **To create a feature set:**
 
-Refer to [splicemachine.features.feature_set.FeatureSet](https://pysplice.readthedocs.io/en/feature_store_api_cleanup/splicemachine.features.html#splicemachine.features.feature_set.FeatureSet).
+Refer to [splicemachine.features.feature_store.FeatureStore.create_feature_set](https://pysplice.readthedocs.io/en/latest/splicemachine.features.html#splicemachine.features.feature_store.FeatureStore.create_feature_set).
 
 ```
 create_feature_set(schema_name: str, table_name: str, primary_keys: Dict[str, str], desc: Optional[str] = None)
@@ -101,7 +101,7 @@ Limitations:
 * Currently, feature sets cannot be deleted. This capability is planned for a future release.
 * Currently, a feature set cannot be altered after deployment. This means you cannot add or delete features after deploying a feature set. This capability is planned for a future release.
 
-# Feature {#features}
+# Feature {#feature}
 
 ## Definition
 The feature is the smallest unit of measure in the feature store, and represents a single data point. An example of a feature is a 30-day rolling average of customer purchases.
@@ -298,7 +298,7 @@ Which takes:
 
 ### Note on tracking training sets:
 
-When you `register_feature_store` with MLFlow, training set usage will be implicitly logged for you during active runs. When calling `get_training_set` or `get_training_set` from view, MLFlow will recognize the new active training set and log it automatically. However, this comes with a few limitations.
+When you `register_feature_store` with MLFlow, training set usage will be implicitly logged for you during active runs. When calling `get_training_set` or `get_training_set_from_view`, MLFlow will recognize the new active training set and log it automatically. However, this comes with a few limitations.
 
 If you call `fs.get_training_set` or `fs.get_training_set_from_view` **before** starting an MLFlow run, all **following** runs will assume that training set to be the active training set, and will log that training set as metadata.
 
