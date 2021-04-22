@@ -210,7 +210,7 @@ In this example, we can parameterize our SQL using the ```create_training_view``
 When we pass this information to the feature store, it will persist this metadata and the SQL query itself. When a user now wants to create a training dataset, they can simply call:
 
 ```
-fs.get_training_set_from_view(name=’recommendation_purchase_search_events’)
+fs.get_training_set_from_view(name='recommendation_purchase_search_events')
 ```
 
 This will return a Spark dataframe with all of the available features and the label of each event.
@@ -219,12 +219,12 @@ If the user instead wants a subset of features for their model, they can pass in
 
 ```
 fs.get_training_set_from_view(
-  name=‘recommendation_purchase_search_events’,
+  name='recommendation_purchase_search_events',
   features=[
-    ‘monetary_1d_agg’,
-    ‘monetary_30d_agg’,
-    ‘age’,
-    ‘highest_education’
+    'monetary_1d_agg',
+    'monetary_30d_agg',
+    'age',
+    'highest_education'
     ]
 )
 ```
