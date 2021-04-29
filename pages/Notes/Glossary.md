@@ -12,7 +12,7 @@ folder: Notes
 <div class="TopicContent" data-swiftype-index="true" markdown="1">
 # Glossary
 
-{%- include custom/glossary_terms.html -%}
+{% include custom/glossary_terms.html %}
 
 </div>
 </section>
