@@ -13,13 +13,8 @@ folder: CmdLineReference
 # Rollback to Savepoint Command
 
 The <span class="AppCommand">rollback to savepoint</span> command issues
-a `java.sql.Connection.rollback` request, which has been overloaded to
-work with a savepoint within the current transaction.
-
-When you rollback a transaction to a savepoint, that savepoint and any
-others created after it within the transaction are automatically
-released.
-{: .noteNote}
+a `java.sql.Connection.rollback` request that has been overloaded to
+work with a savepoint within the current transaction and rolls all the work in the currently active transaction back to the specified savepoint.
 
 ## Syntax
 
@@ -33,22 +28,25 @@ released.
 {: .paramName}
 
 The name of the savepoint to which the transaction should be rolled
-back: all savepoints up to and including this one are rolled back.
+back. All savepoints up to and including this one are rolled back.
 {: .paramDefnFirst}
 
 </div>
 ## Usage Notes
 
+When you roll back a transaction to a savepoint, that savepoint and any
+others created after it within the transaction are automatically
+released.
+
 In contrast to the &nbsp;[`Rollback`](cmdlineref_rollback.html) command, the
-`Rollback to Savepoint` command rolls back but of your work, but does
+`Rollback to Savepoint` command rolls back all of the work in the current transaction, but does
 not start a new transaction.
-{: .body}
 
 ## Examples
 
-First we'll create a table, turn autocommit off, and insert some data
-into the table. We then create a savepoint, and verify the contents of
-our table:
+Create a table, turn autocommit off, and insert some data
+into the table. Then create a savepoint, and verify the contents of
+the table:
 
 <div class="preWrapperWide" markdown="1">
     splice> CREATE TABLE myTbl(i int);
@@ -69,7 +67,7 @@ our table:
 {: .AppCommand}
 
 </div>
-Next we add new values to the table and again verify its contents:
+Next, add new values to the table and again verify its contents:
 
 <div class="preWrapperWide" markdown="1">
     splice> INSERT INTO myTbl VALUES 4,5;
@@ -86,7 +84,7 @@ Next we add new values to the table and again verify its contents:
 {: .AppCommand}
 
 </div>
-Now we roll back to our savepoint, and verify that the rollback worked:
+Now roll back to the savepoint, and verify that the rollback worked:
 
 <div class="preWrapperWide" markdown="1">
     splice> ROLLBACK TO SAVEPOINT savept1;
@@ -102,7 +100,7 @@ Now we roll back to our savepoint, and verify that the rollback worked:
 {: .AppCommand}
 
 </div>
-And finally, we commit the transaction:
+Finally, commit the transaction:
 
 <div class="preWrapperWide" markdown="1">
     COMMIT;
