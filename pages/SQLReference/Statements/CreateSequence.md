@@ -26,7 +26,7 @@ CREATE SEQUENCE
 The sequence name is composed of an optional *schemaName* and a *SQL
 Identifier*. If a *schemaName* is not provided, the current schema is
 the default schema. If a qualified sequence name is specified, the
-schema name cannot begin with `SYS.`.
+schema name cannot begin with the `SYS.` prefix.
 
 <div class="paramList" markdown="1">
 schemaName
@@ -160,14 +160,14 @@ be configured by adjusting the value of the
 
 ## Sequence Caching
 
-By default, Splice Machine deinfes an implicit sequence cache of 10,000. This behavior corresponds to a `CACHE 10000` statement for the CREATE SEQUENCE CACHE option in SQL Server. The performance benefits of this behavior are discussed in the [Cache management](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-sequence-transact-sql?view=sql-server-ver15#cache-management) section of the SQL Server CREATE SEQUENCE (Transact-SQL) documentation.
+By default, Splice Machine defines an implicit sequence cache of 10,000. This behavior corresponds to a `CACHE 10000` statement for the CREATE SEQUENCE CACHE option in SQL Server. The performance benefits of this behavior are discussed in the [Cache management](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-sequence-transact-sql?view=sql-server-ver15#cache-management) section of the SQL Server CREATE SEQUENCE (Transact-SQL) documentation.
 
 On Splice Machine, you can configure the sequence cache globally for all sequences with option `splice.sequence.allocationBlockSize`.
 
-On Splice Machine, the sequence cache affects the next sequence in two situations
+On Splice Machine, the sequence cache affects the next sequence in two situations:
 
-* When the cluster restarts
-* If more than 60 seconds between sequence requests.
+* When the cluster restarts.
+* If more than 60 seconds elapses between sequence requests.
 
 The following example shows the expected sequences returned.
 
@@ -181,7 +181,7 @@ The following example shows the expected sequences returned.
     -- 14
 {: .Example xml:space="preserve"}
 
-If you restart cluster (or wait 1 minute), sequence values returned start after the cache value increment. 
+If you restart the cluster (or wait 1 minute), the sequence values returned start after the cache value increment. 
 
 <div class="preWrapper" markdown="1">
     VALUES (NEXT VALUE FOR order_id);
