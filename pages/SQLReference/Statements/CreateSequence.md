@@ -180,6 +180,7 @@ The following example shows the expected sequences returned.
     VALUES (NEXT VALUE FOR order_id);
     -- 14
 {: .Example xml:space="preserve"}
+</div>
 
 If you restart the cluster (or wait 1 minute), the sequence values returned start after the cache value increment. 
 
@@ -187,6 +188,7 @@ If you restart the cluster (or wait 1 minute), the sequence values returned star
     VALUES (NEXT VALUE FOR order_id);
     -- 10010
 {: .Example xml:space="preserve"}
+</div>
 
 The gap between sequence values is an increment defined by the cache.  
 
