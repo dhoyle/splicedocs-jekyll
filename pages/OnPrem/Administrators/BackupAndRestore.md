@@ -306,17 +306,17 @@ A `VARCHAR` value that specifies the path to the directory in which the
 backup isstored.
 {: .paramDefnFirst}
 
-You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP`
- System Table](sqlref_systables_sysbackup.html). See the [Reviewing
-Backup Information](#Reviewing) section below for more information.
-{: .paramDefn}
-
 backupId
 {: .paramName}
 
 A `BIGINT` value that specifies which backup you want to use to validate
 your database.
 {: .paramDefnFirst}
+
+You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP`
+ System Table](sqlref_systables_sysbackup.html). See the [Reviewing
+Backup Information](#Reviewing) section below for more information.
+{: .paramDefn}
 
 </div>
 #### Example: Validating a backup

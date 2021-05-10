@@ -18,7 +18,7 @@ in-progress backup.
 ## Syntax
 
 <div class="fcnWrapperWide" markdown="1">
-    SYSCS_UTIL.SYSCS_CANCEL_BACKUP( BIGINT backupId );
+    SYSCS_UTIL.SYSCS_CANCEL_BACKUP( backupId );
 {: .FcnSyntax xml:space="preserve"}
 
 </div>
@@ -27,7 +27,8 @@ in-progress backup.
 backupId
 {: .paramName}
 
-The ID of the backup job you want to cancel.
+A `BIGINT` value specifying the ID of the backup job you want to cancel. For more information about finding and using backup IDs, see [Backup IDs, Backup Jobs, and Backup Tables](onprem_admin_backingup.html#systables) and [Reviewing Backups](onprem_admin_backingup.html#Reviewing). You can find the *backupId* for an existing backup by querying the &nbsp;[`SYSBACKUP`
+ System Table](sqlref_systables_sysbackup.html).
 {: .paramDefnFirst}
 
 </div>
@@ -47,7 +48,7 @@ database owner can grant access to other users.
 This cancels the currently running backup:
 
 <div class="preWrapperWide" markdown="1">
-    CALL SYSCS_UTIL.SYSCS_CANCEL_BACKUP();
+    CALL SYSCS_UTIL.SYSCS_CANCEL_BACKUP( 12345 );
 {: .Example xml:space="preserve"}
 
 </div>
