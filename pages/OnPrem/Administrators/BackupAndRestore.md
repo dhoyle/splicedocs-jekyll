@@ -127,7 +127,7 @@ There's a simple workaround:
 
 ## Incremental Backup Configuration and Limitations {#incrconfig}
 
-If you're going to perform incremental backups, you _must_ follow these steps:
+If you're going to perform incremental backups, you _must_ follow these steps. You must restart HBase after configuration changes.
 
 <div class="opsStepsList" markdown="1">
 1.  Add the following options to your `hbase-site.xml` configuration file:
@@ -141,10 +141,13 @@ If you're going to perform incremental backups, you _must_ follow these steps:
 2.  Purge the <code>/hbase/backup/data directory</code>.
     {: .topLevel}
 
-3.  Run a full backup.
+3.  Restart HBase.
     {: .topLevel}
 
-4.  Run your first incremental backup.
+4.  Run a full backup.
+    {: .topLevel}
+
+5.  Run your first incremental backup.
     {: .topLevel}
 
 </div>
@@ -248,17 +251,18 @@ A `VARCHAR` value that specifies the path to the directory in which the
 backup is stored.
 {: .paramDefnFirst}
 
-You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP`
- System Table](sqlref_systables_sysbackup.html). See the [Reviewing
-Backup Information](#Reviewing) section below for more information.
-{: .paramDefn}
-
 backupId
 {: .paramName}
 
 A `BIGINT` value that specifies which backup you want to use to restore
 your database.
 {: .paramDefnFirst}
+
+You can find the *backupId* you want to use by querying the &nbsp;[`SYSBACKUP`
+ System Table](sqlref_systables_sysbackup.html). See the [Reviewing
+Backup Information](#Reviewing) section below for more information.
+{: .paramDefn}
+
 
 validate
 {: .paramName}
